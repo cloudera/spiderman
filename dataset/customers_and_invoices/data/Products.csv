@@ -1,0 +1,16 @@
+product_id,parent_product_id,production_type_code,unit_price,product_name,product_color,product_size
+1,4,Food,617.95,Coffee Bean,Red,Medium
+2,4,Books,558.49,Learning French,Yellow,Medium
+3,8,Electronics,563.58,Fans,Black,Medium
+4,8,Electronics,985.78,Hard Drive,Black,Small
+5,7,DVDs,682.06,Arts,Yellow,Small
+6,7,Books,469.71,Art History,Yellow,Small
+7,5,Books,409.83,Learning English,Red,Large
+8,1,Books,49.62,Menus,Black,Small
+9,8,Food,694.31,Beer Menus,Black,Small
+10,9,Electronics,937.85,TV,Red,Medium
+11,8,DVDs,52.88,Harry Potter 1,Black,Small
+12,1,DVDs,729.09,Harry Potter 2,Red,Medium
+13,6,Food,639.76,Chocolate,Yellow,Small
+14,1,DVDs,469.87,Harry Potter 3,Yellow,Small
+15,2,DVDs,82.96,Harry Potter 4,Yellow,Large

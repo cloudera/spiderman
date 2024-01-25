@@ -1,0 +1,8 @@
+lost_in_battle,id,name,tonnage,ship_type,location,disposition_of_ship
+8,1,Lettice,t,Brig,English Channel,Captured
+7,2,Bon Accord,t,Brig,English Channel,Captured
+6,3,Mary,t,Brig,English Channel,Captured
+5,4,HMS Avon,391,18-gun Brig,English Channel,Wrecked
+5,5,Three Brothers,t,Brig,SW Approaches,Scuttled
+4,6,Bacchus,t,Brig,English Channel,Sank
+8,7,HMS Atalanta,225,8 gun Brig,Mid-Atlantic,Captured

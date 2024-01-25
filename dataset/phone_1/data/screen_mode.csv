@@ -1,0 +1,8 @@
+Graphics_mode,Char_cells,Pixels,Hardware_colours,used_kb,map,Type
+0.0,80 × 32,640 × 256,2.0,20.0,3000–7FFF,Graphics
+1.0,40 × 32,320 × 256,4.0,20.0,3000–7FFF,Graphics
+2.0,20 × 32,160 × 256,8.0,20.0,3000–7FFF,Graphics
+3.0,80 × 25,640 × 200,2.0,16.0,4000–7FFF,Text
+4.0,40 × 32,320 × 256,2.0,10.0,5800–7FFF,Graphics
+5.0,20 × 32,160 × 256,4.0,10.0,5800–7FFF,Graphics
+6.0,40 × 25,320 × 200,2.0,8.0,6000–7FFF,Text

@@ -1,0 +1,24 @@
+question,sql
+How many train stations are there?,SELECT count(*) FROM station
+"Show the name, location, and number of platforms for all stations.","SELECT name ,  LOCATION ,  number_of_platforms FROM station"
+What are all locations of train stations?,SELECT DISTINCT LOCATION FROM station
+Show the names and total passengers for all train stations not in London.,"SELECT name ,  total_passengers FROM station WHERE LOCATION != 'London'"
+Show the names and main services for train stations that have the top three total number of passengers.,"SELECT name ,  main_services FROM station ORDER BY total_passengers DESC LIMIT 3"
+What is the average and maximum number of total passengers for train stations in London or Glasgow?,"SELECT avg(total_passengers) ,  max(total_passengers) FROM station WHERE LOCATION  =  'London' OR LOCATION  =  'Glasgow'"
+Show all locations and the total number of platforms and passengers for all train stations in each location.,"SELECT LOCATION ,  sum(number_of_platforms) ,  sum(total_passengers) FROM station GROUP BY LOCATION"
+Show all locations that have train stations with at least 15 platforms and train stations with more than 25 total passengers.,SELECT DISTINCT LOCATION FROM station WHERE number_of_platforms  >=  15 AND total_passengers  >  25
+Show all locations which don't have a train station with at least 15 platforms.,SELECT LOCATION FROM station EXCEPT SELECT LOCATION FROM station WHERE number_of_platforms  >=  15
+Show the location with most number of train stations.,SELECT LOCATION FROM station GROUP BY LOCATION ORDER BY count(*) DESC LIMIT 1
+"Show the name, time, and service for all trains.","SELECT name ,  TIME ,  service FROM train"
+Show the number of trains,SELECT count(*) FROM train
+Show the name and service for all trains in order by time.,"SELECT name ,  service FROM train ORDER BY TIME"
+Show the station name and number of trains in each station.,"SELECT T2.name ,  count(*) FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id GROUP BY T1.station_id"
+show the train name and station name for each train.,"SELECT T2.name ,  T3.name FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id JOIN train AS T3 ON T3.train_id  =  T1.train_id"
+Show all train names and times in stations in London in descending order by train time.,"SELECT T3.name ,  T3.time FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id JOIN train AS T3 ON T3.train_id  =  T1.train_id WHERE T2.location  =  'London' ORDER BY T3.time DESC"
+Show the station name with greatest number of trains.,SELECT T2.name FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id GROUP BY T1.station_id ORDER BY count(*) DESC LIMIT 1
+Show the station name with at least two trains.,SELECT T2.name FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id GROUP BY T1.station_id HAVING count(*)  >=  2
+Show all locations with only 1 station.,SELECT LOCATION FROM station GROUP BY LOCATION HAVING count(*)  =  1
+Show station names without any trains.,SELECT name FROM station WHERE station_id NOT IN (SELECT station_id FROM train_station)
+"What are the names of the stations which serve both ""Ananthapuri Express"" and ""Guruvayur Express"" trains?","SELECT T2.name FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id JOIN train AS T3 ON T3.train_id  =  T1.train_id WHERE T3.Name  =  ""Ananthapuri Express"" INTERSECT SELECT T2.name FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id JOIN train AS T3 ON T3.train_id  =  T1.train_id WHERE T3.Name  =  ""Guruvayur Express"""
+Find the names of the trains that do not pass any station located in London.,"SELECT T2.name FROM train_station AS T1 JOIN train AS T2 ON T1.train_id  =  T2.train_id WHERE T1.station_id NOT IN (SELECT T4.station_id FROM train_station AS T3 JOIN station AS T4 ON T3.station_id  =  T4.station_id WHERE t4.location  =  ""London"")"
+List the names and locations of all stations ordered by their yearly entry exit and interchange amounts.,"SELECT name ,  LOCATION FROM station ORDER BY Annual_entry_exit ,  Annual_interchanges"

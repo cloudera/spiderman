@@ -1,0 +1,43 @@
+question,sql
+Find the names of all the catalog entries.,SELECT distinct(catalog_entry_name) FROM catalog_contents
+What are all the catalog entry names?,SELECT distinct(catalog_entry_name) FROM catalog_contents
+Find the list of attribute data types possessed by more than 3 attribute definitions.,SELECT attribute_data_type FROM Attribute_Definitions GROUP BY attribute_data_type HAVING count(*)  >  3
+What are the attribute data types with more than 3 attribute definitions?,SELECT attribute_data_type FROM Attribute_Definitions GROUP BY attribute_data_type HAVING count(*)  >  3
+"What is the attribute data type of the attribute with name ""Green""?","SELECT attribute_data_type FROM Attribute_Definitions WHERE attribute_name  =  ""Green"""
+"Find the attribute data type for the attribute named ""Green"".","SELECT attribute_data_type FROM Attribute_Definitions WHERE attribute_name  =  ""Green"""
+Find the name and level of catalog structure with level between 5 and 10.,"SELECT catalog_level_name ,  catalog_level_number FROM Catalog_Structure WHERE catalog_level_number BETWEEN 5 AND 10"
+What are the name and level of catalog structure with level number between 5 and 10,"SELECT catalog_level_name ,  catalog_level_number FROM Catalog_Structure WHERE catalog_level_number BETWEEN 5 AND 10"
+"Find all the catalog publishers whose name contains ""Murray""","SELECT distinct(catalog_publisher) FROM catalogs WHERE catalog_publisher LIKE ""%Murray%"""
+"Which catalog publishers have substring ""Murray"" in their names?","SELECT distinct(catalog_publisher) FROM catalogs WHERE catalog_publisher LIKE ""%Murray%"""
+Which catalog publisher has published the most catalogs?,SELECT catalog_publisher FROM catalogs GROUP BY catalog_publisher ORDER BY count(*) DESC LIMIT 1
+Find the catalog publisher that has the most catalogs.,SELECT catalog_publisher FROM catalogs GROUP BY catalog_publisher ORDER BY count(*) DESC LIMIT 1
+Find the names and publication dates of all catalogs that have catalog level number greater than 5.,"SELECT t1.catalog_name ,  t1.date_of_publication FROM catalogs AS t1 JOIN catalog_structure AS t2 ON t1.catalog_id  =  t2.catalog_id WHERE catalog_level_number  >  5"
+What are the name and publication date of the catalogs with catalog level number above 5?,"SELECT t1.catalog_name ,  t1.date_of_publication FROM catalogs AS t1 JOIN catalog_structure AS t2 ON t1.catalog_id  =  t2.catalog_id WHERE catalog_level_number  >  5"
+What are the entry names of catalog with the attribute possessed by most entries.,SELECT t1.catalog_entry_name FROM Catalog_Contents AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.catalog_entry_id  =  t2.catalog_entry_id WHERE t2.attribute_value  =  (SELECT attribute_value FROM Catalog_Contents_Additional_Attributes GROUP BY attribute_value ORDER BY count(*) DESC LIMIT 1)
+Find the entry names of the catalog with the attribute that have the most entries.,SELECT t1.catalog_entry_name FROM Catalog_Contents AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.catalog_entry_id  =  t2.catalog_entry_id WHERE t2.attribute_value  =  (SELECT attribute_value FROM Catalog_Contents_Additional_Attributes GROUP BY attribute_value ORDER BY count(*) DESC LIMIT 1)
+What is the entry name of the most expensive catalog (in USD)?,SELECT catalog_entry_name FROM catalog_contents ORDER BY price_in_dollars DESC LIMIT 1
+Find the entry name of the catalog with the highest price (in USD).,SELECT catalog_entry_name FROM catalog_contents ORDER BY price_in_dollars DESC LIMIT 1
+What is the level name of the cheapest catalog (in USD)?,SELECT t2.catalog_level_name FROM catalog_contents AS t1 JOIN catalog_structure AS t2 ON t1.catalog_level_number  =  t2.catalog_level_number ORDER BY t1.price_in_dollars LIMIT 1
+Find the level name of the catalog with the lowest price (in USD).,SELECT t2.catalog_level_name FROM catalog_contents AS t1 JOIN catalog_structure AS t2 ON t1.catalog_level_number  =  t2.catalog_level_number ORDER BY t1.price_in_dollars LIMIT 1
+What are the average and minimum price (in Euro) of all products?,"SELECT avg(price_in_euros) ,  min(price_in_euros) FROM catalog_contents"
+Give me the average and minimum price (in Euro) of the products.,"SELECT avg(price_in_euros) ,  min(price_in_euros) FROM catalog_contents"
+What is the product with the highest height? Give me the catalog entry name.,SELECT catalog_entry_name FROM catalog_contents ORDER BY height DESC LIMIT 1
+Which catalog content has the highest height? Give me the catalog entry name.,SELECT catalog_entry_name FROM catalog_contents ORDER BY height DESC LIMIT 1
+Find the name of the product that has the smallest capacity.,SELECT catalog_entry_name FROM catalog_contents ORDER BY capacity ASC LIMIT 1
+Which catalog content has the smallest capacity? Return the catalog entry name.,SELECT catalog_entry_name FROM catalog_contents ORDER BY capacity ASC LIMIT 1
+"Find the names of all the products whose stock number starts with ""2"".","SELECT catalog_entry_name FROM catalog_contents WHERE product_stock_number LIKE ""2%"""
+"Which catalog contents have a product stock number that starts from ""2""? Show the catalog entry names.","SELECT catalog_entry_name FROM catalog_contents WHERE product_stock_number LIKE ""2%"""
+Find the names of catalog entries with level number 8.,"SELECT t1.catalog_entry_name FROM Catalog_Contents AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.catalog_entry_id  =  t2.catalog_entry_id WHERE t2.catalog_level_number  =  ""8"""
+What are the names of catalog entries with level number 8?,"SELECT t1.catalog_entry_name FROM Catalog_Contents AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.catalog_entry_id  =  t2.catalog_entry_id WHERE t2.catalog_level_number  =  ""8"""
+Find the names of the products with length smaller than 3 or height greater than 5.,SELECT catalog_entry_name FROM catalog_contents WHERE LENGTH  <  3 OR width  >  5
+Which catalog contents have length below 3 or above 5? Find the catalog entry names.,SELECT catalog_entry_name FROM catalog_contents WHERE LENGTH  <  3 OR width  >  5
+Find the name and attribute ID of the attribute definitions with attribute value 0.,"SELECT t1.attribute_name ,  t1.attribute_id FROM Attribute_Definitions AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.attribute_id  =  t2.attribute_id WHERE t2.attribute_value  =  0"
+Which attribute definitions have attribute value 0? Give me the attribute name and attribute ID.,"SELECT t1.attribute_name ,  t1.attribute_id FROM Attribute_Definitions AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.attribute_id  =  t2.attribute_id WHERE t2.attribute_value  =  0"
+Find the name and capacity of products with price greater than 700 (in USD).,"SELECT catalog_entry_name ,  capacity FROM Catalog_Contents WHERE price_in_dollars  >  700"
+Which catalog contents has price above 700 dollars? Show their catalog entry names and capacities.,"SELECT catalog_entry_name ,  capacity FROM Catalog_Contents WHERE price_in_dollars  >  700"
+Find the dates on which more than one revisions were made.,SELECT date_of_latest_revision FROM Catalogs GROUP BY date_of_latest_revision HAVING count(*)  >  1
+On which days more than one revisions were made on catalogs.,SELECT date_of_latest_revision FROM Catalogs GROUP BY date_of_latest_revision HAVING count(*)  >  1
+How many products are there in the records?,SELECT count(*) FROM catalog_contents
+Find the total number of catalog contents.,SELECT count(*) FROM catalog_contents
+Name all the products with next entry ID greater than 8.,SELECT catalog_entry_name FROM catalog_contents WHERE next_entry_id  >  8
+What are the catalog entry names of the products with next entry ID above 8?,SELECT catalog_entry_name FROM catalog_contents WHERE next_entry_id  >  8

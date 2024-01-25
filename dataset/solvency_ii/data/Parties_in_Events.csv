@@ -1,0 +1,16 @@
+Party_ID,Event_ID,Role_Code
+3,7,Organizer
+3,8,Participant
+4,1,Organizer
+4,3,Participant
+4,8,Organizer
+5,9,Participant
+5,10,Participant
+5,15,Organizer
+6,6,Organizer
+6,12,Participant
+6,13,Organizer
+9,3,Participant
+9,4,Participant
+9,10,Organizer
+9,12,Organizer

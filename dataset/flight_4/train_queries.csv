@@ -1,0 +1,83 @@
+question,sql
+Find the name of the airport in the city of Goroka.,SELECT name FROM airports WHERE city  =  'Goroka'
+What are the names of the airports in the city of Goroka?,SELECT name FROM airports WHERE city  =  'Goroka'
+"Find the name, city, country, and altitude (or elevation) of the airports in the city of New York.","SELECT name ,  city ,  country ,  elevation FROM airports WHERE city  =  'New York'"
+"What is the name, city, country, and elevation for every airport in the city of New York?","SELECT name ,  city ,  country ,  elevation FROM airports WHERE city  =  'New York'"
+How many airlines are there?,SELECT count(*) FROM airlines
+What is the total number of airlines?,SELECT count(*) FROM airlines
+How many airlines does Russia has?,SELECT count(*) FROM airlines WHERE country  =  'Russia'
+What is the number of airlines based in Russia?,SELECT count(*) FROM airlines WHERE country  =  'Russia'
+What is the maximum elevation of all airports in the country of Iceland?,SELECT max(elevation) FROM airports WHERE country  =  'Iceland'
+What is the highest elevation of an airport in the country of Iceland?,SELECT max(elevation) FROM airports WHERE country  =  'Iceland'
+Find the name of the airports located in Cuba or Argentina.,SELECT name FROM airports WHERE country  =  'Cuba' OR country  =  'Argentina'
+What are the names of all airports in Cuba or Argentina?,SELECT name FROM airports WHERE country  =  'Cuba' OR country  =  'Argentina'
+Find the country of the airlines whose name starts with 'Orbit'.,SELECT country FROM airlines WHERE name LIKE 'Orbit%'
+What are the countries of all airlines whose names start with Orbit?,SELECT country FROM airlines WHERE name LIKE 'Orbit%'
+Find the name of airports whose altitude is between -50 and 50.,SELECT name FROM airports WHERE elevation BETWEEN -50 AND 50
+What are the names of all airports whose elevation is between -50 and 50?,SELECT name FROM airports WHERE elevation BETWEEN -50 AND 50
+Which country is the airport that has the highest altitude located in?,SELECT country FROM airports ORDER BY elevation DESC LIMIT 1
+What is the country of the airport with the highest elevation?,SELECT country FROM airports ORDER BY elevation DESC LIMIT 1
+Find the number of airports whose name contain the word 'International'.,SELECT count(*) FROM airports WHERE name LIKE '%International%'
+How many airports' names have the word Interanation in them?,SELECT count(*) FROM airports WHERE name LIKE '%International%'
+How many different cities do have some airport in the country of Greenland?,SELECT count(DISTINCT city) FROM airports WHERE country  =  'Greenland'
+In how many cities are there airports in the country of Greenland?,SELECT count(DISTINCT city) FROM airports WHERE country  =  'Greenland'
+Find the number of routes operated by American Airlines.,SELECT count(*) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid WHERE T1.name  =  'American Airlines'
+How many routes does American Airlines operate?,SELECT count(*) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid WHERE T1.name  =  'American Airlines'
+Find the number of routes whose destination airports are in Canada.,SELECT count(*) FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE country  =  'Canada'
+How many routes end in a Canadian airport?,SELECT count(*) FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE country  =  'Canada'
+"Find the name, city, and country of the airport that has the lowest altitude.","SELECT name ,  city ,  country FROM airports ORDER BY elevation LIMIT 1"
+"What is the name, city, and country of the airport with the lowest altitude?","SELECT name ,  city ,  country FROM airports ORDER BY elevation LIMIT 1"
+"Find the name, city, and country of the airport that has the highest latitude.","SELECT name ,  city ,  country FROM airports ORDER BY elevation DESC LIMIT 1"
+"What is the name, city, and country of the airport with the highest elevation?","SELECT name ,  city ,  country FROM airports ORDER BY elevation DESC LIMIT 1"
+Find the name and city of the airport which is the destination of the most number of routes.,"SELECT T1.name ,  T1.city ,  T2.dst_apid FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid GROUP BY T2.dst_apid ORDER BY count(*) DESC LIMIT 1"
+What is the name and city of the airport that the most routes end at?,"SELECT T1.name ,  T1.city ,  T2.dst_apid FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid GROUP BY T2.dst_apid ORDER BY count(*) DESC LIMIT 1"
+Find the names of the top 10 airlines that operate the most number of routes.,"SELECT T1.name ,  T2.alid FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T2.alid ORDER BY count(*) DESC LIMIT 10"
+"For the airline ids with the top 10 most routes operated, what are their names?","SELECT T1.name ,  T2.alid FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T2.alid ORDER BY count(*) DESC LIMIT 10"
+Find the name and city of the airport which is the source for the most number of flight routes.,"SELECT T1.name ,  T1.city ,  T2.src_apid FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T2.src_apid ORDER BY count(*) DESC LIMIT 1"
+What is the name and city of the airport from most of the routes start?,"SELECT T1.name ,  T1.city ,  T2.src_apid FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T2.src_apid ORDER BY count(*) DESC LIMIT 1"
+Find the number of different airports which are the destinations of the American Airlines.,SELECT count(DISTINCT dst_apid) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid WHERE T1.name  =  'American Airlines'
+What is the number of different different airports that are destinations for American Airlines?,SELECT count(DISTINCT dst_apid) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid WHERE T1.name  =  'American Airlines'
+Which countries has the most number of airlines?,SELECT country FROM airlines GROUP BY country ORDER BY count(*) DESC LIMIT 1
+What is the name of the country with the most number of home airlines?,SELECT country FROM airlines GROUP BY country ORDER BY count(*) DESC LIMIT 1
+Which countries has the most number of airlines whose active status is 'Y'?,SELECT country FROM airlines WHERE active  =  'Y' GROUP BY country ORDER BY count(*) DESC LIMIT 1
+What are the countries with the most airlines whose active status is Y?,SELECT country FROM airlines WHERE active  =  'Y' GROUP BY country ORDER BY count(*) DESC LIMIT 1
+List all countries and their number of airlines in the descending order of number of airlines.,"SELECT country ,  count(*) FROM airlines GROUP BY country ORDER BY count(*) DESC"
+How many airlines operate out of each country in descending order?,"SELECT country ,  count(*) FROM airlines GROUP BY country ORDER BY count(*) DESC"
+How many airports are there per country? Order the countries by decreasing number of airports.,"SELECT count(*) ,  country FROM airports GROUP BY country ORDER BY count(*) DESC"
+"What is the number of airports per country, ordered from most to least?","SELECT count(*) ,  country FROM airports GROUP BY country ORDER BY count(*) DESC"
+How many airports are there per city in the United States? Order the cities by decreasing number of airports.,"SELECT count(*) ,  city FROM airports WHERE country  =  'United States' GROUP BY city ORDER BY count(*) DESC"
+How many airports are there per city in the US ordered from most to least?,"SELECT count(*) ,  city FROM airports WHERE country  =  'United States' GROUP BY city ORDER BY count(*) DESC"
+Return the cities with more than 3 airports in the United States.,SELECT city FROM airports WHERE country  =  'United States' GROUP BY city HAVING count(*)  >  3
+What is the number of cities in the United States with more than 3 airports?,SELECT city FROM airports WHERE country  =  'United States' GROUP BY city HAVING count(*)  >  3
+How many cities are there that have more than 3 airports?,SELECT count(*) FROM (SELECT city FROM airports GROUP BY city HAVING count(*)  >  3)
+What is the count of cities with more than 3 airports?,SELECT count(*) FROM (SELECT city FROM airports GROUP BY city HAVING count(*)  >  3)
+List the cities which have more than one airport and number of airports.,"SELECT city ,  count(*) FROM airports GROUP BY city HAVING count(*)  >  1"
+What are the names of all cities with more than one airport and how many airports do they have?,"SELECT city ,  count(*) FROM airports GROUP BY city HAVING count(*)  >  1"
+List the cities which have more than 2 airports sorted by the number of airports.,SELECT city FROM airports GROUP BY city HAVING count(*)  >  2 ORDER BY count(*)
+What are the cities that have more than 2 airports sorted by number of airports?,SELECT city FROM airports GROUP BY city HAVING count(*)  >  2 ORDER BY count(*)
+Find the number of routes for each source airport and the airport name.,"SELECT count(*) ,  T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T1.name"
+"For each airport name, how many routes start at that airport?","SELECT count(*) ,  T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T1.name"
+"Find the number of routes and airport name for each source airport, order the results by decreasing number of routes.","SELECT count(*) ,  T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T1.name ORDER BY count(*) DESC"
+"For each  airport name, how many routes start at that airport, ordered from most to least?","SELECT count(*) ,  T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T1.name ORDER BY count(*) DESC"
+Find the average elevation of all airports for each country.,"SELECT avg(elevation) ,  country FROM airports GROUP BY country"
+"For each country, what is the average elevation of that country's airports?","SELECT avg(elevation) ,  country FROM airports GROUP BY country"
+Find the cities which have exactly two airports.,SELECT city FROM airports GROUP BY city HAVING count(*)  =  2
+What are the cities with exactly two airports?,SELECT city FROM airports GROUP BY city HAVING count(*)  =  2
+"For each country and airline name, how many routes are there?","SELECT T1.country ,  T1.name ,  count(*) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T1.country ,  T1.name"
+What is the total number of routes for each country and airline in that country?,"SELECT T1.country ,  T1.name ,  count(*) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T1.country ,  T1.name"
+Find the number of routes with destination airports in Italy.,SELECT count(*) FROM routes AS T1 JOIN airports AS T2 ON T1.dst_apid  =  T2.apid WHERE T2.country  =  'Italy'
+What is the number of routes whose destinations are Italian airports?,SELECT count(*) FROM routes AS T1 JOIN airports AS T2 ON T1.dst_apid  =  T2.apid WHERE T2.country  =  'Italy'
+Return the number of routes with destination airport in Italy operated by the airline with name 'American Airlines'.,SELECT count(*) FROM routes AS T1 JOIN airports AS T2 ON T1.dst_apid  =  T2.apid JOIN airlines AS T3 ON T1.alid  =  T3.alid WHERE T2.country  =  'Italy' AND T3.name  =  'American Airlines'
+What is the number of routes operated by the airline American Airlines whose destinations are in Italy?,SELECT count(*) FROM routes AS T1 JOIN airports AS T2 ON T1.dst_apid  =  T2.apid JOIN airlines AS T3 ON T1.alid  =  T3.alid WHERE T2.country  =  'Italy' AND T3.name  =  'American Airlines'
+Find the number of routes that have destination John F Kennedy International Airport.,SELECT count(*) FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE T1.name  =  'John F Kennedy International Airport'
+What is the number of routes that end at John F Kennedy International Airport?,SELECT count(*) FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE T1.name  =  'John F Kennedy International Airport'
+Find the number of routes from the United States to Canada.,SELECT count(*) FROM routes WHERE dst_apid IN (SELECT apid FROM airports WHERE country  =  'Canada') AND src_apid IN (SELECT apid FROM airports WHERE country  =  'United States')
+How many routes go from the United States to Canada?,SELECT count(*) FROM routes WHERE dst_apid IN (SELECT apid FROM airports WHERE country  =  'Canada') AND src_apid IN (SELECT apid FROM airports WHERE country  =  'United States')
+Find the id of routes whose source and destination airports are in the United States.,SELECT rid FROM routes WHERE dst_apid IN (SELECT apid FROM airports WHERE country  =  'United States') AND src_apid IN (SELECT apid FROM airports WHERE country  =  'United States')
+What is the id of the routes whose source and destination airports are in the United States?,SELECT rid FROM routes WHERE dst_apid IN (SELECT apid FROM airports WHERE country  =  'United States') AND src_apid IN (SELECT apid FROM airports WHERE country  =  'United States')
+Find the name of airline which runs the most number of routes.,SELECT T1.name FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+What is the name of the airline with the most routes?,SELECT T1.name FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+Find the busiest source airport that runs most number of routes in China.,SELECT T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid WHERE T1.country  =  'China' GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+What is the name of the airport with the most number of routes that start in China?,SELECT T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid WHERE T1.country  =  'China' GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+Find the busiest destination airport that runs most number of routes in China.,SELECT T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE T1.country  =  'China' GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+What is the name of the airport that is the destination of the most number of routes that start in China?,SELECT T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE T1.country  =  'China' GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1

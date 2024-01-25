@@ -1,0 +1,16 @@
+document_id,document_status_code,document_type_code,shipping_agent_code,receipt_date,receipt_number,other_details
+1,working,CD,UP,2008-04-21 20:42:25,19,z
+2,done,Paper,US,1974-05-08 00:00:46,34,h
+3,done,Paper,UP,2014-12-25 17:22:44,93,h
+4,done,Paper,US,1973-11-05 21:48:53,80,q
+7,working,CD,SH,1982-09-27 14:52:15,61,w
+10,overdue,Paper,UP,1976-09-15 19:24:17,8,m
+12,overdue,Hard Drive,US,1996-05-31 06:51:58,69,n
+13,working,CD,UP,2015-04-03 09:36:19,79,y
+14,working,CD,FE,2017-07-02 17:39:09,117,u
+15,overdue,CD,UP,1986-12-14 14:18:59,37,r
+17,done,Paper,FE,1983-09-26 09:32:56,55,p
+20,working,Paper,UP,1996-07-27 03:30:40,189,x
+23,working,Hard Drive,FE,1999-04-17 14:19:32,124,b
+24,working,Hard Drive,FE,2005-09-30 00:10:02,114,j
+25,overdue,Hard Drive,AL,1985-11-05 17:59:34,83,u

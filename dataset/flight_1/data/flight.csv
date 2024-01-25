@@ -1,0 +1,11 @@
+flno,origin,destination,distance,departure_date,arrival_date,price,aid
+99,Los Angeles,Washington D.C.,2308,04/12/2005 09:30,04/12/2005 09:40,235.98,1
+13,Los Angeles,Chicago,1749,04/12/2005 08:45,04/12/2005 08:45,220.98,3
+346,Los Angeles,Dallas,1251,04/12/2005 11:50,04/12/2005 07:05,182,2
+387,Los Angeles,Boston,2606,04/12/2005 07:03,04/12/2005 05:03,261.56,6
+7,Los Angeles,Sydney,7487,04/12/2005 05:30,04/12/2005 11:10,278.56,3
+2,Los Angeles,Tokyo,5478,04/12/2005 06:30,04/12/2005 03:55,780.99,9
+33,Los Angeles,Honolulu,2551,04/12/2005 09:15,04/12/2005 11:15,375.23,7
+34,Los Angeles,Honolulu,2551,04/12/2005 12:45,04/12/2005 03:18,425.98,5
+76,Chicago,Los Angeles,1749,04/12/2005 08:32,04/12/2005 10:03,220.98,9
+68,Chicago,New York,802,04/12/2005 09:00,04/12/2005 12:02,202.45,10

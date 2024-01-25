@@ -1,0 +1,16 @@
+Invoice_ID,Order_ID,payment_method_code,Product_ID,Order_Quantity,Other_Item_Details,Order_Item_ID
+128,14,MasterCard,4,2,,1
+162,13,MasterCard,9,2,,9
+164,7,Visa,7,2,,1
+212,8,Visa,4,2,,8
+272,10,American E,3,2,,5
+398,3,American E,4,1,,5
+406,14,MasterCard,7,2,,1
+483,7,Visa,8,1,,3
+548,4,MasterCard,3,1,,1
+587,1,American E,4,2,,1
+612,6,American E,3,1,,8
+633,11,Visa,2,1,,7
+679,12,MasterCard,9,2,,8
+733,11,Visa,6,1,,4
+777,7,MasterCard,6,2,,7

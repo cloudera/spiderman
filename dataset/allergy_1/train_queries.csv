@@ -1,0 +1,99 @@
+question,sql
+How many allergies are there?,SELECT count(DISTINCT allergy) FROM Allergy_type
+How many allergy entries are there?,SELECT count(DISTINCT allergy) FROM Allergy_type
+How many different allergy types exist?,SELECT count(DISTINCT allergytype) FROM Allergy_type
+How many distinct allergies are there?,SELECT count(DISTINCT allergytype) FROM Allergy_type
+Show all allergy types.,SELECT DISTINCT allergytype FROM Allergy_type
+What are the different allergy types?,SELECT DISTINCT allergytype FROM Allergy_type
+Show all allergies and their types.,"SELECT allergy ,  allergytype FROM Allergy_type"
+What are the allergies and their types?,"SELECT allergy ,  allergytype FROM Allergy_type"
+Show all allergies with type food.,"SELECT DISTINCT allergy FROM Allergy_type WHERE allergytype  =  ""food"""
+What are all the different food allergies?,"SELECT DISTINCT allergy FROM Allergy_type WHERE allergytype  =  ""food"""
+What is the type of allergy Cat?,"SELECT allergytype FROM Allergy_type WHERE allergy  =  ""Cat"""
+What is allergy type of a cat allergy?,"SELECT allergytype FROM Allergy_type WHERE allergy  =  ""Cat"""
+How many allergies have type animal?,"SELECT count(*) FROM Allergy_type WHERE allergytype  =  ""animal"""
+How many animal type allergies exist?,"SELECT count(*) FROM Allergy_type WHERE allergytype  =  ""animal"""
+Show all allergy types and the number of allergies in each type.,"SELECT allergytype ,  count(*) FROM Allergy_type GROUP BY allergytype"
+What are the allergy types and how many allergies correspond to each one?,"SELECT allergytype ,  count(*) FROM Allergy_type GROUP BY allergytype"
+Which allergy type has most number of allergies?,SELECT allergytype FROM Allergy_type GROUP BY allergytype ORDER BY count(*) DESC LIMIT 1
+Which allergy type is most common?,SELECT allergytype FROM Allergy_type GROUP BY allergytype ORDER BY count(*) DESC LIMIT 1
+Which allergy type has least number of allergies?,SELECT allergytype FROM Allergy_type GROUP BY allergytype ORDER BY count(*) ASC LIMIT 1
+Which allergy type is the least common?,SELECT allergytype FROM Allergy_type GROUP BY allergytype ORDER BY count(*) ASC LIMIT 1
+How many students are there?,SELECT count(*) FROM Student
+What is the total number of students?,SELECT count(*) FROM Student
+Show first name and last name for all students.,"SELECT Fname ,  Lname FROM Student"
+What are the full names of all students,"SELECT Fname ,  Lname FROM Student"
+How many different advisors are listed?,SELECT count(DISTINCT advisor) FROM Student
+How many advisors are there?,SELECT count(DISTINCT advisor) FROM Student
+Show all majors.,SELECT DISTINCT Major FROM Student
+What are the different majors?,SELECT DISTINCT Major FROM Student
+Show all cities where students live.,SELECT DISTINCT city_code FROM Student
+What cities do students live in?,SELECT DISTINCT city_code FROM Student
+"Show first name, last name, age for all female students. Their sex is F.","SELECT Fname ,  Lname ,  Age FROM Student WHERE Sex  =  'F'"
+What are the full names and ages for all female students whose sex is F?,"SELECT Fname ,  Lname ,  Age FROM Student WHERE Sex  =  'F'"
+Show student ids for all male students.,SELECT StuID FROM Student WHERE Sex  =  'M'
+What are the student ids for all male students?,SELECT StuID FROM Student WHERE Sex  =  'M'
+How many students are age 18?,SELECT count(*) FROM Student WHERE age  =  18
+How many students are 18 years old?,SELECT count(*) FROM Student WHERE age  =  18
+Show all student ids who are older than 20.,SELECT StuID FROM Student WHERE age  >  20
+What are the student ids for students over 20 years old?,SELECT StuID FROM Student WHERE age  >  20
+"Which city does the student whose last name is ""Kim"" live in?","SELECT city_code FROM Student WHERE LName  =  ""Kim"""
+Give the city that the student whose family name is Kim lives in.,"SELECT city_code FROM Student WHERE LName  =  ""Kim"""
+Who is the advisor of student with ID 1004?,SELECT Advisor FROM Student WHERE StuID  =  1004
+Who advises student 1004?,SELECT Advisor FROM Student WHERE StuID  =  1004
+How many students live in HKG or CHI?,"SELECT count(*) FROM Student WHERE city_code  =  ""HKG"" OR city_code  =  ""CHI"""
+Give the number of students living in either HKG or CHI.,"SELECT count(*) FROM Student WHERE city_code  =  ""HKG"" OR city_code  =  ""CHI"""
+"Show the minimum, average, and maximum age of all students.","SELECT min(age) ,  avg(age) ,  max(age) FROM Student"
+"What is the minimum, mean, and maximum age across all students?","SELECT min(age) ,  avg(age) ,  max(age) FROM Student"
+What is the last name of the youngest student?,SELECT LName FROM Student WHERE age  =  (SELECT min(age) FROM Student)
+Provide the last name of the youngest student.,SELECT LName FROM Student WHERE age  =  (SELECT min(age) FROM Student)
+Show the student id of the oldest student.,SELECT StuID FROM Student WHERE age  =  (SELECT max(age) FROM Student)
+What student id corresponds to the oldest student?,SELECT StuID FROM Student WHERE age  =  (SELECT max(age) FROM Student)
+Show all majors and corresponding number of students.,"SELECT major ,  count(*) FROM Student GROUP BY major"
+How many students are there for each major?,"SELECT major ,  count(*) FROM Student GROUP BY major"
+Which major has most number of students?,SELECT major FROM Student GROUP BY major ORDER BY count(*) DESC LIMIT 1
+What is the largest major?,SELECT major FROM Student GROUP BY major ORDER BY count(*) DESC LIMIT 1
+Show all ages and corresponding number of students.,"SELECT age ,  count(*) FROM Student GROUP BY age"
+How old is each student and how many students are each age?,"SELECT age ,  count(*) FROM Student GROUP BY age"
+Show the average age for male and female students.,"SELECT avg(age) ,  sex FROM Student GROUP BY sex"
+What are the average ages for male and female students?,"SELECT avg(age) ,  sex FROM Student GROUP BY sex"
+Show all cities and corresponding number of students.,"SELECT city_code ,  count(*) FROM Student GROUP BY city_code"
+How many students live in each city?,"SELECT city_code ,  count(*) FROM Student GROUP BY city_code"
+Show all advisors and corresponding number of students.,"SELECT advisor ,  count(*) FROM Student GROUP BY advisor"
+How many students does each advisor have?,"SELECT advisor ,  count(*) FROM Student GROUP BY advisor"
+Which advisor has most number of students?,SELECT advisor FROM Student GROUP BY advisor ORDER BY count(*) DESC LIMIT 1
+Give the advisor with the most students.,SELECT advisor FROM Student GROUP BY advisor ORDER BY count(*) DESC LIMIT 1
+How many students have cat allergies?,"SELECT count(*) FROM Has_allergy WHERE Allergy  =  ""Cat"""
+How many students are affected by cat allergies?,"SELECT count(*) FROM Has_allergy WHERE Allergy  =  ""Cat"""
+Show all student IDs who have at least two allergies.,SELECT StuID FROM Has_allergy GROUP BY StuID HAVING count(*)  >=  2
+What are the students ids of students who have more than one allergy?,SELECT StuID FROM Has_allergy GROUP BY StuID HAVING count(*)  >=  2
+What are the student ids of students who don't have any allergies?,SELECT StuID FROM Student EXCEPT SELECT StuID FROM Has_allergy
+Which students are unaffected by allergies?,SELECT StuID FROM Student EXCEPT SELECT StuID FROM Has_allergy
+How many female students have milk or egg allergies?,"SELECT count(*) FROM has_allergy AS T1 JOIN Student AS T2 ON T1.StuID  =  T2.StuID WHERE T2.sex  =  ""F"" AND T1.allergy  =  ""Milk"" OR T1.allergy  =  ""Eggs"""
+How many students who are female are allergic to milk or eggs?,"SELECT count(*) FROM has_allergy AS T1 JOIN Student AS T2 ON T1.StuID  =  T2.StuID WHERE T2.sex  =  ""F"" AND T1.allergy  =  ""Milk"" OR T1.allergy  =  ""Eggs"""
+How many students have a food allergy?,"SELECT count(*) FROM Has_allergy AS T1 JOIN Allergy_type AS T2 ON T1.allergy  =  T2.allergy WHERE T2.allergytype  =  ""food"""
+How many students are affected by food related allergies?,"SELECT count(*) FROM Has_allergy AS T1 JOIN Allergy_type AS T2 ON T1.allergy  =  T2.allergy WHERE T2.allergytype  =  ""food"""
+Which allergy has most number of students affected?,SELECT Allergy FROM Has_allergy GROUP BY Allergy ORDER BY count(*) DESC LIMIT 1
+Which allergy is the most common?,SELECT Allergy FROM Has_allergy GROUP BY Allergy ORDER BY count(*) DESC LIMIT 1
+Show all allergies with number of students affected.,"SELECT Allergy ,  count(*) FROM Has_allergy GROUP BY Allergy"
+How many students have each different allergy?,"SELECT Allergy ,  count(*) FROM Has_allergy GROUP BY Allergy"
+Show all allergy type with number of students affected.,"SELECT T2.allergytype ,  count(*) FROM Has_allergy AS T1 JOIN Allergy_type AS T2 ON T1.allergy  =  T2.allergy GROUP BY T2.allergytype"
+How many students are affected by each allergy type?,"SELECT T2.allergytype ,  count(*) FROM Has_allergy AS T1 JOIN Allergy_type AS T2 ON T1.allergy  =  T2.allergy GROUP BY T2.allergytype"
+Find the last name and age of the student who has allergy to both milk and cat.,"SELECT lname ,  age FROM Student WHERE StuID IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  ""Milk"" INTERSECT SELECT StuID FROM Has_allergy WHERE Allergy  =  ""Cat"")"
+What are the last names and ages of the students who are allergic to milk and cat?,"SELECT lname ,  age FROM Student WHERE StuID IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  ""Milk"" INTERSECT SELECT StuID FROM Has_allergy WHERE Allergy  =  ""Cat"")"
+What are the allergies and their types that the student with first name Lisa has? And order the result by name of allergies.,"SELECT T1.Allergy ,  T1.AllergyType FROM Allergy_type AS T1 JOIN Has_allergy AS T2 ON T1.Allergy  =  T2.Allergy JOIN Student AS T3 ON T3.StuID  =  T2.StuID WHERE T3.Fname  =  ""Lisa"" ORDER BY T1.Allergy"
+What are the allergies the girl named Lisa has? And what are the types of them? Order the result by allergy names.,"SELECT T1.Allergy ,  T1.AllergyType FROM Allergy_type AS T1 JOIN Has_allergy AS T2 ON T1.Allergy  =  T2.Allergy JOIN Student AS T3 ON T3.StuID  =  T2.StuID WHERE T3.Fname  =  ""Lisa"" ORDER BY T1.Allergy"
+Find the first name and gender of the student who has allergy to milk but not cat.,"SELECT fname ,  sex FROM Student WHERE StuID IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  ""Milk"" EXCEPT SELECT StuID FROM Has_allergy WHERE Allergy  =  ""Cat"")"
+What are the first name and gender of the students who have allergy to milk but can put up with cats?,"SELECT fname ,  sex FROM Student WHERE StuID IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  ""Milk"" EXCEPT SELECT StuID FROM Has_allergy WHERE Allergy  =  ""Cat"")"
+Find the average age of the students who have allergies with food and animal types.,"SELECT avg(age) FROM Student WHERE StuID IN ( SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  ""food"" INTERSECT SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  ""animal"")"
+How old are the students with allergies to food and animal types on average?,"SELECT avg(age) FROM Student WHERE StuID IN ( SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  ""food"" INTERSECT SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  ""animal"")"
+List the first and last name of the students who do not have any food type allergy.,"SELECT fname ,  lname FROM Student WHERE StuID NOT IN (SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  ""food"")"
+What is the full name of each student who is not allergic to any type of food.,"SELECT fname ,  lname FROM Student WHERE StuID NOT IN (SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  ""food"")"
+Find the number of male (sex is 'M') students who have some food type allery.,"SELECT count(*) FROM Student WHERE sex  =  ""M"" AND StuID IN (SELECT StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  ""food"")"
+How many male students (sex is 'M') are allergic to any type of food?,"SELECT count(*) FROM Student WHERE sex  =  ""M"" AND StuID IN (SELECT StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  ""food"")"
+Find the different first names and cities of the students who have allergy to milk or cat.,"SELECT DISTINCT T1.fname ,  T1.city_code FROM Student AS T1 JOIN Has_Allergy AS T2 ON T1.stuid  =  T2.stuid WHERE T2.Allergy  =  ""Milk"" OR T2.Allergy  =  ""Cat"""
+What are the distinct first names and cities of the students who have allergy either to milk or to cat?,"SELECT DISTINCT T1.fname ,  T1.city_code FROM Student AS T1 JOIN Has_Allergy AS T2 ON T1.stuid  =  T2.stuid WHERE T2.Allergy  =  ""Milk"" OR T2.Allergy  =  ""Cat"""
+Find the number of students who are older than 18 and do not have allergy to either food or animal.,"SELECT count(*) FROM Student WHERE age  >  18 AND StuID NOT IN ( SELECT StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  ""food"" OR T2.allergytype  =  ""animal"")"
+How many students are over 18 and do not have allergy to food type or animal type?,"SELECT count(*) FROM Student WHERE age  >  18 AND StuID NOT IN ( SELECT StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  ""food"" OR T2.allergytype  =  ""animal"")"
+Find the first name and major of the students who are not allegry to soy.,"SELECT fname ,  major FROM Student WHERE StuID NOT IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  ""Soy"")"
+What are the first name and major of the students who are able to consume soy?,"SELECT fname ,  major FROM Student WHERE StuID NOT IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  ""Soy"")"

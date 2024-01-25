@@ -1,0 +1,22 @@
+question,sql
+How many perpetrators are there?,SELECT count(*) FROM perpetrator
+List the date of perpetrators in descending order of the number of people killed.,SELECT Date FROM perpetrator ORDER BY Killed DESC
+List the number of people injured by perpetrators in ascending order.,SELECT Injured FROM perpetrator ORDER BY Injured ASC
+What is the average number of people injured by all perpetrators?,SELECT avg(Injured) FROM perpetrator
+What is the location of the perpetrator with the largest kills.,SELECT LOCATION FROM perpetrator ORDER BY Killed DESC LIMIT 1
+What are the names of people in ascending order of height?,SELECT Name FROM People ORDER BY Height ASC
+What are the names of perpetrators?,SELECT T1.Name FROM people AS T1 JOIN perpetrator AS T2 ON T1.People_ID  =  T2.People_ID
+"What are the names of perpetrators whose country is not ""China""?","SELECT T1.Name FROM people AS T1 JOIN perpetrator AS T2 ON T1.People_ID  =  T2.People_ID WHERE T2.Country != ""China"""
+What is the name of the perpetrator with the biggest weight.,SELECT T1.Name FROM people AS T1 JOIN perpetrator AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Weight DESC LIMIT 1
+What is the total kills of the perpetrators with height more than 1.84.,SELECT sum(T2.Killed) FROM people AS T1 JOIN perpetrator AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Height  >  1.84
+"What are the names of perpetrators in country ""China"" or ""Japan""?","SELECT T1.Name FROM people AS T1 JOIN perpetrator AS T2 ON T1.People_ID  =  T2.People_ID WHERE T2.Country  =  ""China"" OR T2.Country  =  ""Japan"""
+What are the heights of perpetrators in descending order of the number of people they injured?,SELECT T1.Height FROM people AS T1 JOIN perpetrator AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Injured DESC
+What are the countries of perpetrators? Show each country and the corresponding number of perpetrators there.,"SELECT Country ,  COUNT(*) FROM perpetrator GROUP BY Country"
+What is the country that has the most perpetrators?,"SELECT Country ,  COUNT(*) FROM perpetrator GROUP BY Country ORDER BY COUNT(*) DESC LIMIT 1"
+What are the countries that have at least two perpetrators?,"SELECT Country ,  COUNT(*) FROM perpetrator GROUP BY Country HAVING COUNT(*)  >=  2"
+List the names of perpetrators in descending order of the year.,SELECT T1.Name FROM people AS T1 JOIN perpetrator AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Year DESC
+List the names of people that are not perpetrators.,SELECT Name FROM people WHERE People_ID NOT IN (SELECT People_ID FROM perpetrator)
+Show the countries that have both perpetrators with injures more than 50 and perpetrators with injures smaller than 20.,SELECT Country FROM perpetrator WHERE Injured  >  50 INTERSECT SELECT Country FROM perpetrator WHERE Injured  <  20
+How many distinct locations of perpetrators are there?,SELECT count(DISTINCT LOCATION) FROM perpetrator
+Show the date of the tallest perpetrator.,SELECT T2.Date FROM people AS T1 JOIN perpetrator AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Height DESC LIMIT 1
+In which year did the most recent crime happen?,SELECT max(YEAR) FROM perpetrator;

@@ -1,0 +1,25 @@
+question,sql
+How many body builders are there?,SELECT count(*) FROM body_builder
+List the total scores of body builders in ascending order.,SELECT Total FROM body_builder ORDER BY Total ASC
+List the snatch score and clean jerk score of body builders in ascending order of snatch score.,"SELECT Snatch ,  Clean_Jerk FROM body_builder ORDER BY Snatch ASC"
+What is the average snatch score of body builders?,SELECT avg(Snatch) FROM body_builder
+What are the clean and jerk score of the body builder with the highest total score?,SELECT Clean_Jerk FROM body_builder ORDER BY Total DESC LIMIT 1
+What are the birthdays of people in ascending order of height?,SELECT Birth_Date FROM People ORDER BY Height ASC
+What are the names of body builders?,SELECT T2.Name FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID
+What are the names of body builders whose total score is higher than 300?,SELECT T2.Name FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Total  >  300
+What is the name of the body builder with the greatest body weight?,SELECT T2.Name FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Weight DESC LIMIT 1
+What are the birth date and birth place of the body builder with the highest total points?,"SELECT T2.Birth_Date ,  T2.Birth_Place FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Total DESC LIMIT 1"
+What are the heights of body builders with total score smaller than 315?,SELECT T2.Height FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Total  <  315
+What is the average total score of body builders with height bigger than 200?,SELECT avg(T1.Total) FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T2.Height  >  200
+What are the names of body builders in descending order of total scores?,SELECT T2.Name FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Total DESC
+List each birth place along with the number of people from there.,"SELECT Birth_Place ,  COUNT(*) FROM people GROUP BY Birth_Place"
+What is the most common birth place of people?,SELECT Birth_Place FROM people GROUP BY Birth_Place ORDER BY COUNT(*) DESC LIMIT 1
+What are the birth places that are shared by at least two people?,SELECT Birth_Place FROM people GROUP BY Birth_Place HAVING COUNT(*)  >=  2
+List the height and weight of people in descending order of height.,"SELECT Height ,  Weight FROM people ORDER BY Height DESC"
+Show all information about each body builder.,SELECT * FROM body_builder
+List the names and origins of people who are not body builders.,"SELECT Name ,  birth_place FROM people EXCEPT SELECT T1.Name ,  T1.birth_place FROM people AS T1 JOIN body_builder AS T2 ON T1.people_id  =  T2.people_id"
+How many distinct birth places are there?,SELECT count(DISTINCT Birth_Place) FROM people
+How many persons are not body builders?,SELECT count(*) FROM people WHERE people_id NOT IN (SELECT People_ID FROM body_builder)
+List the weight of the body builders who have snatch score higher than 140 or have the height greater than 200.,SELECT T2.weight FROM body_builder AS T1 JOIN people AS T2 ON T1.people_id  =  T2.people_id WHERE T1.snatch  >  140 OR T2.height  >  200;
+"What are the total scores of the body builders whose birthday contains the string ""January"" ?","SELECT T1.total FROM body_builder AS T1 JOIN people AS T2 ON T1.people_id  =  T2.people_id WHERE T2.Birth_Date LIKE ""%January%"";"
+What is the minimum snatch score?,SELECT min(snatch) FROM body_builder

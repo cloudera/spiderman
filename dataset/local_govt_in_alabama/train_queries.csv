@@ -1,0 +1,16 @@
+question,sql
+what are the event details of the services that have the type code 'Marriage'?,SELECT T1.event_details FROM EVENTS AS T1 JOIN Services AS T2 ON T1.Service_ID  =  T2.Service_ID WHERE T2.Service_Type_Code  =  'Marriage'
+What are the ids and details of events that have more than one participants?,"SELECT T1.event_id ,  T1.event_details FROM EVENTS AS T1 JOIN Participants_in_Events AS T2 ON T1.Event_ID  =  T2.Event_ID GROUP BY T1.Event_ID HAVING count(*)  >  1"
+"How many events have each participants attended? List the participant id, type and the number.","SELECT T1.Participant_ID ,  T1.Participant_Type_Code ,  count(*) FROM Participants AS T1 JOIN Participants_in_Events AS T2 ON T1.Participant_ID  =  T2.Participant_ID GROUP BY T1.Participant_ID"
+"What are all the the participant ids, type code and details?","SELECT Participant_ID ,  Participant_Type_Code ,  Participant_Details FROM  Participants"
+How many participants belong to the type 'Organizer'?,SELECT count(*) FROM participants WHERE participant_type_code  =  'Organizer'
+List the type of the services in alphabetical order.,SELECT service_type_code FROM services ORDER BY service_type_code
+List the service id and details for the events.,"SELECT service_id ,  event_details FROM EVENTS"
+How many events had participants whose details had the substring 'Dr.',SELECT count(*) FROM participants AS T1 JOIN Participants_in_Events AS T2 ON T1.Participant_ID  =  T2.Participant_ID WHERE T1.participant_details LIKE '%Dr.%'
+What is the most common participant type?,SELECT participant_type_code FROM participants GROUP BY participant_type_code ORDER BY count(*) DESC LIMIT 1
+Which service id and type has the least number of participants?,"SELECT T3.service_id ,  T4.Service_Type_Code FROM participants AS T1 JOIN Participants_in_Events AS T2 ON T1.Participant_ID  =  T2.Participant_ID JOIN EVENTS AS T3 ON T2.Event_ID   =  T3.Event_ID JOIN services AS T4 ON T3.service_id  =  T4.service_id GROUP BY T3.service_id ORDER BY count(*) ASC LIMIT 1"
+What is the id of the event with the most participants?,SELECT Event_ID FROM Participants_in_Events GROUP BY Event_ID ORDER BY count(*) DESC LIMIT 1
+Which events id does not have any participant with detail 'Kenyatta Kuhn'?,SELECT event_id FROM EVENTS EXCEPT SELECT T1.event_id FROM Participants_in_Events AS T1 JOIN Participants AS T2 ON T1.Participant_ID  =  T2.Participant_ID WHERE Participant_Details  =  'Kenyatta Kuhn'
+Which services type had both successful and failure event details?,SELECT T1.service_type_code FROM services AS T1 JOIN EVENTS AS T2 ON T1.service_id  =  T2.service_id WHERE T2.event_details  =  'Success' INTERSECT SELECT T1.service_type_code FROM services AS T1 JOIN EVENTS AS T2 ON T1.service_id  =  T2.service_id WHERE T2.event_details  =  'Fail'
+How many events did not have any participants?,SELECT count(*) FROM EVENTS WHERE event_id NOT IN (SELECT event_id FROM Participants_in_Events)
+What are all the distinct participant ids who attended any events?,SELECT count(DISTINCT participant_id) FROM participants_in_Events

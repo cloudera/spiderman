@@ -1,0 +1,16 @@
+customer_id,payment_method,customer_name,customer_phone,customer_email,customer_address,customer_login,customer_password
+1,Credit Card,Wendell,(773)971-9411x759,rodriguez.nathanael@example.net,618 Webster Stream Apt. 161,,b4459ad261
+2,Direct Debit,Gage,(402)890-2603x6005,stark.elna@example.net,0260 Walker Trace,,7905d7f1b1
+3,Direct Debit,Elvera,1-878-600-7193x8180,madyson.mclaughlin@example.org,280 Landen Lake,,0b9f651030
+4,Direct Debit,Stella,+43(3)1861877192,kristina85@example.org,5607 Ryann Canyon,,f64f0fd096
+5,Credit Card,Magdalena,1-352-291-1721x265,franecki.danial@example.com,523 Mose Hills,,bdfdc8e91a
+6,Direct Debit,Carlotta,+66(7)1491041398,fstanton@example.net,31932 Kailey Lodge,,a8467590fd
+7,Direct Debit,Leanna,203-036-0511x96487,marc.schiller@example.com,94105 Bahringer Oval Suite 178,,67e9037197
+8,Direct Debit,Ruthie,(840)754-4148x20545,elva.mccullough@example.org,5514 Ophelia Cliffs Apt. 266,,280160b7b3
+9,Credit Card,Donnie,(030)521-0681x0191,saul30@example.net,115 Farrell Squares Suite 599,,22dc8bfaf5
+10,Direct Debit,Shanel,1-957-676-9414,kheathcote@example.org,80569 Crona Path Suite 165,,d93857e0c2
+11,Direct Debit,Osborne,232.171.7032,vpowlowski@example.net,509 Isabelle Route,,b00e35cc0a
+12,Direct Debit,Kyle,291-425-7193,davis.rosamond@example.net,056 Ibrahim Path Suite 669,,341f672c2c
+13,Credit Card,Annabel,100.220.3484,yoshiko.balistreri@example.org,56955 Desmond Lake Apt. 120,,9dc50bc5b6
+14,Direct Debit,Geovanny,205.496.0690x53058,jesus.robel@example.org,0813 Carolina Bridge Suite 488,,49f32173a2
+15,Direct Debit,Mitchell,698-327-5792,princess75@example.com,6735 Daron Lane Apt. 271,,791b1b3e64

@@ -1,0 +1,10 @@
+Ship_ID,Name,Type,Built_Year,Class,Flag
+1,HMS Manxman,Panamax,1997.0,KR,Panama
+2,HMS Gorgon,Panamax,1998.0,KR,Panama
+3,HM Cutter Avenger,Panamax,1997.0,KR,Panama
+4,HM Schooner Hotspur,Panamax,1998.0,KR,Panama
+5,HMS Destiny,Panamax,1998.0,KR,Panama
+6,HMS Trojan,Panamax,1997.0,KR,Panama
+7,HM Sloop Sparrow,Panamax,1997.0,KR,Panama
+8,HMS Phalarope,Panamax,1997.0,KR,Panama
+9,HMS Undine,Panamax,1998.0,GL,Malta

@@ -1,0 +1,18 @@
+question,sql
+How many architects are female?,SELECT count(*) FROM architect WHERE gender  =  'female'
+"List the name, nationality and id of all male architects ordered by their names lexicographically.","SELECT name ,  nationality ,  id FROM architect WHERE gender  =  'male' ORDER BY name"
+What is the maximum length in meters for the bridges and what are the architects' names?,"SELECT max(T1.length_meters) ,  T2.name FROM bridge AS T1 JOIN architect AS T2 ON T1.architect_id  =  T2.id"
+What is the average length in feet of the bridges?,SELECT avg(length_feet) FROM bridge
+What are the names and year of construction for the mills of 'Grondzeiler' type?,"SELECT name ,  built_year FROM mill WHERE TYPE  =  'Grondzeiler'"
+What are the distinct names and nationalities of the architects who have ever built a mill?,"SELECT DISTINCT T1.name ,  T1.nationality FROM architect AS T1 JOIN mill AS t2 ON T1.id  =  T2.architect_id"
+What are the names of the mills which are not located in 'Donceel'?,SELECT name FROM mill WHERE LOCATION != 'Donceel'
+What are the distinct types of mills that are built by American or Canadian architects?,SELECT DISTINCT T1.type FROM mill AS T1 JOIN architect AS t2 ON T1.architect_id  =  T2.id WHERE T2.nationality  =  'American' OR T2.nationality  =  'Canadian'
+What are the ids and names of the architects who built at least 3 bridges ?,"SELECT T1.id ,  T1.name FROM architect AS T1 JOIN bridge AS T2 ON T1.id  =  T2.architect_id GROUP BY T1.id HAVING count(*)  >=  3"
+"What is the id, name and nationality of the architect who built most mills?","SELECT T1.id ,  T1.name ,  T1.nationality FROM architect AS T1 JOIN mill AS T2 ON T1.id  =  T2.architect_id GROUP BY T1.id ORDER BY count(*) DESC LIMIT 1"
+"What are the ids, names and genders of the architects who built two bridges or one mill?","SELECT T1.id ,  T1.name ,  T1.gender FROM architect AS T1 JOIN bridge AS T2 ON T1.id  =  T2.architect_id GROUP BY T1.id HAVING count(*)  =  2 UNION SELECT T1.id ,  T1.name ,  T1.gender FROM architect AS T1 JOIN mill AS T2 ON T1.id  =  T2.architect_id GROUP BY T1.id HAVING count(*)  =  1"
+What is the location of the bridge named 'Kolob Arch' or 'Rainbow Bridge'?,SELECT LOCATION FROM bridge WHERE name  =  'Kolob Arch' OR name  =  'Rainbow Bridge'
+Which of the mill names contains the french word 'Moulin'?,SELECT name FROM mill WHERE name LIKE '%Moulin%'
+What are the distinct name of the mills built by the architects who have also built a bridge longer than 80 meters?,SELECT DISTINCT T1.name FROM mill AS T1 JOIN architect AS t2 ON T1.architect_id  =  T2.id JOIN bridge AS T3 ON T3.architect_id  =  T2.id WHERE T3.length_meters  >  80
+"What is the most common mill type, and how many are there?","SELECT TYPE ,  count(*) FROM mill GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1"
+How many architects haven't built a mill before year 1850?,SELECT count(*) FROM architect WHERE id NOT IN ( SELECT architect_id FROM mill WHERE built_year  <  1850 );
+"show the name of all bridges that was designed by american archtect, and sort the result by the bridge feet length.",SELECT t1.name FROM bridge AS t1 JOIN architect AS t2 ON t1.architect_id  =  t2.id WHERE t2.nationality  =  'American' ORDER BY t1.length_feet

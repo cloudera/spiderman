@@ -1,0 +1,16 @@
+course_id,author_id,subject_id,course_name,course_description
+1,8,1,database,database
+2,6,1,advanced database,advanced database
+3,15,1,operating system,operating system
+4,14,2,Art history,Art history
+5,11,1,data structure,data structure
+6,12,3,English,English
+7,8,3,French,French
+8,4,3,Japanese,Japanese
+9,13,1,AI,AI
+10,5,3,Writing in French,Writing in French
+11,9,3,Spanish,Spanish
+12,5,2,European Arts,European Arts
+13,13,1,machine learning,machine learning
+14,6,2,modern Arts,modern Arts
+15,14,2,Chinese Painting,Chinese Painting

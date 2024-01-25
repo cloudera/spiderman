@@ -1,0 +1,97 @@
+question,sql
+How many aircrafts do we have?,SELECT count(*) FROM Aircraft
+How many aircrafts exist in the database?,SELECT count(*) FROM Aircraft
+Show name and distance for all aircrafts.,"SELECT name ,  distance FROM Aircraft"
+What are the names and distances for all airplanes?,"SELECT name ,  distance FROM Aircraft"
+Show ids for all aircrafts with more than 1000 distance.,SELECT aid FROM Aircraft WHERE distance  >  1000
+What are the ids of all aircrafts that can cover a distance of more than 1000?,SELECT aid FROM Aircraft WHERE distance  >  1000
+How many aircrafts have distance between 1000 and 5000?,SELECT count(*) FROM Aircraft WHERE distance BETWEEN 1000 AND 5000
+What is the count of aircrafts that have a distance between 1000 and 5000?,SELECT count(*) FROM Aircraft WHERE distance BETWEEN 1000 AND 5000
+What is the name and distance for aircraft with id 12?,"SELECT name ,  distance FROM Aircraft WHERE aid  =  12"
+What is the name and distance for the aircraft that has an id of 12?,"SELECT name ,  distance FROM Aircraft WHERE aid  =  12"
+"What is the minimum, average, and maximum distance of all aircrafts.","SELECT min(distance) ,  avg(distance) ,  max(distance) FROM Aircraft"
+"Return the minimum, average and maximum distances traveled across all aircrafts.","SELECT min(distance) ,  avg(distance) ,  max(distance) FROM Aircraft"
+Show the id and name of the aircraft with the maximum distance.,"SELECT aid ,  name FROM Aircraft ORDER BY distance DESC LIMIT 1"
+What is the id and name of the aircraft that can cover the maximum distance?,"SELECT aid ,  name FROM Aircraft ORDER BY distance DESC LIMIT 1"
+Show the name of aircrafts with top three lowest distances.,SELECT name FROM Aircraft ORDER BY distance LIMIT 3
+What are the aircrafts with top 3 shortest lengthes? List their names.,SELECT name FROM Aircraft ORDER BY distance LIMIT 3
+Show names for all aircrafts with distances more than the average.,SELECT name FROM Aircraft WHERE distance  >  (SELECT avg(distance) FROM Aircraft)
+What are the names of all aircrafts that can cover more distances than average?,SELECT name FROM Aircraft WHERE distance  >  (SELECT avg(distance) FROM Aircraft)
+How many employees do we have?,SELECT count(*) FROM Employee
+What is the number of employees?,SELECT count(*) FROM Employee
+Show name and salary for all employees sorted by salary.,"SELECT name ,  salary FROM Employee ORDER BY salary"
+What is the name and salary of all employees in order of salary?,"SELECT name ,  salary FROM Employee ORDER BY salary"
+Show ids for all employees with at least 100000 salary.,SELECT eid FROM Employee WHERE salary  >  100000
+What is the id of every employee who has at least a salary of  100000?,SELECT eid FROM Employee WHERE salary  >  100000
+How many employees have salary between 100000 and 200000?,SELECT count(*) FROM Employee WHERE salary BETWEEN 100000 AND 200000
+What is the number of employees that have a salary between 100000 and 200000?,SELECT count(*) FROM Employee WHERE salary BETWEEN 100000 AND 200000
+What is the name and salary for employee with id 242518965?,"SELECT name ,  salary FROM Employee WHERE eid  =  242518965"
+What is the name and salary of the employee with the id 242518965?,"SELECT name ,  salary FROM Employee WHERE eid  =  242518965"
+What is average and maximum salary of all employees.,"SELECT avg(salary) ,  max(salary) FROM Employee"
+What is the average and largest salary of all employees?,"SELECT avg(salary) ,  max(salary) FROM Employee"
+Show the id and name of the employee with maximum salary.,"SELECT eid ,  name FROM Employee ORDER BY salary DESC LIMIT 1"
+What is the id and name of the employee with the highest salary?,"SELECT eid ,  name FROM Employee ORDER BY salary DESC LIMIT 1"
+Show the name of employees with three lowest salaries.,SELECT name FROM Employee ORDER BY salary ASC LIMIT 3
+What is the name of the 3 employees who get paid the least?,SELECT name FROM Employee ORDER BY salary ASC LIMIT 3
+Show names for all employees with salary more than the average.,SELECT name FROM Employee WHERE salary  >  (SELECT avg(salary) FROM Employee)
+What are the names of all employees who have a salary higher than average?,SELECT name FROM Employee WHERE salary  >  (SELECT avg(salary) FROM Employee)
+Show the id and salary of Mark Young.,"SELECT eid ,  salary FROM Employee WHERE name  =  'Mark Young'"
+What is the id and salary of the employee named Mark Young?,"SELECT eid ,  salary FROM Employee WHERE name  =  'Mark Young'"
+How many flights do we have?,SELECT count(*) FROM Flight
+What is the number of flights?,SELECT count(*) FROM Flight
+"Show flight number, origin, destination of all flights in the alphabetical order of the departure cities.","SELECT flno ,  origin ,  destination FROM Flight ORDER BY origin"
+"What is the flight number, origin, and destination for all flights in alphabetical order by departure cities?","SELECT flno ,  origin ,  destination FROM Flight ORDER BY origin"
+Show all flight number from Los Angeles.,"SELECT flno FROM Flight WHERE origin  =  ""Los Angeles"""
+What are the numbers of all flights coming from Los Angeles?,"SELECT flno FROM Flight WHERE origin  =  ""Los Angeles"""
+Show origins of all flights with destination Honolulu.,"SELECT origin FROM Flight WHERE destination  =  ""Honolulu"""
+What are the origins of all flights that are headed to Honolulu?,"SELECT origin FROM Flight WHERE destination  =  ""Honolulu"""
+Show me the departure date and arrival date for all flights from Los Angeles to Honolulu.,"SELECT departure_date ,  arrival_date FROM Flight WHERE origin  =  ""Los Angeles"" AND destination  =  ""Honolulu"""
+What are the departure and arrival dates of all flights from LA to Honolulu?,"SELECT departure_date ,  arrival_date FROM Flight WHERE origin  =  ""Los Angeles"" AND destination  =  ""Honolulu"""
+Show flight number for all flights with more than 2000 distance.,SELECT flno FROM Flight WHERE distance  >  2000
+What are the numbers of all flights that can cover a distance of more than 2000?,SELECT flno FROM Flight WHERE distance  >  2000
+What is the average price for flights from Los Angeles to Honolulu.,"SELECT avg(price) FROM Flight WHERE origin  =  ""Los Angeles"" AND destination  =  ""Honolulu"""
+What is the average price for flights from LA to Honolulu?,"SELECT avg(price) FROM Flight WHERE origin  =  ""Los Angeles"" AND destination  =  ""Honolulu"""
+Show origin and destination for flights with price higher than 300.,"SELECT origin ,  destination FROM Flight WHERE price  >  300"
+What is the origin and destination for all flights whose price is higher than 300?,"SELECT origin ,  destination FROM Flight WHERE price  >  300"
+Show the flight number and distance of the flight with maximum price.,"SELECT flno ,  distance FROM Flight ORDER BY price DESC LIMIT 1"
+What is the flight number and its distance for the one with the maximum price?,"SELECT flno ,  distance FROM Flight ORDER BY price DESC LIMIT 1"
+Show the flight number of flights with three lowest distances.,SELECT flno FROM Flight ORDER BY distance ASC LIMIT 3
+What are the numbers of the shortest flights?,SELECT flno FROM Flight ORDER BY distance ASC LIMIT 3
+What is the average distance and average price for flights from Los Angeles.,"SELECT avg(distance) ,  avg(price) FROM Flight WHERE origin  =  ""Los Angeles"""
+What is the average distance and price for all flights from LA?,"SELECT avg(distance) ,  avg(price) FROM Flight WHERE origin  =  ""Los Angeles"""
+Show all origins and the number of flights from each origin.,"SELECT origin ,  count(*) FROM Flight GROUP BY origin"
+"For each origin, how many flights came from there?","SELECT origin ,  count(*) FROM Flight GROUP BY origin"
+Show all destinations and the number of flights to each destination.,"SELECT destination ,  count(*) FROM Flight GROUP BY destination"
+What are the destinations and number of flights to each one?,"SELECT destination ,  count(*) FROM Flight GROUP BY destination"
+Which origin has most number of flights?,SELECT origin FROM Flight GROUP BY origin ORDER BY count(*) DESC LIMIT 1
+What place has the most flights coming from there?,SELECT origin FROM Flight GROUP BY origin ORDER BY count(*) DESC LIMIT 1
+Which destination has least number of flights?,SELECT destination FROM Flight GROUP BY destination ORDER BY count(*) LIMIT 1
+What destination has the fewest number of flights?,SELECT destination FROM Flight GROUP BY destination ORDER BY count(*) LIMIT 1
+What is the aircraft name for the flight with number 99,SELECT T2.name FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid WHERE T1.flno  =  99
+What is the name of the aircraft that was on flight number 99?,SELECT T2.name FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid WHERE T1.flno  =  99
+Show all flight numbers with aircraft Airbus A340-300.,"SELECT T1.flno FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid WHERE T2.name  =  ""Airbus A340-300"""
+What are the flight numbers for the aircraft Airbus A340-300?,"SELECT T1.flno FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid WHERE T2.name  =  ""Airbus A340-300"""
+Show aircraft names and number of flights for each aircraft.,"SELECT T2.name ,  count(*) FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid GROUP BY T1.aid"
+What is the name of each aircraft and how many flights does each one complete?,"SELECT T2.name ,  count(*) FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid GROUP BY T1.aid"
+Show names for all aircraft with at least two flights.,SELECT T2.name FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid GROUP BY T1.aid HAVING count(*)  >= 2
+What are the names for all aircrafts with at least 2 flights?,SELECT T2.name FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid GROUP BY T1.aid HAVING count(*)  >= 2
+How many employees have certificate.,SELECT count(DISTINCT eid) FROM Certificate
+What is the count of distinct employees with certificates?,SELECT count(DISTINCT eid) FROM Certificate
+Show ids for all employees who don't have a certificate.,SELECT eid FROM Employee EXCEPT SELECT eid FROM Certificate
+What are the ids of all employees that don't have certificates?,SELECT eid FROM Employee EXCEPT SELECT eid FROM Certificate
+Show names for all aircrafts of which John Williams has certificates.,"SELECT T3.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T1.name  =  ""John Williams"""
+What are the names of all aircrafts that John Williams have certificates to be able to fly?,"SELECT T3.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T1.name  =  ""John Williams"""
+Show names for all employees who have certificate of Boeing 737-800.,"SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  ""Boeing 737-800"""
+What are the names of all employees who have a certificate to fly Boeing 737-800?,"SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  ""Boeing 737-800"""
+Show names for all employees who have certificates on both Boeing 737-800 and Airbus A340-300.,"SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  ""Boeing 737-800"" INTERSECT SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  ""Airbus A340-300"""
+What are the names of all employees who can fly both the Boeing 737-800 and the Airbus A340-300?,"SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  ""Boeing 737-800"" INTERSECT SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  ""Airbus A340-300"""
+Show names for all employees who do not have certificate of Boeing 737-800.,"SELECT name FROM Employee EXCEPT SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  ""Boeing 737-800"""
+What are the names of all employees who are not certified to fly Boeing 737-800s?,"SELECT name FROM Employee EXCEPT SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  ""Boeing 737-800"""
+Show the name of aircraft which fewest people have its certificate.,SELECT T2.name FROM Certificate AS T1 JOIN Aircraft AS T2 ON T2.aid  =  T1.aid GROUP BY T1.aid ORDER BY count(*) DESC LIMIT 1
+What are the names of the aircraft that the least people are certified to fly?,SELECT T2.name FROM Certificate AS T1 JOIN Aircraft AS T2 ON T2.aid  =  T1.aid GROUP BY T1.aid ORDER BY count(*) DESC LIMIT 1
+Show the name and distance of the aircrafts with more than 5000 distance and which at least 5 people have its certificate.,SELECT T2.name FROM Certificate AS T1 JOIN Aircraft AS T2 ON T2.aid  =  T1.aid WHERE T2.distance  >  5000 GROUP BY T1.aid ORDER BY count(*)  >=  5
+What is the name and distance of every aircraft that can cover a distance of more than 5000 and which at least 5 people can fly?,SELECT T2.name FROM Certificate AS T1 JOIN Aircraft AS T2 ON T2.aid  =  T1.aid WHERE T2.distance  >  5000 GROUP BY T1.aid ORDER BY count(*)  >=  5
+what is the salary and name of the employee who has the most number of aircraft certificates?,"SELECT T1.name ,  T1.salary FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid GROUP BY T1.eid ORDER BY count(*) DESC LIMIT 1"
+What is the salaray and name of the employee that is certified to fly the most planes?,"SELECT T1.name ,  T1.salary FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid GROUP BY T1.eid ORDER BY count(*) DESC LIMIT 1"
+What is the salary and name of the employee who has the most number of certificates on aircrafts with distance more than 5000?,SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.distance  >  5000 GROUP BY T1.eid ORDER BY count(*) DESC LIMIT 1
+What is the salaray and name of the employee with the most certificates to fly planes more than 5000?,SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.distance  >  5000 GROUP BY T1.eid ORDER BY count(*) DESC LIMIT 1

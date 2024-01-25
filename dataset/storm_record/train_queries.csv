@@ -1,0 +1,45 @@
+question,sql
+How many regions do we have?,SELECT count(*) FROM region
+Count the number of regions.,SELECT count(*) FROM region
+Show all region code and region name sorted by the codes.,"SELECT region_code ,  region_name FROM region ORDER BY region_code"
+"What are the codes and names for all regions, sorted by codes?","SELECT region_code ,  region_name FROM region ORDER BY region_code"
+List all region names in alphabetical order.,SELECT region_name FROM region ORDER BY region_name
+What are the names of the regions in alphabetical order?,SELECT region_name FROM region ORDER BY region_name
+Show names for all regions except for Denmark.,SELECT region_name FROM region WHERE region_name != 'Denmark'
+Return the names of all regions other than Denmark.,SELECT region_name FROM region WHERE region_name != 'Denmark'
+How many storms had death records?,SELECT count(*) FROM storm WHERE Number_Deaths  >  0
+Count the number of storms in which at least 1 person died.,SELECT count(*) FROM storm WHERE Number_Deaths  >  0
+"List name, dates active, and number of deaths for all storms with at least 1 death.","SELECT name ,  dates_active ,  number_deaths FROM storm WHERE number_deaths  >=  1"
+"What are the names, dates active, and number of deaths for storms that had 1 or more death?","SELECT name ,  dates_active ,  number_deaths FROM storm WHERE number_deaths  >=  1"
+Show the average and maximum damage for all storms with max speed higher than 1000.,"SELECT avg(damage_millions_USD) ,  max(damage_millions_USD) FROM storm WHERE max_speed  >  1000"
+What is the average and maximum damage in millions for storms that had a max speed over 1000?,"SELECT avg(damage_millions_USD) ,  max(damage_millions_USD) FROM storm WHERE max_speed  >  1000"
+What is the total number of deaths and damage for all storms with a max speed greater than the average?,"SELECT sum(number_deaths) ,  sum(damage_millions_USD) FROM storm WHERE max_speed  >  (SELECT avg(max_speed) FROM storm)"
+Return the total number of deaths and total damange in millions for storms that had a max speed greater than the average.,"SELECT sum(number_deaths) ,  sum(damage_millions_USD) FROM storm WHERE max_speed  >  (SELECT avg(max_speed) FROM storm)"
+List name and damage for all storms in a descending order of max speed.,"SELECT name ,  damage_millions_USD FROM storm ORDER BY max_speed DESC"
+"What are the names and damage in millions for storms, ordered by their max speeds descending?","SELECT name ,  damage_millions_USD FROM storm ORDER BY max_speed DESC"
+How many regions are affected?,SELECT count(DISTINCT region_id) FROM affected_region
+Count the number of different affected regions.,SELECT count(DISTINCT region_id) FROM affected_region
+Show the name for regions not affected.,SELECT region_name FROM region WHERE region_id NOT IN (SELECT region_id FROM affected_region)
+What are the names of regions that were not affected?,SELECT region_name FROM region WHERE region_id NOT IN (SELECT region_id FROM affected_region)
+Show the name for regions and the number of storms for each region.,"SELECT T1.region_name ,  count(*) FROM region AS T1 JOIN affected_region AS T2 ON T1.region_id = T2.region_id GROUP BY T1.region_id"
+How many storms occured in each region?,"SELECT T1.region_name ,  count(*) FROM region AS T1 JOIN affected_region AS T2 ON T1.region_id = T2.region_id GROUP BY T1.region_id"
+List the name for storms and the number of affected regions for each storm.,"SELECT T1.name ,  count(*) FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id"
+How many regions were affected by each storm?,"SELECT T1.name ,  count(*) FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id"
+What is the storm name and max speed which affected the greatest number of regions?,"SELECT T1.name ,  T1.max_speed FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id ORDER BY count(*) DESC LIMIT 1"
+Return the name and max speed of the storm that affected the most regions.,"SELECT T1.name ,  T1.max_speed FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id ORDER BY count(*) DESC LIMIT 1"
+Show the name of storms which don't have affected region in record.,SELECT name FROM storm WHERE storm_id NOT IN (SELECT storm_id FROM affected_region)
+What are the names of storms that did not affect any regions?,SELECT name FROM storm WHERE storm_id NOT IN (SELECT storm_id FROM affected_region)
+Show storm name with at least two regions and 10 cities affected.,SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING count(*)  >=  2 INTERSECT SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING sum(T2.number_city_affected)  >=  10
+What are the names of storms that both affected two or more regions and affected a total of 10 or more cities?,SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING count(*)  >=  2 INTERSECT SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING sum(T2.number_city_affected)  >=  10
+Show all storm names except for those with at least two affected regions.,SELECT name FROM storm EXCEPT SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING count(*)  >=  2
+What are the names of storms that did not affect two or more regions?,SELECT name FROM storm EXCEPT SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING count(*)  >=  2
+What are the region names affected by the storm with a number of deaths of least 10?,SELECT T2.region_name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T3.number_deaths  >=  10
+Return the names of the regions affected by storms that had a death count of at least 10.,SELECT T2.region_name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T3.number_deaths  >=  10
+"Show all storm names affecting region ""Denmark"".",SELECT T3.name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.region_name  =  'Denmark'
+What are the names of the storms that affected Denmark?,SELECT T3.name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.region_name  =  'Denmark'
+Show the region name with at least two storms.,SELECT T1.region_name FROM region AS T1 JOIN affected_region AS T2 ON T1.region_id = T2.region_id GROUP BY T1.region_id HAVING count(*)  >=  2
+What are the names of regions with two or more storms?,SELECT T1.region_name FROM region AS T1 JOIN affected_region AS T2 ON T1.region_id = T2.region_id GROUP BY T1.region_id HAVING count(*)  >=  2
+Find the names of the regions which were affected by the storm that killed the greatest number of people.,SELECT T2.region_name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id ORDER BY T3.Number_Deaths DESC LIMIT 1
+What are the names of regions that were affected by the storm in which the most people died?,SELECT T2.region_name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id ORDER BY T3.Number_Deaths DESC LIMIT 1
+Find the name of the storm that affected both Afghanistan and Albania regions.,SELECT T3.Name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.Region_name  =  'Afghanistan' INTERSECT SELECT T3.Name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.Region_name  =  'Albania'
+What are the names of the storms that affected both the regions of Afghanistan and Albania?,SELECT T3.Name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.Region_name  =  'Afghanistan' INTERSECT SELECT T3.Name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.Region_name  =  'Albania'

@@ -1,0 +1,17 @@
+question,sql
+How many ships ended up being 'Captured'?,SELECT count(*) FROM ship WHERE disposition_of_ship  =  'Captured'
+List the name and tonnage ordered by in descending alphaetical order for the names.,"SELECT name ,  tonnage FROM ship ORDER BY name DESC"
+"List the name, date and result of each battle.","SELECT name ,  date FROM battle"
+What is maximum and minimum death toll caused each time?,"SELECT max(killed) ,  min(killed) FROM death"
+What is the average number of injuries caused each time?,SELECT avg(injured) FROM death
+What are the death and injury situations caused by the ship with tonnage 't'?,"SELECT T1.killed ,  T1.injured FROM death AS T1 JOIN ship AS t2 ON T1.caused_by_ship_id  =  T2.id WHERE T2.tonnage  =  't'"
+What are the name and results of the battles when the bulgarian commander is not 'Boril',"SELECT name ,  RESULT FROM battle WHERE bulgarian_commander != 'Boril'"
+What are the different ids and names of the battles that lost any 'Brig' type shipes?,"SELECT DISTINCT T1.id ,  T1.name FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.ship_type  =  'Brig'"
+What are the ids and names of the battles that led to more than 10 people killed in total.,"SELECT T1.id ,  T1.name FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle JOIN death AS T3 ON T2.id  =  T3.caused_by_ship_id GROUP BY T1.id HAVING sum(T3.killed)  >  10"
+What is the ship id and name that caused most total injuries?,"SELECT T2.id ,  T2.name FROM death AS T1 JOIN ship AS t2 ON T1.caused_by_ship_id  =  T2.id GROUP BY T2.id ORDER BY count(*) DESC LIMIT 1"
+What are the distinct battle names which are between bulgarian commander 'Kaloyan' and latin commander 'Baldwin I'?,SELECT name FROM battle WHERE bulgarian_commander  =  'Kaloyan' AND latin_commander  =  'Baldwin I'
+How many different results are there for the battles?,SELECT count(DISTINCT RESULT) FROM battle
+How many battles did not lose any ship with tonnage '225'?,SELECT count(*) FROM battle WHERE id NOT IN ( SELECT lost_in_battle FROM ship WHERE tonnage  =  '225' );
+List the name and date the battle that has lost the ship named 'Lettice' and the ship named 'HMS Atalanta',"SELECT T1.name ,  T1.date FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.name  =  'Lettice' INTERSECT SELECT T1.name ,  T1.date FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.name  =  'HMS Atalanta'"
+"Show names, results and bulgarian commanders of the battles with no ships lost in the 'English Channel'.","SELECT name ,  RESULT ,  bulgarian_commander FROM battle EXCEPT SELECT T1.name ,  T1.result ,  T1.bulgarian_commander FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.location  =  'English Channel'"
+What are the notes of the death events which has substring 'East'?,SELECT note FROM death WHERE note LIKE '%East%'

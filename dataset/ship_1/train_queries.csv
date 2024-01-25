@@ -1,0 +1,49 @@
+question,sql
+How many different captain ranks are there?,SELECT count(DISTINCT rank) FROM captain
+Count the number of different ranks of captain.,SELECT count(DISTINCT rank) FROM captain
+How many captains are in each rank?,"SELECT count(*) ,  rank FROM captain GROUP BY rank"
+Count the number of captains that have each rank.,"SELECT count(*) ,  rank FROM captain GROUP BY rank"
+How many captains with younger than 50 are in each rank?,"SELECT count(*) ,  rank FROM captain WHERE age  <  50 GROUP BY rank"
+Count the number of captains younger than 50 of each rank.,"SELECT count(*) ,  rank FROM captain WHERE age  <  50 GROUP BY rank"
+Sort all captain names by their ages from old to young.,SELECT name FROM captain ORDER BY age DESC
+"What are the names of captains, sorted by age descending?",SELECT name FROM captain ORDER BY age DESC
+"Find the name, class and rank of all captains.","SELECT name ,  CLASS ,  rank FROM captain"
+"What are the names, classes, and ranks of all captains?","SELECT name ,  CLASS ,  rank FROM captain"
+Which rank is the most common among captains?,SELECT rank FROM captain GROUP BY rank ORDER BY count(*) DESC LIMIT 1
+Return the rank for which there are the fewest captains.,SELECT rank FROM captain GROUP BY rank ORDER BY count(*) DESC LIMIT 1
+Which classes have more than two captains?,SELECT CLASS FROM captain GROUP BY CLASS HAVING count(*)  >  2
+Give the classes that have more than two captains.,SELECT CLASS FROM captain GROUP BY CLASS HAVING count(*)  >  2
+Find the name of captains whose rank are either Midshipman or Lieutenant.,SELECT name FROM captain WHERE rank  =  'Midshipman' OR rank  =  'Lieutenant'
+What are the names of captains that have either the rank Midshipman or Lieutenant?,SELECT name FROM captain WHERE rank  =  'Midshipman' OR rank  =  'Lieutenant'
+What are the average and minimum age of captains in different class?,"SELECT avg(age) ,  min(age) ,  CLASS FROM captain GROUP BY CLASS"
+Return the average and minimum age of captains in each class.,"SELECT avg(age) ,  min(age) ,  CLASS FROM captain GROUP BY CLASS"
+Find the captain rank that has some captains in both Cutter and Armed schooner classes.,SELECT rank FROM captain WHERE CLASS  =  'Cutter' INTERSECT SELECT rank FROM captain WHERE CLASS  =  'Armed schooner'
+What are the ranks of captains that are both in the Cutter and Armed schooner classes?,SELECT rank FROM captain WHERE CLASS  =  'Cutter' INTERSECT SELECT rank FROM captain WHERE CLASS  =  'Armed schooner'
+Find the captain rank that has no captain in Third-rate ship of the line class.,SELECT rank FROM captain EXCEPT SELECT rank FROM captain WHERE CLASS  =  'Third-rate ship of the line'
+What are the ranks of captains that have no captain that are in the Third-rate ship of the line class?,SELECT rank FROM captain EXCEPT SELECT rank FROM captain WHERE CLASS  =  'Third-rate ship of the line'
+What is the name of the youngest captain?,SELECT name FROM captain ORDER BY age LIMIT 1
+Return the name of the youngest captain.,SELECT name FROM captain ORDER BY age LIMIT 1
+how many ships are there?,SELECT count(*) FROM ship
+Count the number of ships.,SELECT count(*) FROM ship
+"Find the name, type, and flag of the ship that is built in the most recent year.","SELECT name ,  TYPE ,  flag FROM ship ORDER BY built_year DESC LIMIT 1"
+"What is the name, type, and flag of the ship that was built in the most recent year?","SELECT name ,  TYPE ,  flag FROM ship ORDER BY built_year DESC LIMIT 1"
+"Group by ships by flag, and return number of ships that have each flag.","SELECT count(*) ,  flag FROM ship GROUP BY flag"
+"What are the different ship flags, and how many ships have each?","SELECT count(*) ,  flag FROM ship GROUP BY flag"
+Which flag is most widely used among all ships?,SELECT flag FROM ship GROUP BY flag ORDER BY count(*) DESC LIMIT 1
+Return the flag that is most common among all ships.,SELECT flag FROM ship GROUP BY flag ORDER BY count(*) DESC LIMIT 1
+List all ship names in the order of built year and class.,"SELECT name FROM ship ORDER BY built_year ,  CLASS"
+"What are the names of ships, ordered by year they were built and their class?","SELECT name FROM ship ORDER BY built_year ,  CLASS"
+Find the ship type that are used by both ships with Panama and Malta flags.,SELECT TYPE FROM ship WHERE flag  =  'Panama' INTERSECT SELECT TYPE FROM ship WHERE flag  =  'Malta'
+What types of ships have both ships that have Panama Flags and Malta flags?,SELECT TYPE FROM ship WHERE flag  =  'Panama' INTERSECT SELECT TYPE FROM ship WHERE flag  =  'Malta'
+In which year were most of ships built?,SELECT built_year FROM ship GROUP BY built_year ORDER BY count(*) DESC LIMIT 1
+What is the year in which most ships were built?,SELECT built_year FROM ship GROUP BY built_year ORDER BY count(*) DESC LIMIT 1
+Find the name of the ships that have more than one captain.,SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id GROUP BY t2.ship_id HAVING count(*)  >  1
+What are the names of ships that have more than one captain?,SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id GROUP BY t2.ship_id HAVING count(*)  >  1
+what are the names and classes of the ships that do not have any captain yet?,"SELECT name ,  CLASS FROM ship WHERE ship_id NOT IN (SELECT ship_id FROM captain)"
+Return the names and classes of ships that do not have a captain?,"SELECT name ,  CLASS FROM ship WHERE ship_id NOT IN (SELECT ship_id FROM captain)"
+Find the name of the ship that is steered by the youngest captain.,SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id ORDER BY t2.age LIMIT 1
+What is the name of the ship that is commanded by the youngest captain?,SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id ORDER BY t2.age LIMIT 1
+Find the name and flag of ships that are not steered by any captain with Midshipman rank.,"SELECT name ,  flag FROM ship WHERE ship_id NOT IN (SELECT ship_id FROM captain WHERE rank  =  'Midshipman')"
+What are the names and flags of ships that do not have a captain with the rank of Midshipman?,"SELECT name ,  flag FROM ship WHERE ship_id NOT IN (SELECT ship_id FROM captain WHERE rank  =  'Midshipman')"
+Find the name of the ships that are steered by both a captain with Midshipman rank and a captain with Lieutenant rank.,SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id WHERE t2.rank  =  'Midshipman' INTERSECT SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id WHERE t2.rank  =  'Lieutenant'
+What are the names of ships that are commanded by both captains with the rank of Midshipman and captains with the rank of Lieutenant?,SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id WHERE t2.rank  =  'Midshipman' INTERSECT SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id WHERE t2.rank  =  'Lieutenant'

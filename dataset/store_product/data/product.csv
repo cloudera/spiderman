@@ -1,0 +1,7 @@
+product_id,product,dimensions,dpi,pages_per_minute_color,max_page_size,interface
+1,Fujitsu fi-6130 A4 Series Scanner,301 x 160 x 158,600.0,30.0,A4,USB 2.0
+2,Plustek MobileOffice D28 Corporate,303 x 94 x 60,600.0,28.0,A4,USB 2.0
+3,Xerox Travel Scanner 100,289 x 51 x 38,600.0,4.0,A4,USB 2.0
+4,ScanShell 3000DN,300 x 50 x 45,600.0,3.0,A4,USB 2.0
+5,Canon imageFORMULA P-150,280 x 95 x 40,600.0,10.0,216mm x 356mm,USB 2.0
+6,Canon DR-2080C,298 x 209 x 99,600.0,36.0,216mm x 355mm,USB 2.0

@@ -1,0 +1,15 @@
+id,name,Type,Principal_activities,Incorporated_in,Group_Equity_Shareholding
+1,Air China,Corporate,Airline,China,18.77
+2,Air China Cargo,Joint Venture,Cargo airline,China,49.0
+3,Air Hong Kong,Joint Venture,Cargo airline,Hong Kong,60.0
+4,Dragonair,Subsidiary,Airline,Hong Kong,100.0
+5,Cathay Pacific Cargo,Subsidiary,Cargo airline,Hong Kong,100.0
+6,Cathay Pacific Catering Services (HK) Limited,Subsidiary,Catering services,Hong Kong,100.0
+7,Cathay Pacific Services Limited,Subsidiary,Cargo,Hong Kong,100.0
+8,Cathay Pacific Holidays,Subsidiary,Travel agency,Hong Kong,100.0
+9,Dragonair Holidays,Subsidiary,Travel agency,Hong Kong,100.0
+10,Hong Kong Airport Services,Subsidiary,Ground handling,Hong Kong,100.0
+11,Vogue Laundry Service Limited,Subsidiary,Laundry,Hong Kong,100.0
+12,China Pacific Laundry Services,Joint Venture,Laundry,Taiwan,45.0
+13,VN/CX Catering Services Limited,Joint Venture,Catering services,Vietnam,40.0
+14,CLS Catering Services Limited,Joint Venture,Catering services,Canada,30.0

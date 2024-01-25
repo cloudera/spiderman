@@ -1,0 +1,16 @@
+order_item_id,invoice_number,product_id,product_title,product_quantity,product_price,derived_product_cost,derived_vat_payable,derived_total_cost
+14,9,5,prod_name,4,742.37,191.11,,69.82
+3,9,15,prod_name,1,814.87,176.29,,59.56
+4,10,15,prod_name,8,943.07,73.14,,59.93
+6,15,14,prod_name,2,749.6,197.06,,82.77
+8,11,10,prod_name,2,942.99,88.43,,86.56
+9,11,9,prod_name,6,486.69,64.67,,83.4
+8,14,3,prod_name,3,995.34,28.18,,58.24
+11,1,6,prod_name,9,429.05,254.08,,79.48
+15,9,3,prod_name,4,727.41,66,,53.53
+7,9,14,prod_name,9,559.95,89.16,,45.66
+5,7,8,prod_name,6,787.61,150.04,,51.27
+10,10,1,prod_name,9,781.46,256.84,,71.22
+10,14,11,prod_name,7,884.4,249.19,,78.26
+10,5,11,prod_name,5,556.36,295.26,,61
+8,12,6,prod_name,8,597.28,188.71,,98.77

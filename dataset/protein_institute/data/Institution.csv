@@ -1,0 +1,12 @@
+Institution_id,Institution,Location,Founded,Type,Enrollment,Team,Primary_Conference,building_id
+0,Ave Maria University,"Ave Maria, Florida",1998.0,Private,1200,Gyrenes,The Sun,1
+1,Dakota State University,"Madison, South Dakota",1881.0,Public,3102,Trojans,none,1
+2,Edward Waters College,"Jacksonville, Florida",1866.0,Private,800,Tigers,Gulf Coast (GCAC),3
+3,Haskell Indian Nations University,"Lawrence, Kansas",1884.0,Tribal,1000,Fighting Indians,MCAC,5
+4,Jamestown College,"Jamestown, North Dakota",1883.0,Private,967,Jimmies,none,2
+5,Lindenwood University–Belleville,"Belleville, Illinois",2003.0,Private,2600,Lynx,none,0
+6,Mayville State University,"Mayville, North Dakota",1889.0,Public,825,Comets,none,0
+7,Menlo College,"Atherton, California",1927.0,Private,650,Oaks,CalPac,4
+8,Point University,"West Point, Georgia",1937.0,Private,1035,Skyhawks,AAC,7
+9,Valley City State University,"Valley City, North Dakota",1890.0,Public,1340,Vikings,none,3
+10,Webber International University,"Babson Park, Florida",1927.0,Private,616,Warriors,The Sun,5

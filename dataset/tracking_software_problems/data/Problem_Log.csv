@@ -1,0 +1,16 @@
+problem_log_id,assigned_to_staff_id,problem_id,problem_category_code,problem_status_code,log_entry_date,log_entry_description,log_entry_fix,other_log_details
+1,11,11,Middleware,Solved,2011-03-13 13:11:57,t,k,p
+2,11,8,GUI,Solved,1976-03-31 14:03:02,a,k,s
+3,12,1,GUI,Solved,1974-12-11 01:06:22,b,j,e
+4,12,12,GUI,Reported,1993-04-02 11:07:29,a,t,b
+5,6,12,Middleware,Reported,1976-09-17 09:01:12,c,n,u
+6,2,13,GUI,Solved,1983-07-01 02:12:36,h,g,n
+7,13,1,Datatabase,Solved,1974-09-13 00:37:26,s,c,v
+8,4,15,Datatabase,Solved,1999-08-17 00:00:18,j,h,j
+9,10,13,GUI,Reported,1993-06-21 22:33:35,p,i,f
+10,6,1,Middleware,Reported,2001-05-14 10:03:53,d,x,d
+11,1,8,Datatabase,Solved,1973-03-12 16:30:50,w,k,a
+12,4,10,Middleware,Solved,1997-08-31 08:19:12,c,y,c
+13,6,10,Middleware,Reported,2009-04-10 19:09:30,q,t,o
+14,8,4,Datatabase,Reported,2011-11-12 23:30:53,a,s,c
+15,5,7,GUI,Reported,1982-11-17 06:05:52,v,o,d

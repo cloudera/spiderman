@@ -1,0 +1,16 @@
+customer_id,customer_first_name,customer_middle_initial,customer_last_name,gender,email_address,login_name,login_password,phone_number,town_city,state_county_province,country
+1,Dee,A,Larkin,1,thora.torphy@example.org,xhartmann,77789d292604ea04406f,241.796.1219x37862,North Nellie,WestVirginia,USA
+2,Brennon,H,Weimann,0,roosevelt.collier@example.org,shayne.lesch,ce97a3e4539347daab96,(943)219-4234x415,South Isabell,Oklahoma,USA
+3,Joesph,K,Schaefer,0,homenick.ambrose@example.net,feeney.lauriane,a6c7a7064c36b038d402,(488)524-5345,New Nikolas,Arkansas,USA
+4,Zita,L,Trantow,0,destinee06@example.com,rubye.padberg,eb32d2933362d38faff7,(193)465-6674x4952,Ellaburgh,Colorado,USA
+5,Murl,B,Shanahan,1,jovani64@example.com,jankunding,398c1603aec3e9de2684,1-546-447-9843x13741,North Helmerbury,Idaho,USA
+6,Vesta,E,Leuschke,1,philip94@example.org,zdeckow,bdbc3c18cf28303c4f6a,+69(0)7149212554,North Devonte,Mississippi,USA
+7,Dangelo,M,Spinka,1,zullrich@example.net,camilla.dubuque,180a37476c537e78d3de,1-904-787-7320,West Khaliltown,Kansas,USA
+8,Meaghan,M,Keeling,0,pyundt@example.org,lowe.wilber,e67856613cd71f1b2884,06015518212,Kenshire,Mississippi,USA
+9,Abbey,B,Ruecker,0,anastacio45@example.org,dubuque.gina,d7629de5171fe29106c8,1-344-593-4896x425,Bruenchester,California,USA
+10,Devin,V,Glover,0,udeckow@example.com,ypowlowski,604f9062a5a0de83ef9d,197-955-3766,Lake Eusebiomouth,Florida,USA
+11,Neoma,G,Hauck,1,michel92@example.org,ahmad.hagenes,035f2ba1e2a675c4f426,+95(0)1523064649,New Rachellefort,Alabama,USA
+12,Jensen,M,Muller,0,lew.nicolas@example.org,pbecker,5fe7c12dc3176ddf67c4,(650)406-8761,Carleefort,Montana,USA
+13,Kieran,A,Auer,0,nnolan@example.org,sophia97,d4ade599672bccdabeee,(157)046-6255x98627,Lake Freemanville,Kentucky,USA
+14,Percival,B,Kessler,1,jacobi.shanon@example.org,lucy.jast,178613c20728eec256db,(791)562-7792x45732,Port Hollie,Louisiana,USA
+15,Ruby,K,Boyle,0,gwolff@example.net,dthiel,eff2c0dbf972481ba23c,1-546-302-5676,East Stephaniafort,SouthDakota,USA

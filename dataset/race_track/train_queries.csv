@@ -1,0 +1,43 @@
+question,sql
+How many tracks do we have?,SELECT count(*) FROM track
+Count the number of tracks.,SELECT count(*) FROM track
+Show the name and location for all tracks.,"SELECT name ,  LOCATION FROM track"
+What are the names and locations of all tracks?,"SELECT name ,  LOCATION FROM track"
+"Show names and seatings, ordered by seating for all tracks opened after 2000.","SELECT name ,  seating FROM track WHERE year_opened  >  2000 ORDER BY seating"
+"What are the names and seatings for all tracks opened after 2000, ordered by seating?","SELECT name ,  seating FROM track WHERE year_opened  >  2000 ORDER BY seating"
+"What is the name, location and seating for the most recently opened track?","SELECT name ,  LOCATION ,  seating FROM track ORDER BY year_opened DESC LIMIT 1"
+"Return the name, location, and seating of the track that was opened in the most recent year.","SELECT name ,  LOCATION ,  seating FROM track ORDER BY year_opened DESC LIMIT 1"
+"What is the minimum, maximum, and average seating for all tracks.","SELECT min(seating) ,  max(seating) ,  avg(seating) FROM track"
+"Return the minimum, maximum, and average seating across all tracks.","SELECT min(seating) ,  max(seating) ,  avg(seating) FROM track"
+"Show the name, location, open year for all tracks with a seating higher than the average.","SELECT name ,  LOCATION ,  year_opened FROM track WHERE seating  >  (SELECT avg(seating) FROM track)"
+"What are the names, locations, and years of opening for tracks with seating higher than average?","SELECT name ,  LOCATION ,  year_opened FROM track WHERE seating  >  (SELECT avg(seating) FROM track)"
+What are distinct locations where tracks are located?,SELECT DISTINCT LOCATION FROM track
+Give the different locations of tracks.,SELECT DISTINCT LOCATION FROM track
+How many races are there?,SELECT count(*) FROM race
+Count the number of races.,SELECT count(*) FROM race
+What are the distinct classes that races can have?,SELECT DISTINCT CLASS FROM race
+Return the different classes of races.,SELECT DISTINCT CLASS FROM race
+"Show name, class, and date for all races.","SELECT name ,  CLASS ,  date FROM race"
+"What are the names, classes, and dates for all races?","SELECT name ,  CLASS ,  date FROM race"
+Show the race class and number of races in each class.,"SELECT CLASS ,  count(*) FROM race GROUP BY CLASS"
+"What are the different classes of races, and how many races correspond to each?","SELECT CLASS ,  count(*) FROM race GROUP BY CLASS"
+What is the race class with most number of races.,SELECT CLASS FROM race GROUP BY CLASS ORDER BY count(*) DESC LIMIT 1
+Give the class of races that is most common.,SELECT CLASS FROM race GROUP BY CLASS ORDER BY count(*) DESC LIMIT 1
+List the race class with at least two races.,SELECT CLASS FROM race GROUP BY CLASS HAVING count(*)  >=  2
+What are the classes of races that have two or more corresponding races?,SELECT CLASS FROM race GROUP BY CLASS HAVING count(*)  >=  2
+What are the names for tracks without a race in class 'GT'.,SELECT name FROM track EXCEPT SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id WHERE T1.class  =  'GT'
+Give the names of tracks that do not have a race in the class 'GT'.,SELECT name FROM track EXCEPT SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id WHERE T1.class  =  'GT'
+Show all track names that have had no races.,SELECT name FROM track WHERE track_id NOT IN (SELECT track_id FROM race)
+Return the names of tracks that have no had any races.,SELECT name FROM track WHERE track_id NOT IN (SELECT track_id FROM race)
+Show year where a track with a seating at least 5000 opened and a track with seating no more than 4000 opened.,SELECT year_opened FROM track WHERE seating BETWEEN 4000 AND 5000
+What are the years of opening for tracks with seating between 4000 and 5000?,SELECT year_opened FROM track WHERE seating BETWEEN 4000 AND 5000
+Show the name of track and the number of races in each track.,"SELECT T2.name ,  count(*) FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id"
+"What are the names of different tracks, and how many races has each had?","SELECT T2.name ,  count(*) FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id"
+Show the name of track with most number of races.,SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id ORDER BY count(*) DESC LIMIT 1
+What is the name of the track that has had the greatest number of races?,SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id ORDER BY count(*) DESC LIMIT 1
+Show the name and date for each race and its track name.,"SELECT T1.name ,  T1.date ,  T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id"
+"What are the names and dates of races, and the names of the tracks where they are held?","SELECT T1.name ,  T1.date ,  T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id"
+Show the name and location of track with 1 race.,"SELECT T2.name ,  T2.location FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id HAVING count(*)  =  1"
+What are the names and locations of tracks that have had exactly 1 race?,"SELECT T2.name ,  T2.location FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id HAVING count(*)  =  1"
+Find the locations where have both tracks with more than 90000 seats and tracks with less than 70000 seats.,SELECT LOCATION FROM track WHERE seating  >  90000 INTERSECT SELECT LOCATION FROM track WHERE seating  <  70000
+"What are the locations that have both tracks with more than 90000 seats, and tracks with fewer than 70000 seats?",SELECT LOCATION FROM track WHERE seating  >  90000 INTERSECT SELECT LOCATION FROM track WHERE seating  <  70000

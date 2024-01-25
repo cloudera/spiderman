@@ -1,0 +1,16 @@
+customer_id,payment_method,customer_name,customer_phone,customer_email,date_became_customer
+1,Visa,Ron Emard,1-382-503-5179x53639,shaniya45@example.net,2011-04-25 22:20:35
+2,MasterCard,Gabe Schroeder,1-728-537-4293x0885,alexandra91@example.net,2011-10-17 16:08:25
+3,Discover,Candace Schneider,940.575.3682x7959,tkassulke@example.com,2012-01-11 21:17:01
+4,Visa,Jaden Lang,361.151.3489x7272,dedric17@example.org,2009-12-29 17:38:10
+5,Visa,Geovanni Grady,1-005-644-2495,elmira.langworth@example.org,2017-05-21 07:09:55
+6,Visa,Dr. Karine Farrell,+49(2)0677806107,reichel.winnifred@example.org,2010-11-06 08:42:56
+7,Discover,Emmanuel Reilly,129.959.6420,gleichner.ethelyn@example.net,2013-11-29 06:15:22
+8,MasterCard,Keenan Kuhic,686-517-9923x348,dallin76@example.org,2013-04-09 18:17:05
+9,American,Rusty Morar,1-123-197-9677x7194,njenkins@example.org,2015-09-09 09:29:06
+10,Visa,Lila Howe,1-492-284-1097,leann.hamill@example.org,2014-02-04 04:51:58
+11,Visa,Amalia Hudson DDS,003-991-1506x483,danika49@example.com,2014-02-25 19:39:51
+12,Discover,Verda Streich,06730471330,xgraham@example.org,2008-10-12 12:19:27
+13,Discover,Patience Yundt,969-208-8932x715,kira82@example.com,2017-03-25 18:48:04
+14,Visa,Annabell Walsh,(881)096-1281x6448,adriana83@example.org,2017-06-30 19:02:11
+15,Visa,Aracely Borer V,531-617-3230,rollin95@example.net,2015-09-13 22:39:50

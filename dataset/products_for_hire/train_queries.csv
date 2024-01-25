@@ -1,0 +1,19 @@
+question,sql
+Are the customers holding coupons with amount 500 bad or good?,SELECT T1.good_or_bad_customer FROM customers AS T1 JOIN discount_coupons AS T2 ON T1.coupon_id  =  T2.coupon_id WHERE T2.coupon_amount  =  500
+"How many bookings did each customer make? List the customer id, first name, and the count.","SELECT T1.customer_id ,  T1.first_name ,  count(*) FROM Customers AS T1 JOIN bookings AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id"
+What is the maximum total amount paid by a customer? List the customer id and amount.,"SELECT customer_id ,  sum(amount_paid) FROM Payments GROUP BY customer_id ORDER BY sum(amount_paid) DESC LIMIT 1"
+What are the id and the amount of refund of the booking that incurred the most times of payments?,"SELECT T1.booking_id ,  T1.amount_of_refund FROM Bookings AS T1 JOIN Payments AS T2 ON T1.booking_id  =  T2.booking_id GROUP BY T1.booking_id ORDER BY count(*) DESC LIMIT 1"
+What is the id of the product that is booked for 3 times?,SELECT product_id FROM products_booked GROUP BY product_id HAVING count(*)  =  3
+What is the product description of the product booked with an amount of 102.76?,SELECT T2.product_description FROM products_booked AS T1 JOIN products_for_hire AS T2 ON T1.product_id  =  T2.product_id WHERE T1.booked_amount  =  102.76
+What are the start date and end date of the booking that has booked the product named 'Book collection A'?,"SELECT T3.booking_start_date ,   T3.booking_end_date FROM Products_for_hire AS T1 JOIN products_booked AS T2 ON T1.product_id  =  T2.product_id JOIN bookings AS T3 ON T2.booking_id  =  T3.booking_id WHERE T1.product_name  =  'Book collection A'"
+What are the names of products whose availability equals to 1?,SELECT T2.product_name FROM view_product_availability AS T1 JOIN products_for_hire AS T2 ON T1.product_id  =  T2.product_id WHERE T1.available_yn  =  1
+How many different product types are there?,SELECT count(DISTINCT product_type_code) FROM products_for_hire
+"What are the first name, last name, and gender of all the good customers? Order by their last name.","SELECT first_name ,  last_name ,  gender_mf FROM customers WHERE good_or_bad_customer  =  'good' ORDER BY last_name"
+What is the average amount due for all the payments?,SELECT avg(amount_due) FROM payments
+"What are the maximum, minimum, and average booked count for the products booked?","SELECT max(booked_count) ,  min(booked_count) ,  avg(booked_count) FROM products_booked"
+What are all the distinct payment types?,SELECT DISTINCT payment_type_code FROM payments
+What are the daily hire costs for the products with substring 'Book' in its name?,SELECT daily_hire_cost FROM Products_for_hire WHERE product_name LIKE '%Book%'
+How many products are never booked with amount higher than 200?,SELECT count(*) FROM Products_for_hire WHERE product_id NOT IN ( SELECT product_id FROM products_booked WHERE booked_amount  >  200 )
+What are the coupon amount of the coupons owned by both good and bad customers?,SELECT T1.coupon_amount FROM Discount_Coupons AS T1 JOIN customers AS T2 ON T1.coupon_id  =  T2.coupon_id WHERE T2.good_or_bad_customer  =  'good' INTERSECT SELECT T1.coupon_amount FROM Discount_Coupons AS T1 JOIN customers AS T2 ON T1.coupon_id  =  T2.coupon_id WHERE T2.good_or_bad_customer  =  'bad'
+What are the payment date of the payment with amount paid higher than 300 or with payment type is 'Check',SELECT payment_date FROM payments WHERE amount_paid  >  300 OR payment_type_code  =  'Check'
+What are the names and descriptions of the products that are of 'Cutlery' type and have daily hire cost lower than 20?,"SELECT product_name ,  product_description FROM products_for_hire WHERE product_type_code  =  'Cutlery' AND daily_hire_cost  <  20"

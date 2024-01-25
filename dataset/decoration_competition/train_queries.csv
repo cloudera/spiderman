@@ -1,0 +1,16 @@
+question,sql
+How many members are there?,SELECT count(*) FROM member
+List the names of members in ascending alphabetical order.,SELECT Name FROM member ORDER BY Name ASC
+What are the names and countries of members?,"SELECT Name ,  Country FROM member"
+"Show the names of members whose country is ""United States"" or ""Canada"".","SELECT Name FROM member WHERE Country  =  ""United States"" OR Country  =  ""Canada"""
+Show the different countries and the number of members from each.,"SELECT Country ,  COUNT(*) FROM member GROUP BY Country"
+Show the most common country across members.,SELECT Country FROM member GROUP BY Country ORDER BY COUNT(*) DESC LIMIT 1
+Which countries have more than two members?,SELECT Country FROM member GROUP BY Country HAVING COUNT(*)  >  2
+Show the leader names and locations of colleges.,"SELECT Leader_Name ,  College_Location FROM college"
+Show the names of members and names of colleges they go to.,"SELECT T2.Name ,  T1.Name FROM college AS T1 JOIN member AS T2 ON T1.College_ID  =  T2.College_ID"
+Show the names of members and the locations of colleges they go to in ascending alphabetical order of member names.,"SELECT T2.Name ,  T1.College_Location FROM college AS T1 JOIN member AS T2 ON T1.College_ID  =  T2.College_ID ORDER BY T2.Name ASC"
+"Show the distinct leader names of colleges associated with members from country ""Canada"".","SELECT DISTINCT T1.Leader_Name FROM college AS T1 JOIN member AS T2 ON T1.College_ID  =  T2.College_ID WHERE T2.Country  =  ""Canada"""
+Show the names of members and the decoration themes they have.,"SELECT T1.Name ,  T2.Decoration_Theme FROM member AS T1 JOIN round AS T2 ON T1.Member_ID  =  T2.Member_ID"
+Show the names of members that have a rank in round higher than 3.,SELECT T1.Name FROM member AS T1 JOIN round AS T2 ON T1.Member_ID  =  T2.Member_ID WHERE T2.Rank_in_Round  >  3
+Show the names of members in ascending order of their rank in rounds.,SELECT T1.Name FROM member AS T1 JOIN round AS T2 ON T1.Member_ID  =  T2.Member_ID ORDER BY Rank_in_Round ASC
+List the names of members who did not participate in any round.,SELECT Name FROM member WHERE Member_ID NOT IN (SELECT Member_ID FROM round)

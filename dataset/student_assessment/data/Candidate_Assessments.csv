@@ -1,0 +1,6 @@
+candidate_id,qualification,assessment_date,asessment_outcome_code
+111,A,2010-04-07 11:44:34,Pass
+121,B,2010-04-17 11:44:34,Pass
+131,D,2010-04-05 11:44:34,Fail
+141,C,2010-04-06 11:44:34,Pass
+151,B,2010-04-09 11:44:34,Pass

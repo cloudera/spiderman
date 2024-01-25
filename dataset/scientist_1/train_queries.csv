@@ -1,0 +1,49 @@
+question,sql
+Find the total number of scientists.,SELECT count(*) FROM scientists
+How many scientists are there?,SELECT count(*) FROM scientists
+Find the total hours of all projects.,SELECT sum(hours) FROM projects
+What is the total number of hours for all projects?,SELECT sum(hours) FROM projects
+How many different scientists are assigned to any project?,SELECT count(DISTINCT scientist) FROM assignedto
+Count the number of different scientists assigned to any project.,SELECT count(DISTINCT scientist) FROM assignedto
+Find the number of distinct projects.,SELECT count(DISTINCT name) FROM projects
+How many different projects are there?,SELECT count(DISTINCT name) FROM projects
+Find the average hours of all projects.,SELECT avg(hours) FROM projects
+What is the average hours across all projects?,SELECT avg(hours) FROM projects
+Find the name of project that continues for the longest time.,SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+What is the name of the project with the most hours?,SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+List the name of all projects that are operated longer than the average working hours of all projects.,SELECT name FROM projects WHERE hours  >  (SELECT avg(hours) FROM projects)
+What are the names of projects that have taken longer than the average number of hours for all projects?,SELECT name FROM projects WHERE hours  >  (SELECT avg(hours) FROM projects)
+Find the name and hours of project that has the most number of scientists.,"SELECT T1.name ,  T1.hours FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project GROUP BY T2.project ORDER BY count(*) DESC LIMIT 1"
+What is the name and hours for the project which has the most scientists assigned to it?,"SELECT T1.name ,  T1.hours FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project GROUP BY T2.project ORDER BY count(*) DESC LIMIT 1"
+Find the name of the project for which a scientist whose name contains ‘Smith’ is assigned to.,SELECT T2.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T3.name LIKE '%Smith%'
+What is the name of the project that has a scientist assigned to it whose name contains 'Smith'?,SELECT T2.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T3.name LIKE '%Smith%'
+Find the total hours of the projects that scientists named Michael Rogers or Carol Smith are assigned to.,SELECT sum(T2.hours) FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T3.name  =  'Michael Rogers' OR T3.name  =  'Carol Smith'
+What is the sum of hours for projects that scientists with the name Michael Rogers or Carol Smith are assigned to?,SELECT sum(T2.hours) FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T3.name  =  'Michael Rogers' OR T3.name  =  'Carol Smith'
+Find the name of projects that require between 100 and 300 hours of work.,SELECT name FROM projects WHERE hours BETWEEN 100 AND 300
+What are the names of projects that require between 100 and 300 hours?,SELECT name FROM projects WHERE hours BETWEEN 100 AND 300
+Find the name of the scientist who worked on both a project named 'Matter of Time' and a project named 'A Puzzling Parallax'.,SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.name  =  'Matter of Time' INTERSECT SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.name  =  'A Puzzling Parallax'
+What are the names of any scientists who worked on projects named 'Matter of Time' and 'A Puzzling Pattern'?,SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.name  =  'Matter of Time' INTERSECT SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.name  =  'A Puzzling Parallax'
+List the names of all scientists sorted in alphabetical order.,SELECT name FROM scientists ORDER BY name
+What are the names of all the scientists in alphabetical order?,SELECT name FROM scientists ORDER BY name
+Find the number of scientists involved for each project name.,"SELECT count(*) ,  T1.name FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project GROUP BY T1.name"
+"What are the naems of all the projects, and how many scientists were assigned to each of them?","SELECT count(*) ,  T1.name FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project GROUP BY T1.name"
+Find the number of scientists involved for the projects that require more than 300 hours.,"SELECT count(*) ,  T1.name FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project WHERE T1.hours  >  300 GROUP BY T1.name"
+"What are the names of projects that require more than 300 hours, and how many scientists are assigned to each?","SELECT count(*) ,  T1.name FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project WHERE T1.hours  >  300 GROUP BY T1.name"
+Find the number of projects which each scientist is working on and scientist's name.,"SELECT count(*) ,  T1.name FROM scientists AS T1 JOIN assignedto AS T2 ON T1.ssn  =  T2.scientist GROUP BY T1.name"
+"What are the names of the scientists, and how many projects are each of them working on?","SELECT count(*) ,  T1.name FROM scientists AS T1 JOIN assignedto AS T2 ON T1.ssn  =  T2.scientist GROUP BY T1.name"
+Find the SSN and name of scientists who are assigned to the project with the longest hours.,"SELECT T3.ssn ,  T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT max(hours) FROM projects)"
+What are the SSN and names of scientists working on the project with the most hours?,"SELECT T3.ssn ,  T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT max(hours) FROM projects)"
+Find the name of scientists who are assigned to some project.,SELECT T2.name FROM assignedto AS T1 JOIN scientists AS T2 ON T1.scientist  =  T2.ssn
+What are the names of scientists who are assigned to any project?,SELECT T2.name FROM assignedto AS T1 JOIN scientists AS T2 ON T1.scientist  =  T2.ssn
+Select the project names which are not assigned yet.,SELECT Name FROM Projects WHERE Code NOT IN (SELECT Project FROM AssignedTo)
+What are the names of projects that have not been assigned?,SELECT Name FROM Projects WHERE Code NOT IN (SELECT Project FROM AssignedTo)
+Find the name of scientists who are not assigned to any project.,SELECT Name FROM scientists WHERE ssn NOT IN (SELECT scientist FROM AssignedTo)
+What are the names of scientists who have not been assigned a project?,SELECT Name FROM scientists WHERE ssn NOT IN (SELECT scientist FROM AssignedTo)
+Find the number of scientists who are not assigned to any project.,SELECT count(*) FROM scientists WHERE ssn NOT IN (SELECT scientist FROM AssignedTo)
+How many scientists do not have any projects assigned to them?,SELECT count(*) FROM scientists WHERE ssn NOT IN (SELECT scientist FROM AssignedTo)
+Find the names of scientists who are not working on the project with the highest hours.,SELECT name FROM scientists EXCEPT SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT max(hours) FROM projects)
+What are the names of scientists who are not working on the project with the most hours?,SELECT name FROM scientists EXCEPT SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT max(hours) FROM projects)
+"List all the scientists' names, their projects' names, and the hours worked by that scientist on each project, in alphabetical order of project name, and then scientist name.","SELECT T1.Name ,  T3.Name ,  T3.Hours FROM Scientists AS T1 JOIN AssignedTo AS T2 ON T1.SSN = T2.Scientist JOIN Projects AS T3 ON T2.Project = T3.Code ORDER BY T3.Name ,  T1.Name"
+"What are the names of each scientist, the names of the projects that they work on, and the hours for each of those projects, listed in alphabetical order by project name, then scientist name.","SELECT T1.Name ,  T3.Name ,  T3.Hours FROM Scientists AS T1 JOIN AssignedTo AS T2 ON T1.SSN = T2.Scientist JOIN Projects AS T3 ON T2.Project = T3.Code ORDER BY T3.Name ,  T1.Name"
+Find name of the project that needs the least amount of time to finish and the name of scientists who worked on it.,"SELECT T2.name ,  T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT min(hours) FROM projects)"
+"What is the name of the project that requires the fewest number of hours, and the names of the scientists assigned to it?","SELECT T2.name ,  T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT min(hours) FROM projects)"

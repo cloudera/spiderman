@@ -1,0 +1,16 @@
+customer_id,coupon_id,good_or_bad_customer,first_name,last_name,gender_mf,date_became_customer,date_last_hire
+1,12,good,Geovany,Homenick,0,2017-10-20 12:13:17,2018-02-27 18:55:26
+2,14,good,Jailyn,Gerlach,0,2015-04-06 21:18:37,2018-01-30 04:47:13
+3,7,good,Rosalee,Kessler,0,2016-02-03 16:58:11,2018-03-04 21:30:23
+4,12,bad,Reba,Jacobs,1,2016-06-17 14:11:50,2018-02-19 06:04:01
+5,10,good,Ericka,Greenholt,0,2016-08-11 01:50:37,2018-02-25 04:40:15
+6,14,bad,Bridget,Ankunding,1,2015-04-24 02:38:16,2018-02-10 19:44:08
+7,12,good,Marilou,Strosin,1,2015-12-16 08:05:53,2018-02-01 16:48:30
+8,6,good,Elinore,Crona,0,2017-07-27 08:04:22,2018-03-04 08:59:40
+9,7,good,German,Little,1,2017-02-28 14:40:25,2018-03-13 21:20:05
+10,1,bad,Layne,Terry,1,2015-05-05 20:29:01,2018-02-04 08:56:55
+11,10,good,Maximilian,Murphy,0,2015-07-21 09:24:57,2018-03-12 09:23:41
+12,11,good,Vergie,Nicolas,0,2016-02-03 10:31:18,2018-03-03 23:37:31
+13,2,good,Laury,Lemke,1,2017-03-18 04:37:59,2018-03-18 17:35:43
+14,6,good,Tyler,Breitenberg,1,2016-04-20 21:04:35,2018-03-03 13:46:38
+15,3,bad,Jamir,Schroeder,1,2016-05-25 01:12:49,2018-02-24 11:15:29

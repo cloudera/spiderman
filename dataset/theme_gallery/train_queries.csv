@@ -1,0 +1,41 @@
+question,sql
+How many artists do we have?,SELECT count(*) FROM artist
+Count the number of artists.,SELECT count(*) FROM artist
+"Show all artist name, age, and country ordered by the yeared they joined.","SELECT name ,  age ,  country FROM artist ORDER BY Year_Join"
+"What are the names, ages, and countries of artists, sorted by the year they joined?","SELECT name ,  age ,  country FROM artist ORDER BY Year_Join"
+What are all distinct country for artists?,SELECT DISTINCT country FROM artist
+Return the different countries for artists.,SELECT DISTINCT country FROM artist
+Show all artist names and the year joined who are not from United States.,"SELECT name ,  year_join FROM artist WHERE country != 'United States'"
+"What are the names and year of joining for artists that do not have the country ""United States""?","SELECT name ,  year_join FROM artist WHERE country != 'United States'"
+How many artists are above age 46 and joined after 1990?,SELECT count(*) FROM artist WHERE age  >  46 AND year_join  >  1990
+Count the number of artists who are older than 46 and joined after 1990.,SELECT count(*) FROM artist WHERE age  >  46 AND year_join  >  1990
+What is the average and minimum age of all artists from United States.,"SELECT avg(age) ,  min(age) FROM artist WHERE country  =  'United States'"
+Return the average and minimum ages across artists from the United States.,"SELECT avg(age) ,  min(age) FROM artist WHERE country  =  'United States'"
+What is the name of the artist who joined latest?,SELECT name FROM artist ORDER BY year_join DESC LIMIT 1
+Return the name of the artist who has the latest join year.,SELECT name FROM artist ORDER BY year_join DESC LIMIT 1
+How many exhibition are there in year 2005 or after?,SELECT count(*) FROM exhibition WHERE YEAR  >=  2005
+Count the number of exhibitions that happened in or after 2005.,SELECT count(*) FROM exhibition WHERE YEAR  >=  2005
+Show theme and year for all exhibitions with ticket prices lower than 15.,"SELECT theme ,  YEAR FROM exhibition WHERE ticket_price  <  15"
+What are the theme and year for all exhibitions that have a ticket price under 15?,"SELECT theme ,  YEAR FROM exhibition WHERE ticket_price  <  15"
+Show all artist names and the number of exhibitions for each artist.,"SELECT T2.name ,  count(*) FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id GROUP BY T1.artist_id"
+How many exhibitions has each artist had?,"SELECT T2.name ,  count(*) FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id GROUP BY T1.artist_id"
+What is the name and country for the artist with most number of exhibitions?,"SELECT T2.name , T2.country FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id GROUP BY T1.artist_id ORDER BY count(*) DESC LIMIT 1"
+Return the name and country corresponding to the artist who has had the most exhibitions.,"SELECT T2.name , T2.country FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id GROUP BY T1.artist_id ORDER BY count(*) DESC LIMIT 1"
+Show names for artists without any exhibition.,SELECT name FROM artist WHERE artist_id NOT IN (SELECT artist_id FROM exhibition)
+What are the names of artists that have not had any exhibitions?,SELECT name FROM artist WHERE artist_id NOT IN (SELECT artist_id FROM exhibition)
+What is the theme and artist name for the exhibition with a ticket price higher than the average?,"SELECT T1.theme ,  T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.ticket_price  >  (SELECT avg(ticket_price) FROM exhibition)"
+Return the names of artists and the themes of their exhibitions that had a ticket price higher than average.,"SELECT T1.theme ,  T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.ticket_price  >  (SELECT avg(ticket_price) FROM exhibition)"
+"Show the average, minimum, and maximum ticket prices for exhibitions for all years before 2009.","SELECT avg(ticket_price) ,  min(ticket_price) ,  max(ticket_price) FROM exhibition WHERE YEAR  <  2009"
+"What are the average, minimum, and maximum ticket prices for exhibitions that happened prior to 2009?","SELECT avg(ticket_price) ,  min(ticket_price) ,  max(ticket_price) FROM exhibition WHERE YEAR  <  2009"
+Show theme and year for all exhibitions in an descending order of ticket price.,"SELECT theme ,  YEAR FROM exhibition ORDER BY ticket_price DESC"
+"What are the themes and years for exhibitions, sorted by ticket price descending?","SELECT theme ,  YEAR FROM exhibition ORDER BY ticket_price DESC"
+"What is the theme, date, and attendance for the exhibition in year 2004?","SELECT T2.theme ,  T1.date ,  T1.attendance FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T2.year  =  2004"
+"Return the themes, dates, and attendance for exhibitions that happened in 2004.","SELECT T2.theme ,  T1.date ,  T1.attendance FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T2.year  =  2004"
+Show all artist names who didn't have an exhibition in 2004.,SELECT name FROM artist EXCEPT SELECT T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.year  =  2004
+What are the names of artists who did not have an exhibition in 2004?,SELECT name FROM artist EXCEPT SELECT T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.year  =  2004
+Show the theme for exhibitions with both records of an attendance below 100 and above 500.,SELECT T2.theme FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  <  100 INTERSECT SELECT T2.theme FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  >  500
+Which themes have had corresponding exhibitions that have had attendance both below 100 and above 500?,SELECT T2.theme FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  <  100 INTERSECT SELECT T2.theme FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  >  500
+How many exhibitions have a attendance more than 100 or have a ticket price below 10?,SELECT count(*) FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  >  100 OR T2.ticket_price  <  10
+Count the number of exhibitions that have had an attendnance of over 100 or a ticket prices under 10.,SELECT count(*) FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  >  100 OR T2.ticket_price  <  10
+Show all artist names with an average exhibition attendance over 200.,SELECT T3.name FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id JOIN artist AS T3 ON T3.artist_id  =  T2.artist_id GROUP BY T3.artist_id HAVING avg(T1.attendance)  >  200
+What are the names of artist whose exhibitions draw over 200 attendees on average?,SELECT T3.name FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id JOIN artist AS T3 ON T3.artist_id  =  T2.artist_id GROUP BY T3.artist_id HAVING avg(T1.attendance)  >  200

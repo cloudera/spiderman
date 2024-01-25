@@ -1,0 +1,22 @@
+question,sql
+How many books are there?,SELECT count(*) FROM book
+List the writers of the books in ascending alphabetical order.,SELECT Writer FROM book ORDER BY Writer ASC
+List the titles of the books in ascending order of issues.,SELECT Title FROM book ORDER BY Issues ASC
+"What are the titles of the books whose writer is not ""Elaine Lee""?","SELECT Title FROM book WHERE Writer != ""Elaine Lee"""
+What are the title and issues of the books?,"SELECT Title ,  Issues FROM book"
+What are the dates of publications in descending order of price?,SELECT Publication_Date FROM publication ORDER BY Price DESC
+What are the distinct publishers of publications with price higher than 5000000?,SELECT DISTINCT Publisher FROM publication WHERE Price  >  5000000
+List the publisher of the publication with the highest price.,SELECT Publisher FROM publication ORDER BY Price DESC LIMIT 1
+List the publication dates of publications with 3 lowest prices.,SELECT Publication_Date FROM publication ORDER BY Price ASC LIMIT 3
+Show the title and publication dates of books.,"SELECT T1.Title ,  T2.Publication_Date FROM book AS T1 JOIN publication AS T2 ON T1.Book_ID  =  T2.Book_ID"
+Show writers who have published a book with price more than 4000000.,SELECT T1.Writer FROM book AS T1 JOIN publication AS T2 ON T1.Book_ID  =  T2.Book_ID WHERE T2.Price  >  4000000
+Show the titles of books in descending order of publication price.,SELECT T1.Title FROM book AS T1 JOIN publication AS T2 ON T1.Book_ID  =  T2.Book_ID ORDER BY T2.Price DESC
+Show publishers that have more than one publication.,SELECT Publisher FROM publication GROUP BY Publisher HAVING COUNT(*)  >  1
+Show different publishers together with the number of publications they have.,"SELECT Publisher ,  COUNT(*) FROM publication GROUP BY Publisher"
+Please show the most common publication date.,SELECT Publication_Date FROM publication GROUP BY Publication_Date ORDER BY COUNT(*) DESC LIMIT 1
+List the writers who have written more than one book.,SELECT Writer FROM book GROUP BY Writer HAVING COUNT(*)  >  1
+List the titles of books that are not published.,SELECT Title FROM book WHERE Book_ID NOT IN (SELECT Book_ID FROM publication)
+Show the publishers that have publications with price higher than 10000000 and publications with price lower than 5000000.,SELECT Publisher FROM publication WHERE Price  >  10000000 INTERSECT SELECT Publisher FROM publication WHERE Price  <  5000000
+What is the number of distinct publication dates?,SELECT COUNT (DISTINCT Publication_Date) FROM publication
+How many distinct publication dates are there in our record?,SELECT COUNT (DISTINCT Publication_Date) FROM publication
+"Show the prices of publications whose publisher is either ""Person"" or ""Wiley""","SELECT Price FROM publication WHERE Publisher  =  ""Person"" OR Publisher  =  ""Wiley"""

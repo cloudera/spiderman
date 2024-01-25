@@ -1,0 +1,41 @@
+question,sql
+"List every individual's first name, middle name and last name in alphabetical order by last name.","SELECT individual_first_name ,  individual_middle_name ,  individual_last_name FROM individuals ORDER BY individual_last_name"
+"What are the first, middle, and last names of all individuals, ordered by last name?","SELECT individual_first_name ,  individual_middle_name ,  individual_last_name FROM individuals ORDER BY individual_last_name"
+List all the types of forms.,SELECT DISTINCT form_type_code FROM forms
+What are the different types of forms?,SELECT DISTINCT form_type_code FROM forms
+Find the name of the most popular party form.,SELECT t1.form_name FROM forms AS t1 JOIN party_forms AS t2 ON t1.form_id  =  t2.form_id GROUP BY t2.form_id ORDER BY count(*) DESC LIMIT 1
+What is the name of the party form that is most common?,SELECT t1.form_name FROM forms AS t1 JOIN party_forms AS t2 ON t1.form_id  =  t2.form_id GROUP BY t2.form_id ORDER BY count(*) DESC LIMIT 1
+"Find the payment method and phone of the party with email ""enrico09@example.com"".","SELECT payment_method_code ,  party_phone FROM parties WHERE party_email  =  ""enrico09@example.com"""
+What is the payment method code and party phone of the party with the email 'enrico09@example.com'?,"SELECT payment_method_code ,  party_phone FROM parties WHERE party_email  =  ""enrico09@example.com"""
+Find the emails of parties with the most popular party form.,SELECT t1.party_email FROM parties AS t1 JOIN party_forms AS t2 ON t1.party_id  =  t2.party_id WHERE t2.form_id  =  (SELECT form_id FROM party_forms GROUP BY form_id ORDER BY count(*) DESC LIMIT 1)
+What are the party emails associated with parties that used the party form that is the most common?,SELECT t1.party_email FROM parties AS t1 JOIN party_forms AS t2 ON t1.party_id  =  t2.party_id WHERE t2.form_id  =  (SELECT form_id FROM party_forms GROUP BY form_id ORDER BY count(*) DESC LIMIT 1)
+List all the name of organizations in order of the date formed.,SELECT organization_name FROM organizations ORDER BY date_formed ASC
+"What are the names of organizations, ordered by the date they were formed, ascending?",SELECT organization_name FROM organizations ORDER BY date_formed ASC
+Find the name of the youngest organization.,SELECT organization_name FROM organizations ORDER BY date_formed DESC LIMIT 1
+What is the name of the organization that was formed most recently?,SELECT organization_name FROM organizations ORDER BY date_formed DESC LIMIT 1
+"Find the last name of the latest contact individual of the organization ""Labour Party"".","SELECT t3.individual_last_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id JOIN individuals AS t3 ON t2.individual_id  =  t3.individual_id WHERE t1.organization_name  =  ""Labour Party"" ORDER BY t2.date_contact_to DESC LIMIT 1"
+What is the last name of the contact individual from the Labour party organization who was contacted most recently?,"SELECT t3.individual_last_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id JOIN individuals AS t3 ON t2.individual_id  =  t3.individual_id WHERE t1.organization_name  =  ""Labour Party"" ORDER BY t2.date_contact_to DESC LIMIT 1"
+Find the last name of the first ever contact person of the organization with the highest UK Vat number.,SELECT t3.individual_last_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id JOIN individuals AS t3 ON t2.individual_id  =  t3.individual_id WHERE t1.uk_vat_number  =  (SELECT max(uk_vat_number) FROM organizations) ORDER BY t2.date_contact_to ASC LIMIT 1
+What is the last name of the first individual contacted from the organization with the maximum UK Vat number across all organizations?,SELECT t3.individual_last_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id JOIN individuals AS t3 ON t2.individual_id  =  t3.individual_id WHERE t1.uk_vat_number  =  (SELECT max(uk_vat_number) FROM organizations) ORDER BY t2.date_contact_to ASC LIMIT 1
+How many services are there?,SELECT count(*) FROM services
+Count the number of services.,SELECT count(*) FROM services
+Find name of the services that has never been used.,SELECT service_name FROM services EXCEPT SELECT t1.service_name FROM services AS t1 JOIN party_services AS t2 ON t1.service_id  =  t2.service_id
+What are the names of the services that have never been used?,SELECT service_name FROM services EXCEPT SELECT t1.service_name FROM services AS t1 JOIN party_services AS t2 ON t1.service_id  =  t2.service_id
+Find the name of all the cities and states.,SELECT town_city FROM addresses UNION SELECT state_province_county FROM addresses
+What are the names of all cities and states?,SELECT town_city FROM addresses UNION SELECT state_province_county FROM addresses
+"How many cities are there in state ""Colorado""?","SELECT count(*) FROM addresses WHERE state_province_county  =  ""Colorado"""
+Count the number of cities in the state of Colorado.,"SELECT count(*) FROM addresses WHERE state_province_county  =  ""Colorado"""
+Find the payment method code used by more than 3 parties.,SELECT payment_method_code FROM parties GROUP BY payment_method_code HAVING count(*)  >  3
+What are the payment method codes that have been used by more than 3 parties?,SELECT payment_method_code FROM parties GROUP BY payment_method_code HAVING count(*)  >  3
+"Find the name of organizations whose names contain ""Party"".","SELECT organization_name FROM organizations WHERE organization_name LIKE ""%Party%"""
+"What are the names of organizations that contain the word ""Party""?","SELECT organization_name FROM organizations WHERE organization_name LIKE ""%Party%"""
+How many distinct payment methods are used by parties?,SELECT count(DISTINCT payment_method_code) FROM parties
+Count the number of different payment method codes used by parties.,SELECT count(DISTINCT payment_method_code) FROM parties
+Which is the email of the party that has used the services the most number of times?,SELECT t1.party_email FROM parties AS t1 JOIN party_services AS t2 ON t1.party_id  =  t2.customer_id GROUP BY t1.party_email ORDER BY count(*) DESC LIMIT 1
+Return the party email that has used party services the greatest number of times.,SELECT t1.party_email FROM parties AS t1 JOIN party_services AS t2 ON t1.party_id  =  t2.customer_id GROUP BY t1.party_email ORDER BY count(*) DESC LIMIT 1
+"Which state can address ""6862 Kaitlyn Knolls"" possibly be in?","SELECT state_province_county FROM addresses WHERE line_1_number_building LIKE ""%6862 Kaitlyn Knolls%"""
+"Give the state corresponding to the line number building ""6862 Kaitlyn Knolls"".","SELECT state_province_county FROM addresses WHERE line_1_number_building LIKE ""%6862 Kaitlyn Knolls%"""
+What is the name of organization that has the greatest number of contact individuals?,SELECT t1.organization_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id GROUP BY t1.organization_name ORDER BY count(*) DESC LIMIT 1
+Return the name of the organization which has the most contact individuals.,SELECT t1.organization_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id GROUP BY t1.organization_name ORDER BY count(*) DESC LIMIT 1
+Find the last name of the individuals that have been contact individuals of an organization.,SELECT DISTINCT t1.individual_last_name FROM individuals AS t1 JOIN organization_contact_individuals AS t2 ON t1.individual_id  =  t2.individual_id
+What are the last names of individuals who have been contact individuals for an organization?,SELECT DISTINCT t1.individual_last_name FROM individuals AS t1 JOIN organization_contact_individuals AS t2 ON t1.individual_id  =  t2.individual_id

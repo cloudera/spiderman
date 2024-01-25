@@ -1,0 +1,31 @@
+question,sql
+"Find the id of the item whose title is ""orange"".","SELECT i_id FROM item WHERE title  =  ""orange"""
+List all information in the item table.,SELECT * FROM item
+Find the number of reviews.,SELECT count(*) FROM review
+How many users are there?,SELECT count(*) FROM useracct
+Find the average and maximum rating of all reviews.,"SELECT avg(rating) ,  max(rating) FROM review"
+Find the highest rank of all reviews.,SELECT min(rank) FROM review
+How many different users wrote some reviews?,SELECT count(DISTINCT u_id) FROM review
+How many different items were reviewed by some users?,SELECT count(DISTINCT i_id) FROM review
+Find the number of items that did not receive any review.,SELECT count(*) FROM item WHERE i_id NOT IN (SELECT i_id FROM review)
+Find the names of users who did not leave any review.,SELECT name FROM useracct WHERE u_id NOT IN (SELECT u_id FROM review)
+Find the names of goods that receive a rating of 10.,SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rating  =  10
+Find the titles of items whose rating is higher than the average review rating of all items.,SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rating  >  (SELECT avg(rating) FROM review)
+Find the titles of items that received any rating below 5.,SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rating  <  5
+Find the titles of items that received both a rating higher than 8 and a rating below 5.,SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rating  >  8 INTERSECT SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rating  <  5
+Find the names of items whose rank is higher than 3 and whose average rating is above 5.,SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rank  >  3 INTERSECT SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id GROUP BY T2.i_id HAVING avg(T2.rating)  >  5
+Find the name of the item with the lowest average rating.,SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id GROUP BY T2.i_id ORDER BY avg(T2.rating) LIMIT 1
+List the titles of all items in alphabetic order .,SELECT title FROM item ORDER BY title
+Find the name of the user who gives the most reviews.,SELECT T1.name FROM useracct AS T1 JOIN review AS T2 ON T1.u_id  =  T2.u_id GROUP BY T2.u_id ORDER BY count(*) DESC LIMIT 1
+Find the name and id of the item with the highest average rating.,"SELECT T1.title ,  T1.i_id FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id GROUP BY T2.i_id ORDER BY avg(T2.rating) DESC LIMIT 1"
+Find the name and id of the good with the highest average rank.,"SELECT T1.title ,  T1.i_id FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id GROUP BY T2.i_id ORDER BY avg(T2.rank) DESC LIMIT 1"
+"For each user, return the name and the average rating of reviews given by them.","SELECT T1.name ,  avg(T2.rating) FROM useracct AS T1 JOIN review AS T2 ON T1.u_id  =  T2.u_id GROUP BY T2.u_id"
+"For each user, find their name and the number of reviews written by them.","SELECT T1.name ,  count(*) FROM useracct AS T1 JOIN review AS T2 ON T1.u_id  =  T2.u_id GROUP BY T2.u_id"
+Find the name of the user who gave the highest rating.,SELECT T1.name FROM useracct AS T1 JOIN review AS T2 ON T1.u_id  =  T2.u_id ORDER BY T2.rating DESC LIMIT 1
+Find the name of the source user with the highest average trust score.,SELECT T1.name FROM useracct AS T1 JOIN trust AS T2 ON T1.u_id  =  T2.source_u_id GROUP BY T2.source_u_id ORDER BY avg(trust) DESC LIMIT 1
+Find each target user's name and average trust score.,"SELECT T1.name ,  avg(trust) FROM useracct AS T1 JOIN trust AS T2 ON T1.u_id  =  T2.target_u_id GROUP BY T2.target_u_id"
+Find the name of the target user with the lowest trust score.,SELECT T1.name FROM useracct AS T1 JOIN trust AS T2 ON T1.u_id  =  T2.target_u_id ORDER BY trust LIMIT 1
+Find the names of the items that did not receive any review.,SELECT title FROM item WHERE i_id NOT IN (SELECT i_id FROM review)
+Find the names of users who did not leave any review.,SELECT name FROM useracct WHERE u_id NOT IN (SELECT u_id FROM review)
+Find the number of users who did not write any review.,SELECT count(*) FROM useracct WHERE u_id NOT IN (SELECT u_id FROM review)
+Find the number of items without any review.,SELECT count(*) FROM item WHERE i_id NOT IN (SELECT i_id FROM review)

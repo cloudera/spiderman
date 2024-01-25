@@ -1,0 +1,16 @@
+service_id,service_type_code,service_name,service_descriptio
+1,Education,Education,Education
+2,Welfare,Health,Welfare
+3,Education,Education,Health
+4,Welfare,Education,Education
+5,Education,Education,Health
+6,Welfare,Welfare,Health
+7,Welfare,Welfare,Welfare
+8,Education,Education,Welfare
+9,Education,Health,Education
+10,Education,Health,Welfare
+11,Welfare,Education,Health
+12,Education,Education,Health
+13,Health,Welfare,Education
+14,Education,Education,Health
+15,Welfare,Health,Education

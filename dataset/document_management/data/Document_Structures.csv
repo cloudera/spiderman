@@ -1,0 +1,6 @@
+document_structure_code,parent_document_structure_code,document_structure_description
+1,1,Header
+6,1,Main section
+8,1,Bib
+5,6,Image section
+9,8,Author section

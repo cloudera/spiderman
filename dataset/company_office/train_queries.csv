@@ -1,0 +1,41 @@
+question,sql
+How many companies are there?,SELECT count(*) FROM Companies
+Count the number of companies.,SELECT count(*) FROM Companies
+List the names of companies in descending order of market value.,SELECT name FROM Companies ORDER BY Market_Value_billion DESC
+Sort the company names in descending order of the company's market value.,SELECT name FROM Companies ORDER BY Market_Value_billion DESC
+"What are the names of companies whose headquarters are not ""USA""?",SELECT name FROM Companies WHERE Headquarters != 'USA'
+"Find the names of the companies whose headquarters are not located in ""USA"".",SELECT name FROM Companies WHERE Headquarters != 'USA'
+"What are the name and assets of each company, sorted in ascending order of company name?","SELECT name ,  Assets_billion FROM Companies ORDER BY name ASC"
+List the name and assets of each company in ascending order of company name.,"SELECT name ,  Assets_billion FROM Companies ORDER BY name ASC"
+What are the average profits of companies?,SELECT avg(Profits_billion) FROM Companies
+Compute the average profits companies make.,SELECT avg(Profits_billion) FROM Companies
+"What are the maximum and minimum sales of the companies whose industries are not ""Banking"".","SELECT max(Sales_billion) ,  min(Sales_billion) FROM Companies WHERE Industry != ""Banking"""
+"Find the maximum and minimum sales of the companies that are not in the ""Banking"" industry.","SELECT max(Sales_billion) ,  min(Sales_billion) FROM Companies WHERE Industry != ""Banking"""
+How many different industries are the companies in?,SELECT count(DISTINCT Industry) FROM Companies
+Count the number of distinct company industries.,SELECT count(DISTINCT Industry) FROM Companies
+List the names of buildings in descending order of building height.,SELECT name FROM buildings ORDER BY Height DESC
+What are the names of buildings sorted in descending order of building height?,SELECT name FROM buildings ORDER BY Height DESC
+Find the stories of the building with the largest height.,SELECT Stories FROM buildings ORDER BY Height DESC LIMIT 1
+What is the stories of highest building?,SELECT Stories FROM buildings ORDER BY Height DESC LIMIT 1
+List the name of a building along with the name of a company whose office is in the building.,"SELECT T3.name ,  T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id"
+"For each company, return the company name and the name of the building its office is located in.","SELECT T3.name ,  T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id"
+Show the names of the buildings that have more than one company offices.,SELECT T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id GROUP BY T1.building_id HAVING COUNT(*)  >  1
+Which buildings have more than one company offices? Give me the building names.,SELECT T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id GROUP BY T1.building_id HAVING COUNT(*)  >  1
+Show the name of the building that has the most company offices.,SELECT T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id GROUP BY T1.building_id ORDER BY COUNT(*) DESC LIMIT 1
+Which building has the largest number of company offices? Give me the building name.,SELECT T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id GROUP BY T1.building_id ORDER BY COUNT(*) DESC LIMIT 1
+"Please show the names of the buildings whose status is ""on-hold"", in ascending order of stories.","SELECT name FROM buildings WHERE Status  =  ""on-hold"" ORDER BY Stories ASC"
+"Find the names of the buildings in ""on-hold"" status, and sort them in ascending order of building stories.","SELECT name FROM buildings WHERE Status  =  ""on-hold"" ORDER BY Stories ASC"
+Please show each industry and the corresponding number of companies in that industry.,"SELECT Industry ,  COUNT(*) FROM Companies GROUP BY Industry"
+Whah are the name of each industry and the number of companies in that industry?,"SELECT Industry ,  COUNT(*) FROM Companies GROUP BY Industry"
+Please show the industries of companies in descending order of the number of companies.,SELECT Industry FROM Companies GROUP BY Industry ORDER BY COUNT(*) DESC
+Sort all the industries in descending order of the count of companies in each industry,SELECT Industry FROM Companies GROUP BY Industry ORDER BY COUNT(*) DESC
+List the industry shared by the most companies.,SELECT Industry FROM Companies GROUP BY Industry ORDER BY COUNT(*) DESC LIMIT 1
+Which industry has the most companies?,SELECT Industry FROM Companies GROUP BY Industry ORDER BY COUNT(*) DESC LIMIT 1
+List the names of buildings that have no company office.,SELECT name FROM buildings WHERE id NOT IN (SELECT building_id FROM Office_locations)
+Which buildings do not have any company office? Give me the building names.,SELECT name FROM buildings WHERE id NOT IN (SELECT building_id FROM Office_locations)
+"Show the industries shared by companies whose headquarters are ""USA"" and companies whose headquarters are ""China"".","SELECT Industry FROM Companies WHERE Headquarters  =  ""USA"" INTERSECT SELECT Industry FROM Companies WHERE Headquarters  =  ""China"""
+"Which industries have both companies with headquarter in ""USA"" and companies with headquarter in ""China""?","SELECT Industry FROM Companies WHERE Headquarters  =  ""USA"" INTERSECT SELECT Industry FROM Companies WHERE Headquarters  =  ""China"""
+"Find the number of companies whose industry is ""Banking"" or ""Conglomerate"",","SELECT count(*) FROM Companies WHERE Industry  =  ""Banking"" OR Industry  =  ""Conglomerate"""
+"How many companies are in either ""Banking"" industry or ""Conglomerate"" industry?","SELECT count(*) FROM Companies WHERE Industry  =  ""Banking"" OR Industry  =  ""Conglomerate"""
+Show the headquarters shared by more than two companies.,SELECT Headquarters FROM Companies GROUP BY Headquarters HAVING COUNT(*)  >  2
+Which headquarter locations are used by more than 2 companies?,SELECT Headquarters FROM Companies GROUP BY Headquarters HAVING COUNT(*)  >  2

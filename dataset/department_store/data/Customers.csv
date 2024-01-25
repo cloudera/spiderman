@@ -1,0 +1,31 @@
+customer_id,payment_method_code,customer_code,customer_name,customer_address,customer_phone,customer_email
+1,Credit Card,401,Ahmed,"75099 Tremblay Port Apt. 163
+South Norrisland, SC 80546",254-072-4068x33935,margarett.vonrueden@example.com
+2,Credit Card,665,Chauncey,"8408 Lindsay Court
+East Dasiabury, IL 72656-3552",+41(8)1897032009,stiedemann.sigrid@example.com
+3,Direct Debit,844,Lukas,"7162 Rodolfo Knoll Apt. 502
+Lake Annalise, TN 35791-8871",197-417-3557,joelle.monahan@example.com
+4,Direct Debit,662,Lexus,"9581 Will Flat Suite 272
+East Cathryn, WY 30751-4404",+08(3)8056580281,gbrekke@example.com
+5,Credit Card,848,Tara,"5065 Mraz Fields Apt. 041
+East Chris, NH 41624",1-064-498-6609x051,nicholas44@example.com
+6,Credit Card,916,Jon,"841 Goyette Unions
+South Dionbury, NC 62021",(443)013-3112x528,cconroy@example.net
+7,Credit Card,172,Cristobal,"8327 Christiansen Lakes Suite 409
+Schneiderland, IA 93624",877-150-8674x63517,shawna.cummerata@example.net
+8,Direct Debit,927,Adah,"5049 Hand Land
+Coymouth, IL 97300-7731",1-695-364-7586x59256,kathlyn24@example.org
+9,Credit Card,808,Yasmeen,"3558 Witting Meadow Apt. 483
+Lake Moriahbury, OH 91556-2122",587.398.2400x31176,ludwig54@example.net
+10,Credit Card,887,Karson,"7308 Joan Lake Suite 346
+Lizethtown, DE 56522",857-844-9339x40140,moriah91@example.com
+11,Direct Debit,611,Cordell,"362 Fisher Forge Apt. 900
+New Mckenna, CA 98525-5674",(730)934-8249,qstokes@example.org
+12,Credit Card,182,Darron,"84445 Elinor Glens
+Port Zita, SD 39410",117.822.3577,gwisozk@example.net
+13,Credit Card,589,Kenya,"338 Floy Mountains Suite 589
+Yesseniaville, TN 60847",08023680831,maxime86@example.net
+14,Direct Debit,240,Abbie,"983 Elinore Passage
+Darrionborough, SC 53915-0479",07594320656,celine.bogan@example.com
+15,Credit Card,980,Lyric,"649 Ocie Lights
+Wyatttown, UT 12697",1-472-036-0434,schultz.arnoldo@example.net

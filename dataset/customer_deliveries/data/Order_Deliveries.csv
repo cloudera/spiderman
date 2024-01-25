@@ -1,0 +1,16 @@
+location_code,actual_order_id,delivery_status_code,driver_employee_id,truck_id,delivery_date
+27 City Rd,11,Ready,6,11,2018-03-21 00:57:22
+27 City Rd,1,On Road,4,10,2018-02-26 01:32:49
+27 City Rd,3,Ready,1,2,2018-03-08 17:17:12
+73 Nancy Av,2,Delivered,12,10,2018-03-17 19:42:08
+73 Nancy Av,2,On Road,1,6,2018-03-05 03:03:24
+34 Benz St,14,Delivered,11,6,2018-03-12 20:45:27
+73 Nancy Av,6,On Road,11,11,2018-03-22 22:09:56
+34 Benz St,6,Delivered,2,10,2018-03-06 22:39:17
+34 Benz St,5,Delivered,14,6,2018-03-02 09:03:13
+73 Nancy Av,8,Ready,13,4,2018-03-17 09:09:06
+58 Roof Av,9,Ready,3,9,2018-02-26 13:22:53
+58 Roof Av,5,Ready,8,1,2018-03-20 20:36:44
+58 Roof Av,9,Ready,14,5,2018-03-14 05:16:17
+58 Roof Av,10,Ready,13,11,2018-03-18 02:35:08
+34 Benz St,4,On Road,1,2,2018-03-01 00:50:45

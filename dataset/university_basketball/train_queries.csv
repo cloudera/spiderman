@@ -1,0 +1,47 @@
+question,sql
+List all schools and their nicknames in the order of founded year.,"SELECT school ,  nickname FROM university ORDER BY founded"
+"What are the different schools and their nicknames, ordered by their founding years?","SELECT school ,  nickname FROM university ORDER BY founded"
+List all public schools and their locations.,"SELECT school ,  LOCATION FROM university WHERE affiliation  =  'Public'"
+What are the public schools and what are their locations?,"SELECT school ,  LOCATION FROM university WHERE affiliation  =  'Public'"
+When was the school with the largest enrollment founded?,SELECT founded FROM university ORDER BY enrollment DESC LIMIT 1
+Return the founded year for the school with the largest enrollment.,SELECT founded FROM university ORDER BY enrollment DESC LIMIT 1
+Find the founded year of the newest non public school.,SELECT founded FROM university WHERE affiliation != 'Public' ORDER BY founded DESC LIMIT 1
+What is the founded year of the non public school that was founded most recently?,SELECT founded FROM university WHERE affiliation != 'Public' ORDER BY founded DESC LIMIT 1
+How many schools are in the basketball match?,SELECT count(DISTINCT school_id) FROM basketball_match
+Count the number of schools that have had basketball matches.,SELECT count(DISTINCT school_id) FROM basketball_match
+What is the highest acc percent score in the competition?,SELECT acc_percent FROM basketball_match ORDER BY acc_percent DESC LIMIT 1
+Return the highest acc percent across all basketball matches.,SELECT acc_percent FROM basketball_match ORDER BY acc_percent DESC LIMIT 1
+What is the primary conference of the school that has the lowest acc percent score in the competition?,SELECT t1.Primary_conference FROM university AS t1 JOIN basketball_match AS t2 ON t1.school_id  =  t2.school_id ORDER BY t2.acc_percent LIMIT 1
+Return the primary conference of the school with the lowest acc percentage score.,SELECT t1.Primary_conference FROM university AS t1 JOIN basketball_match AS t2 ON t1.school_id  =  t2.school_id ORDER BY t2.acc_percent LIMIT 1
+What is the team name and acc regular season score of the school that was founded for the longest time?,"SELECT t2.team_name ,  t2.ACC_Regular_Season FROM university AS t1 JOIN basketball_match AS t2 ON t1.school_id  =  t2.school_id ORDER BY t1.founded LIMIT 1"
+Return the name of the team and the acc during the regular season for the school that was founded the earliest.,"SELECT t2.team_name ,  t2.ACC_Regular_Season FROM university AS t1 JOIN basketball_match AS t2 ON t1.school_id  =  t2.school_id ORDER BY t1.founded LIMIT 1"
+Find the location and all games score of the school that has Clemson as its team name.,"SELECT t2.All_Games ,  t1.location FROM university AS t1 JOIN basketball_match AS t2 ON t1.school_id  =  t2.school_id WHERE team_name  =  'Clemson'"
+What are the all games score and location of the school called Clemson?,"SELECT t2.All_Games ,  t1.location FROM university AS t1 JOIN basketball_match AS t2 ON t1.school_id  =  t2.school_id WHERE team_name  =  'Clemson'"
+What are the average enrollment size of the universities that are founded before 1850?,SELECT avg(enrollment) FROM university WHERE founded  <  1850
+Return the average enrollment of universities founded before 1850.,SELECT avg(enrollment) FROM university WHERE founded  <  1850
+Show the enrollment and primary_conference of the oldest college.,"SELECT enrollment ,  primary_conference FROM university ORDER BY founded LIMIT 1"
+What are the enrollment and primary conference for the university which was founded the earliest?,"SELECT enrollment ,  primary_conference FROM university ORDER BY founded LIMIT 1"
+What is the total and minimum enrollment of all schools?,"SELECT sum(enrollment) ,  min(enrollment) FROM university"
+Return the total and minimum enrollments across all schools.,"SELECT sum(enrollment) ,  min(enrollment) FROM university"
+Find the total student enrollment for different affiliation type schools.,"SELECT sum(enrollment) ,  affiliation FROM university GROUP BY affiliation"
+What are the total enrollments of universities of each affiliation type?,"SELECT sum(enrollment) ,  affiliation FROM university GROUP BY affiliation"
+How many schools do not participate in the basketball match?,SELECT count(*) FROM university WHERE school_id NOT IN (SELECT school_id FROM basketball_match)
+Count the number of universities that do not participate in the baketball match.,SELECT count(*) FROM university WHERE school_id NOT IN (SELECT school_id FROM basketball_match)
+Find the schools that were either founded after 1850 or public.,SELECT school FROM university WHERE founded  >  1850 OR affiliation  =  'Public'
+What are the schools that were either founded before 1850 or are public?,SELECT school FROM university WHERE founded  >  1850 OR affiliation  =  'Public'
+Find how many different affiliation types there are.,SELECT count(DISTINCT affiliation) FROM university
+Count the number of different affiliation types.,SELECT count(DISTINCT affiliation) FROM university
+Find how many school locations have the word 'NY'.,"SELECT count(*) FROM university WHERE LOCATION LIKE ""%NY%"""
+How many universities have a location that contains NY?,"SELECT count(*) FROM university WHERE LOCATION LIKE ""%NY%"""
+Find the team names of the universities whose enrollments are smaller than the average enrollment size.,SELECT t2.team_name FROM university AS t1 JOIN basketball_match AS t2 ON t1.school_id  =  t2.school_id WHERE enrollment  <  (SELECT avg(enrollment) FROM university)
+What are the names of teams from universities that have a below average enrollment?,SELECT t2.team_name FROM university AS t1 JOIN basketball_match AS t2 ON t1.school_id  =  t2.school_id WHERE enrollment  <  (SELECT avg(enrollment) FROM university)
+Find the number of universities that have over a 20000 enrollment size for each affiliation type.,"SELECT count(*) ,  affiliation FROM university WHERE enrollment  >  20000 GROUP BY affiliation"
+"What are the different affiliations, and how many schools with each have an enrollment size of above 20000?","SELECT count(*) ,  affiliation FROM university WHERE enrollment  >  20000 GROUP BY affiliation"
+Find the total number of students enrolled in the colleges that were founded after the year of 1850 for each affiliation type.,"SELECT sum(Enrollment) ,  affiliation FROM university WHERE founded  >  1850 GROUP BY affiliation"
+"What are the different affiliations, and what is the total enrollment of schools founded after 1850 for each enrollment type?","SELECT sum(Enrollment) ,  affiliation FROM university WHERE founded  >  1850 GROUP BY affiliation"
+What is the maximum enrollment across all schools?,SELECT max(Enrollment) FROM university
+Return the maximum enrollment across all schools.,SELECT max(Enrollment) FROM university
+List all information regarding the basketball match.,SELECT * FROM basketball_match
+What is all the information about the basketball match?,SELECT * FROM basketball_match
+"List names of all teams in the basketball competition, ordered by all home scores in descending order.",SELECT team_name FROM basketball_match ORDER BY All_Home DESC
+"What are the names of all the teams in the basketball competition, sorted by all home scores in descending order?",SELECT team_name FROM basketball_match ORDER BY All_Home DESC

@@ -1,0 +1,7 @@
+form_id,form_type_code,service_id,form_number,form_name,form_description
+1,Basic,13,8069,SSN Application,Form for SSN Application
+2,Complex,9,2675,Marriage Certificate,Marriage Certificate
+3,Complex,2,9837,Divorce  Certificate,Divorce  Certificate
+4,Complex,14,9173,Moving Form,Form for moving house
+5,Basic,3,6673,Account Application,Form for Account Application
+6,Complex,7,9130,Property Change,Form for Property Change

@@ -1,0 +1,9 @@
+id,name,Location,Product,Chromosome,OMIM,Porphyria
+1,ALA synthase,Mitochondrion,δ-Aminolevulinic acid,3p21.1,125290,none
+2,ALA dehydratase,Cytosol,Porphobilinogen,9q34,125270,ALA-Dehydratase deficiency
+3,PBG deaminase,Cytosol,Hydroxymethyl bilane,11q23.3,176000,acute intermittent porphyria
+4,Uroporphyrinogen III synthase,Cytosol,Uroporphyrinogen III,10q25.2-q26.3,606938,congenital erythropoietic porphyria
+5,Uroporphyrinogen III decarboxylase,Cytosol,Coproporphyrinogen III,1p34,176100,porphyria cutanea tarda
+6,Coproporphyrinogen III oxidase,Mitochondrion,Protoporphyrinogen IX,3q12,121300,coproporphyria
+7,Protoporphyrinogen oxidase,Mitochondrion,Protoporphyrin IX,1q22,600923,variegate porphyria
+8,Ferrochelatase,Mitochondrion,Heme,18q21.3,177000,erythropoietic protoporphyria

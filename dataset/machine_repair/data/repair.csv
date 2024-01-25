@@ -1,0 +1,10 @@
+repair_ID,name,Launch_Date,Notes
+1,Discoverer,21 Jan 2009,repair Failed. Failed to achieve orbit
+2,Discoverer 1,28 Feb 2009,First object in polar orbit
+3,Discoverer 3,03 Jun 2009,repair failed. Failed to achieve orbit
+4,OPS 3236,13 Jun 2014,First object in polar orbit
+5,OPS 3467,24 Mar 2014,repair failed. Guidance system failed. No orbit.
+6,OPS 3754,19 Jun 2014,Out-of-focus area on some film.
+7,OPS 3491,10 Jun 2014,Cameras operated satisfactorily
+8,OPS 3042,05 Aug 2014,Cameras operated successfully.
+9,OPS 3360,18 Nov 2014,Cameras operated successfully.

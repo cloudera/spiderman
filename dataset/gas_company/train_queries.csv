@@ -1,0 +1,47 @@
+question,sql
+How many gas companies are there?,SELECT count(*) FROM company
+What is the total number of companies?,SELECT count(*) FROM company
+List the company name and rank for all companies in the decreasing order of their sales.,"SELECT company ,  rank FROM company ORDER BY Sales_billion DESC"
+What is the name and rank of every company ordered by descending number of sales?,"SELECT company ,  rank FROM company ORDER BY Sales_billion DESC"
+Show the company name and the main industry for all companies whose headquarters are not from USA.,"SELECT company ,  main_industry FROM company WHERE headquarters != 'USA'"
+What are the companies and main industries of all companies that are not headquartered in the United States?,"SELECT company ,  main_industry FROM company WHERE headquarters != 'USA'"
+Show all company names and headquarters in the descending order of market value.,"SELECT company ,  headquarters FROM company ORDER BY market_value DESC"
+What are the names and headquarters of all companies ordered by descending market value?,"SELECT company ,  headquarters FROM company ORDER BY market_value DESC"
+"Show minimum, maximum, and average market value for all companies.","SELECT min(market_value) ,  max(market_value) ,  avg(market_value) FROM company"
+"What is the minimum, maximum, and average market value for every company?","SELECT min(market_value) ,  max(market_value) ,  avg(market_value) FROM company"
+Show all main industry for all companies.,SELECT DISTINCT main_industry FROM company
+What are the different main industries for all companies?,SELECT DISTINCT main_industry FROM company
+List all headquarters and the number of companies in each headquarter.,"SELECT headquarters ,  count(*) FROM company GROUP BY headquarters"
+"For each headquarter, what are the headquarter and how many companies are centered there?","SELECT headquarters ,  count(*) FROM company GROUP BY headquarters"
+Show all main industry and total market value in each industry.,"SELECT main_industry ,  sum(market_value) FROM company GROUP BY main_industry"
+What are the main indstries and total market value for each industry?,"SELECT main_industry ,  sum(market_value) FROM company GROUP BY main_industry"
+List the main industry with highest total market value and its number of companies.,"SELECT main_industry ,  count(*) FROM company GROUP BY main_industry ORDER BY sum(market_value) DESC LIMIT 1"
+"For each main industry, what is the total number of companies for the industry with the highest total market value?","SELECT main_industry ,  count(*) FROM company GROUP BY main_industry ORDER BY sum(market_value) DESC LIMIT 1"
+Show headquarters with at least two companies in the banking industry.,SELECT headquarters FROM company WHERE main_industry  =  'Banking' GROUP BY headquarters HAVING count(*)  >=  2
+What are the headquarters with at least two companies in the banking industry?,SELECT headquarters FROM company WHERE main_industry  =  'Banking' GROUP BY headquarters HAVING count(*)  >=  2
+"Show gas station id, location, and manager_name for all gas stations ordered by open year.","SELECT station_id ,  LOCATION ,  manager_name FROM gas_station ORDER BY open_year"
+"What are the gas station ids, locations, and manager names for the gas stations ordered by opening year?","SELECT station_id ,  LOCATION ,  manager_name FROM gas_station ORDER BY open_year"
+How many gas station are opened between 2000 and 2005?,SELECT count(*) FROM gas_station WHERE open_year BETWEEN 2000 AND 2005
+What is the total number of gas stations that opened between 2000 and 2005?,SELECT count(*) FROM gas_station WHERE open_year BETWEEN 2000 AND 2005
+Show all locations and the number of gas stations in each location ordered by the count.,"SELECT LOCATION ,  count(*) FROM gas_station GROUP BY LOCATION ORDER BY count(*)"
+"For each location, how many gas stations are there in order?","SELECT LOCATION ,  count(*) FROM gas_station GROUP BY LOCATION ORDER BY count(*)"
+Show all headquarters with both a company in banking industry and a company in Oil and gas.,SELECT headquarters FROM company WHERE main_industry  =  'Banking' INTERSECT SELECT headquarters FROM company WHERE main_industry  =  'Oil and gas'
+What are the headquarters that have both a company in the banking and 'oil and gas' industries?,SELECT headquarters FROM company WHERE main_industry  =  'Banking' INTERSECT SELECT headquarters FROM company WHERE main_industry  =  'Oil and gas'
+Show all headquarters without a company in banking industry.,SELECT headquarters FROM company EXCEPT SELECT headquarters FROM company WHERE main_industry  =  'Banking'
+What are the headquarters without companies that are in the banking industry?,SELECT headquarters FROM company EXCEPT SELECT headquarters FROM company WHERE main_industry  =  'Banking'
+Show the company name with the number of gas station.,"SELECT T2.company ,  count(*) FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id GROUP BY T1.company_id"
+"For each company id, what are the companies and how many gas stations does each one operate?","SELECT T2.company ,  count(*) FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id GROUP BY T1.company_id"
+Show company name and main industry without a gas station.,"SELECT company ,  main_industry FROM company WHERE company_id NOT IN (SELECT company_id FROM station_company)"
+What are the main industries of the companies without gas stations and what are the companies?,"SELECT company ,  main_industry FROM company WHERE company_id NOT IN (SELECT company_id FROM station_company)"
+Show the manager name for gas stations belonging to the ExxonMobil company.,SELECT T3.manager_name FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id WHERE T2.company  =  'ExxonMobil'
+What are the names of the managers for gas stations that are operated by the ExxonMobil company?,SELECT T3.manager_name FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id WHERE T2.company  =  'ExxonMobil'
+Show all locations where a gas station for company with market value greater than 100 is located.,SELECT T3.location FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id WHERE T2.market_value  >  100
+What are the locations that have gas stations owned by a company with a market value greater than 100?,SELECT T3.location FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id WHERE T2.market_value  >  100
+Show the manager name with most number of gas stations opened after 2000.,SELECT manager_name FROM gas_station WHERE open_year  >  2000 GROUP BY manager_name ORDER BY count(*) DESC LIMIT 1
+What is the name of the manager with the most gas stations that opened after 2000?,SELECT manager_name FROM gas_station WHERE open_year  >  2000 GROUP BY manager_name ORDER BY count(*) DESC LIMIT 1
+order all gas station locations by the opening year.,SELECT LOCATION FROM gas_station ORDER BY open_year
+What are the locations of all the gas stations ordered by opening year?,SELECT LOCATION FROM gas_station ORDER BY open_year
+"find the rank, company names, market values of the companies in the banking industry order by their sales and profits in billion.","SELECT rank ,  company ,  market_value FROM company WHERE main_industry  =  'Banking' ORDER BY sales_billion ,  profits_billion"
+"What is the rank, company, and market value of every comapny in the banking industry ordered by sales and profits?","SELECT rank ,  company ,  market_value FROM company WHERE main_industry  =  'Banking' ORDER BY sales_billion ,  profits_billion"
+find the location and Representative name of the gas stations owned by the companies with top 3 Asset amounts.,"SELECT T3.location ,  T3.Representative_Name FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id ORDER BY T2.Assets_billion DESC LIMIT 3"
+What are the locations and representatives' names of the gas stations owned by the companies with the 3 largest amounts of assets?,"SELECT T3.location ,  T3.Representative_Name FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id ORDER BY T2.Assets_billion DESC LIMIT 3"

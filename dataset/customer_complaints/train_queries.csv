@@ -1,0 +1,47 @@
+question,sql
+How many customers are there?,SELECT count(*) FROM customers
+Count the number of customers.,SELECT count(*) FROM customers
+"Find the emails and phone numbers of all the customers, ordered by email address and phone number.","SELECT email_address ,  phone_number FROM customers ORDER BY email_address ,  phone_number"
+"What are the emails and phone numbers of all customers, sorted by email address and phone number?","SELECT email_address ,  phone_number FROM customers ORDER BY email_address ,  phone_number"
+"Which city has the least number of customers whose type code is ""Good Credit Rating""?","SELECT town_city FROM customers WHERE customer_type_code  =  ""Good Credit Rating"" GROUP BY town_city ORDER BY count(*) LIMIT 1"
+"Return the city with the customer type code ""Good Credit Rating"" that had the fewest customers.","SELECT town_city FROM customers WHERE customer_type_code  =  ""Good Credit Rating"" GROUP BY town_city ORDER BY count(*) LIMIT 1"
+List the name of all products along with the number of complaints that they have received.,"SELECT t1.product_name ,  count(*) FROM products AS t1 JOIN complaints AS t2 ON t1.product_id  =  t2.product_id GROUP BY t1.product_name"
+"What are all the different product names, and how many complains has each received?","SELECT t1.product_name ,  count(*) FROM products AS t1 JOIN complaints AS t2 ON t1.product_id  =  t2.product_id GROUP BY t1.product_name"
+Find the emails of customers who has filed a complaints of the product with the most complaints.,SELECT t1.email_address FROM customers AS t1 JOIN complaints AS t2 ON t1.customer_id  =  t2.customer_id GROUP BY t1.customer_id ORDER BY count(*) LIMIT 1
+What are the emails of customers who have filed complaints on the product which has had the greatest number of complaints?,SELECT t1.email_address FROM customers AS t1 JOIN complaints AS t2 ON t1.customer_id  =  t2.customer_id GROUP BY t1.customer_id ORDER BY count(*) LIMIT 1
+Which products has been complained by the customer who has filed least amount of complaints?,SELECT DISTINCT t1.product_name FROM products AS t1 JOIN complaints AS t2 ON t1.product_id  =  t2.product_id JOIN customers AS t3 GROUP BY t3.customer_id ORDER BY count(*) LIMIT 1
+Return the names of products that have had complaints filed by the customer who has filed the fewest complaints.,SELECT DISTINCT t1.product_name FROM products AS t1 JOIN complaints AS t2 ON t1.product_id  =  t2.product_id JOIN customers AS t3 GROUP BY t3.customer_id ORDER BY count(*) LIMIT 1
+What is the phone number of the customer who has filed the most recent complaint?,SELECT t1.phone_number FROM customers AS t1 JOIN complaints AS t2 ON t1.customer_id  =  t2.customer_id ORDER BY t2.date_complaint_raised DESC LIMIT 1
+Return the phone number of the customer who filed the complaint that was raised most recently.,SELECT t1.phone_number FROM customers AS t1 JOIN complaints AS t2 ON t1.customer_id  =  t2.customer_id ORDER BY t2.date_complaint_raised DESC LIMIT 1
+Find the email and phone number of the customers who have never filed a complaint before.,"SELECT email_address ,  phone_number FROM customers WHERE customer_id NOT IN (SELECT customer_id FROM complaints)"
+What are the emails and phone numbers of custoemrs who have never filed a complaint?,"SELECT email_address ,  phone_number FROM customers WHERE customer_id NOT IN (SELECT customer_id FROM complaints)"
+Find the phone number of all the customers and staff.,SELECT phone_number FROM customers UNION SELECT phone_number FROM staff
+What are the phone numbers of all customers and all staff members?,SELECT phone_number FROM customers UNION SELECT phone_number FROM staff
+"What is the description of the product named ""Chocolate""?","SELECT product_description FROM products WHERE product_name  =  ""Chocolate"""
+"Return the description of the product called ""Chocolate"".","SELECT product_description FROM products WHERE product_name  =  ""Chocolate"""
+Find the name and category of the most expensive product.,"SELECT product_name ,  product_category_code FROM products ORDER BY product_price DESC LIMIT 1"
+What is the name and category code of the product with the highest price?,"SELECT product_name ,  product_category_code FROM products ORDER BY product_price DESC LIMIT 1"
+Find the prices of products which has never received a single complaint.,SELECT product_price FROM products WHERE product_id NOT IN (SELECT product_id FROM complaints)
+What are the prices of products that have never gotten a complaint?,SELECT product_price FROM products WHERE product_id NOT IN (SELECT product_id FROM complaints)
+What is the average price of the products for each category?,"SELECT avg(product_price) ,  product_category_code FROM products GROUP BY product_category_code"
+Return the average price of products that have each category code.,"SELECT avg(product_price) ,  product_category_code FROM products GROUP BY product_category_code"
+Find the last name of the staff member who processed the complaint of the cheapest product.,SELECT t1.last_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id JOIN products AS t3 ON t2.product_id  =  t3.product_id ORDER BY t3.product_price LIMIT 1
+What is the last name of the staff member in charge of the complaint on the product with the lowest price?,SELECT t1.last_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id JOIN products AS t3 ON t2.product_id  =  t3.product_id ORDER BY t3.product_price LIMIT 1
+Which complaint status has more than 3 records on file?,SELECT complaint_status_code FROM complaints GROUP BY complaint_status_code HAVING count(*)  >  3
+Return complaint status codes have more than 3 corresponding complaints?,SELECT complaint_status_code FROM complaints GROUP BY complaint_status_code HAVING count(*)  >  3
+"Find the last name of the staff whose email address contains ""wrau"".","SELECT last_name FROM staff WHERE email_address LIKE ""%wrau%"""
+"What are the last names of staff with email addressed containing the substring ""wrau""?","SELECT last_name FROM staff WHERE email_address LIKE ""%wrau%"""
+How many customers are there in the customer type with the most customers?,SELECT count(*) FROM customers GROUP BY customer_type_code ORDER BY count(*) DESC LIMIT 1
+Count the number of customers that have the customer type that is most common.,SELECT count(*) FROM customers GROUP BY customer_type_code ORDER BY count(*) DESC LIMIT 1
+What is the last name of the staff who has handled the first ever complaint?,SELECT t1.last_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id ORDER BY t2.date_complaint_raised LIMIT 1
+Return the last name of the staff member who handled the complaint with the earliest date raised.,SELECT t1.last_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id ORDER BY t2.date_complaint_raised LIMIT 1
+How many distinct complaint type codes are there in the database?,SELECT count(DISTINCT complaint_type_code) FROM complaints
+Count the number of different complaint type codes.,SELECT count(DISTINCT complaint_type_code) FROM complaints
+"Find the address line 1 and 2 of the customer with email ""vbogisich@example.org"".","SELECT address_line_1 ,  address_line_2 FROM customers WHERE email_address  =  ""vbogisich@example.org"""
+"What are lines 1 and 2 of the addressed of the customer with the email ""vbogisich@example.org""?","SELECT address_line_1 ,  address_line_2 FROM customers WHERE email_address  =  ""vbogisich@example.org"""
+Find the number of complaints with Product Failure type for each complaint status.,"SELECT complaint_status_code ,  count(*) FROM complaints WHERE complaint_type_code  =  ""Product Failure"" GROUP BY complaint_status_code"
+"Of complaints with the type code ""Product Failure"", how many had each different status code?","SELECT complaint_status_code ,  count(*) FROM complaints WHERE complaint_type_code  =  ""Product Failure"" GROUP BY complaint_status_code"
+What is first names of the top 5 staff who have handled the greatest number of complaints?,SELECT t1.first_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id GROUP BY t2.staff_id ORDER BY count(*) LIMIT 5
+Return the first names of the 5 staff members who have handled the most complaints.,SELECT t1.first_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id GROUP BY t2.staff_id ORDER BY count(*) LIMIT 5
+Which state has the most customers?,SELECT state FROM customers GROUP BY state ORDER BY count(*) LIMIT 1
+Give the state that has the most customers.,SELECT state FROM customers GROUP BY state ORDER BY count(*) LIMIT 1

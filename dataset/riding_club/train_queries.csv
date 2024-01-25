@@ -1,0 +1,18 @@
+question,sql
+How many players are there?,SELECT count(*) FROM player
+List the names of players in ascending order of votes.,SELECT Player_name FROM player ORDER BY Votes ASC
+What are the gender and occupation of players?,"SELECT Gender ,  Occupation FROM player"
+"List the name and residence for players whose occupation is not ""Researcher"".","SELECT Player_name ,  residence FROM player WHERE Occupation != ""Researcher"""
+"Show the names of sponsors of players whose residence is either ""Brandon"" or ""Birtle"".","SELECT Sponsor_name FROM player WHERE Residence  =  ""Brandon"" OR Residence  =  ""Birtle"""
+What is the name of the player with the largest number of votes?,SELECT Player_name FROM player ORDER BY Votes DESC LIMIT 1
+Show different occupations along with the number of players in each occupation.,"SELECT Occupation ,  COUNT(*) FROM player GROUP BY Occupation"
+Please show the most common occupation of players.,SELECT Occupation FROM player GROUP BY Occupation ORDER BY COUNT(*) DESC LIMIT 1
+Show the residences that have at least two players.,SELECT Residence FROM player GROUP BY Residence HAVING COUNT(*)  >=  2
+Show the names of players and names of their coaches.,"SELECT T3.Player_name ,  T2.coach_name FROM player_coach AS T1 JOIN coach AS T2 ON T1.Coach_ID  =  T2.Coach_ID JOIN player AS T3 ON T1.Player_ID  =  T3.Player_ID"
+Show the names of players coached by the rank 1 coach.,SELECT T3.Player_name FROM player_coach AS T1 JOIN coach AS T2 ON T1.Coach_ID  =  T2.Coach_ID JOIN player AS T3 ON T1.Player_ID  =  T3.Player_ID WHERE T2.Rank  =  1
+Show the names and genders of players with a coach starting after 2011.,"SELECT T3.Player_name ,  T3.gender FROM player_coach AS T1 JOIN coach AS T2 ON T1.Coach_ID  =  T2.Coach_ID JOIN player AS T3 ON T1.Player_ID  =  T3.Player_ID WHERE T1.Starting_year  >  2011"
+Show the names of players and names of their coaches in descending order of the votes of players.,"SELECT T3.Player_name ,  T2.coach_name FROM player_coach AS T1 JOIN coach AS T2 ON T1.Coach_ID  =  T2.Coach_ID JOIN player AS T3 ON T1.Player_ID  =  T3.Player_ID ORDER BY T3.Votes DESC"
+List the names of players that do not have coaches.,SELECT Player_name FROM player WHERE Player_ID NOT IN (SELECT Player_ID FROM player_coach)
+"Show the residences that have both a player of gender ""M"" and a player of gender ""F"".","SELECT Residence FROM player WHERE gender  =  ""M"" INTERSECT SELECT Residence FROM player WHERE gender  =  ""F"""
+"How many coaches does each club has? List the club id, name and the number of coaches.","SELECT T1.club_id ,  T1.club_name, count(*) FROM club AS T1 JOIN coach AS T2 ON T1.club_id  =  T2.club_id GROUP BY T1.club_id"
+How many gold medals has the club with the most coaches won?,"SELECT T1.club_id ,  T1.gold FROM match_result AS T1 JOIN coach AS T2 ON T1.club_id  =  T2.club_id GROUP BY T1.club_id ORDER BY count(*) DESC LIMIT 1"

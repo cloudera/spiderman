@@ -1,0 +1,18 @@
+question,sql
+How many roller coasters are there?,SELECT count(*) FROM roller_coaster
+List the names of roller coasters by ascending order of length.,SELECT Name FROM roller_coaster ORDER BY LENGTH ASC
+What are the lengths and heights of roller coasters?,"SELECT LENGTH ,  Height FROM roller_coaster"
+"List the names of countries whose language is not ""German"".","SELECT Name FROM country WHERE Languages != ""German"""
+Show the statuses of roller coasters longer than 3300 or higher than 100.,SELECT Status FROM roller_coaster WHERE LENGTH  >  3300 OR Height  >  100
+What are the speeds of the longest roller coaster?,SELECT Speed FROM roller_coaster ORDER BY LENGTH DESC LIMIT 1
+What is the average speed of roller coasters?,SELECT avg(Speed) FROM roller_coaster
+Show the different statuses and the numbers of roller coasters for each status.,"SELECT Status ,  COUNT(*) FROM roller_coaster GROUP BY Status"
+Please show the most common status of roller coasters.,SELECT Status FROM roller_coaster GROUP BY Status ORDER BY COUNT(*) DESC LIMIT 1
+List the status shared by more than two roller coaster.,SELECT Status FROM roller_coaster GROUP BY Status HAVING COUNT(*)  >  2
+Show the park of the roller coaster with the highest speed.,SELECT Park FROM roller_coaster ORDER BY Speed DESC LIMIT 1
+Show the names of roller coasters and names of country they are in.,"SELECT T2.Name ,  T1.Name FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID"
+Show the names of countries that have more than one roller coaster.,SELECT T1.Name FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID GROUP BY T1.Name HAVING COUNT(*)  >  1
+Show the name and population of the country that has the highest roller coaster.,"SELECT T1.Name ,  T1.population FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID ORDER BY T2.Height DESC LIMIT 1"
+Show the names of countries and the average speed of roller coasters from each country.,"SELECT T1.Name ,  avg(T2.Speed) FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID GROUP BY T1.Name"
+How many countries do not have an roller coaster longer than 3000?,SELECT count(*) FROM country WHERE country_id NOT IN ( SELECT country_id FROM roller_coaster WHERE LENGTH  >  3000 )
+"What are the country names, area and population which has both roller coasters with speed higher","SELECT T1.name ,  T1.area ,  T1.population FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID WHERE T2.speed  >  60 INTERSECT SELECT T1.name ,  T1.area ,  T1.population FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID WHERE T2.speed  <  55"

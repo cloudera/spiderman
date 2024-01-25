@@ -1,0 +1,16 @@
+Claim_Processing_ID,Claim_ID,Claim_Outcome_Code,Claim_Stage_ID,Staff_ID
+118,28,In progress,1,771
+145,62,In progress,1,589
+213,27,In progress,1,589
+221,45,Disputed,1,427
+242,15,In progress,3,673
+243,15,Settled,1,687
+309,34,Disputed,3,771
+342,15,In progress,3,673
+480,45,In progress,1,822
+659,62,Settled,3,510
+686,27,Settled,1,718
+720,24,In progress,1,822
+818,90,Disputed,3,986
+833,81,Disputed,3,822
+898,24,In progress,1,718

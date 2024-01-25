@@ -1,0 +1,4 @@
+cust_ID,cust_name,acc_type,acc_bal,no_of_loans,credit_score,branch_ID,state
+1,Mary,saving,2000,2,30,2,Utah
+2,Jack,checking,1000,1,20,1,Texas
+3,Owen,saving,800000,0,210,3,New York

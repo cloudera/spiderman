@@ -1,0 +1,16 @@
+student_id,address_id,first_name,middle_name,last_name,cell_mobile_number,email_address,date_first_rental,date_left_university,other_student_details
+1,19,Emma,Frederic,Rohan,235.899.9744,derrick.jenkins@example.com,2017-12-05 15:20:04,2018-03-03 03:33:05,
+2,9,Louvenia,Fatima,Hansen,1-247-673-8446,rohan.clarabelle@example.org,2017-08-08 22:30:36,2018-02-24 11:12:11,
+3,10,Rhea,Gardner,Bergnaum,1-751-162-9676x115,kkirlin@example.org,2017-11-15 04:57:28,2018-03-19 12:49:20,
+4,8,David,Darlene,Gorczany,1-895-196-9979,eolson@example.com,2018-02-15 20:03:11,2018-03-11 02:21:24,
+5,8,Lucile,Stone,Gottlieb,1-036-062-5465,dicki.kathryne@example.org,2017-07-20 18:20:27,2018-03-18 16:07:42,
+6,12,Antonietta,Crystal,Fahey,(874)070-9495,norwood.howell@example.org,2017-10-31 12:33:09,2018-03-20 22:01:07,
+7,20,Rupert,Lincoln,Marks,763.072.5520x5907,lisette.brekke@example.net,2017-09-25 12:02:23,2018-03-01 08:56:04,first honor
+8,14,Julia,Arno,Balistreri,319.497.4575x2214,jasmin.schuppe@example.com,2018-02-23 02:28:07,2018-03-01 16:03:55,
+9,19,Christy,Devonte,Huels,(568)451-0917x3945,dora.zboncak@example.org,2018-01-11 19:49:39,2018-03-15 01:47:11,
+10,2,Adella,Chesley,Krajcik,08605192839,frederique.mante@example.org,2017-07-05 19:15:29,2018-03-11 15:57:19,first honor
+11,2,Isac,Cleta,Fadel,+60(5)3280072514,qharvey@example.com,2017-09-13 04:06:15,2018-03-05 07:30:22,first honor
+12,1,Ferne,Jerod,Weimann,(921)011-7909x3518,mitchel55@example.net,2017-05-24 05:00:18,2018-02-28 12:33:53,
+13,17,Misael,Justyn,Will,(062)892-7033,gbeatty@example.com,2017-10-15 06:52:46,2018-03-18 07:01:27,
+14,9,Fanny,Ashlee,Haley,(820)260-5721,foster.zemlak@example.com,2018-03-14 11:37:10,2018-03-12 15:05:53,
+15,15,Eugene,Mustafa,Tremblay,1-498-138-8088,kertzmann.devon@example.net,2018-03-11 22:42:47,2018-03-07 11:41:26,first honor

@@ -1,0 +1,15 @@
+StuID,SportName,HoursPerWeek,GamesPlayed,OnScholarship
+1001,Athletics,2,5,N
+1002,Football,7,20,Y
+1003,Football,45,18,Y
+1005,Lacrosse,35,16,N
+1015,Lacrosse,25,41,Y
+1018,Lacrosse,39,25,N
+1019,Swimming,8,16,Y
+1019,Tennis,19,62,N
+1022,Baseball,29,31,N
+1023,Basketball,14,8,Y
+1023,Tennis,1,56,Y
+1026,Cricket,23,37,Y
+1033,Soccer,45,45,Y
+1035,Curling,50,94,N

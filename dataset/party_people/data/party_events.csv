@@ -1,0 +1,9 @@
+Event_ID,Event_Name,Party_ID,Member_in_charge_ID
+1,Annaual Meeting,1,4
+2,Conference,1,12
+3,Annaual Meeting,2,2
+4,Budget Meeting,2,3
+5,Annaual Meeting,3,10
+6,Election Meeting,3,11
+7,Budget Meeting,3,15
+8,Election Meeting,1,4

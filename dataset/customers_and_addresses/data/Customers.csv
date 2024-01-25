@@ -1,0 +1,16 @@
+customer_id,payment_method,customer_name,date_became_customer,other_customer_details
+1,Cash,Dr. Julia Wuckert MD,2018-03-01 23:20:10,
+2,Cheque,Tillman Ernser,2018-02-28 11:37:44,
+3,Credit Card,Rodrick Heaney,2018-03-09 17:41:58,
+4,Credit Card,Prof. Alexzander Hamill,2018-02-24 00:20:18,VIP
+5,Cheque,Prof. Reyes Berge II,2018-03-07 18:05:11,
+6,Cash,Maudie Kertzmann,2018-02-26 11:57:47,
+7,Credit Card,Mozell Morissette,2018-02-25 13:15:04,VIP
+8,Credit Card,Eunice Morar,2018-03-21 01:01:04,
+9,Cheque,Devin Mills,2018-03-05 16:52:51,
+10,Cash,Kitty Padberg III,2018-03-22 18:09:09,
+11,Cheque,Salvatore Tillman,2018-03-04 00:17:48,
+12,Cheque,Clifford Pagac,2018-02-24 10:24:23,
+13,Credit Card,Miss Aliyah Witting,2018-03-05 07:19:45,
+14,Cheque,Alexane Kilback,2018-03-08 01:17:31,
+15,Cash,Prof. Ibrahim Bashirian,2018-03-15 02:54:27,

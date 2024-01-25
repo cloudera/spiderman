@@ -1,0 +1,43 @@
+question,sql
+Find the number of pets whose weight is heavier than 10.,SELECT count(*) FROM pets WHERE weight  >  10
+How many pets have a greater weight than 10?,SELECT count(*) FROM pets WHERE weight  >  10
+Find the weight of the youngest dog.,SELECT weight FROM pets ORDER BY pet_age LIMIT 1
+How much does the youngest dog weigh?,SELECT weight FROM pets ORDER BY pet_age LIMIT 1
+Find the maximum weight for each type of pet. List the maximum weight and pet type.,"SELECT max(weight) ,  petType FROM pets GROUP BY petType"
+List the maximum weight and type for each type of pet.,"SELECT max(weight) ,  petType FROM pets GROUP BY petType"
+Find number of pets owned by students who are older than 20.,SELECT count(*) FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid WHERE T1.age  >  20
+How many pets are owned by students that have an age greater than 20?,SELECT count(*) FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid WHERE T1.age  >  20
+Find the number of dog pets that are raised by female students (with sex F).,SELECT count(*) FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T2.petid  =  T3.petid WHERE T1.sex  =  'F' AND T3.pettype  =  'dog'
+How many dog pets are raised by female students?,SELECT count(*) FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T2.petid  =  T3.petid WHERE T1.sex  =  'F' AND T3.pettype  =  'dog'
+Find the number of distinct type of pets.,SELECT count(DISTINCT pettype) FROM pets
+How many different types of pet are there?,SELECT count(DISTINCT pettype) FROM pets
+Find the first name of students who have cat or dog pet.,SELECT DISTINCT T1.Fname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat' OR T3.pettype  =  'dog'
+What are the first names of every student who has a cat or dog as a pet?,SELECT DISTINCT T1.Fname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat' OR T3.pettype  =  'dog'
+Find the first name of students who have both cat and dog pets .,select t1.fname from student as t1 join has_pet as t2 on t1.stuid  =  t2.stuid join pets as t3 on t3.petid  =  t2.petid where t3.pettype  =  'cat' intersect select t1.fname from student as t1 join has_pet as t2 on t1.stuid  =  t2.stuid join pets as t3 on t3.petid  =  t2.petid where t3.pettype  =  'dog'
+What are the students' first names who have both cats and dogs as pets?,SELECT T1.Fname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat' INTERSECT SELECT T1.Fname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'dog'
+Find the major and age of students who do not have a cat pet.,"SELECT major ,  age FROM student WHERE stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')"
+"What major is every student who does not own a cat as a pet, and also how old are they?","SELECT major ,  age FROM student WHERE stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')"
+Find the id of students who do not have a cat pet.,SELECT stuid FROM student EXCEPT SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat'
+What are the ids of the students who do not own cats as pets?,SELECT stuid FROM student EXCEPT SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat'
+Find the first name and age of students who have a dog but do not have a cat as a pet.,"SELECT T1.fname ,  T1.age FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'dog' AND T1.stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')"
+What is the first name of every student who has a dog but does not have a cat?,"SELECT T1.fname ,  T1.age FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'dog' AND T1.stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')"
+Find the type and weight of the youngest pet.,"SELECT pettype ,  weight FROM pets ORDER BY pet_age LIMIT 1"
+"What type of pet is the youngest animal, and how much does it weigh?","SELECT pettype ,  weight FROM pets ORDER BY pet_age LIMIT 1"
+Find the id and weight of all pets whose age is older than 1.,"SELECT petid ,  weight FROM pets WHERE pet_age  >  1"
+What is the id and weight of every pet who is older than 1?,"SELECT petid ,  weight FROM pets WHERE pet_age  >  1"
+Find the average and maximum age for each type of pet.,"SELECT avg(pet_age) ,  max(pet_age) ,  pettype FROM pets GROUP BY pettype"
+What is the average and maximum age for each pet type?,"SELECT avg(pet_age) ,  max(pet_age) ,  pettype FROM pets GROUP BY pettype"
+Find the average weight for each pet type.,"SELECT avg(weight) ,  pettype FROM pets GROUP BY pettype"
+What is the average weight for each type of pet?,"SELECT avg(weight) ,  pettype FROM pets GROUP BY pettype"
+Find the first name and age of students who have a pet.,"SELECT DISTINCT T1.fname ,  T1.age FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid"
+What are the different first names and ages of the students who do have pets?,"SELECT DISTINCT T1.fname ,  T1.age FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid"
+Find the id of the pet owned by student whose last name is ‘Smith’.,SELECT T2.petid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid WHERE T1.Lname  =  'Smith'
+What is the id of the pet owned by the student whose last name is 'Smith'?,SELECT T2.petid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid WHERE T1.Lname  =  'Smith'
+Find the number of pets for each student who has any pet and student id.,"SELECT count(*) ,  T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid GROUP BY T1.stuid"
+"For students who have pets , how many pets does each student have ? list their ids instead of names .","select count(*) ,  t1.stuid from student as t1 join has_pet as t2 on t1.stuid  =  t2.stuid group by t1.stuid"
+Find the first name and gender of student who have more than one pet.,"SELECT T1.fname ,  T1.sex FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid GROUP BY T1.stuid HAVING count(*)  >  1"
+What is the first name and gender of the all the students who have more than one pet?,"SELECT T1.fname ,  T1.sex FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid GROUP BY T1.stuid HAVING count(*)  >  1"
+Find the last name of the student who has a cat that is age 3.,SELECT T1.lname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pet_age  =  3 AND T3.pettype  =  'cat'
+What is the last name of the student who has a cat that is 3 years old?,SELECT T1.lname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pet_age  =  3 AND T3.pettype  =  'cat'
+Find the average age of students who do not have any pet .,select avg(age) from student where stuid not in (select stuid from has_pet)
+What is the average age for all students who do not own any pets ?,select avg(age) from student where stuid not in (select stuid from has_pet)

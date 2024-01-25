@@ -1,0 +1,19 @@
+question,sql
+How many members have the black membership card?,SELECT count(*) FROM member WHERE Membership_card  =  'Black'
+Find the number of members living in each address.,"SELECT count(*) ,  address FROM member GROUP BY address"
+Give me the names of members whose address is in Harford or Waterbury.,SELECT name FROM member WHERE address  =  'Harford' OR address  =  'Waterbury'
+Find the ids and names of members who are under age 30 or with black membership card.,"SELECT name ,  member_id FROM member WHERE Membership_card  =  'Black' OR age  <  30"
+"Find the purchase time, age and address of each member, and show the results in the order of purchase time.","SELECT Time_of_purchase ,  age ,  address FROM member ORDER BY Time_of_purchase"
+Which membership card has more than 5 members?,SELECT Membership_card FROM member GROUP BY Membership_card HAVING count(*)  >  5
+Which address has both members younger than 30 and members older than 40?,SELECT address FROM member WHERE age  <  30 INTERSECT SELECT address FROM member WHERE age  >  40
+What is the membership card held by both members living in Hartford and ones living in Waterbury address?,SELECT membership_card FROM member WHERE address  =  'Hartford' INTERSECT SELECT membership_card FROM member WHERE address  =  'Waterbury'
+How many members are not living in Hartford?,SELECT count(*) FROM member WHERE address != 'Hartford'
+Which address do not have any member with the black membership card?,SELECT address FROM member EXCEPT SELECT address FROM member WHERE Membership_card  =  'Black'
+Show the shop addresses ordered by their opening year.,SELECT address FROM shop ORDER BY open_year
+What are the average score and average staff number of all shops?,"SELECT avg(num_of_staff) ,  avg(score) FROM shop"
+Find the id and address of the shops whose score is below the average score.,"SELECT shop_id ,  address FROM shop WHERE score  <  (SELECT avg(score) FROM shop)"
+Find the address and staff number of the shops that do not have any happy hour.,"SELECT address ,  num_of_staff FROM shop WHERE shop_id NOT IN (SELECT shop_id FROM happy_hour)"
+What are the id and address of the shops which have a happy hour in May?,"SELECT t1.address ,  t1.shop_id FROM shop AS t1 JOIN happy_hour AS t2 ON t1.shop_id  =  t2.shop_id WHERE MONTH  =  'May'"
+which shop has happy hour most frequently? List its id and number of happy hours.,"SELECT shop_id ,  count(*) FROM happy_hour GROUP BY shop_id ORDER BY count(*) DESC LIMIT 1"
+Which month has the most happy hours?,SELECT MONTH FROM happy_hour GROUP BY MONTH ORDER BY count(*) DESC LIMIT 1
+Which months have more than 2 happy hours?,SELECT MONTH FROM happy_hour GROUP BY MONTH HAVING count(*)  >  2

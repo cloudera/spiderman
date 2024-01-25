@@ -1,0 +1,13 @@
+complaint_id,product_id,customer_id,complaint_outcome_code,complaint_status_code,complaint_type_code,date_complaint_raised,date_complaint_closed,staff_id
+1,117,120,OK,Closed,Product Failure,2002-07-18 10:59:35,1976-04-19 11:03:06,114
+2,118,113,OK,New,Product Unusable,1973-02-10 22:55:56,2013-09-14 02:59:10,120
+3,119,114,OK,New,Product Unusable,2006-10-29 07:08:46,1995-09-11 14:48:46,115
+4,120,114,OK,Closed,Product Unusable,1977-08-06 00:31:19,1970-10-14 00:57:25,114
+5,117,118,OK,Open,Product Failure,2007-10-14 21:50:43,2000-08-17 17:02:48,116
+6,118,114,OK,Open,Product Unusable,1987-07-11 14:40:30,1975-10-11 05:54:30,114
+7,117,117,OK,New,Product Unusable,2002-07-18 10:59:35,1976-04-19 11:03:06,118
+8,117,114,OK,New,Product Unusable,1973-02-10 22:55:56,2013-09-14 02:59:10,117
+9,117,116,OK,New,Product Unusable,2006-10-29 07:08:46,1995-09-11 14:48:46,120
+10,118,115,OK,New,Product Unusable,1977-08-06 00:31:19,1970-10-14 00:57:25,114
+11,118,116,OK,Open,Product Unusable,2007-10-14 21:50:43,2000-08-17 17:02:48,115
+12,117,116,OK,Open,Product Unusable,1987-07-11 14:40:30,1975-10-11 05:54:30,114

@@ -1,0 +1,81 @@
+question,sql
+How many apartment bookings are there in total?,SELECT count(*) FROM Apartment_Bookings
+Count the total number of apartment bookings.,SELECT count(*) FROM Apartment_Bookings
+Show the start dates and end dates of all the apartment bookings.,"SELECT booking_start_date ,  booking_end_date FROM Apartment_Bookings"
+What are the start date and end date of each apartment booking?,"SELECT booking_start_date ,  booking_end_date FROM Apartment_Bookings"
+Show all distinct building descriptions.,SELECT DISTINCT building_description FROM Apartment_Buildings
+Give me a list of all the distinct building descriptions.,SELECT DISTINCT building_description FROM Apartment_Buildings
+"Show the short names of the buildings managed by ""Emma"".","SELECT building_short_name FROM Apartment_Buildings WHERE building_manager	 =  ""Emma"""
+"Which buildings does ""Emma"" manage? Give me the short names of the buildings.","SELECT building_short_name FROM Apartment_Buildings WHERE building_manager	 =  ""Emma"""
+"Show the addresses and phones of all the buildings managed by ""Brenden"".","SELECT building_address ,  building_phone FROM Apartment_Buildings WHERE building_manager	 =  ""Brenden"""
+"What are the address and phone number of the buildings managed by ""Brenden""?","SELECT building_address ,  building_phone FROM Apartment_Buildings WHERE building_manager	 =  ""Brenden"""
+"What are the building full names that contain the word ""court""?","SELECT building_full_name FROM Apartment_Buildings WHERE building_full_name LIKE ""%court%"""
+"Find all the building full names containing the word ""court"".","SELECT building_full_name FROM Apartment_Buildings WHERE building_full_name LIKE ""%court%"""
+What is the minimum and maximum number of bathrooms of all the apartments?,"SELECT min(bathroom_count) ,  max(bathroom_count) FROM Apartments"
+Give me the minimum and maximum bathroom count among all the apartments.,"SELECT min(bathroom_count) ,  max(bathroom_count) FROM Apartments"
+What is the average number of bedrooms of all apartments?,SELECT avg(bedroom_count) FROM Apartments
+Find the average number of bedrooms of all the apartments.,SELECT avg(bedroom_count) FROM Apartments
+Return the apartment number and the number of rooms for each apartment.,"SELECT apt_number ,  room_count FROM Apartments"
+What are the apartment number and the room count of each apartment?,"SELECT apt_number ,  room_count FROM Apartments"
+"What is the average number of rooms of apartments with type code ""Studio""?","SELECT avg(room_count) FROM Apartments WHERE apt_type_code  =  ""Studio"""
+"Find the average room count of the apartments that have the ""Studio"" type code.","SELECT avg(room_count) FROM Apartments WHERE apt_type_code  =  ""Studio"""
+"Return the apartment numbers of the apartments with type code ""Flat"".","SELECT apt_number FROM Apartments WHERE apt_type_code  =  ""Flat"""
+"Which apartments have type code ""Flat""? Give me their apartment numbers.","SELECT apt_number FROM Apartments WHERE apt_type_code  =  ""Flat"""
+Return the first names and last names of all guests,"SELECT guest_first_name ,  guest_last_name FROM Guests"
+What are the first names and last names of all the guests?,"SELECT guest_first_name ,  guest_last_name FROM Guests"
+"Return the date of birth for all the guests with gender code ""Male"".","SELECT date_of_birth FROM Guests WHERE gender_code  =  ""Male"""
+"What are dates of birth of all the guests whose gender is ""Male""?","SELECT date_of_birth FROM Guests WHERE gender_code  =  ""Male"""
+"Show the apartment numbers, start dates, and end dates of all the apartment bookings.","SELECT T2.apt_number ,  T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id"
+"What are the apartment number, start date, and end date of each apartment booking?","SELECT T2.apt_number ,  T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id"
+"What are the booking start and end dates of the apartments with type code ""Duplex""?","SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.apt_type_code  =  ""Duplex"""
+"Return the booking start date and end date for the apartments that have type code ""Duplex"".","SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.apt_type_code  =  ""Duplex"""
+What are the booking start and end dates of the apartments with more than 2 bedrooms?,"SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.bedroom_count  >  2"
+Find the booking start date and end date for the apartments that have more than two bedrooms.,"SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.bedroom_count  >  2"
+"What is the booking status code of the apartment with apartment number ""Suite 634""?","SELECT T1.booking_status_code FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.apt_number  =  ""Suite 634"""
+"Tell me the booking status code for the apartment with number ""Suite 634"".","SELECT T1.booking_status_code FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.apt_number  =  ""Suite 634"""
+"Show the distinct apartment numbers of the apartments that have bookings with status code ""Confirmed"".","SELECT DISTINCT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  ""Confirmed"""
+"Which apartments have bookings with status code ""Confirmed""? Return their apartment numbers.","SELECT DISTINCT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  ""Confirmed"""
+"Show the average room count of the apartments that have booking status code ""Provisional"".","SELECT avg(room_count) FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  ""Provisional"""
+"What is the average room count of the apartments whose booking status code is ""Provisional""?","SELECT avg(room_count) FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  ""Provisional"""
+"Show the guest first names, start dates, and end dates of all the apartment bookings.","SELECT T2.guest_first_name ,  T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id"
+"What are the guest first name, start date, and end date of each apartment booking?","SELECT T2.guest_first_name ,  T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id"
+"Show the start dates and end dates of all the apartment bookings made by guests with gender code ""Female"".","SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id WHERE T2.gender_code  =  ""Female"""
+"What are the start date and end date of the apartment bookings made by female guests (gender code ""Female"")?","SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id WHERE T2.gender_code  =  ""Female"""
+"Show the first names and last names of all the guests that have apartment bookings with status code ""Confirmed"".","SELECT T2.guest_first_name ,  T2.guest_last_name FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id WHERE T1.booking_status_code  =  ""Confirmed"""
+"Which guests have apartment bookings with status code ""Confirmed""? Return their first names and last names.","SELECT T2.guest_first_name ,  T2.guest_last_name FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id WHERE T1.booking_status_code  =  ""Confirmed"""
+Show the facility codes of apartments with more than 4 bedrooms.,SELECT T1.facility_code FROM Apartment_Facilities AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.bedroom_count  >  4
+What are the facility codes of the apartments with more than four bedrooms?,SELECT T1.facility_code FROM Apartment_Facilities AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.bedroom_count  >  4
+"Show the total number of rooms of all apartments with facility code ""Gym"".","SELECT sum(T2.room_count) FROM Apartment_Facilities AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.facility_code  =  ""Gym"""
+"Find the total number of rooms in the apartments that have facility code ""Gym"".","SELECT sum(T2.room_count) FROM Apartment_Facilities AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.facility_code  =  ""Gym"""
+"Show the total number of rooms of the apartments in the building with short name ""Columbus Square"".","SELECT sum(T2.room_count) FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T1.building_short_name  =  ""Columbus Square"""
+"How many rooms in total are there in the apartments in the building with short name ""Columbus Square""?","SELECT sum(T2.room_count) FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T1.building_short_name  =  ""Columbus Square"""
+Show the addresses of the buildings that have apartments with more than 2 bathrooms.,SELECT T1.building_address FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T2.bathroom_count  >  2
+Which buildings have apartments that have more than two bathrooms? Give me the addresses of the buildings.,SELECT T1.building_address FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T2.bathroom_count  >  2
+"Show the apartment type codes and apartment numbers in the buildings managed by ""Kyle"".","SELECT T2.apt_type_code ,  T2.apt_number FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T1.building_manager  =  ""Kyle"""
+"What apartment type codes and apartment numbers do the buildings managed by ""Kyle"" have?","SELECT T2.apt_type_code ,  T2.apt_number FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T1.building_manager  =  ""Kyle"""
+Show the booking status code and the corresponding number of bookings.,"SELECT 	booking_status_code ,  COUNT(*) FROM Apartment_Bookings GROUP BY booking_status_code"
+How many bookings does each booking status have? List the booking status code and the number of corresponding bookings.,"SELECT 	booking_status_code ,  COUNT(*) FROM Apartment_Bookings GROUP BY booking_status_code"
+Return all the apartment numbers sorted by the room count in ascending order.,SELECT apt_number FROM Apartments ORDER BY room_count ASC
+Sort the apartment numbers in ascending order of room count.,SELECT apt_number FROM Apartments ORDER BY room_count ASC
+Return the apartment number with the largest number of bedrooms.,SELECT apt_number FROM Apartments ORDER BY bedroom_count DESC LIMIT 1
+What is the apartment number of the apartment with the most beds?,SELECT apt_number FROM Apartments ORDER BY bedroom_count DESC LIMIT 1
+Show the apartment type codes and the corresponding number of apartments sorted by the number of apartments in ascending order.,"SELECT apt_type_code ,  COUNT(*) FROM Apartments GROUP BY apt_type_code ORDER BY COUNT(*) ASC"
+"Return each apartment type code with the number of apartments having that apartment type, in ascending order of the number of apartments.","SELECT apt_type_code ,  COUNT(*) FROM Apartments GROUP BY apt_type_code ORDER BY COUNT(*) ASC"
+Show the top 3 apartment type codes sorted by the average number of rooms in descending order.,SELECT apt_type_code FROM Apartments GROUP BY apt_type_code ORDER BY avg(room_count) DESC LIMIT 3
+What are the top three apartment types in terms of the average room count? Give me the,SELECT apt_type_code FROM Apartments GROUP BY apt_type_code ORDER BY avg(room_count) DESC LIMIT 3
+"Show the apartment type code that has the largest number of total rooms, together with the number of bathrooms and number of bedrooms.","SELECT apt_type_code ,  bathroom_count ,  bedroom_count FROM Apartments GROUP BY apt_type_code ORDER BY sum(room_count) DESC LIMIT 1"
+"Which apartment type has the largest number of total rooms? Return the apartment type code, its number of bathrooms and number of bedrooms.","SELECT apt_type_code ,  bathroom_count ,  bedroom_count FROM Apartments GROUP BY apt_type_code ORDER BY sum(room_count) DESC LIMIT 1"
+Show the most common apartment type code.,SELECT apt_type_code FROM Apartments GROUP BY apt_type_code ORDER BY count(*) DESC LIMIT 1
+Which apartment type code appears the most often?,SELECT apt_type_code FROM Apartments GROUP BY apt_type_code ORDER BY count(*) DESC LIMIT 1
+Show the most common apartment type code among apartments with more than 1 bathroom.,SELECT apt_type_code FROM Apartments WHERE bathroom_count  >  1 GROUP BY apt_type_code ORDER BY count(*) DESC LIMIT 1
+Which apartment type code is the most common among apartments with more than one bathroom?,SELECT apt_type_code FROM Apartments WHERE bathroom_count  >  1 GROUP BY apt_type_code ORDER BY count(*) DESC LIMIT 1
+"Show each apartment type code, and the maximum and minimum number of rooms for each type.","SELECT apt_type_code ,  max(room_count) ,  min(room_count) FROM Apartments GROUP BY apt_type_code"
+Return each apartment type code along with the maximum and minimum number of rooms among each type.,"SELECT apt_type_code ,  max(room_count) ,  min(room_count) FROM Apartments GROUP BY apt_type_code"
+Show each gender code and the corresponding count of guests sorted by the count in descending order.,"SELECT gender_code ,  COUNT(*) FROM Guests GROUP BY gender_code ORDER BY COUNT(*) DESC"
+Sort the gender codes in descending order of their corresponding number of guests. Return both the gender codes and counts.,"SELECT gender_code ,  COUNT(*) FROM Guests GROUP BY gender_code ORDER BY COUNT(*) DESC"
+How many apartments do not have any facility?,SELECT count(*) FROM Apartments WHERE apt_id NOT IN (SELECT apt_id FROM Apartment_Facilities)
+Find the number of apartments that have no facility.,SELECT count(*) FROM Apartments WHERE apt_id NOT IN (SELECT apt_id FROM Apartment_Facilities)
+"Show the apartment numbers of apartments with bookings that have status code both ""Provisional"" and ""Confirmed""","SELECT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  ""Confirmed"" INTERSECT SELECT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  ""Provisional"""
+"Which apartments have bookings with both status codes ""Provisional"" and ""Confirmed""? Give me the apartment numbers.","SELECT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  ""Confirmed"" INTERSECT SELECT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  ""Provisional"""
+Show the apartment numbers of apartments with unit status availability of both 0 and 1.,SELECT T1.apt_number FROM Apartments AS T1 JOIN View_Unit_Status AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.available_yn  =  0 INTERSECT SELECT T1.apt_number FROM Apartments AS T1 JOIN View_Unit_Status AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.available_yn  =  1
+Which apartments have unit status availability of both 0 and 1? Return their apartment numbers.,SELECT T1.apt_number FROM Apartments AS T1 JOIN View_Unit_Status AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.available_yn  =  0 INTERSECT SELECT T1.apt_number FROM Apartments AS T1 JOIN View_Unit_Status AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.available_yn  =  1

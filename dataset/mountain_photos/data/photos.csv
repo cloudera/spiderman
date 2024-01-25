@@ -1,0 +1,11 @@
+id,camera_lens_id,mountain_id,color,name
+1,1,20,RBG,monkey
+2,10,2,RBG,rabbits
+3,10,1,Black/White,deers
+4,1,10,RBG,grass
+5,5,14,RBG,cloud
+6,6,12,RBG,sunset
+7,7,12,RBG,river
+8,7,12,Black/White,wolfs
+9,10,14,RBG,the mountain
+10,10,20,RBG,life

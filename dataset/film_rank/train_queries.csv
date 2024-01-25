@@ -1,0 +1,49 @@
+question,sql
+How many film are there?,SELECT count(*) FROM film
+Count the number of films.,SELECT count(*) FROM film
+List the distinct director of all films.,SELECT DISTINCT Director FROM film
+What are the different film Directors?,SELECT DISTINCT Director FROM film
+What is the average ticket sales gross in dollars of films?,SELECT avg(Gross_in_dollar) FROM film
+Return the average gross sales in dollars across all films.,SELECT avg(Gross_in_dollar) FROM film
+What are the low and high estimates of film markets?,"SELECT Low_Estimate ,  High_Estimate FROM film_market_estimation"
+Return the low and high estimates for all film markets.,"SELECT Low_Estimate ,  High_Estimate FROM film_market_estimation"
+What are the types of film market estimations in year 1995?,SELECT TYPE FROM film_market_estimation WHERE YEAR  =  1995
+Return the types of film market estimations in 1995.,SELECT TYPE FROM film_market_estimation WHERE YEAR  =  1995
+What are the maximum and minimum number of cities in all markets.,"SELECT max(Number_cities) ,  min(Number_cities) FROM market"
+Return the maximum and minimum number of cities across all markets.,"SELECT max(Number_cities) ,  min(Number_cities) FROM market"
+How many markets have number of cities smaller than 300?,SELECT count(*) FROM market WHERE Number_cities  <  300
+Count the number of markets that have a number of cities lower than 300.,SELECT count(*) FROM market WHERE Number_cities  <  300
+List all countries of markets in ascending alphabetical order.,SELECT Country FROM market ORDER BY Country ASC
+"What are the countries for each market, ordered alphabetically?",SELECT Country FROM market ORDER BY Country ASC
+List all countries of markets in descending order of number of cities.,SELECT Country FROM market ORDER BY Number_cities DESC
+What are the countries for each market ordered by decreasing number of cities?,SELECT Country FROM market ORDER BY Number_cities DESC
+Please show the titles of films and the types of market estimations.,"SELECT T1.Title ,  T2.Type FROM film AS T1 JOIN film_market_estimation AS T2 ON T1.Film_ID  =  T2.Film_ID"
+What are the titles of films and corresponding types of market estimations?,"SELECT T1.Title ,  T2.Type FROM film AS T1 JOIN film_market_estimation AS T2 ON T1.Film_ID  =  T2.Film_ID"
+Show the distinct director of films with market estimation in the year of 1995.,SELECT DISTINCT T1.Director FROM film AS T1 JOIN film_market_estimation AS T2 ON T1.Film_ID  =  T2.Film_ID WHERE T2.Year  =  1995
+Who are the different directors of films which had market estimation in 1995?,SELECT DISTINCT T1.Director FROM film AS T1 JOIN film_market_estimation AS T2 ON T1.Film_ID  =  T2.Film_ID WHERE T2.Year  =  1995
+What is the average number of cities of markets with low film market estimate bigger than 10000?,SELECT avg(T2.Number_cities) FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID WHERE T1.Low_Estimate  >  10000
+Give the average number of cities within markets that had a low market estimation larger than 10000?,SELECT avg(T2.Number_cities) FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID WHERE T1.Low_Estimate  >  10000
+Please list the countries and years of film market estimations.,"SELECT T2.Country ,  T1.Year FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID"
+What are the countries of markets and their corresponding years of market estimation?,"SELECT T2.Country ,  T1.Year FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID"
+"Please list the years of film market estimations when the market is in country ""Japan"" in descending order.","SELECT T1.Year FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID WHERE T2.Country  =  ""Japan"" ORDER BY T1.Year DESC"
+"What are the years of film market estimation for the market of Japan, ordered by year descending?","SELECT T1.Year FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID WHERE T2.Country  =  ""Japan"" ORDER BY T1.Year DESC"
+List the studios of each film and the number of films produced by that studio.,"SELECT Studio ,  COUNT(*) FROM film GROUP BY Studio"
+How films are produced by each studio?,"SELECT Studio ,  COUNT(*) FROM film GROUP BY Studio"
+List the name of film studio that have the most number of films.,SELECT Studio FROM film GROUP BY Studio ORDER BY COUNT(*) DESC LIMIT 1
+What is the name of teh studio that created the most films?,SELECT Studio FROM film GROUP BY Studio ORDER BY COUNT(*) DESC LIMIT 1
+List the names of studios that have at least two films.,SELECT Studio FROM film GROUP BY Studio HAVING COUNT(*)  >=  2
+What are the names of studios that have made two or more films?,SELECT Studio FROM film GROUP BY Studio HAVING COUNT(*)  >=  2
+List the title of films that do not have any market estimation.,SELECT Title FROM film WHERE Film_ID NOT IN (SELECT Film_ID FROM film_market_estimation)
+What are the titles of films that do not have a film market estimation?,SELECT Title FROM film WHERE Film_ID NOT IN (SELECT Film_ID FROM film_market_estimation)
+"Show the studios that have produced films with director ""Nicholas Meyer"" and ""Walter Hill"".","SELECT Studio FROM film WHERE Director  =  ""Nicholas Meyer"" INTERSECT SELECT Studio FROM film WHERE Director  =  ""Walter Hill"""
+What are the names of studios that have produced films with both Nicholas Meyer and Walter Hill?,"SELECT Studio FROM film WHERE Director  =  ""Nicholas Meyer"" INTERSECT SELECT Studio FROM film WHERE Director  =  ""Walter Hill"""
+"Find the titles and studios of the films that are produced by some film studios that contained the word ""Universal"".","SELECT title ,  Studio FROM film WHERE Studio LIKE ""%Universal%"""
+"What are the titles and studios of films that have been produced by a studio whose name contains ""Universal""?","SELECT title ,  Studio FROM film WHERE Studio LIKE ""%Universal%"""
+"Show the studios that have not produced films with director ""Walter Hill"".","SELECT Studio FROM film EXCEPT SELECT Studio FROM film WHERE Director  =  ""Walter Hill"""
+Which studios have never worked with the director Walter Hill?,"SELECT Studio FROM film EXCEPT SELECT Studio FROM film WHERE Director  =  ""Walter Hill"""
+List the studios which average gross is above 4500000.,SELECT Studio FROM film GROUP BY Studio HAVING avg(Gross_in_dollar)  >=  4500000
+Which studios have an average gross of over 4500000?,SELECT Studio FROM film GROUP BY Studio HAVING avg(Gross_in_dollar)  >=  4500000
+What is the title of the film that has the highest high market estimation.,SELECT t1.title FROM film AS T1 JOIN film_market_estimation AS T2  ON T1.Film_ID  =  T2.Film_ID ORDER BY high_estimate DESC LIMIT 1
+Return the title of the film with the highest high estimate?,SELECT t1.title FROM film AS T1 JOIN film_market_estimation AS T2  ON T1.Film_ID  =  T2.Film_ID ORDER BY high_estimate DESC LIMIT 1
+What are the titles and directors of the films were never presented in China?,"SELECT title ,  director FROM film WHERE film_id NOT IN (SELECT film_id FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.market_id  =  T2.Market_ID WHERE country  =  'China')"
+Return the titles and directors of films that were never in the market of China.,"SELECT title ,  director FROM film WHERE film_id NOT IN (SELECT film_id FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.market_id  =  T2.Market_ID WHERE country  =  'China')"

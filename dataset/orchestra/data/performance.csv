@@ -1,0 +1,12 @@
+Performance_ID,Orchestra_ID,Type,Date,Official_ratings_(millions),Weekly_rank,Share
+1,1,Auditions 1,9 June,5.2,12,22.7%
+2,2,Auditions 2,10 June,6.73,8,28.0%
+3,3,Auditions 3,11 June,7.28,15,29.4%
+4,4,Auditions 4,12 June,7.39,13,29.3%
+5,5,Auditions 5,13 June,7.51,11,29.2%
+11,11,Semi-final 1,14 June,8.36,9,34.0%
+6,6,Semi-final 2,15 June,9.28,8,38.1%
+7,7,Semi-final 3,16 June,9.29,7,40.9%
+8,8,Live final,17 June,11.58,1,43.7%
+9,9,Live final results,17 June,11.45,2,44.7%
+10,10,Series average,2007,8.38,TBC,34%

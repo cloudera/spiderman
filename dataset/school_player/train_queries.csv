@@ -1,0 +1,41 @@
+question,sql
+How many schools are there?,SELECT count(*) FROM school
+Count the number of schools.,SELECT count(*) FROM school
+List the locations of schools in ascending order of enrollment.,SELECT LOCATION FROM school ORDER BY Enrollment ASC
+What is the list of school locations sorted in ascending order of school enrollment?,SELECT LOCATION FROM school ORDER BY Enrollment ASC
+List the locations of schools in descending order of founded year.,SELECT LOCATION FROM school ORDER BY Founded DESC
+What is the list of school locations sorted in descending order of school foundation year?,SELECT LOCATION FROM school ORDER BY Founded DESC
+"What are the enrollments of schools whose denomination is not ""Catholic""?","SELECT Enrollment FROM school WHERE Denomination != ""Catholic"""
+"List the enrollment for each school that does not have ""Catholic"" as denomination.","SELECT Enrollment FROM school WHERE Denomination != ""Catholic"""
+What is the average enrollment of schools?,SELECT avg(Enrollment) FROM school
+Take the average of the school enrollment.,SELECT avg(Enrollment) FROM school
+"What are the teams of the players, sorted in ascending alphabetical order?",SELECT Team FROM player ORDER BY Team ASC
+Find the team of each player and sort them in ascending alphabetical order.,SELECT Team FROM player ORDER BY Team ASC
+How many different positions of players are there?,SELECT count(DISTINCT POSITION) FROM player
+Count the number of distinct player positions.,SELECT count(DISTINCT POSITION) FROM player
+Find the team of the player of the highest age.,SELECT Team FROM player ORDER BY Age DESC LIMIT 1
+Which team has the oldest player?,SELECT Team FROM player ORDER BY Age DESC LIMIT 1
+List the teams of the players with the top 5 largest ages.,SELECT Team FROM player ORDER BY Age DESC LIMIT 5
+What are the teams that have the 5 oldest players?,SELECT Team FROM player ORDER BY Age DESC LIMIT 5
+"For each player, show the team and the location of school they belong to.","SELECT T1.Team ,  T2.Location FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID"
+What are the team and the location of school each player belongs to?,"SELECT T1.Team ,  T2.Location FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID"
+Show the locations of schools that have more than 1 player.,SELECT T2.Location FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID GROUP BY T1.School_ID HAVING COUNT(*)  >  1
+Which schools have more than 1 player? Give me the school locations.,SELECT T2.Location FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID GROUP BY T1.School_ID HAVING COUNT(*)  >  1
+Show the denomination of the school that has the most players.,SELECT T2.Denomination FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID GROUP BY T1.School_ID ORDER BY COUNT(*) DESC LIMIT 1
+What is the denomination of the school the most players belong to?,SELECT T2.Denomination FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID GROUP BY T1.School_ID ORDER BY COUNT(*) DESC LIMIT 1
+Show locations and nicknames of schools.,"SELECT T1.Location ,  T2.Nickname FROM school AS T1 JOIN school_details AS T2 ON T1.School_ID  =  T2.School_ID"
+What are the location and nickname of each school?,"SELECT T1.Location ,  T2.Nickname FROM school AS T1 JOIN school_details AS T2 ON T1.School_ID  =  T2.School_ID"
+Please show different denominations and the corresponding number of schools.,"SELECT Denomination ,  COUNT(*) FROM school GROUP BY Denomination"
+"For each denomination, return the denomination and the count of schools with that denomination.","SELECT Denomination ,  COUNT(*) FROM school GROUP BY Denomination"
+Please show different denominations and the corresponding number of schools in descending order.,"SELECT Denomination ,  COUNT(*) FROM school GROUP BY Denomination ORDER BY COUNT(*) DESC"
+Order denominations in descending order of the count of schools with the denomination. Return each denomination with the count of schools.,"SELECT Denomination ,  COUNT(*) FROM school GROUP BY Denomination ORDER BY COUNT(*) DESC"
+List the school color of the school that has the largest enrollment.,SELECT School_Colors FROM school ORDER BY Enrollment DESC LIMIT 1
+What is the school color of the school with the largest enrollment?,SELECT School_Colors FROM school ORDER BY Enrollment DESC LIMIT 1
+List the locations of schools that do not have any player.,SELECT LOCATION FROM school WHERE School_ID NOT IN (SELECT School_ID FROM Player)
+Which schools do not have any player? Give me the school locations.,SELECT LOCATION FROM school WHERE School_ID NOT IN (SELECT School_ID FROM Player)
+Show the denomination shared by schools founded before 1890 and schools founded after 1900,SELECT Denomination FROM school WHERE Founded  <  1890 INTERSECT SELECT Denomination FROM school WHERE Founded  >  1900
+What are the denominations used by both schools founded before 1890 and schools founded  after 1900?,SELECT Denomination FROM school WHERE Founded  <  1890 INTERSECT SELECT Denomination FROM school WHERE Founded  >  1900
+Show the nicknames of schools that are not in division 1.,"SELECT Nickname FROM school_details WHERE Division != ""Division 1"""
+What are the nicknames of schools whose division is not 1?,"SELECT Nickname FROM school_details WHERE Division != ""Division 1"""
+Show the denomination shared by more than one school.,SELECT Denomination FROM school GROUP BY Denomination HAVING COUNT(*)  >  1
+What are the denomination more than one school have?,SELECT Denomination FROM school GROUP BY Denomination HAVING COUNT(*)  >  1

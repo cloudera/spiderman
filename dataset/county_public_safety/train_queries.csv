@@ -1,0 +1,41 @@
+question,sql
+How many counties are there?,SELECT count(*) FROM county_public_safety
+Count the number of countries.,SELECT count(*) FROM county_public_safety
+List the names of counties in descending order of population.,SELECT Name FROM county_public_safety ORDER BY Population DESC
+"What are the names of the counties of public safety, ordered by population descending?",SELECT Name FROM county_public_safety ORDER BY Population DESC
+List the distinct police forces of counties whose location is not on east side.,"SELECT DISTINCT Police_force FROM county_public_safety WHERE LOCATION != ""East"""
+What are the different police forces of counties that are not located in the East?,"SELECT DISTINCT Police_force FROM county_public_safety WHERE LOCATION != ""East"""
+What are the minimum and maximum crime rate of counties?,"SELECT min(Crime_rate) ,  max(Crime_rate) FROM county_public_safety"
+Return the minimum and maximum crime rates across all counties.,"SELECT min(Crime_rate) ,  max(Crime_rate) FROM county_public_safety"
+Show the crime rates of counties in ascending order of number of police officers.,SELECT Crime_rate FROM county_public_safety ORDER BY Police_officers ASC
+What are the crime rates of counties sorted by number of offices ascending?,SELECT Crime_rate FROM county_public_safety ORDER BY Police_officers ASC
+What are the names of cities in ascending alphabetical order?,SELECT Name FROM city ORDER BY Name ASC
+"Return the names of cities, ordered alphabetically.",SELECT Name FROM city ORDER BY Name ASC
+What are the percentage of hispanics in cities with the black percentage higher than 10?,SELECT Hispanic FROM city WHERE Black  >  10
+Return the hispanic percentage for cities in which the black percentage is greater than 10.,SELECT Hispanic FROM city WHERE Black  >  10
+List the name of the county with the largest population.,SELECT Name FROM county_public_safety ORDER BY Population DESC LIMIT 1
+What is the name of the county with the greatest population?,SELECT Name FROM county_public_safety ORDER BY Population DESC LIMIT 1
+List the names of the city with the top 5 white percentages.,SELECT Name FROM city ORDER BY White DESC LIMIT 5
+What are the names of the five cities with the greatest proportion of white people?,SELECT Name FROM city ORDER BY White DESC LIMIT 5
+Show names of cities and names of counties they are in.,"SELECT T1.Name ,  T2.Name FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID"
+"What are the names of cities, as well as the names of the counties they correspond to?","SELECT T1.Name ,  T2.Name FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID"
+Show white percentages of cities and the crime rates of counties they are in.,"SELECT T1.White ,  T2.Crime_rate FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID"
+"What are the white percentages of cities, and the corresponding crime rates of the counties they correspond to?","SELECT T1.White ,  T2.Crime_rate FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID"
+Show the name of cities in the county that has the largest number of police officers.,SELECT name FROM city WHERE county_ID  =  (SELECT county_ID FROM county_public_safety ORDER BY Police_officers DESC LIMIT 1)
+What are the names of cities that are in the county with the most police officers?,SELECT name FROM city WHERE county_ID  =  (SELECT county_ID FROM county_public_safety ORDER BY Police_officers DESC LIMIT 1)
+Show the number of cities in counties that have a population more than 20000.,SELECT count(*) FROM city WHERE county_ID IN (SELECT county_ID FROM county_public_safety WHERE population  >  20000)
+How many cities are in counties that have populations of over 20000?,SELECT count(*) FROM city WHERE county_ID IN (SELECT county_ID FROM county_public_safety WHERE population  >  20000)
+Show the crime rate of counties with a city having white percentage more than 90.,SELECT T2.Crime_rate FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID WHERE T1.White  >  90
+What are the crime rates of counties that contain cities that have white percentages of over 90?,SELECT T2.Crime_rate FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID WHERE T1.White  >  90
+Please show the police forces and the number of counties with each police force.,"SELECT Police_force ,  COUNT(*) FROM county_public_safety GROUP BY Police_force"
+How many counties correspond to each police force?,"SELECT Police_force ,  COUNT(*) FROM county_public_safety GROUP BY Police_force"
+What is the location shared by most counties?,SELECT LOCATION FROM county_public_safety GROUP BY LOCATION ORDER BY COUNT(*) DESC LIMIT 1
+Which location has the most corresponding counties?,SELECT LOCATION FROM county_public_safety GROUP BY LOCATION ORDER BY COUNT(*) DESC LIMIT 1
+List the names of counties that do not have any cities.,SELECT Name FROM county_public_safety WHERE County_ID NOT IN (SELECT County_ID FROM city)
+What are the names of counties that do not contain any cities?,SELECT Name FROM county_public_safety WHERE County_ID NOT IN (SELECT County_ID FROM city)
+Show the police force shared by counties with location on the east and west.,"SELECT Police_force FROM county_public_safety WHERE LOCATION  =  ""East"" INTERSECT SELECT Police_force FROM county_public_safety WHERE LOCATION  =  ""West"""
+Which police forces operate in both counties that are located in the East and in the West?,"SELECT Police_force FROM county_public_safety WHERE LOCATION  =  ""East"" INTERSECT SELECT Police_force FROM county_public_safety WHERE LOCATION  =  ""West"""
+Show the names of cities in counties that have a crime rate less than 100.,SELECT name FROM city WHERE county_id IN (SELECT county_id FROM county_public_safety WHERE Crime_rate  <  100)
+What are the names of cities that are in counties that have a crime rate below 100?,SELECT name FROM city WHERE county_id IN (SELECT county_id FROM county_public_safety WHERE Crime_rate  <  100)
+Show the case burden of counties in descending order of population.,SELECT Case_burden FROM county_public_safety ORDER BY Population DESC
+"What are the case burdens of counties, ordered descending by population?",SELECT Case_burden FROM county_public_safety ORDER BY Population DESC

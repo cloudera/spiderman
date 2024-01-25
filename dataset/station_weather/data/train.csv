@@ -1,0 +1,12 @@
+id,train_number,name,origin,destination,time,interval
+1,16724,Ananthapuri Express,Trivandrum,Chennai,17:15,Daily
+2,16127,Guruvayur Express,Chennai,Guruvayur,22:10,Daily
+3,16128,Guruvayur Express,Guruvayur,Chennai,4:49,Daily
+4,16723,Ananthapuri Express,Chennai,Trivandrum,11:35,Daily
+5,16382,Jayanthi Janatha Express,Kanniyakumari,Mumbai,06:30,Daily
+6,16525,Island Express,Kanniyakumari,Bangalore,11:15,Daily
+7,56701,Madurai Fast Passenger,Quilon,Madurai,21:49,Daily
+8,56700,Quilon Fast Passenger,Madurai,Quilon Junction,04:55,Daily
+9,16526,Island Express,Bangalore,Kanniyakumari,16:59,Daily
+10,16381,Jayanthi Janatha Express,Mumbai,Kanniyakumari,10:38,Daily
+11,16650,Parasuram Express,Nagercoil,Mangalore,04:20,Daily

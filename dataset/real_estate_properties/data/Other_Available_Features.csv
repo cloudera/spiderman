@@ -1,0 +1,4 @@
+feature_id,feature_type_code,feature_name,feature_description
+2,Amenity,AirCon,Air Conditioning.
+3,Amenity,Pool,Swimming Pool.
+4,Security,BurglarAlarm,Burglar Alarm

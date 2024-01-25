@@ -1,0 +1,5 @@
+product_id,parent_product_id,product_category_code,date_product_first_available,date_product_discontinued,product_name,product_description,product_price
+117,4,Food,1988-09-29 17:54:50,1987-12-20 13:46:16,Chocolate,Handmade chocolate,2.88
+118,3,Book,1974-06-25 12:26:47,1991-08-20 05:22:31,The Great Gatsby,American novel,35
+119,8,Hardware,1994-12-18 15:13:19,1997-07-02 18:26:16,Keyboard,Designed for games,109.99
+120,9,Hardware,1998-06-20 15:04:11,1980-06-26 10:40:19,Mouse,Blue tooth mouse,23.35
