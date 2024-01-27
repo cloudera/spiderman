@@ -89,7 +89,6 @@ CREATE TABLE IF NOT EXISTS `dog_kennels`.`Dogs` (
     `date_departed` TIMESTAMP,
     PRIMARY KEY (`dog_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`owner_id`) REFERENCES `dog_kennels`.`Owners` (`owner_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`owner_id`) REFERENCES `dog_kennels`.`Owners` (`owner_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`size_code`) REFERENCES `dog_kennels`.`Sizes` (`size_code`) DISABLE NOVALIDATE,
     FOREIGN KEY (`breed_code`) REFERENCES `dog_kennels`.`Breeds` (`breed_code`) DISABLE NOVALIDATE
 )
