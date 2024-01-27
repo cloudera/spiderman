@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `theme_gallery`;
+
 drop table if exists `theme_gallery`.`artist`;
 CREATE TABLE IF NOT EXISTS `theme_gallery`.`artist` (
     `Artist_ID` INT,

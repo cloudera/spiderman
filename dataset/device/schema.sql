@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `device`;
+
 drop table if exists `device`.`device`;
 CREATE TABLE IF NOT EXISTS `device`.`device` (
     `Device_ID` INT,

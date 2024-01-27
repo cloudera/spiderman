@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `orchestra`;
+
 drop table if exists `orchestra`.`conductor`;
 CREATE TABLE IF NOT EXISTS `orchestra`.`conductor` (
     `Conductor_ID` INT,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `csu_1`;
+
 drop table if exists `csu_1`.`Campuses`;
 CREATE TABLE IF NOT EXISTS `csu_1`.`Campuses` (
     `Id` INT,

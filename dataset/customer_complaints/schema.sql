@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `customer_complaints`;
+
 drop table if exists `customer_complaints`.`Staff`;
 CREATE TABLE IF NOT EXISTS `customer_complaints`.`Staff` (
     `staff_id` INT,

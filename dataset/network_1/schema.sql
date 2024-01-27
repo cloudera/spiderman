@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `network_1`;
+
 drop table if exists `network_1`.`Highschooler`;
 CREATE TABLE IF NOT EXISTS `network_1`.`Highschooler` (
     `ID` INT,

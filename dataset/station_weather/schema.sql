@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `station_weather`;
+
 drop table if exists `station_weather`.`train`;
 CREATE TABLE IF NOT EXISTS `station_weather`.`train` (
     `id` INT,

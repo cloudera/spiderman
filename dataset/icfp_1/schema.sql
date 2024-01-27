@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `icfp_1`;
+
 drop table if exists `icfp_1`.`Inst`;
 CREATE TABLE IF NOT EXISTS `icfp_1`.`Inst` (
     `instID` INT,

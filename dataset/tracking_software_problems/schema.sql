@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `tracking_software_problems`;
+
 drop table if exists `tracking_software_problems`.`Problem_Category_Codes`;
 CREATE TABLE IF NOT EXISTS `tracking_software_problems`.`Problem_Category_Codes` (
     `problem_category_code` STRING,

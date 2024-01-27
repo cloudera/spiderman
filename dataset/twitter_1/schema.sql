@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `twitter_1`;
+
 drop table if exists `twitter_1`.`user_profiles`;
 CREATE TABLE IF NOT EXISTS `twitter_1`.`user_profiles` (
     `uid` INT NOT NULL,

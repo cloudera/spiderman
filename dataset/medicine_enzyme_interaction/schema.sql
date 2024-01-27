@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `medicine_enzyme_interaction`;
+
 drop table if exists `medicine_enzyme_interaction`.`medicine`;
 CREATE TABLE IF NOT EXISTS `medicine_enzyme_interaction`.`medicine` (
     `id` INT,

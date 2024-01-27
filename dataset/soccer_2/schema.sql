@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `soccer_2`;
+
 drop table if exists `soccer_2`.`College`;
 CREATE TABLE IF NOT EXISTS `soccer_2`.`College` (
     `cName` STRING NOT NULL,

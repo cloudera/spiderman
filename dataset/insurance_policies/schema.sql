@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `insurance_policies`;
+
 drop table if exists `insurance_policies`.`Customers`;
 CREATE TABLE IF NOT EXISTS `insurance_policies`.`Customers` (
     `Customer_ID` INT NOT NULL,

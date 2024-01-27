@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `city_record`;
+
 drop table if exists `city_record`.`city`;
 CREATE TABLE IF NOT EXISTS `city_record`.`city` (
     `City_ID` INT,

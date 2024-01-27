@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `game_injury`;
+
 drop table if exists `game_injury`.`stadium`;
 CREATE TABLE IF NOT EXISTS `game_injury`.`stadium` (
     `id` INT,

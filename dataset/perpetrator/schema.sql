@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `perpetrator`;
+
 drop table if exists `perpetrator`.`people`;
 CREATE TABLE IF NOT EXISTS `perpetrator`.`people` (
     `People_ID` INT,

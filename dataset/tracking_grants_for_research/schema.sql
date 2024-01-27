@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `tracking_grants_for_research`;
+
 drop table if exists `tracking_grants_for_research`.`Document_Types`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Document_Types` (
     `document_type_code` STRING,

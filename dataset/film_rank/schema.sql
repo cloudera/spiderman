@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `film_rank`;
+
 drop table if exists `film_rank`.`film`;
 CREATE TABLE IF NOT EXISTS `film_rank`.`film` (
     `Film_ID` INT,

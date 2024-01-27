@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `party_host`;
+
 drop table if exists `party_host`.`party`;
 CREATE TABLE IF NOT EXISTS `party_host`.`party` (
     `Party_ID` INT,

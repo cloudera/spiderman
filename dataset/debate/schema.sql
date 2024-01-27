@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `debate`;
+
 drop table if exists `debate`.`people`;
 CREATE TABLE IF NOT EXISTS `debate`.`people` (
     `People_ID` INT,

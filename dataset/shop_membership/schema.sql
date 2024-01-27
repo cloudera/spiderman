@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `shop_membership`;
+
 drop table if exists `shop_membership`.`member`;
 CREATE TABLE IF NOT EXISTS `shop_membership`.`member` (
     `Member_ID` INT,

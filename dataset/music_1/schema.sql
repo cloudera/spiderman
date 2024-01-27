@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `music_1`;
+
 drop table if exists `music_1`.`genre`;
 CREATE TABLE IF NOT EXISTS `music_1`.`genre` (
     `g_name` STRING NOT NULL,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `sakila_1`;
+
 drop table if exists `sakila_1`.`actor`;
 CREATE TABLE IF NOT EXISTS `sakila_1`.`actor` (
     `actor_id` INT NOT NULL,

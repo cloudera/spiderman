@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `product_catalog`;
+
 drop table if exists `product_catalog`.`Attribute_Definitions`;
 CREATE TABLE IF NOT EXISTS `product_catalog`.`Attribute_Definitions` (
     `attribute_id` INT,

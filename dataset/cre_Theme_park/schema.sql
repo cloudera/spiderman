@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `cre_Theme_park`;
+
 drop table if exists `cre_Theme_park`.`Ref_Hotel_Star_Ratings`;
 CREATE TABLE IF NOT EXISTS `cre_Theme_park`.`Ref_Hotel_Star_Ratings` (
     `star_rating_code` CHAR(15) NOT NULL,

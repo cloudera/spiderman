@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `student_transcripts_tracking`;
+
 drop table if exists `student_transcripts_tracking`.`Addresses`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Addresses` (
     `address_id` INT,

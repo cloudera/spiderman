@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `pilot_record`;
+
 drop table if exists `pilot_record`.`aircraft`;
 CREATE TABLE IF NOT EXISTS `pilot_record`.`aircraft` (
     `Aircraft_ID` INT,

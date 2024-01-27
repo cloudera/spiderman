@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `voter_1`;
+
 drop table if exists `voter_1`.`AREA_CODE_STATE`;
 CREATE TABLE IF NOT EXISTS `voter_1`.`AREA_CODE_STATE` (
     `area_code` INT NOT NULL,

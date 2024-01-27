@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `ship_1`;
+
 drop table if exists `ship_1`.`Ship`;
 CREATE TABLE IF NOT EXISTS `ship_1`.`Ship` (
     `Ship_ID` INT,

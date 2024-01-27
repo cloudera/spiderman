@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `school_bus`;
+
 drop table if exists `school_bus`.`driver`;
 CREATE TABLE IF NOT EXISTS `school_bus`.`driver` (
     `Driver_ID` INT,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `local_govt_in_alabama`;
+
 drop table if exists `local_govt_in_alabama`.`Services`;
 CREATE TABLE IF NOT EXISTS `local_govt_in_alabama`.`Services` (
     `Service_ID` INT NOT NULL,

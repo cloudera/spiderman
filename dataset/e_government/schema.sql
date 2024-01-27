@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `e_government`;
+
 drop table if exists `e_government`.`Addresses`;
 CREATE TABLE IF NOT EXISTS `e_government`.`Addresses` (
     `address_id` INT,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `tracking_orders`;
+
 drop table if exists `tracking_orders`.`Customers`;
 CREATE TABLE IF NOT EXISTS `tracking_orders`.`Customers` (
     `customer_id` INT,

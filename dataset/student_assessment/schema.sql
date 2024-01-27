@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `student_assessment`;
+
 drop table if exists `student_assessment`.`Addresses`;
 CREATE TABLE IF NOT EXISTS `student_assessment`.`Addresses` (
     `address_id` INT NOT NULL,

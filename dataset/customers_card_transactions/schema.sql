@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `customers_card_transactions`;
+
 drop table if exists `customers_card_transactions`.`Accounts`;
 CREATE TABLE IF NOT EXISTS `customers_card_transactions`.`Accounts` (
     `account_id` INT,

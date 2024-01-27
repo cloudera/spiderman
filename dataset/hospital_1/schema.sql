@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `hospital_1`;
+
 drop table if exists `hospital_1`.`Physician`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Physician` (
     `EmployeeID` INT NOT NULL,

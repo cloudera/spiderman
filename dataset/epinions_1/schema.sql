@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `epinions_1`;
+
 drop table if exists `epinions_1`.`item`;
 CREATE TABLE IF NOT EXISTS `epinions_1`.`item` (
     `i_id` INT NOT NULL,

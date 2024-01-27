@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `store_product`;
+
 drop table if exists `store_product`.`product`;
 CREATE TABLE IF NOT EXISTS `store_product`.`product` (
     `product_id` INT,

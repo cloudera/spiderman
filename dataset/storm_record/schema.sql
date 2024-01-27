@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `storm_record`;
+
 drop table if exists `storm_record`.`storm`;
 CREATE TABLE IF NOT EXISTS `storm_record`.`storm` (
     `Storm_ID` INT,

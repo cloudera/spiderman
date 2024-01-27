@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `match_season`;
+
 drop table if exists `match_season`.`country`;
 CREATE TABLE IF NOT EXISTS `match_season`.`country` (
     `Country_id` INT,

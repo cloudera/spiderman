@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `flight_4`;
+
 drop table if exists `flight_4`.`airlines`;
 CREATE TABLE IF NOT EXISTS `flight_4`.`airlines` (
     `alid` INT,

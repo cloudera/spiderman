@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `loan_1`;
+
 drop table if exists `loan_1`.`bank`;
 CREATE TABLE IF NOT EXISTS `loan_1`.`bank` (
     `branch_ID` INT,

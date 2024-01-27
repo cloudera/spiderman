@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `company_office`;
+
 drop table if exists `company_office`.`buildings`;
 CREATE TABLE IF NOT EXISTS `company_office`.`buildings` (
     `id` INT,

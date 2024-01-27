@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `roller_coaster`;
+
 drop table if exists `roller_coaster`.`country`;
 CREATE TABLE IF NOT EXISTS `roller_coaster`.`country` (
     `Country_ID` INT,

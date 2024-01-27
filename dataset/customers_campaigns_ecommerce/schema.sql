@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `customers_campaigns_ecommerce`;
+
 drop table if exists `customers_campaigns_ecommerce`.`Premises`;
 CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Premises` (
     `premise_id` INT,

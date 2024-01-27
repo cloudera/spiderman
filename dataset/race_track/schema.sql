@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `race_track`;
+
 drop table if exists `race_track`.`track`;
 CREATE TABLE IF NOT EXISTS `race_track`.`track` (
     `Track_ID` INT,

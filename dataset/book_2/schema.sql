@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `book_2`;
+
 drop table if exists `book_2`.`book`;
 CREATE TABLE IF NOT EXISTS `book_2`.`book` (
     `Book_ID` INT,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `cre_Doc_Control_Systems`;
+
 drop table if exists `cre_Doc_Control_Systems`.`Ref_Document_Types`;
 CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Ref_Document_Types` (
     `document_type_code` CHAR(15) NOT NULL,

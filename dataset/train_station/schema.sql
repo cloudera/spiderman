@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `train_station`;
+
 drop table if exists `train_station`.`station`;
 CREATE TABLE IF NOT EXISTS `train_station`.`station` (
     `Station_ID` INT,

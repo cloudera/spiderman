@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `world_1`;
+
 drop table if exists `world_1`.`country`;
 CREATE TABLE IF NOT EXISTS `world_1`.`country` (
     `Code` CHAR(3) NOT NULL,

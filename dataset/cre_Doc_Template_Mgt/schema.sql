@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `cre_Doc_Template_Mgt`;
+
 drop table if exists `cre_Doc_Template_Mgt`.`Ref_Template_Types`;
 CREATE TABLE IF NOT EXISTS `cre_Doc_Template_Mgt`.`Ref_Template_Types` (
     `Template_Type_Code` CHAR(15) NOT NULL,

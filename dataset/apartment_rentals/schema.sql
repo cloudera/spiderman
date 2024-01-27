@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `apartment_rentals`;
+
 drop table if exists `apartment_rentals`.`Apartment_Buildings`;
 CREATE TABLE IF NOT EXISTS `apartment_rentals`.`Apartment_Buildings` (
     `building_id` INT NOT NULL,

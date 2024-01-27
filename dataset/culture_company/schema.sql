@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `culture_company`;
+
 drop table if exists `culture_company`.`book_club`;
 CREATE TABLE IF NOT EXISTS `culture_company`.`book_club` (
     `book_club_id` INT,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `local_govt_mdm`;
+
 drop table if exists `local_govt_mdm`.`Customer_Master_Index`;
 CREATE TABLE IF NOT EXISTS `local_govt_mdm`.`Customer_Master_Index` (
     `master_customer_id` INT NOT NULL,

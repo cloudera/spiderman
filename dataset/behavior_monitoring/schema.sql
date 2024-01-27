@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `behavior_monitoring`;
+
 drop table if exists `behavior_monitoring`.`Ref_Address_Types`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Ref_Address_Types` (
     `address_type_code` STRING,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `mountain_photos`;
+
 drop table if exists `mountain_photos`.`mountain`;
 CREATE TABLE IF NOT EXISTS `mountain_photos`.`mountain` (
     `id` INT,

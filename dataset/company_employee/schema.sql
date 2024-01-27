@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `company_employee`;
+
 drop table if exists `company_employee`.`people`;
 CREATE TABLE IF NOT EXISTS `company_employee`.`people` (
     `People_ID` INT,

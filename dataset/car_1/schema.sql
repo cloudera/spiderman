@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `car_1`;
+
 drop table if exists `car_1`.`continents`;
 CREATE TABLE IF NOT EXISTS `car_1`.`continents` (
     `ContId` INT,

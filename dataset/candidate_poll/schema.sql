@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `candidate_poll`;
+
 drop table if exists `candidate_poll`.`people`;
 CREATE TABLE IF NOT EXISTS `candidate_poll`.`people` (
     `People_ID` INT,

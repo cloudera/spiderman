@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `election`;
+
 drop table if exists `election`.`county`;
 CREATE TABLE IF NOT EXISTS `election`.`county` (
     `County_Id` INT,

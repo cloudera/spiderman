@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `phone_1`;
+
 drop table if exists `phone_1`.`chip_model`;
 CREATE TABLE IF NOT EXISTS `phone_1`.`chip_model` (
     `Model_name` STRING,

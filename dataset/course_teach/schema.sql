@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `course_teach`;
+
 drop table if exists `course_teach`.`course`;
 CREATE TABLE IF NOT EXISTS `course_teach`.`course` (
     `Course_ID` INT,

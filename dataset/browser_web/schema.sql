@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `browser_web`;
+
 drop table if exists `browser_web`.`Web_client_accelerator`;
 CREATE TABLE IF NOT EXISTS `browser_web`.`Web_client_accelerator` (
     `id` INT,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `soccer_1`;
+
 drop table if exists `soccer_1`.`Player`;
 CREATE TABLE IF NOT EXISTS `soccer_1`.`Player` (
     `id` INT,
@@ -8,8 +10,8 @@ CREATE TABLE IF NOT EXISTS `soccer_1`.`Player` (
     `height` INT,
     `weight` INT,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    UNIQUE (`player_fifa_api_id`) DISABLE NOVALIDATE,
-    UNIQUE (`player_api_id`) DISABLE NOVALIDATE
+    UNIQUE (`player_api_id`) DISABLE NOVALIDATE,
+    UNIQUE (`player_fifa_api_id`) DISABLE NOVALIDATE
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','

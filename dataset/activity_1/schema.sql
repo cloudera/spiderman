@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `activity_1`;
+
 drop table if exists `activity_1`.`Activity`;
 CREATE TABLE IF NOT EXISTS `activity_1`.`Activity` (
     `actid` INT,

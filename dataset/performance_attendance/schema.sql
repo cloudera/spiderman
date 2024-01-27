@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `performance_attendance`;
+
 drop table if exists `performance_attendance`.`member`;
 CREATE TABLE IF NOT EXISTS `performance_attendance`.`member` (
     `Member_ID` INT,

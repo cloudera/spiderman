@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `decoration_competition`;
+
 drop table if exists `decoration_competition`.`college`;
 CREATE TABLE IF NOT EXISTS `decoration_competition`.`college` (
     `College_ID` INT,

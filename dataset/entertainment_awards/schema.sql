@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `entertainment_awards`;
+
 drop table if exists `entertainment_awards`.`festival_detail`;
 CREATE TABLE IF NOT EXISTS `entertainment_awards`.`festival_detail` (
     `Festival_ID` INT,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `chinook_1`;
+
 drop table if exists `chinook_1`.`Artist`;
 CREATE TABLE IF NOT EXISTS `chinook_1`.`Artist` (
     `ArtistId` INT NOT NULL,

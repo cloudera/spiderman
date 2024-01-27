@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `e_learning`;
+
 drop table if exists `e_learning`.`Course_Authors_and_Tutors`;
 CREATE TABLE IF NOT EXISTS `e_learning`.`Course_Authors_and_Tutors` (
     `author_id` INT,

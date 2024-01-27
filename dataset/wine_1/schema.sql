@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `wine_1`;
+
 drop table if exists `wine_1`.`grapes`;
 CREATE TABLE IF NOT EXISTS `wine_1`.`grapes` (
     `ID` INT,

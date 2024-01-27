@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `school_player`;
+
 drop table if exists `school_player`.`school`;
 CREATE TABLE IF NOT EXISTS `school_player`.`school` (
     `School_ID` INT,

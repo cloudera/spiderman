@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `program_share`;
+
 drop table if exists `program_share`.`program`;
 CREATE TABLE IF NOT EXISTS `program_share`.`program` (
     `Program_ID` INT,

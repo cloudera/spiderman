@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `formula_1`;
+
 drop table if exists `formula_1`.`circuits`;
 CREATE TABLE IF NOT EXISTS `formula_1`.`circuits` (
     `circuitId` INT,

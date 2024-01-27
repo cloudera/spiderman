@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `local_govt_and_lot`;
+
 drop table if exists `local_govt_and_lot`.`Customers`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Customers` (
     `customer_id` INT NOT NULL,

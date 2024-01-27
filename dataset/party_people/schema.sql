@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `party_people`;
+
 drop table if exists `party_people`.`region`;
 CREATE TABLE IF NOT EXISTS `party_people`.`region` (
     `Region_ID` INT,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `battle_death`;
+
 drop table if exists `battle_death`.`battle`;
 CREATE TABLE IF NOT EXISTS `battle_death`.`battle` (
     `id` INT,

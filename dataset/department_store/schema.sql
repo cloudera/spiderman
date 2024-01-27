@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `department_store`;
+
 drop table if exists `department_store`.`Addresses`;
 CREATE TABLE IF NOT EXISTS `department_store`.`Addresses` (
     `address_id` INT,

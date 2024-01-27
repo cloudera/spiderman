@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `customer_deliveries`;
+
 drop table if exists `customer_deliveries`.`Products`;
 CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Products` (
     `product_id` INT,

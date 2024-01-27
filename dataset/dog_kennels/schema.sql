@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `dog_kennels`;
+
 drop table if exists `dog_kennels`.`Breeds`;
 CREATE TABLE IF NOT EXISTS `dog_kennels`.`Breeds` (
     `breed_code` STRING,

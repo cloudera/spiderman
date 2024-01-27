@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `machine_repair`;
+
 drop table if exists `machine_repair`.`repair`;
 CREATE TABLE IF NOT EXISTS `machine_repair`.`repair` (
     `repair_ID` INT,

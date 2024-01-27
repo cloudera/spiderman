@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `election_representative`;
+
 drop table if exists `election_representative`.`representative`;
 CREATE TABLE IF NOT EXISTS `election_representative`.`representative` (
     `Representative_ID` INT,

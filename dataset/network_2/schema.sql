@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `network_2`;
+
 drop table if exists `network_2`.`Person`;
 CREATE TABLE IF NOT EXISTS `network_2`.`Person` (
     `name` STRING,

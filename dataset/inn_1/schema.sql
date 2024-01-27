@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `inn_1`;
+
 drop table if exists `inn_1`.`Rooms`;
 CREATE TABLE IF NOT EXISTS `inn_1`.`Rooms` (
     `RoomId` STRING,

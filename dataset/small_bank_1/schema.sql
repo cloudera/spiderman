@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `small_bank_1`;
+
 drop table if exists `small_bank_1`.`ACCOUNTS`;
 CREATE TABLE IF NOT EXISTS `small_bank_1`.`ACCOUNTS` (
     `custid` BIGINT NOT NULL,

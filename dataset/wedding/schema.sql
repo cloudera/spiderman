@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `wedding`;
+
 drop table if exists `wedding`.`people`;
 CREATE TABLE IF NOT EXISTS `wedding`.`people` (
     `People_ID` INT,

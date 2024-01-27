@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `flight_1`;
+
 drop table if exists `flight_1`.`aircraft`;
 CREATE TABLE IF NOT EXISTS `flight_1`.`aircraft` (
     `aid` NUMERIC(9,0),

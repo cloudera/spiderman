@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `solvency_ii`;
+
 drop table if exists `solvency_ii`.`Addresses`;
 CREATE TABLE IF NOT EXISTS `solvency_ii`.`Addresses` (
     `Address_ID` INT NOT NULL,

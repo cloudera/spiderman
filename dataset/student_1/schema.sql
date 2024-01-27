@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `student_1`;
+
 drop table if exists `student_1`.`list`;
 CREATE TABLE IF NOT EXISTS `student_1`.`list` (
     `LastName` STRING,

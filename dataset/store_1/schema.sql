@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `store_1`;
+
 drop table if exists `store_1`.`artists`;
 CREATE TABLE IF NOT EXISTS `store_1`.`artists` (
     `id` INT,

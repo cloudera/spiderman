@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `club_1`;
+
 drop table if exists `club_1`.`Student`;
 CREATE TABLE IF NOT EXISTS `club_1`.`Student` (
     `StuID` INT,

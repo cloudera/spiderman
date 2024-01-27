@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `farm`;
+
 drop table if exists `farm`.`city`;
 CREATE TABLE IF NOT EXISTS `farm`.`city` (
     `City_ID` INT,

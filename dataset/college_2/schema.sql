@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `college_2`;
+
 drop table if exists `college_2`.`classroom`;
 CREATE TABLE IF NOT EXISTS `college_2`.`classroom` (
     `building` STRING,

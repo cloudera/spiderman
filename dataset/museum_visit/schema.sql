@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `museum_visit`;
+
 drop table if exists `museum_visit`.`museum`;
 CREATE TABLE IF NOT EXISTS `museum_visit`.`museum` (
     `Museum_ID` INT,

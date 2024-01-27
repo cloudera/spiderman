@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `tvshow`;
+
 drop table if exists `tvshow`.`TV_Channel`;
 CREATE TABLE IF NOT EXISTS `tvshow`.`TV_Channel` (
     `id` STRING,

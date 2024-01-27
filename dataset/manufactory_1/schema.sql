@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `manufactory_1`;
+
 drop table if exists `manufactory_1`.`Manufacturers`;
 CREATE TABLE IF NOT EXISTS `manufactory_1`.`Manufacturers` (
     `Code` INT,

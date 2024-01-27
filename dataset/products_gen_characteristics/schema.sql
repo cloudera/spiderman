@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `products_gen_characteristics`;
+
 drop table if exists `products_gen_characteristics`.`Ref_Characteristic_Types`;
 CREATE TABLE IF NOT EXISTS `products_gen_characteristics`.`Ref_Characteristic_Types` (
     `characteristic_type_code` STRING,

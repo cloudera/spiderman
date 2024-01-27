@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `products_for_hire`;
+
 drop table if exists `products_for_hire`.`Discount_Coupons`;
 CREATE TABLE IF NOT EXISTS `products_for_hire`.`Discount_Coupons` (
     `coupon_id` INT,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `protein_institute`;
+
 drop table if exists `protein_institute`.`building`;
 CREATE TABLE IF NOT EXISTS `protein_institute`.`building` (
     `building_id` STRING,

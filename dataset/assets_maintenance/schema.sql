@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `assets_maintenance`;
+
 drop table if exists `assets_maintenance`.`Third_Party_Companies`;
 CREATE TABLE IF NOT EXISTS `assets_maintenance`.`Third_Party_Companies` (
     `company_id` INT,

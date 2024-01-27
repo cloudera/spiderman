@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `restaurant_1`;
+
 drop table if exists `restaurant_1`.`Student`;
 CREATE TABLE IF NOT EXISTS `restaurant_1`.`Student` (
     `StuID` INT,

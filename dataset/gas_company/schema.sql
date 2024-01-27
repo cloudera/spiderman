@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `gas_company`;
+
 drop table if exists `gas_company`.`company`;
 CREATE TABLE IF NOT EXISTS `gas_company`.`company` (
     `Company_ID` INT,

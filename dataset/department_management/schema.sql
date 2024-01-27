@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `department_management`;
+
 drop table if exists `department_management`.`department`;
 CREATE TABLE IF NOT EXISTS `department_management`.`department` (
     `Department_ID` INT,

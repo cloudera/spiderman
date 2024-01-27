@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `driving_school`;
+
 drop table if exists `driving_school`.`Addresses`;
 CREATE TABLE IF NOT EXISTS `driving_school`.`Addresses` (
     `address_id` INT,

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `journal_committee`;
+
 drop table if exists `journal_committee`.`journal`;
 CREATE TABLE IF NOT EXISTS `journal_committee`.`journal` (
     `Journal_ID` INT,

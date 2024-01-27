@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `wrestler`;
+
 drop table if exists `wrestler`.`wrestler`;
 CREATE TABLE IF NOT EXISTS `wrestler`.`wrestler` (
     `Wrestler_ID` INT,

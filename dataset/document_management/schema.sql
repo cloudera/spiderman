@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `document_management`;
+
 drop table if exists `document_management`.`Roles`;
 CREATE TABLE IF NOT EXISTS `document_management`.`Roles` (
     `role_code` STRING,

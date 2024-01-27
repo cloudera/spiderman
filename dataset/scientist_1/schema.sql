@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `scientist_1`;
+
 drop table if exists `scientist_1`.`Scientists`;
 CREATE TABLE IF NOT EXISTS `scientist_1`.`Scientists` (
     `SSN` INT,

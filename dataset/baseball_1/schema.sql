@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `baseball_1`;
+
 drop table if exists `baseball_1`.`team`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`team` (
     `year` INT,

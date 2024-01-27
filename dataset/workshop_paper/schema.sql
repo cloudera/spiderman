@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `workshop_paper`;
+
 drop table if exists `workshop_paper`.`workshop`;
 CREATE TABLE IF NOT EXISTS `workshop_paper`.`workshop` (
     `Workshop_ID` INT,

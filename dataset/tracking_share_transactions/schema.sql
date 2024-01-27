@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `tracking_share_transactions`;
+
 drop table if exists `tracking_share_transactions`.`Investors`;
 CREATE TABLE IF NOT EXISTS `tracking_share_transactions`.`Investors` (
     `investor_id` INT,

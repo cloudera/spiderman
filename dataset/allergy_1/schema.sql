@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `allergy_1`;
+
 drop table if exists `allergy_1`.`Allergy_Type`;
 CREATE TABLE IF NOT EXISTS `allergy_1`.`Allergy_Type` (
     `Allergy` STRING,

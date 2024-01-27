@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `hr_1`;
+
 drop table if exists `hr_1`.`regions`;
 CREATE TABLE IF NOT EXISTS `hr_1`.`regions` (
     `REGION_ID` INT NOT NULL,

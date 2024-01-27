@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `college_1`;
+
 drop table if exists `college_1`.`EMPLOYEE`;
 CREATE TABLE IF NOT EXISTS `college_1`.`EMPLOYEE` (
     `EMP_NUM` INT,

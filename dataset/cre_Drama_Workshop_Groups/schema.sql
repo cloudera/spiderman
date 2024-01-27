@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `cre_Drama_Workshop_Groups`;
+
 drop table if exists `cre_Drama_Workshop_Groups`.`Ref_Payment_Methods`;
 CREATE TABLE IF NOT EXISTS `cre_Drama_Workshop_Groups`.`Ref_Payment_Methods` (
     `payment_method_code` CHAR (15) NOT NULL,

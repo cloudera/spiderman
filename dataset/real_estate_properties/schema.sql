@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `real_estate_properties`;
+
 drop table if exists `real_estate_properties`.`Ref_Feature_Types`;
 CREATE TABLE IF NOT EXISTS `real_estate_properties`.`Ref_Feature_Types` (
     `feature_type_code` STRING,

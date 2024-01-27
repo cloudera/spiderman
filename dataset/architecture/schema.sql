@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `architecture`;
+
 drop table if exists `architecture`.`architect`;
 CREATE TABLE IF NOT EXISTS `architecture`.`architect` (
     `id` INT,

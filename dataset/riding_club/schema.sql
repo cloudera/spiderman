@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `riding_club`;
+
 drop table if exists `riding_club`.`player`;
 CREATE TABLE IF NOT EXISTS `riding_club`.`player` (
     `Player_ID` INT,

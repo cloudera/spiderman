@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `news_report`;
+
 drop table if exists `news_report`.`event`;
 CREATE TABLE IF NOT EXISTS `news_report`.`event` (
     `Event_ID` INT,
