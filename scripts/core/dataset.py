@@ -1,11 +1,15 @@
 import os
 from os import path
-
+from typing import Tuple
+import csv
 
 BASE_DIR = './dataset'
 
 def path_to_data_dir(db_name: str) -> str:
     return path.join(BASE_DIR, db_name, 'data')
+
+def path_to_table_file(db_name: str, table_name) -> str:
+    return path.join(BASE_DIR, db_name, 'data', f"{table_name}.csv")
 
 def path_to_schema_file(db_name: str) -> str:
     return path.join(BASE_DIR, db_name, 'schema.sql')
@@ -26,6 +30,11 @@ def get_db_names() -> list[str]:
     db_names = os.listdir(BASE_DIR)
     return _clean_names(db_names)
 
+def get_table_names(db_name: str) -> list[str]:
+    data_dir = path_to_data_dir(db_name)
+    table_files = _clean_names(os.listdir(data_dir))
+    return [path.splitext(file)[0] for file in table_files]
+
 def get_queries(db_name: str) -> str:
     file_path = path_to_train_queries_file(db_name)
     if not path.isfile(file_path):
@@ -38,18 +47,12 @@ def get_schema(db_name: str) -> str:
     with open(path_to_schema_file(db_name)) as f:
         return f.read()
 
-
-def get_all_schema_statements() -> list[str]:
-    statements = []
-    db_names = get_db_names()
-    for db_name in db_names:
-        db_schema = get_schema(db_name)
-        db_stmts = db_schema.split(";")
-        for stmt in db_stmts:
-            stmt = stmt.strip()
-            if stmt: statements.append(stmt)
-
-    return statements
+def get_data(db_name: str, table_name: str) -> Tuple[list, list[list]]:
+    table_file = path_to_table_file(db_name, table_name)
+    with open(table_file, mode='r', newline='', encoding='utf-8') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        rows = list(csv_reader)
+        return rows[0], rows[1:]
 
 def print_stats():
     dbs_with_data = 0
