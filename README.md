@@ -8,10 +8,9 @@ conda activate spiderman-env
 pip install -r requirements.txt
 ```
 
-# Load
+# Load schema & data
 ```
-rsync -avz -e ssh --ignore-existing dataset/* hue@<address>:/home/hue/mounts/hive-warehouse/spiderman
-python scripts/load_dataset.py 'hive://<address>:10000'
+python scripts/load_dataset.py 'hive://<hive-address>:10000'
 ```
 
 # Scan Dataset
