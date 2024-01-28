@@ -18,13 +18,7 @@ CREATE TABLE IF NOT EXISTS `world_1`.`country` (
     `Capital` INT,
     `Code2` CHAR(2) NOT NULL,
     PRIMARY KEY (`Code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/world_1/data/country.csv' INTO TABLE `world_1`.`country`;
-
+);
 
 drop table if exists `world_1`.`city`;
 CREATE TABLE IF NOT EXISTS `world_1`.`city` (
@@ -35,13 +29,7 @@ CREATE TABLE IF NOT EXISTS `world_1`.`city` (
     `Population` INT NOT NULL,
     PRIMARY KEY (`ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`CountryCode`) REFERENCES `world_1`.`country` (`Code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/world_1/data/city.csv' INTO TABLE `world_1`.`city`;
-
+);
 
 drop table if exists `world_1`.`countrylanguage`;
 CREATE TABLE IF NOT EXISTS `world_1`.`countrylanguage` (
@@ -51,10 +39,4 @@ CREATE TABLE IF NOT EXISTS `world_1`.`countrylanguage` (
     `Percentage` DECIMAL(4,1) NOT NULL,
     PRIMARY KEY (`CountryCode`, `Language`) DISABLE NOVALIDATE,
     FOREIGN KEY (`CountryCode`) REFERENCES `world_1`.`country` (`Code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/world_1/data/countrylanguage.csv' INTO TABLE `world_1`.`countrylanguage`;
-
+);

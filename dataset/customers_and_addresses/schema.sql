@@ -10,26 +10,14 @@ CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Addresses` (
     `country` STRING,
     `other_address_details` STRING,
     PRIMARY KEY (`address_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_and_addresses/data/Addresses.csv' INTO TABLE `customers_and_addresses`.`Addresses`;
-
+);
 
 drop table if exists `customers_and_addresses`.`Products`;
 CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Products` (
     `product_id` INT,
     `product_details` STRING,
     PRIMARY KEY (`product_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_and_addresses/data/Products.csv' INTO TABLE `customers_and_addresses`.`Products`;
-
+);
 
 drop table if exists `customers_and_addresses`.`Customers`;
 CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Customers` (
@@ -39,13 +27,7 @@ CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Customers` (
     `date_became_customer` TIMESTAMP,
     `other_customer_details` STRING,
     PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_and_addresses/data/Customers.csv' INTO TABLE `customers_and_addresses`.`Customers`;
-
+);
 
 drop table if exists `customers_and_addresses`.`Customer_Addresses`;
 CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Customer_Addresses` (
@@ -56,13 +38,7 @@ CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Customer_Addresses` (
     `date_address_to` TIMESTAMP,
     FOREIGN KEY (`customer_id`) REFERENCES `customers_and_addresses`.`Customers` (`customer_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`address_id`) REFERENCES `customers_and_addresses`.`Addresses` (`address_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_and_addresses/data/Customer_Addresses.csv' INTO TABLE `customers_and_addresses`.`Customer_Addresses`;
-
+);
 
 drop table if exists `customers_and_addresses`.`Customer_Contact_Channels`;
 CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Customer_Contact_Channels` (
@@ -72,13 +48,7 @@ CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Customer_Contact_Channels`
     `active_to_date` TIMESTAMP,
     `contact_number` STRING NOT NULL,
     FOREIGN KEY (`customer_id`) REFERENCES `customers_and_addresses`.`Customers` (`customer_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_and_addresses/data/Customer_Contact_Channels.csv' INTO TABLE `customers_and_addresses`.`Customer_Contact_Channels`;
-
+);
 
 drop table if exists `customers_and_addresses`.`Customer_Orders`;
 CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Customer_Orders` (
@@ -89,13 +59,7 @@ CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Customer_Orders` (
     `order_details` STRING,
     PRIMARY KEY (`order_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`customer_id`) REFERENCES `customers_and_addresses`.`Customers` (`customer_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_and_addresses/data/Customer_Orders.csv' INTO TABLE `customers_and_addresses`.`Customer_Orders`;
-
+);
 
 drop table if exists `customers_and_addresses`.`Order_Items`;
 CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Order_Items` (
@@ -104,10 +68,4 @@ CREATE TABLE IF NOT EXISTS `customers_and_addresses`.`Order_Items` (
     `order_quantity` STRING,
     FOREIGN KEY (`order_id`) REFERENCES `customers_and_addresses`.`Customer_Orders` (`order_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`product_id`) REFERENCES `customers_and_addresses`.`Products` (`product_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_and_addresses/data/Order_Items.csv' INTO TABLE `customers_and_addresses`.`Order_Items`;
-
+);

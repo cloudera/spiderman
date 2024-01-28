@@ -10,13 +10,7 @@ CREATE TABLE IF NOT EXISTS `bike_1`.`station` (
     `city` STRING,
     `installation_date` STRING,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/bike_1/data/station.csv' INTO TABLE `bike_1`.`station`;
-
+);
 
 drop table if exists `bike_1`.`status`;
 CREATE TABLE IF NOT EXISTS `bike_1`.`status` (
@@ -25,13 +19,7 @@ CREATE TABLE IF NOT EXISTS `bike_1`.`status` (
     `docks_available` INT,
     `time` STRING,
     FOREIGN KEY (`station_id`) REFERENCES `bike_1`.`station` (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/bike_1/data/status.csv' INTO TABLE `bike_1`.`status`;
-
+);
 
 drop table if exists `bike_1`.`trip`;
 CREATE TABLE IF NOT EXISTS `bike_1`.`trip` (
@@ -47,13 +35,7 @@ CREATE TABLE IF NOT EXISTS `bike_1`.`trip` (
     `subscription_type` STRING,
     `zip_code` INT,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/bike_1/data/trip.csv' INTO TABLE `bike_1`.`trip`;
-
+);
 
 drop table if exists `bike_1`.`weather`;
 CREATE TABLE IF NOT EXISTS `bike_1`.`weather` (
@@ -81,10 +63,4 @@ CREATE TABLE IF NOT EXISTS `bike_1`.`weather` (
     `events` STRING,
     `wind_dir_degrees` INT,
     `zip_code` INT
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/bike_1/data/weather.csv' INTO TABLE `bike_1`.`weather`;
-
+);

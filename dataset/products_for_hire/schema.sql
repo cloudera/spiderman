@@ -6,13 +6,7 @@ CREATE TABLE IF NOT EXISTS `products_for_hire`.`Discount_Coupons` (
     `date_issued` TIMESTAMP,
     `coupon_amount` DECIMAL(19,4),
     PRIMARY KEY (`coupon_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/products_for_hire/data/Discount_Coupons.csv' INTO TABLE `products_for_hire`.`Discount_Coupons`;
-
+);
 
 drop table if exists `products_for_hire`.`Customers`;
 CREATE TABLE IF NOT EXISTS `products_for_hire`.`Customers` (
@@ -26,13 +20,7 @@ CREATE TABLE IF NOT EXISTS `products_for_hire`.`Customers` (
     `date_last_hire` TIMESTAMP,
     PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`coupon_id`) REFERENCES `products_for_hire`.`Discount_Coupons` (`coupon_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/products_for_hire/data/Customers.csv' INTO TABLE `products_for_hire`.`Customers`;
-
+);
 
 drop table if exists `products_for_hire`.`Bookings`;
 CREATE TABLE IF NOT EXISTS `products_for_hire`.`Bookings` (
@@ -49,13 +37,7 @@ CREATE TABLE IF NOT EXISTS `products_for_hire`.`Bookings` (
     `amount_of_refund` DECIMAL(19,4),
     PRIMARY KEY (`booking_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`customer_id`) REFERENCES `products_for_hire`.`Customers` (`customer_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/products_for_hire/data/Bookings.csv' INTO TABLE `products_for_hire`.`Bookings`;
-
+);
 
 drop table if exists `products_for_hire`.`Products_for_Hire`;
 CREATE TABLE IF NOT EXISTS `products_for_hire`.`Products_for_Hire` (
@@ -65,13 +47,7 @@ CREATE TABLE IF NOT EXISTS `products_for_hire`.`Products_for_Hire` (
     `product_name` STRING,
     `product_description` STRING,
     PRIMARY KEY (`product_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/products_for_hire/data/Products_for_Hire.csv' INTO TABLE `products_for_hire`.`Products_for_Hire`;
-
+);
 
 drop table if exists `products_for_hire`.`Payments`;
 CREATE TABLE IF NOT EXISTS `products_for_hire`.`Payments` (
@@ -86,13 +62,7 @@ CREATE TABLE IF NOT EXISTS `products_for_hire`.`Payments` (
     PRIMARY KEY (`payment_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`customer_id`) REFERENCES `products_for_hire`.`Customers` (`customer_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`booking_id`) REFERENCES `products_for_hire`.`Bookings` (`booking_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/products_for_hire/data/Payments.csv' INTO TABLE `products_for_hire`.`Payments`;
-
+);
 
 drop table if exists `products_for_hire`.`Products_Booked`;
 CREATE TABLE IF NOT EXISTS `products_for_hire`.`Products_Booked` (
@@ -105,13 +75,7 @@ CREATE TABLE IF NOT EXISTS `products_for_hire`.`Products_Booked` (
     PRIMARY KEY (`booking_id`, `product_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`product_id`) REFERENCES `products_for_hire`.`Products_for_Hire` (`product_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`booking_id`) REFERENCES `products_for_hire`.`Bookings` (`booking_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/products_for_hire/data/Products_Booked.csv' INTO TABLE `products_for_hire`.`Products_Booked`;
-
+);
 
 drop table if exists `products_for_hire`.`View_Product_Availability`;
 CREATE TABLE IF NOT EXISTS `products_for_hire`.`View_Product_Availability` (
@@ -122,10 +86,4 @@ CREATE TABLE IF NOT EXISTS `products_for_hire`.`View_Product_Availability` (
     PRIMARY KEY (`status_date`) DISABLE NOVALIDATE,
     FOREIGN KEY (`product_id`) REFERENCES `products_for_hire`.`Products_for_Hire` (`product_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`booking_id`) REFERENCES `products_for_hire`.`Bookings` (`booking_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/products_for_hire/data/View_Product_Availability.csv' INTO TABLE `products_for_hire`.`View_Product_Availability`;
-
+);

@@ -10,13 +10,7 @@ CREATE TABLE IF NOT EXISTS `cinema`.`film` (
     `Original_air_date` STRING,
     `Production_code` STRING,
     PRIMARY KEY (`Film_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/cinema/data/film.csv' INTO TABLE `cinema`.`film`;
-
+);
 
 drop table if exists `cinema`.`cinema`;
 CREATE TABLE IF NOT EXISTS `cinema`.`cinema` (
@@ -26,13 +20,7 @@ CREATE TABLE IF NOT EXISTS `cinema`.`cinema` (
     `Capacity` INT,
     `Location` STRING,
     PRIMARY KEY (`Cinema_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/cinema/data/cinema.csv' INTO TABLE `cinema`.`cinema`;
-
+);
 
 drop table if exists `cinema`.`schedule`;
 CREATE TABLE IF NOT EXISTS `cinema`.`schedule` (
@@ -44,10 +32,4 @@ CREATE TABLE IF NOT EXISTS `cinema`.`schedule` (
     PRIMARY KEY (`Cinema_ID`, `Film_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Cinema_ID`) REFERENCES `cinema`.`cinema` (`Cinema_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Film_ID`) REFERENCES `cinema`.`film` (`Film_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/cinema/data/schedule.csv' INTO TABLE `cinema`.`schedule`;
-
+);

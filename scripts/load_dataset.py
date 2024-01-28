@@ -19,7 +19,6 @@ stmts = get_all_schema_statements()
 
 with alive_bar(len(stmts)) as bar:
     with TargetDB(f"{url}/default") as db:
-        db.execute(f"set DATASET_DIR={dataset_dir}")
         for stmt in stmts:
             stmt = stmt.replace("${DATASET_DIR}", dataset_dir)
             db.execute(stmt)

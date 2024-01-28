@@ -8,13 +8,7 @@ CREATE TABLE IF NOT EXISTS `roller_coaster`.`country` (
     `Area` INT,
     `Languages` STRING,
     PRIMARY KEY (`Country_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/roller_coaster/data/country.csv' INTO TABLE `roller_coaster`.`country`;
-
+);
 
 drop table if exists `roller_coaster`.`roller_coaster`;
 CREATE TABLE IF NOT EXISTS `roller_coaster`.`roller_coaster` (
@@ -22,17 +16,11 @@ CREATE TABLE IF NOT EXISTS `roller_coaster`.`roller_coaster` (
     `Name` STRING,
     `Park` STRING,
     `Country_ID` INT,
-    `Length` REAL,
-    `Height` REAL,
+    `Length` DOUBLE,
+    `Height` DOUBLE,
     `Speed` STRING,
     `Opened` STRING,
     `Status` STRING,
     PRIMARY KEY (`Roller_Coaster_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Country_ID`) REFERENCES `roller_coaster`.`country` (`Country_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/roller_coaster/data/roller_coaster.csv' INTO TABLE `roller_coaster`.`roller_coaster`;
-
+);

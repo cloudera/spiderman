@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `swimming`.`swimmer` (
     `ID` INT,
     `name` STRING,
     `Nationality` STRING,
-    `meter_100` REAL,
+    `meter_100` DOUBLE,
     `meter_200` STRING,
     `meter_300` STRING,
     `meter_400` STRING,
@@ -14,13 +14,7 @@ CREATE TABLE IF NOT EXISTS `swimming`.`swimmer` (
     `meter_700` STRING,
     `Time` STRING,
     PRIMARY KEY (`ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/swimming/data/swimmer.csv' INTO TABLE `swimming`.`swimmer`;
-
+);
 
 drop table if exists `swimming`.`stadium`;
 CREATE TABLE IF NOT EXISTS `swimming`.`stadium` (
@@ -31,13 +25,7 @@ CREATE TABLE IF NOT EXISTS `swimming`.`stadium` (
     `Country` STRING,
     `Opening_year` INT,
     PRIMARY KEY (`ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/swimming/data/stadium.csv' INTO TABLE `swimming`.`stadium`;
-
+);
 
 drop table if exists `swimming`.`event`;
 CREATE TABLE IF NOT EXISTS `swimming`.`event` (
@@ -47,13 +35,7 @@ CREATE TABLE IF NOT EXISTS `swimming`.`event` (
     `Year` STRING,
     PRIMARY KEY (`ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Stadium_ID`) REFERENCES `swimming`.`stadium` (`ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/swimming/data/event.csv' INTO TABLE `swimming`.`event`;
-
+);
 
 drop table if exists `swimming`.`record`;
 CREATE TABLE IF NOT EXISTS `swimming`.`record` (
@@ -64,10 +46,4 @@ CREATE TABLE IF NOT EXISTS `swimming`.`record` (
     PRIMARY KEY (`Swimmer_ID`, `Event_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Swimmer_ID`) REFERENCES `swimming`.`swimmer` (`ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Event_ID`) REFERENCES `swimming`.`event` (`ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/swimming/data/record.csv' INTO TABLE `swimming`.`record`;
-
+);

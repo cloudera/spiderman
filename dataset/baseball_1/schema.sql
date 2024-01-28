@@ -51,13 +51,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`team` (
     `team_id_lahman45` STRING,
     `team_id_retro` STRING,
     UNIQUE (`team_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/team.csv' INTO TABLE `baseball_1`.`team`;
-
+);
 
 drop table if exists `baseball_1`.`player`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`player` (
@@ -86,13 +80,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`player` (
     `retro_id` STRING,
     `bbref_id` STRING,
     UNIQUE (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/player.csv' INTO TABLE `baseball_1`.`player`;
-
+);
 
 drop table if exists `baseball_1`.`all_star`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`all_star` (
@@ -105,13 +93,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`all_star` (
     `gp` NUMERIC,
     `starting_pos` NUMERIC,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/all_star.csv' INTO TABLE `baseball_1`.`all_star`;
-
+);
 
 drop table if exists `baseball_1`.`appearances`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`appearances` (
@@ -138,13 +120,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`appearances` (
     `g_pr` NUMERIC,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/appearances.csv' INTO TABLE `baseball_1`.`appearances`;
-
+);
 
 drop table if exists `baseball_1`.`manager_award`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`manager_award` (
@@ -155,13 +131,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`manager_award` (
     `tie` STRING,
     `notes` NUMERIC,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/manager_award.csv' INTO TABLE `baseball_1`.`manager_award`;
-
+);
 
 drop table if exists `baseball_1`.`player_award`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`player_award` (
@@ -172,13 +142,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`player_award` (
     `tie` STRING,
     `notes` STRING,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/player_award.csv' INTO TABLE `baseball_1`.`player_award`;
-
+);
 
 drop table if exists `baseball_1`.`manager_award_vote`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`manager_award_vote` (
@@ -189,13 +153,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`manager_award_vote` (
     `points_won` INT,
     `points_max` INT,
     `votes_first` INT
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/manager_award_vote.csv' INTO TABLE `baseball_1`.`manager_award_vote`;
-
+);
 
 drop table if exists `baseball_1`.`player_award_vote`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`player_award_vote` (
@@ -207,13 +165,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`player_award_vote` (
     `points_max` INT,
     `votes_first` NUMERIC,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/player_award_vote.csv' INTO TABLE `baseball_1`.`player_award_vote`;
-
+);
 
 drop table if exists `baseball_1`.`batting`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`batting` (
@@ -240,13 +192,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`batting` (
     `sf` NUMERIC,
     `g_idp` NUMERIC,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/batting.csv' INTO TABLE `baseball_1`.`batting`;
-
+);
 
 drop table if exists `baseball_1`.`batting_postseason`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`batting_postseason` (
@@ -274,13 +220,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`batting_postseason` (
     `g_idp` NUMERIC,
     FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/batting_postseason.csv' INTO TABLE `baseball_1`.`batting_postseason`;
-
+);
 
 drop table if exists `baseball_1`.`college`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`college` (
@@ -290,13 +230,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`college` (
     `state` STRING,
     `country` STRING,
     UNIQUE (`college_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/college.csv' INTO TABLE `baseball_1`.`college`;
-
+);
 
 drop table if exists `baseball_1`.`player_college`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`player_college` (
@@ -305,13 +239,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`player_college` (
     `year` INT,
     FOREIGN KEY (`college_id`) REFERENCES `baseball_1`.`college` (`college_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/player_college.csv' INTO TABLE `baseball_1`.`player_college`;
-
+);
 
 drop table if exists `baseball_1`.`fielding`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`fielding` (
@@ -334,13 +262,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`fielding` (
     `cs` NUMERIC,
     `zr` NUMERIC,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/fielding.csv' INTO TABLE `baseball_1`.`fielding`;
-
+);
 
 drop table if exists `baseball_1`.`fielding_outfield`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`fielding_outfield` (
@@ -351,13 +273,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`fielding_outfield` (
     `gcf` NUMERIC,
     `grf` NUMERIC,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/fielding_outfield.csv' INTO TABLE `baseball_1`.`fielding_outfield`;
-
+);
 
 drop table if exists `baseball_1`.`fielding_postseason`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`fielding_postseason` (
@@ -380,13 +296,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`fielding_postseason` (
     `cs` NUMERIC,
     FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/fielding_postseason.csv' INTO TABLE `baseball_1`.`fielding_postseason`;
-
+);
 
 drop table if exists `baseball_1`.`hall_of_fame`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`hall_of_fame` (
@@ -400,13 +310,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`hall_of_fame` (
     `category` STRING,
     `needed_note` STRING,
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/hall_of_fame.csv' INTO TABLE `baseball_1`.`hall_of_fame`;
-
+);
 
 drop table if exists `baseball_1`.`park`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`park` (
@@ -417,13 +321,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`park` (
     `state` STRING,
     `country` STRING,
     UNIQUE (`park_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/park.csv' INTO TABLE `baseball_1`.`park`;
-
+);
 
 drop table if exists `baseball_1`.`home_game`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`home_game` (
@@ -438,13 +336,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`home_game` (
     `attendance` INT,
     FOREIGN KEY (`park_id`) REFERENCES `baseball_1`.`park` (`park_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/home_game.csv' INTO TABLE `baseball_1`.`home_game`;
-
+);
 
 drop table if exists `baseball_1`.`manager`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`manager` (
@@ -459,13 +351,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`manager` (
     `rank` NUMERIC,
     `plyr_mgr` STRING,
     FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/manager.csv' INTO TABLE `baseball_1`.`manager`;
-
+);
 
 drop table if exists `baseball_1`.`manager_half`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`manager_half` (
@@ -480,13 +366,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`manager_half` (
     `l` INT,
     `rank` INT,
     FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/manager_half.csv' INTO TABLE `baseball_1`.`manager_half`;
-
+);
 
 drop table if exists `baseball_1`.`pitching`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`pitching` (
@@ -520,13 +400,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`pitching` (
     `sh` NUMERIC,
     `sf` NUMERIC,
     `g_idp` NUMERIC
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/pitching.csv' INTO TABLE `baseball_1`.`pitching`;
-
+);
 
 drop table if exists `baseball_1`.`pitching_postseason`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`pitching_postseason` (
@@ -560,13 +434,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`pitching_postseason` (
     `sh` NUMERIC,
     `sf` NUMERIC,
     `g_idp` NUMERIC
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/pitching_postseason.csv' INTO TABLE `baseball_1`.`pitching_postseason`;
-
+);
 
 drop table if exists `baseball_1`.`salary`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`salary` (
@@ -575,13 +443,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`salary` (
     `league_id` STRING,
     `player_id` STRING,
     `salary` INT
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/salary.csv' INTO TABLE `baseball_1`.`salary`;
-
+);
 
 drop table if exists `baseball_1`.`postseason`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`postseason` (
@@ -594,13 +456,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`postseason` (
     `wins` INT,
     `losses` INT,
     `ties` INT
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/postseason.csv' INTO TABLE `baseball_1`.`postseason`;
-
+);
 
 drop table if exists `baseball_1`.`team_franchise`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`team_franchise` (
@@ -608,13 +464,7 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`team_franchise` (
     `franchise_name` STRING,
     `active` STRING,
     `na_assoc` STRING
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/team_franchise.csv' INTO TABLE `baseball_1`.`team_franchise`;
-
+);
 
 drop table if exists `baseball_1`.`team_half`;
 CREATE TABLE IF NOT EXISTS `baseball_1`.`team_half` (
@@ -628,10 +478,4 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`team_half` (
     `g` INT,
     `w` INT,
     `l` INT
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/baseball_1/data/team_half.csv' INTO TABLE `baseball_1`.`team_half`;
-
+);

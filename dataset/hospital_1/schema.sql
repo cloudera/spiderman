@@ -7,13 +7,7 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Physician` (
     `Position` STRING NOT NULL,
     `SSN` INT NOT NULL,
     PRIMARY KEY (`EmployeeID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Physician.csv' INTO TABLE `hospital_1`.`Physician`;
-
+);
 
 drop table if exists `hospital_1`.`Department`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Department` (
@@ -22,13 +16,7 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Department` (
     `Head` INT NOT NULL,
     PRIMARY KEY (`DepartmentID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Head`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Department.csv' INTO TABLE `hospital_1`.`Department`;
-
+);
 
 drop table if exists `hospital_1`.`Affiliated_With`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Affiliated_With` (
@@ -38,27 +26,15 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Affiliated_With` (
     PRIMARY KEY (`Physician`, `Department`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Department`) REFERENCES `hospital_1`.`Department` (`DepartmentID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Affiliated_With.csv' INTO TABLE `hospital_1`.`Affiliated_With`;
-
+);
 
 drop table if exists `hospital_1`.`Procedures`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Procedures` (
     `Code` INT NOT NULL,
     `Name` STRING NOT NULL,
-    `Cost` REAL NOT NULL,
+    `Cost` DOUBLE NOT NULL,
     PRIMARY KEY (`Code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Procedures.csv' INTO TABLE `hospital_1`.`Procedures`;
-
+);
 
 drop table if exists `hospital_1`.`Trained_In`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Trained_In` (
@@ -69,13 +45,7 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Trained_In` (
     PRIMARY KEY (`Physician`, `Treatment`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Treatment`) REFERENCES `hospital_1`.`Procedures` (`Code`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Trained_In.csv' INTO TABLE `hospital_1`.`Trained_In`;
-
+);
 
 drop table if exists `hospital_1`.`Patient`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Patient` (
@@ -87,13 +57,7 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Patient` (
     `PCP` INT NOT NULL,
     PRIMARY KEY (`SSN`) DISABLE NOVALIDATE,
     FOREIGN KEY (`PCP`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Patient.csv' INTO TABLE `hospital_1`.`Patient`;
-
+);
 
 drop table if exists `hospital_1`.`Nurse`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Nurse` (
@@ -103,13 +67,7 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Nurse` (
     `Registered` BOOLEAN NOT NULL,
     `SSN` INT NOT NULL,
     PRIMARY KEY (`EmployeeID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Nurse.csv' INTO TABLE `hospital_1`.`Nurse`;
-
+);
 
 drop table if exists `hospital_1`.`Appointment`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Appointment` (
@@ -124,13 +82,7 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Appointment` (
     FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`PrepNurse`) REFERENCES `hospital_1`.`Nurse` (`EmployeeID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Appointment.csv' INTO TABLE `hospital_1`.`Appointment`;
-
+);
 
 drop table if exists `hospital_1`.`Medication`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Medication` (
@@ -139,13 +91,7 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Medication` (
     `Brand` STRING NOT NULL,
     `Description` STRING NOT NULL,
     PRIMARY KEY (`Code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Medication.csv' INTO TABLE `hospital_1`.`Medication`;
-
+);
 
 drop table if exists `hospital_1`.`Prescribes`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Prescribes` (
@@ -160,26 +106,14 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Prescribes` (
     FOREIGN KEY (`Medication`) REFERENCES `hospital_1`.`Medication` (`Code`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Prescribes.csv' INTO TABLE `hospital_1`.`Prescribes`;
-
+);
 
 drop table if exists `hospital_1`.`Block`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Block` (
     `BlockFloor` INT NOT NULL,
     `BlockCode` INT NOT NULL,
     PRIMARY KEY (`BlockFloor`, `BlockCode`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Block.csv' INTO TABLE `hospital_1`.`Block`;
-
+);
 
 drop table if exists `hospital_1`.`Room`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Room` (
@@ -190,13 +124,7 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Room` (
     `Unavailable` BOOLEAN NOT NULL,
     PRIMARY KEY (`RoomNumber`) DISABLE NOVALIDATE,
     FOREIGN KEY (`BlockFloor`, `BlockCode`) REFERENCES `hospital_1`.`Block` (`BlockFloor`, `BlockCode`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Room.csv' INTO TABLE `hospital_1`.`Room`;
-
+);
 
 drop table if exists `hospital_1`.`On_Call`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`On_Call` (
@@ -208,13 +136,7 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`On_Call` (
     PRIMARY KEY (`Nurse`, `BlockFloor`, `BlockCode`, `OnCallStart`, `OnCallEnd`) DISABLE NOVALIDATE,
     FOREIGN KEY (`BlockFloor`, `BlockCode`) REFERENCES `hospital_1`.`Block` (`BlockFloor`, `BlockCode`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Nurse`) REFERENCES `hospital_1`.`Nurse` (`EmployeeID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/On_Call.csv' INTO TABLE `hospital_1`.`On_Call`;
-
+);
 
 drop table if exists `hospital_1`.`Stay`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Stay` (
@@ -226,13 +148,7 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Stay` (
     PRIMARY KEY (`StayID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Room`) REFERENCES `hospital_1`.`Room` (`RoomNumber`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Stay.csv' INTO TABLE `hospital_1`.`Stay`;
-
+);
 
 drop table if exists `hospital_1`.`Undergoes`;
 CREATE TABLE IF NOT EXISTS `hospital_1`.`Undergoes` (
@@ -248,10 +164,4 @@ CREATE TABLE IF NOT EXISTS `hospital_1`.`Undergoes` (
     FOREIGN KEY (`Stay`) REFERENCES `hospital_1`.`Stay` (`StayID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Procedures`) REFERENCES `hospital_1`.`Procedures` (`Code`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/hospital_1/data/Undergoes.csv' INTO TABLE `hospital_1`.`Undergoes`;
-
+);

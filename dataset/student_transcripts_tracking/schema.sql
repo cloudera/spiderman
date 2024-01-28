@@ -12,13 +12,7 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Addresses` (
     `country` STRING,
     `other_address_details` STRING,
     PRIMARY KEY (`address_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Addresses.csv' INTO TABLE `student_transcripts_tracking`.`Addresses`;
-
+);
 
 drop table if exists `student_transcripts_tracking`.`Courses`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Courses` (
@@ -27,13 +21,7 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Courses` (
     `course_description` STRING,
     `other_details` STRING,
     PRIMARY KEY (`course_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Courses.csv' INTO TABLE `student_transcripts_tracking`.`Courses`;
-
+);
 
 drop table if exists `student_transcripts_tracking`.`Departments`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Departments` (
@@ -42,13 +30,7 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Departments` (
     `department_description` STRING,
     `other_details` STRING,
     PRIMARY KEY (`department_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Departments.csv' INTO TABLE `student_transcripts_tracking`.`Departments`;
-
+);
 
 drop table if exists `student_transcripts_tracking`.`Degree_Programs`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Degree_Programs` (
@@ -59,13 +41,7 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Degree_Programs` (
     `other_details` STRING,
     PRIMARY KEY (`degree_program_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`department_id`) REFERENCES `student_transcripts_tracking`.`Departments` (`department_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Degree_Programs.csv' INTO TABLE `student_transcripts_tracking`.`Degree_Programs`;
-
+);
 
 drop table if exists `student_transcripts_tracking`.`Sections`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Sections` (
@@ -76,13 +52,7 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Sections` (
     `other_details` STRING,
     PRIMARY KEY (`section_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`course_id`) REFERENCES `student_transcripts_tracking`.`Courses` (`course_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Sections.csv' INTO TABLE `student_transcripts_tracking`.`Sections`;
-
+);
 
 drop table if exists `student_transcripts_tracking`.`Semesters`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Semesters` (
@@ -91,13 +61,7 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Semesters` (
     `semester_description` STRING,
     `other_details` STRING,
     PRIMARY KEY (`semester_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Semesters.csv' INTO TABLE `student_transcripts_tracking`.`Semesters`;
-
+);
 
 drop table if exists `student_transcripts_tracking`.`Students`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Students` (
@@ -116,13 +80,7 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Students` (
     PRIMARY KEY (`student_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`permanent_address_id`) REFERENCES `student_transcripts_tracking`.`Addresses` (`address_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`current_address_id`) REFERENCES `student_transcripts_tracking`.`Addresses` (`address_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Students.csv' INTO TABLE `student_transcripts_tracking`.`Students`;
-
+);
 
 drop table if exists `student_transcripts_tracking`.`Student_Enrolment`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Student_Enrolment` (
@@ -135,13 +93,7 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Student_Enrolment` (
     FOREIGN KEY (`student_id`) REFERENCES `student_transcripts_tracking`.`Students` (`student_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`semester_id`) REFERENCES `student_transcripts_tracking`.`Semesters` (`semester_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`degree_program_id`) REFERENCES `student_transcripts_tracking`.`Degree_Programs` (`degree_program_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Student_Enrolment.csv' INTO TABLE `student_transcripts_tracking`.`Student_Enrolment`;
-
+);
 
 drop table if exists `student_transcripts_tracking`.`Student_Enrolment_Courses`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Student_Enrolment_Courses` (
@@ -151,13 +103,7 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Student_Enrolment_Cou
     PRIMARY KEY (`student_course_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`student_enrolment_id`) REFERENCES `student_transcripts_tracking`.`Student_Enrolment` (`student_enrolment_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`course_id`) REFERENCES `student_transcripts_tracking`.`Courses` (`course_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Student_Enrolment_Courses.csv' INTO TABLE `student_transcripts_tracking`.`Student_Enrolment_Courses`;
-
+);
 
 drop table if exists `student_transcripts_tracking`.`Transcripts`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Transcripts` (
@@ -165,13 +111,7 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Transcripts` (
     `transcript_date` TIMESTAMP,
     `other_details` STRING,
     PRIMARY KEY (`transcript_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Transcripts.csv' INTO TABLE `student_transcripts_tracking`.`Transcripts`;
-
+);
 
 drop table if exists `student_transcripts_tracking`.`Transcript_Contents`;
 CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Transcript_Contents` (
@@ -179,10 +119,4 @@ CREATE TABLE IF NOT EXISTS `student_transcripts_tracking`.`Transcript_Contents` 
     `transcript_id` INT NOT NULL,
     FOREIGN KEY (`transcript_id`) REFERENCES `student_transcripts_tracking`.`Transcripts` (`transcript_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`student_course_id`) REFERENCES `student_transcripts_tracking`.`Student_Enrolment_Courses` (`student_course_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/student_transcripts_tracking/data/Transcript_Contents.csv' INTO TABLE `student_transcripts_tracking`.`Transcript_Contents`;
-
+);

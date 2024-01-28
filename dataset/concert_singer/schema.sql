@@ -10,13 +10,7 @@ CREATE TABLE IF NOT EXISTS `concert_singer`.`stadium` (
     `Lowest` INT,
     `Average` INT,
     PRIMARY KEY (`Stadium_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/concert_singer/data/stadium.csv' INTO TABLE `concert_singer`.`stadium`;
-
+);
 
 drop table if exists `concert_singer`.`singer`;
 CREATE TABLE IF NOT EXISTS `concert_singer`.`singer` (
@@ -28,13 +22,7 @@ CREATE TABLE IF NOT EXISTS `concert_singer`.`singer` (
     `Age` INT,
     `Is_male` BOOLEAN,
     PRIMARY KEY (`Singer_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/concert_singer/data/singer.csv' INTO TABLE `concert_singer`.`singer`;
-
+);
 
 drop table if exists `concert_singer`.`concert`;
 CREATE TABLE IF NOT EXISTS `concert_singer`.`concert` (
@@ -45,13 +33,7 @@ CREATE TABLE IF NOT EXISTS `concert_singer`.`concert` (
     `Year` STRING,
     PRIMARY KEY (`concert_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Stadium_ID`) REFERENCES `concert_singer`.`stadium` (`Stadium_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/concert_singer/data/concert.csv' INTO TABLE `concert_singer`.`concert`;
-
+);
 
 drop table if exists `concert_singer`.`singer_in_concert`;
 CREATE TABLE IF NOT EXISTS `concert_singer`.`singer_in_concert` (
@@ -60,10 +42,4 @@ CREATE TABLE IF NOT EXISTS `concert_singer`.`singer_in_concert` (
     PRIMARY KEY (`concert_ID`, `Singer_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Singer_ID`) REFERENCES `concert_singer`.`singer` (`Singer_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`concert_ID`) REFERENCES `concert_singer`.`concert` (`concert_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/concert_singer/data/singer_in_concert.csv' INTO TABLE `concert_singer`.`singer_in_concert`;
-
+);

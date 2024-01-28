@@ -5,13 +5,7 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Customers` (
     `customer_id` INT NOT NULL,
     `customer_details` STRING,
     PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Customers.csv' INTO TABLE `local_govt_and_lot`.`Customers`;
-
+);
 
 drop table if exists `local_govt_and_lot`.`Properties`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Properties` (
@@ -20,13 +14,7 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Properties` (
     `property_address` STRING,
     `other_details` STRING,
     PRIMARY KEY (`property_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Properties.csv' INTO TABLE `local_govt_and_lot`.`Properties`;
-
+);
 
 drop table if exists `local_govt_and_lot`.`Residents`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Residents` (
@@ -37,13 +25,7 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Residents` (
     `other_details` STRING,
     PRIMARY KEY (`resident_id`, `property_id`, `date_moved_in`) DISABLE NOVALIDATE,
     FOREIGN KEY (`property_id`) REFERENCES `local_govt_and_lot`.`Properties` (`property_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Residents.csv' INTO TABLE `local_govt_and_lot`.`Residents`;
-
+);
 
 drop table if exists `local_govt_and_lot`.`Organizations`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Organizations` (
@@ -51,13 +33,7 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Organizations` (
     `parent_organization_id` INT,
     `organization_details` STRING,
     PRIMARY KEY (`organization_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Organizations.csv' INTO TABLE `local_govt_and_lot`.`Organizations`;
-
+);
 
 drop table if exists `local_govt_and_lot`.`Services`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Services` (
@@ -67,13 +43,7 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Services` (
     `service_details` STRING,
     PRIMARY KEY (`service_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`organization_id`) REFERENCES `local_govt_and_lot`.`Organizations` (`organization_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Services.csv' INTO TABLE `local_govt_and_lot`.`Services`;
-
+);
 
 drop table if exists `local_govt_and_lot`.`Residents_Services`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Residents_Services` (
@@ -87,13 +57,7 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Residents_Services` (
     PRIMARY KEY (`resident_id`, `service_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`resident_id`, `property_id`, `date_moved_in`) REFERENCES `local_govt_and_lot`.`Residents` (`resident_id`, `property_id`, `date_moved_in`) DISABLE NOVALIDATE,
     FOREIGN KEY (`service_id`) REFERENCES `local_govt_and_lot`.`Services` (`service_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Residents_Services.csv' INTO TABLE `local_govt_and_lot`.`Residents_Services`;
-
+);
 
 drop table if exists `local_govt_and_lot`.`Things`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Things` (
@@ -104,13 +68,7 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Things` (
     `service_details` STRING,
     PRIMARY KEY (`thing_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`organization_id`) REFERENCES `local_govt_and_lot`.`Organizations` (`organization_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Things.csv' INTO TABLE `local_govt_and_lot`.`Things`;
-
+);
 
 drop table if exists `local_govt_and_lot`.`Customer_Events`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Customer_Events` (
@@ -124,13 +82,7 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Customer_Events` (
     FOREIGN KEY (`resident_id`, `property_id`, `date_moved_in`) REFERENCES `local_govt_and_lot`.`Residents` (`resident_id`, `property_id`, `date_moved_in`) DISABLE NOVALIDATE,
     FOREIGN KEY (`customer_id`) REFERENCES `local_govt_and_lot`.`Customers` (`customer_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Customer_Events.csv' INTO TABLE `local_govt_and_lot`.`Customer_Events`;
-
+);
 
 drop table if exists `local_govt_and_lot`.`Customer_Event_Notes`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Customer_Event_Notes` (
@@ -142,13 +94,7 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Customer_Event_Notes` (
     `date_moved_in` TIMESTAMP NOT NULL,
     PRIMARY KEY (`Customer_Event_Note_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Customer_Event_ID`) REFERENCES `local_govt_and_lot`.`Customer_Events` (`Customer_Event_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Customer_Event_Notes.csv' INTO TABLE `local_govt_and_lot`.`Customer_Event_Notes`;
-
+);
 
 drop table if exists `local_govt_and_lot`.`Timed_Status_of_Things`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Timed_Status_of_Things` (
@@ -157,13 +103,7 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Timed_Status_of_Things` (
     `Status_of_Thing_Code` CHAR(15) NOT NULL,
     PRIMARY KEY (`thing_id`, `Date_and_Date`, `Status_of_Thing_Code`) DISABLE NOVALIDATE,
     FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Timed_Status_of_Things.csv' INTO TABLE `local_govt_and_lot`.`Timed_Status_of_Things`;
-
+);
 
 drop table if exists `local_govt_and_lot`.`Timed_Locations_of_Things`;
 CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Timed_Locations_of_Things` (
@@ -172,10 +112,4 @@ CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Timed_Locations_of_Things` (
     `Location_Code` CHAR(15) NOT NULL,
     PRIMARY KEY (`thing_id`, `Date_and_Time`, `Location_Code`) DISABLE NOVALIDATE,
     FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/local_govt_and_lot/data/Timed_Locations_of_Things.csv' INTO TABLE `local_govt_and_lot`.`Timed_Locations_of_Things`;
-
+);

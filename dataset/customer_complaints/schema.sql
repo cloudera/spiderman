@@ -9,13 +9,7 @@ CREATE TABLE IF NOT EXISTS `customer_complaints`.`Staff` (
     `email_address` STRING,
     `phone_number` STRING,
     PRIMARY KEY (`staff_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customer_complaints/data/Staff.csv' INTO TABLE `customer_complaints`.`Staff`;
-
+);
 
 drop table if exists `customer_complaints`.`Customers`;
 CREATE TABLE IF NOT EXISTS `customer_complaints`.`Customers` (
@@ -28,13 +22,7 @@ CREATE TABLE IF NOT EXISTS `customer_complaints`.`Customers` (
     `email_address` STRING,
     `phone_number` STRING,
     PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customer_complaints/data/Customers.csv' INTO TABLE `customer_complaints`.`Customers`;
-
+);
 
 drop table if exists `customer_complaints`.`Products`;
 CREATE TABLE IF NOT EXISTS `customer_complaints`.`Products` (
@@ -47,13 +35,7 @@ CREATE TABLE IF NOT EXISTS `customer_complaints`.`Products` (
     `product_description` STRING,
     `product_price` DECIMAL(19,4),
     PRIMARY KEY (`product_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customer_complaints/data/Products.csv' INTO TABLE `customer_complaints`.`Products`;
-
+);
 
 drop table if exists `customer_complaints`.`Complaints`;
 CREATE TABLE IF NOT EXISTS `customer_complaints`.`Complaints` (
@@ -69,10 +51,4 @@ CREATE TABLE IF NOT EXISTS `customer_complaints`.`Complaints` (
     FOREIGN KEY (`customer_id`) REFERENCES `customer_complaints`.`Customers` (`customer_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`product_id`) REFERENCES `customer_complaints`.`Products` (`product_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`staff_id`) REFERENCES `customer_complaints`.`Staff` (`staff_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customer_complaints/data/Complaints.csv' INTO TABLE `customer_complaints`.`Complaints`;
-
+);

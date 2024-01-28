@@ -11,13 +11,7 @@ CREATE TABLE IF NOT EXISTS `voter_2`.`Student` (
     `Advisor` INT,
     `city_code` STRING,
     PRIMARY KEY (`StuID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/voter_2/data/Student.csv' INTO TABLE `voter_2`.`Student`;
-
+);
 
 drop table if exists `voter_2`.`Voting_record`;
 CREATE TABLE IF NOT EXISTS `voter_2`.`Voting_record` (
@@ -37,10 +31,4 @@ CREATE TABLE IF NOT EXISTS `voter_2`.`Voting_record` (
     FOREIGN KEY (`Vice_President_Vote`) REFERENCES `voter_2`.`Student` (`StuID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`President_Vote`) REFERENCES `voter_2`.`Student` (`StuID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`StuID`) REFERENCES `voter_2`.`Student` (`StuID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/voter_2/data/Voting_record.csv' INTO TABLE `voter_2`.`Voting_record`;
-
+);

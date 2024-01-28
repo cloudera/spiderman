@@ -12,13 +12,7 @@ CREATE TABLE IF NOT EXISTS `soccer_1`.`Player` (
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
     UNIQUE (`player_api_id`) DISABLE NOVALIDATE,
     UNIQUE (`player_fifa_api_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/soccer_1/data/Player.csv' INTO TABLE `soccer_1`.`Player`;
-
+);
 
 drop table if exists `soccer_1`.`Player_Attributes`;
 CREATE TABLE IF NOT EXISTS `soccer_1`.`Player_Attributes` (
@@ -67,13 +61,7 @@ CREATE TABLE IF NOT EXISTS `soccer_1`.`Player_Attributes` (
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`player_api_id`) REFERENCES `soccer_1`.`Player` (`player_api_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`player_fifa_api_id`) REFERENCES `soccer_1`.`Player` (`player_fifa_api_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/soccer_1/data/Player_Attributes.csv' INTO TABLE `soccer_1`.`Player_Attributes`;
-
+);
 
 drop table if exists `soccer_1`.`Country`;
 CREATE TABLE IF NOT EXISTS `soccer_1`.`Country` (
@@ -81,13 +69,7 @@ CREATE TABLE IF NOT EXISTS `soccer_1`.`Country` (
     `name` STRING,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
     UNIQUE (`name`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/soccer_1/data/Country.csv' INTO TABLE `soccer_1`.`Country`;
-
+);
 
 drop table if exists `soccer_1`.`League`;
 CREATE TABLE IF NOT EXISTS `soccer_1`.`League` (
@@ -97,13 +79,7 @@ CREATE TABLE IF NOT EXISTS `soccer_1`.`League` (
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`country_id`) REFERENCES `soccer_1`.`Country` (`id`) DISABLE NOVALIDATE,
     UNIQUE (`name`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/soccer_1/data/League.csv' INTO TABLE `soccer_1`.`League`;
-
+);
 
 drop table if exists `soccer_1`.`Team`;
 CREATE TABLE IF NOT EXISTS `soccer_1`.`Team` (
@@ -113,15 +89,9 @@ CREATE TABLE IF NOT EXISTS `soccer_1`.`Team` (
     `team_long_name` STRING,
     `team_short_name` STRING,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    UNIQUE (`team_api_id`) DISABLE NOVALIDATE,
-    UNIQUE (`team_fifa_api_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/soccer_1/data/Team.csv' INTO TABLE `soccer_1`.`Team`;
-
+    UNIQUE (`team_fifa_api_id`) DISABLE NOVALIDATE,
+    UNIQUE (`team_api_id`) DISABLE NOVALIDATE
+);
 
 drop table if exists `soccer_1`.`Team_Attributes`;
 CREATE TABLE IF NOT EXISTS `soccer_1`.`Team_Attributes` (
@@ -153,10 +123,4 @@ CREATE TABLE IF NOT EXISTS `soccer_1`.`Team_Attributes` (
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`team_api_id`) REFERENCES `soccer_1`.`Team` (`team_api_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`team_fifa_api_id`) REFERENCES `soccer_1`.`Team` (`team_fifa_api_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/soccer_1/data/Team_Attributes.csv' INTO TABLE `soccer_1`.`Team_Attributes`;
-
+);

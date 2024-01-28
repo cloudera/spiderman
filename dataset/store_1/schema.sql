@@ -5,13 +5,7 @@ CREATE TABLE IF NOT EXISTS `store_1`.`artists` (
     `id` INT,
     `name` STRING,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/artists.csv' INTO TABLE `store_1`.`artists`;
-
+);
 
 drop table if exists `store_1`.`albums`;
 CREATE TABLE IF NOT EXISTS `store_1`.`albums` (
@@ -20,13 +14,7 @@ CREATE TABLE IF NOT EXISTS `store_1`.`albums` (
     `artist_id` INT NOT NULL,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`artist_id`) REFERENCES `store_1`.`artists` (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/albums.csv' INTO TABLE `store_1`.`albums`;
-
+);
 
 drop table if exists `store_1`.`employees`;
 CREATE TABLE IF NOT EXISTS `store_1`.`employees` (
@@ -47,13 +35,7 @@ CREATE TABLE IF NOT EXISTS `store_1`.`employees` (
     `email` STRING,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`reports_to`) REFERENCES `store_1`.`employees` (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/employees.csv' INTO TABLE `store_1`.`employees`;
-
+);
 
 drop table if exists `store_1`.`customers`;
 CREATE TABLE IF NOT EXISTS `store_1`.`customers` (
@@ -72,26 +54,14 @@ CREATE TABLE IF NOT EXISTS `store_1`.`customers` (
     `support_rep_id` INT,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`support_rep_id`) REFERENCES `store_1`.`employees` (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/customers.csv' INTO TABLE `store_1`.`customers`;
-
+);
 
 drop table if exists `store_1`.`genres`;
 CREATE TABLE IF NOT EXISTS `store_1`.`genres` (
     `id` INT,
     `name` STRING,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/genres.csv' INTO TABLE `store_1`.`genres`;
-
+);
 
 drop table if exists `store_1`.`invoices`;
 CREATE TABLE IF NOT EXISTS `store_1`.`invoices` (
@@ -106,26 +76,14 @@ CREATE TABLE IF NOT EXISTS `store_1`.`invoices` (
     `total` NUMERIC(10,2) NOT NULL,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`customer_id`) REFERENCES `store_1`.`customers` (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/invoices.csv' INTO TABLE `store_1`.`invoices`;
-
+);
 
 drop table if exists `store_1`.`media_types`;
 CREATE TABLE IF NOT EXISTS `store_1`.`media_types` (
     `id` INT,
     `name` STRING,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/media_types.csv' INTO TABLE `store_1`.`media_types`;
-
+);
 
 drop table if exists `store_1`.`tracks`;
 CREATE TABLE IF NOT EXISTS `store_1`.`tracks` (
@@ -142,13 +100,7 @@ CREATE TABLE IF NOT EXISTS `store_1`.`tracks` (
     FOREIGN KEY (`media_type_id`) REFERENCES `store_1`.`media_types` (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`genre_id`) REFERENCES `store_1`.`genres` (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`album_id`) REFERENCES `store_1`.`albums` (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/tracks.csv' INTO TABLE `store_1`.`tracks`;
-
+);
 
 drop table if exists `store_1`.`invoice_lines`;
 CREATE TABLE IF NOT EXISTS `store_1`.`invoice_lines` (
@@ -160,26 +112,14 @@ CREATE TABLE IF NOT EXISTS `store_1`.`invoice_lines` (
     PRIMARY KEY (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`track_id`) REFERENCES `store_1`.`tracks` (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`invoice_id`) REFERENCES `store_1`.`invoices` (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/invoice_lines.csv' INTO TABLE `store_1`.`invoice_lines`;
-
+);
 
 drop table if exists `store_1`.`playlists`;
 CREATE TABLE IF NOT EXISTS `store_1`.`playlists` (
     `id` INT,
     `name` STRING,
     PRIMARY KEY (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/playlists.csv' INTO TABLE `store_1`.`playlists`;
-
+);
 
 drop table if exists `store_1`.`playlist_tracks`;
 CREATE TABLE IF NOT EXISTS `store_1`.`playlist_tracks` (
@@ -188,10 +128,4 @@ CREATE TABLE IF NOT EXISTS `store_1`.`playlist_tracks` (
     PRIMARY KEY (`playlist_id`, `track_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`track_id`) REFERENCES `store_1`.`tracks` (`id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`playlist_id`) REFERENCES `store_1`.`playlists` (`id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/store_1/data/playlist_tracks.csv' INTO TABLE `store_1`.`playlist_tracks`;
-
+);

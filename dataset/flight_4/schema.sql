@@ -10,13 +10,7 @@ CREATE TABLE IF NOT EXISTS `flight_4`.`airlines` (
     `country` STRING,
     `active` STRING,
     PRIMARY KEY (`alid`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/flight_4/data/airlines.csv' INTO TABLE `flight_4`.`airlines`;
-
+);
 
 drop table if exists `flight_4`.`airports`;
 CREATE TABLE IF NOT EXISTS `flight_4`.`airports` (
@@ -24,19 +18,13 @@ CREATE TABLE IF NOT EXISTS `flight_4`.`airports` (
     `name` STRING NOT NULL,
     `city` STRING,
     `country` STRING,
-    `x` REAL,
-    `y` REAL,
+    `x` DOUBLE,
+    `y` DOUBLE,
     `elevation` BIGINT,
     `iata` STRING,
     `icao` STRING,
     PRIMARY KEY (`apid`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/flight_4/data/airports.csv' INTO TABLE `flight_4`.`airports`;
-
+);
 
 drop table if exists `flight_4`.`routes`;
 CREATE TABLE IF NOT EXISTS `flight_4`.`routes` (
@@ -52,10 +40,4 @@ CREATE TABLE IF NOT EXISTS `flight_4`.`routes` (
     FOREIGN KEY (`alid`) REFERENCES `flight_4`.`airlines` (`alid`) DISABLE NOVALIDATE,
     FOREIGN KEY (`src_apid`) REFERENCES `flight_4`.`airports` (`apid`) DISABLE NOVALIDATE,
     FOREIGN KEY (`dst_apid`) REFERENCES `flight_4`.`airports` (`apid`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/flight_4/data/routes.csv' INTO TABLE `flight_4`.`routes`;
-
+);

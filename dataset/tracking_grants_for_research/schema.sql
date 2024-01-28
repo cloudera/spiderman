@@ -5,26 +5,14 @@ CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Document_Types` (
     `document_type_code` STRING,
     `document_description` STRING NOT NULL,
     PRIMARY KEY (`document_type_code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Document_Types.csv' INTO TABLE `tracking_grants_for_research`.`Document_Types`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Organisation_Types`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Organisation_Types` (
     `organisation_type` STRING,
     `organisation_type_description` STRING NOT NULL,
     PRIMARY KEY (`organisation_type`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Organisation_Types.csv' INTO TABLE `tracking_grants_for_research`.`Organisation_Types`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Organisations`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Organisations` (
@@ -33,13 +21,7 @@ CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Organisations` (
     `organisation_details` STRING NOT NULL,
     PRIMARY KEY (`organisation_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`organisation_type`) REFERENCES `tracking_grants_for_research`.`Organisation_Types` (`organisation_type`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Organisations.csv' INTO TABLE `tracking_grants_for_research`.`Organisations`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Grants`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Grants` (
@@ -51,13 +33,7 @@ CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Grants` (
     `other_details` STRING NOT NULL,
     PRIMARY KEY (`grant_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`organisation_id`) REFERENCES `tracking_grants_for_research`.`Organisations` (`organisation_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Grants.csv' INTO TABLE `tracking_grants_for_research`.`Grants`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Documents`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Documents` (
@@ -70,26 +46,14 @@ CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Documents` (
     PRIMARY KEY (`document_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`grant_id`) REFERENCES `tracking_grants_for_research`.`Grants` (`grant_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`document_type_code`) REFERENCES `tracking_grants_for_research`.`Document_Types` (`document_type_code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Documents.csv' INTO TABLE `tracking_grants_for_research`.`Documents`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Research_Outcomes`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Research_Outcomes` (
     `outcome_code` STRING,
     `outcome_description` STRING NOT NULL,
     PRIMARY KEY (`outcome_code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Research_Outcomes.csv' INTO TABLE `tracking_grants_for_research`.`Research_Outcomes`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Research_Staff`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Research_Staff` (
@@ -98,26 +62,14 @@ CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Research_Staff` (
     `staff_details` STRING NOT NULL,
     PRIMARY KEY (`staff_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`employer_organisation_id`) REFERENCES `tracking_grants_for_research`.`Organisations` (`organisation_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Research_Staff.csv' INTO TABLE `tracking_grants_for_research`.`Research_Staff`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Staff_Roles`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Staff_Roles` (
     `role_code` STRING,
     `role_description` STRING NOT NULL,
     PRIMARY KEY (`role_code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Staff_Roles.csv' INTO TABLE `tracking_grants_for_research`.`Staff_Roles`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Projects`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Projects` (
@@ -126,13 +78,7 @@ CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Projects` (
     `project_details` STRING NOT NULL,
     PRIMARY KEY (`project_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`organisation_id`) REFERENCES `tracking_grants_for_research`.`Organisations` (`organisation_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Projects.csv' INTO TABLE `tracking_grants_for_research`.`Projects`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Project_Outcomes`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Project_Outcomes` (
@@ -141,17 +87,11 @@ CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Project_Outcomes` (
     `outcome_details` STRING,
     FOREIGN KEY (`outcome_code`) REFERENCES `tracking_grants_for_research`.`Research_Outcomes` (`outcome_code`) DISABLE NOVALIDATE,
     FOREIGN KEY (`project_id`) REFERENCES `tracking_grants_for_research`.`Projects` (`project_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Project_Outcomes.csv' INTO TABLE `tracking_grants_for_research`.`Project_Outcomes`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Project_Staff`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Project_Staff` (
-    `staff_id` REAL,
+    `staff_id` DOUBLE,
     `project_id` INT NOT NULL,
     `role_code` STRING NOT NULL,
     `date_from` TIMESTAMP,
@@ -160,13 +100,7 @@ CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Project_Staff` (
     PRIMARY KEY (`staff_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`role_code`) REFERENCES `tracking_grants_for_research`.`Staff_Roles` (`role_code`) DISABLE NOVALIDATE,
     FOREIGN KEY (`project_id`) REFERENCES `tracking_grants_for_research`.`Projects` (`project_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Project_Staff.csv' INTO TABLE `tracking_grants_for_research`.`Project_Staff`;
-
+);
 
 drop table if exists `tracking_grants_for_research`.`Tasks`;
 CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Tasks` (
@@ -176,10 +110,4 @@ CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Tasks` (
     `eg Agree Objectives` STRING,
     PRIMARY KEY (`task_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`project_id`) REFERENCES `tracking_grants_for_research`.`Projects` (`project_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/tracking_grants_for_research/data/Tasks.csv' INTO TABLE `tracking_grants_for_research`.`Tasks`;
-
+);

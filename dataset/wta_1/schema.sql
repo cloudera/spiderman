@@ -9,13 +9,7 @@ CREATE TABLE IF NOT EXISTS `wta_1`.`players` (
     `birth_date` DATE,
     `country_code` STRING,
     PRIMARY KEY (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/wta_1/data/players.csv' INTO TABLE `wta_1`.`players`;
-
+);
 
 drop table if exists `wta_1`.`matches`;
 CREATE TABLE IF NOT EXISTS `wta_1`.`matches` (
@@ -53,13 +47,7 @@ CREATE TABLE IF NOT EXISTS `wta_1`.`matches` (
     `year` INT,
     FOREIGN KEY (`winner_id`) REFERENCES `wta_1`.`players` (`player_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`loser_id`) REFERENCES `wta_1`.`players` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/wta_1/data/matches.csv' INTO TABLE `wta_1`.`matches`;
-
+);
 
 drop table if exists `wta_1`.`rankings`;
 CREATE TABLE IF NOT EXISTS `wta_1`.`rankings` (
@@ -69,10 +57,4 @@ CREATE TABLE IF NOT EXISTS `wta_1`.`rankings` (
     `ranking_points` INT,
     `tours` INT,
     FOREIGN KEY (`player_id`) REFERENCES `wta_1`.`players` (`player_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/wta_1/data/rankings.csv' INTO TABLE `wta_1`.`rankings`;
-
+);

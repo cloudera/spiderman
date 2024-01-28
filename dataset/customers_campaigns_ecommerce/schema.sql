@@ -6,13 +6,7 @@ CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Premises` (
     `premises_type` STRING NOT NULL,
     `premise_details` STRING,
     PRIMARY KEY (`premise_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_campaigns_ecommerce/data/Premises.csv' INTO TABLE `customers_campaigns_ecommerce`.`Premises`;
-
+);
 
 drop table if exists `customers_campaigns_ecommerce`.`Products`;
 CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Products` (
@@ -20,13 +14,7 @@ CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Products` (
     `product_category` STRING NOT NULL,
     `product_name` STRING,
     PRIMARY KEY (`product_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_campaigns_ecommerce/data/Products.csv' INTO TABLE `customers_campaigns_ecommerce`.`Products`;
-
+);
 
 drop table if exists `customers_campaigns_ecommerce`.`Customers`;
 CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Customers` (
@@ -39,13 +27,7 @@ CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Customers` (
     `customer_login` STRING,
     `customer_password` STRING,
     PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_campaigns_ecommerce/data/Customers.csv' INTO TABLE `customers_campaigns_ecommerce`.`Customers`;
-
+);
 
 drop table if exists `customers_campaigns_ecommerce`.`Mailshot_Campaigns`;
 CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Mailshot_Campaigns` (
@@ -55,13 +37,7 @@ CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Mailshot_Campaigns` 
     `mailshot_start_date` TIMESTAMP,
     `mailshot_end_date` TIMESTAMP,
     PRIMARY KEY (`mailshot_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_campaigns_ecommerce/data/Mailshot_Campaigns.csv' INTO TABLE `customers_campaigns_ecommerce`.`Mailshot_Campaigns`;
-
+);
 
 drop table if exists `customers_campaigns_ecommerce`.`Customer_Addresses`;
 CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Customer_Addresses` (
@@ -72,13 +48,7 @@ CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Customer_Addresses` 
     `date_address_to` TIMESTAMP,
     FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`premise_id`) REFERENCES `customers_campaigns_ecommerce`.`Premises` (`premise_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_campaigns_ecommerce/data/Customer_Addresses.csv' INTO TABLE `customers_campaigns_ecommerce`.`Customer_Addresses`;
-
+);
 
 drop table if exists `customers_campaigns_ecommerce`.`Customer_Orders`;
 CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Customer_Orders` (
@@ -91,13 +61,7 @@ CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Customer_Orders` (
     `order_shipping_charges` STRING,
     PRIMARY KEY (`order_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_campaigns_ecommerce/data/Customer_Orders.csv' INTO TABLE `customers_campaigns_ecommerce`.`Customer_Orders`;
-
+);
 
 drop table if exists `customers_campaigns_ecommerce`.`Mailshot_Customers`;
 CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Mailshot_Customers` (
@@ -107,13 +71,7 @@ CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Mailshot_Customers` 
     `mailshot_customer_date` TIMESTAMP,
     FOREIGN KEY (`mailshot_id`) REFERENCES `customers_campaigns_ecommerce`.`Mailshot_Campaigns` (`mailshot_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_campaigns_ecommerce/data/Mailshot_Customers.csv' INTO TABLE `customers_campaigns_ecommerce`.`Mailshot_Customers`;
-
+);
 
 drop table if exists `customers_campaigns_ecommerce`.`Order_Items`;
 CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Order_Items` (
@@ -126,10 +84,4 @@ CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Order_Items` (
     `item_order_quantity` STRING,
     FOREIGN KEY (`order_id`) REFERENCES `customers_campaigns_ecommerce`.`Customer_Orders` (`order_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`product_id`) REFERENCES `customers_campaigns_ecommerce`.`Products` (`product_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/customers_campaigns_ecommerce/data/Order_Items.csv' INTO TABLE `customers_campaigns_ecommerce`.`Order_Items`;
-
+);

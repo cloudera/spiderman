@@ -6,13 +6,7 @@ CREATE TABLE IF NOT EXISTS `music_1`.`genre` (
     `rating` STRING,
     `most_popular_in` STRING,
     PRIMARY KEY (`g_name`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/music_1/data/genre.csv' INTO TABLE `music_1`.`genre`;
-
+);
 
 drop table if exists `music_1`.`artist`;
 CREATE TABLE IF NOT EXISTS `music_1`.`artist` (
@@ -22,13 +16,7 @@ CREATE TABLE IF NOT EXISTS `music_1`.`artist` (
     `preferred_genre` STRING,
     PRIMARY KEY (`artist_name`) DISABLE NOVALIDATE,
     FOREIGN KEY (`preferred_genre`) REFERENCES `music_1`.`genre` (`g_name`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/music_1/data/artist.csv' INTO TABLE `music_1`.`artist`;
-
+);
 
 drop table if exists `music_1`.`files`;
 CREATE TABLE IF NOT EXISTS `music_1`.`files` (
@@ -39,13 +27,7 @@ CREATE TABLE IF NOT EXISTS `music_1`.`files` (
     `formats` STRING,
     PRIMARY KEY (`f_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`artist_name`) REFERENCES `music_1`.`artist` (`artist_name`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/music_1/data/files.csv' INTO TABLE `music_1`.`files`;
-
+);
 
 drop table if exists `music_1`.`song`;
 CREATE TABLE IF NOT EXISTS `music_1`.`song` (
@@ -62,10 +44,4 @@ CREATE TABLE IF NOT EXISTS `music_1`.`song` (
     FOREIGN KEY (`genre_is`) REFERENCES `music_1`.`genre` (`g_name`) DISABLE NOVALIDATE,
     FOREIGN KEY (`f_id`) REFERENCES `music_1`.`files` (`f_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`artist_name`) REFERENCES `music_1`.`artist` (`artist_name`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/music_1/data/song.csv' INTO TABLE `music_1`.`song`;
-
+);

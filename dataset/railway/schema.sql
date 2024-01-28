@@ -10,13 +10,7 @@ CREATE TABLE IF NOT EXISTS `railway`.`railway` (
     `Location` STRING,
     `ObjectNumber` STRING,
     PRIMARY KEY (`Railway_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/railway/data/railway.csv' INTO TABLE `railway`.`railway`;
-
+);
 
 drop table if exists `railway`.`train`;
 CREATE TABLE IF NOT EXISTS `railway`.`train` (
@@ -28,13 +22,7 @@ CREATE TABLE IF NOT EXISTS `railway`.`train` (
     `Railway_ID` INT,
     PRIMARY KEY (`Train_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Railway_ID`) REFERENCES `railway`.`railway` (`Railway_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/railway/data/train.csv' INTO TABLE `railway`.`train`;
-
+);
 
 drop table if exists `railway`.`manager`;
 CREATE TABLE IF NOT EXISTS `railway`.`manager` (
@@ -45,13 +33,7 @@ CREATE TABLE IF NOT EXISTS `railway`.`manager` (
     `Age` INT,
     `Level` INT,
     PRIMARY KEY (`Manager_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/railway/data/manager.csv' INTO TABLE `railway`.`manager`;
-
+);
 
 drop table if exists `railway`.`railway_manage`;
 CREATE TABLE IF NOT EXISTS `railway`.`railway_manage` (
@@ -61,10 +43,4 @@ CREATE TABLE IF NOT EXISTS `railway`.`railway_manage` (
     PRIMARY KEY (`Railway_ID`, `Manager_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Railway_ID`) REFERENCES `railway`.`railway` (`Railway_ID`) DISABLE NOVALIDATE,
     FOREIGN KEY (`Manager_ID`) REFERENCES `railway`.`manager` (`Manager_ID`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/railway/data/railway_manage.csv' INTO TABLE `railway`.`railway_manage`;
-
+);

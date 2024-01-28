@@ -5,39 +5,21 @@ CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Ref_Address_Types` (
     `address_type_code` STRING,
     `address_type_description` STRING,
     PRIMARY KEY (`address_type_code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Ref_Address_Types.csv' INTO TABLE `behavior_monitoring`.`Ref_Address_Types`;
-
+);
 
 drop table if exists `behavior_monitoring`.`Ref_Detention_Type`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Ref_Detention_Type` (
     `detention_type_code` STRING,
     `detention_type_description` STRING,
     PRIMARY KEY (`detention_type_code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Ref_Detention_Type.csv' INTO TABLE `behavior_monitoring`.`Ref_Detention_Type`;
-
+);
 
 drop table if exists `behavior_monitoring`.`Ref_Incident_Type`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Ref_Incident_Type` (
     `incident_type_code` STRING,
     `incident_type_description` STRING,
     PRIMARY KEY (`incident_type_code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Ref_Incident_Type.csv' INTO TABLE `behavior_monitoring`.`Ref_Incident_Type`;
-
+);
 
 drop table if exists `behavior_monitoring`.`Addresses`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Addresses` (
@@ -51,13 +33,7 @@ CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Addresses` (
     `country` STRING,
     `other_address_details` STRING,
     PRIMARY KEY (`address_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Addresses.csv' INTO TABLE `behavior_monitoring`.`Addresses`;
-
+);
 
 drop table if exists `behavior_monitoring`.`Students`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Students` (
@@ -73,13 +49,7 @@ CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Students` (
     `other_student_details` STRING,
     PRIMARY KEY (`student_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Students.csv' INTO TABLE `behavior_monitoring`.`Students`;
-
+);
 
 drop table if exists `behavior_monitoring`.`Teachers`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Teachers` (
@@ -94,13 +64,7 @@ CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Teachers` (
     `other_details` STRING,
     PRIMARY KEY (`teacher_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Teachers.csv' INTO TABLE `behavior_monitoring`.`Teachers`;
-
+);
 
 drop table if exists `behavior_monitoring`.`Assessment_Notes`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Assessment_Notes` (
@@ -112,13 +76,7 @@ CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Assessment_Notes` (
     `other_details` STRING,
     FOREIGN KEY (`teacher_id`) REFERENCES `behavior_monitoring`.`Teachers` (`teacher_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Assessment_Notes.csv' INTO TABLE `behavior_monitoring`.`Assessment_Notes`;
-
+);
 
 drop table if exists `behavior_monitoring`.`Behavior_Incident`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Behavior_Incident` (
@@ -133,13 +91,7 @@ CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Behavior_Incident` (
     PRIMARY KEY (`incident_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`incident_type_code`) REFERENCES `behavior_monitoring`.`Ref_Incident_Type` (`incident_type_code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Behavior_Incident.csv' INTO TABLE `behavior_monitoring`.`Behavior_Incident`;
-
+);
 
 drop table if exists `behavior_monitoring`.`Detention`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Detention` (
@@ -153,13 +105,7 @@ CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Detention` (
     PRIMARY KEY (`detention_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`teacher_id`) REFERENCES `behavior_monitoring`.`Teachers` (`teacher_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`detention_type_code`) REFERENCES `behavior_monitoring`.`Ref_Detention_Type` (`detention_type_code`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Detention.csv' INTO TABLE `behavior_monitoring`.`Detention`;
-
+);
 
 drop table if exists `behavior_monitoring`.`Student_Addresses`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Student_Addresses` (
@@ -171,13 +117,7 @@ CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Student_Addresses` (
     `other_details` STRING,
     FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Student_Addresses.csv' INTO TABLE `behavior_monitoring`.`Student_Addresses`;
-
+);
 
 drop table if exists `behavior_monitoring`.`Students_in_Detention`;
 CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Students_in_Detention` (
@@ -187,10 +127,4 @@ CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Students_in_Detention` (
     FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`detention_id`) REFERENCES `behavior_monitoring`.`Detention` (`detention_id`) DISABLE NOVALIDATE,
     FOREIGN KEY (`incident_id`) REFERENCES `behavior_monitoring`.`Behavior_Incident` (`incident_id`) DISABLE NOVALIDATE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-tblproperties("skip.header.line.count"="1")
-;
-LOAD DATA INPATH '${DATASET_DIR}/behavior_monitoring/data/Students_in_Detention.csv' INTO TABLE `behavior_monitoring`.`Students_in_Detention`;
-
+);
