@@ -9,9 +9,12 @@ def batch(iterable, n=1):
     for ndx in range(0, l, n):
         yield iterable[ndx:min(ndx + n, l)]
 
-def _format(items: list[str], punctuation: str) -> str:
-    items = [f'{punctuation}{value}{punctuation}' for value in items]
-    str = ", ".join(items)
+def _format(values: list[str], punctuation: str) -> str:
+    punctuated_values = []
+    for value in values:
+        value = value.replace(punctuation, f'\\{punctuation}')
+        punctuated_values.append(f'{punctuation}{value}{punctuation}')
+    str = ', '.join(punctuated_values)
     return f"({str})"
 
 
