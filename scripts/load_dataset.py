@@ -14,7 +14,10 @@ Usage: python scripts/load_dataset.py <url> <dataset_dir>
 Eg URL: hive://<address>:10000""")
     exit(1)
 
+SKIP_DBS = ["baseball_1", "soccer_1", "wta_1"]
 db_names = get_db_names()
+
+db_names = [name for name in db_names if name not in SKIP_DBS]
 with alive_bar(len(db_names)) as bar:
     for db_name in db_names:
         with TargetDB(url, db_name) as db:
