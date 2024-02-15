@@ -1,7 +1,13 @@
-# spiderman
-Spiderman dataset for Hive dialect
+# SpiderMan
+A dataset for Hive dialect.
 
 ## Setup
+### Install OS Dependencies
+#### CentOS
+```
+yum install python-pip gcc gcc-c++ python-virtualenv cyrus-sasl-devel
+```
+
 ### Setup Conda
 ```
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
