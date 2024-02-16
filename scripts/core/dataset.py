@@ -26,9 +26,13 @@ def _clean_names(names: list[str]) -> list[str]:
         names.remove('.DS_Store')
     return names
 
-def get_db_names() -> list[str]:
+def get_db_names(skip_names: list[str]) -> list[str]:
     db_names = os.listdir(BASE_DIR)
-    return _clean_names(db_names)
+    db_names = _clean_names(db_names)
+    if skip_names:
+        print("Skipped DBs:", *skip_names)
+        db_names = [name for name in db_names if name not in skip_names]
+    return db_names
 
 def get_table_names(db_name: str) -> list[str]:
     data_dir = path_to_data_dir(db_name)
