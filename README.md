@@ -22,7 +22,8 @@ pip install -r requirements.txt
 
 # Load schema & data
 ```
-python scripts/load_dataset.py 'hive://<hive-address>:10000'
+python scripts/create_schema.py 'hive://<hive-address>:10000'
+python scripts/insert_data.py 'hive://<hive-address>:10000'
 ```
 
 # Scan Dataset

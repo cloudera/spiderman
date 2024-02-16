@@ -1,7 +1,7 @@
 from alive_progress import alive_bar;
 
 from core.target_db import TargetDB
-from core.dataset import get_db_names, get_schema, get_table_names, get_data
+from core.dataset import get_db_names, get_schema
 
 from utils.args import get_args
 

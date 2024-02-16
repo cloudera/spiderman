@@ -30,7 +30,7 @@ def get_db_names(skip_names: list[str]) -> list[str]:
     db_names = os.listdir(BASE_DIR)
     db_names = _clean_names(db_names)
     if skip_names:
-        print("Skipped DBs:", *skip_names)
+        print(f"Skipped DBs ({len(skip_names)}):", *skip_names)
         db_names = [name for name in db_names if name not in skip_names]
     return db_names
 
