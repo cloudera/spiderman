@@ -26,7 +26,13 @@ def _clean_names(names: list[str]) -> list[str]:
         names.remove('.DS_Store')
     return names
 
-def get_db_names(skip_names: list[str]) -> list[str]:
+def _read_csv(file_path) -> list:
+    with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        return list(csv_reader)
+
+
+def get_db_names(skip_names: list[str] = []) -> list[str]:
     db_names = os.listdir(BASE_DIR)
     db_names = _clean_names(db_names)
     if skip_names:
@@ -39,13 +45,13 @@ def get_table_names(db_name: str) -> list[str]:
     table_files = _clean_names(os.listdir(data_dir))
     return [path.splitext(file)[0] for file in table_files]
 
-def get_queries(db_name: str) -> str:
+def get_queries(db_name: str) -> list[list]:
     file_path = path_to_train_queries_file(db_name)
     if not path.isfile(file_path):
         file_path = path_to_test_queries_file(db_name)
 
-    with open(file_path) as f:
-        return f.read()
+    rows = _read_csv(file_path)
+    return rows[1:]
 
 def get_schema(db_name: str) -> str:
     with open(path_to_schema_file(db_name)) as f:
@@ -53,10 +59,8 @@ def get_schema(db_name: str) -> str:
 
 def get_data(db_name: str, table_name: str) -> Tuple[list, list[list]]:
     table_file = path_to_table_file(db_name, table_name)
-    with open(table_file, mode='r', newline='', encoding='utf-8') as csvfile:
-        csv_reader = csv.reader(csvfile)
-        rows = list(csv_reader)
-        return rows[0], rows[1:]
+    rows = _read_csv(table_file)
+    return rows[0], rows[1:]
 
 def print_stats():
     dbs_with_data = 0
@@ -82,7 +86,7 @@ def print_stats():
         total_tables += schema.count('CREATE TABLE')
 
         queries = get_queries(db_name)
-        total_queries += queries.count('\n')
+        total_queries += len(queries)
 
 
     print("\n--- Dataset Stats ---")
