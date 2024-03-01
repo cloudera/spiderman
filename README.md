@@ -38,7 +38,7 @@ If you find this to be useful, please consider citing:
 @inproceedings{SpiderMan,
   title  = {SpiderMan: A Comprehensive Human-Annotated Dataset for SQL AI Tasks Across Diverse Domains and Complexity Levels},
   author = {Sreenath Somarajapuram},
-  year   = 2024,
+  year   = 2024
 }
 ```
 SpiderMan is a refined version of the [Spider dataset](https://yale-lily.github.io/spider).
