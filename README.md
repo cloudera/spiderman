@@ -52,3 +52,7 @@ SpiderMan is a refined version of the [Spider dataset](https://yale-lily.github.
   year      = 2018
 }
 ```
+
+# License
+
+[CC BY-SA 4.0 license](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
