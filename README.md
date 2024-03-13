@@ -31,6 +31,12 @@ python scripts/insert_data.py 'hive://<hive-address>:10000'
 python scripts/scan_dataset.py
 ```
 
+# Rebuild Dataset
+```
+# Download Spider dataset
+bash ./scripts/download_source.sh
+```
+
 # Citation
 
 If you find this to be useful, please consider citing:
