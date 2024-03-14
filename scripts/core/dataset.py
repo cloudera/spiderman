@@ -59,7 +59,7 @@ def get_data(db_name: str, table_name: str) -> Tuple[list, list[list]]:
     rows = read_csv(table_file)
     return rows[0], rows[1:]
 
-def print_stats():
+def get_stats() -> dict:
     dbs_with_data = 0
     total_tables = 0
     total_queries = 0
@@ -85,12 +85,14 @@ def print_stats():
         queries = get_queries(db_name)
         total_queries += len(queries)
 
-    print("\n--- Dataset Stats ---")
-    print("DBs in source: ", len(db_names))
-    print("DBs with training queries: ", dbs_with_train_queries)
-    print("DBs with test queries: ", dbs_with_test_queries)
+    return {
+        "DBs in source": len(db_names),
+        "DBs with training queries": dbs_with_train_queries,
+        "DBs with test queries": dbs_with_test_queries,
+        "DBs with data": dbs_with_data,
 
-    print("DBs with data: ", dbs_with_data)
-    print("Total tables: ", total_tables)
-    print("Total queries: ", total_queries)
-    print("")
+        "\nTotal tables": total_tables,
+        "Total queries": total_queries
+    }
+
+    #TODO: Get top 10 DBs and tables with maximum rows
