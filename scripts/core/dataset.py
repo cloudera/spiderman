@@ -1,7 +1,8 @@
 import os
 from os import path
 from typing import Tuple
-import csv
+
+from utils.filesystem import read_csv, read_str
 
 BASE_DIR = './dataset'
 
@@ -20,24 +21,24 @@ def path_to_train_queries_file(db_name: str) -> str:
 def path_to_test_queries_file(db_name: str) -> str:
     return path.join(BASE_DIR, db_name, 'test_queries.csv')
 
+def path_to_queries_file(db_name: str) -> str:
+    file_path = path_to_train_queries_file(db_name)
+    if not path.isfile(file_path):
+        file_path = path_to_test_queries_file(db_name)
+
+    return file_path
 
 def _clean_names(names: list[str]) -> list[str]:
     if '.DS_Store' in names:
         names.remove('.DS_Store')
     return names
 
-def _read_csv(file_path) -> list:
-    with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
-        csv_reader = csv.reader(csvfile)
-        return list(csv_reader)
-
-
-def get_db_names(skip_names: list[str] = []) -> list[str]:
+def get_db_names(skip_list: list[str] = []) -> list[str]:
     db_names = os.listdir(BASE_DIR)
     db_names = _clean_names(db_names)
-    if skip_names:
-        print(f"Skipped DBs ({len(skip_names)}):", *skip_names)
-        db_names = [name for name in db_names if name not in skip_names]
+    if skip_list:
+        print(f"Skipped DBs ({len(skip_list)}):", *skip_list)
+        db_names = [name for name in db_names if name not in skip_list]
     return db_names
 
 def get_table_names(db_name: str) -> list[str]:
@@ -50,16 +51,12 @@ def get_queries(db_name: str) -> list[list]:
     if not path.isfile(file_path):
         file_path = path_to_test_queries_file(db_name)
 
-    rows = _read_csv(file_path)
+    rows = read_csv(file_path)
     return rows[1:]
-
-def get_schema(db_name: str) -> str:
-    with open(path_to_schema_file(db_name)) as f:
-        return f.read()
 
 def get_data(db_name: str, table_name: str) -> Tuple[list, list[list]]:
     table_file = path_to_table_file(db_name, table_name)
-    rows = _read_csv(table_file)
+    rows = read_csv(table_file)
     return rows[0], rows[1:]
 
 def print_stats():
@@ -82,12 +79,11 @@ def print_stats():
         if path.exists(path_to_test_queries_file(db_name)):
             dbs_with_test_queries += 1
 
-        schema = get_schema(db_name)
+        schema = read_str(path_to_schema_file(db_name))
         total_tables += schema.count('CREATE TABLE')
 
         queries = get_queries(db_name)
         total_queries += len(queries)
-
 
     print("\n--- Dataset Stats ---")
     print("DBs in source: ", len(db_names))
