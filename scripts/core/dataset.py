@@ -95,4 +95,4 @@ def get_stats() -> dict:
         "Total queries": total_queries
     }
 
-    #TODO: Get top 10 DBs and tables with maximum rows
+    #TODO: Get top 10 DBs and tables with maximum rows as part of stats
