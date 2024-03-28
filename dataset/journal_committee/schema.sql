@@ -1,28 +1,30 @@
+-- Dialect: MySQL | Database: journal_committee | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `journal_committee`;
 
-drop table if exists `journal_committee`.`journal`;
-CREATE TABLE IF NOT EXISTS `journal_committee`.`journal` (
+DROP TABLE IF EXISTS `journal_committee`.`journal`;
+CREATE TABLE `journal_committee`.`journal` (
     `Journal_ID` INT,
-    `Date` STRING,
-    `Theme` STRING,
+    `Date` TEXT,
+    `Theme` TEXT,
     `Sales` INT,
-    PRIMARY KEY (`Journal_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Journal_ID`)
 );
 
-drop table if exists `journal_committee`.`editor`;
-CREATE TABLE IF NOT EXISTS `journal_committee`.`editor` (
+DROP TABLE IF EXISTS `journal_committee`.`editor`;
+CREATE TABLE `journal_committee`.`editor` (
     `Editor_ID` INT,
-    `Name` STRING,
-    `Age` DOUBLE,
-    PRIMARY KEY (`Editor_ID`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    `Age` REAL,
+    PRIMARY KEY (`Editor_ID`)
 );
 
-drop table if exists `journal_committee`.`journal_committee`;
-CREATE TABLE IF NOT EXISTS `journal_committee`.`journal_committee` (
+DROP TABLE IF EXISTS `journal_committee`.`journal_committee`;
+CREATE TABLE `journal_committee`.`journal_committee` (
     `Editor_ID` INT,
     `Journal_ID` INT,
-    `Work_Type` STRING,
-    PRIMARY KEY (`Editor_ID`, `Journal_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Journal_ID`) REFERENCES `journal_committee`.`journal` (`Journal_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Editor_ID`) REFERENCES `journal_committee`.`editor` (`Editor_ID`) DISABLE NOVALIDATE
+    `Work_Type` TEXT,
+    PRIMARY KEY (`Editor_ID`, `Journal_ID`),
+    FOREIGN KEY (`Journal_ID`) REFERENCES `journal_committee`.`journal` (`Journal_ID`),
+    FOREIGN KEY (`Editor_ID`) REFERENCES `journal_committee`.`editor` (`Editor_ID`)
 );

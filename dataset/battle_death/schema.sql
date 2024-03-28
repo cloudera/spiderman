@@ -1,36 +1,38 @@
+-- Dialect: MySQL | Database: battle_death | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `battle_death`;
 
-drop table if exists `battle_death`.`battle`;
-CREATE TABLE IF NOT EXISTS `battle_death`.`battle` (
+DROP TABLE IF EXISTS `battle_death`.`battle`;
+CREATE TABLE `battle_death`.`battle` (
     `id` INT,
-    `name` STRING,
-    `date` STRING,
-    `bulgarian_commander` STRING,
-    `latin_commander` STRING,
-    `result` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE
+    `name` TEXT,
+    `date` TEXT,
+    `bulgarian_commander` TEXT,
+    `latin_commander` TEXT,
+    `result` TEXT,
+    PRIMARY KEY (`id`)
 );
 
-drop table if exists `battle_death`.`ship`;
-CREATE TABLE IF NOT EXISTS `battle_death`.`ship` (
+DROP TABLE IF EXISTS `battle_death`.`ship`;
+CREATE TABLE `battle_death`.`ship` (
     `lost_in_battle` INT,
     `id` INT,
-    `name` STRING,
-    `tonnage` STRING,
-    `ship_type` STRING,
-    `location` STRING,
-    `disposition_of_ship` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`lost_in_battle`) REFERENCES `battle_death`.`battle` (`id`) DISABLE NOVALIDATE
+    `name` TEXT,
+    `tonnage` TEXT,
+    `ship_type` TEXT,
+    `location` TEXT,
+    `disposition_of_ship` TEXT,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`lost_in_battle`) REFERENCES `battle_death`.`battle` (`id`)
 );
 
-drop table if exists `battle_death`.`death`;
-CREATE TABLE IF NOT EXISTS `battle_death`.`death` (
+DROP TABLE IF EXISTS `battle_death`.`death`;
+CREATE TABLE `battle_death`.`death` (
     `caused_by_ship_id` INT,
     `id` INT,
-    `note` STRING,
+    `note` TEXT,
     `killed` INT,
     `injured` INT,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`caused_by_ship_id`) REFERENCES `battle_death`.`ship` (`id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`caused_by_ship_id`) REFERENCES `battle_death`.`ship` (`id`)
 );

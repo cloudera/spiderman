@@ -1,30 +1,32 @@
+-- Dialect: MySQL | Database: entertainment_awards | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `entertainment_awards`;
 
-drop table if exists `entertainment_awards`.`festival_detail`;
-CREATE TABLE IF NOT EXISTS `entertainment_awards`.`festival_detail` (
+DROP TABLE IF EXISTS `entertainment_awards`.`festival_detail`;
+CREATE TABLE `entertainment_awards`.`festival_detail` (
     `Festival_ID` INT,
-    `Festival_Name` STRING,
-    `Chair_Name` STRING,
-    `Location` STRING,
+    `Festival_Name` TEXT,
+    `Chair_Name` TEXT,
+    `Location` TEXT,
     `Year` INT,
     `Num_of_Audience` INT,
-    PRIMARY KEY (`Festival_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Festival_ID`)
 );
 
-drop table if exists `entertainment_awards`.`artwork`;
-CREATE TABLE IF NOT EXISTS `entertainment_awards`.`artwork` (
+DROP TABLE IF EXISTS `entertainment_awards`.`artwork`;
+CREATE TABLE `entertainment_awards`.`artwork` (
     `Artwork_ID` INT,
-    `Type` STRING,
-    `Name` STRING,
-    PRIMARY KEY (`Artwork_ID`) DISABLE NOVALIDATE
+    `Type` TEXT,
+    `Name` TEXT,
+    PRIMARY KEY (`Artwork_ID`)
 );
 
-drop table if exists `entertainment_awards`.`nomination`;
-CREATE TABLE IF NOT EXISTS `entertainment_awards`.`nomination` (
+DROP TABLE IF EXISTS `entertainment_awards`.`nomination`;
+CREATE TABLE `entertainment_awards`.`nomination` (
     `Artwork_ID` INT,
     `Festival_ID` INT,
-    `Result` STRING,
-    PRIMARY KEY (`Artwork_ID`, `Festival_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Festival_ID`) REFERENCES `entertainment_awards`.`festival_detail` (`Festival_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Artwork_ID`) REFERENCES `entertainment_awards`.`artwork` (`Artwork_ID`) DISABLE NOVALIDATE
+    `Result` TEXT,
+    PRIMARY KEY (`Artwork_ID`, `Festival_ID`),
+    FOREIGN KEY (`Festival_ID`) REFERENCES `entertainment_awards`.`festival_detail` (`Festival_ID`),
+    FOREIGN KEY (`Artwork_ID`) REFERENCES `entertainment_awards`.`artwork` (`Artwork_ID`)
 );

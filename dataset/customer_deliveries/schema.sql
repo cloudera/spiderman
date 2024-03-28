@@ -1,128 +1,130 @@
+-- Dialect: MySQL | Database: customer_deliveries | Table Count: 13
+
 CREATE DATABASE IF NOT EXISTS `customer_deliveries`;
 
-drop table if exists `customer_deliveries`.`Products`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Products` (
-    `product_id` INT,
-    `product_name` STRING,
+DROP TABLE IF EXISTS `customer_deliveries`.`Products`;
+CREATE TABLE `customer_deliveries`.`Products` (
+    `product_id` INTEGER,
+    `product_name` VARCHAR(20),
     `product_price` DECIMAL(19,4),
-    `product_description` STRING,
-    PRIMARY KEY (`product_id`) DISABLE NOVALIDATE
+    `product_description` VARCHAR(255),
+    PRIMARY KEY (`product_id`)
 );
 
-drop table if exists `customer_deliveries`.`Addresses`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Addresses` (
-    `address_id` INT,
-    `address_details` STRING,
-    `city` STRING,
-    `zip_postcode` STRING,
-    `state_province_county` STRING,
-    `country` STRING,
-    PRIMARY KEY (`address_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Addresses`;
+CREATE TABLE `customer_deliveries`.`Addresses` (
+    `address_id` INTEGER,
+    `address_details` VARCHAR(80),
+    `city` VARCHAR(50),
+    `zip_postcode` VARCHAR(20),
+    `state_province_county` VARCHAR(50),
+    `country` VARCHAR(50),
+    PRIMARY KEY (`address_id`)
 );
 
-drop table if exists `customer_deliveries`.`Customers`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Customers` (
-    `customer_id` INT,
-    `payment_method` STRING NOT NULL,
-    `customer_name` STRING,
-    `customer_phone` STRING,
-    `customer_email` STRING,
-    `date_became_customer` TIMESTAMP,
-    PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Customers`;
+CREATE TABLE `customer_deliveries`.`Customers` (
+    `customer_id` INTEGER,
+    `payment_method` VARCHAR(10) NOT NULL,
+    `customer_name` VARCHAR(80),
+    `customer_phone` VARCHAR(80),
+    `customer_email` VARCHAR(80),
+    `date_became_customer` DATETIME,
+    PRIMARY KEY (`customer_id`)
 );
 
-drop table if exists `customer_deliveries`.`Regular_Orders`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Regular_Orders` (
-    `regular_order_id` INT,
-    `distributer_id` INT NOT NULL,
-    PRIMARY KEY (`regular_order_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`distributer_id`) REFERENCES `customer_deliveries`.`Customers` (`customer_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Regular_Orders`;
+CREATE TABLE `customer_deliveries`.`Regular_Orders` (
+    `regular_order_id` INTEGER,
+    `distributer_id` INTEGER NOT NULL,
+    PRIMARY KEY (`regular_order_id`),
+    FOREIGN KEY (`distributer_id`) REFERENCES `customer_deliveries`.`Customers` (`customer_id`)
 );
 
-drop table if exists `customer_deliveries`.`Regular_Order_Products`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Regular_Order_Products` (
-    `regular_order_id` INT NOT NULL,
-    `product_id` INT NOT NULL,
-    FOREIGN KEY (`regular_order_id`) REFERENCES `customer_deliveries`.`Regular_Orders` (`regular_order_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`product_id`) REFERENCES `customer_deliveries`.`Products` (`product_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Regular_Order_Products`;
+CREATE TABLE `customer_deliveries`.`Regular_Order_Products` (
+    `regular_order_id` INTEGER NOT NULL,
+    `product_id` INTEGER NOT NULL,
+    FOREIGN KEY (`regular_order_id`) REFERENCES `customer_deliveries`.`Regular_Orders` (`regular_order_id`),
+    FOREIGN KEY (`product_id`) REFERENCES `customer_deliveries`.`Products` (`product_id`)
 );
 
-drop table if exists `customer_deliveries`.`Actual_Orders`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Actual_Orders` (
-    `actual_order_id` INT,
-    `order_status_code` STRING NOT NULL,
-    `regular_order_id` INT NOT NULL,
-    `actual_order_date` TIMESTAMP,
-    PRIMARY KEY (`actual_order_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`regular_order_id`) REFERENCES `customer_deliveries`.`Regular_Orders` (`regular_order_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Actual_Orders`;
+CREATE TABLE `customer_deliveries`.`Actual_Orders` (
+    `actual_order_id` INTEGER,
+    `order_status_code` VARCHAR(10) NOT NULL,
+    `regular_order_id` INTEGER NOT NULL,
+    `actual_order_date` DATETIME,
+    PRIMARY KEY (`actual_order_id`),
+    FOREIGN KEY (`regular_order_id`) REFERENCES `customer_deliveries`.`Regular_Orders` (`regular_order_id`)
 );
 
-drop table if exists `customer_deliveries`.`Actual_Order_Products`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Actual_Order_Products` (
-    `actual_order_id` INT NOT NULL,
-    `product_id` INT NOT NULL,
-    FOREIGN KEY (`actual_order_id`) REFERENCES `customer_deliveries`.`Actual_Orders` (`actual_order_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`product_id`) REFERENCES `customer_deliveries`.`Products` (`product_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Actual_Order_Products`;
+CREATE TABLE `customer_deliveries`.`Actual_Order_Products` (
+    `actual_order_id` INTEGER NOT NULL,
+    `product_id` INTEGER NOT NULL,
+    FOREIGN KEY (`actual_order_id`) REFERENCES `customer_deliveries`.`Actual_Orders` (`actual_order_id`),
+    FOREIGN KEY (`product_id`) REFERENCES `customer_deliveries`.`Products` (`product_id`)
 );
 
-drop table if exists `customer_deliveries`.`Customer_Addresses`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Customer_Addresses` (
-    `customer_id` INT NOT NULL,
-    `address_id` INT NOT NULL,
-    `date_from` TIMESTAMP NOT NULL,
-    `address_type` STRING NOT NULL,
-    `date_to` TIMESTAMP,
-    FOREIGN KEY (`address_id`) REFERENCES `customer_deliveries`.`Addresses` (`address_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`customer_id`) REFERENCES `customer_deliveries`.`Customers` (`customer_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Customer_Addresses`;
+CREATE TABLE `customer_deliveries`.`Customer_Addresses` (
+    `customer_id` INTEGER NOT NULL,
+    `address_id` INTEGER NOT NULL,
+    `date_from` DATETIME NOT NULL,
+    `address_type` VARCHAR(10) NOT NULL,
+    `date_to` DATETIME,
+    FOREIGN KEY (`address_id`) REFERENCES `customer_deliveries`.`Addresses` (`address_id`),
+    FOREIGN KEY (`customer_id`) REFERENCES `customer_deliveries`.`Customers` (`customer_id`)
 );
 
-drop table if exists `customer_deliveries`.`Delivery_Routes`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Delivery_Routes` (
-    `route_id` INT,
-    `route_name` STRING,
-    `other_route_details` STRING,
-    PRIMARY KEY (`route_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Delivery_Routes`;
+CREATE TABLE `customer_deliveries`.`Delivery_Routes` (
+    `route_id` INTEGER,
+    `route_name` VARCHAR(50),
+    `other_route_details` VARCHAR(255),
+    PRIMARY KEY (`route_id`)
 );
 
-drop table if exists `customer_deliveries`.`Delivery_Route_Locations`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Delivery_Route_Locations` (
-    `location_code` STRING,
-    `route_id` INT NOT NULL,
-    `location_address_id` INT NOT NULL,
-    `location_name` STRING,
-    PRIMARY KEY (`location_code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`route_id`) REFERENCES `customer_deliveries`.`Delivery_Routes` (`route_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`location_address_id`) REFERENCES `customer_deliveries`.`Addresses` (`address_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Delivery_Route_Locations`;
+CREATE TABLE `customer_deliveries`.`Delivery_Route_Locations` (
+    `location_code` VARCHAR(10),
+    `route_id` INTEGER NOT NULL,
+    `location_address_id` INTEGER NOT NULL,
+    `location_name` VARCHAR(50),
+    PRIMARY KEY (`location_code`),
+    FOREIGN KEY (`route_id`) REFERENCES `customer_deliveries`.`Delivery_Routes` (`route_id`),
+    FOREIGN KEY (`location_address_id`) REFERENCES `customer_deliveries`.`Addresses` (`address_id`)
 );
 
-drop table if exists `customer_deliveries`.`Trucks`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Trucks` (
-    `truck_id` INT,
-    `truck_licence_number` STRING,
-    `truck_details` STRING,
-    PRIMARY KEY (`truck_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Trucks`;
+CREATE TABLE `customer_deliveries`.`Trucks` (
+    `truck_id` INTEGER,
+    `truck_licence_number` VARCHAR(20),
+    `truck_details` VARCHAR(255),
+    PRIMARY KEY (`truck_id`)
 );
 
-drop table if exists `customer_deliveries`.`Employees`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Employees` (
-    `employee_id` INT,
-    `employee_address_id` INT NOT NULL,
-    `employee_name` STRING,
-    `employee_phone` STRING,
-    PRIMARY KEY (`employee_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`employee_address_id`) REFERENCES `customer_deliveries`.`Addresses` (`address_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Employees`;
+CREATE TABLE `customer_deliveries`.`Employees` (
+    `employee_id` INTEGER,
+    `employee_address_id` INTEGER NOT NULL,
+    `employee_name` VARCHAR(80),
+    `employee_phone` VARCHAR(80),
+    PRIMARY KEY (`employee_id`),
+    FOREIGN KEY (`employee_address_id`) REFERENCES `customer_deliveries`.`Addresses` (`address_id`)
 );
 
-drop table if exists `customer_deliveries`.`Order_Deliveries`;
-CREATE TABLE IF NOT EXISTS `customer_deliveries`.`Order_Deliveries` (
-    `location_code` STRING NOT NULL,
-    `actual_order_id` INT NOT NULL,
-    `delivery_status_code` STRING NOT NULL,
-    `driver_employee_id` INT NOT NULL,
-    `truck_id` INT NOT NULL,
-    `delivery_date` TIMESTAMP,
-    FOREIGN KEY (`driver_employee_id`) REFERENCES `customer_deliveries`.`Employees` (`employee_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`location_code`) REFERENCES `customer_deliveries`.`Delivery_Route_Locations` (`location_code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`actual_order_id`) REFERENCES `customer_deliveries`.`Actual_Orders` (`actual_order_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`truck_id`) REFERENCES `customer_deliveries`.`Trucks` (`truck_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customer_deliveries`.`Order_Deliveries`;
+CREATE TABLE `customer_deliveries`.`Order_Deliveries` (
+    `location_code` VARCHAR(10) NOT NULL,
+    `actual_order_id` INTEGER NOT NULL,
+    `delivery_status_code` VARCHAR(10) NOT NULL,
+    `driver_employee_id` INTEGER NOT NULL,
+    `truck_id` INTEGER NOT NULL,
+    `delivery_date` DATETIME,
+    FOREIGN KEY (`driver_employee_id`) REFERENCES `customer_deliveries`.`Employees` (`employee_id`),
+    FOREIGN KEY (`location_code`) REFERENCES `customer_deliveries`.`Delivery_Route_Locations` (`location_code`),
+    FOREIGN KEY (`actual_order_id`) REFERENCES `customer_deliveries`.`Actual_Orders` (`actual_order_id`),
+    FOREIGN KEY (`truck_id`) REFERENCES `customer_deliveries`.`Trucks` (`truck_id`)
 );

@@ -1,28 +1,30 @@
+-- Dialect: MySQL | Database: voter_1 | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `voter_1`;
 
-drop table if exists `voter_1`.`AREA_CODE_STATE`;
-CREATE TABLE IF NOT EXISTS `voter_1`.`AREA_CODE_STATE` (
-    `area_code` INT NOT NULL,
-    `state` STRING NOT NULL,
-    PRIMARY KEY (`area_code`) DISABLE NOVALIDATE,
-    UNIQUE (`state`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `voter_1`.`AREA_CODE_STATE`;
+CREATE TABLE `voter_1`.`AREA_CODE_STATE` (
+    `area_code` INTEGER NOT NULL,
+    `state` VARCHAR(2) NOT NULL,
+    PRIMARY KEY (`area_code`),
+    UNIQUE (`state`)
 );
 
-drop table if exists `voter_1`.`CONTESTANTS`;
-CREATE TABLE IF NOT EXISTS `voter_1`.`CONTESTANTS` (
-    `contestant_number` INT,
-    `contestant_name` STRING NOT NULL,
-    PRIMARY KEY (`contestant_number`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `voter_1`.`CONTESTANTS`;
+CREATE TABLE `voter_1`.`CONTESTANTS` (
+    `contestant_number` INTEGER,
+    `contestant_name` VARCHAR(50) NOT NULL,
+    PRIMARY KEY (`contestant_number`)
 );
 
-drop table if exists `voter_1`.`VOTES`;
-CREATE TABLE IF NOT EXISTS `voter_1`.`VOTES` (
-    `vote_id` INT NOT NULL,
-    `phone_number` INT NOT NULL,
-    `state` STRING NOT NULL,
-    `contestant_number` INT NOT NULL,
-    `created` TIMESTAMP NOT NULL,
-    PRIMARY KEY (`vote_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`contestant_number`) REFERENCES `voter_1`.`CONTESTANTS` (`contestant_number`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`state`) REFERENCES `voter_1`.`AREA_CODE_STATE` (`state`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `voter_1`.`VOTES`;
+CREATE TABLE `voter_1`.`VOTES` (
+    `vote_id` INTEGER NOT NULL,
+    `phone_number` INTEGER NOT NULL,
+    `state` VARCHAR(2) NOT NULL,
+    `contestant_number` INTEGER NOT NULL,
+    `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`vote_id`),
+    FOREIGN KEY (`contestant_number`) REFERENCES `voter_1`.`CONTESTANTS` (`contestant_number`),
+    FOREIGN KEY (`state`) REFERENCES `voter_1`.`AREA_CODE_STATE` (`state`)
 );

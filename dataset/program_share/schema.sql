@@ -1,42 +1,44 @@
+-- Dialect: MySQL | Database: program_share | Table Count: 4
+
 CREATE DATABASE IF NOT EXISTS `program_share`;
 
-drop table if exists `program_share`.`program`;
-CREATE TABLE IF NOT EXISTS `program_share`.`program` (
+DROP TABLE IF EXISTS `program_share`.`program`;
+CREATE TABLE `program_share`.`program` (
     `Program_ID` INT,
-    `Name` STRING,
-    `Origin` STRING,
-    `Launch` DOUBLE,
-    `Owner` STRING,
-    PRIMARY KEY (`Program_ID`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    `Origin` TEXT,
+    `Launch` REAL,
+    `Owner` TEXT,
+    PRIMARY KEY (`Program_ID`)
 );
 
-drop table if exists `program_share`.`channel`;
-CREATE TABLE IF NOT EXISTS `program_share`.`channel` (
+DROP TABLE IF EXISTS `program_share`.`channel`;
+CREATE TABLE `program_share`.`channel` (
     `Channel_ID` INT,
-    `Name` STRING,
-    `Owner` STRING,
-    `Share_in_percent` DOUBLE,
-    `Rating_in_percent` DOUBLE,
-    PRIMARY KEY (`Channel_ID`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    `Owner` TEXT,
+    `Share_in_percent` REAL,
+    `Rating_in_percent` REAL,
+    PRIMARY KEY (`Channel_ID`)
 );
 
-drop table if exists `program_share`.`broadcast`;
-CREATE TABLE IF NOT EXISTS `program_share`.`broadcast` (
+DROP TABLE IF EXISTS `program_share`.`broadcast`;
+CREATE TABLE `program_share`.`broadcast` (
     `Channel_ID` INT,
     `Program_ID` INT,
-    `Time_of_day` STRING,
-    PRIMARY KEY (`Channel_ID`, `Program_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Program_ID`) REFERENCES `program_share`.`program` (`Program_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Channel_ID`) REFERENCES `program_share`.`channel` (`Channel_ID`) DISABLE NOVALIDATE
+    `Time_of_day` TEXT,
+    PRIMARY KEY (`Channel_ID`, `Program_ID`),
+    FOREIGN KEY (`Program_ID`) REFERENCES `program_share`.`program` (`Program_ID`),
+    FOREIGN KEY (`Channel_ID`) REFERENCES `program_share`.`channel` (`Channel_ID`)
 );
 
-drop table if exists `program_share`.`broadcast_share`;
-CREATE TABLE IF NOT EXISTS `program_share`.`broadcast_share` (
+DROP TABLE IF EXISTS `program_share`.`broadcast_share`;
+CREATE TABLE `program_share`.`broadcast_share` (
     `Channel_ID` INT,
     `Program_ID` INT,
-    `Date` STRING,
-    `Share_in_percent` DOUBLE,
-    PRIMARY KEY (`Channel_ID`, `Program_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Program_ID`) REFERENCES `program_share`.`program` (`Program_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Channel_ID`) REFERENCES `program_share`.`channel` (`Channel_ID`) DISABLE NOVALIDATE
+    `Date` TEXT,
+    `Share_in_percent` REAL,
+    PRIMARY KEY (`Channel_ID`, `Program_ID`),
+    FOREIGN KEY (`Program_ID`) REFERENCES `program_share`.`program` (`Program_ID`),
+    FOREIGN KEY (`Channel_ID`) REFERENCES `program_share`.`channel` (`Channel_ID`)
 );

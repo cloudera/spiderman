@@ -1,22 +1,24 @@
+-- Dialect: MySQL | Database: entrepreneur | Table Count: 2
+
 CREATE DATABASE IF NOT EXISTS `entrepreneur`;
 
-drop table if exists `entrepreneur`.`people`;
-CREATE TABLE IF NOT EXISTS `entrepreneur`.`people` (
+DROP TABLE IF EXISTS `entrepreneur`.`people`;
+CREATE TABLE `entrepreneur`.`people` (
     `People_ID` INT,
-    `Name` STRING,
-    `Height` DOUBLE,
-    `Weight` DOUBLE,
-    `Date_of_Birth` STRING,
-    PRIMARY KEY (`People_ID`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    `Height` REAL,
+    `Weight` REAL,
+    `Date_of_Birth` TEXT,
+    PRIMARY KEY (`People_ID`)
 );
 
-drop table if exists `entrepreneur`.`entrepreneur`;
-CREATE TABLE IF NOT EXISTS `entrepreneur`.`entrepreneur` (
+DROP TABLE IF EXISTS `entrepreneur`.`entrepreneur`;
+CREATE TABLE `entrepreneur`.`entrepreneur` (
     `Entrepreneur_ID` INT,
     `People_ID` INT,
-    `Company` STRING,
-    `Money_Requested` DOUBLE,
-    `Investor` STRING,
-    PRIMARY KEY (`Entrepreneur_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`People_ID`) REFERENCES `entrepreneur`.`people` (`People_ID`) DISABLE NOVALIDATE
+    `Company` TEXT,
+    `Money_Requested` REAL,
+    `Investor` TEXT,
+    PRIMARY KEY (`Entrepreneur_ID`),
+    FOREIGN KEY (`People_ID`) REFERENCES `entrepreneur`.`people` (`People_ID`)
 );

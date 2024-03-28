@@ -1,31 +1,33 @@
+-- Dialect: MySQL | Database: theme_gallery | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `theme_gallery`;
 
-drop table if exists `theme_gallery`.`artist`;
-CREATE TABLE IF NOT EXISTS `theme_gallery`.`artist` (
+DROP TABLE IF EXISTS `theme_gallery`.`artist`;
+CREATE TABLE `theme_gallery`.`artist` (
     `Artist_ID` INT,
-    `Name` STRING,
-    `Country` STRING,
+    `Name` TEXT,
+    `Country` TEXT,
     `Year_Join` INT,
     `Age` INT,
-    PRIMARY KEY (`Artist_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Artist_ID`)
 );
 
-drop table if exists `theme_gallery`.`exhibition`;
-CREATE TABLE IF NOT EXISTS `theme_gallery`.`exhibition` (
+DROP TABLE IF EXISTS `theme_gallery`.`exhibition`;
+CREATE TABLE `theme_gallery`.`exhibition` (
     `Exhibition_ID` INT,
     `Year` INT,
-    `Theme` STRING,
+    `Theme` TEXT,
     `Artist_ID` INT,
-    `Ticket_Price` DOUBLE,
-    PRIMARY KEY (`Exhibition_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Artist_ID`) REFERENCES `theme_gallery`.`artist` (`Artist_ID`) DISABLE NOVALIDATE
+    `Ticket_Price` REAL,
+    PRIMARY KEY (`Exhibition_ID`),
+    FOREIGN KEY (`Artist_ID`) REFERENCES `theme_gallery`.`artist` (`Artist_ID`)
 );
 
-drop table if exists `theme_gallery`.`exhibition_record`;
-CREATE TABLE IF NOT EXISTS `theme_gallery`.`exhibition_record` (
+DROP TABLE IF EXISTS `theme_gallery`.`exhibition_record`;
+CREATE TABLE `theme_gallery`.`exhibition_record` (
     `Exhibition_ID` INT,
-    `Date` STRING,
+    `Date` VARCHAR(50),
     `Attendance` INT,
-    PRIMARY KEY (`Exhibition_ID`, `Date`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Exhibition_ID`) REFERENCES `theme_gallery`.`exhibition` (`Exhibition_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Exhibition_ID`, `Date`),
+    FOREIGN KEY (`Exhibition_ID`) REFERENCES `theme_gallery`.`exhibition` (`Exhibition_ID`)
 );

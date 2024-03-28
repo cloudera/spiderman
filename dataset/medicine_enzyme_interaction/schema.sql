@@ -1,32 +1,34 @@
+-- Dialect: MySQL | Database: medicine_enzyme_interaction | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `medicine_enzyme_interaction`;
 
-drop table if exists `medicine_enzyme_interaction`.`medicine`;
-CREATE TABLE IF NOT EXISTS `medicine_enzyme_interaction`.`medicine` (
+DROP TABLE IF EXISTS `medicine_enzyme_interaction`.`medicine`;
+CREATE TABLE `medicine_enzyme_interaction`.`medicine` (
     `id` INT,
-    `name` STRING,
-    `Trade_Name` STRING,
-    `FDA_approved` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE
+    `name` TEXT,
+    `Trade_Name` TEXT,
+    `FDA_approved` TEXT,
+    PRIMARY KEY (`id`)
 );
 
-drop table if exists `medicine_enzyme_interaction`.`enzyme`;
-CREATE TABLE IF NOT EXISTS `medicine_enzyme_interaction`.`enzyme` (
+DROP TABLE IF EXISTS `medicine_enzyme_interaction`.`enzyme`;
+CREATE TABLE `medicine_enzyme_interaction`.`enzyme` (
     `id` INT,
-    `name` STRING,
-    `Location` STRING,
-    `Product` STRING,
-    `Chromosome` STRING,
+    `name` TEXT,
+    `Location` TEXT,
+    `Product` TEXT,
+    `Chromosome` TEXT,
     `OMIM` INT,
-    `Porphyria` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE
+    `Porphyria` TEXT,
+    PRIMARY KEY (`id`)
 );
 
-drop table if exists `medicine_enzyme_interaction`.`medicine_enzyme_interaction`;
-CREATE TABLE IF NOT EXISTS `medicine_enzyme_interaction`.`medicine_enzyme_interaction` (
+DROP TABLE IF EXISTS `medicine_enzyme_interaction`.`medicine_enzyme_interaction`;
+CREATE TABLE `medicine_enzyme_interaction`.`medicine_enzyme_interaction` (
     `enzyme_id` INT,
     `medicine_id` INT,
-    `interaction_type` STRING,
-    PRIMARY KEY (`enzyme_id`, `medicine_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`medicine_id`) REFERENCES `medicine_enzyme_interaction`.`medicine` (`id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`enzyme_id`) REFERENCES `medicine_enzyme_interaction`.`enzyme` (`id`) DISABLE NOVALIDATE
+    `interaction_type` TEXT,
+    PRIMARY KEY (`enzyme_id`, `medicine_id`),
+    FOREIGN KEY (`medicine_id`) REFERENCES `medicine_enzyme_interaction`.`medicine` (`id`),
+    FOREIGN KEY (`enzyme_id`) REFERENCES `medicine_enzyme_interaction`.`enzyme` (`id`)
 );

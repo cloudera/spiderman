@@ -1,35 +1,37 @@
+-- Dialect: MySQL | Database: music_4 | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `music_4`;
 
-drop table if exists `music_4`.`artist`;
-CREATE TABLE IF NOT EXISTS `music_4`.`artist` (
+DROP TABLE IF EXISTS `music_4`.`artist`;
+CREATE TABLE `music_4`.`artist` (
     `Artist_ID` INT,
-    `Artist` STRING,
+    `Artist` TEXT,
     `Age` INT,
-    `Famous_Title` STRING,
-    `Famous_Release_date` STRING,
-    PRIMARY KEY (`Artist_ID`) DISABLE NOVALIDATE
+    `Famous_Title` TEXT,
+    `Famous_Release_date` TEXT,
+    PRIMARY KEY (`Artist_ID`)
 );
 
-drop table if exists `music_4`.`volume`;
-CREATE TABLE IF NOT EXISTS `music_4`.`volume` (
+DROP TABLE IF EXISTS `music_4`.`volume`;
+CREATE TABLE `music_4`.`volume` (
     `Volume_ID` INT,
-    `Volume_Issue` STRING,
-    `Issue_Date` STRING,
-    `Weeks_on_Top` DOUBLE,
-    `Song` STRING,
+    `Volume_Issue` TEXT,
+    `Issue_Date` TEXT,
+    `Weeks_on_Top` REAL,
+    `Song` TEXT,
     `Artist_ID` INT,
-    PRIMARY KEY (`Volume_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Artist_ID`) REFERENCES `music_4`.`artist` (`Artist_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Volume_ID`),
+    FOREIGN KEY (`Artist_ID`) REFERENCES `music_4`.`artist` (`Artist_ID`)
 );
 
-drop table if exists `music_4`.`music_festival`;
-CREATE TABLE IF NOT EXISTS `music_4`.`music_festival` (
+DROP TABLE IF EXISTS `music_4`.`music_festival`;
+CREATE TABLE `music_4`.`music_festival` (
     `ID` INT,
-    `Music_Festival` STRING,
-    `Date_of_ceremony` STRING,
-    `Category` STRING,
+    `Music_Festival` TEXT,
+    `Date_of_ceremony` TEXT,
+    `Category` TEXT,
     `Volume` INT,
-    `Result` STRING,
-    PRIMARY KEY (`ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Volume`) REFERENCES `music_4`.`volume` (`Volume_ID`) DISABLE NOVALIDATE
+    `Result` TEXT,
+    PRIMARY KEY (`ID`),
+    FOREIGN KEY (`Volume`) REFERENCES `music_4`.`volume` (`Volume_ID`)
 );

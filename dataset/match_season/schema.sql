@@ -1,45 +1,47 @@
+-- Dialect: MySQL | Database: match_season | Table Count: 4
+
 CREATE DATABASE IF NOT EXISTS `match_season`;
 
-drop table if exists `match_season`.`country`;
-CREATE TABLE IF NOT EXISTS `match_season`.`country` (
+DROP TABLE IF EXISTS `match_season`.`country`;
+CREATE TABLE `match_season`.`country` (
     `Country_id` INT,
-    `Country_name` STRING,
-    `Capital` STRING,
-    `Official_native_language` STRING,
-    PRIMARY KEY (`Country_id`) DISABLE NOVALIDATE
+    `Country_name` TEXT,
+    `Capital` TEXT,
+    `Official_native_language` TEXT,
+    PRIMARY KEY (`Country_id`)
 );
 
-drop table if exists `match_season`.`team`;
-CREATE TABLE IF NOT EXISTS `match_season`.`team` (
+DROP TABLE IF EXISTS `match_season`.`team`;
+CREATE TABLE `match_season`.`team` (
     `Team_id` INT,
-    `Name` STRING,
-    PRIMARY KEY (`Team_id`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    PRIMARY KEY (`Team_id`)
 );
 
-drop table if exists `match_season`.`match_season`;
-CREATE TABLE IF NOT EXISTS `match_season`.`match_season` (
-    `Season` DOUBLE,
-    `Player` STRING,
-    `Position` STRING,
+DROP TABLE IF EXISTS `match_season`.`match_season`;
+CREATE TABLE `match_season`.`match_season` (
+    `Season` REAL,
+    `Player` TEXT,
+    `Position` TEXT,
     `Country` INT,
     `Team` INT,
     `Draft_Pick_Number` INT,
-    `Draft_Class` STRING,
-    `College` STRING,
-    PRIMARY KEY (`Season`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Team`) REFERENCES `match_season`.`team` (`Team_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Country`) REFERENCES `match_season`.`country` (`Country_id`) DISABLE NOVALIDATE
+    `Draft_Class` TEXT,
+    `College` TEXT,
+    PRIMARY KEY (`Season`),
+    FOREIGN KEY (`Team`) REFERENCES `match_season`.`team` (`Team_id`),
+    FOREIGN KEY (`Country`) REFERENCES `match_season`.`country` (`Country_id`)
 );
 
-drop table if exists `match_season`.`player`;
-CREATE TABLE IF NOT EXISTS `match_season`.`player` (
+DROP TABLE IF EXISTS `match_season`.`player`;
+CREATE TABLE `match_season`.`player` (
     `Player_ID` INT,
-    `Player` STRING,
-    `Years_Played` STRING,
-    `Total_WL` STRING,
-    `Singles_WL` STRING,
-    `Doubles_WL` STRING,
+    `Player` TEXT,
+    `Years_Played` TEXT,
+    `Total_WL` TEXT,
+    `Singles_WL` TEXT,
+    `Doubles_WL` TEXT,
     `Team` INT,
-    PRIMARY KEY (`Player_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Team`) REFERENCES `match_season`.`team` (`Team_id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Player_ID`),
+    FOREIGN KEY (`Team`) REFERENCES `match_season`.`team` (`Team_id`)
 );

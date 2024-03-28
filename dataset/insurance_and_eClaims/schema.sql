@@ -1,72 +1,74 @@
+-- Dialect: MySQL | Database: insurance_and_eClaims | Table Count: 7
+
 CREATE DATABASE IF NOT EXISTS `insurance_and_eClaims`;
 
-drop table if exists `insurance_and_eClaims`.`Customers`;
-CREATE TABLE IF NOT EXISTS `insurance_and_eClaims`.`Customers` (
-    `Customer_ID` INT NOT NULL,
-    `Customer_Details` STRING NOT NULL,
-    PRIMARY KEY (`Customer_ID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `insurance_and_eClaims`.`Customers`;
+CREATE TABLE `insurance_and_eClaims`.`Customers` (
+    `Customer_ID` INTEGER NOT NULL,
+    `Customer_Details` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`Customer_ID`)
 );
 
-drop table if exists `insurance_and_eClaims`.`Staff`;
-CREATE TABLE IF NOT EXISTS `insurance_and_eClaims`.`Staff` (
-    `Staff_ID` INT NOT NULL,
-    `Staff_Details` STRING NOT NULL,
-    PRIMARY KEY (`Staff_ID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `insurance_and_eClaims`.`Staff`;
+CREATE TABLE `insurance_and_eClaims`.`Staff` (
+    `Staff_ID` INTEGER NOT NULL,
+    `Staff_Details` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`Staff_ID`)
 );
 
-drop table if exists `insurance_and_eClaims`.`Policies`;
-CREATE TABLE IF NOT EXISTS `insurance_and_eClaims`.`Policies` (
-    `Policy_ID` INT NOT NULL,
-    `Customer_ID` INT NOT NULL,
+DROP TABLE IF EXISTS `insurance_and_eClaims`.`Policies`;
+CREATE TABLE `insurance_and_eClaims`.`Policies` (
+    `Policy_ID` INTEGER NOT NULL,
+    `Customer_ID` INTEGER NOT NULL,
     `Policy_Type_Code` CHAR(15) NOT NULL,
-    `Start_Date` TIMESTAMP,
-    `End_Date` TIMESTAMP,
-    PRIMARY KEY (`Policy_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Customer_ID`) REFERENCES `insurance_and_eClaims`.`Customers` (`Customer_ID`) DISABLE NOVALIDATE
+    `Start_Date` DATETIME,
+    `End_Date` DATETIME,
+    PRIMARY KEY (`Policy_ID`),
+    FOREIGN KEY (`Customer_ID`) REFERENCES `insurance_and_eClaims`.`Customers` (`Customer_ID`)
 );
 
-drop table if exists `insurance_and_eClaims`.`Claim_Headers`;
-CREATE TABLE IF NOT EXISTS `insurance_and_eClaims`.`Claim_Headers` (
-    `Claim_Header_ID` INT NOT NULL,
+DROP TABLE IF EXISTS `insurance_and_eClaims`.`Claim_Headers`;
+CREATE TABLE `insurance_and_eClaims`.`Claim_Headers` (
+    `Claim_Header_ID` INTEGER NOT NULL,
     `Claim_Status_Code` CHAR(15) NOT NULL,
     `Claim_Type_Code` CHAR(15) NOT NULL,
-    `Policy_ID` INT NOT NULL,
-    `Date_of_Claim` TIMESTAMP,
-    `Date_of_Settlement` TIMESTAMP,
+    `Policy_ID` INTEGER NOT NULL,
+    `Date_of_Claim` DATETIME,
+    `Date_of_Settlement` DATETIME,
     `Amount_Claimed` DECIMAL(20,4),
     `Amount_Piad` DECIMAL(20,4),
-    PRIMARY KEY (`Claim_Header_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Policy_ID`) REFERENCES `insurance_and_eClaims`.`Policies` (`Policy_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Claim_Header_ID`),
+    FOREIGN KEY (`Policy_ID`) REFERENCES `insurance_and_eClaims`.`Policies` (`Policy_ID`)
 );
 
-drop table if exists `insurance_and_eClaims`.`Claims_Documents`;
-CREATE TABLE IF NOT EXISTS `insurance_and_eClaims`.`Claims_Documents` (
-    `Claim_ID` INT NOT NULL,
+DROP TABLE IF EXISTS `insurance_and_eClaims`.`Claims_Documents`;
+CREATE TABLE `insurance_and_eClaims`.`Claims_Documents` (
+    `Claim_ID` INTEGER NOT NULL,
     `Document_Type_Code` CHAR(15) NOT NULL,
-    `Created_by_Staff_ID` INT,
-    `Created_Date` INT,
-    PRIMARY KEY (`Claim_ID`, `Document_Type_Code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Created_by_Staff_ID`) REFERENCES `insurance_and_eClaims`.`Staff` (`Staff_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Claim_ID`) REFERENCES `insurance_and_eClaims`.`Claim_Headers` (`Claim_Header_ID`) DISABLE NOVALIDATE
+    `Created_by_Staff_ID` INTEGER,
+    `Created_Date` INTEGER,
+    PRIMARY KEY (`Claim_ID`, `Document_Type_Code`),
+    FOREIGN KEY (`Created_by_Staff_ID`) REFERENCES `insurance_and_eClaims`.`Staff` (`Staff_ID`),
+    FOREIGN KEY (`Claim_ID`) REFERENCES `insurance_and_eClaims`.`Claim_Headers` (`Claim_Header_ID`)
 );
 
-drop table if exists `insurance_and_eClaims`.`Claims_Processing_Stages`;
-CREATE TABLE IF NOT EXISTS `insurance_and_eClaims`.`Claims_Processing_Stages` (
-    `Claim_Stage_ID` INT NOT NULL,
-    `Next_Claim_Stage_ID` INT,
-    `Claim_Status_Name` STRING NOT NULL,
-    `Claim_Status_Description` STRING NOT NULL,
-    PRIMARY KEY (`Claim_Stage_ID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `insurance_and_eClaims`.`Claims_Processing_Stages`;
+CREATE TABLE `insurance_and_eClaims`.`Claims_Processing_Stages` (
+    `Claim_Stage_ID` INTEGER NOT NULL,
+    `Next_Claim_Stage_ID` INTEGER,
+    `Claim_Status_Name` VARCHAR(255) NOT NULL,
+    `Claim_Status_Description` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`Claim_Stage_ID`)
 );
 
-drop table if exists `insurance_and_eClaims`.`Claims_Processing`;
-CREATE TABLE IF NOT EXISTS `insurance_and_eClaims`.`Claims_Processing` (
-    `Claim_Processing_ID` INT NOT NULL,
-    `Claim_ID` INT NOT NULL,
+DROP TABLE IF EXISTS `insurance_and_eClaims`.`Claims_Processing`;
+CREATE TABLE `insurance_and_eClaims`.`Claims_Processing` (
+    `Claim_Processing_ID` INTEGER NOT NULL,
+    `Claim_ID` INTEGER NOT NULL,
     `Claim_Outcome_Code` CHAR(15) NOT NULL,
-    `Claim_Stage_ID` INT NOT NULL,
-    `Staff_ID` INT,
-    PRIMARY KEY (`Claim_Processing_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Staff_ID`) REFERENCES `insurance_and_eClaims`.`Staff` (`Staff_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Claim_ID`) REFERENCES `insurance_and_eClaims`.`Claim_Headers` (`Claim_Header_ID`) DISABLE NOVALIDATE
+    `Claim_Stage_ID` INTEGER NOT NULL,
+    `Staff_ID` INTEGER,
+    PRIMARY KEY (`Claim_Processing_ID`),
+    FOREIGN KEY (`Staff_ID`) REFERENCES `insurance_and_eClaims`.`Staff` (`Staff_ID`),
+    FOREIGN KEY (`Claim_ID`) REFERENCES `insurance_and_eClaims`.`Claim_Headers` (`Claim_Header_ID`)
 );

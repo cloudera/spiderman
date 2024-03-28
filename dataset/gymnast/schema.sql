@@ -1,25 +1,27 @@
+-- Dialect: MySQL | Database: gymnast | Table Count: 2
+
 CREATE DATABASE IF NOT EXISTS `gymnast`;
 
-drop table if exists `gymnast`.`people`;
-CREATE TABLE IF NOT EXISTS `gymnast`.`people` (
+DROP TABLE IF EXISTS `gymnast`.`people`;
+CREATE TABLE `gymnast`.`people` (
     `People_ID` INT,
-    `Name` STRING,
-    `Age` DOUBLE,
-    `Height` DOUBLE,
-    `Hometown` STRING,
-    PRIMARY KEY (`People_ID`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    `Age` REAL,
+    `Height` REAL,
+    `Hometown` TEXT,
+    PRIMARY KEY (`People_ID`)
 );
 
-drop table if exists `gymnast`.`gymnast`;
-CREATE TABLE IF NOT EXISTS `gymnast`.`gymnast` (
+DROP TABLE IF EXISTS `gymnast`.`gymnast`;
+CREATE TABLE `gymnast`.`gymnast` (
     `Gymnast_ID` INT,
-    `Floor_Exercise_Points` DOUBLE,
-    `Pommel_Horse_Points` DOUBLE,
-    `Rings_Points` DOUBLE,
-    `Vault_Points` DOUBLE,
-    `Parallel_Bars_Points` DOUBLE,
-    `Horizontal_Bar_Points` DOUBLE,
-    `Total_Points` DOUBLE,
-    PRIMARY KEY (`Gymnast_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Gymnast_ID`) REFERENCES `gymnast`.`people` (`People_ID`) DISABLE NOVALIDATE
+    `Floor_Exercise_Points` REAL,
+    `Pommel_Horse_Points` REAL,
+    `Rings_Points` REAL,
+    `Vault_Points` REAL,
+    `Parallel_Bars_Points` REAL,
+    `Horizontal_Bar_Points` REAL,
+    `Total_Points` REAL,
+    PRIMARY KEY (`Gymnast_ID`),
+    FOREIGN KEY (`Gymnast_ID`) REFERENCES `gymnast`.`people` (`People_ID`)
 );

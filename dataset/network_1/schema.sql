@@ -1,27 +1,29 @@
+-- Dialect: MySQL | Database: network_1 | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `network_1`;
 
-drop table if exists `network_1`.`Highschooler`;
-CREATE TABLE IF NOT EXISTS `network_1`.`Highschooler` (
+DROP TABLE IF EXISTS `network_1`.`Highschooler`;
+CREATE TABLE `network_1`.`Highschooler` (
     `ID` INT,
-    `name` STRING,
+    `name` TEXT,
     `grade` INT,
-    PRIMARY KEY (`ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`ID`)
 );
 
-drop table if exists `network_1`.`Friend`;
-CREATE TABLE IF NOT EXISTS `network_1`.`Friend` (
+DROP TABLE IF EXISTS `network_1`.`Friend`;
+CREATE TABLE `network_1`.`Friend` (
     `student_id` INT,
     `friend_id` INT,
-    PRIMARY KEY (`student_id`, `friend_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`friend_id`) REFERENCES `network_1`.`Highschooler` (`ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`student_id`) REFERENCES `network_1`.`Highschooler` (`ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`student_id`, `friend_id`),
+    FOREIGN KEY (`friend_id`) REFERENCES `network_1`.`Highschooler` (`ID`),
+    FOREIGN KEY (`student_id`) REFERENCES `network_1`.`Highschooler` (`ID`)
 );
 
-drop table if exists `network_1`.`Likes`;
-CREATE TABLE IF NOT EXISTS `network_1`.`Likes` (
+DROP TABLE IF EXISTS `network_1`.`Likes`;
+CREATE TABLE `network_1`.`Likes` (
     `student_id` INT,
     `liked_id` INT,
-    PRIMARY KEY (`student_id`, `liked_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`student_id`) REFERENCES `network_1`.`Highschooler` (`ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`liked_id`) REFERENCES `network_1`.`Highschooler` (`ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`student_id`, `liked_id`),
+    FOREIGN KEY (`student_id`) REFERENCES `network_1`.`Highschooler` (`ID`),
+    FOREIGN KEY (`liked_id`) REFERENCES `network_1`.`Highschooler` (`ID`)
 );

@@ -1,23 +1,25 @@
+-- Dialect: MySQL | Database: poker_player | Table Count: 2
+
 CREATE DATABASE IF NOT EXISTS `poker_player`;
 
-drop table if exists `poker_player`.`people`;
-CREATE TABLE IF NOT EXISTS `poker_player`.`people` (
+DROP TABLE IF EXISTS `poker_player`.`people`;
+CREATE TABLE `poker_player`.`people` (
     `People_ID` INT,
-    `Nationality` STRING,
-    `Name` STRING,
-    `Birth_Date` STRING,
-    `Height` DOUBLE,
-    PRIMARY KEY (`People_ID`) DISABLE NOVALIDATE
+    `Nationality` TEXT,
+    `Name` TEXT,
+    `Birth_Date` TEXT,
+    `Height` REAL,
+    PRIMARY KEY (`People_ID`)
 );
 
-drop table if exists `poker_player`.`poker_player`;
-CREATE TABLE IF NOT EXISTS `poker_player`.`poker_player` (
+DROP TABLE IF EXISTS `poker_player`.`poker_player`;
+CREATE TABLE `poker_player`.`poker_player` (
     `Poker_Player_ID` INT,
     `People_ID` INT,
-    `Final_Table_Made` DOUBLE,
-    `Best_Finish` DOUBLE,
-    `Money_Rank` DOUBLE,
-    `Earnings` DOUBLE,
-    PRIMARY KEY (`Poker_Player_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`People_ID`) REFERENCES `poker_player`.`people` (`People_ID`) DISABLE NOVALIDATE
+    `Final_Table_Made` REAL,
+    `Best_Finish` REAL,
+    `Money_Rank` REAL,
+    `Earnings` REAL,
+    PRIMARY KEY (`Poker_Player_ID`),
+    FOREIGN KEY (`People_ID`) REFERENCES `poker_player`.`people` (`People_ID`)
 );

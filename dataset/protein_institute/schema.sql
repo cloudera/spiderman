@@ -1,40 +1,42 @@
+-- Dialect: MySQL | Database: protein_institute | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `protein_institute`;
 
-drop table if exists `protein_institute`.`building`;
-CREATE TABLE IF NOT EXISTS `protein_institute`.`building` (
-    `building_id` STRING,
-    `Name` STRING,
-    `Street_address` STRING,
-    `Years_as_tallest` STRING,
+DROP TABLE IF EXISTS `protein_institute`.`building`;
+CREATE TABLE `protein_institute`.`building` (
+    `building_id` INT,
+    `Name` TEXT,
+    `Street_address` TEXT,
+    `Years_as_tallest` TEXT,
     `Height_feet` INT,
     `Floors` INT,
-    PRIMARY KEY (`building_id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`building_id`)
 );
 
-drop table if exists `protein_institute`.`Institution`;
-CREATE TABLE IF NOT EXISTS `protein_institute`.`Institution` (
-    `Institution_id` STRING,
-    `Institution` STRING,
-    `Location` STRING,
-    `Founded` DOUBLE,
-    `Type` STRING,
+DROP TABLE IF EXISTS `protein_institute`.`Institution`;
+CREATE TABLE `protein_institute`.`Institution` (
+    `Institution_id` INT,
+    `Institution` TEXT,
+    `Location` TEXT,
+    `Founded` REAL,
+    `Type` TEXT,
     `Enrollment` INT,
-    `Team` STRING,
-    `Primary_Conference` STRING,
-    `building_id` STRING,
-    PRIMARY KEY (`Institution_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`building_id`) REFERENCES `protein_institute`.`building` (`building_id`) DISABLE NOVALIDATE
+    `Team` TEXT,
+    `Primary_Conference` TEXT,
+    `building_id` INT,
+    PRIMARY KEY (`Institution_id`),
+    FOREIGN KEY (`building_id`) REFERENCES `protein_institute`.`building` (`building_id`)
 );
 
-drop table if exists `protein_institute`.`protein`;
-CREATE TABLE IF NOT EXISTS `protein_institute`.`protein` (
-    `common_name` STRING,
-    `protein_name` STRING,
-    `divergence_from_human_lineage` DOUBLE,
-    `accession_number` STRING,
-    `sequence_length` DOUBLE,
-    `sequence_identity_to_human_protein` STRING,
-    `Institution_id` STRING,
-    PRIMARY KEY (`common_name`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Institution_id`) REFERENCES `protein_institute`.`Institution` (`Institution_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `protein_institute`.`protein`;
+CREATE TABLE `protein_institute`.`protein` (
+    `common_name` VARCHAR(50),
+    `protein_name` TEXT,
+    `divergence_from_human_lineage` REAL,
+    `accession_number` TEXT,
+    `sequence_length` REAL,
+    `sequence_identity_to_human_protein` TEXT,
+    `Institution_id` INT,
+    PRIMARY KEY (`common_name`),
+    FOREIGN KEY (`Institution_id`) REFERENCES `protein_institute`.`Institution` (`Institution_id`)
 );

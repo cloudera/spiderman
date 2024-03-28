@@ -1,86 +1,88 @@
+-- Dialect: MySQL | Database: college_3 | Table Count: 8
+
 CREATE DATABASE IF NOT EXISTS `college_3`;
 
-drop table if exists `college_3`.`Student`;
-CREATE TABLE IF NOT EXISTS `college_3`.`Student` (
-    `StuID` INT,
-    `LName` STRING,
-    `Fname` STRING,
-    `Age` INT,
-    `Sex` STRING,
-    `Major` INT,
-    `Advisor` INT,
-    `city_code` STRING,
-    PRIMARY KEY (`StuID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `college_3`.`Student`;
+CREATE TABLE `college_3`.`Student` (
+    `StuID` INTEGER,
+    `LName` VARCHAR(12),
+    `Fname` VARCHAR(12),
+    `Age` INTEGER,
+    `Sex` VARCHAR(1),
+    `Major` INTEGER,
+    `Advisor` INTEGER,
+    `city_code` VARCHAR(3),
+    PRIMARY KEY (`StuID`)
 );
 
-drop table if exists `college_3`.`Faculty`;
-CREATE TABLE IF NOT EXISTS `college_3`.`Faculty` (
-    `FacID` INT,
-    `Lname` STRING,
-    `Fname` STRING,
-    `Rank` STRING,
-    `Sex` STRING,
-    `Phone` INT,
-    `Room` STRING,
-    `Building` STRING,
-    PRIMARY KEY (`FacID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `college_3`.`Faculty`;
+CREATE TABLE `college_3`.`Faculty` (
+    `FacID` INTEGER,
+    `Lname` VARCHAR(15),
+    `Fname` VARCHAR(15),
+    `Rank` VARCHAR(15),
+    `Sex` VARCHAR(1),
+    `Phone` INTEGER,
+    `Room` VARCHAR(5),
+    `Building` VARCHAR(13),
+    PRIMARY KEY (`FacID`)
 );
 
-drop table if exists `college_3`.`Department`;
-CREATE TABLE IF NOT EXISTS `college_3`.`Department` (
-    `DNO` INT,
-    `Division` STRING,
-    `DName` STRING,
-    `Room` STRING,
-    `Building` STRING,
-    `DPhone` INT,
-    PRIMARY KEY (`DNO`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `college_3`.`Department`;
+CREATE TABLE `college_3`.`Department` (
+    `DNO` INTEGER,
+    `Division` VARCHAR(2),
+    `DName` VARCHAR(25),
+    `Room` VARCHAR(5),
+    `Building` VARCHAR(13),
+    `DPhone` INTEGER,
+    PRIMARY KEY (`DNO`)
 );
 
-drop table if exists `college_3`.`Member_of`;
-CREATE TABLE IF NOT EXISTS `college_3`.`Member_of` (
-    `FacID` INT,
-    `DNO` INT,
-    `Appt_Type` STRING,
-    FOREIGN KEY (`DNO`) REFERENCES `college_3`.`Department` (`DNO`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`FacID`) REFERENCES `college_3`.`Faculty` (`FacID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `college_3`.`Member_of`;
+CREATE TABLE `college_3`.`Member_of` (
+    `FacID` INTEGER,
+    `DNO` INTEGER,
+    `Appt_Type` VARCHAR(15),
+    FOREIGN KEY (`DNO`) REFERENCES `college_3`.`Department` (`DNO`),
+    FOREIGN KEY (`FacID`) REFERENCES `college_3`.`Faculty` (`FacID`)
 );
 
-drop table if exists `college_3`.`Course`;
-CREATE TABLE IF NOT EXISTS `college_3`.`Course` (
-    `CID` STRING,
-    `CName` STRING,
-    `Credits` INT,
-    `Instructor` INT,
-    `Days` STRING,
-    `Hours` STRING,
-    `DNO` INT,
-    PRIMARY KEY (`CID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`DNO`) REFERENCES `college_3`.`Department` (`DNO`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Instructor`) REFERENCES `college_3`.`Faculty` (`FacID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `college_3`.`Course`;
+CREATE TABLE `college_3`.`Course` (
+    `CID` VARCHAR(7),
+    `CName` VARCHAR(40),
+    `Credits` INTEGER,
+    `Instructor` INTEGER,
+    `Days` VARCHAR(5),
+    `Hours` VARCHAR(11),
+    `DNO` INTEGER,
+    PRIMARY KEY (`CID`),
+    FOREIGN KEY (`DNO`) REFERENCES `college_3`.`Department` (`DNO`),
+    FOREIGN KEY (`Instructor`) REFERENCES `college_3`.`Faculty` (`FacID`)
 );
 
-drop table if exists `college_3`.`Minor_in`;
-CREATE TABLE IF NOT EXISTS `college_3`.`Minor_in` (
-    `StuID` INT,
-    `DNO` INT,
-    FOREIGN KEY (`DNO`) REFERENCES `college_3`.`Department` (`DNO`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`StuID`) REFERENCES `college_3`.`Student` (`StuID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `college_3`.`Minor_in`;
+CREATE TABLE `college_3`.`Minor_in` (
+    `StuID` INTEGER,
+    `DNO` INTEGER,
+    FOREIGN KEY (`DNO`) REFERENCES `college_3`.`Department` (`DNO`),
+    FOREIGN KEY (`StuID`) REFERENCES `college_3`.`Student` (`StuID`)
 );
 
-drop table if exists `college_3`.`Gradeconversion`;
-CREATE TABLE IF NOT EXISTS `college_3`.`Gradeconversion` (
-    `lettergrade` STRING,
-    `gradepoint` DECIMAL,
-    PRIMARY KEY (`lettergrade`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `college_3`.`Gradeconversion`;
+CREATE TABLE `college_3`.`Gradeconversion` (
+    `lettergrade` VARCHAR(2),
+    `gradepoint` FLOAT,
+    PRIMARY KEY (`lettergrade`)
 );
 
-drop table if exists `college_3`.`Enrolled_in`;
-CREATE TABLE IF NOT EXISTS `college_3`.`Enrolled_in` (
-    `StuID` INT,
-    `CID` STRING,
-    `Grade` STRING,
-    FOREIGN KEY (`Grade`) REFERENCES `college_3`.`Gradeconversion` (`lettergrade`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`CID`) REFERENCES `college_3`.`Course` (`CID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`StuID`) REFERENCES `college_3`.`Student` (`StuID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `college_3`.`Enrolled_in`;
+CREATE TABLE `college_3`.`Enrolled_in` (
+    `StuID` INTEGER,
+    `CID` VARCHAR(7),
+    `Grade` VARCHAR(2),
+    FOREIGN KEY (`Grade`) REFERENCES `college_3`.`Gradeconversion` (`lettergrade`),
+    FOREIGN KEY (`CID`) REFERENCES `college_3`.`Course` (`CID`),
+    FOREIGN KEY (`StuID`) REFERENCES `college_3`.`Student` (`StuID`)
 );

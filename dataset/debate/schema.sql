@@ -1,32 +1,34 @@
+-- Dialect: MySQL | Database: debate | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `debate`;
 
-drop table if exists `debate`.`people`;
-CREATE TABLE IF NOT EXISTS `debate`.`people` (
+DROP TABLE IF EXISTS `debate`.`people`;
+CREATE TABLE `debate`.`people` (
     `People_ID` INT,
-    `District` STRING,
-    `Name` STRING,
-    `Party` STRING,
+    `District` TEXT,
+    `Name` TEXT,
+    `Party` TEXT,
     `Age` INT,
-    PRIMARY KEY (`People_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`People_ID`)
 );
 
-drop table if exists `debate`.`debate`;
-CREATE TABLE IF NOT EXISTS `debate`.`debate` (
+DROP TABLE IF EXISTS `debate`.`debate`;
+CREATE TABLE `debate`.`debate` (
     `Debate_ID` INT,
-    `Date` STRING,
-    `Venue` STRING,
+    `Date` TEXT,
+    `Venue` TEXT,
     `Num_of_Audience` INT,
-    PRIMARY KEY (`Debate_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Debate_ID`)
 );
 
-drop table if exists `debate`.`debate_people`;
-CREATE TABLE IF NOT EXISTS `debate`.`debate_people` (
+DROP TABLE IF EXISTS `debate`.`debate_people`;
+CREATE TABLE `debate`.`debate_people` (
     `Debate_ID` INT,
     `Affirmative` INT,
     `Negative` INT,
-    `If_Affirmative_Win` BOOLEAN,
-    PRIMARY KEY (`Debate_ID`, `Affirmative`, `Negative`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Negative`) REFERENCES `debate`.`people` (`People_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Affirmative`) REFERENCES `debate`.`people` (`People_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Debate_ID`) REFERENCES `debate`.`debate` (`Debate_ID`) DISABLE NOVALIDATE
+    `If_Affirmative_Win` BOOL,
+    PRIMARY KEY (`Debate_ID`, `Affirmative`, `Negative`),
+    FOREIGN KEY (`Negative`) REFERENCES `debate`.`people` (`People_ID`),
+    FOREIGN KEY (`Affirmative`) REFERENCES `debate`.`people` (`People_ID`),
+    FOREIGN KEY (`Debate_ID`) REFERENCES `debate`.`debate` (`Debate_ID`)
 );

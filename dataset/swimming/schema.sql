@@ -1,49 +1,51 @@
+-- Dialect: MySQL | Database: swimming | Table Count: 4
+
 CREATE DATABASE IF NOT EXISTS `swimming`;
 
-drop table if exists `swimming`.`swimmer`;
-CREATE TABLE IF NOT EXISTS `swimming`.`swimmer` (
+DROP TABLE IF EXISTS `swimming`.`swimmer`;
+CREATE TABLE `swimming`.`swimmer` (
     `ID` INT,
-    `name` STRING,
-    `Nationality` STRING,
-    `meter_100` DOUBLE,
-    `meter_200` STRING,
-    `meter_300` STRING,
-    `meter_400` STRING,
-    `meter_500` STRING,
-    `meter_600` STRING,
-    `meter_700` STRING,
-    `Time` STRING,
-    PRIMARY KEY (`ID`) DISABLE NOVALIDATE
+    `name` TEXT,
+    `Nationality` TEXT,
+    `meter_100` REAL,
+    `meter_200` TEXT,
+    `meter_300` TEXT,
+    `meter_400` TEXT,
+    `meter_500` TEXT,
+    `meter_600` TEXT,
+    `meter_700` TEXT,
+    `Time` TEXT,
+    PRIMARY KEY (`ID`)
 );
 
-drop table if exists `swimming`.`stadium`;
-CREATE TABLE IF NOT EXISTS `swimming`.`stadium` (
+DROP TABLE IF EXISTS `swimming`.`stadium`;
+CREATE TABLE `swimming`.`stadium` (
     `ID` INT,
-    `name` STRING,
+    `name` TEXT,
     `Capacity` INT,
-    `City` STRING,
-    `Country` STRING,
+    `City` TEXT,
+    `Country` TEXT,
     `Opening_year` INT,
-    PRIMARY KEY (`ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`ID`)
 );
 
-drop table if exists `swimming`.`event`;
-CREATE TABLE IF NOT EXISTS `swimming`.`event` (
+DROP TABLE IF EXISTS `swimming`.`event`;
+CREATE TABLE `swimming`.`event` (
     `ID` INT,
-    `Name` STRING,
+    `Name` TEXT,
     `Stadium_ID` INT,
-    `Year` STRING,
-    PRIMARY KEY (`ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Stadium_ID`) REFERENCES `swimming`.`stadium` (`ID`) DISABLE NOVALIDATE
+    `Year` TEXT,
+    PRIMARY KEY (`ID`),
+    FOREIGN KEY (`Stadium_ID`) REFERENCES `swimming`.`stadium` (`ID`)
 );
 
-drop table if exists `swimming`.`record`;
-CREATE TABLE IF NOT EXISTS `swimming`.`record` (
+DROP TABLE IF EXISTS `swimming`.`record`;
+CREATE TABLE `swimming`.`record` (
     `ID` INT,
-    `Result` STRING,
+    `Result` TEXT,
     `Swimmer_ID` INT,
     `Event_ID` INT,
-    PRIMARY KEY (`Swimmer_ID`, `Event_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Swimmer_ID`) REFERENCES `swimming`.`swimmer` (`ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Event_ID`) REFERENCES `swimming`.`event` (`ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Swimmer_ID`, `Event_ID`),
+    FOREIGN KEY (`Swimmer_ID`) REFERENCES `swimming`.`swimmer` (`ID`),
+    FOREIGN KEY (`Event_ID`) REFERENCES `swimming`.`event` (`ID`)
 );

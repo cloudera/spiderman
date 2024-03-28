@@ -1,49 +1,51 @@
+-- Dialect: MySQL | Database: customers_card_transactions | Table Count: 4
+
 CREATE DATABASE IF NOT EXISTS `customers_card_transactions`;
 
-drop table if exists `customers_card_transactions`.`Accounts`;
-CREATE TABLE IF NOT EXISTS `customers_card_transactions`.`Accounts` (
-    `account_id` INT,
-    `customer_id` INT NOT NULL,
-    `account_name` STRING,
-    `other_account_details` STRING,
-    PRIMARY KEY (`account_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_card_transactions`.`Accounts`;
+CREATE TABLE `customers_card_transactions`.`Accounts` (
+    `account_id` INTEGER,
+    `customer_id` INTEGER NOT NULL,
+    `account_name` VARCHAR(50),
+    `other_account_details` VARCHAR(255),
+    PRIMARY KEY (`account_id`)
 );
 
-drop table if exists `customers_card_transactions`.`Customers`;
-CREATE TABLE IF NOT EXISTS `customers_card_transactions`.`Customers` (
-    `customer_id` INT,
-    `customer_first_name` STRING,
-    `customer_last_name` STRING,
-    `customer_address` STRING,
-    `customer_phone` STRING,
-    `customer_email` STRING,
-    `other_customer_details` STRING,
-    PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_card_transactions`.`Customers`;
+CREATE TABLE `customers_card_transactions`.`Customers` (
+    `customer_id` INTEGER,
+    `customer_first_name` VARCHAR(20),
+    `customer_last_name` VARCHAR(20),
+    `customer_address` VARCHAR(255),
+    `customer_phone` VARCHAR(255),
+    `customer_email` VARCHAR(255),
+    `other_customer_details` VARCHAR(255),
+    PRIMARY KEY (`customer_id`)
 );
 
-drop table if exists `customers_card_transactions`.`Customers_Cards`;
-CREATE TABLE IF NOT EXISTS `customers_card_transactions`.`Customers_Cards` (
-    `card_id` INT,
-    `customer_id` INT NOT NULL,
-    `card_type_code` STRING NOT NULL,
-    `card_number` STRING,
-    `date_valid_from` TIMESTAMP,
-    `date_valid_to` TIMESTAMP,
-    `other_card_details` STRING,
-    PRIMARY KEY (`card_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_card_transactions`.`Customers_Cards`;
+CREATE TABLE `customers_card_transactions`.`Customers_Cards` (
+    `card_id` INTEGER,
+    `customer_id` INTEGER NOT NULL,
+    `card_type_code` VARCHAR(15) NOT NULL,
+    `card_number` VARCHAR(80),
+    `date_valid_from` DATETIME,
+    `date_valid_to` DATETIME,
+    `other_card_details` VARCHAR(255),
+    PRIMARY KEY (`card_id`)
 );
 
-drop table if exists `customers_card_transactions`.`Financial_Transactions`;
-CREATE TABLE IF NOT EXISTS `customers_card_transactions`.`Financial_Transactions` (
-    `transaction_id` INT NOT NULL,
-    `previous_transaction_id` INT,
-    `account_id` INT NOT NULL,
-    `card_id` INT NOT NULL,
-    `transaction_type` STRING NOT NULL,
-    `transaction_date` TIMESTAMP,
+DROP TABLE IF EXISTS `customers_card_transactions`.`Financial_Transactions`;
+CREATE TABLE `customers_card_transactions`.`Financial_Transactions` (
+    `transaction_id` INTEGER NOT NULL,
+    `previous_transaction_id` INTEGER,
+    `account_id` INTEGER NOT NULL,
+    `card_id` INTEGER NOT NULL,
+    `transaction_type` VARCHAR(15) NOT NULL,
+    `transaction_date` DATETIME,
     `transaction_amount` DOUBLE,
-    `transaction_comment` STRING,
-    `other_transaction_details` STRING,
-    FOREIGN KEY (`account_id`) REFERENCES `customers_card_transactions`.`Accounts` (`account_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`card_id`) REFERENCES `customers_card_transactions`.`Customers_Cards` (`card_id`) DISABLE NOVALIDATE
+    `transaction_comment` VARCHAR(255),
+    `other_transaction_details` VARCHAR(255),
+    FOREIGN KEY (`account_id`) REFERENCES `customers_card_transactions`.`Accounts` (`account_id`),
+    FOREIGN KEY (`card_id`) REFERENCES `customers_card_transactions`.`Customers_Cards` (`card_id`)
 );

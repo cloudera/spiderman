@@ -1,25 +1,27 @@
+-- Dialect: MySQL | Database: scientist_1 | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `scientist_1`;
 
-drop table if exists `scientist_1`.`Scientists`;
-CREATE TABLE IF NOT EXISTS `scientist_1`.`Scientists` (
+DROP TABLE IF EXISTS `scientist_1`.`Scientists`;
+CREATE TABLE `scientist_1`.`Scientists` (
     `SSN` INT,
     `Name` CHAR(30) NOT NULL,
-    PRIMARY KEY (`SSN`) DISABLE NOVALIDATE
+    PRIMARY KEY (`SSN`)
 );
 
-drop table if exists `scientist_1`.`Projects`;
-CREATE TABLE IF NOT EXISTS `scientist_1`.`Projects` (
+DROP TABLE IF EXISTS `scientist_1`.`Projects`;
+CREATE TABLE `scientist_1`.`Projects` (
     `Code` CHAR(4),
     `Name` CHAR(50) NOT NULL,
     `Hours` INT,
-    PRIMARY KEY (`Code`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Code`)
 );
 
-drop table if exists `scientist_1`.`AssignedTo`;
-CREATE TABLE IF NOT EXISTS `scientist_1`.`AssignedTo` (
+DROP TABLE IF EXISTS `scientist_1`.`AssignedTo`;
+CREATE TABLE `scientist_1`.`AssignedTo` (
     `Scientist` INT NOT NULL,
     `Project` CHAR(4) NOT NULL,
-    PRIMARY KEY (`Scientist`, `Project`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Project`) REFERENCES `scientist_1`.`Projects` (`Code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Scientist`) REFERENCES `scientist_1`.`Scientists` (`SSN`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Scientist`, `Project`),
+    FOREIGN KEY (`Project`) REFERENCES `scientist_1`.`Projects` (`Code`),
+    FOREIGN KEY (`Scientist`) REFERENCES `scientist_1`.`Scientists` (`SSN`)
 );

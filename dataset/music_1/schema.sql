@@ -1,47 +1,49 @@
+-- Dialect: MySQL | Database: music_1 | Table Count: 4
+
 CREATE DATABASE IF NOT EXISTS `music_1`;
 
-drop table if exists `music_1`.`genre`;
-CREATE TABLE IF NOT EXISTS `music_1`.`genre` (
-    `g_name` STRING NOT NULL,
-    `rating` STRING,
-    `most_popular_in` STRING,
-    PRIMARY KEY (`g_name`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `music_1`.`genre`;
+CREATE TABLE `music_1`.`genre` (
+    `g_name` VARCHAR(20) NOT NULL,
+    `rating` VARCHAR(10),
+    `most_popular_in` VARCHAR(50),
+    PRIMARY KEY (`g_name`)
 );
 
-drop table if exists `music_1`.`artist`;
-CREATE TABLE IF NOT EXISTS `music_1`.`artist` (
-    `artist_name` STRING NOT NULL,
-    `country` STRING,
-    `gender` STRING,
-    `preferred_genre` STRING,
-    PRIMARY KEY (`artist_name`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`preferred_genre`) REFERENCES `music_1`.`genre` (`g_name`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `music_1`.`artist`;
+CREATE TABLE `music_1`.`artist` (
+    `artist_name` VARCHAR(50) NOT NULL,
+    `country` VARCHAR(20),
+    `gender` VARCHAR(20),
+    `preferred_genre` VARCHAR(50),
+    PRIMARY KEY (`artist_name`),
+    FOREIGN KEY (`preferred_genre`) REFERENCES `music_1`.`genre` (`g_name`)
 );
 
-drop table if exists `music_1`.`files`;
-CREATE TABLE IF NOT EXISTS `music_1`.`files` (
+DROP TABLE IF EXISTS `music_1`.`files`;
+CREATE TABLE `music_1`.`files` (
     `f_id` NUMERIC(10) NOT NULL,
-    `artist_name` STRING,
-    `file_size` STRING,
-    `duration` STRING,
-    `formats` STRING,
-    PRIMARY KEY (`f_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`artist_name`) REFERENCES `music_1`.`artist` (`artist_name`) DISABLE NOVALIDATE
+    `artist_name` VARCHAR(50),
+    `file_size` VARCHAR(20),
+    `duration` VARCHAR(20),
+    `formats` VARCHAR(20),
+    PRIMARY KEY (`f_id`),
+    FOREIGN KEY (`artist_name`) REFERENCES `music_1`.`artist` (`artist_name`)
 );
 
-drop table if exists `music_1`.`song`;
-CREATE TABLE IF NOT EXISTS `music_1`.`song` (
-    `song_name` STRING,
-    `artist_name` STRING,
-    `country` STRING,
+DROP TABLE IF EXISTS `music_1`.`song`;
+CREATE TABLE `music_1`.`song` (
+    `song_name` VARCHAR(50),
+    `artist_name` VARCHAR(50),
+    `country` VARCHAR(20),
     `f_id` NUMERIC(10),
-    `genre_is` STRING,
+    `genre_is` VARCHAR(20),
     `rating` NUMERIC(10),
-    `languages` STRING,
+    `languages` VARCHAR(20),
     `releasedate` DATE,
     `resolution` NUMERIC(10) NOT NULL,
-    PRIMARY KEY (`song_name`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`genre_is`) REFERENCES `music_1`.`genre` (`g_name`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`f_id`) REFERENCES `music_1`.`files` (`f_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`artist_name`) REFERENCES `music_1`.`artist` (`artist_name`) DISABLE NOVALIDATE
+    PRIMARY KEY (`song_name`),
+    FOREIGN KEY (`genre_is`) REFERENCES `music_1`.`genre` (`g_name`),
+    FOREIGN KEY (`f_id`) REFERENCES `music_1`.`files` (`f_id`),
+    FOREIGN KEY (`artist_name`) REFERENCES `music_1`.`artist` (`artist_name`)
 );

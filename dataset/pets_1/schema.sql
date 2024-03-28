@@ -1,31 +1,33 @@
+-- Dialect: MySQL | Database: pets_1 | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `pets_1`;
 
-drop table if exists `pets_1`.`Student`;
-CREATE TABLE IF NOT EXISTS `pets_1`.`Student` (
-    `StuID` INT,
-    `LName` STRING,
-    `Fname` STRING,
-    `Age` INT,
-    `Sex` STRING,
-    `Major` INT,
-    `Advisor` INT,
-    `city_code` STRING,
-    PRIMARY KEY (`StuID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `pets_1`.`Student`;
+CREATE TABLE `pets_1`.`Student` (
+    `StuID` INTEGER,
+    `LName` VARCHAR(12),
+    `Fname` VARCHAR(12),
+    `Age` INTEGER,
+    `Sex` VARCHAR(1),
+    `Major` INTEGER,
+    `Advisor` INTEGER,
+    `city_code` VARCHAR(3),
+    PRIMARY KEY (`StuID`)
 );
 
-drop table if exists `pets_1`.`Pets`;
-CREATE TABLE IF NOT EXISTS `pets_1`.`Pets` (
-    `PetID` INT,
-    `PetType` STRING,
-    `pet_age` INT,
-    `weight` DOUBLE,
-    PRIMARY KEY (`PetID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `pets_1`.`Pets`;
+CREATE TABLE `pets_1`.`Pets` (
+    `PetID` INTEGER,
+    `PetType` VARCHAR(20),
+    `pet_age` INTEGER,
+    `weight` REAL,
+    PRIMARY KEY (`PetID`)
 );
 
-drop table if exists `pets_1`.`Has_Pet`;
-CREATE TABLE IF NOT EXISTS `pets_1`.`Has_Pet` (
-    `StuID` INT,
-    `PetID` INT,
-    FOREIGN KEY (`StuID`) REFERENCES `pets_1`.`Student` (`StuID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`PetID`) REFERENCES `pets_1`.`Pets` (`PetID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `pets_1`.`Has_Pet`;
+CREATE TABLE `pets_1`.`Has_Pet` (
+    `StuID` INTEGER,
+    `PetID` INTEGER,
+    FOREIGN KEY (`StuID`) REFERENCES `pets_1`.`Student` (`StuID`),
+    FOREIGN KEY (`PetID`) REFERENCES `pets_1`.`Pets` (`PetID`)
 );

@@ -1,113 +1,115 @@
+-- Dialect: MySQL | Database: tracking_grants_for_research | Table Count: 12
+
 CREATE DATABASE IF NOT EXISTS `tracking_grants_for_research`;
 
-drop table if exists `tracking_grants_for_research`.`Document_Types`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Document_Types` (
-    `document_type_code` STRING,
-    `document_description` STRING NOT NULL,
-    PRIMARY KEY (`document_type_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Document_Types`;
+CREATE TABLE `tracking_grants_for_research`.`Document_Types` (
+    `document_type_code` VARCHAR(10),
+    `document_description` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`document_type_code`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Organisation_Types`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Organisation_Types` (
-    `organisation_type` STRING,
-    `organisation_type_description` STRING NOT NULL,
-    PRIMARY KEY (`organisation_type`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Organisation_Types`;
+CREATE TABLE `tracking_grants_for_research`.`Organisation_Types` (
+    `organisation_type` VARCHAR(10),
+    `organisation_type_description` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`organisation_type`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Organisations`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Organisations` (
-    `organisation_id` INT,
-    `organisation_type` STRING NOT NULL,
-    `organisation_details` STRING NOT NULL,
-    PRIMARY KEY (`organisation_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`organisation_type`) REFERENCES `tracking_grants_for_research`.`Organisation_Types` (`organisation_type`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Organisations`;
+CREATE TABLE `tracking_grants_for_research`.`Organisations` (
+    `organisation_id` INTEGER,
+    `organisation_type` VARCHAR(10) NOT NULL,
+    `organisation_details` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`organisation_id`),
+    FOREIGN KEY (`organisation_type`) REFERENCES `tracking_grants_for_research`.`Organisation_Types` (`organisation_type`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Grants`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Grants` (
-    `grant_id` INT,
-    `organisation_id` INT NOT NULL,
-    `grant_amount` DECIMAL(19,4) NOT NULL,
-    `grant_start_date` TIMESTAMP NOT NULL,
-    `grant_end_date` TIMESTAMP NOT NULL,
-    `other_details` STRING NOT NULL,
-    PRIMARY KEY (`grant_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`organisation_id`) REFERENCES `tracking_grants_for_research`.`Organisations` (`organisation_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Grants`;
+CREATE TABLE `tracking_grants_for_research`.`Grants` (
+    `grant_id` INTEGER,
+    `organisation_id` INTEGER NOT NULL,
+    `grant_amount` DECIMAL(19,4) NOT NULL DEFAULT 0,
+    `grant_start_date` DATETIME NOT NULL,
+    `grant_end_date` DATETIME NOT NULL,
+    `other_details` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`grant_id`),
+    FOREIGN KEY (`organisation_id`) REFERENCES `tracking_grants_for_research`.`Organisations` (`organisation_id`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Documents`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Documents` (
-    `document_id` INT,
-    `document_type_code` STRING,
-    `grant_id` INT NOT NULL,
-    `sent_date` TIMESTAMP NOT NULL,
-    `response_received_date` TIMESTAMP NOT NULL,
-    `other_details` STRING NOT NULL,
-    PRIMARY KEY (`document_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`grant_id`) REFERENCES `tracking_grants_for_research`.`Grants` (`grant_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`document_type_code`) REFERENCES `tracking_grants_for_research`.`Document_Types` (`document_type_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Documents`;
+CREATE TABLE `tracking_grants_for_research`.`Documents` (
+    `document_id` INTEGER,
+    `document_type_code` VARCHAR(10),
+    `grant_id` INTEGER NOT NULL,
+    `sent_date` DATETIME NOT NULL,
+    `response_received_date` DATETIME NOT NULL,
+    `other_details` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`document_id`),
+    FOREIGN KEY (`grant_id`) REFERENCES `tracking_grants_for_research`.`Grants` (`grant_id`),
+    FOREIGN KEY (`document_type_code`) REFERENCES `tracking_grants_for_research`.`Document_Types` (`document_type_code`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Research_Outcomes`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Research_Outcomes` (
-    `outcome_code` STRING,
-    `outcome_description` STRING NOT NULL,
-    PRIMARY KEY (`outcome_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Research_Outcomes`;
+CREATE TABLE `tracking_grants_for_research`.`Research_Outcomes` (
+    `outcome_code` VARCHAR(10),
+    `outcome_description` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`outcome_code`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Research_Staff`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Research_Staff` (
-    `staff_id` INT,
-    `employer_organisation_id` INT NOT NULL,
-    `staff_details` STRING NOT NULL,
-    PRIMARY KEY (`staff_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`employer_organisation_id`) REFERENCES `tracking_grants_for_research`.`Organisations` (`organisation_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Research_Staff`;
+CREATE TABLE `tracking_grants_for_research`.`Research_Staff` (
+    `staff_id` INTEGER,
+    `employer_organisation_id` INTEGER NOT NULL,
+    `staff_details` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`staff_id`),
+    FOREIGN KEY (`employer_organisation_id`) REFERENCES `tracking_grants_for_research`.`Organisations` (`organisation_id`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Staff_Roles`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Staff_Roles` (
-    `role_code` STRING,
-    `role_description` STRING NOT NULL,
-    PRIMARY KEY (`role_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Staff_Roles`;
+CREATE TABLE `tracking_grants_for_research`.`Staff_Roles` (
+    `role_code` VARCHAR(10),
+    `role_description` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`role_code`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Projects`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Projects` (
-    `project_id` INT,
-    `organisation_id` INT NOT NULL,
-    `project_details` STRING NOT NULL,
-    PRIMARY KEY (`project_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`organisation_id`) REFERENCES `tracking_grants_for_research`.`Organisations` (`organisation_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Projects`;
+CREATE TABLE `tracking_grants_for_research`.`Projects` (
+    `project_id` INTEGER,
+    `organisation_id` INTEGER NOT NULL,
+    `project_details` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`project_id`),
+    FOREIGN KEY (`organisation_id`) REFERENCES `tracking_grants_for_research`.`Organisations` (`organisation_id`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Project_Outcomes`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Project_Outcomes` (
-    `project_id` INT NOT NULL,
-    `outcome_code` STRING NOT NULL,
-    `outcome_details` STRING,
-    FOREIGN KEY (`outcome_code`) REFERENCES `tracking_grants_for_research`.`Research_Outcomes` (`outcome_code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`project_id`) REFERENCES `tracking_grants_for_research`.`Projects` (`project_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Project_Outcomes`;
+CREATE TABLE `tracking_grants_for_research`.`Project_Outcomes` (
+    `project_id` INTEGER NOT NULL,
+    `outcome_code` VARCHAR(10) NOT NULL,
+    `outcome_details` VARCHAR(255),
+    FOREIGN KEY (`outcome_code`) REFERENCES `tracking_grants_for_research`.`Research_Outcomes` (`outcome_code`),
+    FOREIGN KEY (`project_id`) REFERENCES `tracking_grants_for_research`.`Projects` (`project_id`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Project_Staff`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Project_Staff` (
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Project_Staff`;
+CREATE TABLE `tracking_grants_for_research`.`Project_Staff` (
     `staff_id` DOUBLE,
-    `project_id` INT NOT NULL,
-    `role_code` STRING NOT NULL,
-    `date_from` TIMESTAMP,
-    `date_to` TIMESTAMP,
-    `other_details` STRING,
-    PRIMARY KEY (`staff_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`role_code`) REFERENCES `tracking_grants_for_research`.`Staff_Roles` (`role_code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`project_id`) REFERENCES `tracking_grants_for_research`.`Projects` (`project_id`) DISABLE NOVALIDATE
+    `project_id` INTEGER NOT NULL,
+    `role_code` VARCHAR(10) NOT NULL,
+    `date_from` DATETIME,
+    `date_to` DATETIME,
+    `other_details` VARCHAR(255),
+    PRIMARY KEY (`staff_id`),
+    FOREIGN KEY (`role_code`) REFERENCES `tracking_grants_for_research`.`Staff_Roles` (`role_code`),
+    FOREIGN KEY (`project_id`) REFERENCES `tracking_grants_for_research`.`Projects` (`project_id`)
 );
 
-drop table if exists `tracking_grants_for_research`.`Tasks`;
-CREATE TABLE IF NOT EXISTS `tracking_grants_for_research`.`Tasks` (
-    `task_id` INT,
-    `project_id` INT NOT NULL,
-    `task_details` STRING NOT NULL,
-    `eg Agree Objectives` STRING,
-    PRIMARY KEY (`task_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`project_id`) REFERENCES `tracking_grants_for_research`.`Projects` (`project_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_grants_for_research`.`Tasks`;
+CREATE TABLE `tracking_grants_for_research`.`Tasks` (
+    `task_id` INTEGER,
+    `project_id` INTEGER NOT NULL,
+    `task_details` VARCHAR(255) NOT NULL,
+    `eg Agree Objectives` VARCHAR(1),
+    PRIMARY KEY (`task_id`),
+    FOREIGN KEY (`project_id`) REFERENCES `tracking_grants_for_research`.`Projects` (`project_id`)
 );

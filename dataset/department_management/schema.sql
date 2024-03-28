@@ -1,31 +1,33 @@
+-- Dialect: MySQL | Database: department_management | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `department_management`;
 
-drop table if exists `department_management`.`department`;
-CREATE TABLE IF NOT EXISTS `department_management`.`department` (
+DROP TABLE IF EXISTS `department_management`.`department`;
+CREATE TABLE `department_management`.`department` (
     `Department_ID` INT,
-    `Name` STRING,
-    `Creation` STRING,
+    `Name` TEXT,
+    `Creation` TEXT,
     `Ranking` INT,
-    `Budget_in_Billions` DOUBLE,
-    `Num_Employees` DOUBLE,
-    PRIMARY KEY (`Department_ID`) DISABLE NOVALIDATE
+    `Budget_in_Billions` REAL,
+    `Num_Employees` REAL,
+    PRIMARY KEY (`Department_ID`)
 );
 
-drop table if exists `department_management`.`head`;
-CREATE TABLE IF NOT EXISTS `department_management`.`head` (
+DROP TABLE IF EXISTS `department_management`.`head`;
+CREATE TABLE `department_management`.`head` (
     `head_ID` INT,
-    `name` STRING,
-    `born_state` STRING,
-    `age` DOUBLE,
-    PRIMARY KEY (`head_ID`) DISABLE NOVALIDATE
+    `name` TEXT,
+    `born_state` TEXT,
+    `age` REAL,
+    PRIMARY KEY (`head_ID`)
 );
 
-drop table if exists `department_management`.`management`;
-CREATE TABLE IF NOT EXISTS `department_management`.`management` (
+DROP TABLE IF EXISTS `department_management`.`management`;
+CREATE TABLE `department_management`.`management` (
     `department_ID` INT,
     `head_ID` INT,
-    `temporary_acting` STRING,
-    PRIMARY KEY (`department_ID`, `head_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`head_ID`) REFERENCES `department_management`.`head` (`head_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`department_ID`) REFERENCES `department_management`.`department` (`Department_ID`) DISABLE NOVALIDATE
+    `temporary_acting` TEXT,
+    PRIMARY KEY (`department_ID`, `head_ID`),
+    FOREIGN KEY (`head_ID`) REFERENCES `department_management`.`head` (`head_ID`),
+    FOREIGN KEY (`department_ID`) REFERENCES `department_management`.`department` (`Department_ID`)
 );

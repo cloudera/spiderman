@@ -1,27 +1,29 @@
+-- Dialect: MySQL | Database: movie_1 | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `movie_1`;
 
-drop table if exists `movie_1`.`Movie`;
-CREATE TABLE IF NOT EXISTS `movie_1`.`Movie` (
+DROP TABLE IF EXISTS `movie_1`.`Movie`;
+CREATE TABLE `movie_1`.`Movie` (
     `mID` INT,
-    `title` STRING,
+    `title` TEXT,
     `year` INT,
-    `director` STRING,
-    PRIMARY KEY (`mID`) DISABLE NOVALIDATE
+    `director` TEXT,
+    PRIMARY KEY (`mID`)
 );
 
-drop table if exists `movie_1`.`Reviewer`;
-CREATE TABLE IF NOT EXISTS `movie_1`.`Reviewer` (
+DROP TABLE IF EXISTS `movie_1`.`Reviewer`;
+CREATE TABLE `movie_1`.`Reviewer` (
     `rID` INT,
-    `name` STRING,
-    PRIMARY KEY (`rID`) DISABLE NOVALIDATE
+    `name` TEXT,
+    PRIMARY KEY (`rID`)
 );
 
-drop table if exists `movie_1`.`Rating`;
-CREATE TABLE IF NOT EXISTS `movie_1`.`Rating` (
+DROP TABLE IF EXISTS `movie_1`.`Rating`;
+CREATE TABLE `movie_1`.`Rating` (
     `rID` INT,
     `mID` INT,
     `stars` INT,
     `ratingDate` DATE,
-    FOREIGN KEY (`rID`) REFERENCES `movie_1`.`Reviewer` (`rID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`mID`) REFERENCES `movie_1`.`Movie` (`mID`) DISABLE NOVALIDATE
+    FOREIGN KEY (`rID`) REFERENCES `movie_1`.`Reviewer` (`rID`),
+    FOREIGN KEY (`mID`) REFERENCES `movie_1`.`Movie` (`mID`)
 );

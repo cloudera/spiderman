@@ -1,23 +1,25 @@
+-- Dialect: MySQL | Database: body_builder | Table Count: 2
+
 CREATE DATABASE IF NOT EXISTS `body_builder`;
 
-drop table if exists `body_builder`.`people`;
-CREATE TABLE IF NOT EXISTS `body_builder`.`people` (
+DROP TABLE IF EXISTS `body_builder`.`people`;
+CREATE TABLE `body_builder`.`people` (
     `People_ID` INT,
-    `Name` STRING,
-    `Height` DOUBLE,
-    `Weight` DOUBLE,
-    `Birth_Date` STRING,
-    `Birth_Place` STRING,
-    PRIMARY KEY (`People_ID`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    `Height` REAL,
+    `Weight` REAL,
+    `Birth_Date` TEXT,
+    `Birth_Place` TEXT,
+    PRIMARY KEY (`People_ID`)
 );
 
-drop table if exists `body_builder`.`body_builder`;
-CREATE TABLE IF NOT EXISTS `body_builder`.`body_builder` (
+DROP TABLE IF EXISTS `body_builder`.`body_builder`;
+CREATE TABLE `body_builder`.`body_builder` (
     `Body_Builder_ID` INT,
     `People_ID` INT,
-    `Snatch` DOUBLE,
-    `Clean_Jerk` DOUBLE,
-    `Total` DOUBLE,
-    PRIMARY KEY (`Body_Builder_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`People_ID`) REFERENCES `body_builder`.`people` (`People_ID`) DISABLE NOVALIDATE
+    `Snatch` REAL,
+    `Clean_Jerk` REAL,
+    `Total` REAL,
+    PRIMARY KEY (`Body_Builder_ID`),
+    FOREIGN KEY (`People_ID`) REFERENCES `body_builder`.`people` (`People_ID`)
 );

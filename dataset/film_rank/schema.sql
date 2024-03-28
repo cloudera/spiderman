@@ -1,33 +1,35 @@
+-- Dialect: MySQL | Database: film_rank | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `film_rank`;
 
-drop table if exists `film_rank`.`film`;
-CREATE TABLE IF NOT EXISTS `film_rank`.`film` (
+DROP TABLE IF EXISTS `film_rank`.`film`;
+CREATE TABLE `film_rank`.`film` (
     `Film_ID` INT,
-    `Title` STRING,
-    `Studio` STRING,
-    `Director` STRING,
+    `Title` TEXT,
+    `Studio` TEXT,
+    `Director` TEXT,
     `Gross_in_dollar` INT,
-    PRIMARY KEY (`Film_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Film_ID`)
 );
 
-drop table if exists `film_rank`.`market`;
-CREATE TABLE IF NOT EXISTS `film_rank`.`market` (
+DROP TABLE IF EXISTS `film_rank`.`market`;
+CREATE TABLE `film_rank`.`market` (
     `Market_ID` INT,
-    `Country` STRING,
+    `Country` TEXT,
     `Number_cities` INT,
-    PRIMARY KEY (`Market_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Market_ID`)
 );
 
-drop table if exists `film_rank`.`film_market_estimation`;
-CREATE TABLE IF NOT EXISTS `film_rank`.`film_market_estimation` (
+DROP TABLE IF EXISTS `film_rank`.`film_market_estimation`;
+CREATE TABLE `film_rank`.`film_market_estimation` (
     `Estimation_ID` INT,
-    `Low_Estimate` DOUBLE,
-    `High_Estimate` DOUBLE,
+    `Low_Estimate` REAL,
+    `High_Estimate` REAL,
     `Film_ID` INT,
-    `Type` STRING,
+    `Type` TEXT,
     `Market_ID` INT,
     `Year` INT,
-    PRIMARY KEY (`Estimation_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Market_ID`) REFERENCES `film_rank`.`market` (`Market_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Film_ID`) REFERENCES `film_rank`.`film` (`Film_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Estimation_ID`),
+    FOREIGN KEY (`Market_ID`) REFERENCES `film_rank`.`market` (`Market_ID`),
+    FOREIGN KEY (`Film_ID`) REFERENCES `film_rank`.`film` (`Film_ID`)
 );

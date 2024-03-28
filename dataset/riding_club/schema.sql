@@ -1,50 +1,52 @@
+-- Dialect: MySQL | Database: riding_club | Table Count: 5
+
 CREATE DATABASE IF NOT EXISTS `riding_club`;
 
-drop table if exists `riding_club`.`player`;
-CREATE TABLE IF NOT EXISTS `riding_club`.`player` (
+DROP TABLE IF EXISTS `riding_club`.`player`;
+CREATE TABLE `riding_club`.`player` (
     `Player_ID` INT,
-    `Sponsor_name` STRING,
-    `Player_name` STRING,
-    `Gender` STRING,
-    `Residence` STRING,
-    `Occupation` STRING,
+    `Sponsor_name` TEXT,
+    `Player_name` TEXT,
+    `Gender` TEXT,
+    `Residence` TEXT,
+    `Occupation` TEXT,
     `Votes` INT,
-    `Rank` STRING,
-    PRIMARY KEY (`Player_ID`) DISABLE NOVALIDATE
+    `Rank` TEXT,
+    PRIMARY KEY (`Player_ID`)
 );
 
-drop table if exists `riding_club`.`club`;
-CREATE TABLE IF NOT EXISTS `riding_club`.`club` (
+DROP TABLE IF EXISTS `riding_club`.`club`;
+CREATE TABLE `riding_club`.`club` (
     `Club_ID` INT,
-    `Club_name` STRING,
-    `Region` STRING,
+    `Club_name` TEXT,
+    `Region` TEXT,
     `Start_year` INT,
-    PRIMARY KEY (`Club_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Club_ID`)
 );
 
-drop table if exists `riding_club`.`coach`;
-CREATE TABLE IF NOT EXISTS `riding_club`.`coach` (
+DROP TABLE IF EXISTS `riding_club`.`coach`;
+CREATE TABLE `riding_club`.`coach` (
     `Coach_ID` INT,
-    `Coach_name` STRING,
-    `Gender` STRING,
+    `Coach_name` TEXT,
+    `Gender` TEXT,
     `Club_ID` INT,
     `Rank` INT,
-    PRIMARY KEY (`Coach_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Club_ID`) REFERENCES `riding_club`.`club` (`Club_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Coach_ID`),
+    FOREIGN KEY (`Club_ID`) REFERENCES `riding_club`.`club` (`Club_ID`)
 );
 
-drop table if exists `riding_club`.`player_coach`;
-CREATE TABLE IF NOT EXISTS `riding_club`.`player_coach` (
+DROP TABLE IF EXISTS `riding_club`.`player_coach`;
+CREATE TABLE `riding_club`.`player_coach` (
     `Player_ID` INT,
     `Coach_ID` INT,
     `Starting_year` INT,
-    PRIMARY KEY (`Player_ID`, `Coach_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Coach_ID`) REFERENCES `riding_club`.`coach` (`Coach_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Player_ID`) REFERENCES `riding_club`.`player` (`Player_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Player_ID`, `Coach_ID`),
+    FOREIGN KEY (`Coach_ID`) REFERENCES `riding_club`.`coach` (`Coach_ID`),
+    FOREIGN KEY (`Player_ID`) REFERENCES `riding_club`.`player` (`Player_ID`)
 );
 
-drop table if exists `riding_club`.`match_result`;
-CREATE TABLE IF NOT EXISTS `riding_club`.`match_result` (
+DROP TABLE IF EXISTS `riding_club`.`match_result`;
+CREATE TABLE `riding_club`.`match_result` (
     `Rank` INT,
     `Club_ID` INT,
     `Gold` INT,
@@ -52,6 +54,6 @@ CREATE TABLE IF NOT EXISTS `riding_club`.`match_result` (
     `Small_Silver` INT,
     `Bronze` INT,
     `Points` INT,
-    PRIMARY KEY (`Rank`, `Club_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Club_ID`) REFERENCES `riding_club`.`club` (`Club_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Rank`, `Club_ID`),
+    FOREIGN KEY (`Club_ID`) REFERENCES `riding_club`.`club` (`Club_ID`)
 );

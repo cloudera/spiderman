@@ -1,24 +1,26 @@
+-- Dialect: MySQL | Database: election_representative | Table Count: 2
+
 CREATE DATABASE IF NOT EXISTS `election_representative`;
 
-drop table if exists `election_representative`.`representative`;
-CREATE TABLE IF NOT EXISTS `election_representative`.`representative` (
+DROP TABLE IF EXISTS `election_representative`.`representative`;
+CREATE TABLE `election_representative`.`representative` (
     `Representative_ID` INT,
-    `Name` STRING,
-    `State` STRING,
-    `Party` STRING,
-    `Lifespan` STRING,
-    PRIMARY KEY (`Representative_ID`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    `State` TEXT,
+    `Party` TEXT,
+    `Lifespan` TEXT,
+    PRIMARY KEY (`Representative_ID`)
 );
 
-drop table if exists `election_representative`.`election`;
-CREATE TABLE IF NOT EXISTS `election_representative`.`election` (
+DROP TABLE IF EXISTS `election_representative`.`election`;
+CREATE TABLE `election_representative`.`election` (
     `Election_ID` INT,
     `Representative_ID` INT,
-    `Date` STRING,
-    `Votes` DOUBLE,
-    `Vote_Percent` DOUBLE,
-    `Seats` DOUBLE,
-    `Place` DOUBLE,
-    PRIMARY KEY (`Election_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Representative_ID`) REFERENCES `election_representative`.`representative` (`Representative_ID`) DISABLE NOVALIDATE
+    `Date` TEXT,
+    `Votes` REAL,
+    `Vote_Percent` REAL,
+    `Seats` REAL,
+    `Place` REAL,
+    PRIMARY KEY (`Election_ID`),
+    FOREIGN KEY (`Representative_ID`) REFERENCES `election_representative`.`representative` (`Representative_ID`)
 );

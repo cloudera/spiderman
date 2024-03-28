@@ -1,31 +1,33 @@
+-- Dialect: MySQL | Database: flight_2 | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `flight_2`;
 
-drop table if exists `flight_2`.`airlines`;
-CREATE TABLE IF NOT EXISTS `flight_2`.`airlines` (
-    `uid` INT,
-    `Airline` STRING,
-    `Abbreviation` STRING,
-    `Country` STRING,
-    PRIMARY KEY (`uid`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `flight_2`.`airlines`;
+CREATE TABLE `flight_2`.`airlines` (
+    `uid` INTEGER,
+    `Airline` TEXT,
+    `Abbreviation` TEXT,
+    `Country` TEXT,
+    PRIMARY KEY (`uid`)
 );
 
-drop table if exists `flight_2`.`airports`;
-CREATE TABLE IF NOT EXISTS `flight_2`.`airports` (
-    `City` STRING,
-    `AirportCode` STRING,
-    `AirportName` STRING,
-    `Country` STRING,
-    `CountryAbbrev` STRING,
-    PRIMARY KEY (`AirportCode`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `flight_2`.`airports`;
+CREATE TABLE `flight_2`.`airports` (
+    `City` TEXT,
+    `AirportCode` VARCHAR(50),
+    `AirportName` TEXT,
+    `Country` TEXT,
+    `CountryAbbrev` TEXT,
+    PRIMARY KEY (`AirportCode`)
 );
 
-drop table if exists `flight_2`.`flights`;
-CREATE TABLE IF NOT EXISTS `flight_2`.`flights` (
-    `Airline` INT,
-    `FlightNo` INT,
-    `SourceAirport` STRING,
-    `DestAirport` STRING,
-    PRIMARY KEY (`Airline`, `FlightNo`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`DestAirport`) REFERENCES `flight_2`.`airports` (`AirportCode`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`SourceAirport`) REFERENCES `flight_2`.`airports` (`AirportCode`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `flight_2`.`flights`;
+CREATE TABLE `flight_2`.`flights` (
+    `Airline` INTEGER,
+    `FlightNo` INTEGER,
+    `SourceAirport` VARCHAR(50),
+    `DestAirport` VARCHAR(50),
+    PRIMARY KEY (`Airline`, `FlightNo`),
+    FOREIGN KEY (`DestAirport`) REFERENCES `flight_2`.`airports` (`AirportCode`),
+    FOREIGN KEY (`SourceAirport`) REFERENCES `flight_2`.`airports` (`AirportCode`)
 );

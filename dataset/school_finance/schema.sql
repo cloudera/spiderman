@@ -1,37 +1,39 @@
+-- Dialect: MySQL | Database: school_finance | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `school_finance`;
 
-drop table if exists `school_finance`.`School`;
-CREATE TABLE IF NOT EXISTS `school_finance`.`School` (
+DROP TABLE IF EXISTS `school_finance`.`School`;
+CREATE TABLE `school_finance`.`School` (
     `School_id` INT,
-    `School_name` STRING,
-    `Location` STRING,
-    `Mascot` STRING,
+    `School_name` TEXT,
+    `Location` TEXT,
+    `Mascot` TEXT,
     `Enrollment` INT,
-    `IHSAA_Class` STRING,
-    `IHSAA_Football_Class` STRING,
-    `County` STRING,
-    PRIMARY KEY (`School_id`) DISABLE NOVALIDATE
+    `IHSAA_Class` TEXT,
+    `IHSAA_Football_Class` TEXT,
+    `County` TEXT,
+    PRIMARY KEY (`School_id`)
 );
 
-drop table if exists `school_finance`.`budget`;
-CREATE TABLE IF NOT EXISTS `school_finance`.`budget` (
+DROP TABLE IF EXISTS `school_finance`.`budget`;
+CREATE TABLE `school_finance`.`budget` (
     `School_id` INT,
     `Year` INT,
     `Budgeted` INT,
-    `total_budget_percent_budgeted` DOUBLE,
+    `total_budget_percent_budgeted` REAL,
     `Invested` INT,
-    `total_budget_percent_invested` DOUBLE,
-    `Budget_invested_percent` STRING,
-    PRIMARY KEY (`School_id`, `Year`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`School_id`) REFERENCES `school_finance`.`School` (`School_id`) DISABLE NOVALIDATE
+    `total_budget_percent_invested` REAL,
+    `Budget_invested_percent` TEXT,
+    PRIMARY KEY (`School_id`, `Year`),
+    FOREIGN KEY (`School_id`) REFERENCES `school_finance`.`School` (`School_id`)
 );
 
-drop table if exists `school_finance`.`endowment`;
-CREATE TABLE IF NOT EXISTS `school_finance`.`endowment` (
+DROP TABLE IF EXISTS `school_finance`.`endowment`;
+CREATE TABLE `school_finance`.`endowment` (
     `endowment_id` INT,
     `School_id` INT,
-    `donator_name` STRING,
-    `amount` DOUBLE,
-    PRIMARY KEY (`endowment_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`School_id`) REFERENCES `school_finance`.`School` (`School_id`) DISABLE NOVALIDATE
+    `donator_name` TEXT,
+    `amount` REAL,
+    PRIMARY KEY (`endowment_id`),
+    FOREIGN KEY (`School_id`) REFERENCES `school_finance`.`School` (`School_id`)
 );

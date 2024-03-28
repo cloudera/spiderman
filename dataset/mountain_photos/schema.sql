@@ -1,34 +1,36 @@
+-- Dialect: MySQL | Database: mountain_photos | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `mountain_photos`;
 
-drop table if exists `mountain_photos`.`mountain`;
-CREATE TABLE IF NOT EXISTS `mountain_photos`.`mountain` (
+DROP TABLE IF EXISTS `mountain_photos`.`mountain`;
+CREATE TABLE `mountain_photos`.`mountain` (
     `id` INT,
-    `name` STRING,
-    `Height` DOUBLE,
-    `Prominence` DOUBLE,
-    `Range` STRING,
-    `Country` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE
+    `name` TEXT,
+    `Height` REAL,
+    `Prominence` REAL,
+    `Range` TEXT,
+    `Country` TEXT,
+    PRIMARY KEY (`id`)
 );
 
-drop table if exists `mountain_photos`.`camera_lens`;
-CREATE TABLE IF NOT EXISTS `mountain_photos`.`camera_lens` (
+DROP TABLE IF EXISTS `mountain_photos`.`camera_lens`;
+CREATE TABLE `mountain_photos`.`camera_lens` (
     `id` INT,
-    `brand` STRING,
-    `name` STRING,
-    `focal_length_mm` DOUBLE,
-    `max_aperture` DOUBLE,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE
+    `brand` TEXT,
+    `name` TEXT,
+    `focal_length_mm` REAL,
+    `max_aperture` REAL,
+    PRIMARY KEY (`id`)
 );
 
-drop table if exists `mountain_photos`.`photos`;
-CREATE TABLE IF NOT EXISTS `mountain_photos`.`photos` (
+DROP TABLE IF EXISTS `mountain_photos`.`photos`;
+CREATE TABLE `mountain_photos`.`photos` (
     `id` INT,
     `camera_lens_id` INT,
     `mountain_id` INT,
-    `color` STRING,
-    `name` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`mountain_id`) REFERENCES `mountain_photos`.`mountain` (`id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`camera_lens_id`) REFERENCES `mountain_photos`.`camera_lens` (`id`) DISABLE NOVALIDATE
+    `color` TEXT,
+    `name` TEXT,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`mountain_id`) REFERENCES `mountain_photos`.`mountain` (`id`),
+    FOREIGN KEY (`camera_lens_id`) REFERENCES `mountain_photos`.`camera_lens` (`id`)
 );

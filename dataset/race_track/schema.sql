@@ -1,22 +1,24 @@
+-- Dialect: MySQL | Database: race_track | Table Count: 2
+
 CREATE DATABASE IF NOT EXISTS `race_track`;
 
-drop table if exists `race_track`.`track`;
-CREATE TABLE IF NOT EXISTS `race_track`.`track` (
+DROP TABLE IF EXISTS `race_track`.`track`;
+CREATE TABLE `race_track`.`track` (
     `Track_ID` INT,
-    `Name` STRING,
-    `Location` STRING,
-    `Seating` DOUBLE,
-    `Year_Opened` DOUBLE,
-    PRIMARY KEY (`Track_ID`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    `Location` TEXT,
+    `Seating` REAL,
+    `Year_Opened` REAL,
+    PRIMARY KEY (`Track_ID`)
 );
 
-drop table if exists `race_track`.`race`;
-CREATE TABLE IF NOT EXISTS `race_track`.`race` (
+DROP TABLE IF EXISTS `race_track`.`race`;
+CREATE TABLE `race_track`.`race` (
     `Race_ID` INT,
-    `Name` STRING,
-    `Class` STRING,
-    `Date` STRING,
+    `Name` TEXT,
+    `Class` TEXT,
+    `Date` TEXT,
     `Track_ID` INT,
-    PRIMARY KEY (`Race_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Track_ID`) REFERENCES `race_track`.`track` (`Track_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Race_ID`),
+    FOREIGN KEY (`Track_ID`) REFERENCES `race_track`.`track` (`Track_ID`)
 );

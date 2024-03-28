@@ -1,72 +1,74 @@
+-- Dialect: MySQL | Database: apartment_rentals | Table Count: 6
+
 CREATE DATABASE IF NOT EXISTS `apartment_rentals`;
 
-drop table if exists `apartment_rentals`.`Apartment_Buildings`;
-CREATE TABLE IF NOT EXISTS `apartment_rentals`.`Apartment_Buildings` (
-    `building_id` INT NOT NULL,
+DROP TABLE IF EXISTS `apartment_rentals`.`Apartment_Buildings`;
+CREATE TABLE `apartment_rentals`.`Apartment_Buildings` (
+    `building_id` INTEGER NOT NULL,
     `building_short_name` CHAR(15),
-    `building_full_name` STRING,
-    `building_description` STRING,
-    `building_address` STRING,
-    `building_manager` STRING,
-    `building_phone` STRING,
-    PRIMARY KEY (`building_id`) DISABLE NOVALIDATE,
-    UNIQUE (`building_id`) DISABLE NOVALIDATE
+    `building_full_name` VARCHAR(80),
+    `building_description` VARCHAR(255),
+    `building_address` VARCHAR(255),
+    `building_manager` VARCHAR(50),
+    `building_phone` VARCHAR(80),
+    PRIMARY KEY (`building_id`),
+    UNIQUE (`building_id`)
 );
 
-drop table if exists `apartment_rentals`.`Apartments`;
-CREATE TABLE IF NOT EXISTS `apartment_rentals`.`Apartments` (
-    `apt_id` INT NOT NULL,
-    `building_id` INT NOT NULL,
+DROP TABLE IF EXISTS `apartment_rentals`.`Apartments`;
+CREATE TABLE `apartment_rentals`.`Apartments` (
+    `apt_id` INTEGER NOT NULL,
+    `building_id` INTEGER NOT NULL,
     `apt_type_code` CHAR(15),
     `apt_number` CHAR(10),
-    `bathroom_count` INT,
-    `bedroom_count` INT,
+    `bathroom_count` INTEGER,
+    `bedroom_count` INTEGER,
     `room_count` CHAR(5),
-    PRIMARY KEY (`apt_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`building_id`) REFERENCES `apartment_rentals`.`Apartment_Buildings` (`building_id`) DISABLE NOVALIDATE,
-    UNIQUE (`apt_id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`apt_id`),
+    FOREIGN KEY (`building_id`) REFERENCES `apartment_rentals`.`Apartment_Buildings` (`building_id`),
+    UNIQUE (`apt_id`)
 );
 
-drop table if exists `apartment_rentals`.`Apartment_Facilities`;
-CREATE TABLE IF NOT EXISTS `apartment_rentals`.`Apartment_Facilities` (
-    `apt_id` INT NOT NULL,
+DROP TABLE IF EXISTS `apartment_rentals`.`Apartment_Facilities`;
+CREATE TABLE `apartment_rentals`.`Apartment_Facilities` (
+    `apt_id` INTEGER NOT NULL,
     `facility_code` CHAR(15) NOT NULL,
-    PRIMARY KEY (`apt_id`, `facility_code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`apt_id`) REFERENCES `apartment_rentals`.`Apartments` (`apt_id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`apt_id`, `facility_code`),
+    FOREIGN KEY (`apt_id`) REFERENCES `apartment_rentals`.`Apartments` (`apt_id`)
 );
 
-drop table if exists `apartment_rentals`.`Guests`;
-CREATE TABLE IF NOT EXISTS `apartment_rentals`.`Guests` (
-    `guest_id` INT NOT NULL,
+DROP TABLE IF EXISTS `apartment_rentals`.`Guests`;
+CREATE TABLE `apartment_rentals`.`Guests` (
+    `guest_id` INTEGER NOT NULL,
     `gender_code` CHAR(1),
-    `guest_first_name` STRING,
-    `guest_last_name` STRING,
-    `date_of_birth` TIMESTAMP,
-    PRIMARY KEY (`guest_id`) DISABLE NOVALIDATE,
-    UNIQUE (`guest_id`) DISABLE NOVALIDATE
+    `guest_first_name` VARCHAR(80),
+    `guest_last_name` VARCHAR(80),
+    `date_of_birth` DATETIME,
+    PRIMARY KEY (`guest_id`),
+    UNIQUE (`guest_id`)
 );
 
-drop table if exists `apartment_rentals`.`Apartment_Bookings`;
-CREATE TABLE IF NOT EXISTS `apartment_rentals`.`Apartment_Bookings` (
-    `apt_booking_id` INT NOT NULL,
-    `apt_id` INT,
-    `guest_id` INT NOT NULL,
+DROP TABLE IF EXISTS `apartment_rentals`.`Apartment_Bookings`;
+CREATE TABLE `apartment_rentals`.`Apartment_Bookings` (
+    `apt_booking_id` INTEGER NOT NULL,
+    `apt_id` INTEGER,
+    `guest_id` INTEGER NOT NULL,
     `booking_status_code` CHAR(15) NOT NULL,
-    `booking_start_date` TIMESTAMP,
-    `booking_end_date` TIMESTAMP,
-    PRIMARY KEY (`apt_booking_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`guest_id`) REFERENCES `apartment_rentals`.`Guests` (`guest_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`apt_id`) REFERENCES `apartment_rentals`.`Apartments` (`apt_id`) DISABLE NOVALIDATE,
-    UNIQUE (`apt_booking_id`) DISABLE NOVALIDATE
+    `booking_start_date` DATETIME,
+    `booking_end_date` DATETIME,
+    PRIMARY KEY (`apt_booking_id`),
+    FOREIGN KEY (`guest_id`) REFERENCES `apartment_rentals`.`Guests` (`guest_id`),
+    FOREIGN KEY (`apt_id`) REFERENCES `apartment_rentals`.`Apartments` (`apt_id`),
+    UNIQUE (`apt_booking_id`)
 );
 
-drop table if exists `apartment_rentals`.`View_Unit_Status`;
-CREATE TABLE IF NOT EXISTS `apartment_rentals`.`View_Unit_Status` (
-    `apt_id` INT,
-    `apt_booking_id` INT,
-    `status_date` TIMESTAMP NOT NULL,
-    `available_yn` BOOLEAN,
-    PRIMARY KEY (`status_date`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`apt_booking_id`) REFERENCES `apartment_rentals`.`Apartment_Bookings` (`apt_booking_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`apt_id`) REFERENCES `apartment_rentals`.`Apartments` (`apt_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `apartment_rentals`.`View_Unit_Status`;
+CREATE TABLE `apartment_rentals`.`View_Unit_Status` (
+    `apt_id` INTEGER,
+    `apt_booking_id` INTEGER,
+    `status_date` DATETIME NOT NULL,
+    `available_yn` BIT,
+    PRIMARY KEY (`status_date`),
+    FOREIGN KEY (`apt_booking_id`) REFERENCES `apartment_rentals`.`Apartment_Bookings` (`apt_booking_id`),
+    FOREIGN KEY (`apt_id`) REFERENCES `apartment_rentals`.`Apartments` (`apt_id`)
 );

@@ -1,64 +1,66 @@
+-- Dialect: MySQL | Database: cre_Docs_and_Epenses | Table Count: 7
+
 CREATE DATABASE IF NOT EXISTS `cre_Docs_and_Epenses`;
 
-drop table if exists `cre_Docs_and_Epenses`.`Ref_Document_Types`;
-CREATE TABLE IF NOT EXISTS `cre_Docs_and_Epenses`.`Ref_Document_Types` (
+DROP TABLE IF EXISTS `cre_Docs_and_Epenses`.`Ref_Document_Types`;
+CREATE TABLE `cre_Docs_and_Epenses`.`Ref_Document_Types` (
     `Document_Type_Code` CHAR(15) NOT NULL,
-    `Document_Type_Name` STRING NOT NULL,
-    `Document_Type_Description` STRING NOT NULL,
-    PRIMARY KEY (`Document_Type_Code`) DISABLE NOVALIDATE
+    `Document_Type_Name` VARCHAR(255) NOT NULL,
+    `Document_Type_Description` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`Document_Type_Code`)
 );
 
-drop table if exists `cre_Docs_and_Epenses`.`Ref_Budget_Codes`;
-CREATE TABLE IF NOT EXISTS `cre_Docs_and_Epenses`.`Ref_Budget_Codes` (
+DROP TABLE IF EXISTS `cre_Docs_and_Epenses`.`Ref_Budget_Codes`;
+CREATE TABLE `cre_Docs_and_Epenses`.`Ref_Budget_Codes` (
     `Budget_Type_Code` CHAR(15) NOT NULL,
-    `Budget_Type_Description` STRING NOT NULL,
-    PRIMARY KEY (`Budget_Type_Code`) DISABLE NOVALIDATE
+    `Budget_Type_Description` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`Budget_Type_Code`)
 );
 
-drop table if exists `cre_Docs_and_Epenses`.`Projects`;
-CREATE TABLE IF NOT EXISTS `cre_Docs_and_Epenses`.`Projects` (
-    `Project_ID` INT NOT NULL,
-    `Project_Details` STRING,
-    PRIMARY KEY (`Project_ID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `cre_Docs_and_Epenses`.`Projects`;
+CREATE TABLE `cre_Docs_and_Epenses`.`Projects` (
+    `Project_ID` INTEGER NOT NULL,
+    `Project_Details` VARCHAR(255),
+    PRIMARY KEY (`Project_ID`)
 );
 
-drop table if exists `cre_Docs_and_Epenses`.`Documents`;
-CREATE TABLE IF NOT EXISTS `cre_Docs_and_Epenses`.`Documents` (
-    `Document_ID` INT NOT NULL,
+DROP TABLE IF EXISTS `cre_Docs_and_Epenses`.`Documents`;
+CREATE TABLE `cre_Docs_and_Epenses`.`Documents` (
+    `Document_ID` INTEGER NOT NULL,
     `Document_Type_Code` CHAR(15) NOT NULL,
-    `Project_ID` INT NOT NULL,
-    `Document_Date` TIMESTAMP,
-    `Document_Name` STRING,
-    `Document_Description` STRING,
-    `Other_Details` STRING,
-    PRIMARY KEY (`Document_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Project_ID`) REFERENCES `cre_Docs_and_Epenses`.`Projects` (`Project_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Document_Type_Code`) REFERENCES `cre_Docs_and_Epenses`.`Ref_Document_Types` (`Document_Type_Code`) DISABLE NOVALIDATE
+    `Project_ID` INTEGER NOT NULL,
+    `Document_Date` DATETIME,
+    `Document_Name` VARCHAR(255),
+    `Document_Description` VARCHAR(255),
+    `Other_Details` VARCHAR(255),
+    PRIMARY KEY (`Document_ID`),
+    FOREIGN KEY (`Project_ID`) REFERENCES `cre_Docs_and_Epenses`.`Projects` (`Project_ID`),
+    FOREIGN KEY (`Document_Type_Code`) REFERENCES `cre_Docs_and_Epenses`.`Ref_Document_Types` (`Document_Type_Code`)
 );
 
-drop table if exists `cre_Docs_and_Epenses`.`Statements`;
-CREATE TABLE IF NOT EXISTS `cre_Docs_and_Epenses`.`Statements` (
-    `Statement_ID` INT NOT NULL,
-    `Statement_Details` STRING,
-    PRIMARY KEY (`Statement_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Statement_ID`) REFERENCES `cre_Docs_and_Epenses`.`Documents` (`Document_ID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `cre_Docs_and_Epenses`.`Statements`;
+CREATE TABLE `cre_Docs_and_Epenses`.`Statements` (
+    `Statement_ID` INTEGER NOT NULL,
+    `Statement_Details` VARCHAR(255),
+    PRIMARY KEY (`Statement_ID`),
+    FOREIGN KEY (`Statement_ID`) REFERENCES `cre_Docs_and_Epenses`.`Documents` (`Document_ID`)
 );
 
-drop table if exists `cre_Docs_and_Epenses`.`Documents_with_Expenses`;
-CREATE TABLE IF NOT EXISTS `cre_Docs_and_Epenses`.`Documents_with_Expenses` (
-    `Document_ID` INT NOT NULL,
+DROP TABLE IF EXISTS `cre_Docs_and_Epenses`.`Documents_with_Expenses`;
+CREATE TABLE `cre_Docs_and_Epenses`.`Documents_with_Expenses` (
+    `Document_ID` INTEGER NOT NULL,
     `Budget_Type_Code` CHAR(15) NOT NULL,
-    `Document_Details` STRING,
-    PRIMARY KEY (`Document_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Document_ID`) REFERENCES `cre_Docs_and_Epenses`.`Documents` (`Document_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Budget_Type_Code`) REFERENCES `cre_Docs_and_Epenses`.`Ref_Budget_Codes` (`Budget_Type_Code`) DISABLE NOVALIDATE
+    `Document_Details` VARCHAR(255),
+    PRIMARY KEY (`Document_ID`),
+    FOREIGN KEY (`Document_ID`) REFERENCES `cre_Docs_and_Epenses`.`Documents` (`Document_ID`),
+    FOREIGN KEY (`Budget_Type_Code`) REFERENCES `cre_Docs_and_Epenses`.`Ref_Budget_Codes` (`Budget_Type_Code`)
 );
 
-drop table if exists `cre_Docs_and_Epenses`.`Accounts`;
-CREATE TABLE IF NOT EXISTS `cre_Docs_and_Epenses`.`Accounts` (
-    `Account_ID` INT NOT NULL,
-    `Statement_ID` INT NOT NULL,
-    `Account_Details` STRING,
-    PRIMARY KEY (`Account_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Statement_ID`) REFERENCES `cre_Docs_and_Epenses`.`Statements` (`Statement_ID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `cre_Docs_and_Epenses`.`Accounts`;
+CREATE TABLE `cre_Docs_and_Epenses`.`Accounts` (
+    `Account_ID` INTEGER NOT NULL,
+    `Statement_ID` INTEGER NOT NULL,
+    `Account_Details` VARCHAR(255),
+    PRIMARY KEY (`Account_ID`),
+    FOREIGN KEY (`Statement_ID`) REFERENCES `cre_Docs_and_Epenses`.`Statements` (`Statement_ID`)
 );

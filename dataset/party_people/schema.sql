@@ -1,45 +1,47 @@
+-- Dialect: MySQL | Database: party_people | Table Count: 4
+
 CREATE DATABASE IF NOT EXISTS `party_people`;
 
-drop table if exists `party_people`.`region`;
-CREATE TABLE IF NOT EXISTS `party_people`.`region` (
+DROP TABLE IF EXISTS `party_people`.`region`;
+CREATE TABLE `party_people`.`region` (
     `Region_ID` INT,
-    `Region_name` STRING,
-    `Date` STRING,
-    `Label` STRING,
-    `Format` STRING,
-    `Catalogue` STRING,
-    PRIMARY KEY (`Region_ID`) DISABLE NOVALIDATE
+    `Region_name` TEXT,
+    `Date` TEXT,
+    `Label` TEXT,
+    `Format` TEXT,
+    `Catalogue` TEXT,
+    PRIMARY KEY (`Region_ID`)
 );
 
-drop table if exists `party_people`.`party`;
-CREATE TABLE IF NOT EXISTS `party_people`.`party` (
+DROP TABLE IF EXISTS `party_people`.`party`;
+CREATE TABLE `party_people`.`party` (
     `Party_ID` INT,
-    `Minister` STRING,
-    `Took_office` STRING,
-    `Left_office` STRING,
+    `Minister` TEXT,
+    `Took_office` TEXT,
+    `Left_office` TEXT,
     `Region_ID` INT,
-    `Party_name` STRING,
-    PRIMARY KEY (`Party_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Region_ID`) REFERENCES `party_people`.`region` (`Region_ID`) DISABLE NOVALIDATE
+    `Party_name` TEXT,
+    PRIMARY KEY (`Party_ID`),
+    FOREIGN KEY (`Region_ID`) REFERENCES `party_people`.`region` (`Region_ID`)
 );
 
-drop table if exists `party_people`.`member`;
-CREATE TABLE IF NOT EXISTS `party_people`.`member` (
+DROP TABLE IF EXISTS `party_people`.`member`;
+CREATE TABLE `party_people`.`member` (
     `Member_ID` INT,
-    `Member_Name` STRING,
+    `Member_Name` TEXT,
     `Party_ID` INT,
-    `In_office` STRING,
-    PRIMARY KEY (`Member_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Party_ID`) REFERENCES `party_people`.`party` (`Party_ID`) DISABLE NOVALIDATE
+    `In_office` TEXT,
+    PRIMARY KEY (`Member_ID`),
+    FOREIGN KEY (`Party_ID`) REFERENCES `party_people`.`party` (`Party_ID`)
 );
 
-drop table if exists `party_people`.`party_events`;
-CREATE TABLE IF NOT EXISTS `party_people`.`party_events` (
+DROP TABLE IF EXISTS `party_people`.`party_events`;
+CREATE TABLE `party_people`.`party_events` (
     `Event_ID` INT,
-    `Event_Name` STRING,
+    `Event_Name` TEXT,
     `Party_ID` INT,
     `Member_in_charge_ID` INT,
-    PRIMARY KEY (`Event_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Member_in_charge_ID`) REFERENCES `party_people`.`member` (`Member_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Party_ID`) REFERENCES `party_people`.`party` (`Party_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Event_ID`),
+    FOREIGN KEY (`Member_in_charge_ID`) REFERENCES `party_people`.`member` (`Member_ID`),
+    FOREIGN KEY (`Party_ID`) REFERENCES `party_people`.`party` (`Party_ID`)
 );

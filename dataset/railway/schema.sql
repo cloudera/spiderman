@@ -1,46 +1,48 @@
+-- Dialect: MySQL | Database: railway | Table Count: 4
+
 CREATE DATABASE IF NOT EXISTS `railway`;
 
-drop table if exists `railway`.`railway`;
-CREATE TABLE IF NOT EXISTS `railway`.`railway` (
+DROP TABLE IF EXISTS `railway`.`railway`;
+CREATE TABLE `railway`.`railway` (
     `Railway_ID` INT,
-    `Railway` STRING,
-    `Builder` STRING,
-    `Built` STRING,
-    `Wheels` STRING,
-    `Location` STRING,
-    `ObjectNumber` STRING,
-    PRIMARY KEY (`Railway_ID`) DISABLE NOVALIDATE
+    `Railway` TEXT,
+    `Builder` TEXT,
+    `Built` TEXT,
+    `Wheels` TEXT,
+    `Location` TEXT,
+    `ObjectNumber` TEXT,
+    PRIMARY KEY (`Railway_ID`)
 );
 
-drop table if exists `railway`.`train`;
-CREATE TABLE IF NOT EXISTS `railway`.`train` (
+DROP TABLE IF EXISTS `railway`.`train`;
+CREATE TABLE `railway`.`train` (
     `Train_ID` INT,
-    `Train_Num` STRING,
-    `Name` STRING,
-    `From` STRING,
-    `Arrival` STRING,
+    `Train_Num` TEXT,
+    `Name` TEXT,
+    `From` TEXT,
+    `Arrival` TEXT,
     `Railway_ID` INT,
-    PRIMARY KEY (`Train_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Railway_ID`) REFERENCES `railway`.`railway` (`Railway_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Train_ID`),
+    FOREIGN KEY (`Railway_ID`) REFERENCES `railway`.`railway` (`Railway_ID`)
 );
 
-drop table if exists `railway`.`manager`;
-CREATE TABLE IF NOT EXISTS `railway`.`manager` (
+DROP TABLE IF EXISTS `railway`.`manager`;
+CREATE TABLE `railway`.`manager` (
     `Manager_ID` INT,
-    `Name` STRING,
-    `Country` STRING,
-    `Working_year_starts` STRING,
+    `Name` TEXT,
+    `Country` TEXT,
+    `Working_year_starts` TEXT,
     `Age` INT,
     `Level` INT,
-    PRIMARY KEY (`Manager_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Manager_ID`)
 );
 
-drop table if exists `railway`.`railway_manage`;
-CREATE TABLE IF NOT EXISTS `railway`.`railway_manage` (
+DROP TABLE IF EXISTS `railway`.`railway_manage`;
+CREATE TABLE `railway`.`railway_manage` (
     `Railway_ID` INT,
     `Manager_ID` INT,
-    `From_Year` STRING,
-    PRIMARY KEY (`Railway_ID`, `Manager_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Railway_ID`) REFERENCES `railway`.`railway` (`Railway_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Manager_ID`) REFERENCES `railway`.`manager` (`Manager_ID`) DISABLE NOVALIDATE
+    `From_Year` TEXT,
+    PRIMARY KEY (`Railway_ID`, `Manager_ID`),
+    FOREIGN KEY (`Railway_ID`) REFERENCES `railway`.`railway` (`Railway_ID`),
+    FOREIGN KEY (`Manager_ID`) REFERENCES `railway`.`manager` (`Manager_ID`)
 );

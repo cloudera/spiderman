@@ -1,150 +1,179 @@
+-- Dialect: MySQL | Database: formula_1 | Table Count: 13
+
 CREATE DATABASE IF NOT EXISTS `formula_1`;
 
-drop table if exists `formula_1`.`circuits`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`circuits` (
+DROP TABLE IF EXISTS `formula_1`.`circuits`;
+CREATE TABLE `formula_1`.`circuits` (
     `circuitId` INT,
-    `circuitRef` STRING,
-    `name` STRING,
-    `location` STRING,
-    `country` STRING,
+    `circuitRef` TEXT,
+    `name` TEXT,
+    `location` TEXT,
+    `country` TEXT,
     `lat` DOUBLE,
     `lng` DOUBLE,
-    `alt` STRING,
-    `url` STRING,
-    PRIMARY KEY (`circuitId`) DISABLE NOVALIDATE
+    `alt` TEXT,
+    `url` TEXT,
+    PRIMARY KEY (`circuitId`)
 );
 
-drop table if exists `formula_1`.`races`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`races` (
+DROP TABLE IF EXISTS `formula_1`.`races`;
+CREATE TABLE `formula_1`.`races` (
     `raceId` INT,
     `year` INT,
     `round` INT,
     `circuitId` INT,
-    `name` STRING,
-    `date` STRING,
-    `time` STRING,
-    `url` STRING,
-    PRIMARY KEY (`raceId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`circuitId`) REFERENCES `formula_1`.`circuits` (`circuitId`) DISABLE NOVALIDATE
+    `name` TEXT,
+    `date` TEXT,
+    `time` TEXT,
+    `url` TEXT,
+    PRIMARY KEY (`raceId`),
+    FOREIGN KEY (`circuitId`) REFERENCES `formula_1`.`circuits` (`circuitId`)
 );
 
-drop table if exists `formula_1`.`drivers`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`drivers` (
+DROP TABLE IF EXISTS `formula_1`.`drivers`;
+CREATE TABLE `formula_1`.`drivers` (
     `driverId` INT,
-    `driverRef` STRING,
-    `number` STRING,
-    `code` STRING,
-    `forename` STRING,
-    `surname` STRING,
-    `dob` STRING,
-    `nationality` STRING,
-    `url` STRING,
-    PRIMARY KEY (`driverId`) DISABLE NOVALIDATE
+    `driverRef` TEXT,
+    `number` TEXT,
+    `code` TEXT,
+    `forename` TEXT,
+    `surname` TEXT,
+    `dob` TEXT,
+    `nationality` TEXT,
+    `url` TEXT,
+    PRIMARY KEY (`driverId`)
 );
 
-drop table if exists `formula_1`.`status`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`status` (
+DROP TABLE IF EXISTS `formula_1`.`status`;
+CREATE TABLE `formula_1`.`status` (
     `statusId` INT,
-    `status` STRING,
-    PRIMARY KEY (`statusId`) DISABLE NOVALIDATE
+    `status` TEXT,
+    PRIMARY KEY (`statusId`)
 );
 
-drop table if exists `formula_1`.`seasons`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`seasons` (
+DROP TABLE IF EXISTS `formula_1`.`seasons`;
+CREATE TABLE `formula_1`.`seasons` (
     `year` INT,
-    `url` STRING,
-    PRIMARY KEY (`year`) DISABLE NOVALIDATE
+    `url` TEXT,
+    PRIMARY KEY (`year`)
 );
 
-drop table if exists `formula_1`.`constructors`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`constructors` (
+DROP TABLE IF EXISTS `formula_1`.`constructors`;
+CREATE TABLE `formula_1`.`constructors` (
     `constructorId` INT,
-    `constructorRef` STRING,
-    `name` STRING,
-    `nationality` STRING,
-    `url` STRING,
-    PRIMARY KEY (`constructorId`) DISABLE NOVALIDATE
+    `constructorRef` TEXT,
+    `name` TEXT,
+    `nationality` TEXT,
+    `url` TEXT,
+    PRIMARY KEY (`constructorId`)
 );
 
-drop table if exists `formula_1`.`constructorStandings`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`constructorStandings` (
+DROP TABLE IF EXISTS `formula_1`.`constructorStandings`;
+CREATE TABLE `formula_1`.`constructorStandings` (
     `constructorStandingsId` INT,
     `raceId` INT,
     `constructorId` INT,
     `points` DOUBLE,
     `position` INT,
-    `positionText` STRING,
+    `positionText` TEXT,
     `wins` INT,
-    PRIMARY KEY (`constructorStandingsId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`constructorId`) REFERENCES `formula_1`.`constructors` (`constructorId`) DISABLE NOVALIDATE
+    PRIMARY KEY (`constructorStandingsId`),
+    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`),
+    FOREIGN KEY (`constructorId`) REFERENCES `formula_1`.`constructors` (`constructorId`)
 );
 
-drop table if exists `formula_1`.`results`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`results` (
+DROP TABLE IF EXISTS `formula_1`.`results`;
+CREATE TABLE `formula_1`.`results` (
     `resultId` INT,
     `raceId` INT,
     `driverId` INT,
     `constructorId` INT,
     `number` INT,
     `grid` INT,
-    `position` STRING,
-    `positionText` STRING,
+    `position` TEXT,
+    `positionText` TEXT,
     `positionOrder` INT,
     `points` DOUBLE,
-    `laps` STRING,
-    `time` STRING,
-    `milliseconds` STRING,
-    `fastestLap` STRING,
-    `rank` STRING,
-    `fastestLapTime` STRING,
-    `fastestLapSpeed` STRING,
+    `laps` TEXT,
+    `time` TEXT,
+    `milliseconds` TEXT,
+    `fastestLap` TEXT,
+    `rank` TEXT,
+    `fastestLapTime` TEXT,
+    `fastestLapSpeed` TEXT,
     `statusId` INT,
-    PRIMARY KEY (`resultId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`driverId`) REFERENCES `formula_1`.`drivers` (`driverId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`constructorId`) REFERENCES `formula_1`.`constructors` (`constructorId`) DISABLE NOVALIDATE
+    PRIMARY KEY (`resultId`),
+    FOREIGN KEY (`driverId`) REFERENCES `formula_1`.`drivers` (`driverId`),
+    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`),
+    FOREIGN KEY (`constructorId`) REFERENCES `formula_1`.`constructors` (`constructorId`)
 );
 
-drop table if exists `formula_1`.`driverStandings`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`driverStandings` (
+DROP TABLE IF EXISTS `formula_1`.`driverStandings`;
+CREATE TABLE `formula_1`.`driverStandings` (
     `driverStandingsId` INT,
     `raceId` INT,
     `driverId` INT,
     `points` DOUBLE,
     `position` INT,
-    `positionText` STRING,
+    `positionText` TEXT,
     `wins` INT,
-    PRIMARY KEY (`driverStandingsId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`driverId`) REFERENCES `formula_1`.`drivers` (`driverId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`) DISABLE NOVALIDATE
+    PRIMARY KEY (`driverStandingsId`),
+    FOREIGN KEY (`driverId`) REFERENCES `formula_1`.`drivers` (`driverId`),
+    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`)
 );
 
-drop table if exists `formula_1`.`constructorResults`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`constructorResults` (
+DROP TABLE IF EXISTS `formula_1`.`constructorResults`;
+CREATE TABLE `formula_1`.`constructorResults` (
     `constructorResultsId` INT,
     `raceId` INT,
     `constructorId` INT,
     `points` DOUBLE,
-    `status` STRING,
-    PRIMARY KEY (`constructorResultsId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`constructorId`) REFERENCES `formula_1`.`constructors` (`constructorId`) DISABLE NOVALIDATE
+    `status` TEXT,
+    PRIMARY KEY (`constructorResultsId`),
+    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`),
+    FOREIGN KEY (`constructorId`) REFERENCES `formula_1`.`constructors` (`constructorId`)
 );
 
-drop table if exists `formula_1`.`qualifying`;
-CREATE TABLE IF NOT EXISTS `formula_1`.`qualifying` (
+DROP TABLE IF EXISTS `formula_1`.`qualifying`;
+CREATE TABLE `formula_1`.`qualifying` (
     `qualifyId` INT,
     `raceId` INT,
     `driverId` INT,
     `constructorId` INT,
     `number` INT,
     `position` INT,
-    `q1` STRING,
-    `q2` STRING,
-    `q3` STRING,
-    PRIMARY KEY (`qualifyId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`driverId`) REFERENCES `formula_1`.`drivers` (`driverId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`constructorId`) REFERENCES `formula_1`.`constructors` (`constructorId`) DISABLE NOVALIDATE
+    `q1` TEXT,
+    `q2` TEXT,
+    `q3` TEXT,
+    PRIMARY KEY (`qualifyId`),
+    FOREIGN KEY (`driverId`) REFERENCES `formula_1`.`drivers` (`driverId`),
+    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`),
+    FOREIGN KEY (`constructorId`) REFERENCES `formula_1`.`constructors` (`constructorId`)
+);
+
+DROP TABLE IF EXISTS `formula_1`.`pitStops`;
+CREATE TABLE `formula_1`.`pitStops` (
+    `raceId` INT,
+    `driverId` INT,
+    `stop` INT,
+    `lap` INT,
+    `time` TEXT,
+    `duration` TEXT,
+    `milliseconds` INT,
+    PRIMARY KEY (`raceId`, `driverId`, `stop`),
+    FOREIGN KEY (`driverId`) REFERENCES `formula_1`.`drivers` (`driverId`),
+    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`)
+);
+
+DROP TABLE IF EXISTS `formula_1`.`lapTimes`;
+CREATE TABLE `formula_1`.`lapTimes` (
+    `raceId` INT,
+    `driverId` INT,
+    `lap` INT,
+    `position` INT,
+    `time` TEXT,
+    `milliseconds` INT,
+    PRIMARY KEY (`raceId`, `driverId`, `lap`),
+    FOREIGN KEY (`driverId`) REFERENCES `formula_1`.`drivers` (`driverId`),
+    FOREIGN KEY (`raceId`) REFERENCES `formula_1`.`races` (`raceId`)
 );

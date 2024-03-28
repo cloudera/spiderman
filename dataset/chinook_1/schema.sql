@@ -1,131 +1,133 @@
+-- Dialect: MySQL | Database: chinook_1 | Table Count: 11
+
 CREATE DATABASE IF NOT EXISTS `chinook_1`;
 
-drop table if exists `chinook_1`.`Artist`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`Artist` (
-    `ArtistId` INT NOT NULL,
-    `Name` STRING,
-    PRIMARY KEY (`ArtistId`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `chinook_1`.`Artist`;
+CREATE TABLE `chinook_1`.`Artist` (
+    `ArtistId` INTEGER NOT NULL,
+    `Name` VARCHAR(120) DEFAULT NULL,
+    PRIMARY KEY (`ArtistId`)
 );
 
-drop table if exists `chinook_1`.`Album`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`Album` (
-    `AlbumId` INT NOT NULL,
-    `Title` STRING NOT NULL,
-    `ArtistId` INT NOT NULL,
-    PRIMARY KEY (`AlbumId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`ArtistId`) REFERENCES `chinook_1`.`Artist` (`ArtistId`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `chinook_1`.`Album`;
+CREATE TABLE `chinook_1`.`Album` (
+    `AlbumId` INTEGER NOT NULL,
+    `Title` VARCHAR(160) NOT NULL,
+    `ArtistId` INTEGER NOT NULL,
+    PRIMARY KEY (`AlbumId`),
+    FOREIGN KEY (`ArtistId`) REFERENCES `chinook_1`.`Artist` (`ArtistId`)
 );
 
-drop table if exists `chinook_1`.`Employee`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`Employee` (
-    `EmployeeId` INT NOT NULL,
-    `LastName` STRING NOT NULL,
-    `FirstName` STRING NOT NULL,
-    `Title` STRING,
-    `ReportsTo` INT,
-    `BirthDate` TIMESTAMP,
-    `HireDate` TIMESTAMP,
-    `Address` STRING,
-    `City` STRING,
-    `State` STRING,
-    `Country` STRING,
-    `PostalCode` STRING,
-    `Phone` STRING,
-    `Fax` STRING,
-    `Email` STRING,
-    PRIMARY KEY (`EmployeeId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`ReportsTo`) REFERENCES `chinook_1`.`Employee` (`EmployeeId`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `chinook_1`.`Employee`;
+CREATE TABLE `chinook_1`.`Employee` (
+    `EmployeeId` INTEGER NOT NULL,
+    `LastName` VARCHAR(20) NOT NULL,
+    `FirstName` VARCHAR(20) NOT NULL,
+    `Title` VARCHAR(30) DEFAULT NULL,
+    `ReportsTo` INTEGER DEFAULT NULL,
+    `BirthDate` DATETIME DEFAULT NULL,
+    `HireDate` DATETIME DEFAULT NULL,
+    `Address` VARCHAR(70) DEFAULT NULL,
+    `City` VARCHAR(40) DEFAULT NULL,
+    `State` VARCHAR(40) DEFAULT NULL,
+    `Country` VARCHAR(40) DEFAULT NULL,
+    `PostalCode` VARCHAR(10) DEFAULT NULL,
+    `Phone` VARCHAR(24) DEFAULT NULL,
+    `Fax` VARCHAR(24) DEFAULT NULL,
+    `Email` VARCHAR(60) DEFAULT NULL,
+    PRIMARY KEY (`EmployeeId`),
+    FOREIGN KEY (`ReportsTo`) REFERENCES `chinook_1`.`Employee` (`EmployeeId`)
 );
 
-drop table if exists `chinook_1`.`Customer`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`Customer` (
-    `CustomerId` INT NOT NULL,
-    `FirstName` STRING NOT NULL,
-    `LastName` STRING NOT NULL,
-    `Company` STRING,
-    `Address` STRING,
-    `City` STRING,
-    `State` STRING,
-    `Country` STRING,
-    `PostalCode` STRING,
-    `Phone` STRING,
-    `Fax` STRING,
-    `Email` STRING NOT NULL,
-    `SupportRepId` INT,
-    PRIMARY KEY (`CustomerId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`SupportRepId`) REFERENCES `chinook_1`.`Employee` (`EmployeeId`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `chinook_1`.`Customer`;
+CREATE TABLE `chinook_1`.`Customer` (
+    `CustomerId` INTEGER NOT NULL,
+    `FirstName` VARCHAR(40) NOT NULL,
+    `LastName` VARCHAR(20) NOT NULL,
+    `Company` VARCHAR(80) DEFAULT NULL,
+    `Address` VARCHAR(70) DEFAULT NULL,
+    `City` VARCHAR(40) DEFAULT NULL,
+    `State` VARCHAR(40) DEFAULT NULL,
+    `Country` VARCHAR(40) DEFAULT NULL,
+    `PostalCode` VARCHAR(10) DEFAULT NULL,
+    `Phone` VARCHAR(24) DEFAULT NULL,
+    `Fax` VARCHAR(24) DEFAULT NULL,
+    `Email` VARCHAR(60) NOT NULL,
+    `SupportRepId` INTEGER DEFAULT NULL,
+    PRIMARY KEY (`CustomerId`),
+    FOREIGN KEY (`SupportRepId`) REFERENCES `chinook_1`.`Employee` (`EmployeeId`)
 );
 
-drop table if exists `chinook_1`.`Genre`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`Genre` (
-    `GenreId` INT NOT NULL,
-    `Name` STRING,
-    PRIMARY KEY (`GenreId`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `chinook_1`.`Genre`;
+CREATE TABLE `chinook_1`.`Genre` (
+    `GenreId` INTEGER NOT NULL,
+    `Name` VARCHAR(120) DEFAULT NULL,
+    PRIMARY KEY (`GenreId`)
 );
 
-drop table if exists `chinook_1`.`Invoice`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`Invoice` (
-    `InvoiceId` INT NOT NULL,
-    `CustomerId` INT NOT NULL,
-    `InvoiceDate` TIMESTAMP NOT NULL,
-    `BillingAddress` STRING,
-    `BillingCity` STRING,
-    `BillingState` STRING,
-    `BillingCountry` STRING,
-    `BillingPostalCode` STRING,
+DROP TABLE IF EXISTS `chinook_1`.`Invoice`;
+CREATE TABLE `chinook_1`.`Invoice` (
+    `InvoiceId` INTEGER NOT NULL,
+    `CustomerId` INTEGER NOT NULL,
+    `InvoiceDate` DATETIME NOT NULL,
+    `BillingAddress` VARCHAR(70) DEFAULT NULL,
+    `BillingCity` VARCHAR(40) DEFAULT NULL,
+    `BillingState` VARCHAR(40) DEFAULT NULL,
+    `BillingCountry` VARCHAR(40) DEFAULT NULL,
+    `BillingPostalCode` VARCHAR(10) DEFAULT NULL,
     `Total` DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (`InvoiceId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`CustomerId`) REFERENCES `chinook_1`.`Customer` (`CustomerId`) DISABLE NOVALIDATE
+    PRIMARY KEY (`InvoiceId`),
+    FOREIGN KEY (`CustomerId`) REFERENCES `chinook_1`.`Customer` (`CustomerId`)
 );
 
-drop table if exists `chinook_1`.`MediaType`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`MediaType` (
-    `MediaTypeId` INT NOT NULL,
-    `Name` STRING,
-    PRIMARY KEY (`MediaTypeId`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `chinook_1`.`MediaType`;
+CREATE TABLE `chinook_1`.`MediaType` (
+    `MediaTypeId` INTEGER NOT NULL,
+    `Name` VARCHAR(120) DEFAULT NULL,
+    PRIMARY KEY (`MediaTypeId`)
 );
 
-drop table if exists `chinook_1`.`Track`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`Track` (
-    `TrackId` INT NOT NULL,
-    `Name` STRING NOT NULL,
-    `AlbumId` INT,
-    `MediaTypeId` INT NOT NULL,
-    `GenreId` INT,
-    `Composer` STRING,
-    `Milliseconds` INT NOT NULL,
-    `Bytes` INT,
+DROP TABLE IF EXISTS `chinook_1`.`Track`;
+CREATE TABLE `chinook_1`.`Track` (
+    `TrackId` INTEGER NOT NULL,
+    `Name` VARCHAR(200) NOT NULL,
+    `AlbumId` INTEGER DEFAULT NULL,
+    `MediaTypeId` INTEGER NOT NULL,
+    `GenreId` INTEGER DEFAULT NULL,
+    `Composer` VARCHAR(220) DEFAULT NULL,
+    `Milliseconds` INTEGER NOT NULL,
+    `Bytes` INTEGER DEFAULT NULL,
     `UnitPrice` DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (`TrackId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`MediaTypeId`) REFERENCES `chinook_1`.`MediaType` (`MediaTypeId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`GenreId`) REFERENCES `chinook_1`.`Genre` (`GenreId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`AlbumId`) REFERENCES `chinook_1`.`Album` (`AlbumId`) DISABLE NOVALIDATE
+    PRIMARY KEY (`TrackId`),
+    FOREIGN KEY (`MediaTypeId`) REFERENCES `chinook_1`.`MediaType` (`MediaTypeId`),
+    FOREIGN KEY (`GenreId`) REFERENCES `chinook_1`.`Genre` (`GenreId`),
+    FOREIGN KEY (`AlbumId`) REFERENCES `chinook_1`.`Album` (`AlbumId`)
 );
 
-drop table if exists `chinook_1`.`InvoiceLine`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`InvoiceLine` (
-    `InvoiceLineId` INT NOT NULL,
-    `InvoiceId` INT NOT NULL,
-    `TrackId` INT NOT NULL,
+DROP TABLE IF EXISTS `chinook_1`.`InvoiceLine`;
+CREATE TABLE `chinook_1`.`InvoiceLine` (
+    `InvoiceLineId` INTEGER NOT NULL,
+    `InvoiceId` INTEGER NOT NULL,
+    `TrackId` INTEGER NOT NULL,
     `UnitPrice` DECIMAL(10,2) NOT NULL,
-    `Quantity` INT NOT NULL,
-    PRIMARY KEY (`InvoiceLineId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`TrackId`) REFERENCES `chinook_1`.`Track` (`TrackId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`InvoiceId`) REFERENCES `chinook_1`.`Invoice` (`InvoiceId`) DISABLE NOVALIDATE
+    `Quantity` INTEGER NOT NULL,
+    PRIMARY KEY (`InvoiceLineId`),
+    FOREIGN KEY (`TrackId`) REFERENCES `chinook_1`.`Track` (`TrackId`),
+    FOREIGN KEY (`InvoiceId`) REFERENCES `chinook_1`.`Invoice` (`InvoiceId`)
 );
 
-drop table if exists `chinook_1`.`Playlist`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`Playlist` (
-    `PlaylistId` INT NOT NULL,
-    `Name` STRING,
-    PRIMARY KEY (`PlaylistId`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `chinook_1`.`Playlist`;
+CREATE TABLE `chinook_1`.`Playlist` (
+    `PlaylistId` INTEGER NOT NULL,
+    `Name` VARCHAR(120) DEFAULT NULL,
+    PRIMARY KEY (`PlaylistId`)
 );
 
-drop table if exists `chinook_1`.`PlaylistTrack`;
-CREATE TABLE IF NOT EXISTS `chinook_1`.`PlaylistTrack` (
-    `PlaylistId` INT NOT NULL,
-    `TrackId` INT NOT NULL,
-    PRIMARY KEY (`PlaylistId`, `TrackId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`TrackId`) REFERENCES `chinook_1`.`Track` (`TrackId`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`PlaylistId`) REFERENCES `chinook_1`.`Playlist` (`PlaylistId`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `chinook_1`.`PlaylistTrack`;
+CREATE TABLE `chinook_1`.`PlaylistTrack` (
+    `PlaylistId` INTEGER NOT NULL,
+    `TrackId` INTEGER NOT NULL,
+    PRIMARY KEY (`PlaylistId`, `TrackId`),
+    FOREIGN KEY (`TrackId`) REFERENCES `chinook_1`.`Track` (`TrackId`),
+    FOREIGN KEY (`PlaylistId`) REFERENCES `chinook_1`.`Playlist` (`PlaylistId`)
 );

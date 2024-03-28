@@ -1,130 +1,132 @@
+-- Dialect: MySQL | Database: behavior_monitoring | Table Count: 11
+
 CREATE DATABASE IF NOT EXISTS `behavior_monitoring`;
 
-drop table if exists `behavior_monitoring`.`Ref_Address_Types`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Ref_Address_Types` (
-    `address_type_code` STRING,
-    `address_type_description` STRING,
-    PRIMARY KEY (`address_type_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `behavior_monitoring`.`Ref_Address_Types`;
+CREATE TABLE `behavior_monitoring`.`Ref_Address_Types` (
+    `address_type_code` VARCHAR(15),
+    `address_type_description` VARCHAR(80),
+    PRIMARY KEY (`address_type_code`)
 );
 
-drop table if exists `behavior_monitoring`.`Ref_Detention_Type`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Ref_Detention_Type` (
-    `detention_type_code` STRING,
-    `detention_type_description` STRING,
-    PRIMARY KEY (`detention_type_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `behavior_monitoring`.`Ref_Detention_Type`;
+CREATE TABLE `behavior_monitoring`.`Ref_Detention_Type` (
+    `detention_type_code` VARCHAR(10),
+    `detention_type_description` VARCHAR(80),
+    PRIMARY KEY (`detention_type_code`)
 );
 
-drop table if exists `behavior_monitoring`.`Ref_Incident_Type`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Ref_Incident_Type` (
-    `incident_type_code` STRING,
-    `incident_type_description` STRING,
-    PRIMARY KEY (`incident_type_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `behavior_monitoring`.`Ref_Incident_Type`;
+CREATE TABLE `behavior_monitoring`.`Ref_Incident_Type` (
+    `incident_type_code` VARCHAR(10),
+    `incident_type_description` VARCHAR(80),
+    PRIMARY KEY (`incident_type_code`)
 );
 
-drop table if exists `behavior_monitoring`.`Addresses`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Addresses` (
-    `address_id` INT,
-    `line_1` STRING,
-    `line_2` STRING,
-    `line_3` STRING,
-    `city` STRING,
-    `zip_postcode` STRING,
-    `state_province_county` STRING,
-    `country` STRING,
-    `other_address_details` STRING,
-    PRIMARY KEY (`address_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `behavior_monitoring`.`Addresses`;
+CREATE TABLE `behavior_monitoring`.`Addresses` (
+    `address_id` INTEGER,
+    `line_1` VARCHAR(120),
+    `line_2` VARCHAR(120),
+    `line_3` VARCHAR(120),
+    `city` VARCHAR(80),
+    `zip_postcode` VARCHAR(20),
+    `state_province_county` VARCHAR(50),
+    `country` VARCHAR(50),
+    `other_address_details` VARCHAR(255),
+    PRIMARY KEY (`address_id`)
 );
 
-drop table if exists `behavior_monitoring`.`Students`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Students` (
-    `student_id` INT,
-    `address_id` INT NOT NULL,
-    `first_name` STRING,
-    `middle_name` STRING,
-    `last_name` STRING,
-    `cell_mobile_number` STRING,
-    `email_address` STRING,
-    `date_first_rental` TIMESTAMP,
-    `date_left_university` TIMESTAMP,
-    `other_student_details` STRING,
-    PRIMARY KEY (`student_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `behavior_monitoring`.`Students`;
+CREATE TABLE `behavior_monitoring`.`Students` (
+    `student_id` INTEGER,
+    `address_id` INTEGER NOT NULL,
+    `first_name` VARCHAR(80),
+    `middle_name` VARCHAR(40),
+    `last_name` VARCHAR(40),
+    `cell_mobile_number` VARCHAR(40),
+    `email_address` VARCHAR(40),
+    `date_first_rental` DATETIME,
+    `date_left_university` DATETIME,
+    `other_student_details` VARCHAR(255),
+    PRIMARY KEY (`student_id`),
+    FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`)
 );
 
-drop table if exists `behavior_monitoring`.`Teachers`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Teachers` (
-    `teacher_id` INT,
-    `address_id` INT NOT NULL,
-    `first_name` STRING,
-    `middle_name` STRING,
-    `last_name` STRING,
-    `gender` STRING,
-    `cell_mobile_number` STRING,
-    `email_address` STRING,
-    `other_details` STRING,
-    PRIMARY KEY (`teacher_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `behavior_monitoring`.`Teachers`;
+CREATE TABLE `behavior_monitoring`.`Teachers` (
+    `teacher_id` INTEGER,
+    `address_id` INTEGER NOT NULL,
+    `first_name` VARCHAR(80),
+    `middle_name` VARCHAR(80),
+    `last_name` VARCHAR(80),
+    `gender` VARCHAR(1),
+    `cell_mobile_number` VARCHAR(40),
+    `email_address` VARCHAR(40),
+    `other_details` VARCHAR(255),
+    PRIMARY KEY (`teacher_id`),
+    FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`)
 );
 
-drop table if exists `behavior_monitoring`.`Assessment_Notes`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Assessment_Notes` (
-    `notes_id` INT NOT NULL,
-    `student_id` INT,
-    `teacher_id` INT NOT NULL,
-    `date_of_notes` TIMESTAMP,
-    `text_of_notes` STRING,
-    `other_details` STRING,
-    FOREIGN KEY (`teacher_id`) REFERENCES `behavior_monitoring`.`Teachers` (`teacher_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `behavior_monitoring`.`Assessment_Notes`;
+CREATE TABLE `behavior_monitoring`.`Assessment_Notes` (
+    `notes_id` INTEGER NOT NULL,
+    `student_id` INTEGER,
+    `teacher_id` INTEGER NOT NULL,
+    `date_of_notes` DATETIME,
+    `text_of_notes` VARCHAR(255),
+    `other_details` VARCHAR(255),
+    FOREIGN KEY (`teacher_id`) REFERENCES `behavior_monitoring`.`Teachers` (`teacher_id`),
+    FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`)
 );
 
-drop table if exists `behavior_monitoring`.`Behavior_Incident`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Behavior_Incident` (
-    `incident_id` INT,
-    `incident_type_code` STRING NOT NULL,
-    `student_id` INT NOT NULL,
-    `date_incident_start` TIMESTAMP,
-    `date_incident_end` TIMESTAMP,
-    `incident_summary` STRING,
-    `recommendations` STRING,
-    `other_details` STRING,
-    PRIMARY KEY (`incident_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`incident_type_code`) REFERENCES `behavior_monitoring`.`Ref_Incident_Type` (`incident_type_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `behavior_monitoring`.`Behavior_Incident`;
+CREATE TABLE `behavior_monitoring`.`Behavior_Incident` (
+    `incident_id` INTEGER,
+    `incident_type_code` VARCHAR(10) NOT NULL,
+    `student_id` INTEGER NOT NULL,
+    `date_incident_start` DATETIME,
+    `date_incident_end` DATETIME,
+    `incident_summary` VARCHAR(255),
+    `recommendations` VARCHAR(255),
+    `other_details` VARCHAR(255),
+    PRIMARY KEY (`incident_id`),
+    FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`),
+    FOREIGN KEY (`incident_type_code`) REFERENCES `behavior_monitoring`.`Ref_Incident_Type` (`incident_type_code`)
 );
 
-drop table if exists `behavior_monitoring`.`Detention`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Detention` (
-    `detention_id` INT,
-    `detention_type_code` STRING NOT NULL,
-    `teacher_id` INT,
-    `datetime_detention_start` TIMESTAMP,
-    `datetime_detention_end` TIMESTAMP,
-    `detention_summary` STRING,
-    `other_details` STRING,
-    PRIMARY KEY (`detention_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`teacher_id`) REFERENCES `behavior_monitoring`.`Teachers` (`teacher_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`detention_type_code`) REFERENCES `behavior_monitoring`.`Ref_Detention_Type` (`detention_type_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `behavior_monitoring`.`Detention`;
+CREATE TABLE `behavior_monitoring`.`Detention` (
+    `detention_id` INTEGER,
+    `detention_type_code` VARCHAR(10) NOT NULL,
+    `teacher_id` INTEGER,
+    `datetime_detention_start` DATETIME,
+    `datetime_detention_end` DATETIME,
+    `detention_summary` VARCHAR(255),
+    `other_details` VARCHAR(255),
+    PRIMARY KEY (`detention_id`),
+    FOREIGN KEY (`teacher_id`) REFERENCES `behavior_monitoring`.`Teachers` (`teacher_id`),
+    FOREIGN KEY (`detention_type_code`) REFERENCES `behavior_monitoring`.`Ref_Detention_Type` (`detention_type_code`)
 );
 
-drop table if exists `behavior_monitoring`.`Student_Addresses`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Student_Addresses` (
-    `student_id` INT NOT NULL,
-    `address_id` INT NOT NULL,
-    `date_address_from` TIMESTAMP NOT NULL,
-    `date_address_to` TIMESTAMP,
+DROP TABLE IF EXISTS `behavior_monitoring`.`Student_Addresses`;
+CREATE TABLE `behavior_monitoring`.`Student_Addresses` (
+    `student_id` INTEGER NOT NULL,
+    `address_id` INTEGER NOT NULL,
+    `date_address_from` DATETIME NOT NULL,
+    `date_address_to` DATETIME,
     `monthly_rental` DECIMAL(19,4),
-    `other_details` STRING,
-    FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`) DISABLE NOVALIDATE
+    `other_details` VARCHAR(255),
+    FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`),
+    FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`)
 );
 
-drop table if exists `behavior_monitoring`.`Students_in_Detention`;
-CREATE TABLE IF NOT EXISTS `behavior_monitoring`.`Students_in_Detention` (
-    `student_id` INT NOT NULL,
-    `detention_id` INT NOT NULL,
-    `incident_id` INT NOT NULL,
-    FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`detention_id`) REFERENCES `behavior_monitoring`.`Detention` (`detention_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`incident_id`) REFERENCES `behavior_monitoring`.`Behavior_Incident` (`incident_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `behavior_monitoring`.`Students_in_Detention`;
+CREATE TABLE `behavior_monitoring`.`Students_in_Detention` (
+    `student_id` INTEGER NOT NULL,
+    `detention_id` INTEGER NOT NULL,
+    `incident_id` INTEGER NOT NULL,
+    FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`),
+    FOREIGN KEY (`detention_id`) REFERENCES `behavior_monitoring`.`Detention` (`detention_id`),
+    FOREIGN KEY (`incident_id`) REFERENCES `behavior_monitoring`.`Behavior_Incident` (`incident_id`)
 );

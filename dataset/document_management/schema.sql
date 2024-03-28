@@ -1,83 +1,85 @@
+-- Dialect: MySQL | Database: document_management | Table Count: 9
+
 CREATE DATABASE IF NOT EXISTS `document_management`;
 
-drop table if exists `document_management`.`Roles`;
-CREATE TABLE IF NOT EXISTS `document_management`.`Roles` (
-    `role_code` STRING,
-    `role_description` STRING,
-    PRIMARY KEY (`role_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `document_management`.`Roles`;
+CREATE TABLE `document_management`.`Roles` (
+    `role_code` VARCHAR(15),
+    `role_description` VARCHAR(80),
+    PRIMARY KEY (`role_code`)
 );
 
-drop table if exists `document_management`.`Users`;
-CREATE TABLE IF NOT EXISTS `document_management`.`Users` (
-    `user_id` INT,
-    `role_code` STRING NOT NULL,
-    `user_name` STRING,
-    `user_login` STRING,
-    `password` STRING,
-    PRIMARY KEY (`user_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`role_code`) REFERENCES `document_management`.`Roles` (`role_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `document_management`.`Users`;
+CREATE TABLE `document_management`.`Users` (
+    `user_id` INTEGER,
+    `role_code` VARCHAR(15) NOT NULL,
+    `user_name` VARCHAR(40),
+    `user_login` VARCHAR(40),
+    `password` VARCHAR(40),
+    PRIMARY KEY (`user_id`),
+    FOREIGN KEY (`role_code`) REFERENCES `document_management`.`Roles` (`role_code`)
 );
 
-drop table if exists `document_management`.`Document_Structures`;
-CREATE TABLE IF NOT EXISTS `document_management`.`Document_Structures` (
-    `document_structure_code` STRING,
-    `parent_document_structure_code` STRING,
-    `document_structure_description` STRING,
-    PRIMARY KEY (`document_structure_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `document_management`.`Document_Structures`;
+CREATE TABLE `document_management`.`Document_Structures` (
+    `document_structure_code` VARCHAR(15),
+    `parent_document_structure_code` VARCHAR(15),
+    `document_structure_description` VARCHAR(80),
+    PRIMARY KEY (`document_structure_code`)
 );
 
-drop table if exists `document_management`.`Functional_Areas`;
-CREATE TABLE IF NOT EXISTS `document_management`.`Functional_Areas` (
-    `functional_area_code` STRING,
-    `parent_functional_area_code` STRING,
-    `functional_area_description` STRING NOT NULL,
-    PRIMARY KEY (`functional_area_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `document_management`.`Functional_Areas`;
+CREATE TABLE `document_management`.`Functional_Areas` (
+    `functional_area_code` VARCHAR(15),
+    `parent_functional_area_code` VARCHAR(15),
+    `functional_area_description` VARCHAR(80) NOT NULL,
+    PRIMARY KEY (`functional_area_code`)
 );
 
-drop table if exists `document_management`.`Images`;
-CREATE TABLE IF NOT EXISTS `document_management`.`Images` (
-    `image_id` INT,
-    `image_alt_text` STRING,
-    `image_name` STRING,
-    `image_url` STRING,
-    PRIMARY KEY (`image_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `document_management`.`Images`;
+CREATE TABLE `document_management`.`Images` (
+    `image_id` INTEGER,
+    `image_alt_text` VARCHAR(80),
+    `image_name` VARCHAR(40),
+    `image_url` VARCHAR(255),
+    PRIMARY KEY (`image_id`)
 );
 
-drop table if exists `document_management`.`Documents`;
-CREATE TABLE IF NOT EXISTS `document_management`.`Documents` (
-    `document_code` STRING,
-    `document_structure_code` STRING NOT NULL,
-    `document_type_code` STRING NOT NULL,
-    `access_count` INT,
-    `document_name` STRING,
-    PRIMARY KEY (`document_code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`document_structure_code`) REFERENCES `document_management`.`Document_Structures` (`document_structure_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `document_management`.`Documents`;
+CREATE TABLE `document_management`.`Documents` (
+    `document_code` VARCHAR(15),
+    `document_structure_code` VARCHAR(15) NOT NULL,
+    `document_type_code` VARCHAR(15) NOT NULL,
+    `access_count` INTEGER,
+    `document_name` VARCHAR(80),
+    PRIMARY KEY (`document_code`),
+    FOREIGN KEY (`document_structure_code`) REFERENCES `document_management`.`Document_Structures` (`document_structure_code`)
 );
 
-drop table if exists `document_management`.`Document_Functional_Areas`;
-CREATE TABLE IF NOT EXISTS `document_management`.`Document_Functional_Areas` (
-    `document_code` STRING NOT NULL,
-    `functional_area_code` STRING NOT NULL,
-    FOREIGN KEY (`functional_area_code`) REFERENCES `document_management`.`Functional_Areas` (`functional_area_code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`document_code`) REFERENCES `document_management`.`Documents` (`document_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `document_management`.`Document_Functional_Areas`;
+CREATE TABLE `document_management`.`Document_Functional_Areas` (
+    `document_code` VARCHAR(15) NOT NULL,
+    `functional_area_code` VARCHAR(15) NOT NULL,
+    FOREIGN KEY (`functional_area_code`) REFERENCES `document_management`.`Functional_Areas` (`functional_area_code`),
+    FOREIGN KEY (`document_code`) REFERENCES `document_management`.`Documents` (`document_code`)
 );
 
-drop table if exists `document_management`.`Document_Sections`;
-CREATE TABLE IF NOT EXISTS `document_management`.`Document_Sections` (
-    `section_id` INT,
-    `document_code` STRING NOT NULL,
-    `section_sequence` INT,
-    `section_code` STRING,
-    `section_title` STRING,
-    PRIMARY KEY (`section_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`document_code`) REFERENCES `document_management`.`Documents` (`document_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `document_management`.`Document_Sections`;
+CREATE TABLE `document_management`.`Document_Sections` (
+    `section_id` INTEGER,
+    `document_code` VARCHAR(15) NOT NULL,
+    `section_sequence` INTEGER,
+    `section_code` VARCHAR(20),
+    `section_title` VARCHAR(80),
+    PRIMARY KEY (`section_id`),
+    FOREIGN KEY (`document_code`) REFERENCES `document_management`.`Documents` (`document_code`)
 );
 
-drop table if exists `document_management`.`Document_Sections_Images`;
-CREATE TABLE IF NOT EXISTS `document_management`.`Document_Sections_Images` (
-    `section_id` INT NOT NULL,
-    `image_id` INT NOT NULL,
-    PRIMARY KEY (`section_id`, `image_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`image_id`) REFERENCES `document_management`.`Images` (`image_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`section_id`) REFERENCES `document_management`.`Document_Sections` (`section_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `document_management`.`Document_Sections_Images`;
+CREATE TABLE `document_management`.`Document_Sections_Images` (
+    `section_id` INTEGER NOT NULL,
+    `image_id` INTEGER NOT NULL,
+    PRIMARY KEY (`section_id`, `image_id`),
+    FOREIGN KEY (`image_id`) REFERENCES `document_management`.`Images` (`image_id`),
+    FOREIGN KEY (`section_id`) REFERENCES `document_management`.`Document_Sections` (`section_id`)
 );

@@ -1,77 +1,79 @@
+-- Dialect: MySQL | Database: driving_school | Table Count: 6
+
 CREATE DATABASE IF NOT EXISTS `driving_school`;
 
-drop table if exists `driving_school`.`Addresses`;
-CREATE TABLE IF NOT EXISTS `driving_school`.`Addresses` (
-    `address_id` INT,
-    `line_1_number_building` STRING,
-    `city` STRING,
-    `zip_postcode` STRING,
-    `state_province_county` STRING,
-    `country` STRING,
-    PRIMARY KEY (`address_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `driving_school`.`Addresses`;
+CREATE TABLE `driving_school`.`Addresses` (
+    `address_id` INTEGER,
+    `line_1_number_building` VARCHAR(80),
+    `city` VARCHAR(50),
+    `zip_postcode` VARCHAR(20),
+    `state_province_county` VARCHAR(50),
+    `country` VARCHAR(50),
+    PRIMARY KEY (`address_id`)
 );
 
-drop table if exists `driving_school`.`Staff`;
-CREATE TABLE IF NOT EXISTS `driving_school`.`Staff` (
-    `staff_id` INT,
-    `staff_address_id` INT NOT NULL,
-    `nickname` STRING,
-    `first_name` STRING,
-    `middle_name` STRING,
-    `last_name` STRING,
-    `date_of_birth` TIMESTAMP,
-    `date_joined_staff` TIMESTAMP,
-    `date_left_staff` TIMESTAMP,
-    PRIMARY KEY (`staff_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`staff_address_id`) REFERENCES `driving_school`.`Addresses` (`address_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `driving_school`.`Staff`;
+CREATE TABLE `driving_school`.`Staff` (
+    `staff_id` INTEGER,
+    `staff_address_id` INTEGER NOT NULL,
+    `nickname` VARCHAR(80),
+    `first_name` VARCHAR(80),
+    `middle_name` VARCHAR(80),
+    `last_name` VARCHAR(80),
+    `date_of_birth` DATETIME,
+    `date_joined_staff` DATETIME,
+    `date_left_staff` DATETIME,
+    PRIMARY KEY (`staff_id`),
+    FOREIGN KEY (`staff_address_id`) REFERENCES `driving_school`.`Addresses` (`address_id`)
 );
 
-drop table if exists `driving_school`.`Vehicles`;
-CREATE TABLE IF NOT EXISTS `driving_school`.`Vehicles` (
-    `vehicle_id` INT,
-    `vehicle_details` STRING,
-    PRIMARY KEY (`vehicle_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `driving_school`.`Vehicles`;
+CREATE TABLE `driving_school`.`Vehicles` (
+    `vehicle_id` INTEGER,
+    `vehicle_details` VARCHAR(255),
+    PRIMARY KEY (`vehicle_id`)
 );
 
-drop table if exists `driving_school`.`Customers`;
-CREATE TABLE IF NOT EXISTS `driving_school`.`Customers` (
-    `customer_id` INT,
-    `customer_address_id` INT NOT NULL,
-    `customer_status_code` STRING NOT NULL,
-    `date_became_customer` TIMESTAMP,
-    `date_of_birth` TIMESTAMP,
-    `first_name` STRING,
-    `last_name` STRING,
+DROP TABLE IF EXISTS `driving_school`.`Customers`;
+CREATE TABLE `driving_school`.`Customers` (
+    `customer_id` INTEGER,
+    `customer_address_id` INTEGER NOT NULL,
+    `customer_status_code` VARCHAR(15) NOT NULL,
+    `date_became_customer` DATETIME,
+    `date_of_birth` DATETIME,
+    `first_name` VARCHAR(80),
+    `last_name` VARCHAR(80),
     `amount_outstanding` DOUBLE,
-    `email_address` STRING,
-    `phone_number` STRING,
-    `cell_mobile_phone_number` STRING,
-    PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`customer_address_id`) REFERENCES `driving_school`.`Addresses` (`address_id`) DISABLE NOVALIDATE
+    `email_address` VARCHAR(250),
+    `phone_number` VARCHAR(255),
+    `cell_mobile_phone_number` VARCHAR(255),
+    PRIMARY KEY (`customer_id`),
+    FOREIGN KEY (`customer_address_id`) REFERENCES `driving_school`.`Addresses` (`address_id`)
 );
 
-drop table if exists `driving_school`.`Customer_Payments`;
-CREATE TABLE IF NOT EXISTS `driving_school`.`Customer_Payments` (
-    `customer_id` INT NOT NULL,
-    `datetime_payment` TIMESTAMP NOT NULL,
-    `payment_method_code` STRING NOT NULL,
+DROP TABLE IF EXISTS `driving_school`.`Customer_Payments`;
+CREATE TABLE `driving_school`.`Customer_Payments` (
+    `customer_id` INTEGER NOT NULL,
+    `datetime_payment` DATETIME NOT NULL,
+    `payment_method_code` VARCHAR(10) NOT NULL,
     `amount_payment` DOUBLE,
-    PRIMARY KEY (`customer_id`, `datetime_payment`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`customer_id`) REFERENCES `driving_school`.`Customers` (`customer_id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`customer_id`, `datetime_payment`),
+    FOREIGN KEY (`customer_id`) REFERENCES `driving_school`.`Customers` (`customer_id`)
 );
 
-drop table if exists `driving_school`.`Lessons`;
-CREATE TABLE IF NOT EXISTS `driving_school`.`Lessons` (
-    `lesson_id` INT,
-    `customer_id` INT NOT NULL,
-    `lesson_status_code` STRING NOT NULL,
-    `staff_id` INT,
-    `vehicle_id` INT NOT NULL,
-    `lesson_date` TIMESTAMP,
-    `lesson_time` STRING,
+DROP TABLE IF EXISTS `driving_school`.`Lessons`;
+CREATE TABLE `driving_school`.`Lessons` (
+    `lesson_id` INTEGER,
+    `customer_id` INTEGER NOT NULL,
+    `lesson_status_code` VARCHAR(15) NOT NULL,
+    `staff_id` INTEGER,
+    `vehicle_id` INTEGER NOT NULL,
+    `lesson_date` DATETIME,
+    `lesson_time` VARCHAR(10),
     `price` DOUBLE,
-    PRIMARY KEY (`lesson_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`customer_id`) REFERENCES `driving_school`.`Customers` (`customer_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`staff_id`) REFERENCES `driving_school`.`Staff` (`staff_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`vehicle_id`) REFERENCES `driving_school`.`Vehicles` (`vehicle_id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`lesson_id`),
+    FOREIGN KEY (`customer_id`) REFERENCES `driving_school`.`Customers` (`customer_id`),
+    FOREIGN KEY (`staff_id`) REFERENCES `driving_school`.`Staff` (`staff_id`),
+    FOREIGN KEY (`vehicle_id`) REFERENCES `driving_school`.`Vehicles` (`vehicle_id`)
 );

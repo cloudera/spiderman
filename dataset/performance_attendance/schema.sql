@@ -1,30 +1,32 @@
+-- Dialect: MySQL | Database: performance_attendance | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `performance_attendance`;
 
-drop table if exists `performance_attendance`.`member`;
-CREATE TABLE IF NOT EXISTS `performance_attendance`.`member` (
+DROP TABLE IF EXISTS `performance_attendance`.`member`;
+CREATE TABLE `performance_attendance`.`member` (
     `Member_ID` INT,
-    `Name` STRING,
-    `Nationality` STRING,
-    `Role` STRING,
-    PRIMARY KEY (`Member_ID`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    `Nationality` TEXT,
+    `Role` TEXT,
+    PRIMARY KEY (`Member_ID`)
 );
 
-drop table if exists `performance_attendance`.`performance`;
-CREATE TABLE IF NOT EXISTS `performance_attendance`.`performance` (
+DROP TABLE IF EXISTS `performance_attendance`.`performance`;
+CREATE TABLE `performance_attendance`.`performance` (
     `Performance_ID` INT,
-    `Date` STRING,
-    `Host` STRING,
-    `Location` STRING,
+    `Date` TEXT,
+    `Host` TEXT,
+    `Location` TEXT,
     `Attendance` INT,
-    PRIMARY KEY (`Performance_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Performance_ID`)
 );
 
-drop table if exists `performance_attendance`.`member_attendance`;
-CREATE TABLE IF NOT EXISTS `performance_attendance`.`member_attendance` (
+DROP TABLE IF EXISTS `performance_attendance`.`member_attendance`;
+CREATE TABLE `performance_attendance`.`member_attendance` (
     `Member_ID` INT,
     `Performance_ID` INT,
     `Num_of_Pieces` INT,
-    PRIMARY KEY (`Member_ID`, `Performance_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Performance_ID`) REFERENCES `performance_attendance`.`performance` (`Performance_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Member_ID`) REFERENCES `performance_attendance`.`member` (`Member_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Member_ID`, `Performance_ID`),
+    FOREIGN KEY (`Performance_ID`) REFERENCES `performance_attendance`.`performance` (`Performance_ID`),
+    FOREIGN KEY (`Member_ID`) REFERENCES `performance_attendance`.`member` (`Member_ID`)
 );

@@ -1,35 +1,37 @@
+-- Dialect: MySQL | Database: cinema | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `cinema`;
 
-drop table if exists `cinema`.`film`;
-CREATE TABLE IF NOT EXISTS `cinema`.`film` (
+DROP TABLE IF EXISTS `cinema`.`film`;
+CREATE TABLE `cinema`.`film` (
     `Film_ID` INT,
     `Rank_in_series` INT,
     `Number_in_season` INT,
-    `Title` STRING,
-    `Directed_by` STRING,
-    `Original_air_date` STRING,
-    `Production_code` STRING,
-    PRIMARY KEY (`Film_ID`) DISABLE NOVALIDATE
+    `Title` TEXT,
+    `Directed_by` TEXT,
+    `Original_air_date` TEXT,
+    `Production_code` TEXT,
+    PRIMARY KEY (`Film_ID`)
 );
 
-drop table if exists `cinema`.`cinema`;
-CREATE TABLE IF NOT EXISTS `cinema`.`cinema` (
+DROP TABLE IF EXISTS `cinema`.`cinema`;
+CREATE TABLE `cinema`.`cinema` (
     `Cinema_ID` INT,
-    `Name` STRING,
+    `Name` TEXT,
     `Openning_year` INT,
     `Capacity` INT,
-    `Location` STRING,
-    PRIMARY KEY (`Cinema_ID`) DISABLE NOVALIDATE
+    `Location` TEXT,
+    PRIMARY KEY (`Cinema_ID`)
 );
 
-drop table if exists `cinema`.`schedule`;
-CREATE TABLE IF NOT EXISTS `cinema`.`schedule` (
+DROP TABLE IF EXISTS `cinema`.`schedule`;
+CREATE TABLE `cinema`.`schedule` (
     `Cinema_ID` INT,
     `Film_ID` INT,
-    `Date` STRING,
+    `Date` TEXT,
     `Show_times_per_day` INT,
-    `Price` DECIMAL,
-    PRIMARY KEY (`Cinema_ID`, `Film_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Cinema_ID`) REFERENCES `cinema`.`cinema` (`Cinema_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Film_ID`) REFERENCES `cinema`.`film` (`Film_ID`) DISABLE NOVALIDATE
+    `Price` FLOAT,
+    PRIMARY KEY (`Cinema_ID`, `Film_ID`),
+    FOREIGN KEY (`Cinema_ID`) REFERENCES `cinema`.`cinema` (`Cinema_ID`),
+    FOREIGN KEY (`Film_ID`) REFERENCES `cinema`.`film` (`Film_ID`)
 );

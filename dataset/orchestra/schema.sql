@@ -1,46 +1,48 @@
+-- Dialect: MySQL | Database: orchestra | Table Count: 4
+
 CREATE DATABASE IF NOT EXISTS `orchestra`;
 
-drop table if exists `orchestra`.`conductor`;
-CREATE TABLE IF NOT EXISTS `orchestra`.`conductor` (
+DROP TABLE IF EXISTS `orchestra`.`conductor`;
+CREATE TABLE `orchestra`.`conductor` (
     `Conductor_ID` INT,
-    `Name` STRING,
+    `Name` TEXT,
     `Age` INT,
-    `Nationality` STRING,
+    `Nationality` TEXT,
     `Year_of_Work` INT,
-    PRIMARY KEY (`Conductor_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Conductor_ID`)
 );
 
-drop table if exists `orchestra`.`orchestra`;
-CREATE TABLE IF NOT EXISTS `orchestra`.`orchestra` (
+DROP TABLE IF EXISTS `orchestra`.`orchestra`;
+CREATE TABLE `orchestra`.`orchestra` (
     `Orchestra_ID` INT,
-    `Orchestra` STRING,
+    `Orchestra` TEXT,
     `Conductor_ID` INT,
-    `Record_Company` STRING,
-    `Year_of_Founded` DOUBLE,
-    `Major_Record_Format` STRING,
-    PRIMARY KEY (`Orchestra_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Conductor_ID`) REFERENCES `orchestra`.`conductor` (`Conductor_ID`) DISABLE NOVALIDATE
+    `Record_Company` TEXT,
+    `Year_of_Founded` REAL,
+    `Major_Record_Format` TEXT,
+    PRIMARY KEY (`Orchestra_ID`),
+    FOREIGN KEY (`Conductor_ID`) REFERENCES `orchestra`.`conductor` (`Conductor_ID`)
 );
 
-drop table if exists `orchestra`.`performance`;
-CREATE TABLE IF NOT EXISTS `orchestra`.`performance` (
+DROP TABLE IF EXISTS `orchestra`.`performance`;
+CREATE TABLE `orchestra`.`performance` (
     `Performance_ID` INT,
     `Orchestra_ID` INT,
-    `Type` STRING,
-    `Date` STRING,
-    `Official_ratings_(millions)` DOUBLE,
-    `Weekly_rank` STRING,
-    `Share` STRING,
-    PRIMARY KEY (`Performance_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Orchestra_ID`) REFERENCES `orchestra`.`orchestra` (`Orchestra_ID`) DISABLE NOVALIDATE
+    `Type` TEXT,
+    `Date` TEXT,
+    `Official_ratings_(millions)` REAL,
+    `Weekly_rank` TEXT,
+    `Share` TEXT,
+    PRIMARY KEY (`Performance_ID`),
+    FOREIGN KEY (`Orchestra_ID`) REFERENCES `orchestra`.`orchestra` (`Orchestra_ID`)
 );
 
-drop table if exists `orchestra`.`show`;
-CREATE TABLE IF NOT EXISTS `orchestra`.`show` (
+DROP TABLE IF EXISTS `orchestra`.`show`;
+CREATE TABLE `orchestra`.`show` (
     `Show_ID` INT,
     `Performance_ID` INT,
-    `If_first_show` BOOLEAN,
-    `Result` STRING,
-    `Attendance` DOUBLE,
-    FOREIGN KEY (`Performance_ID`) REFERENCES `orchestra`.`performance` (`Performance_ID`) DISABLE NOVALIDATE
+    `If_first_show` BOOL,
+    `Result` TEXT,
+    `Attendance` REAL,
+    FOREIGN KEY (`Performance_ID`) REFERENCES `orchestra`.`performance` (`Performance_ID`)
 );

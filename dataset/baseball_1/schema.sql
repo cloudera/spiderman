@@ -1,180 +1,182 @@
+-- Dialect: MySQL | Database: baseball_1 | Table Count: 26
+
 CREATE DATABASE IF NOT EXISTS `baseball_1`;
 
-drop table if exists `baseball_1`.`team`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`team` (
-    `year` INT,
-    `league_id` STRING,
-    `team_id` STRING,
-    `franchise_id` STRING,
-    `div_id` STRING,
-    `rank` INT,
-    `g` INT,
+DROP TABLE IF EXISTS `baseball_1`.`team`;
+CREATE TABLE `baseball_1`.`team` (
+    `year` INTEGER,
+    `league_id` TEXT,
+    `team_id` VARCHAR(50),
+    `franchise_id` TEXT,
+    `div_id` TEXT,
+    `rank` INTEGER,
+    `g` INTEGER,
     `ghome` NUMERIC,
-    `w` INT,
-    `l` INT,
-    `div_win` STRING,
-    `wc_win` STRING,
-    `lg_win` STRING,
-    `ws_win` STRING,
-    `r` INT,
-    `ab` INT,
-    `h` INT,
-    `double` INT,
-    `triple` INT,
-    `hr` INT,
-    `bb` INT,
+    `w` INTEGER,
+    `l` INTEGER,
+    `div_win` TEXT,
+    `wc_win` TEXT,
+    `lg_win` TEXT,
+    `ws_win` TEXT,
+    `r` INTEGER,
+    `ab` INTEGER,
+    `h` INTEGER,
+    `double` INTEGER,
+    `triple` INTEGER,
+    `hr` INTEGER,
+    `bb` INTEGER,
     `so` NUMERIC,
     `sb` NUMERIC,
     `cs` NUMERIC,
     `hbp` NUMERIC,
     `sf` NUMERIC,
-    `ra` INT,
-    `er` INT,
+    `ra` INTEGER,
+    `er` INTEGER,
     `era` NUMERIC,
-    `cg` INT,
-    `sho` INT,
-    `sv` INT,
-    `ipouts` INT,
-    `ha` INT,
-    `hra` INT,
-    `bba` INT,
-    `soa` INT,
-    `e` INT,
+    `cg` INTEGER,
+    `sho` INTEGER,
+    `sv` INTEGER,
+    `ipouts` INTEGER,
+    `ha` INTEGER,
+    `hra` INTEGER,
+    `bba` INTEGER,
+    `soa` INTEGER,
+    `e` INTEGER,
     `dp` NUMERIC,
     `fp` NUMERIC,
-    `name` STRING,
-    `park` STRING,
+    `name` TEXT,
+    `park` TEXT,
     `attendance` NUMERIC,
-    `bpf` INT,
-    `ppf` INT,
-    `team_id_br` STRING,
-    `team_id_lahman45` STRING,
-    `team_id_retro` STRING,
-    UNIQUE (`team_id`) DISABLE NOVALIDATE
+    `bpf` INTEGER,
+    `ppf` INTEGER,
+    `team_id_br` TEXT,
+    `team_id_lahman45` TEXT,
+    `team_id_retro` TEXT,
+    UNIQUE (`team_id`)
 );
 
-drop table if exists `baseball_1`.`player`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`player` (
-    `player_id` STRING,
+DROP TABLE IF EXISTS `baseball_1`.`player`;
+CREATE TABLE `baseball_1`.`player` (
+    `player_id` VARCHAR(50),
     `birth_year` NUMERIC,
     `birth_month` NUMERIC,
     `birth_day` NUMERIC,
-    `birth_country` STRING,
-    `birth_state` STRING,
-    `birth_city` STRING,
+    `birth_country` TEXT,
+    `birth_state` TEXT,
+    `birth_city` TEXT,
     `death_year` NUMERIC,
     `death_month` NUMERIC,
     `death_day` NUMERIC,
-    `death_country` STRING,
-    `death_state` STRING,
-    `death_city` STRING,
-    `name_first` STRING,
-    `name_last` STRING,
-    `name_given` STRING,
+    `death_country` TEXT,
+    `death_state` TEXT,
+    `death_city` TEXT,
+    `name_first` TEXT,
+    `name_last` TEXT,
+    `name_given` TEXT,
     `weight` NUMERIC,
     `height` NUMERIC,
-    `bats` STRING,
-    `throws` STRING,
-    `debut` STRING,
-    `final_game` STRING,
-    `retro_id` STRING,
-    `bbref_id` STRING,
-    UNIQUE (`player_id`) DISABLE NOVALIDATE
+    `bats` TEXT,
+    `throws` TEXT,
+    `debut` TEXT,
+    `final_game` TEXT,
+    `retro_id` TEXT,
+    `bbref_id` TEXT,
+    UNIQUE (`player_id`)
 );
 
-drop table if exists `baseball_1`.`all_star`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`all_star` (
-    `player_id` STRING,
-    `year` INT,
-    `game_num` INT,
-    `game_id` STRING,
-    `team_id` STRING,
-    `league_id` STRING,
+DROP TABLE IF EXISTS `baseball_1`.`all_star`;
+CREATE TABLE `baseball_1`.`all_star` (
+    `player_id` VARCHAR(50),
+    `year` INTEGER,
+    `game_num` INTEGER,
+    `game_id` TEXT,
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
     `gp` NUMERIC,
     `starting_pos` NUMERIC,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`appearances`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`appearances` (
-    `year` INT,
-    `team_id` STRING,
-    `league_id` STRING,
-    `player_id` STRING,
+DROP TABLE IF EXISTS `baseball_1`.`appearances`;
+CREATE TABLE `baseball_1`.`appearances` (
+    `year` INTEGER,
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
+    `player_id` VARCHAR(50),
     `g_all` NUMERIC,
     `gs` NUMERIC,
-    `g_batting` INT,
+    `g_batting` INTEGER,
     `g_defense` NUMERIC,
-    `g_p` INT,
-    `g_c` INT,
-    `g_1b` INT,
-    `g_2b` INT,
-    `g_3b` INT,
-    `g_ss` INT,
-    `g_lf` INT,
-    `g_cf` INT,
-    `g_rf` INT,
-    `g_of` INT,
+    `g_p` INTEGER,
+    `g_c` INTEGER,
+    `g_1b` INTEGER,
+    `g_2b` INTEGER,
+    `g_3b` INTEGER,
+    `g_ss` INTEGER,
+    `g_lf` INTEGER,
+    `g_cf` INTEGER,
+    `g_rf` INTEGER,
+    `g_of` INTEGER,
     `g_dh` NUMERIC,
     `g_ph` NUMERIC,
     `g_pr` NUMERIC,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`),
+    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`)
 );
 
-drop table if exists `baseball_1`.`manager_award`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`manager_award` (
-    `player_id` STRING,
-    `award_id` STRING,
-    `year` INT,
-    `league_id` STRING,
-    `tie` STRING,
+DROP TABLE IF EXISTS `baseball_1`.`manager_award`;
+CREATE TABLE `baseball_1`.`manager_award` (
+    `player_id` VARCHAR(50),
+    `award_id` TEXT,
+    `year` INTEGER,
+    `league_id` TEXT,
+    `tie` TEXT,
     `notes` NUMERIC,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`player_award`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`player_award` (
-    `player_id` STRING,
-    `award_id` STRING,
-    `year` INT,
-    `league_id` STRING,
-    `tie` STRING,
-    `notes` STRING,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `baseball_1`.`player_award`;
+CREATE TABLE `baseball_1`.`player_award` (
+    `player_id` VARCHAR(50),
+    `award_id` TEXT,
+    `year` INTEGER,
+    `league_id` TEXT,
+    `tie` TEXT,
+    `notes` TEXT,
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`manager_award_vote`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`manager_award_vote` (
-    `award_id` STRING,
-    `year` INT,
-    `league_id` STRING,
-    `player_id` STRING,
-    `points_won` INT,
-    `points_max` INT,
-    `votes_first` INT
+DROP TABLE IF EXISTS `baseball_1`.`manager_award_vote`;
+CREATE TABLE `baseball_1`.`manager_award_vote` (
+    `award_id` TEXT,
+    `year` INTEGER,
+    `league_id` TEXT,
+    `player_id` VARCHAR(50),
+    `points_won` INTEGER,
+    `points_max` INTEGER,
+    `votes_first` INTEGER
 );
 
-drop table if exists `baseball_1`.`player_award_vote`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`player_award_vote` (
-    `award_id` STRING,
-    `year` INT,
-    `league_id` STRING,
-    `player_id` STRING,
+DROP TABLE IF EXISTS `baseball_1`.`player_award_vote`;
+CREATE TABLE `baseball_1`.`player_award_vote` (
+    `award_id` TEXT,
+    `year` INTEGER,
+    `league_id` TEXT,
+    `player_id` VARCHAR(50),
     `points_won` NUMERIC,
-    `points_max` INT,
+    `points_max` INTEGER,
     `votes_first` NUMERIC,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`batting`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`batting` (
-    `player_id` STRING,
-    `year` INT,
-    `stint` INT,
-    `team_id` STRING,
-    `league_id` STRING,
-    `g` INT,
+DROP TABLE IF EXISTS `baseball_1`.`batting`;
+CREATE TABLE `baseball_1`.`batting` (
+    `player_id` VARCHAR(50),
+    `year` INTEGER,
+    `stint` INTEGER,
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
+    `g` INTEGER,
     `ab` NUMERIC,
     `r` NUMERIC,
     `h` NUMERIC,
@@ -191,65 +193,65 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`batting` (
     `sh` NUMERIC,
     `sf` NUMERIC,
     `g_idp` NUMERIC,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`batting_postseason`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`batting_postseason` (
-    `year` INT,
-    `round` STRING,
-    `player_id` STRING,
-    `team_id` STRING,
-    `league_id` STRING,
-    `g` INT,
-    `ab` INT,
-    `r` INT,
-    `h` INT,
-    `double` INT,
-    `triple` INT,
-    `hr` INT,
-    `rbi` INT,
-    `sb` INT,
+DROP TABLE IF EXISTS `baseball_1`.`batting_postseason`;
+CREATE TABLE `baseball_1`.`batting_postseason` (
+    `year` INTEGER,
+    `round` TEXT,
+    `player_id` VARCHAR(50),
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
+    `g` INTEGER,
+    `ab` INTEGER,
+    `r` INTEGER,
+    `h` INTEGER,
+    `double` INTEGER,
+    `triple` INTEGER,
+    `hr` INTEGER,
+    `rbi` INTEGER,
+    `sb` INTEGER,
     `cs` NUMERIC,
-    `bb` INT,
-    `so` INT,
+    `bb` INTEGER,
+    `so` INTEGER,
     `ibb` NUMERIC,
     `hbp` NUMERIC,
     `sh` NUMERIC,
     `sf` NUMERIC,
     `g_idp` NUMERIC,
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`),
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`college`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`college` (
-    `college_id` STRING,
-    `name_full` STRING,
-    `city` STRING,
-    `state` STRING,
-    `country` STRING,
-    UNIQUE (`college_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `baseball_1`.`college`;
+CREATE TABLE `baseball_1`.`college` (
+    `college_id` VARCHAR(50),
+    `name_full` TEXT,
+    `city` TEXT,
+    `state` TEXT,
+    `country` TEXT,
+    UNIQUE (`college_id`)
 );
 
-drop table if exists `baseball_1`.`player_college`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`player_college` (
-    `player_id` STRING,
-    `college_id` STRING,
-    `year` INT,
-    FOREIGN KEY (`college_id`) REFERENCES `baseball_1`.`college` (`college_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `baseball_1`.`player_college`;
+CREATE TABLE `baseball_1`.`player_college` (
+    `player_id` VARCHAR(50),
+    `college_id` VARCHAR(50),
+    `year` INTEGER,
+    FOREIGN KEY (`college_id`) REFERENCES `baseball_1`.`college` (`college_id`),
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`fielding`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`fielding` (
-    `player_id` STRING,
-    `year` INT,
-    `stint` INT,
-    `team_id` STRING,
-    `league_id` STRING,
-    `pos` STRING,
-    `g` INT,
+DROP TABLE IF EXISTS `baseball_1`.`fielding`;
+CREATE TABLE `baseball_1`.`fielding` (
+    `player_id` VARCHAR(50),
+    `year` INTEGER,
+    `stint` INTEGER,
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
+    `pos` TEXT,
+    `g` INTEGER,
     `gs` NUMERIC,
     `inn_outs` NUMERIC,
     `po` NUMERIC,
@@ -261,221 +263,221 @@ CREATE TABLE IF NOT EXISTS `baseball_1`.`fielding` (
     `sb` NUMERIC,
     `cs` NUMERIC,
     `zr` NUMERIC,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`fielding_outfield`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`fielding_outfield` (
-    `player_id` STRING,
-    `year` INT,
-    `stint` INT,
+DROP TABLE IF EXISTS `baseball_1`.`fielding_outfield`;
+CREATE TABLE `baseball_1`.`fielding_outfield` (
+    `player_id` VARCHAR(50),
+    `year` INTEGER,
+    `stint` INTEGER,
     `glf` NUMERIC,
     `gcf` NUMERIC,
     `grf` NUMERIC,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`fielding_postseason`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`fielding_postseason` (
-    `player_id` STRING,
-    `year` INT,
-    `team_id` STRING,
-    `league_id` STRING,
-    `round` STRING,
-    `pos` STRING,
-    `g` INT,
+DROP TABLE IF EXISTS `baseball_1`.`fielding_postseason`;
+CREATE TABLE `baseball_1`.`fielding_postseason` (
+    `player_id` VARCHAR(50),
+    `year` INTEGER,
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
+    `round` TEXT,
+    `pos` TEXT,
+    `g` INTEGER,
     `gs` NUMERIC,
     `inn_outs` NUMERIC,
-    `po` INT,
-    `a` INT,
-    `e` INT,
-    `dp` INT,
-    `tp` INT,
+    `po` INTEGER,
+    `a` INTEGER,
+    `e` INTEGER,
+    `dp` INTEGER,
+    `tp` INTEGER,
     `pb` NUMERIC,
     `sb` NUMERIC,
     `cs` NUMERIC,
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`),
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`hall_of_fame`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`hall_of_fame` (
-    `player_id` STRING,
-    `yearid` INT,
-    `votedby` STRING,
+DROP TABLE IF EXISTS `baseball_1`.`hall_of_fame`;
+CREATE TABLE `baseball_1`.`hall_of_fame` (
+    `player_id` VARCHAR(50),
+    `yearid` INTEGER,
+    `votedby` TEXT,
     `ballots` NUMERIC,
     `needed` NUMERIC,
     `votes` NUMERIC,
-    `inducted` STRING,
-    `category` STRING,
-    `needed_note` STRING,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`) DISABLE NOVALIDATE
+    `inducted` TEXT,
+    `category` TEXT,
+    `needed_note` TEXT,
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-drop table if exists `baseball_1`.`park`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`park` (
-    `park_id` STRING,
-    `park_name` STRING,
-    `park_alias` STRING,
-    `city` STRING,
-    `state` STRING,
-    `country` STRING,
-    UNIQUE (`park_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `baseball_1`.`park`;
+CREATE TABLE `baseball_1`.`park` (
+    `park_id` VARCHAR(50),
+    `park_name` TEXT,
+    `park_alias` TEXT,
+    `city` TEXT,
+    `state` TEXT,
+    `country` TEXT,
+    UNIQUE (`park_id`)
 );
 
-drop table if exists `baseball_1`.`home_game`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`home_game` (
-    `year` INT,
-    `league_id` STRING,
-    `team_id` STRING,
-    `park_id` STRING,
-    `span_first` STRING,
-    `span_last` STRING,
-    `games` INT,
-    `openings` INT,
-    `attendance` INT,
-    FOREIGN KEY (`park_id`) REFERENCES `baseball_1`.`park` (`park_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `baseball_1`.`home_game`;
+CREATE TABLE `baseball_1`.`home_game` (
+    `year` INTEGER,
+    `league_id` TEXT,
+    `team_id` VARCHAR(50),
+    `park_id` VARCHAR(50),
+    `span_first` TEXT,
+    `span_last` TEXT,
+    `games` INTEGER,
+    `openings` INTEGER,
+    `attendance` INTEGER,
+    FOREIGN KEY (`park_id`) REFERENCES `baseball_1`.`park` (`park_id`),
+    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`)
 );
 
-drop table if exists `baseball_1`.`manager`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`manager` (
-    `player_id` STRING,
-    `year` INT,
-    `team_id` STRING,
-    `league_id` STRING,
-    `inseason` INT,
-    `g` INT,
-    `w` INT,
-    `l` INT,
+DROP TABLE IF EXISTS `baseball_1`.`manager`;
+CREATE TABLE `baseball_1`.`manager` (
+    `player_id` VARCHAR(50),
+    `year` INTEGER,
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
+    `inseason` INTEGER,
+    `g` INTEGER,
+    `w` INTEGER,
+    `l` INTEGER,
     `rank` NUMERIC,
-    `plyr_mgr` STRING,
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE
+    `plyr_mgr` TEXT,
+    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`)
 );
 
-drop table if exists `baseball_1`.`manager_half`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`manager_half` (
-    `player_id` STRING,
-    `year` INT,
-    `team_id` STRING,
-    `league_id` STRING,
-    `inseason` INT,
-    `half` INT,
-    `g` INT,
-    `w` INT,
-    `l` INT,
-    `rank` INT,
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `baseball_1`.`manager_half`;
+CREATE TABLE `baseball_1`.`manager_half` (
+    `player_id` VARCHAR(50),
+    `year` INTEGER,
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
+    `inseason` INTEGER,
+    `half` INTEGER,
+    `g` INTEGER,
+    `w` INTEGER,
+    `l` INTEGER,
+    `rank` INTEGER,
+    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`)
 );
 
-drop table if exists `baseball_1`.`pitching`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`pitching` (
-    `player_id` STRING,
-    `year` INT,
-    `stint` INT,
-    `team_id` STRING,
-    `league_id` STRING,
-    `w` INT,
-    `l` INT,
-    `g` INT,
-    `gs` INT,
-    `cg` INT,
-    `sho` INT,
-    `sv` INT,
+DROP TABLE IF EXISTS `baseball_1`.`pitching`;
+CREATE TABLE `baseball_1`.`pitching` (
+    `player_id` VARCHAR(50),
+    `year` INTEGER,
+    `stint` INTEGER,
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
+    `w` INTEGER,
+    `l` INTEGER,
+    `g` INTEGER,
+    `gs` INTEGER,
+    `cg` INTEGER,
+    `sho` INTEGER,
+    `sv` INTEGER,
     `ipouts` NUMERIC,
-    `h` INT,
-    `er` INT,
-    `hr` INT,
-    `bb` INT,
-    `so` INT,
+    `h` INTEGER,
+    `er` INTEGER,
+    `hr` INTEGER,
+    `bb` INTEGER,
+    `so` INTEGER,
     `baopp` NUMERIC,
     `era` NUMERIC,
     `ibb` NUMERIC,
     `wp` NUMERIC,
     `hbp` NUMERIC,
-    `bk` INT,
+    `bk` INTEGER,
     `bfp` NUMERIC,
     `gf` NUMERIC,
-    `r` INT,
+    `r` INTEGER,
     `sh` NUMERIC,
     `sf` NUMERIC,
     `g_idp` NUMERIC
 );
 
-drop table if exists `baseball_1`.`pitching_postseason`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`pitching_postseason` (
-    `player_id` STRING,
-    `year` INT,
-    `round` STRING,
-    `team_id` STRING,
-    `league_id` STRING,
-    `w` INT,
-    `l` INT,
-    `g` INT,
-    `gs` INT,
-    `cg` INT,
-    `sho` INT,
-    `sv` INT,
-    `ipouts` INT,
-    `h` INT,
-    `er` INT,
-    `hr` INT,
-    `bb` INT,
-    `so` INT,
-    `baopp` STRING,
+DROP TABLE IF EXISTS `baseball_1`.`pitching_postseason`;
+CREATE TABLE `baseball_1`.`pitching_postseason` (
+    `player_id` VARCHAR(50),
+    `year` INTEGER,
+    `round` TEXT,
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
+    `w` INTEGER,
+    `l` INTEGER,
+    `g` INTEGER,
+    `gs` INTEGER,
+    `cg` INTEGER,
+    `sho` INTEGER,
+    `sv` INTEGER,
+    `ipouts` INTEGER,
+    `h` INTEGER,
+    `er` INTEGER,
+    `hr` INTEGER,
+    `bb` INTEGER,
+    `so` INTEGER,
+    `baopp` TEXT,
     `era` NUMERIC,
     `ibb` NUMERIC,
     `wp` NUMERIC,
     `hbp` NUMERIC,
     `bk` NUMERIC,
     `bfp` NUMERIC,
-    `gf` INT,
-    `r` INT,
+    `gf` INTEGER,
+    `r` INTEGER,
     `sh` NUMERIC,
     `sf` NUMERIC,
     `g_idp` NUMERIC
 );
 
-drop table if exists `baseball_1`.`salary`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`salary` (
-    `year` INT,
-    `team_id` STRING,
-    `league_id` STRING,
-    `player_id` STRING,
-    `salary` INT
+DROP TABLE IF EXISTS `baseball_1`.`salary`;
+CREATE TABLE `baseball_1`.`salary` (
+    `year` INTEGER,
+    `team_id` VARCHAR(50),
+    `league_id` TEXT,
+    `player_id` VARCHAR(50),
+    `salary` INTEGER
 );
 
-drop table if exists `baseball_1`.`postseason`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`postseason` (
-    `year` INT,
-    `round` STRING,
-    `team_id_winner` STRING,
-    `league_id_winner` STRING,
-    `team_id_loser` STRING,
-    `league_id_loser` STRING,
-    `wins` INT,
-    `losses` INT,
-    `ties` INT
+DROP TABLE IF EXISTS `baseball_1`.`postseason`;
+CREATE TABLE `baseball_1`.`postseason` (
+    `year` INTEGER,
+    `round` TEXT,
+    `team_id_winner` TEXT,
+    `league_id_winner` TEXT,
+    `team_id_loser` TEXT,
+    `league_id_loser` TEXT,
+    `wins` INTEGER,
+    `losses` INTEGER,
+    `ties` INTEGER
 );
 
-drop table if exists `baseball_1`.`team_franchise`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`team_franchise` (
-    `franchise_id` STRING,
-    `franchise_name` STRING,
-    `active` STRING,
-    `na_assoc` STRING
+DROP TABLE IF EXISTS `baseball_1`.`team_franchise`;
+CREATE TABLE `baseball_1`.`team_franchise` (
+    `franchise_id` TEXT,
+    `franchise_name` TEXT,
+    `active` TEXT,
+    `na_assoc` TEXT
 );
 
-drop table if exists `baseball_1`.`team_half`;
-CREATE TABLE IF NOT EXISTS `baseball_1`.`team_half` (
-    `year` INT,
-    `league_id` STRING,
-    `team_id` STRING,
-    `half` INT,
-    `div_id` STRING,
-    `div_win` STRING,
-    `rank` INT,
-    `g` INT,
-    `w` INT,
-    `l` INT
+DROP TABLE IF EXISTS `baseball_1`.`team_half`;
+CREATE TABLE `baseball_1`.`team_half` (
+    `year` INTEGER,
+    `league_id` TEXT,
+    `team_id` VARCHAR(50),
+    `half` INTEGER,
+    `div_id` TEXT,
+    `div_win` TEXT,
+    `rank` INTEGER,
+    `g` INTEGER,
+    `w` INTEGER,
+    `l` INTEGER
 );

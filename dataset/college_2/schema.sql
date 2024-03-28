@@ -1,115 +1,117 @@
+-- Dialect: MySQL | Database: college_2 | Table Count: 11
+
 CREATE DATABASE IF NOT EXISTS `college_2`;
 
-drop table if exists `college_2`.`classroom`;
-CREATE TABLE IF NOT EXISTS `college_2`.`classroom` (
-    `building` STRING,
-    `room_number` STRING,
+DROP TABLE IF EXISTS `college_2`.`classroom`;
+CREATE TABLE `college_2`.`classroom` (
+    `building` VARCHAR(15),
+    `room_number` VARCHAR(7),
     `capacity` NUMERIC(4,0),
-    PRIMARY KEY (`building`, `room_number`) DISABLE NOVALIDATE
+    PRIMARY KEY (`building`, `room_number`)
 );
 
-drop table if exists `college_2`.`department`;
-CREATE TABLE IF NOT EXISTS `college_2`.`department` (
-    `dept_name` STRING,
-    `building` STRING,
+DROP TABLE IF EXISTS `college_2`.`department`;
+CREATE TABLE `college_2`.`department` (
+    `dept_name` VARCHAR(20),
+    `building` VARCHAR(15),
     `budget` NUMERIC(12,2),
-    PRIMARY KEY (`dept_name`) DISABLE NOVALIDATE
+    PRIMARY KEY (`dept_name`)
 );
 
-drop table if exists `college_2`.`course`;
-CREATE TABLE IF NOT EXISTS `college_2`.`course` (
-    `course_id` STRING,
-    `title` STRING,
-    `dept_name` STRING,
+DROP TABLE IF EXISTS `college_2`.`course`;
+CREATE TABLE `college_2`.`course` (
+    `course_id` VARCHAR(8),
+    `title` VARCHAR(50),
+    `dept_name` VARCHAR(20),
     `credits` NUMERIC(2,0),
-    PRIMARY KEY (`course_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`dept_name`) REFERENCES `college_2`.`department` (`dept_name`) DISABLE NOVALIDATE
+    PRIMARY KEY (`course_id`),
+    FOREIGN KEY (`dept_name`) REFERENCES `college_2`.`department` (`dept_name`)
 );
 
-drop table if exists `college_2`.`instructor`;
-CREATE TABLE IF NOT EXISTS `college_2`.`instructor` (
-    `ID` STRING,
-    `name` STRING NOT NULL,
-    `dept_name` STRING,
+DROP TABLE IF EXISTS `college_2`.`instructor`;
+CREATE TABLE `college_2`.`instructor` (
+    `ID` VARCHAR(5),
+    `name` VARCHAR(20) NOT NULL,
+    `dept_name` VARCHAR(20),
     `salary` NUMERIC(8,2),
-    PRIMARY KEY (`ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`dept_name`) REFERENCES `college_2`.`department` (`dept_name`) DISABLE NOVALIDATE
+    PRIMARY KEY (`ID`),
+    FOREIGN KEY (`dept_name`) REFERENCES `college_2`.`department` (`dept_name`)
 );
 
-drop table if exists `college_2`.`section`;
-CREATE TABLE IF NOT EXISTS `college_2`.`section` (
-    `course_id` STRING,
-    `sec_id` STRING,
-    `semester` STRING,
+DROP TABLE IF EXISTS `college_2`.`section`;
+CREATE TABLE `college_2`.`section` (
+    `course_id` VARCHAR(8),
+    `sec_id` VARCHAR(8),
+    `semester` VARCHAR(6),
     `year` NUMERIC(4,0),
-    `building` STRING,
-    `room_number` STRING,
-    `time_slot_id` STRING,
-    PRIMARY KEY (`course_id`, `sec_id`, `semester`, `year`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`building`, `room_number`) REFERENCES `college_2`.`classroom` (`building`, `room_number`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`course_id`) REFERENCES `college_2`.`course` (`course_id`) DISABLE NOVALIDATE
+    `building` VARCHAR(15),
+    `room_number` VARCHAR(7),
+    `time_slot_id` VARCHAR(4),
+    PRIMARY KEY (`course_id`, `sec_id`, `semester`, `year`),
+    FOREIGN KEY (`building`, `room_number`) REFERENCES `college_2`.`classroom` (`building`, `room_number`),
+    FOREIGN KEY (`course_id`) REFERENCES `college_2`.`course` (`course_id`)
 );
 
-drop table if exists `college_2`.`teaches`;
-CREATE TABLE IF NOT EXISTS `college_2`.`teaches` (
-    `ID` STRING,
-    `course_id` STRING,
-    `sec_id` STRING,
-    `semester` STRING,
+DROP TABLE IF EXISTS `college_2`.`teaches`;
+CREATE TABLE `college_2`.`teaches` (
+    `ID` VARCHAR(5),
+    `course_id` VARCHAR(8),
+    `sec_id` VARCHAR(8),
+    `semester` VARCHAR(6),
     `year` NUMERIC(4,0),
-    PRIMARY KEY (`ID`, `course_id`, `sec_id`, `semester`, `year`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`ID`) REFERENCES `college_2`.`instructor` (`ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`course_id`, `sec_id`, `semester`, `year`) REFERENCES `college_2`.`section` (`course_id`, `sec_id`, `semester`, `year`) DISABLE NOVALIDATE
+    PRIMARY KEY (`ID`, `course_id`, `sec_id`, `semester`, `year`),
+    FOREIGN KEY (`ID`) REFERENCES `college_2`.`instructor` (`ID`),
+    FOREIGN KEY (`course_id`, `sec_id`, `semester`, `year`) REFERENCES `college_2`.`section` (`course_id`, `sec_id`, `semester`, `year`)
 );
 
-drop table if exists `college_2`.`student`;
-CREATE TABLE IF NOT EXISTS `college_2`.`student` (
-    `ID` STRING,
-    `name` STRING NOT NULL,
-    `dept_name` STRING,
+DROP TABLE IF EXISTS `college_2`.`student`;
+CREATE TABLE `college_2`.`student` (
+    `ID` VARCHAR(5),
+    `name` VARCHAR(20) NOT NULL,
+    `dept_name` VARCHAR(20),
     `tot_cred` NUMERIC(3,0),
-    PRIMARY KEY (`ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`dept_name`) REFERENCES `college_2`.`department` (`dept_name`) DISABLE NOVALIDATE
+    PRIMARY KEY (`ID`),
+    FOREIGN KEY (`dept_name`) REFERENCES `college_2`.`department` (`dept_name`)
 );
 
-drop table if exists `college_2`.`takes`;
-CREATE TABLE IF NOT EXISTS `college_2`.`takes` (
-    `ID` STRING,
-    `course_id` STRING,
-    `sec_id` STRING,
-    `semester` STRING,
+DROP TABLE IF EXISTS `college_2`.`takes`;
+CREATE TABLE `college_2`.`takes` (
+    `ID` VARCHAR(5),
+    `course_id` VARCHAR(8),
+    `sec_id` VARCHAR(8),
+    `semester` VARCHAR(6),
     `year` NUMERIC(4,0),
-    `grade` STRING,
-    PRIMARY KEY (`ID`, `course_id`, `sec_id`, `semester`, `year`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`ID`) REFERENCES `college_2`.`student` (`ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`course_id`, `sec_id`, `semester`, `year`) REFERENCES `college_2`.`section` (`course_id`, `sec_id`, `semester`, `year`) DISABLE NOVALIDATE
+    `grade` VARCHAR(2),
+    PRIMARY KEY (`ID`, `course_id`, `sec_id`, `semester`, `year`),
+    FOREIGN KEY (`ID`) REFERENCES `college_2`.`student` (`ID`),
+    FOREIGN KEY (`course_id`, `sec_id`, `semester`, `year`) REFERENCES `college_2`.`section` (`course_id`, `sec_id`, `semester`, `year`)
 );
 
-drop table if exists `college_2`.`advisor`;
-CREATE TABLE IF NOT EXISTS `college_2`.`advisor` (
-    `s_ID` STRING,
-    `i_ID` STRING,
-    PRIMARY KEY (`s_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`s_ID`) REFERENCES `college_2`.`student` (`ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`i_ID`) REFERENCES `college_2`.`instructor` (`ID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `college_2`.`advisor`;
+CREATE TABLE `college_2`.`advisor` (
+    `s_ID` VARCHAR(5),
+    `i_ID` VARCHAR(5),
+    PRIMARY KEY (`s_ID`),
+    FOREIGN KEY (`s_ID`) REFERENCES `college_2`.`student` (`ID`),
+    FOREIGN KEY (`i_ID`) REFERENCES `college_2`.`instructor` (`ID`)
 );
 
-drop table if exists `college_2`.`time_slot`;
-CREATE TABLE IF NOT EXISTS `college_2`.`time_slot` (
-    `time_slot_id` STRING,
-    `day` STRING,
+DROP TABLE IF EXISTS `college_2`.`time_slot`;
+CREATE TABLE `college_2`.`time_slot` (
+    `time_slot_id` VARCHAR(4),
+    `day` VARCHAR(1),
     `start_hr` NUMERIC(2),
     `start_min` NUMERIC(2),
     `end_hr` NUMERIC(2),
     `end_min` NUMERIC(2),
-    PRIMARY KEY (`time_slot_id`, `day`, `start_hr`, `start_min`) DISABLE NOVALIDATE
+    PRIMARY KEY (`time_slot_id`, `day`, `start_hr`, `start_min`)
 );
 
-drop table if exists `college_2`.`prereq`;
-CREATE TABLE IF NOT EXISTS `college_2`.`prereq` (
-    `course_id` STRING,
-    `prereq_id` STRING,
-    PRIMARY KEY (`course_id`, `prereq_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`prereq_id`) REFERENCES `college_2`.`course` (`course_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`course_id`) REFERENCES `college_2`.`course` (`course_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `college_2`.`prereq`;
+CREATE TABLE `college_2`.`prereq` (
+    `course_id` VARCHAR(8),
+    `prereq_id` VARCHAR(8),
+    PRIMARY KEY (`course_id`, `prereq_id`),
+    FOREIGN KEY (`prereq_id`) REFERENCES `college_2`.`course` (`course_id`),
+    FOREIGN KEY (`course_id`) REFERENCES `college_2`.`course` (`course_id`)
 );

@@ -1,126 +1,128 @@
+-- Dialect: MySQL | Database: soccer_1 | Table Count: 6
+
 CREATE DATABASE IF NOT EXISTS `soccer_1`;
 
-drop table if exists `soccer_1`.`Player`;
-CREATE TABLE IF NOT EXISTS `soccer_1`.`Player` (
-    `id` INT,
-    `player_api_id` INT,
-    `player_name` STRING,
-    `player_fifa_api_id` INT,
-    `birthday` STRING,
-    `height` INT,
-    `weight` INT,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    UNIQUE (`player_api_id`) DISABLE NOVALIDATE,
-    UNIQUE (`player_fifa_api_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `soccer_1`.`Player`;
+CREATE TABLE `soccer_1`.`Player` (
+    `id` INTEGER,
+    `player_api_id` INTEGER,
+    `player_name` TEXT,
+    `player_fifa_api_id` INTEGER,
+    `birthday` TEXT,
+    `height` INTEGER,
+    `weight` INTEGER,
+    PRIMARY KEY (`id`),
+    UNIQUE (`player_api_id`),
+    UNIQUE (`player_fifa_api_id`)
 );
 
-drop table if exists `soccer_1`.`Player_Attributes`;
-CREATE TABLE IF NOT EXISTS `soccer_1`.`Player_Attributes` (
-    `id` INT,
-    `player_fifa_api_id` INT,
-    `player_api_id` INT,
-    `date` STRING,
-    `overall_rating` INT,
-    `potential` INT,
-    `preferred_foot` STRING,
-    `attacking_work_rate` STRING,
-    `defensive_work_rate` STRING,
-    `crossing` INT,
-    `finishing` INT,
-    `heading_accuracy` INT,
-    `short_passing` INT,
-    `volleys` INT,
-    `dribbling` INT,
-    `curve` INT,
-    `free_kick_accuracy` INT,
-    `long_passing` INT,
-    `ball_control` INT,
-    `acceleration` INT,
-    `sprint_speed` INT,
-    `agility` INT,
-    `reactions` INT,
-    `balance` INT,
-    `shot_power` INT,
-    `jumping` INT,
-    `stamina` INT,
-    `strength` INT,
-    `long_shots` INT,
-    `aggression` INT,
-    `interceptions` INT,
-    `positioning` INT,
-    `vision` INT,
-    `penalties` INT,
-    `marking` INT,
-    `standing_tackle` INT,
-    `sliding_tackle` INT,
-    `gk_diving` INT,
-    `gk_handling` INT,
-    `gk_kicking` INT,
-    `gk_positioning` INT,
-    `gk_reflexes` INT,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`player_api_id`) REFERENCES `soccer_1`.`Player` (`player_api_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`player_fifa_api_id`) REFERENCES `soccer_1`.`Player` (`player_fifa_api_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `soccer_1`.`Player_Attributes`;
+CREATE TABLE `soccer_1`.`Player_Attributes` (
+    `id` INTEGER,
+    `player_fifa_api_id` INTEGER,
+    `player_api_id` INTEGER,
+    `date` TEXT,
+    `overall_rating` INTEGER,
+    `potential` INTEGER,
+    `preferred_foot` TEXT,
+    `attacking_work_rate` TEXT,
+    `defensive_work_rate` TEXT,
+    `crossing` INTEGER,
+    `finishing` INTEGER,
+    `heading_accuracy` INTEGER,
+    `short_passing` INTEGER,
+    `volleys` INTEGER,
+    `dribbling` INTEGER,
+    `curve` INTEGER,
+    `free_kick_accuracy` INTEGER,
+    `long_passing` INTEGER,
+    `ball_control` INTEGER,
+    `acceleration` INTEGER,
+    `sprint_speed` INTEGER,
+    `agility` INTEGER,
+    `reactions` INTEGER,
+    `balance` INTEGER,
+    `shot_power` INTEGER,
+    `jumping` INTEGER,
+    `stamina` INTEGER,
+    `strength` INTEGER,
+    `long_shots` INTEGER,
+    `aggression` INTEGER,
+    `interceptions` INTEGER,
+    `positioning` INTEGER,
+    `vision` INTEGER,
+    `penalties` INTEGER,
+    `marking` INTEGER,
+    `standing_tackle` INTEGER,
+    `sliding_tackle` INTEGER,
+    `gk_diving` INTEGER,
+    `gk_handling` INTEGER,
+    `gk_kicking` INTEGER,
+    `gk_positioning` INTEGER,
+    `gk_reflexes` INTEGER,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`player_api_id`) REFERENCES `soccer_1`.`Player` (`player_api_id`),
+    FOREIGN KEY (`player_fifa_api_id`) REFERENCES `soccer_1`.`Player` (`player_fifa_api_id`)
 );
 
-drop table if exists `soccer_1`.`Country`;
-CREATE TABLE IF NOT EXISTS `soccer_1`.`Country` (
-    `id` INT,
-    `name` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    UNIQUE (`name`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `soccer_1`.`Country`;
+CREATE TABLE `soccer_1`.`Country` (
+    `id` INTEGER,
+    `name` VARCHAR(50),
+    PRIMARY KEY (`id`),
+    UNIQUE (`name`)
 );
 
-drop table if exists `soccer_1`.`League`;
-CREATE TABLE IF NOT EXISTS `soccer_1`.`League` (
-    `id` INT,
-    `country_id` INT,
-    `name` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`country_id`) REFERENCES `soccer_1`.`Country` (`id`) DISABLE NOVALIDATE,
-    UNIQUE (`name`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `soccer_1`.`League`;
+CREATE TABLE `soccer_1`.`League` (
+    `id` INTEGER,
+    `country_id` INTEGER,
+    `name` VARCHAR(50),
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`country_id`) REFERENCES `soccer_1`.`Country` (`id`),
+    UNIQUE (`name`)
 );
 
-drop table if exists `soccer_1`.`Team`;
-CREATE TABLE IF NOT EXISTS `soccer_1`.`Team` (
-    `id` INT,
-    `team_api_id` INT,
-    `team_fifa_api_id` INT,
-    `team_long_name` STRING,
-    `team_short_name` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    UNIQUE (`team_fifa_api_id`) DISABLE NOVALIDATE,
-    UNIQUE (`team_api_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `soccer_1`.`Team`;
+CREATE TABLE `soccer_1`.`Team` (
+    `id` INTEGER,
+    `team_api_id` INTEGER,
+    `team_fifa_api_id` INTEGER,
+    `team_long_name` TEXT,
+    `team_short_name` TEXT,
+    PRIMARY KEY (`id`),
+    UNIQUE (`team_api_id`),
+    UNIQUE (`team_fifa_api_id`)
 );
 
-drop table if exists `soccer_1`.`Team_Attributes`;
-CREATE TABLE IF NOT EXISTS `soccer_1`.`Team_Attributes` (
-    `id` INT,
-    `team_fifa_api_id` INT,
-    `team_api_id` INT,
-    `date` STRING,
-    `buildUpPlaySpeed` INT,
-    `buildUpPlaySpeedClass` STRING,
-    `buildUpPlayDribbling` INT,
-    `buildUpPlayDribblingClass` STRING,
-    `buildUpPlayPassing` INT,
-    `buildUpPlayPassingClass` STRING,
-    `buildUpPlayPositioningClass` STRING,
-    `chanceCreationPassing` INT,
-    `chanceCreationPassingClass` STRING,
-    `chanceCreationCrossing` INT,
-    `chanceCreationCrossingClass` STRING,
-    `chanceCreationShooting` INT,
-    `chanceCreationShootingClass` STRING,
-    `chanceCreationPositioningClass` STRING,
-    `defencePressure` INT,
-    `defencePressureClass` STRING,
-    `defenceAggression` INT,
-    `defenceAggressionClass` STRING,
-    `defenceTeamWidth` INT,
-    `defenceTeamWidthClass` STRING,
-    `defenceDefenderLineClass` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`team_api_id`) REFERENCES `soccer_1`.`Team` (`team_api_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`team_fifa_api_id`) REFERENCES `soccer_1`.`Team` (`team_fifa_api_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `soccer_1`.`Team_Attributes`;
+CREATE TABLE `soccer_1`.`Team_Attributes` (
+    `id` INTEGER,
+    `team_fifa_api_id` INTEGER,
+    `team_api_id` INTEGER,
+    `date` TEXT,
+    `buildUpPlaySpeed` INTEGER,
+    `buildUpPlaySpeedClass` TEXT,
+    `buildUpPlayDribbling` INTEGER,
+    `buildUpPlayDribblingClass` TEXT,
+    `buildUpPlayPassing` INTEGER,
+    `buildUpPlayPassingClass` TEXT,
+    `buildUpPlayPositioningClass` TEXT,
+    `chanceCreationPassing` INTEGER,
+    `chanceCreationPassingClass` TEXT,
+    `chanceCreationCrossing` INTEGER,
+    `chanceCreationCrossingClass` TEXT,
+    `chanceCreationShooting` INTEGER,
+    `chanceCreationShootingClass` TEXT,
+    `chanceCreationPositioningClass` TEXT,
+    `defencePressure` INTEGER,
+    `defencePressureClass` TEXT,
+    `defenceAggression` INTEGER,
+    `defenceAggressionClass` TEXT,
+    `defenceTeamWidth` INTEGER,
+    `defenceTeamWidthClass` TEXT,
+    `defenceDefenderLineClass` TEXT,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`team_api_id`) REFERENCES `soccer_1`.`Team` (`team_api_id`),
+    FOREIGN KEY (`team_fifa_api_id`) REFERENCES `soccer_1`.`Team` (`team_fifa_api_id`)
 );

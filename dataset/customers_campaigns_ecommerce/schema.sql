@@ -1,87 +1,89 @@
+-- Dialect: MySQL | Database: customers_campaigns_ecommerce | Table Count: 8
+
 CREATE DATABASE IF NOT EXISTS `customers_campaigns_ecommerce`;
 
-drop table if exists `customers_campaigns_ecommerce`.`Premises`;
-CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Premises` (
-    `premise_id` INT,
-    `premises_type` STRING NOT NULL,
-    `premise_details` STRING,
-    PRIMARY KEY (`premise_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Premises`;
+CREATE TABLE `customers_campaigns_ecommerce`.`Premises` (
+    `premise_id` INTEGER,
+    `premises_type` VARCHAR(15) NOT NULL,
+    `premise_details` VARCHAR(255),
+    PRIMARY KEY (`premise_id`)
 );
 
-drop table if exists `customers_campaigns_ecommerce`.`Products`;
-CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Products` (
-    `product_id` INT,
-    `product_category` STRING NOT NULL,
-    `product_name` STRING,
-    PRIMARY KEY (`product_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Products`;
+CREATE TABLE `customers_campaigns_ecommerce`.`Products` (
+    `product_id` INTEGER,
+    `product_category` VARCHAR(15) NOT NULL,
+    `product_name` VARCHAR(80),
+    PRIMARY KEY (`product_id`)
 );
 
-drop table if exists `customers_campaigns_ecommerce`.`Customers`;
-CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Customers` (
-    `customer_id` INT,
-    `payment_method` STRING NOT NULL,
-    `customer_name` STRING,
-    `customer_phone` STRING,
-    `customer_email` STRING,
-    `customer_address` STRING,
-    `customer_login` STRING,
-    `customer_password` STRING,
-    PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Customers`;
+CREATE TABLE `customers_campaigns_ecommerce`.`Customers` (
+    `customer_id` INTEGER,
+    `payment_method` VARCHAR(15) NOT NULL,
+    `customer_name` VARCHAR(80),
+    `customer_phone` VARCHAR(80),
+    `customer_email` VARCHAR(80),
+    `customer_address` VARCHAR(255),
+    `customer_login` VARCHAR(80),
+    `customer_password` VARCHAR(10),
+    PRIMARY KEY (`customer_id`)
 );
 
-drop table if exists `customers_campaigns_ecommerce`.`Mailshot_Campaigns`;
-CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Mailshot_Campaigns` (
-    `mailshot_id` INT,
-    `product_category` STRING,
-    `mailshot_name` STRING,
-    `mailshot_start_date` TIMESTAMP,
-    `mailshot_end_date` TIMESTAMP,
-    PRIMARY KEY (`mailshot_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Mailshot_Campaigns`;
+CREATE TABLE `customers_campaigns_ecommerce`.`Mailshot_Campaigns` (
+    `mailshot_id` INTEGER,
+    `product_category` VARCHAR(15),
+    `mailshot_name` VARCHAR(80),
+    `mailshot_start_date` DATETIME,
+    `mailshot_end_date` DATETIME,
+    PRIMARY KEY (`mailshot_id`)
 );
 
-drop table if exists `customers_campaigns_ecommerce`.`Customer_Addresses`;
-CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Customer_Addresses` (
-    `customer_id` INT NOT NULL,
-    `premise_id` INT NOT NULL,
-    `date_address_from` TIMESTAMP NOT NULL,
-    `address_type_code` STRING NOT NULL,
-    `date_address_to` TIMESTAMP,
-    FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`premise_id`) REFERENCES `customers_campaigns_ecommerce`.`Premises` (`premise_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Customer_Addresses`;
+CREATE TABLE `customers_campaigns_ecommerce`.`Customer_Addresses` (
+    `customer_id` INTEGER NOT NULL,
+    `premise_id` INTEGER NOT NULL,
+    `date_address_from` DATETIME NOT NULL,
+    `address_type_code` VARCHAR(15) NOT NULL,
+    `date_address_to` DATETIME,
+    FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`),
+    FOREIGN KEY (`premise_id`) REFERENCES `customers_campaigns_ecommerce`.`Premises` (`premise_id`)
 );
 
-drop table if exists `customers_campaigns_ecommerce`.`Customer_Orders`;
-CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Customer_Orders` (
-    `order_id` INT,
-    `customer_id` INT NOT NULL,
-    `order_status_code` STRING NOT NULL,
-    `shipping_method_code` STRING NOT NULL,
-    `order_placed_datetime` TIMESTAMP NOT NULL,
-    `order_delivered_datetime` TIMESTAMP,
-    `order_shipping_charges` STRING,
-    PRIMARY KEY (`order_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Customer_Orders`;
+CREATE TABLE `customers_campaigns_ecommerce`.`Customer_Orders` (
+    `order_id` INTEGER,
+    `customer_id` INTEGER NOT NULL,
+    `order_status_code` VARCHAR(15) NOT NULL,
+    `shipping_method_code` VARCHAR(15) NOT NULL,
+    `order_placed_datetime` DATETIME NOT NULL,
+    `order_delivered_datetime` DATETIME,
+    `order_shipping_charges` VARCHAR(255),
+    PRIMARY KEY (`order_id`),
+    FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`)
 );
 
-drop table if exists `customers_campaigns_ecommerce`.`Mailshot_Customers`;
-CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Mailshot_Customers` (
-    `mailshot_id` INT NOT NULL,
-    `customer_id` INT NOT NULL,
-    `outcome_code` STRING NOT NULL,
-    `mailshot_customer_date` TIMESTAMP,
-    FOREIGN KEY (`mailshot_id`) REFERENCES `customers_campaigns_ecommerce`.`Mailshot_Campaigns` (`mailshot_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Mailshot_Customers`;
+CREATE TABLE `customers_campaigns_ecommerce`.`Mailshot_Customers` (
+    `mailshot_id` INTEGER NOT NULL,
+    `customer_id` INTEGER NOT NULL,
+    `outcome_code` VARCHAR(15) NOT NULL,
+    `mailshot_customer_date` DATETIME,
+    FOREIGN KEY (`mailshot_id`) REFERENCES `customers_campaigns_ecommerce`.`Mailshot_Campaigns` (`mailshot_id`),
+    FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`)
 );
 
-drop table if exists `customers_campaigns_ecommerce`.`Order_Items`;
-CREATE TABLE IF NOT EXISTS `customers_campaigns_ecommerce`.`Order_Items` (
-    `item_id` INT NOT NULL,
-    `order_item_status_code` STRING NOT NULL,
-    `order_id` INT NOT NULL,
-    `product_id` INT NOT NULL,
-    `item_status_code` STRING,
-    `item_delivered_datetime` TIMESTAMP,
-    `item_order_quantity` STRING,
-    FOREIGN KEY (`order_id`) REFERENCES `customers_campaigns_ecommerce`.`Customer_Orders` (`order_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`product_id`) REFERENCES `customers_campaigns_ecommerce`.`Products` (`product_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Order_Items`;
+CREATE TABLE `customers_campaigns_ecommerce`.`Order_Items` (
+    `item_id` INTEGER NOT NULL,
+    `order_item_status_code` VARCHAR(15) NOT NULL,
+    `order_id` INTEGER NOT NULL,
+    `product_id` INTEGER NOT NULL,
+    `item_status_code` VARCHAR(15),
+    `item_delivered_datetime` DATETIME,
+    `item_order_quantity` VARCHAR(80),
+    FOREIGN KEY (`order_id`) REFERENCES `customers_campaigns_ecommerce`.`Customer_Orders` (`order_id`),
+    FOREIGN KEY (`product_id`) REFERENCES `customers_campaigns_ecommerce`.`Products` (`product_id`)
 );

@@ -1,59 +1,61 @@
+-- Dialect: MySQL | Database: company_1 | Table Count: 6
+
 CREATE DATABASE IF NOT EXISTS `company_1`;
 
-drop table if exists `company_1`.`works_on`;
-CREATE TABLE IF NOT EXISTS `company_1`.`works_on` (
-    `Essn` INT,
-    `Pno` INT,
-    `Hours` DOUBLE,
-    PRIMARY KEY (`Essn`, `Pno`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `company_1`.`works_on`;
+CREATE TABLE `company_1`.`works_on` (
+    `Essn` INTEGER,
+    `Pno` INTEGER,
+    `Hours` REAL,
+    PRIMARY KEY (`Essn`, `Pno`)
 );
 
-drop table if exists `company_1`.`employee`;
-CREATE TABLE IF NOT EXISTS `company_1`.`employee` (
-    `Fname` STRING,
-    `Minit` STRING,
-    `Lname` STRING,
-    `Ssn` INT,
-    `Bdate` STRING,
-    `Address` STRING,
-    `Sex` STRING,
-    `Salary` INT,
-    `Super_ssn` INT,
-    `Dno` INT,
-    PRIMARY KEY (`Ssn`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `company_1`.`employee`;
+CREATE TABLE `company_1`.`employee` (
+    `Fname` TEXT,
+    `Minit` TEXT,
+    `Lname` TEXT,
+    `Ssn` INTEGER,
+    `Bdate` TEXT,
+    `Address` TEXT,
+    `Sex` TEXT,
+    `Salary` INTEGER,
+    `Super_ssn` INTEGER,
+    `Dno` INTEGER,
+    PRIMARY KEY (`Ssn`)
 );
 
-drop table if exists `company_1`.`department`;
-CREATE TABLE IF NOT EXISTS `company_1`.`department` (
-    `Dname` STRING,
-    `Dnumber` INT,
-    `Mgr_ssn` INT,
-    `Mgr_start_date` STRING,
-    PRIMARY KEY (`Dnumber`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `company_1`.`department`;
+CREATE TABLE `company_1`.`department` (
+    `Dname` TEXT,
+    `Dnumber` INTEGER,
+    `Mgr_ssn` INTEGER,
+    `Mgr_start_date` TEXT,
+    PRIMARY KEY (`Dnumber`)
 );
 
-drop table if exists `company_1`.`project`;
-CREATE TABLE IF NOT EXISTS `company_1`.`project` (
-    `Pname` STRING,
-    `Pnumber` INT,
-    `Plocation` STRING,
-    `Dnum` INT,
-    PRIMARY KEY (`Pnumber`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `company_1`.`project`;
+CREATE TABLE `company_1`.`project` (
+    `Pname` TEXT,
+    `Pnumber` INTEGER,
+    `Plocation` TEXT,
+    `Dnum` INTEGER,
+    PRIMARY KEY (`Pnumber`)
 );
 
-drop table if exists `company_1`.`dependent`;
-CREATE TABLE IF NOT EXISTS `company_1`.`dependent` (
-    `Essn` INT,
-    `Dependent_name` STRING,
-    `Sex` STRING,
-    `Bdate` STRING,
-    `Relationship` STRING,
-    PRIMARY KEY (`Essn`, `Dependent_name`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `company_1`.`dependent`;
+CREATE TABLE `company_1`.`dependent` (
+    `Essn` INTEGER,
+    `Dependent_name` VARCHAR(50),
+    `Sex` TEXT,
+    `Bdate` TEXT,
+    `Relationship` TEXT,
+    PRIMARY KEY (`Essn`, `Dependent_name`)
 );
 
-drop table if exists `company_1`.`dept_locations`;
-CREATE TABLE IF NOT EXISTS `company_1`.`dept_locations` (
-    `Dnumber` INT,
-    `Dlocation` STRING,
-    PRIMARY KEY (`Dnumber`, `Dlocation`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `company_1`.`dept_locations`;
+CREATE TABLE `company_1`.`dept_locations` (
+    `Dnumber` INTEGER,
+    `Dlocation` VARCHAR(50),
+    PRIMARY KEY (`Dnumber`, `Dlocation`)
 );

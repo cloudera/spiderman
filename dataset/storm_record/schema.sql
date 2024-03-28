@@ -1,30 +1,32 @@
+-- Dialect: MySQL | Database: storm_record | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `storm_record`;
 
-drop table if exists `storm_record`.`storm`;
-CREATE TABLE IF NOT EXISTS `storm_record`.`storm` (
+DROP TABLE IF EXISTS `storm_record`.`storm`;
+CREATE TABLE `storm_record`.`storm` (
     `Storm_ID` INT,
-    `Name` STRING,
-    `Dates_active` STRING,
+    `Name` TEXT,
+    `Dates_active` TEXT,
     `Max_speed` INT,
-    `Damage_millions_USD` DOUBLE,
+    `Damage_millions_USD` REAL,
     `Number_Deaths` INT,
-    PRIMARY KEY (`Storm_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Storm_ID`)
 );
 
-drop table if exists `storm_record`.`region`;
-CREATE TABLE IF NOT EXISTS `storm_record`.`region` (
+DROP TABLE IF EXISTS `storm_record`.`region`;
+CREATE TABLE `storm_record`.`region` (
     `Region_id` INT,
-    `Region_code` STRING,
-    `Region_name` STRING,
-    PRIMARY KEY (`Region_id`) DISABLE NOVALIDATE
+    `Region_code` TEXT,
+    `Region_name` TEXT,
+    PRIMARY KEY (`Region_id`)
 );
 
-drop table if exists `storm_record`.`affected_region`;
-CREATE TABLE IF NOT EXISTS `storm_record`.`affected_region` (
+DROP TABLE IF EXISTS `storm_record`.`affected_region`;
+CREATE TABLE `storm_record`.`affected_region` (
     `Region_id` INT,
     `Storm_ID` INT,
-    `Number_city_affected` DOUBLE,
-    PRIMARY KEY (`Region_id`, `Storm_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Storm_ID`) REFERENCES `storm_record`.`storm` (`Storm_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Region_id`) REFERENCES `storm_record`.`region` (`Region_id`) DISABLE NOVALIDATE
+    `Number_city_affected` REAL,
+    PRIMARY KEY (`Region_id`, `Storm_ID`),
+    FOREIGN KEY (`Storm_ID`) REFERENCES `storm_record`.`storm` (`Storm_ID`),
+    FOREIGN KEY (`Region_id`) REFERENCES `storm_record`.`region` (`Region_id`)
 );

@@ -1,96 +1,99 @@
+-- Dialect: MySQL | Database: dog_kennels | Table Count: 8
+
 CREATE DATABASE IF NOT EXISTS `dog_kennels`;
 
-drop table if exists `dog_kennels`.`Breeds`;
-CREATE TABLE IF NOT EXISTS `dog_kennels`.`Breeds` (
-    `breed_code` STRING,
-    `breed_name` STRING,
-    PRIMARY KEY (`breed_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `dog_kennels`.`Breeds`;
+CREATE TABLE `dog_kennels`.`Breeds` (
+    `breed_code` VARCHAR(10),
+    `breed_name` VARCHAR(80),
+    PRIMARY KEY (`breed_code`)
 );
 
-drop table if exists `dog_kennels`.`Charges`;
-CREATE TABLE IF NOT EXISTS `dog_kennels`.`Charges` (
-    `charge_id` INT,
-    `charge_type` STRING,
+DROP TABLE IF EXISTS `dog_kennels`.`Charges`;
+CREATE TABLE `dog_kennels`.`Charges` (
+    `charge_id` INTEGER,
+    `charge_type` VARCHAR(10),
     `charge_amount` DECIMAL(19,4),
-    PRIMARY KEY (`charge_id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`charge_id`)
 );
 
-drop table if exists `dog_kennels`.`Sizes`;
-CREATE TABLE IF NOT EXISTS `dog_kennels`.`Sizes` (
-    `size_code` STRING,
-    `size_description` STRING,
-    PRIMARY KEY (`size_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `dog_kennels`.`Sizes`;
+CREATE TABLE `dog_kennels`.`Sizes` (
+    `size_code` VARCHAR(10),
+    `size_description` VARCHAR(80),
+    PRIMARY KEY (`size_code`)
 );
 
-drop table if exists `dog_kennels`.`Treatment_Types`;
-CREATE TABLE IF NOT EXISTS `dog_kennels`.`Treatment_Types` (
-    `treatment_type_code` STRING,
-    `treatment_type_description` STRING,
-    PRIMARY KEY (`treatment_type_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `dog_kennels`.`Treatment_Types`;
+CREATE TABLE `dog_kennels`.`Treatment_Types` (
+    `treatment_type_code` VARCHAR(10),
+    `treatment_type_description` VARCHAR(80),
+    PRIMARY KEY (`treatment_type_code`)
 );
 
-drop table if exists `dog_kennels`.`Owners`;
-CREATE TABLE IF NOT EXISTS `dog_kennels`.`Owners` (
-    `owner_id` INT,
-    `first_name` STRING,
-    `last_name` STRING,
-    `street` STRING,
-    `city` STRING,
-    `state` STRING,
-    `zip_code` STRING,
-    `email_address` STRING,
-    `home_phone` STRING,
-    `cell_number` STRING,
-    PRIMARY KEY (`owner_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `dog_kennels`.`Owners`;
+CREATE TABLE `dog_kennels`.`Owners` (
+    `owner_id` INTEGER,
+    `first_name` VARCHAR(50),
+    `last_name` VARCHAR(50),
+    `street` VARCHAR(50),
+    `city` VARCHAR(50),
+    `state` VARCHAR(20),
+    `zip_code` VARCHAR(20),
+    `email_address` VARCHAR(50),
+    `home_phone` VARCHAR(20),
+    `cell_number` VARCHAR(20),
+    PRIMARY KEY (`owner_id`)
 );
 
-drop table if exists `dog_kennels`.`Dogs`;
-CREATE TABLE IF NOT EXISTS `dog_kennels`.`Dogs` (
-    `dog_id` INT,
-    `owner_id` INT NOT NULL,
-    `abandoned_yn` STRING,
-    `breed_code` STRING NOT NULL,
-    `size_code` STRING NOT NULL,
-    `name` STRING,
-    `age` STRING,
-    `date_of_birth` TIMESTAMP,
-    `gender` STRING,
-    `weight` STRING,
-    `date_arrived` TIMESTAMP,
-    `date_adopted` TIMESTAMP,
-    `date_departed` TIMESTAMP,
-    PRIMARY KEY (`dog_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`owner_id`) REFERENCES `dog_kennels`.`Owners` (`owner_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`size_code`) REFERENCES `dog_kennels`.`Sizes` (`size_code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`breed_code`) REFERENCES `dog_kennels`.`Breeds` (`breed_code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `dog_kennels`.`Dogs`;
+CREATE TABLE `dog_kennels`.`Dogs` (
+    `dog_id` INTEGER,
+    `owner_id` INTEGER NOT NULL,
+    `abandoned_yn` VARCHAR(1),
+    `breed_code` VARCHAR(10) NOT NULL,
+    `size_code` VARCHAR(10) NOT NULL,
+    `name` VARCHAR(50),
+    `age` VARCHAR(20),
+    `date_of_birth` DATETIME,
+    `gender` VARCHAR(1),
+    `weight` VARCHAR(20),
+    `date_arrived` DATETIME,
+    `date_adopted` DATETIME,
+    `date_departed` DATETIME,
+    PRIMARY KEY (`dog_id`),
+    FOREIGN KEY (`owner_id`) REFERENCES `dog_kennels`.`Owners` (`owner_id`),
+    FOREIGN KEY (`owner_id`) REFERENCES `dog_kennels`.`Owners` (`owner_id`),
+    FOREIGN KEY (`size_code`) REFERENCES `dog_kennels`.`Sizes` (`size_code`),
+    FOREIGN KEY (`breed_code`) REFERENCES `dog_kennels`.`Breeds` (`breed_code`)
 );
 
-drop table if exists `dog_kennels`.`Professionals`;
-CREATE TABLE IF NOT EXISTS `dog_kennels`.`Professionals` (
-    `professional_id` INT,
-    `role_code` STRING NOT NULL,
-    `first_name` STRING,
-    `street` STRING,
-    `city` STRING,
-    `state` STRING,
-    `zip_code` STRING,
-    `last_name` STRING,
-    `email_address` STRING,
-    `home_phone` STRING,
-    `cell_number` STRING,
-    PRIMARY KEY (`professional_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `dog_kennels`.`Professionals`;
+CREATE TABLE `dog_kennels`.`Professionals` (
+    `professional_id` INTEGER,
+    `role_code` VARCHAR(10) NOT NULL,
+    `first_name` VARCHAR(50),
+    `street` VARCHAR(50),
+    `city` VARCHAR(50),
+    `state` VARCHAR(20),
+    `zip_code` VARCHAR(20),
+    `last_name` VARCHAR(50),
+    `email_address` VARCHAR(50),
+    `home_phone` VARCHAR(20),
+    `cell_number` VARCHAR(20),
+    PRIMARY KEY (`professional_id`)
 );
 
-drop table if exists `dog_kennels`.`Treatments`;
-CREATE TABLE IF NOT EXISTS `dog_kennels`.`Treatments` (
-    `treatment_id` INT,
-    `dog_id` INT NOT NULL,
-    `professional_id` INT NOT NULL,
-    `treatment_type_code` STRING NOT NULL,
-    `date_of_treatment` TIMESTAMP,
+DROP TABLE IF EXISTS `dog_kennels`.`Treatments`;
+CREATE TABLE `dog_kennels`.`Treatments` (
+    `treatment_id` INTEGER,
+    `dog_id` INTEGER NOT NULL,
+    `professional_id` INTEGER NOT NULL,
+    `treatment_type_code` VARCHAR(10) NOT NULL,
+    `date_of_treatment` DATETIME,
     `cost_of_treatment` DECIMAL(19,4),
-    PRIMARY KEY (`treatment_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`dog_id`) REFERENCES `dog_kennels`.`Dogs` (`dog_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`professional_id`) REFERENCES `dog_kennels`.`Professionals` (`professional_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`treatment_type_code`) REFERENCES `dog_kennels`.`Treatment_Types` (`treatment_type_code`) DISABLE NOVALIDATE
+    PRIMARY KEY (`treatment_id`),
+    FOREIGN KEY (`dog_id`) REFERENCES `dog_kennels`.`Dogs` (`dog_id`),
+    FOREIGN KEY (`professional_id`) REFERENCES `dog_kennels`.`Professionals` (`professional_id`),
+    FOREIGN KEY (`treatment_type_code`) REFERENCES `dog_kennels`.`Treatment_Types` (`treatment_type_code`)
 );

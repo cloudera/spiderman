@@ -1,25 +1,27 @@
+-- Dialect: MySQL | Database: perpetrator | Table Count: 2
+
 CREATE DATABASE IF NOT EXISTS `perpetrator`;
 
-drop table if exists `perpetrator`.`people`;
-CREATE TABLE IF NOT EXISTS `perpetrator`.`people` (
+DROP TABLE IF EXISTS `perpetrator`.`people`;
+CREATE TABLE `perpetrator`.`people` (
     `People_ID` INT,
-    `Name` STRING,
-    `Height` DOUBLE,
-    `Weight` DOUBLE,
-    `Home Town` STRING,
-    PRIMARY KEY (`People_ID`) DISABLE NOVALIDATE
+    `Name` TEXT,
+    `Height` REAL,
+    `Weight` REAL,
+    `Home Town` TEXT,
+    PRIMARY KEY (`People_ID`)
 );
 
-drop table if exists `perpetrator`.`perpetrator`;
-CREATE TABLE IF NOT EXISTS `perpetrator`.`perpetrator` (
+DROP TABLE IF EXISTS `perpetrator`.`perpetrator`;
+CREATE TABLE `perpetrator`.`perpetrator` (
     `Perpetrator_ID` INT,
     `People_ID` INT,
-    `Date` STRING,
-    `Year` DOUBLE,
-    `Location` STRING,
-    `Country` STRING,
+    `Date` TEXT,
+    `Year` REAL,
+    `Location` TEXT,
+    `Country` TEXT,
     `Killed` INT,
     `Injured` INT,
-    PRIMARY KEY (`Perpetrator_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`People_ID`) REFERENCES `perpetrator`.`people` (`People_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Perpetrator_ID`),
+    FOREIGN KEY (`People_ID`) REFERENCES `perpetrator`.`people` (`People_ID`)
 );

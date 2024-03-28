@@ -1,32 +1,34 @@
+-- Dialect: MySQL | Database: university_basketball | Table Count: 2
+
 CREATE DATABASE IF NOT EXISTS `university_basketball`;
 
-drop table if exists `university_basketball`.`university`;
-CREATE TABLE IF NOT EXISTS `university_basketball`.`university` (
+DROP TABLE IF EXISTS `university_basketball`.`university`;
+CREATE TABLE `university_basketball`.`university` (
     `School_ID` INT,
-    `School` STRING,
-    `Location` STRING,
-    `Founded` DOUBLE,
-    `Affiliation` STRING,
-    `Enrollment` DOUBLE,
-    `Nickname` STRING,
-    `Primary_conference` STRING,
-    PRIMARY KEY (`School_ID`) DISABLE NOVALIDATE
+    `School` TEXT,
+    `Location` TEXT,
+    `Founded` REAL,
+    `Affiliation` TEXT,
+    `Enrollment` REAL,
+    `Nickname` TEXT,
+    `Primary_conference` TEXT,
+    PRIMARY KEY (`School_ID`)
 );
 
-drop table if exists `university_basketball`.`basketball_match`;
-CREATE TABLE IF NOT EXISTS `university_basketball`.`basketball_match` (
+DROP TABLE IF EXISTS `university_basketball`.`basketball_match`;
+CREATE TABLE `university_basketball`.`basketball_match` (
     `Team_ID` INT,
     `School_ID` INT,
-    `Team_Name` STRING,
-    `ACC_Regular_Season` STRING,
-    `ACC_Percent` STRING,
-    `ACC_Home` STRING,
-    `ACC_Road` STRING,
-    `All_Games` STRING,
+    `Team_Name` TEXT,
+    `ACC_Regular_Season` TEXT,
+    `ACC_Percent` TEXT,
+    `ACC_Home` TEXT,
+    `ACC_Road` TEXT,
+    `All_Games` TEXT,
     `All_Games_Percent` INT,
-    `All_Home` STRING,
-    `All_Road` STRING,
-    `All_Neutral` STRING,
-    PRIMARY KEY (`Team_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`School_ID`) REFERENCES `university_basketball`.`university` (`School_ID`) DISABLE NOVALIDATE
+    `All_Home` TEXT,
+    `All_Road` TEXT,
+    `All_Neutral` TEXT,
+    PRIMARY KEY (`Team_ID`),
+    FOREIGN KEY (`School_ID`) REFERENCES `university_basketball`.`university` (`School_ID`)
 );

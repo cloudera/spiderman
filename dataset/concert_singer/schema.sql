@@ -1,45 +1,47 @@
+-- Dialect: MySQL | Database: concert_singer | Table Count: 4
+
 CREATE DATABASE IF NOT EXISTS `concert_singer`;
 
-drop table if exists `concert_singer`.`stadium`;
-CREATE TABLE IF NOT EXISTS `concert_singer`.`stadium` (
+DROP TABLE IF EXISTS `concert_singer`.`stadium`;
+CREATE TABLE `concert_singer`.`stadium` (
     `Stadium_ID` INT,
-    `Location` STRING,
-    `Name` STRING,
+    `Location` TEXT,
+    `Name` TEXT,
     `Capacity` INT,
     `Highest` INT,
     `Lowest` INT,
     `Average` INT,
-    PRIMARY KEY (`Stadium_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Stadium_ID`)
 );
 
-drop table if exists `concert_singer`.`singer`;
-CREATE TABLE IF NOT EXISTS `concert_singer`.`singer` (
+DROP TABLE IF EXISTS `concert_singer`.`singer`;
+CREATE TABLE `concert_singer`.`singer` (
     `Singer_ID` INT,
-    `Name` STRING,
-    `Country` STRING,
-    `Song_Name` STRING,
-    `Song_release_year` STRING,
+    `Name` TEXT,
+    `Country` TEXT,
+    `Song_Name` TEXT,
+    `Song_release_year` TEXT,
     `Age` INT,
-    `Is_male` BOOLEAN,
-    PRIMARY KEY (`Singer_ID`) DISABLE NOVALIDATE
+    `Is_male` BOOL,
+    PRIMARY KEY (`Singer_ID`)
 );
 
-drop table if exists `concert_singer`.`concert`;
-CREATE TABLE IF NOT EXISTS `concert_singer`.`concert` (
+DROP TABLE IF EXISTS `concert_singer`.`concert`;
+CREATE TABLE `concert_singer`.`concert` (
     `concert_ID` INT,
-    `concert_Name` STRING,
-    `Theme` STRING,
+    `concert_Name` TEXT,
+    `Theme` TEXT,
     `Stadium_ID` INT,
-    `Year` STRING,
-    PRIMARY KEY (`concert_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Stadium_ID`) REFERENCES `concert_singer`.`stadium` (`Stadium_ID`) DISABLE NOVALIDATE
+    `Year` TEXT,
+    PRIMARY KEY (`concert_ID`),
+    FOREIGN KEY (`Stadium_ID`) REFERENCES `concert_singer`.`stadium` (`Stadium_ID`)
 );
 
-drop table if exists `concert_singer`.`singer_in_concert`;
-CREATE TABLE IF NOT EXISTS `concert_singer`.`singer_in_concert` (
+DROP TABLE IF EXISTS `concert_singer`.`singer_in_concert`;
+CREATE TABLE `concert_singer`.`singer_in_concert` (
     `concert_ID` INT,
     `Singer_ID` INT,
-    PRIMARY KEY (`concert_ID`, `Singer_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Singer_ID`) REFERENCES `concert_singer`.`singer` (`Singer_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`concert_ID`) REFERENCES `concert_singer`.`concert` (`concert_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`concert_ID`, `Singer_ID`),
+    FOREIGN KEY (`Singer_ID`) REFERENCES `concert_singer`.`singer` (`Singer_ID`),
+    FOREIGN KEY (`concert_ID`) REFERENCES `concert_singer`.`concert` (`concert_ID`)
 );

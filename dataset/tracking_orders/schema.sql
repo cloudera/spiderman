@@ -1,69 +1,71 @@
+-- Dialect: MySQL | Database: tracking_orders | Table Count: 7
+
 CREATE DATABASE IF NOT EXISTS `tracking_orders`;
 
-drop table if exists `tracking_orders`.`Customers`;
-CREATE TABLE IF NOT EXISTS `tracking_orders`.`Customers` (
-    `customer_id` INT,
-    `customer_name` STRING,
-    `customer_details` STRING,
-    PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_orders`.`Customers`;
+CREATE TABLE `tracking_orders`.`Customers` (
+    `customer_id` INTEGER,
+    `customer_name` VARCHAR(80),
+    `customer_details` VARCHAR(255),
+    PRIMARY KEY (`customer_id`)
 );
 
-drop table if exists `tracking_orders`.`Invoices`;
-CREATE TABLE IF NOT EXISTS `tracking_orders`.`Invoices` (
-    `invoice_number` INT,
-    `invoice_date` TIMESTAMP,
-    `invoice_details` STRING,
-    PRIMARY KEY (`invoice_number`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_orders`.`Invoices`;
+CREATE TABLE `tracking_orders`.`Invoices` (
+    `invoice_number` INTEGER,
+    `invoice_date` DATETIME,
+    `invoice_details` VARCHAR(255),
+    PRIMARY KEY (`invoice_number`)
 );
 
-drop table if exists `tracking_orders`.`Orders`;
-CREATE TABLE IF NOT EXISTS `tracking_orders`.`Orders` (
-    `order_id` INT,
-    `customer_id` INT NOT NULL,
-    `order_status` STRING NOT NULL,
-    `date_order_placed` TIMESTAMP NOT NULL,
-    `order_details` STRING,
-    PRIMARY KEY (`order_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`customer_id`) REFERENCES `tracking_orders`.`Customers` (`customer_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_orders`.`Orders`;
+CREATE TABLE `tracking_orders`.`Orders` (
+    `order_id` INTEGER,
+    `customer_id` INTEGER NOT NULL,
+    `order_status` VARCHAR(10) NOT NULL,
+    `date_order_placed` DATETIME NOT NULL,
+    `order_details` VARCHAR(255),
+    PRIMARY KEY (`order_id`),
+    FOREIGN KEY (`customer_id`) REFERENCES `tracking_orders`.`Customers` (`customer_id`)
 );
 
-drop table if exists `tracking_orders`.`Products`;
-CREATE TABLE IF NOT EXISTS `tracking_orders`.`Products` (
-    `product_id` INT,
-    `product_name` STRING,
-    `product_details` STRING,
-    PRIMARY KEY (`product_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_orders`.`Products`;
+CREATE TABLE `tracking_orders`.`Products` (
+    `product_id` INTEGER,
+    `product_name` VARCHAR(80),
+    `product_details` VARCHAR(255),
+    PRIMARY KEY (`product_id`)
 );
 
-drop table if exists `tracking_orders`.`Order_Items`;
-CREATE TABLE IF NOT EXISTS `tracking_orders`.`Order_Items` (
-    `order_item_id` INT,
-    `product_id` INT NOT NULL,
-    `order_id` INT NOT NULL,
-    `order_item_status` STRING NOT NULL,
-    `order_item_details` STRING,
-    PRIMARY KEY (`order_item_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`product_id`) REFERENCES `tracking_orders`.`Products` (`product_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`order_id`) REFERENCES `tracking_orders`.`Orders` (`order_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_orders`.`Order_Items`;
+CREATE TABLE `tracking_orders`.`Order_Items` (
+    `order_item_id` INTEGER,
+    `product_id` INTEGER NOT NULL,
+    `order_id` INTEGER NOT NULL,
+    `order_item_status` VARCHAR(10) NOT NULL,
+    `order_item_details` VARCHAR(255),
+    PRIMARY KEY (`order_item_id`),
+    FOREIGN KEY (`product_id`) REFERENCES `tracking_orders`.`Products` (`product_id`),
+    FOREIGN KEY (`order_id`) REFERENCES `tracking_orders`.`Orders` (`order_id`)
 );
 
-drop table if exists `tracking_orders`.`Shipments`;
-CREATE TABLE IF NOT EXISTS `tracking_orders`.`Shipments` (
-    `shipment_id` INT,
-    `order_id` INT NOT NULL,
-    `invoice_number` INT NOT NULL,
-    `shipment_tracking_number` STRING,
-    `shipment_date` TIMESTAMP,
-    `other_shipment_details` STRING,
-    PRIMARY KEY (`shipment_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`invoice_number`) REFERENCES `tracking_orders`.`Invoices` (`invoice_number`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`order_id`) REFERENCES `tracking_orders`.`Orders` (`order_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_orders`.`Shipments`;
+CREATE TABLE `tracking_orders`.`Shipments` (
+    `shipment_id` INTEGER,
+    `order_id` INTEGER NOT NULL,
+    `invoice_number` INTEGER NOT NULL,
+    `shipment_tracking_number` VARCHAR(80),
+    `shipment_date` DATETIME,
+    `other_shipment_details` VARCHAR(255),
+    PRIMARY KEY (`shipment_id`),
+    FOREIGN KEY (`invoice_number`) REFERENCES `tracking_orders`.`Invoices` (`invoice_number`),
+    FOREIGN KEY (`order_id`) REFERENCES `tracking_orders`.`Orders` (`order_id`)
 );
 
-drop table if exists `tracking_orders`.`Shipment_Items`;
-CREATE TABLE IF NOT EXISTS `tracking_orders`.`Shipment_Items` (
-    `shipment_id` INT NOT NULL,
-    `order_item_id` INT NOT NULL,
-    FOREIGN KEY (`shipment_id`) REFERENCES `tracking_orders`.`Shipments` (`shipment_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`order_item_id`) REFERENCES `tracking_orders`.`Order_Items` (`order_item_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tracking_orders`.`Shipment_Items`;
+CREATE TABLE `tracking_orders`.`Shipment_Items` (
+    `shipment_id` INTEGER NOT NULL,
+    `order_item_id` INTEGER NOT NULL,
+    FOREIGN KEY (`shipment_id`) REFERENCES `tracking_orders`.`Shipments` (`shipment_id`),
+    FOREIGN KEY (`order_item_id`) REFERENCES `tracking_orders`.`Order_Items` (`order_item_id`)
 );

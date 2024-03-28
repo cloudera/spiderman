@@ -1,57 +1,59 @@
+-- Dialect: MySQL | Database: sports_competition | Table Count: 5
+
 CREATE DATABASE IF NOT EXISTS `sports_competition`;
 
-drop table if exists `sports_competition`.`club`;
-CREATE TABLE IF NOT EXISTS `sports_competition`.`club` (
+DROP TABLE IF EXISTS `sports_competition`.`club`;
+CREATE TABLE `sports_competition`.`club` (
     `Club_ID` INT,
-    `name` STRING,
-    `Region` STRING,
-    `Start_year` STRING,
-    PRIMARY KEY (`Club_ID`) DISABLE NOVALIDATE
+    `name` TEXT,
+    `Region` TEXT,
+    `Start_year` TEXT,
+    PRIMARY KEY (`Club_ID`)
 );
 
-drop table if exists `sports_competition`.`club_rank`;
-CREATE TABLE IF NOT EXISTS `sports_competition`.`club_rank` (
-    `Rank` DOUBLE,
+DROP TABLE IF EXISTS `sports_competition`.`club_rank`;
+CREATE TABLE `sports_competition`.`club_rank` (
+    `Rank` REAL,
     `Club_ID` INT,
-    `Gold` DOUBLE,
-    `Silver` DOUBLE,
-    `Bronze` DOUBLE,
-    `Total` DOUBLE,
-    PRIMARY KEY (`Rank`, `Club_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Club_ID`) REFERENCES `sports_competition`.`club` (`Club_ID`) DISABLE NOVALIDATE
+    `Gold` REAL,
+    `Silver` REAL,
+    `Bronze` REAL,
+    `Total` REAL,
+    PRIMARY KEY (`Rank`, `Club_ID`),
+    FOREIGN KEY (`Club_ID`) REFERENCES `sports_competition`.`club` (`Club_ID`)
 );
 
-drop table if exists `sports_competition`.`player`;
-CREATE TABLE IF NOT EXISTS `sports_competition`.`player` (
+DROP TABLE IF EXISTS `sports_competition`.`player`;
+CREATE TABLE `sports_competition`.`player` (
     `Player_ID` INT,
-    `name` STRING,
-    `Position` STRING,
+    `name` TEXT,
+    `Position` TEXT,
     `Club_ID` INT,
-    `Apps` DOUBLE,
-    `Tries` DOUBLE,
-    `Goals` STRING,
-    `Points` DOUBLE,
-    PRIMARY KEY (`Player_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Club_ID`) REFERENCES `sports_competition`.`club` (`Club_ID`) DISABLE NOVALIDATE
+    `Apps` REAL,
+    `Tries` REAL,
+    `Goals` TEXT,
+    `Points` REAL,
+    PRIMARY KEY (`Player_ID`),
+    FOREIGN KEY (`Club_ID`) REFERENCES `sports_competition`.`club` (`Club_ID`)
 );
 
-drop table if exists `sports_competition`.`competition`;
-CREATE TABLE IF NOT EXISTS `sports_competition`.`competition` (
+DROP TABLE IF EXISTS `sports_competition`.`competition`;
+CREATE TABLE `sports_competition`.`competition` (
     `Competition_ID` INT,
-    `Year` DOUBLE,
-    `Competition_type` STRING,
-    `Country` STRING,
-    PRIMARY KEY (`Competition_ID`) DISABLE NOVALIDATE
+    `Year` REAL,
+    `Competition_type` TEXT,
+    `Country` TEXT,
+    PRIMARY KEY (`Competition_ID`)
 );
 
-drop table if exists `sports_competition`.`competition_result`;
-CREATE TABLE IF NOT EXISTS `sports_competition`.`competition_result` (
+DROP TABLE IF EXISTS `sports_competition`.`competition_result`;
+CREATE TABLE `sports_competition`.`competition_result` (
     `Competition_ID` INT,
     `Club_ID_1` INT,
     `Club_ID_2` INT,
-    `Score` STRING,
-    PRIMARY KEY (`Competition_ID`, `Club_ID_1`, `Club_ID_2`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Competition_ID`) REFERENCES `sports_competition`.`competition` (`Competition_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Club_ID_2`) REFERENCES `sports_competition`.`club` (`Club_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Club_ID_1`) REFERENCES `sports_competition`.`club` (`Club_ID`) DISABLE NOVALIDATE
+    `Score` TEXT,
+    PRIMARY KEY (`Competition_ID`, `Club_ID_1`, `Club_ID_2`),
+    FOREIGN KEY (`Competition_ID`) REFERENCES `sports_competition`.`competition` (`Competition_ID`),
+    FOREIGN KEY (`Club_ID_2`) REFERENCES `sports_competition`.`club` (`Club_ID`),
+    FOREIGN KEY (`Club_ID_1`) REFERENCES `sports_competition`.`club` (`Club_ID`)
 );

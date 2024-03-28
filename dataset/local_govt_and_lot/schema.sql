@@ -1,115 +1,117 @@
+-- Dialect: MySQL | Database: local_govt_and_lot | Table Count: 11
+
 CREATE DATABASE IF NOT EXISTS `local_govt_and_lot`;
 
-drop table if exists `local_govt_and_lot`.`Customers`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Customers` (
-    `customer_id` INT NOT NULL,
-    `customer_details` STRING,
-    PRIMARY KEY (`customer_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Customers`;
+CREATE TABLE `local_govt_and_lot`.`Customers` (
+    `customer_id` INTEGER NOT NULL,
+    `customer_details` VARCHAR(255),
+    PRIMARY KEY (`customer_id`)
 );
 
-drop table if exists `local_govt_and_lot`.`Properties`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Properties` (
-    `property_id` INT NOT NULL,
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Properties`;
+CREATE TABLE `local_govt_and_lot`.`Properties` (
+    `property_id` INTEGER NOT NULL,
     `property_type_code` CHAR(15) NOT NULL,
-    `property_address` STRING,
-    `other_details` STRING,
-    PRIMARY KEY (`property_id`) DISABLE NOVALIDATE
+    `property_address` VARCHAR(255),
+    `other_details` VARCHAR(255),
+    PRIMARY KEY (`property_id`)
 );
 
-drop table if exists `local_govt_and_lot`.`Residents`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Residents` (
-    `resident_id` INT NOT NULL,
-    `property_id` INT NOT NULL,
-    `date_moved_in` TIMESTAMP NOT NULL,
-    `date_moved_out` TIMESTAMP NOT NULL,
-    `other_details` STRING,
-    PRIMARY KEY (`resident_id`, `property_id`, `date_moved_in`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`property_id`) REFERENCES `local_govt_and_lot`.`Properties` (`property_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Residents`;
+CREATE TABLE `local_govt_and_lot`.`Residents` (
+    `resident_id` INTEGER NOT NULL,
+    `property_id` INTEGER NOT NULL,
+    `date_moved_in` DATETIME NOT NULL,
+    `date_moved_out` DATETIME NOT NULL,
+    `other_details` VARCHAR(255),
+    PRIMARY KEY (`resident_id`, `property_id`, `date_moved_in`),
+    FOREIGN KEY (`property_id`) REFERENCES `local_govt_and_lot`.`Properties` (`property_id`)
 );
 
-drop table if exists `local_govt_and_lot`.`Organizations`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Organizations` (
-    `organization_id` INT NOT NULL,
-    `parent_organization_id` INT,
-    `organization_details` STRING,
-    PRIMARY KEY (`organization_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Organizations`;
+CREATE TABLE `local_govt_and_lot`.`Organizations` (
+    `organization_id` INTEGER NOT NULL,
+    `parent_organization_id` INTEGER,
+    `organization_details` VARCHAR(255),
+    PRIMARY KEY (`organization_id`)
 );
 
-drop table if exists `local_govt_and_lot`.`Services`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Services` (
-    `service_id` INT NOT NULL,
-    `organization_id` INT NOT NULL,
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Services`;
+CREATE TABLE `local_govt_and_lot`.`Services` (
+    `service_id` INTEGER NOT NULL,
+    `organization_id` INTEGER NOT NULL,
     `service_type_code` CHAR(15) NOT NULL,
-    `service_details` STRING,
-    PRIMARY KEY (`service_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`organization_id`) REFERENCES `local_govt_and_lot`.`Organizations` (`organization_id`) DISABLE NOVALIDATE
+    `service_details` VARCHAR(255),
+    PRIMARY KEY (`service_id`),
+    FOREIGN KEY (`organization_id`) REFERENCES `local_govt_and_lot`.`Organizations` (`organization_id`)
 );
 
-drop table if exists `local_govt_and_lot`.`Residents_Services`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Residents_Services` (
-    `resident_id` INT NOT NULL,
-    `service_id` INT NOT NULL,
-    `date_moved_in` TIMESTAMP,
-    `property_id` INT,
-    `date_requested` TIMESTAMP,
-    `date_provided` TIMESTAMP,
-    `other_details` STRING,
-    PRIMARY KEY (`resident_id`, `service_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`resident_id`, `property_id`, `date_moved_in`) REFERENCES `local_govt_and_lot`.`Residents` (`resident_id`, `property_id`, `date_moved_in`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`service_id`) REFERENCES `local_govt_and_lot`.`Services` (`service_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Residents_Services`;
+CREATE TABLE `local_govt_and_lot`.`Residents_Services` (
+    `resident_id` INTEGER NOT NULL,
+    `service_id` INTEGER NOT NULL,
+    `date_moved_in` DATETIME,
+    `property_id` INTEGER,
+    `date_requested` DATETIME,
+    `date_provided` DATETIME,
+    `other_details` VARCHAR(255),
+    PRIMARY KEY (`resident_id`, `service_id`),
+    FOREIGN KEY (`resident_id`, `property_id`, `date_moved_in`) REFERENCES `local_govt_and_lot`.`Residents` (`resident_id`, `property_id`, `date_moved_in`),
+    FOREIGN KEY (`service_id`) REFERENCES `local_govt_and_lot`.`Services` (`service_id`)
 );
 
-drop table if exists `local_govt_and_lot`.`Things`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Things` (
-    `thing_id` INT NOT NULL,
-    `organization_id` INT NOT NULL,
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Things`;
+CREATE TABLE `local_govt_and_lot`.`Things` (
+    `thing_id` INTEGER NOT NULL,
+    `organization_id` INTEGER NOT NULL,
     `Type_of_Thing_Code` CHAR(15) NOT NULL,
     `service_type_code` CHAR(10) NOT NULL,
-    `service_details` STRING,
-    PRIMARY KEY (`thing_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`organization_id`) REFERENCES `local_govt_and_lot`.`Organizations` (`organization_id`) DISABLE NOVALIDATE
+    `service_details` VARCHAR(255),
+    PRIMARY KEY (`thing_id`),
+    FOREIGN KEY (`organization_id`) REFERENCES `local_govt_and_lot`.`Organizations` (`organization_id`)
 );
 
-drop table if exists `local_govt_and_lot`.`Customer_Events`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Customer_Events` (
-    `Customer_Event_ID` INT NOT NULL,
-    `customer_id` INT,
-    `date_moved_in` TIMESTAMP,
-    `property_id` INT,
-    `resident_id` INT,
-    `thing_id` INT NOT NULL,
-    PRIMARY KEY (`Customer_Event_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`resident_id`, `property_id`, `date_moved_in`) REFERENCES `local_govt_and_lot`.`Residents` (`resident_id`, `property_id`, `date_moved_in`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`customer_id`) REFERENCES `local_govt_and_lot`.`Customers` (`customer_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Customer_Events`;
+CREATE TABLE `local_govt_and_lot`.`Customer_Events` (
+    `Customer_Event_ID` INTEGER NOT NULL,
+    `customer_id` INTEGER,
+    `date_moved_in` DATETIME,
+    `property_id` INTEGER,
+    `resident_id` INTEGER,
+    `thing_id` INTEGER NOT NULL,
+    PRIMARY KEY (`Customer_Event_ID`),
+    FOREIGN KEY (`resident_id`, `property_id`, `date_moved_in`) REFERENCES `local_govt_and_lot`.`Residents` (`resident_id`, `property_id`, `date_moved_in`),
+    FOREIGN KEY (`customer_id`) REFERENCES `local_govt_and_lot`.`Customers` (`customer_id`),
+    FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`)
 );
 
-drop table if exists `local_govt_and_lot`.`Customer_Event_Notes`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Customer_Event_Notes` (
-    `Customer_Event_Note_ID` INT NOT NULL,
-    `Customer_Event_ID` INT NOT NULL,
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Customer_Event_Notes`;
+CREATE TABLE `local_govt_and_lot`.`Customer_Event_Notes` (
+    `Customer_Event_Note_ID` INTEGER NOT NULL,
+    `Customer_Event_ID` INTEGER NOT NULL,
     `service_type_code` CHAR(15) NOT NULL,
-    `resident_id` INT NOT NULL,
-    `property_id` INT NOT NULL,
-    `date_moved_in` TIMESTAMP NOT NULL,
-    PRIMARY KEY (`Customer_Event_Note_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Customer_Event_ID`) REFERENCES `local_govt_and_lot`.`Customer_Events` (`Customer_Event_ID`) DISABLE NOVALIDATE
+    `resident_id` INTEGER NOT NULL,
+    `property_id` INTEGER NOT NULL,
+    `date_moved_in` DATETIME NOT NULL,
+    PRIMARY KEY (`Customer_Event_Note_ID`),
+    FOREIGN KEY (`Customer_Event_ID`) REFERENCES `local_govt_and_lot`.`Customer_Events` (`Customer_Event_ID`)
 );
 
-drop table if exists `local_govt_and_lot`.`Timed_Status_of_Things`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Timed_Status_of_Things` (
-    `thing_id` INT NOT NULL,
-    `Date_and_Date` TIMESTAMP NOT NULL,
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Timed_Status_of_Things`;
+CREATE TABLE `local_govt_and_lot`.`Timed_Status_of_Things` (
+    `thing_id` INTEGER NOT NULL,
+    `Date_and_Date` DATETIME NOT NULL,
     `Status_of_Thing_Code` CHAR(15) NOT NULL,
-    PRIMARY KEY (`thing_id`, `Date_and_Date`, `Status_of_Thing_Code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`thing_id`, `Date_and_Date`, `Status_of_Thing_Code`),
+    FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`)
 );
 
-drop table if exists `local_govt_and_lot`.`Timed_Locations_of_Things`;
-CREATE TABLE IF NOT EXISTS `local_govt_and_lot`.`Timed_Locations_of_Things` (
-    `thing_id` INT NOT NULL,
-    `Date_and_Time` TIMESTAMP NOT NULL,
+DROP TABLE IF EXISTS `local_govt_and_lot`.`Timed_Locations_of_Things`;
+CREATE TABLE `local_govt_and_lot`.`Timed_Locations_of_Things` (
+    `thing_id` INTEGER NOT NULL,
+    `Date_and_Time` DATETIME NOT NULL,
     `Location_Code` CHAR(15) NOT NULL,
-    PRIMARY KEY (`thing_id`, `Date_and_Time`, `Location_Code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`thing_id`, `Date_and_Time`, `Location_Code`),
+    FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`)
 );

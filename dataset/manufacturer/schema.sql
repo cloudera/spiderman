@@ -1,30 +1,32 @@
+-- Dialect: MySQL | Database: manufacturer | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `manufacturer`;
 
-drop table if exists `manufacturer`.`manufacturer`;
-CREATE TABLE IF NOT EXISTS `manufacturer`.`manufacturer` (
+DROP TABLE IF EXISTS `manufacturer`.`manufacturer`;
+CREATE TABLE `manufacturer`.`manufacturer` (
     `Manufacturer_ID` INT,
-    `Open_Year` DOUBLE,
-    `Name` STRING,
+    `Open_Year` REAL,
+    `Name` TEXT,
     `Num_of_Factories` INT,
     `Num_of_Shops` INT,
-    PRIMARY KEY (`Manufacturer_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Manufacturer_ID`)
 );
 
-drop table if exists `manufacturer`.`furniture`;
-CREATE TABLE IF NOT EXISTS `manufacturer`.`furniture` (
+DROP TABLE IF EXISTS `manufacturer`.`furniture`;
+CREATE TABLE `manufacturer`.`furniture` (
     `Furniture_ID` INT,
-    `Name` STRING,
+    `Name` TEXT,
     `Num_of_Component` INT,
-    `Market_Rate` DOUBLE,
-    PRIMARY KEY (`Furniture_ID`) DISABLE NOVALIDATE
+    `Market_Rate` REAL,
+    PRIMARY KEY (`Furniture_ID`)
 );
 
-drop table if exists `manufacturer`.`furniture_manufacte`;
-CREATE TABLE IF NOT EXISTS `manufacturer`.`furniture_manufacte` (
+DROP TABLE IF EXISTS `manufacturer`.`furniture_manufacte`;
+CREATE TABLE `manufacturer`.`furniture_manufacte` (
     `Manufacturer_ID` INT,
     `Furniture_ID` INT,
-    `Price_in_Dollar` DOUBLE,
-    PRIMARY KEY (`Manufacturer_ID`, `Furniture_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Furniture_ID`) REFERENCES `manufacturer`.`furniture` (`Furniture_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Manufacturer_ID`) REFERENCES `manufacturer`.`manufacturer` (`Manufacturer_ID`) DISABLE NOVALIDATE
+    `Price_in_Dollar` REAL,
+    PRIMARY KEY (`Manufacturer_ID`, `Furniture_ID`),
+    FOREIGN KEY (`Furniture_ID`) REFERENCES `manufacturer`.`furniture` (`Furniture_ID`),
+    FOREIGN KEY (`Manufacturer_ID`) REFERENCES `manufacturer`.`manufacturer` (`Manufacturer_ID`)
 );

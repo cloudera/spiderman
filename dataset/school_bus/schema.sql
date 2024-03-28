@@ -1,32 +1,34 @@
+-- Dialect: MySQL | Database: school_bus | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `school_bus`;
 
-drop table if exists `school_bus`.`driver`;
-CREATE TABLE IF NOT EXISTS `school_bus`.`driver` (
+DROP TABLE IF EXISTS `school_bus`.`driver`;
+CREATE TABLE `school_bus`.`driver` (
     `Driver_ID` INT,
-    `Name` STRING,
-    `Party` STRING,
-    `Home_city` STRING,
+    `Name` TEXT,
+    `Party` TEXT,
+    `Home_city` TEXT,
     `Age` INT,
-    PRIMARY KEY (`Driver_ID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Driver_ID`)
 );
 
-drop table if exists `school_bus`.`school`;
-CREATE TABLE IF NOT EXISTS `school_bus`.`school` (
+DROP TABLE IF EXISTS `school_bus`.`school`;
+CREATE TABLE `school_bus`.`school` (
     `School_ID` INT,
-    `Grade` STRING,
-    `School` STRING,
-    `Location` STRING,
-    `Type` STRING,
-    PRIMARY KEY (`School_ID`) DISABLE NOVALIDATE
+    `Grade` TEXT,
+    `School` TEXT,
+    `Location` TEXT,
+    `Type` TEXT,
+    PRIMARY KEY (`School_ID`)
 );
 
-drop table if exists `school_bus`.`school_bus`;
-CREATE TABLE IF NOT EXISTS `school_bus`.`school_bus` (
+DROP TABLE IF EXISTS `school_bus`.`school_bus`;
+CREATE TABLE `school_bus`.`school_bus` (
     `School_ID` INT,
     `Driver_ID` INT,
     `Years_Working` INT,
-    `If_full_time` BOOLEAN,
-    PRIMARY KEY (`School_ID`, `Driver_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Driver_ID`) REFERENCES `school_bus`.`driver` (`Driver_ID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`School_ID`) REFERENCES `school_bus`.`school` (`School_ID`) DISABLE NOVALIDATE
+    `If_full_time` BOOL,
+    PRIMARY KEY (`School_ID`, `Driver_ID`),
+    FOREIGN KEY (`Driver_ID`) REFERENCES `school_bus`.`driver` (`Driver_ID`),
+    FOREIGN KEY (`School_ID`) REFERENCES `school_bus`.`school` (`School_ID`)
 );

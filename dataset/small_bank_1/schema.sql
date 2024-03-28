@@ -1,24 +1,26 @@
+-- Dialect: MySQL | Database: small_bank_1 | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `small_bank_1`;
 
-drop table if exists `small_bank_1`.`ACCOUNTS`;
-CREATE TABLE IF NOT EXISTS `small_bank_1`.`ACCOUNTS` (
+DROP TABLE IF EXISTS `small_bank_1`.`ACCOUNTS`;
+CREATE TABLE `small_bank_1`.`ACCOUNTS` (
     `custid` BIGINT NOT NULL,
-    `name` STRING NOT NULL,
-    PRIMARY KEY (`custid`) DISABLE NOVALIDATE
+    `name` VARCHAR(64) NOT NULL,
+    PRIMARY KEY (`custid`)
 );
 
-drop table if exists `small_bank_1`.`SAVINGS`;
-CREATE TABLE IF NOT EXISTS `small_bank_1`.`SAVINGS` (
+DROP TABLE IF EXISTS `small_bank_1`.`SAVINGS`;
+CREATE TABLE `small_bank_1`.`SAVINGS` (
     `custid` BIGINT NOT NULL,
-    `balance` DECIMAL NOT NULL,
-    PRIMARY KEY (`custid`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`custid`) REFERENCES `small_bank_1`.`ACCOUNTS` (`custid`) DISABLE NOVALIDATE
+    `balance` FLOAT NOT NULL,
+    PRIMARY KEY (`custid`),
+    FOREIGN KEY (`custid`) REFERENCES `small_bank_1`.`ACCOUNTS` (`custid`)
 );
 
-drop table if exists `small_bank_1`.`CHECKING`;
-CREATE TABLE IF NOT EXISTS `small_bank_1`.`CHECKING` (
+DROP TABLE IF EXISTS `small_bank_1`.`CHECKING`;
+CREATE TABLE `small_bank_1`.`CHECKING` (
     `custid` BIGINT NOT NULL,
-    `balance` DECIMAL NOT NULL,
-    PRIMARY KEY (`custid`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`custid`) REFERENCES `small_bank_1`.`ACCOUNTS` (`custid`) DISABLE NOVALIDATE
+    `balance` FLOAT NOT NULL,
+    PRIMARY KEY (`custid`),
+    FOREIGN KEY (`custid`) REFERENCES `small_bank_1`.`ACCOUNTS` (`custid`)
 );

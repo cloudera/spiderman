@@ -1,167 +1,169 @@
+-- Dialect: MySQL | Database: hospital_1 | Table Count: 15
+
 CREATE DATABASE IF NOT EXISTS `hospital_1`;
 
-drop table if exists `hospital_1`.`Physician`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Physician` (
-    `EmployeeID` INT NOT NULL,
-    `Name` STRING NOT NULL,
-    `Position` STRING NOT NULL,
-    `SSN` INT NOT NULL,
-    PRIMARY KEY (`EmployeeID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Physician`;
+CREATE TABLE `hospital_1`.`Physician` (
+    `EmployeeID` INTEGER NOT NULL,
+    `Name` VARCHAR(30) NOT NULL,
+    `Position` VARCHAR(30) NOT NULL,
+    `SSN` INTEGER NOT NULL,
+    PRIMARY KEY (`EmployeeID`)
 );
 
-drop table if exists `hospital_1`.`Department`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Department` (
-    `DepartmentID` INT NOT NULL,
-    `Name` STRING NOT NULL,
-    `Head` INT NOT NULL,
-    PRIMARY KEY (`DepartmentID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Head`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Department`;
+CREATE TABLE `hospital_1`.`Department` (
+    `DepartmentID` INTEGER NOT NULL,
+    `Name` VARCHAR(30) NOT NULL,
+    `Head` INTEGER NOT NULL,
+    PRIMARY KEY (`DepartmentID`),
+    FOREIGN KEY (`Head`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`)
 );
 
-drop table if exists `hospital_1`.`Affiliated_With`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Affiliated_With` (
-    `Physician` INT NOT NULL,
-    `Department` INT NOT NULL,
+DROP TABLE IF EXISTS `hospital_1`.`Affiliated_With`;
+CREATE TABLE `hospital_1`.`Affiliated_With` (
+    `Physician` INTEGER NOT NULL,
+    `Department` INTEGER NOT NULL,
     `PrimaryAffiliation` BOOLEAN NOT NULL,
-    PRIMARY KEY (`Physician`, `Department`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Department`) REFERENCES `hospital_1`.`Department` (`DepartmentID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE
+    PRIMARY KEY (`Physician`, `Department`),
+    FOREIGN KEY (`Department`) REFERENCES `hospital_1`.`Department` (`DepartmentID`),
+    FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`)
 );
 
-drop table if exists `hospital_1`.`Procedures`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Procedures` (
-    `Code` INT NOT NULL,
-    `Name` STRING NOT NULL,
-    `Cost` DOUBLE NOT NULL,
-    PRIMARY KEY (`Code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Procedures`;
+CREATE TABLE `hospital_1`.`Procedures` (
+    `Code` INTEGER NOT NULL,
+    `Name` VARCHAR(30) NOT NULL,
+    `Cost` REAL NOT NULL,
+    PRIMARY KEY (`Code`)
 );
 
-drop table if exists `hospital_1`.`Trained_In`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Trained_In` (
-    `Physician` INT NOT NULL,
-    `Treatment` INT NOT NULL,
-    `CertificationDate` TIMESTAMP NOT NULL,
-    `CertificationExpires` TIMESTAMP NOT NULL,
-    PRIMARY KEY (`Physician`, `Treatment`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Treatment`) REFERENCES `hospital_1`.`Procedures` (`Code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Trained_In`;
+CREATE TABLE `hospital_1`.`Trained_In` (
+    `Physician` INTEGER NOT NULL,
+    `Treatment` INTEGER NOT NULL,
+    `CertificationDate` DATETIME NOT NULL,
+    `CertificationExpires` DATETIME NOT NULL,
+    PRIMARY KEY (`Physician`, `Treatment`),
+    FOREIGN KEY (`Treatment`) REFERENCES `hospital_1`.`Procedures` (`Code`),
+    FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`)
 );
 
-drop table if exists `hospital_1`.`Patient`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Patient` (
-    `SSN` INT NOT NULL,
-    `Name` STRING NOT NULL,
-    `Address` STRING NOT NULL,
-    `Phone` STRING NOT NULL,
-    `InsuranceID` INT NOT NULL,
-    `PCP` INT NOT NULL,
-    PRIMARY KEY (`SSN`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`PCP`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Patient`;
+CREATE TABLE `hospital_1`.`Patient` (
+    `SSN` INTEGER NOT NULL,
+    `Name` VARCHAR(30) NOT NULL,
+    `Address` VARCHAR(30) NOT NULL,
+    `Phone` VARCHAR(30) NOT NULL,
+    `InsuranceID` INTEGER NOT NULL,
+    `PCP` INTEGER NOT NULL,
+    PRIMARY KEY (`SSN`),
+    FOREIGN KEY (`PCP`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`)
 );
 
-drop table if exists `hospital_1`.`Nurse`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Nurse` (
-    `EmployeeID` INT NOT NULL,
-    `Name` STRING NOT NULL,
-    `Position` STRING NOT NULL,
+DROP TABLE IF EXISTS `hospital_1`.`Nurse`;
+CREATE TABLE `hospital_1`.`Nurse` (
+    `EmployeeID` INTEGER NOT NULL,
+    `Name` VARCHAR(30) NOT NULL,
+    `Position` VARCHAR(30) NOT NULL,
     `Registered` BOOLEAN NOT NULL,
-    `SSN` INT NOT NULL,
-    PRIMARY KEY (`EmployeeID`) DISABLE NOVALIDATE
+    `SSN` INTEGER NOT NULL,
+    PRIMARY KEY (`EmployeeID`)
 );
 
-drop table if exists `hospital_1`.`Appointment`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Appointment` (
-    `AppointmentID` INT NOT NULL,
-    `Patient` INT NOT NULL,
-    `PrepNurse` INT,
-    `Physician` INT NOT NULL,
-    `Start` TIMESTAMP NOT NULL,
-    `End` TIMESTAMP NOT NULL,
-    `ExaminationRoom` STRING NOT NULL,
-    PRIMARY KEY (`AppointmentID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`PrepNurse`) REFERENCES `hospital_1`.`Nurse` (`EmployeeID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Appointment`;
+CREATE TABLE `hospital_1`.`Appointment` (
+    `AppointmentID` INTEGER NOT NULL,
+    `Patient` INTEGER NOT NULL,
+    `PrepNurse` INTEGER,
+    `Physician` INTEGER NOT NULL,
+    `Start` DATETIME NOT NULL,
+    `End` DATETIME NOT NULL,
+    `ExaminationRoom` TEXT NOT NULL,
+    PRIMARY KEY (`AppointmentID`),
+    FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`),
+    FOREIGN KEY (`PrepNurse`) REFERENCES `hospital_1`.`Nurse` (`EmployeeID`),
+    FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`)
 );
 
-drop table if exists `hospital_1`.`Medication`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Medication` (
-    `Code` INT NOT NULL,
-    `Name` STRING NOT NULL,
-    `Brand` STRING NOT NULL,
-    `Description` STRING NOT NULL,
-    PRIMARY KEY (`Code`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Medication`;
+CREATE TABLE `hospital_1`.`Medication` (
+    `Code` INTEGER NOT NULL,
+    `Name` VARCHAR(30) NOT NULL,
+    `Brand` VARCHAR(30) NOT NULL,
+    `Description` VARCHAR(30) NOT NULL,
+    PRIMARY KEY (`Code`)
 );
 
-drop table if exists `hospital_1`.`Prescribes`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Prescribes` (
-    `Physician` INT NOT NULL,
-    `Patient` INT NOT NULL,
-    `Medication` INT NOT NULL,
-    `Date` TIMESTAMP NOT NULL,
-    `Appointment` INT,
-    `Dose` STRING NOT NULL,
-    PRIMARY KEY (`Physician`, `Patient`, `Medication`, `Date`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Appointment`) REFERENCES `hospital_1`.`Appointment` (`AppointmentID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Medication`) REFERENCES `hospital_1`.`Medication` (`Code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Prescribes`;
+CREATE TABLE `hospital_1`.`Prescribes` (
+    `Physician` INTEGER NOT NULL,
+    `Patient` INTEGER NOT NULL,
+    `Medication` INTEGER NOT NULL,
+    `Date` DATETIME NOT NULL,
+    `Appointment` INTEGER,
+    `Dose` VARCHAR(30) NOT NULL,
+    PRIMARY KEY (`Physician`, `Patient`, `Medication`, `Date`),
+    FOREIGN KEY (`Appointment`) REFERENCES `hospital_1`.`Appointment` (`AppointmentID`),
+    FOREIGN KEY (`Medication`) REFERENCES `hospital_1`.`Medication` (`Code`),
+    FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`),
+    FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`)
 );
 
-drop table if exists `hospital_1`.`Block`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Block` (
-    `BlockFloor` INT NOT NULL,
-    `BlockCode` INT NOT NULL,
-    PRIMARY KEY (`BlockFloor`, `BlockCode`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Block`;
+CREATE TABLE `hospital_1`.`Block` (
+    `BlockFloor` INTEGER NOT NULL,
+    `BlockCode` INTEGER NOT NULL,
+    PRIMARY KEY (`BlockFloor`, `BlockCode`)
 );
 
-drop table if exists `hospital_1`.`Room`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Room` (
-    `RoomNumber` INT NOT NULL,
-    `RoomType` STRING NOT NULL,
-    `BlockFloor` INT NOT NULL,
-    `BlockCode` INT NOT NULL,
+DROP TABLE IF EXISTS `hospital_1`.`Room`;
+CREATE TABLE `hospital_1`.`Room` (
+    `RoomNumber` INTEGER NOT NULL,
+    `RoomType` VARCHAR(30) NOT NULL,
+    `BlockFloor` INTEGER NOT NULL,
+    `BlockCode` INTEGER NOT NULL,
     `Unavailable` BOOLEAN NOT NULL,
-    PRIMARY KEY (`RoomNumber`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`BlockFloor`, `BlockCode`) REFERENCES `hospital_1`.`Block` (`BlockFloor`, `BlockCode`) DISABLE NOVALIDATE
+    PRIMARY KEY (`RoomNumber`),
+    FOREIGN KEY (`BlockFloor`, `BlockCode`) REFERENCES `hospital_1`.`Block` (`BlockFloor`, `BlockCode`)
 );
 
-drop table if exists `hospital_1`.`On_Call`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`On_Call` (
-    `Nurse` INT NOT NULL,
-    `BlockFloor` INT NOT NULL,
-    `BlockCode` INT NOT NULL,
-    `OnCallStart` TIMESTAMP NOT NULL,
-    `OnCallEnd` TIMESTAMP NOT NULL,
-    PRIMARY KEY (`Nurse`, `BlockFloor`, `BlockCode`, `OnCallStart`, `OnCallEnd`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`BlockFloor`, `BlockCode`) REFERENCES `hospital_1`.`Block` (`BlockFloor`, `BlockCode`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Nurse`) REFERENCES `hospital_1`.`Nurse` (`EmployeeID`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`On_Call`;
+CREATE TABLE `hospital_1`.`On_Call` (
+    `Nurse` INTEGER NOT NULL,
+    `BlockFloor` INTEGER NOT NULL,
+    `BlockCode` INTEGER NOT NULL,
+    `OnCallStart` DATETIME NOT NULL,
+    `OnCallEnd` DATETIME NOT NULL,
+    PRIMARY KEY (`Nurse`, `BlockFloor`, `BlockCode`, `OnCallStart`, `OnCallEnd`),
+    FOREIGN KEY (`BlockFloor`, `BlockCode`) REFERENCES `hospital_1`.`Block` (`BlockFloor`, `BlockCode`),
+    FOREIGN KEY (`Nurse`) REFERENCES `hospital_1`.`Nurse` (`EmployeeID`)
 );
 
-drop table if exists `hospital_1`.`Stay`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Stay` (
-    `StayID` INT NOT NULL,
-    `Patient` INT NOT NULL,
-    `Room` INT NOT NULL,
-    `StayStart` TIMESTAMP NOT NULL,
-    `StayEnd` TIMESTAMP NOT NULL,
-    PRIMARY KEY (`StayID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Room`) REFERENCES `hospital_1`.`Room` (`RoomNumber`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Stay`;
+CREATE TABLE `hospital_1`.`Stay` (
+    `StayID` INTEGER NOT NULL,
+    `Patient` INTEGER NOT NULL,
+    `Room` INTEGER NOT NULL,
+    `StayStart` DATETIME NOT NULL,
+    `StayEnd` DATETIME NOT NULL,
+    PRIMARY KEY (`StayID`),
+    FOREIGN KEY (`Room`) REFERENCES `hospital_1`.`Room` (`RoomNumber`),
+    FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`)
 );
 
-drop table if exists `hospital_1`.`Undergoes`;
-CREATE TABLE IF NOT EXISTS `hospital_1`.`Undergoes` (
-    `Patient` INT NOT NULL,
-    `Procedures` INT NOT NULL,
-    `Stay` INT NOT NULL,
-    `DateUndergoes` TIMESTAMP NOT NULL,
-    `Physician` INT NOT NULL,
-    `AssistingNurse` INT,
-    PRIMARY KEY (`Patient`, `Procedures`, `Stay`, `DateUndergoes`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`AssistingNurse`) REFERENCES `hospital_1`.`Nurse` (`EmployeeID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Stay`) REFERENCES `hospital_1`.`Stay` (`StayID`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Procedures`) REFERENCES `hospital_1`.`Procedures` (`Code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `hospital_1`.`Undergoes`;
+CREATE TABLE `hospital_1`.`Undergoes` (
+    `Patient` INTEGER NOT NULL,
+    `Procedures` INTEGER NOT NULL,
+    `Stay` INTEGER NOT NULL,
+    `DateUndergoes` DATETIME NOT NULL,
+    `Physician` INTEGER NOT NULL,
+    `AssistingNurse` INTEGER,
+    PRIMARY KEY (`Patient`, `Procedures`, `Stay`, `DateUndergoes`),
+    FOREIGN KEY (`AssistingNurse`) REFERENCES `hospital_1`.`Nurse` (`EmployeeID`),
+    FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`),
+    FOREIGN KEY (`Stay`) REFERENCES `hospital_1`.`Stay` (`StayID`),
+    FOREIGN KEY (`Procedures`) REFERENCES `hospital_1`.`Procedures` (`Code`),
+    FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`)
 );

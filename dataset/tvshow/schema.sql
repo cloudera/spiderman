@@ -1,43 +1,45 @@
+-- Dialect: MySQL | Database: tvshow | Table Count: 3
+
 CREATE DATABASE IF NOT EXISTS `tvshow`;
 
-drop table if exists `tvshow`.`TV_Channel`;
-CREATE TABLE IF NOT EXISTS `tvshow`.`TV_Channel` (
-    `id` STRING,
-    `series_name` STRING,
-    `Country` STRING,
-    `Language` STRING,
-    `Content` STRING,
-    `Pixel_aspect_ratio_PAR` STRING,
-    `Hight_definition_TV` STRING,
-    `Pay_per_view_PPV` STRING,
-    `Package_Option` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tvshow`.`TV_Channel`;
+CREATE TABLE `tvshow`.`TV_Channel` (
+    `id` INT,
+    `series_name` TEXT,
+    `Country` TEXT,
+    `Language` TEXT,
+    `Content` TEXT,
+    `Pixel_aspect_ratio_PAR` TEXT,
+    `Hight_definition_TV` TEXT,
+    `Pay_per_view_PPV` TEXT,
+    `Package_Option` TEXT,
+    PRIMARY KEY (`id`)
 );
 
-drop table if exists `tvshow`.`TV_series`;
-CREATE TABLE IF NOT EXISTS `tvshow`.`TV_series` (
-    `id` DOUBLE,
-    `Episode` STRING,
-    `Air_Date` STRING,
-    `Rating` STRING,
-    `Share` DOUBLE,
-    `18_49_Rating_Share` STRING,
-    `Viewers_m` STRING,
-    `Weekly_Rank` DOUBLE,
-    `Channel` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Channel`) REFERENCES `tvshow`.`TV_Channel` (`id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tvshow`.`TV_series`;
+CREATE TABLE `tvshow`.`TV_series` (
+    `id` REAL,
+    `Episode` TEXT,
+    `Air_Date` TEXT,
+    `Rating` TEXT,
+    `Share` REAL,
+    `18_49_Rating_Share` TEXT,
+    `Viewers_m` TEXT,
+    `Weekly_Rank` REAL,
+    `Channel` INT,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`Channel`) REFERENCES `tvshow`.`TV_Channel` (`id`)
 );
 
-drop table if exists `tvshow`.`Cartoon`;
-CREATE TABLE IF NOT EXISTS `tvshow`.`Cartoon` (
-    `id` DOUBLE,
-    `Title` STRING,
-    `Directed_by` STRING,
-    `Written_by` STRING,
-    `Original_air_date` STRING,
-    `Production_code` DOUBLE,
-    `Channel` STRING,
-    PRIMARY KEY (`id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`Channel`) REFERENCES `tvshow`.`TV_Channel` (`id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `tvshow`.`Cartoon`;
+CREATE TABLE `tvshow`.`Cartoon` (
+    `id` REAL,
+    `Title` TEXT,
+    `Directed_by` TEXT,
+    `Written_by` TEXT,
+    `Original_air_date` TEXT,
+    `Production_code` REAL,
+    `Channel` INT,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`Channel`) REFERENCES `tvshow`.`TV_Channel` (`id`)
 );

@@ -1,92 +1,94 @@
+-- Dialect: MySQL | Database: student_assessment | Table Count: 9
+
 CREATE DATABASE IF NOT EXISTS `student_assessment`;
 
-drop table if exists `student_assessment`.`Addresses`;
-CREATE TABLE IF NOT EXISTS `student_assessment`.`Addresses` (
-    `address_id` INT NOT NULL,
-    `line_1` STRING,
-    `line_2` STRING,
-    `city` STRING,
+DROP TABLE IF EXISTS `student_assessment`.`Addresses`;
+CREATE TABLE `student_assessment`.`Addresses` (
+    `address_id` INTEGER NOT NULL,
+    `line_1` VARCHAR(80),
+    `line_2` VARCHAR(80),
+    `city` VARCHAR(50),
     `zip_postcode` CHAR(20),
-    `state_province_county` STRING,
-    `country` STRING,
-    PRIMARY KEY (`address_id`) DISABLE NOVALIDATE
+    `state_province_county` VARCHAR(50),
+    `country` VARCHAR(50),
+    PRIMARY KEY (`address_id`)
 );
 
-drop table if exists `student_assessment`.`People`;
-CREATE TABLE IF NOT EXISTS `student_assessment`.`People` (
-    `person_id` INT NOT NULL,
-    `first_name` STRING,
-    `middle_name` STRING,
-    `last_name` STRING,
-    `cell_mobile_number` STRING,
-    `email_address` STRING,
-    `login_name` STRING,
-    `password` STRING,
-    PRIMARY KEY (`person_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `student_assessment`.`People`;
+CREATE TABLE `student_assessment`.`People` (
+    `person_id` INTEGER NOT NULL,
+    `first_name` VARCHAR(255),
+    `middle_name` VARCHAR(255),
+    `last_name` VARCHAR(255),
+    `cell_mobile_number` VARCHAR(40),
+    `email_address` VARCHAR(40),
+    `login_name` VARCHAR(40),
+    `password` VARCHAR(40),
+    PRIMARY KEY (`person_id`)
 );
 
-drop table if exists `student_assessment`.`Students`;
-CREATE TABLE IF NOT EXISTS `student_assessment`.`Students` (
-    `student_id` INT NOT NULL,
-    `student_details` STRING,
-    PRIMARY KEY (`student_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`student_id`) REFERENCES `student_assessment`.`People` (`person_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `student_assessment`.`Students`;
+CREATE TABLE `student_assessment`.`Students` (
+    `student_id` INTEGER NOT NULL,
+    `student_details` VARCHAR(255),
+    PRIMARY KEY (`student_id`),
+    FOREIGN KEY (`student_id`) REFERENCES `student_assessment`.`People` (`person_id`)
 );
 
-drop table if exists `student_assessment`.`Courses`;
-CREATE TABLE IF NOT EXISTS `student_assessment`.`Courses` (
+DROP TABLE IF EXISTS `student_assessment`.`Courses`;
+CREATE TABLE `student_assessment`.`Courses` (
     `course_id` INT NOT NULL,
-    `course_name` STRING,
-    `course_description` STRING,
-    `other_details` STRING,
-    PRIMARY KEY (`course_id`) DISABLE NOVALIDATE
+    `course_name` VARCHAR(120),
+    `course_description` VARCHAR(255),
+    `other_details` VARCHAR(255),
+    PRIMARY KEY (`course_id`)
 );
 
-drop table if exists `student_assessment`.`People_Addresses`;
-CREATE TABLE IF NOT EXISTS `student_assessment`.`People_Addresses` (
-    `person_address_id` INT NOT NULL,
-    `person_id` INT NOT NULL,
-    `address_id` INT NOT NULL,
-    `date_from` TIMESTAMP,
-    `date_to` TIMESTAMP,
-    PRIMARY KEY (`person_address_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`address_id`) REFERENCES `student_assessment`.`Addresses` (`address_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`person_id`) REFERENCES `student_assessment`.`People` (`person_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `student_assessment`.`People_Addresses`;
+CREATE TABLE `student_assessment`.`People_Addresses` (
+    `person_address_id` INTEGER NOT NULL,
+    `person_id` INTEGER NOT NULL,
+    `address_id` INTEGER NOT NULL,
+    `date_from` DATETIME,
+    `date_to` DATETIME,
+    PRIMARY KEY (`person_address_id`),
+    FOREIGN KEY (`address_id`) REFERENCES `student_assessment`.`Addresses` (`address_id`),
+    FOREIGN KEY (`person_id`) REFERENCES `student_assessment`.`People` (`person_id`)
 );
 
-drop table if exists `student_assessment`.`Student_Course_Registrations`;
-CREATE TABLE IF NOT EXISTS `student_assessment`.`Student_Course_Registrations` (
-    `student_id` INT NOT NULL,
-    `course_id` INT NOT NULL,
-    `registration_date` TIMESTAMP NOT NULL,
-    PRIMARY KEY (`student_id`, `course_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`course_id`) REFERENCES `student_assessment`.`Courses` (`course_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`student_id`) REFERENCES `student_assessment`.`Students` (`student_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `student_assessment`.`Student_Course_Registrations`;
+CREATE TABLE `student_assessment`.`Student_Course_Registrations` (
+    `student_id` INTEGER NOT NULL,
+    `course_id` INTEGER NOT NULL,
+    `registration_date` DATETIME NOT NULL,
+    PRIMARY KEY (`student_id`, `course_id`),
+    FOREIGN KEY (`course_id`) REFERENCES `student_assessment`.`Courses` (`course_id`),
+    FOREIGN KEY (`student_id`) REFERENCES `student_assessment`.`Students` (`student_id`)
 );
 
-drop table if exists `student_assessment`.`Student_Course_Attendance`;
-CREATE TABLE IF NOT EXISTS `student_assessment`.`Student_Course_Attendance` (
-    `student_id` INT NOT NULL,
-    `course_id` INT NOT NULL,
-    `date_of_attendance` TIMESTAMP NOT NULL,
-    PRIMARY KEY (`student_id`, `course_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`student_id`, `course_id`) REFERENCES `student_assessment`.`Student_Course_Registrations` (`student_id`, `course_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `student_assessment`.`Student_Course_Attendance`;
+CREATE TABLE `student_assessment`.`Student_Course_Attendance` (
+    `student_id` INTEGER NOT NULL,
+    `course_id` INTEGER NOT NULL,
+    `date_of_attendance` DATETIME NOT NULL,
+    PRIMARY KEY (`student_id`, `course_id`),
+    FOREIGN KEY (`student_id`, `course_id`) REFERENCES `student_assessment`.`Student_Course_Registrations` (`student_id`, `course_id`)
 );
 
-drop table if exists `student_assessment`.`Candidates`;
-CREATE TABLE IF NOT EXISTS `student_assessment`.`Candidates` (
-    `candidate_id` INT NOT NULL,
-    `candidate_details` STRING,
-    PRIMARY KEY (`candidate_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`candidate_id`) REFERENCES `student_assessment`.`People` (`person_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `student_assessment`.`Candidates`;
+CREATE TABLE `student_assessment`.`Candidates` (
+    `candidate_id` INTEGER NOT NULL,
+    `candidate_details` VARCHAR(255),
+    PRIMARY KEY (`candidate_id`),
+    FOREIGN KEY (`candidate_id`) REFERENCES `student_assessment`.`People` (`person_id`)
 );
 
-drop table if exists `student_assessment`.`Candidate_Assessments`;
-CREATE TABLE IF NOT EXISTS `student_assessment`.`Candidate_Assessments` (
-    `candidate_id` INT NOT NULL,
+DROP TABLE IF EXISTS `student_assessment`.`Candidate_Assessments`;
+CREATE TABLE `student_assessment`.`Candidate_Assessments` (
+    `candidate_id` INTEGER NOT NULL,
     `qualification` CHAR(15) NOT NULL,
-    `assessment_date` TIMESTAMP NOT NULL,
+    `assessment_date` DATETIME NOT NULL,
     `asessment_outcome_code` CHAR(15) NOT NULL,
-    PRIMARY KEY (`candidate_id`, `qualification`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`candidate_id`) REFERENCES `student_assessment`.`Candidates` (`candidate_id`) DISABLE NOVALIDATE
+    PRIMARY KEY (`candidate_id`, `qualification`),
+    FOREIGN KEY (`candidate_id`) REFERENCES `student_assessment`.`Candidates` (`candidate_id`)
 );

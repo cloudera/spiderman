@@ -1,101 +1,103 @@
+-- Dialect: MySQL | Database: cre_Doc_Control_Systems | Table Count: 11
+
 CREATE DATABASE IF NOT EXISTS `cre_Doc_Control_Systems`;
 
-drop table if exists `cre_Doc_Control_Systems`.`Ref_Document_Types`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Ref_Document_Types` (
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Ref_Document_Types`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Ref_Document_Types` (
     `document_type_code` CHAR(15) NOT NULL,
-    `document_type_description` STRING NOT NULL,
-    PRIMARY KEY (`document_type_code`) DISABLE NOVALIDATE
+    `document_type_description` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`document_type_code`)
 );
 
-drop table if exists `cre_Doc_Control_Systems`.`Roles`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Roles` (
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Roles`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Roles` (
     `role_code` CHAR(15) NOT NULL,
-    `role_description` STRING,
-    PRIMARY KEY (`role_code`) DISABLE NOVALIDATE
+    `role_description` VARCHAR(255),
+    PRIMARY KEY (`role_code`)
 );
 
-drop table if exists `cre_Doc_Control_Systems`.`Addresses`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Addresses` (
-    `address_id` INT NOT NULL,
-    `address_details` STRING,
-    PRIMARY KEY (`address_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Addresses`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Addresses` (
+    `address_id` INTEGER NOT NULL,
+    `address_details` VARCHAR(255),
+    PRIMARY KEY (`address_id`)
 );
 
-drop table if exists `cre_Doc_Control_Systems`.`Ref_Document_Status`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Ref_Document_Status` (
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Ref_Document_Status`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Ref_Document_Status` (
     `document_status_code` CHAR(15) NOT NULL,
-    `document_status_description` STRING NOT NULL,
-    PRIMARY KEY (`document_status_code`) DISABLE NOVALIDATE
+    `document_status_description` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`document_status_code`)
 );
 
-drop table if exists `cre_Doc_Control_Systems`.`Ref_Shipping_Agents`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Ref_Shipping_Agents` (
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Ref_Shipping_Agents`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Ref_Shipping_Agents` (
     `shipping_agent_code` CHAR(15) NOT NULL,
-    `shipping_agent_name` STRING NOT NULL,
-    `shipping_agent_description` STRING NOT NULL,
-    PRIMARY KEY (`shipping_agent_code`) DISABLE NOVALIDATE
+    `shipping_agent_name` VARCHAR(255) NOT NULL,
+    `shipping_agent_description` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`shipping_agent_code`)
 );
 
-drop table if exists `cre_Doc_Control_Systems`.`Documents`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Documents` (
-    `document_id` INT NOT NULL,
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Documents`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Documents` (
+    `document_id` INTEGER NOT NULL,
     `document_status_code` CHAR(15) NOT NULL,
     `document_type_code` CHAR(15) NOT NULL,
     `shipping_agent_code` CHAR(15),
-    `receipt_date` TIMESTAMP,
-    `receipt_number` STRING,
-    `other_details` STRING,
-    PRIMARY KEY (`document_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`shipping_agent_code`) REFERENCES `cre_Doc_Control_Systems`.`Ref_Shipping_Agents` (`shipping_agent_code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`document_status_code`) REFERENCES `cre_Doc_Control_Systems`.`Ref_Document_Status` (`document_status_code`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`document_type_code`) REFERENCES `cre_Doc_Control_Systems`.`Ref_Document_Types` (`document_type_code`) DISABLE NOVALIDATE
+    `receipt_date` DATETIME,
+    `receipt_number` VARCHAR(255),
+    `other_details` VARCHAR(255),
+    PRIMARY KEY (`document_id`),
+    FOREIGN KEY (`shipping_agent_code`) REFERENCES `cre_Doc_Control_Systems`.`Ref_Shipping_Agents` (`shipping_agent_code`),
+    FOREIGN KEY (`document_status_code`) REFERENCES `cre_Doc_Control_Systems`.`Ref_Document_Status` (`document_status_code`),
+    FOREIGN KEY (`document_type_code`) REFERENCES `cre_Doc_Control_Systems`.`Ref_Document_Types` (`document_type_code`)
 );
 
-drop table if exists `cre_Doc_Control_Systems`.`Employees`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Employees` (
-    `employee_id` INT NOT NULL,
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Employees`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Employees` (
+    `employee_id` INTEGER NOT NULL,
     `role_code` CHAR(15) NOT NULL,
-    `employee_name` STRING,
-    `other_details` STRING,
-    PRIMARY KEY (`employee_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`role_code`) REFERENCES `cre_Doc_Control_Systems`.`Roles` (`role_code`) DISABLE NOVALIDATE
+    `employee_name` VARCHAR(255),
+    `other_details` VARCHAR(255),
+    PRIMARY KEY (`employee_id`),
+    FOREIGN KEY (`role_code`) REFERENCES `cre_Doc_Control_Systems`.`Roles` (`role_code`)
 );
 
-drop table if exists `cre_Doc_Control_Systems`.`Document_Drafts`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Document_Drafts` (
-    `document_id` INT NOT NULL,
-    `draft_number` INT NOT NULL,
-    `draft_details` STRING,
-    PRIMARY KEY (`document_id`, `draft_number`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`document_id`) REFERENCES `cre_Doc_Control_Systems`.`Documents` (`document_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Document_Drafts`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Document_Drafts` (
+    `document_id` INTEGER NOT NULL,
+    `draft_number` INTEGER NOT NULL,
+    `draft_details` VARCHAR(255),
+    PRIMARY KEY (`document_id`, `draft_number`),
+    FOREIGN KEY (`document_id`) REFERENCES `cre_Doc_Control_Systems`.`Documents` (`document_id`)
 );
 
-drop table if exists `cre_Doc_Control_Systems`.`Draft_Copies`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Draft_Copies` (
-    `document_id` INT NOT NULL,
-    `draft_number` INT NOT NULL,
-    `copy_number` INT NOT NULL,
-    PRIMARY KEY (`document_id`, `draft_number`, `copy_number`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`document_id`, `draft_number`) REFERENCES `cre_Doc_Control_Systems`.`Document_Drafts` (`document_id`, `draft_number`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Draft_Copies`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Draft_Copies` (
+    `document_id` INTEGER NOT NULL,
+    `draft_number` INTEGER NOT NULL,
+    `copy_number` INTEGER NOT NULL,
+    PRIMARY KEY (`document_id`, `draft_number`, `copy_number`),
+    FOREIGN KEY (`document_id`, `draft_number`) REFERENCES `cre_Doc_Control_Systems`.`Document_Drafts` (`document_id`, `draft_number`)
 );
 
-drop table if exists `cre_Doc_Control_Systems`.`Circulation_History`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Circulation_History` (
-    `document_id` INT NOT NULL,
-    `draft_number` INT NOT NULL,
-    `copy_number` INT NOT NULL,
-    `employee_id` INT NOT NULL,
-    PRIMARY KEY (`document_id`, `draft_number`, `copy_number`, `employee_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`employee_id`) REFERENCES `cre_Doc_Control_Systems`.`Employees` (`employee_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`document_id`, `draft_number`, `copy_number`) REFERENCES `cre_Doc_Control_Systems`.`Draft_Copies` (`document_id`, `draft_number`, `copy_number`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Circulation_History`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Circulation_History` (
+    `document_id` INTEGER NOT NULL,
+    `draft_number` INTEGER NOT NULL,
+    `copy_number` INTEGER NOT NULL,
+    `employee_id` INTEGER NOT NULL,
+    PRIMARY KEY (`document_id`, `draft_number`, `copy_number`, `employee_id`),
+    FOREIGN KEY (`employee_id`) REFERENCES `cre_Doc_Control_Systems`.`Employees` (`employee_id`),
+    FOREIGN KEY (`document_id`, `draft_number`, `copy_number`) REFERENCES `cre_Doc_Control_Systems`.`Draft_Copies` (`document_id`, `draft_number`, `copy_number`)
 );
 
-drop table if exists `cre_Doc_Control_Systems`.`Documents_Mailed`;
-CREATE TABLE IF NOT EXISTS `cre_Doc_Control_Systems`.`Documents_Mailed` (
-    `document_id` INT NOT NULL,
-    `mailed_to_address_id` INT NOT NULL,
-    `mailing_date` TIMESTAMP,
-    PRIMARY KEY (`document_id`, `mailed_to_address_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`mailed_to_address_id`) REFERENCES `cre_Doc_Control_Systems`.`Addresses` (`address_id`) DISABLE NOVALIDATE,
-    FOREIGN KEY (`document_id`) REFERENCES `cre_Doc_Control_Systems`.`Documents` (`document_id`) DISABLE NOVALIDATE
+DROP TABLE IF EXISTS `cre_Doc_Control_Systems`.`Documents_Mailed`;
+CREATE TABLE `cre_Doc_Control_Systems`.`Documents_Mailed` (
+    `document_id` INTEGER NOT NULL,
+    `mailed_to_address_id` INTEGER NOT NULL,
+    `mailing_date` DATETIME,
+    PRIMARY KEY (`document_id`, `mailed_to_address_id`),
+    FOREIGN KEY (`mailed_to_address_id`) REFERENCES `cre_Doc_Control_Systems`.`Addresses` (`address_id`),
+    FOREIGN KEY (`document_id`) REFERENCES `cre_Doc_Control_Systems`.`Documents` (`document_id`)
 );
