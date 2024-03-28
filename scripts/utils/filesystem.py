@@ -32,15 +32,9 @@ def read_csv(file_path: str) -> list[list]:
 def write_csv(file_path: str, data: list[list], overwrite: bool = False):
     create_missing_dir(file_path)
 
-    if os.path.isfile(file_path) and not overwrite:
-        with open(file_path, 'a', newline='') as csv_file:
-            csv_writer = csv.writer(csv_file)
-            # csv_writer.writerows(data[1:])
-            csv_writer.writerows(data)
-    else:
-        with open(file_path, 'w', newline='') as csv_file:
-            csv_writer = csv.writer(csv_file)
-            csv_writer.writerows(data)
+    with open(file_path, 'w', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        csv_writer.writerows(data)
 
 def read_json_dict(file_path: str) -> dict:
     with open(file_path, "r") as file:

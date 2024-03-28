@@ -20,10 +20,15 @@ conda activate spiderman-env
 pip install -r requirements.txt
 ```
 
+# Setup MySQL
+```
+brew install mysql pkg-config
+pip install mysqlclient
+```
+
 # Load schema & data
 ```
-python scripts/create_schema.py 'hive://<hive-address>:10000'
-python scripts/insert_data.py 'hive://<hive-address>:10000'
+python scripts/insert_dataset.py 'mysql://<username>:<password>@<host>:3306'
 ```
 
 # Scan Dataset
@@ -33,8 +38,13 @@ python scripts/scan_dataset.py
 
 # Rebuild Dataset
 ```
-# Download Spider dataset
-bash ./scripts/download_source.sh
+# Download Spider 1.0 zip into ./source
+python ./scripts/download_source.py
+
+# Rebuild dataset from source, and overwrite current SCHEMA and DATA.
+python ./scripts/rebuild_dataset.py
+
+# QUERIES would not be rebuild from source as they have been heavily modified to work with non sqlite databases.
 ```
 
 # Citation
