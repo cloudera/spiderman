@@ -6,7 +6,8 @@ DROP TABLE IF EXISTS `store_1`.`artists`;
 CREATE TABLE `store_1`.`artists` (
     `id` INTEGER,
     `name` VARCHAR(120),
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    INDEX idx_id (`id`)
 );
 
 DROP TABLE IF EXISTS `store_1`.`albums`;
@@ -15,7 +16,9 @@ CREATE TABLE `store_1`.`albums` (
     `title` VARCHAR(160) NOT NULL,
     `artist_id` INTEGER NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`artist_id`) REFERENCES `store_1`.`artists` (`id`)
+    FOREIGN KEY (`artist_id`) REFERENCES `store_1`.`artists` (`id`),
+    INDEX idx_id (`id`),
+    INDEX idx_artist_id (`artist_id`)
 );
 
 DROP TABLE IF EXISTS `store_1`.`employees`;
@@ -36,7 +39,9 @@ CREATE TABLE `store_1`.`employees` (
     `fax` VARCHAR(24),
     `email` VARCHAR(60),
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`reports_to`) REFERENCES `store_1`.`employees` (`id`)
+    FOREIGN KEY (`reports_to`) REFERENCES `store_1`.`employees` (`id`),
+    INDEX idx_id (`id`),
+    INDEX idx_reports_to (`reports_to`)
 );
 
 DROP TABLE IF EXISTS `store_1`.`customers`;
@@ -55,14 +60,17 @@ CREATE TABLE `store_1`.`customers` (
     `email` VARCHAR(60) NOT NULL,
     `support_rep_id` INTEGER,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`support_rep_id`) REFERENCES `store_1`.`employees` (`id`)
+    FOREIGN KEY (`support_rep_id`) REFERENCES `store_1`.`employees` (`id`),
+    INDEX idx_id (`id`),
+    INDEX idx_support_rep_id (`support_rep_id`)
 );
 
 DROP TABLE IF EXISTS `store_1`.`genres`;
 CREATE TABLE `store_1`.`genres` (
     `id` INTEGER,
     `name` VARCHAR(120),
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    INDEX idx_id (`id`)
 );
 
 DROP TABLE IF EXISTS `store_1`.`invoices`;
@@ -77,14 +85,17 @@ CREATE TABLE `store_1`.`invoices` (
     `billing_postal_code` VARCHAR(10),
     `total` NUMERIC(10,2) NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`customer_id`) REFERENCES `store_1`.`customers` (`id`)
+    FOREIGN KEY (`customer_id`) REFERENCES `store_1`.`customers` (`id`),
+    INDEX idx_id (`id`),
+    INDEX idx_customer_id (`customer_id`)
 );
 
 DROP TABLE IF EXISTS `store_1`.`media_types`;
 CREATE TABLE `store_1`.`media_types` (
     `id` INTEGER,
     `name` VARCHAR(120),
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    INDEX idx_id (`id`)
 );
 
 DROP TABLE IF EXISTS `store_1`.`tracks`;
@@ -101,7 +112,11 @@ CREATE TABLE `store_1`.`tracks` (
     PRIMARY KEY (`id`),
     FOREIGN KEY (`media_type_id`) REFERENCES `store_1`.`media_types` (`id`),
     FOREIGN KEY (`genre_id`) REFERENCES `store_1`.`genres` (`id`),
-    FOREIGN KEY (`album_id`) REFERENCES `store_1`.`albums` (`id`)
+    FOREIGN KEY (`album_id`) REFERENCES `store_1`.`albums` (`id`),
+    INDEX idx_id (`id`),
+    INDEX idx_album_id (`album_id`),
+    INDEX idx_media_type_id (`media_type_id`),
+    INDEX idx_genre_id (`genre_id`)
 );
 
 DROP TABLE IF EXISTS `store_1`.`invoice_lines`;
@@ -113,14 +128,18 @@ CREATE TABLE `store_1`.`invoice_lines` (
     `quantity` INTEGER NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`track_id`) REFERENCES `store_1`.`tracks` (`id`),
-    FOREIGN KEY (`invoice_id`) REFERENCES `store_1`.`invoices` (`id`)
+    FOREIGN KEY (`invoice_id`) REFERENCES `store_1`.`invoices` (`id`),
+    INDEX idx_id (`id`),
+    INDEX idx_invoice_id (`invoice_id`),
+    INDEX idx_track_id (`track_id`)
 );
 
 DROP TABLE IF EXISTS `store_1`.`playlists`;
 CREATE TABLE `store_1`.`playlists` (
     `id` INTEGER,
     `name` VARCHAR(120),
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    INDEX idx_id (`id`)
 );
 
 DROP TABLE IF EXISTS `store_1`.`playlist_tracks`;
@@ -129,5 +148,7 @@ CREATE TABLE `store_1`.`playlist_tracks` (
     `track_id` INTEGER NOT NULL,
     PRIMARY KEY (`playlist_id`, `track_id`),
     FOREIGN KEY (`track_id`) REFERENCES `store_1`.`tracks` (`id`),
-    FOREIGN KEY (`playlist_id`) REFERENCES `store_1`.`playlists` (`id`)
+    FOREIGN KEY (`playlist_id`) REFERENCES `store_1`.`playlists` (`id`),
+    INDEX idx_playlist_id (`playlist_id`),
+    INDEX idx_track_id (`track_id`)
 );

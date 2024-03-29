@@ -77,12 +77,22 @@ def _build_unique_constraints(table: Table) -> List[str]:
 
     return unique_constraints
 
+def _build_index_def(table: Table) -> List[str]:
+    index_defs = []
+
+    for col in table.columns:
+        if col.is_indexed:
+            index_defs.append(f'{INDENTATION}INDEX idx_{col.name} (`{col.name}`)')
+
+    return index_defs
+
 def build_table_ddl(table: Table) -> str:
     table_defs = []
     table_defs += _build_column_definition(table)
     table_defs += _build_primary_key_constraints(table)
     table_defs += _build_foreign_key_constraints(table)
     table_defs += _build_unique_constraints(table)
+    table_defs += _build_index_def(table)
 
     defs_str = ",\n".join(table_defs)
     return f"""DROP TABLE IF EXISTS `{table.db_name}`.`{table.name}`;

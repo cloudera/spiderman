@@ -30,7 +30,8 @@ CREATE TABLE `world_1`.`city` (
     `District` CHAR(20) NOT NULL DEFAULT '',
     `Population` INTEGER NOT NULL DEFAULT '0',
     PRIMARY KEY (`ID`),
-    FOREIGN KEY (`CountryCode`) REFERENCES `world_1`.`country` (`Code`)
+    FOREIGN KEY (`CountryCode`) REFERENCES `world_1`.`country` (`Code`),
+    INDEX idx_CountryCode (`CountryCode`)
 );
 
 DROP TABLE IF EXISTS `world_1`.`countrylanguage`;
@@ -40,5 +41,6 @@ CREATE TABLE `world_1`.`countrylanguage` (
     `IsOfficial` VARCHAR(5) NOT NULL DEFAULT 'F',
     `Percentage` FLOAT(4,1) NOT NULL DEFAULT '0.0',
     PRIMARY KEY (`CountryCode`, `Language`),
-    FOREIGN KEY (`CountryCode`) REFERENCES `world_1`.`country` (`Code`)
+    FOREIGN KEY (`CountryCode`) REFERENCES `world_1`.`country` (`Code`),
+    INDEX idx_CountryCode (`CountryCode`)
 );

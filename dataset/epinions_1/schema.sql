@@ -25,7 +25,10 @@ CREATE TABLE `epinions_1`.`review` (
     `rank` INTEGER DEFAULT NULL,
     PRIMARY KEY (`a_id`),
     FOREIGN KEY (`i_id`) REFERENCES `epinions_1`.`item` (`i_id`),
-    FOREIGN KEY (`u_id`) REFERENCES `epinions_1`.`useracct` (`u_id`)
+    FOREIGN KEY (`u_id`) REFERENCES `epinions_1`.`useracct` (`u_id`),
+    INDEX idx_a_id (`a_id`),
+    INDEX idx_u_id (`u_id`),
+    INDEX idx_i_id (`i_id`)
 );
 
 DROP TABLE IF EXISTS `epinions_1`.`trust`;
@@ -34,5 +37,7 @@ CREATE TABLE `epinions_1`.`trust` (
     `target_u_id` INTEGER NOT NULL,
     `trust` INTEGER NOT NULL,
     FOREIGN KEY (`target_u_id`) REFERENCES `epinions_1`.`useracct` (`u_id`),
-    FOREIGN KEY (`source_u_id`) REFERENCES `epinions_1`.`useracct` (`u_id`)
+    FOREIGN KEY (`source_u_id`) REFERENCES `epinions_1`.`useracct` (`u_id`),
+    INDEX idx_source_u_id (`source_u_id`),
+    INDEX idx_target_u_id (`target_u_id`)
 );

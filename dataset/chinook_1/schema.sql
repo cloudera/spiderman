@@ -15,7 +15,8 @@ CREATE TABLE `chinook_1`.`Album` (
     `Title` VARCHAR(160) NOT NULL,
     `ArtistId` INTEGER NOT NULL,
     PRIMARY KEY (`AlbumId`),
-    FOREIGN KEY (`ArtistId`) REFERENCES `chinook_1`.`Artist` (`ArtistId`)
+    FOREIGN KEY (`ArtistId`) REFERENCES `chinook_1`.`Artist` (`ArtistId`),
+    INDEX idx_ArtistId (`ArtistId`)
 );
 
 DROP TABLE IF EXISTS `chinook_1`.`Employee`;
@@ -36,7 +37,8 @@ CREATE TABLE `chinook_1`.`Employee` (
     `Fax` VARCHAR(24) DEFAULT NULL,
     `Email` VARCHAR(60) DEFAULT NULL,
     PRIMARY KEY (`EmployeeId`),
-    FOREIGN KEY (`ReportsTo`) REFERENCES `chinook_1`.`Employee` (`EmployeeId`)
+    FOREIGN KEY (`ReportsTo`) REFERENCES `chinook_1`.`Employee` (`EmployeeId`),
+    INDEX idx_ReportsTo (`ReportsTo`)
 );
 
 DROP TABLE IF EXISTS `chinook_1`.`Customer`;
@@ -55,7 +57,8 @@ CREATE TABLE `chinook_1`.`Customer` (
     `Email` VARCHAR(60) NOT NULL,
     `SupportRepId` INTEGER DEFAULT NULL,
     PRIMARY KEY (`CustomerId`),
-    FOREIGN KEY (`SupportRepId`) REFERENCES `chinook_1`.`Employee` (`EmployeeId`)
+    FOREIGN KEY (`SupportRepId`) REFERENCES `chinook_1`.`Employee` (`EmployeeId`),
+    INDEX idx_SupportRepId (`SupportRepId`)
 );
 
 DROP TABLE IF EXISTS `chinook_1`.`Genre`;
@@ -77,7 +80,8 @@ CREATE TABLE `chinook_1`.`Invoice` (
     `BillingPostalCode` VARCHAR(10) DEFAULT NULL,
     `Total` DECIMAL(10,2) NOT NULL,
     PRIMARY KEY (`InvoiceId`),
-    FOREIGN KEY (`CustomerId`) REFERENCES `chinook_1`.`Customer` (`CustomerId`)
+    FOREIGN KEY (`CustomerId`) REFERENCES `chinook_1`.`Customer` (`CustomerId`),
+    INDEX idx_CustomerId (`CustomerId`)
 );
 
 DROP TABLE IF EXISTS `chinook_1`.`MediaType`;
@@ -101,7 +105,10 @@ CREATE TABLE `chinook_1`.`Track` (
     PRIMARY KEY (`TrackId`),
     FOREIGN KEY (`MediaTypeId`) REFERENCES `chinook_1`.`MediaType` (`MediaTypeId`),
     FOREIGN KEY (`GenreId`) REFERENCES `chinook_1`.`Genre` (`GenreId`),
-    FOREIGN KEY (`AlbumId`) REFERENCES `chinook_1`.`Album` (`AlbumId`)
+    FOREIGN KEY (`AlbumId`) REFERENCES `chinook_1`.`Album` (`AlbumId`),
+    INDEX idx_AlbumId (`AlbumId`),
+    INDEX idx_MediaTypeId (`MediaTypeId`),
+    INDEX idx_GenreId (`GenreId`)
 );
 
 DROP TABLE IF EXISTS `chinook_1`.`InvoiceLine`;
@@ -113,7 +120,9 @@ CREATE TABLE `chinook_1`.`InvoiceLine` (
     `Quantity` INTEGER NOT NULL,
     PRIMARY KEY (`InvoiceLineId`),
     FOREIGN KEY (`TrackId`) REFERENCES `chinook_1`.`Track` (`TrackId`),
-    FOREIGN KEY (`InvoiceId`) REFERENCES `chinook_1`.`Invoice` (`InvoiceId`)
+    FOREIGN KEY (`InvoiceId`) REFERENCES `chinook_1`.`Invoice` (`InvoiceId`),
+    INDEX idx_InvoiceId (`InvoiceId`),
+    INDEX idx_TrackId (`TrackId`)
 );
 
 DROP TABLE IF EXISTS `chinook_1`.`Playlist`;
@@ -129,5 +138,6 @@ CREATE TABLE `chinook_1`.`PlaylistTrack` (
     `TrackId` INTEGER NOT NULL,
     PRIMARY KEY (`PlaylistId`, `TrackId`),
     FOREIGN KEY (`TrackId`) REFERENCES `chinook_1`.`Track` (`TrackId`),
-    FOREIGN KEY (`PlaylistId`) REFERENCES `chinook_1`.`Playlist` (`PlaylistId`)
+    FOREIGN KEY (`PlaylistId`) REFERENCES `chinook_1`.`Playlist` (`PlaylistId`),
+    INDEX idx_TrackId (`TrackId`)
 );

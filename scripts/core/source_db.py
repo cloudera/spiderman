@@ -21,6 +21,7 @@ class Column(BaseModel):
     is_not_null: bool
     is_primary_key: bool
     is_unique: bool
+    is_indexed: bool
 
 class FKConstraint(BaseModel):
     from_columns: List[str]
@@ -91,11 +92,24 @@ class SourceDB:
 
         return unique_columns
 
+    def _get_indexed_column_names(self, table_name: str) -> set[str]:
+        indexes = self._execute_pragma('index_list', table_name)
+
+        column_names = set()
+        for index in indexes:
+            if index[3] == 'c': # Index created by CREATE INDEX statement
+                index_name = index[1]
+                index_info = self._execute_pragma('index_info', index_name)
+                column_names.add(index_info[0][2])
+
+        return column_names
+
     def _get_columns(self, table_name: str) -> List[Column]:
         columns_info = self._execute_pragma('table_info', table_name)
         columns: List[Column] = []
 
         unique_columns = self._get_unique_column_names(table_name)
+        indexed_columns = self._get_indexed_column_names(table_name)
 
         for col in columns_info:
             col_name = col[1]
@@ -117,7 +131,8 @@ class SourceDB:
                 is_not_null = col[3],
                 default_val = col[4],
                 is_primary_key = (col[5] != 0),
-                is_unique = (col_name in unique_columns)
+                is_unique = (col_name in unique_columns),
+                is_indexed = (col_name in indexed_columns)
             ))
 
         return columns
