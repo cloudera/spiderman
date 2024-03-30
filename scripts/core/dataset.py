@@ -82,12 +82,11 @@ def get_stats() -> dict:
         total_queries += len(queries)
 
     return {
-        "DBs in source": len(db_names),
+        "DBs available": len(db_names),
         "DBs with training queries": dbs_with_train_queries,
         "DBs with test queries": dbs_with_test_queries,
-        "DBs with data": dbs_with_data,
 
-        "\nTotal tables": total_tables,
+        "Total tables": total_tables,
         "Total queries": total_queries
     }
 

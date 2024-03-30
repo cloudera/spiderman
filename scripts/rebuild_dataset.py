@@ -1,3 +1,4 @@
+import os
 from alive_progress import alive_bar;
 
 from utils.zip import ZipReader
@@ -21,4 +22,4 @@ with ZipReader(paths.SOURCE_ZIP) as sourceZip:
             bar()
 
 print("DB extraction completed successfully.")
-print_dict(get_stats())
+print_dict(get_stats(), label="--- Dataset Stats ---")
