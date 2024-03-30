@@ -38,7 +38,7 @@ DROP TABLE IF EXISTS `customers_and_products_contacts`.`Contacts`;
 CREATE TABLE `customers_and_products_contacts`.`Contacts` (
     `contact_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
-    `gender` VARCHAR(1),
+    `gender` VARCHAR(10),
     `first_name` VARCHAR(80),
     `last_name` VARCHAR(50),
     `contact_phone` VARCHAR(80),

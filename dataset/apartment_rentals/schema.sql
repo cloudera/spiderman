@@ -5,7 +5,7 @@ CREATE DATABASE IF NOT EXISTS `apartment_rentals`;
 DROP TABLE IF EXISTS `apartment_rentals`.`Apartment_Buildings`;
 CREATE TABLE `apartment_rentals`.`Apartment_Buildings` (
     `building_id` INTEGER NOT NULL,
-    `building_short_name` CHAR(15),
+    `building_short_name` VARCHAR(30),
     `building_full_name` VARCHAR(80),
     `building_description` VARCHAR(255),
     `building_address` VARCHAR(255),
@@ -40,7 +40,7 @@ CREATE TABLE `apartment_rentals`.`Apartment_Facilities` (
 DROP TABLE IF EXISTS `apartment_rentals`.`Guests`;
 CREATE TABLE `apartment_rentals`.`Guests` (
     `guest_id` INTEGER NOT NULL,
-    `gender_code` CHAR(1),
+    `gender_code` VARCHAR(10),
     `guest_first_name` VARCHAR(80),
     `guest_last_name` VARCHAR(80),
     `date_of_birth` DATETIME,
@@ -67,7 +67,7 @@ CREATE TABLE `apartment_rentals`.`View_Unit_Status` (
     `apt_id` INTEGER,
     `apt_booking_id` INTEGER,
     `status_date` DATETIME NOT NULL,
-    `available_yn` BIT,
+    `available_yn` CHAR(1),
     PRIMARY KEY (`status_date`),
     FOREIGN KEY (`apt_booking_id`) REFERENCES `apartment_rentals`.`Apartment_Bookings` (`apt_booking_id`),
     FOREIGN KEY (`apt_id`) REFERENCES `apartment_rentals`.`Apartments` (`apt_id`)

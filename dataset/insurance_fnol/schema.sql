@@ -19,7 +19,7 @@ CREATE TABLE `insurance_fnol`.`Services` (
 DROP TABLE IF EXISTS `insurance_fnol`.`Available_Policies`;
 CREATE TABLE `insurance_fnol`.`Available_Policies` (
     `Policy_ID` INTEGER NOT NULL,
-    `policy_type_code` CHAR(15),
+    `policy_type_code` VARCHAR(20),
     `Customer_Phone` VARCHAR(255),
     PRIMARY KEY (`Policy_ID`),
     UNIQUE (`Policy_ID`)

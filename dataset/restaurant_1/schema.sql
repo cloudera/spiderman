@@ -44,7 +44,7 @@ DROP TABLE IF EXISTS `restaurant_1`.`Visits_Restaurant`;
 CREATE TABLE `restaurant_1`.`Visits_Restaurant` (
     `StuID` INTEGER,
     `ResID` INTEGER,
-    `Time` TIMESTAMP,
+    `Time` DATETIME,
     `Spent` FLOAT,
     FOREIGN KEY (`ResID`) REFERENCES `restaurant_1`.`Restaurant` (`ResID`),
     FOREIGN KEY (`StuID`) REFERENCES `restaurant_1`.`Student` (`StuID`)

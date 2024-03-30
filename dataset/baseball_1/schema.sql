@@ -52,7 +52,7 @@ CREATE TABLE `baseball_1`.`team` (
     `team_id_br` TEXT,
     `team_id_lahman45` TEXT,
     `team_id_retro` TEXT,
-    UNIQUE (`team_id`)
+    INDEX idx_team_id (`team_id`)
 );
 
 DROP TABLE IF EXISTS `baseball_1`.`player`;
@@ -81,7 +81,7 @@ CREATE TABLE `baseball_1`.`player` (
     `final_game` TEXT,
     `retro_id` TEXT,
     `bbref_id` TEXT,
-    UNIQUE (`player_id`)
+    PRIMARY KEY (`player_id`)
 );
 
 DROP TABLE IF EXISTS `baseball_1`.`all_star`;
@@ -231,7 +231,7 @@ CREATE TABLE `baseball_1`.`college` (
     `city` TEXT,
     `state` TEXT,
     `country` TEXT,
-    UNIQUE (`college_id`)
+    PRIMARY KEY (`college_id`)
 );
 
 DROP TABLE IF EXISTS `baseball_1`.`player_college`;
@@ -322,7 +322,7 @@ CREATE TABLE `baseball_1`.`park` (
     `city` TEXT,
     `state` TEXT,
     `country` TEXT,
-    UNIQUE (`park_id`)
+    PRIMARY KEY (`park_id`)
 );
 
 DROP TABLE IF EXISTS `baseball_1`.`home_game`;

@@ -7,7 +7,7 @@ CREATE TABLE `voter_1`.`AREA_CODE_STATE` (
     `area_code` INTEGER NOT NULL,
     `state` VARCHAR(2) NOT NULL,
     PRIMARY KEY (`area_code`),
-    UNIQUE (`state`)
+    INDEX idx_state (`state`)
 );
 
 DROP TABLE IF EXISTS `voter_1`.`CONTESTANTS`;
@@ -20,10 +20,10 @@ CREATE TABLE `voter_1`.`CONTESTANTS` (
 DROP TABLE IF EXISTS `voter_1`.`VOTES`;
 CREATE TABLE `voter_1`.`VOTES` (
     `vote_id` INTEGER NOT NULL,
-    `phone_number` INTEGER NOT NULL,
+    `phone_number` VARCHAR(10) NOT NULL,
     `state` VARCHAR(2) NOT NULL,
     `contestant_number` INTEGER NOT NULL,
-    `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`vote_id`),
     FOREIGN KEY (`contestant_number`) REFERENCES `voter_1`.`CONTESTANTS` (`contestant_number`),
     FOREIGN KEY (`state`) REFERENCES `voter_1`.`AREA_CODE_STATE` (`state`),

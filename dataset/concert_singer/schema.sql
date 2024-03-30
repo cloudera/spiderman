@@ -22,7 +22,7 @@ CREATE TABLE `concert_singer`.`singer` (
     `Song_Name` TEXT,
     `Song_release_year` TEXT,
     `Age` INT,
-    `Is_male` BOOL,
+    `Is_male` CHAR(1),
     PRIMARY KEY (`Singer_ID`)
 );
 

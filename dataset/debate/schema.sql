@@ -26,7 +26,7 @@ CREATE TABLE `debate`.`debate_people` (
     `Debate_ID` INT,
     `Affirmative` INT,
     `Negative` INT,
-    `If_Affirmative_Win` BOOL,
+    `If_Affirmative_Win` CHAR(1),
     PRIMARY KEY (`Debate_ID`, `Affirmative`, `Negative`),
     FOREIGN KEY (`Negative`) REFERENCES `debate`.`people` (`People_ID`),
     FOREIGN KEY (`Affirmative`) REFERENCES `debate`.`people` (`People_ID`),

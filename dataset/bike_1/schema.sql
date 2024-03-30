@@ -35,7 +35,7 @@ CREATE TABLE `bike_1`.`trip` (
     `end_station_id` INTEGER,
     `bike_id` INTEGER,
     `subscription_type` TEXT,
-    `zip_code` INTEGER,
+    `zip_code` VARCHAR(20),
     PRIMARY KEY (`id`)
 );
 

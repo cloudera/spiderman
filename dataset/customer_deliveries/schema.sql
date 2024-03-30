@@ -88,7 +88,7 @@ CREATE TABLE `customer_deliveries`.`Delivery_Routes` (
 
 DROP TABLE IF EXISTS `customer_deliveries`.`Delivery_Route_Locations`;
 CREATE TABLE `customer_deliveries`.`Delivery_Route_Locations` (
-    `location_code` VARCHAR(10),
+    `location_code` VARCHAR(20),
     `route_id` INTEGER NOT NULL,
     `location_address_id` INTEGER NOT NULL,
     `location_name` VARCHAR(50),
@@ -117,7 +117,7 @@ CREATE TABLE `customer_deliveries`.`Employees` (
 
 DROP TABLE IF EXISTS `customer_deliveries`.`Order_Deliveries`;
 CREATE TABLE `customer_deliveries`.`Order_Deliveries` (
-    `location_code` VARCHAR(10) NOT NULL,
+    `location_code` VARCHAR(20) NOT NULL,
     `actual_order_id` INTEGER NOT NULL,
     `delivery_status_code` VARCHAR(10) NOT NULL,
     `driver_employee_id` INTEGER NOT NULL,

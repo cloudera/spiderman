@@ -128,126 +128,126 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200127,Sarah,Pitkowski Malcor,R,19751113,FRA
 200128,Lindsay,Davenport,R,19760608,USA
 200129,Lesley,Bowrey,R,19420816,AUS
-200130,Dorothy,Whitely,U,,AUS
+200130,Dorothy,Whitely,U,NULL,AUS
 200131,Judith,Gohn,U,19450510,AUS
-200132,Kay,Williams,U,,AUS
-200133,Eva,De Jong,U,,NED
+200132,Kay,Williams,U,NULL,AUS
+200133,Eva,De Jong,U,NULL,NED
 200134,Kerry,Ballard,U,19491216,AUS
 200135,Lorraine,Robinson,U,19370923,AUS
-200136,Valerie,Caulley,U,,AUS
-200137,L,Griffiths,U,,AUS
-200138,Sandra,Hole,U,,AUS
+200136,Valerie,Caulley,U,NULL,AUS
+200137,L,Griffiths,U,NULL,AUS
+200138,Sandra,Hole,U,NULL,AUS
 200139,Lita,Sugiarto,U,19460227,INA
-200140,Beryl,Jenkins,U,,AUS
+200140,Beryl,Jenkins,U,NULL,AUS
 200141,Wendy,Gilchrist,L,19500517,AUS
-200142,Loris,Butterfield,U,,AUS
+200142,Loris,Butterfield,U,NULL,AUS
 200143,Kathleen,Harter,U,19461027,USA
 200144,Margaret,Court,R,19420716,AUS
 200145,Kerry,Harris,U,19490919,AUS
 200146,Cynthia,Doerner,U,19510211,AUS
-200147,Geri,Shepard,U,,USA
-200148,Marilyn,Tesch,U,,AUS
-200149,Helen,Sheedy,U,,AUS
+200147,Geri,Shepard,U,NULL,USA
+200148,Marilyn,Tesch,U,NULL,AUS
+200149,Helen,Sheedy,U,NULL,AUS
 200150,Evonne,Cawley,R,19510731,AUS
 200151,Ada,Bakker,U,19480408,NED
 200152,Gail,Benedetti,R,19450403,FRA
-200153,S,Washbourne,U,,AUS
-200154,S,Stephen,U,,AUS
-200155,Lexie,Kenny,U,,AUS
-200156,Lynette,Mansfield,U,,AUS
+200153,S,Washbourne,U,NULL,AUS
+200154,S,Stephen,U,NULL,AUS
+200155,Lexie,Kenny,U,NULL,AUS
+200156,Lynette,Mansfield,U,NULL,AUS
 200157,Lynne,Nette,U,19420526,AUS
 200158,Carol,Zeeman,U,19461020,AUS
 200159,Rosie,Casals,R,19480916,USA
 200160,Judy,Dalton,U,19371212,AUS
-200161,Janine,Whyte,U,,AUS
+200161,Janine,Whyte,U,NULL,AUS
 200162,Judith,Salome,U,19490210,NED
-200163,Helen,Oconnor,U,,AUS
-200164,Joan,Johnson,U,,USA
+200163,Helen,Oconnor,U,NULL,AUS
+200164,Joan,Johnson,U,NULL,USA
 200165,Lany,Kaligis,U,19490422,INA
-200166,Patricia,Edwards,U,,AUS
-200167,Heather,Mckechnie,U,,AUS
+200166,Patricia,Edwards,U,NULL,AUS
+200167,Heather,Mckechnie,U,NULL,AUS
 200168,Karen,Krantzcke,R,19470201,AUS
-200169,Ann,Jenkins,U,,AUS
+200169,Ann,Jenkins,U,NULL,AUS
 200170,Beverley,Rae,U,19291116,AUS
 200171,Janet,Young,U,19511022,AUS
-200172,Caroline,Cooper,U,,AUS
-200173,Kaye,Dening,U,,AUS
-200174,Kerry,Wilkinson,U,,AUS
+200172,Caroline,Cooper,U,NULL,AUS
+200173,Kaye,Dening,U,NULL,AUS
+200174,Kerry,Wilkinson,U,NULL,AUS
 200175,Mary Ann,Beattie,U,19461125,USA
 200176,Kerry,Reid,R,19470807,AUS
-200177,Alison,Mckenzie,U,,AUS
-200178,Sue,Hastings,U,,AUS
+200177,Alison,Mckenzie,U,NULL,AUS
+200178,Sue,Hastings,U,NULL,AUS
 200179,Barbara,Hawcroft,U,19501013,AUS
 200180,Astrid,Suurbeck,U,19470215,NED
-200181,Margaret,Starr,U,,AUS
-200182,E,Staples,U,,AUS
+200181,Margaret,Starr,U,NULL,AUS
+200182,E,Staples,U,NULL,AUS
 200183,Elena,Subirats,U,19471230,MEX
 200184,Helen,Cawley,U,19461223,AUS
 200185,Lesley,Hunt,U,19500529,AUS
-200186,Yveline,Boy,U,,FRA
-200187,Janine,Murdoch,U,,AUS
+200186,Yveline,Boy,U,NULL,FRA
+200187,Janine,Murdoch,U,NULL,AUS
 200188,Helen,Amos,U,19480630,AUS
-200189,D,Brennan,U,,AUS
+200189,D,Brennan,U,NULL,AUS
 200190,Billie Jean,King,R,19431122,USA
-200191,Frances,Luff,U,,AUS
-200192,Helen,Kayser,U,,AUS
+200191,Frances,Luff,U,NULL,AUS
+200192,Helen,Kayser,U,NULL,AUS
 200193,Ann,Jones,L,19381017,GBR
 200194,Francoise,Durr,R,19421225,FRA
-200195,H,Rush,U,,AUS
+200195,H,Rush,U,NULL,AUS
 200196,Kerryl,Chute,U,19450420,AUS
 200197,Pamela,Brand,U,19441205,AUS
-200198,Caroline,Langsford,U,,AUS
-200199,Sally,Irvine,U,,AUS
+200198,Caroline,Langsford,U,NULL,AUS
+200199,Sally,Irvine,U,NULL,AUS
 200200,Norma,Marsh,U,19360113,AUS
-200201,Sharon,Thomson,U,,AUS
-200202,Teresa,Van Haren,U,,AUS
+200201,Sharon,Thomson,U,NULL,AUS
+200202,Teresa,Van Haren,U,NULL,AUS
 200203,Vicki,Lancaster Kerr,U,19510126,AUS
-200204,Sandra,Walsham,U,,AUS
-200205,Judy,Harris,U,,AUS
-200206,L,Cameron,U,,AUS
-200207,Cheryl,Norquay,U,,AUS
-200208,Mandy,Morgan,U,,AUS
+200204,Sandra,Walsham,U,NULL,AUS
+200205,Judy,Harris,U,NULL,AUS
+200206,L,Cameron,U,NULL,AUS
+200207,Cheryl,Norquay,U,NULL,AUS
+200208,Mandy,Morgan,U,NULL,AUS
 200209,Wendy,Turnbull,U,19521126,AUS
-200210,Norma,Eastburn,U,,AUS
+200210,Norma,Eastburn,U,NULL,AUS
 200211,Winnie,Wooldridge,U,19470118,GBR
 200212,Elizabeth,Allan,R,19461128,AUS
 200213,Jan,Oneill,U,19410709,AUS
 200214,Christina,Sandberg,U,19480111,SWE
-200215,Susan,Alexander,U,,AUS
-200216,Janet,Fallis,U,,AUS
+200215,Susan,Alexander,U,NULL,AUS
+200216,Janet,Fallis,U,NULL,AUS
 200217,Adrienne,Avis,U,19501115,AUS
-200218,Helen,Taylor,U,,AUS
+200218,Helen,Taylor,U,NULL,AUS
 200219,Patricia,Coleman,U,19530513,AUS
 200220,Patti,Hogan,U,19491221,USA
 200221,Dianne,Balestrat,U,19560810,AUS
-200222,Anne,Coleman,U,,AUS
+200222,Anne,Coleman,U,NULL,AUS
 200223,Sharon,Walsh Pete,R,19520224,USA
-200224,Kati,Athorne,U,,AUS
+200224,Kati,Athorne,U,NULL,AUS
 200225,Helen,Worland,R,19500428,AUS
 200226,Mona,Guerrant,U,19481128,USA
-200227,Diane,James,U,,AUS
+200227,Diane,James,U,NULL,AUS
 200228,Olga,Morozova,U,19490222,URS
-200229,Robyn,Knobel,U,,AUS
-200230,Patricia,Billing,U,,AUS
-200231,Brenda,Dart,U,,AUS
+200229,Robyn,Knobel,U,NULL,AUS
+200230,Patricia,Billing,U,NULL,AUS
+200231,Brenda,Dart,U,NULL,AUS
 200232,Ann,Lebedeff,U,19510504,USA
 200233,Christine,Dorey,U,19511029,AUS
 200234,Pam,Whytcross,U,19531125,AUS
-200235,Maureen,Pratt,U,,AUS
-200236,Patricia,King,U,,AUS
+200235,Maureen,Pratt,U,NULL,AUS
+200236,Patricia,King,U,NULL,AUS
 200237,Virginia,Wade,R,19450710,GBR
 200238,Nathalie,Fuchs,U,19520903,FRA
-200239,Kathy,Walker,U,,AUS
+200239,Kathy,Walker,U,NULL,AUS
 200240,Eugenia,Birioukova,U,19521218,AZE
 200241,Duk Hee,Lee,U,19530713,KOR
-200242,Helen,Young,U,,AUS
+200242,Helen,Young,U,NULL,AUS
 200243,Glynis,Coles,U,19540220,GBR
-200244,Moira,Whitely,U,,AUS
+200244,Moira,Whitely,U,NULL,AUS
 200245,Soon Oh,Lee,U,19531004,KOR
-200246,Leslie,Walker,U,,AUS
+200246,Leslie,Walker,U,NULL,AUS
 200247,Dorte,Ekner,U,19510502,DEN
-200248,Marion,Proisy,U,,FRA
-200249,Joan,Walker,U,,ZIM
+200248,Marion,Proisy,U,NULL,FRA
+200249,Joan,Walker,U,NULL,ZIM
 200250,Lindsay,Blachford,U,19530406,GBR
 200251,Kazuko,Sawamatsu,U,19510105,JPN
 200252,Monique,Van Haver,U,19480831,BEL
@@ -255,7 +255,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200254,Michele,Gurdal,U,19521130,BEL
 200255,Lesley,Charles,U,19520715,GBR
 200256,Chris,Oneil,R,19560319,AUS
-200257,Helen,Crozier,U,,AUS
+200257,Helen,Crozier,U,NULL,AUS
 200258,Jeong Soon,Yang,U,19470226,KOR
 200259,Chris,Evert,R,19541221,USA
 200260,Katerleen,Szeman,U,19561127,HUN
@@ -265,8 +265,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200264,Helena,Anliot,U,19560926,SWE
 200265,Lindsey,Beaven,U,19500101,GBR
 200266,Sue,Barker,R,19560419,GBR
-200267,Isabelle,Larsson,U,,SWE
-200268,Frances,Candy,U,,AUS
+200267,Isabelle,Larsson,U,NULL,SWE
+200268,Frances,Candy,U,NULL,AUS
 200269,Jill,Schwikert,U,19540519,USA
 200270,Nellemieke,Brouwer,U,19520101,NED
 200271,Margareta,Forsgardh,U,19510320,SWE
@@ -274,10 +274,10 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200273,Nerida,Gregory,U,19560513,AUS
 200274,Julie,Heldman,U,19451208,USA
 200275,Ann,Kiyomura Hayashi,R,19550822,USA
-200276,Jd,Griffiths,U,,AUS
-200277,Anneloes,Schothurst,U,,NED
-200278,Sally,Arnott,U,,AUS
-200279,Gail,Williams,U,,AUS
+200276,Jd,Griffiths,U,NULL,AUS
+200277,Anneloes,Schothurst,U,NULL,NED
+200278,Sally,Arnott,U,NULL,AUS
+200279,Gail,Williams,U,NULL,AUS
 200280,Joy,Schwikert,U,19540519,USA
 200281,Jackie,Fayter,U,19510610,GBR
 200282,Jenny,Dimond,U,19551113,AUS
@@ -285,30 +285,30 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200284,Nora,Lauteslager,U,19510222,NED
 200285,Mimi,Wikstedt,U,19540430,SWE
 200286,Peggy,Michel,U,19490202,USA
-200287,Miki,Yokobori,U,,JPN
+200287,Miki,Yokobori,U,NULL,JPN
 200288,Sue,Mappin,R,19470711,GBR
-200289,Chris,Cerato,U,,AUS
+200289,Chris,Cerato,U,NULL,AUS
 200290,Deborah,Fiuza,U,19540819,POR
 200291,Diane,Evers,U,19561109,AUS
-200292,Vivicca,Andersson,U,,SWE
+200292,Vivicca,Andersson,U,NULL,SWE
 200293,Martina,Navratilova,L,19561018,USA
-200294,Gwen,Stirton,U,,AUS
-200295,Ai,Iida,U,,JPN
+200294,Gwen,Stirton,U,NULL,AUS
+200295,Ai,Iida,U,NULL,JPN
 200296,Belinda,Thompson,U,19560503,GBR
 200297,Natasha,Chmyreva,U,19580528,URS
 200298,Laura,Du Pont,U,19490504,USA
 200299,Kaye,Hallam,U,19570324,AUS
 200300,Sally,Greer,U,19550325,USA
-200301,Lois,Raymond,U,,AUS
+200301,Lois,Raymond,U,NULL,AUS
 200302,Linda,Mottram,U,19570517,GBR
-200303,Julie,Staines,U,,AUS
-200304,Cheree,Walker,U,,NZL
+200303,Julie,Staines,U,NULL,AUS
+200304,Cheree,Walker,U,NULL,NZL
 200305,Carol,Draper,U,19550720,AUS
 200306,Jan,Wilton,U,19570430,AUS
-200307,Kerry,Neill,U,,AUS
+200307,Kerry,Neill,U,NULL,AUS
 200308,Kym,Ruddell,U,19550719,AUS
-200309,Merrilyn,Robinson,U,,AUS
-200310,Julie,Hanrahan,U,,AUS
+200309,Merrilyn,Robinson,U,NULL,AUS
+200310,Julie,Hanrahan,U,NULL,AUS
 200311,Cecilia,Martinez,U,19470524,USA
 200312,Frederique,Thibault,U,19540602,FRA
 200313,Lotta,Stenberg,U,19570212,SWE
@@ -320,7 +320,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200319,Cathy,Griffiths,U,19560905,AUS
 200320,Renata,Tomanova,U,19541209,GER
 200321,Elisabeth,Ekblom,U,19580210,SWE
-200322,Karen,Gulley,U,,AUS
+200322,Karen,Gulley,U,NULL,AUS
 200323,Rene,Blount,U,19570512,USA
 200324,Beth,Norton,U,19570613,USA
 200325,Leanne,Harrison Austin,U,19580410,AUS
@@ -755,12 +755,12 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200754,Jill,Craybas,R,19740704,USA
 200755,Daniela,Marzano,U,19500607,ITA
 200756,Bunny,Bruning,U,19570905,USA
-200757,Pamela,Bailey,U,,AUS
+200757,Pamela,Bailey,U,NULL,AUS
 200758,Rayni,Fox,U,19560524,USA
 200759,Katja,Ebbinghaus,U,19480601,FRG
 200760,Pauline,Elliott,U,19551015,NZL
-200761,Michelle,Pekovitch,U,,AUS
-200762,Sharon,Pinchbeck,U,,AUS
+200761,Michelle,Pekovitch,U,NULL,AUS
+200762,Sharon,Pinchbeck,U,NULL,AUS
 200763,Cathy,Drury,U,19600325,GBR
 200764,Elena,Bovina,R,19830310,RUS
 200765,Katalin,Marosi,R,19791112,HUN
@@ -781,29 +781,29 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200780,Irena,Skulj,U,19460117,YUG
 200781,Edda,Buding,U,19361113,FRG
 200782,Esme,Emanuel,U,19470614,RSA
-200783,Jitka,Volavkova,U,,TCH
+200783,Jitka,Volavkova,U,NULL,TCH
 200784,Faye,Moore,U,19431218,AUS
 200785,Vlasta,Kodesova,U,19440326,CZE
 200786,Claudine,Rouire,U,19390630,FRA
 200787,Fiorella,Bonicelli,U,19511221,URU
 200788,Carol Ann,Kalogeropoulos,U,19430311,GRE
 200789,Lea,Pericoli,U,19350322,ITA
-200790,Paola,Palacios,U,,COL
+200790,Paola,Palacios,U,NULL,COL
 200791,Rosy,Darmon,U,19390323,FRA
 200792,Christina,Lindstrom,U,19451018,FIN
 200793,Mabel,Vrancovich,U,19460210,ARG
 200794,Marianne,Kindler,U,19480716,SUI
 200795,Patricia,Montano,U,19520807,MEX
 200796,Sally,Holdsworth,U,19440210,GBR
-200797,Anne Marie,Studer,U,,SUI
+200797,Anne Marie,Studer,U,NULL,SUI
 200798,Lubka,Radkova,U,19450325,BUL
 200799,Christiane,Spinoza,U,19450407,FRA
 200800,Frances,Maclennan,U,19431220,GBR
-200801,Kora,Schediwy,U,,FRG
-200802,Marion,Cristiani,U,,FRA
+200801,Kora,Schediwy,U,NULL,FRG
+200802,Marion,Cristiani,U,NULL,FRA
 200803,Raquel,Giscafre,U,19490515,ARG
 200804,Anna,Dmitrieva,U,19401210,URS
-200805,Aline,Nenot,U,,FRA
+200805,Aline,Nenot,U,NULL,FRA
 200806,Birgitta,Lindstrom,U,19480114,FIN
 200807,Ulla,Sandulf,U,19430130,SWE
 200808,Laura,Rossouw,U,19460715,RSA
@@ -812,15 +812,15 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200811,Junko,Sawamatsu,U,19480410,JPN
 200812,Odile,De Roubin,U,19480928,FRA
 200813,Ingrid,Bentzer,R,19431206,SWE
-200814,Gillian,Dove,U,,RSA
+200814,Gillian,Dove,U,NULL,RSA
 200815,Roberta,Beltrame,R,19380419,ITA
-200816,Ann,Phillips Moore,U,,AUS
+200816,Ann,Phillips Moore,U,NULL,AUS
 200817,Judy,Congdon,U,19481203,GBR
 200818,Faye,Urban,U,19451028,CAN
-200819,Nicole,Niox Chateau,U,,FRA
-200820,Eugenia,Isopaitis,U,,URS
+200819,Nicole,Niox Chateau,U,NULL,FRA
+200820,Eugenia,Isopaitis,U,NULL,URS
 200821,Monica,Giorgi,U,19460103,ITA
-200822,Ilse,Buding,U,,FRG
+200822,Ilse,Buding,U,NULL,FRG
 200823,Eva,Lundquist,U,19441216,SWE
 200824,Galina,Baksheeva,U,19450712,URS
 200825,Maylis,Burel,U,19430701,FRA
@@ -828,7 +828,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200827,Suzanne,Le Besnerais,U,19281018,FRA
 200828,Maria Cristina,Borba Dias,U,19510626,BRA
 200829,Nancy,Richey,R,19420823,USA
-200830,Chantal,Langanay,U,,FRA
+200830,Chantal,Langanay,U,NULL,FRA
 200831,Carmen,Mandarino,U,19400616,ESP
 200832,Daniele,Bouteleux,U,19401120,FRA
 200833,Judith,Szorenyi,U,19491208,HUN
@@ -836,7 +836,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200835,Janine,Lieffrig,U,19380412,RSA
 200836,Maria,Chakarova,U,19380317,BUL
 200837,Alenka,Pipan,U,19501012,YUG
-200838,Janine,Mauroy Toffier,U,,FRA
+200838,Janine,Mauroy Toffier,U,NULL,FRA
 200839,Ingrid,Palmieri,U,19480112,BEL
 200840,Eva,Szabo,U,19451030,HUN
 200841,Maria Jose,Aubet,U,19430430,ESP
@@ -844,25 +844,25 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200843,Virginia,Caceres,U,19410719,PER
 200844,Martha,Wolf Peterdy,U,19460302,FRA
 200845,Patricia,Walkden,U,19460212,RSA
-200846,Michelle,Rodriguez,U,,CHI
-200847,Dionissia,Asteri,U,,GRE
+200846,Michelle,Rodriguez,U,NULL,CHI
+200847,Dionissia,Asteri,U,NULL,GRE
 200848,Maria,Bueno,R,19391011,BRA
-200849,Francesca,Gordigiani,U,,ITA
+200849,Francesca,Gordigiani,U,NULL,ITA
 200850,Monique,Di Maso,U,19450518,ITA
-200851,Margarita,Zuleta,U,,ECU
+200851,Margarita,Zuleta,U,NULL,ECU
 200852,Yulia,Berberian,U,19441006,BUL
 200853,Anne Marie,Rouchon,U,19380126,FRA
 200854,Maria Teresa,Nasuelli,U,19470719,ITA
-200855,Erzsebet,Polgar,U,,HUN
+200855,Erzsebet,Polgar,U,NULL,HUN
 200856,Ana,Cavadini,U,19501010,ARG
 200857,Wendy,Tomlinson,U,19500918,RSA
 200858,Dorothy,Knode,U,19250703,USA
 200859,Danuta,Wieczorek,U,19490427,POL
 200860,Kristy,Pigeon,U,19500815,USA
-200861,Yaeko,Matsuda,U,,JPN
+200861,Yaeko,Matsuda,U,NULL,JPN
 200862,Valerie,Ziegenfuss,U,19490629,USA
 200863,Zaiga,Yansone,U,19510124,URS
-200864,Tiiu,Kivi,U,,URS
+200864,Tiiu,Kivi,U,NULL,URS
 200865,Heather,Segal,U,19310725,RSA
 200866,Linda,Tuero,U,19501021,USA
 200867,Kerstin,Seelbach,U,19430712,FRG
@@ -883,28 +883,28 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200882,Alena,Palmeova West,U,19450107,TCH
 200883,Marianna,Brummer,U,19491124,RSA
 200884,Marijke,Schaar,U,19441112,NED
-200885,Sharon,Van Brandis,U,,RSA
-200886,Becky,Vest,U,,USA
+200885,Sharon,Van Brandis,U,NULL,RSA
+200886,Becky,Vest,U,NULL,USA
 200887,Gertruida,Walhof,U,19440115,NED
-200888,Joan,Koudelka,U,,RSA
+200888,Joan,Koudelka,U,NULL,RSA
 200889,Miroslava,Holubova,U,19491002,TCH
 200890,Sonja,Pachta,U,19410425,AUT
 200891,Daphne,Pattison,U,19480612,ZIM
-200892,Aleksandra,Ivanova,U,,URS
+200892,Aleksandra,Ivanova,U,NULL,URS
 200893,Francoise,Repoux,U,19351023,FRA
 200894,Isabel,Fernandez De Soto,U,19500918,COL
 200895,Marilyn,Greenwood,U,19460204,GBR
 200896,Nancy,Ornstein,U,19520731,USA
 200897,Heide,Schildknecht,U,19420810,GER
 200898,Erzsebet,Szell,U,19451207,HUN
-200899,Marina,Chuvirina,U,,URS
+200899,Marina,Chuvirina,U,NULL,URS
 200900,Barbara,Downs,U,19540304,USA
 200901,Nell,Truman,U,19451212,GBR
 200902,Corinne,Molesworth,U,19490618,GBR
 200903,Hideko,Goto,U,19490330,JPN
 200904,Kristien,Shaw,U,19520725,USA
 200905,Mariana,Simionescu,R,19561127,ROU
-200906,Carmen,Ibarra,U,,CHI
+200906,Carmen,Ibarra,U,NULL,CHI
 200907,Carmen,Perea Alcala,U,19520503,ESP
 200908,Miroslava,Bendlova,U,19511216,CZE
 200909,Florence,Guedy,U,19541207,FRA
@@ -937,14 +937,14 @@ player_id,first_name,last_name,hand,birth_date,country_code
 200936,Iris,Riedel Kuhn,U,19540316,FRG
 200937,Susana Maria,Villaverde,U,19550209,ARG
 200938,Kathy,May Teacher Paben,U,19560618,USA
-200939,Alison,Mcmillan,U,,RSA
+200939,Alison,Mcmillan,U,NULL,RSA
 200940,Ilana,Kloss,U,19560312,RSA
 200941,Janice,Metcalf,U,19520710,USA
 200942,Kathy,Kuykendall,U,19561123,USA
 200943,Jane,Stratton,U,19530810,USA
 200944,Rowena,Sanders,U,19530630,RSA
 200945,Marita,Redondo,R,19560219,USA
-200946,Sylvie,Rual,U,,FRA
+200946,Sylvie,Rual,U,NULL,FRA
 200947,Susie,Mehmedbasich,U,19570916,USA
 200948,Brigette,Cuypers,U,19551203,RSA
 200949,Silvana,Urroz,U,19550221,CHI
@@ -1096,31 +1096,31 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201095,Jennifer,Hoad,U,19340303,AUS
 201096,Rita,Lauder,U,19310716,GBR
 201097,Marilyn,Aschner,U,19480308,USA
-201098,Mimi,Wheeler,U,,USA
+201098,Mimi,Wheeler,U,NULL,USA
 201099,Jean,Drysdale,U,19390923,RSA
 201100,Christiane,Mercelis,U,19311005,BEL
 201101,Janice,Wainwright,U,19470611,GBR
 201102,Alice,Tym,U,19421122,USA
-201103,Pixie,Lamm,U,,USA
+201103,Pixie,Lamm,U,NULL,USA
 201104,Lidy,Venneboer,U,19460817,NED
-201105,Margaret,Lee,U,,GBR
+201105,Margaret,Lee,U,NULL,GBR
 201106,Betty,Pratt,U,19250415,USA
 201107,Nadine,Netter,U,19441026,USA
 201108,Florence,De La Courtie Billat,U,19321113,FRA
-201109,Pauline,Roberts,U,,GBR
+201109,Pauline,Roberts,U,NULL,GBR
 201110,Bernice,Vukovich,U,19380101,RSA
 201111,Lorna,Greville Collins,U,19330103,GBR
-201112,Wendy,Hall,U,,GBR
+201112,Wendy,Hall,U,NULL,GBR
 201113,Shirley,Brasher,U,19340613,GBR
 201114,Robin,Lloyd,U,19440221,GBR
-201115,Victoria,Rogers,U,,USA
-201116,Maria Teresa,Riedl,U,,ITA
+201115,Victoria,Rogers,U,NULL,USA
+201116,Maria Teresa,Riedl,U,NULL,ITA
 201117,Margaret,Harris,R,19450316,AUS
 201118,Tine,Zwaan,U,19470617,NED
 201119,Graciela,Moran,U,19480218,ARG
-201120,Marion,Boundy,U,,GBR
-201121,Susan,Northen,U,,GBR
-201122,Anita,Van Deventer,U,,RSA
+201120,Marion,Boundy,U,NULL,GBR
+201121,Susan,Northen,U,NULL,GBR
+201122,Anita,Van Deventer,U,NULL,RSA
 201123,Stephanie,Grant,U,19500703,USA
 201124,Ana Maria,Estalella Manso,U,19330505,ESP
 201125,Elizabeth,James,U,19460515,GBR
@@ -1128,7 +1128,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201127,Gail,Hansen,U,19510421,USA
 201128,Jane,Ohara,U,19510724,CAN
 201129,Marilyn,Pryde,U,19520515,NZL
-201130,Chikako,Murakami,U,,JPN
+201130,Chikako,Murakami,U,NULL,JPN
 201131,Patricia,Cody,U,19400101,USA
 201132,Susan,Minford,U,19541203,IRL
 201133,Eliza,Pande,U,19530102,USA
@@ -1141,18 +1141,18 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201140,Wendy,Appleby,U,19520430,USA
 201141,Di,Riste,U,19490608,GBR
 201142,Kathy,Blake,U,19461218,USA
-201143,Lisa,Fleming,U,,USA
+201143,Lisa,Fleming,U,NULL,USA
 201144,Clare,Colman,U,19520213,GBR
 201145,Judy,Dixon,U,19490816,USA
 201146,Annette,Coe,U,19540304,GBR
 201147,Janice,Tindle,U,19500703,CAN
 201148,Roberta,Stark,U,19560702,USA
-201149,Elena,Granaturova,U,,URS
+201149,Elena,Granaturova,U,NULL,URS
 201150,Elizabeth,Vlotman,U,19541109,GBR
 201151,Mary,Mclean,U,19450925,USA
 201152,Aleida,Spex,U,19550616,USA
 201153,Anthea,Stewart,U,19590207,GBR
-201154,Martina,Walsh,U,,IRL
+201154,Martina,Walsh,U,NULL,IRL
 201155,Erin,Dignam,U,19550720,USA
 201156,Stephanie,Tolleson,U,19560325,USA
 201157,Susan,Hagey,U,19520103,BEL
@@ -1163,7 +1163,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201162,Linda,Geeves,U,19540621,GBR
 201163,Susie,Jaeger,U,19620329,USA
 201164,Glaucia,Langela,U,19540505,BRA
-201165,Elizabeth,Gordon,U,,RSA
+201165,Elizabeth,Gordon,U,NULL,RSA
 201166,Shelly,Walpole,U,19650917,GBR
 201167,Ellinore,Lightbody,U,19590216,GBR
 201168,Micki,Schillig,U,19601129,USA
@@ -1185,7 +1185,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201184,Karen,Hunter,U,19680826,GBR
 201185,Robyn,Field,U,19660627,RSA
 201186,Virginia,Humphreys Davies,U,19720106,GBR
-201187,Shawna,Martin,U,,USA
+201187,Shawna,Martin,U,NULL,USA
 201188,Barbara,Griffiths,U,19720520,GBR
 201189,Sarah,Bentley,U,19730308,GBR
 201190,Kaye,Marfini Hand,U,19681004,GBR
@@ -1211,37 +1211,37 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201210,Kristen,Schlukebir,R,19840628,USA
 201211,Kyra,Nagy,R,19771229,HUN
 201212,Francesca,Schiavone,R,19800623,ITA
-201213,Vija,Vuskalns,U,,USA
-201214,Farel,Footman,U,,USA
+201213,Vija,Vuskalns,U,NULL,USA
+201214,Farel,Footman,U,NULL,USA
 201215,Connie,Capozzi,U,19510521,USA
 201216,Marjorie,Gengler,U,19510503,USA
-201217,Peggy,Moore,U,,USA
-201218,Tish,Adams,U,,USA
-201219,Jade,Schiffman,U,,USA
-201220,Carole,Herrick,U,,USA
-201221,Emilie,Fisher,U,,USA
-201222,Diane,Matzner,U,,USA
-201223,Mary,Lowdon,U,,USA
-201224,Ann,Moore,U,,USA
-201225,Tina,Lyman,U,,USA
-201226,Maricaye,Christenson,U,,USA
+201217,Peggy,Moore,U,NULL,USA
+201218,Tish,Adams,U,NULL,USA
+201219,Jade,Schiffman,U,NULL,USA
+201220,Carole,Herrick,U,NULL,USA
+201221,Emilie,Fisher,U,NULL,USA
+201222,Diane,Matzner,U,NULL,USA
+201223,Mary,Lowdon,U,NULL,USA
+201224,Ann,Moore,U,NULL,USA
+201225,Tina,Lyman,U,NULL,USA
+201226,Maricaye,Christenson,U,NULL,USA
 201227,Roylee,Bailey,U,19490526,USA
 201228,Nancy,Reed,R,19330421,USA
 201229,Louise,Gonnerman,U,19470321,USA
 201230,Mimi,Kanarek,U,19390818,USA
-201231,Raymonde,Jones,U,,USA
-201232,Carol,Hunter,U,,USA
+201231,Raymonde,Jones,U,NULL,USA
+201232,Carol,Hunter,U,NULL,USA
 201233,Joyce,Davenport,U,19420223,USA
 201234,Pat,Stewart,U,19340819,USA
 201235,Jane,Kincaid,U,19510220,USA
 201236,Darlene,Hard,R,19360106,USA
 201237,Pam,Richmond,U,19501025,USA
-201238,Carol,Aucamp,U,,USA
-201239,Emilie,Burrer,U,,USA
+201238,Carol,Aucamp,U,NULL,USA
+201239,Emilie,Burrer,U,NULL,USA
 201240,Margaret,Cooper,U,19500413,USA
-201241,Pam,Farmer,U,,USA
+201241,Pam,Farmer,U,NULL,USA
 201242,Susan,Vinton,U,19531113,USA
-201243,Shari,Barman,U,,USA
+201243,Shari,Barman,U,NULL,USA
 201244,Sue,Stap,U,19540603,USA
 201245,Jeanne,Arth,U,19350721,USA
 201246,Kathy,Kraft,U,19521219,USA
@@ -1250,8 +1250,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201249,Rosalba,Vido,U,19530102,ITA
 201250,Brenda,Garcia,U,19540211,USA
 201251,Patricia,Shoolman,U,19580516,USA
-201252,Marcy,Okeefe,U,,USA
-201253,Sally,Moore,U,,USA
+201252,Marcy,Okeefe,U,NULL,USA
+201253,Sally,Moore,U,NULL,USA
 201254,Lynne,Epstein,U,19580328,USA
 201255,Margaret,Riley,U,19530105,USA
 201256,Renee,Richards,U,19340819,USA
@@ -1260,7 +1260,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201259,Sonoe,Yonezawa,U,19490829,JPN
 201260,Kelly,Henry,U,19620418,USA
 201261,Lisa,Doherty,U,19590305,USA
-201262,Lucy,Gordon,U,,USA
+201262,Lucy,Gordon,U,NULL,USA
 201263,Jody,Appelbaum,U,19560704,USA
 201264,Germaine,Ohaco,U,19621208,CHI
 201265,Phyllis,Blackwell,U,19570326,USA
@@ -1734,7 +1734,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201733,Lorenza,Jachia,U,19681024,ITA
 201734,Barbara,Pollet,U,19630517,AUT
 201735,Monika,Lundqvist,U,19670418,SWE
-201736,Xenia,Anastasiados,U,,GRE
+201736,Xenia,Anastasiados,U,NULL,GRE
 201737,Stefania,Dalla Valle,U,19660712,ITA
 201738,Julia,Apostoli,U,19640813,GRE
 201739,Petra,Schmitt,U,19711024,HUN
@@ -1779,7 +1779,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201778,Suzanne,Bakewell,U,19600526,GBR
 201779,Silvia,Campius Pinas,U,19600310,ESP
 201780,Kerry,Young,U,19501002,USA
-201781,Judith,Mercade,U,,ESP
+201781,Judith,Mercade,U,NULL,ESP
 201782,Rosa Maria,Togores Colom,U,19540405,ESP
 201783,Marcela Viviana,Cataldi,U,19551202,ARG
 201784,Betona,Pellon Fernandez,U,19600915,ESP
@@ -1788,15 +1788,15 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201787,Annina,Von Planta,U,19560804,SUI
 201788,Isabel,Moure,U,19620513,ESP
 201789,Begonia,Erana,U,19631024,ESP
-201790,Ana,Aubone,U,,ARG
-201791,Iris,Thompson,U,,ESP
-201792,Ingrid,Jonge,U,,NED
+201790,Ana,Aubone,U,NULL,ARG
+201791,Iris,Thompson,U,NULL,ESP
+201792,Ingrid,Jonge,U,NULL,NED
 201793,Maria,Mateo,U,19570623,ESP
 201794,Monica,Alvarez,U,19551219,ESP
-201795,Nancy,Harris,U,,AUS
+201795,Nancy,Harris,U,NULL,AUS
 201796,Jane,Plackett,U,19550328,GBR
-201797,Maria,Muntanola,U,,ESP
-201798,Birthe,Glatzel,U,,FRG
+201797,Maria,Muntanola,U,NULL,ESP
+201798,Birthe,Glatzel,U,NULL,FRG
 201799,Marie Jose,Llorca,U,19700403,ESP
 201800,Annika,Narbe,U,19711009,SWE
 201801,Ana Maria,Segura Perez,U,19690205,ESP
@@ -1874,7 +1874,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201873,Karen,Smith,U,19611019,AUS
 201874,Helen,Davis,U,19600623,AUS
 201875,Vicki,Marler,U,19641117,AUS
-201876,Rosemary,Eden,U,,AUS
+201876,Rosemary,Eden,U,NULL,AUS
 201877,Karen,Shin,U,19680705,USA
 201878,Junko,Watanabe,U,19721019,JPN
 201879,Reka,Vidats,U,19790719,HUN
@@ -1884,8 +1884,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201883,Cynthia,Ashling,U,19580614,USA
 201884,Marcelle,Voyame,U,19601018,ARG
 201885,Marta,Galli,U,19460923,ARG
-201886,Patricia,Gomez,U,,ARG
-201887,Laura,Giussani,U,,ARG
+201886,Patricia,Gomez,U,NULL,ARG
+201887,Laura,Giussani,U,NULL,ARG
 201888,Marlie,Buehler,U,19501120,USA
 201889,Patrizia,Murgo,U,19620326,ITA
 201890,Xochitl,Escobedo,U,19680917,MEX
@@ -1935,7 +1935,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201934,Anne Marie,Ruegg,U,19580401,SUI
 201935,Monica,Simmen,U,19580716,SUI
 201936,Anne Mette,Sorensen,U,19470707,DEN
-201937,Kathy,Barton,U,,USA
+201937,Kathy,Barton,U,NULL,USA
 201938,Ainhoa,Goni Blanco,R,19790807,ESP
 201939,Anique,Snijders,U,19730915,NED
 201940,Mirela,Vladulescu,U,19770311,GER
@@ -2000,13 +2000,13 @@ player_id,first_name,last_name,hand,birth_date,country_code
 201999,Penny,Johnson,U,19550826,USA
 202000,Yuen Yuen,Ling,U,19410613,HKG
 202001,Sylvie,Rual Faulty,U,19561215,FRA
-202002,Kathleen,Carey,U,,HKG
-202003,Keiko,Morimoto,U,,JPN
-202004,Suzie,Holm,U,,HKG
+202002,Kathleen,Carey,U,NULL,HKG
+202003,Keiko,Morimoto,U,NULL,JPN
+202004,Suzie,Holm,U,NULL,HKG
 202005,Cathy,Fink,U,19580310,USA
 202006,Nancy,Spelman,U,19450913,HKG
-202007,Lili,Bell,U,,AUS
-202008,Susana,Rojas,U,,MEX
+202007,Lili,Bell,U,NULL,AUS
+202008,Susana,Rojas,U,NULL,MEX
 202009,Ionita,Nesti,U,19630609,ITA
 202010,Andrea,Galloway,U,19561209,AUS
 202011,June,Ferestein,U,19630619,USA
@@ -2030,7 +2030,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 202029,Ana,Salas Lozano,U,19720712,ESP
 202030,Carolina,Rodriguez,U,19811228,COL
 202031,Rosa Maria,Andres Rodriguez,R,19770529,ESP
-202032,Jane,Holdren,U,,USA
+202032,Jane,Holdren,U,NULL,USA
 202033,Gretchen,Doninger,U,19650626,USA
 202034,Jane,Thomas,U,19660324,USA
 202035,Holyn,Lord,U,19731012,USA
@@ -2059,8 +2059,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 202058,Maria,Geyer,U,19520713,AUT
 202059,Natasha,Piskakova,U,19630606,TCH
 202060,Maria,Romanov,U,19590428,ROU
-202061,Darlene,Williamson,U,,AUT
-202062,Janthe,Cunningham,U,,AUT
+202061,Darlene,Williamson,U,NULL,AUT
+202062,Janthe,Cunningham,U,NULL,AUT
 202063,Irma,Novakova Spurny,U,19621124,GER
 202064,Nike,Dobrovits,U,19731202,AUT
 202065,Henrike,Kadzidroga,U,19710531,GER
@@ -2082,7 +2082,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 202081,Katalin,Miskolczi,U,19760806,HUN
 202082,Niki,Ninaus,U,19740222,AUS
 202083,Carol,Watson,U,19610705,USA
-202084,Sherry,Hull,U,,MON
+202084,Sherry,Hull,U,NULL,MON
 202085,Galina,Fokina,L,19840117,RUS
 202086,Natalia,Biletskaia,U,19721106,UKR
 202087,Reeka,Szikszay,U,19650803,HUN
@@ -2105,8 +2105,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 202104,Kazue,Takuma,U,19740804,JPN
 202105,Anori,Fukuda,U,19731219,JPN
 202106,Lori,Kosten,U,19650330,USA
-202107,Edie,Carell,U,,USA
-202108,Robin,Boss,U,,USA
+202107,Edie,Carell,U,NULL,USA
+202108,Robin,Boss,U,NULL,USA
 202109,Kerri,Reiter,U,19681001,USA
 202110,Lisa,Albano,U,19700324,USA
 202111,Mary,Norwood,U,19660508,USA
@@ -2131,13 +2131,13 @@ player_id,first_name,last_name,hand,birth_date,country_code
 202130,Natalia,Leipus,U,19620410,AUS
 202131,Christa,Pickwick,U,19590620,NZL
 202132,Manuela,Zoni,U,19601012,ITA
-202133,Annalisa,Pesce,U,,ITA
+202133,Annalisa,Pesce,U,NULL,ITA
 202134,Katie,Schlukebir,U,19750429,USA
 202135,Vanessa,Henke,R,19810115,GER
 202136,Michele,Wreem,U,19660606,USA
 202137,Shannon,Gordon,U,19670527,USA
 202138,Gina,Genovese,U,19490515,USA
-202139,Clare,Schmoyer,U,,USA
+202139,Clare,Schmoyer,U,NULL,USA
 202140,Cathleen,Farrell,U,19570316,USA
 202141,Janice,Rapp,U,19510522,USA
 202142,Betsy,Blaney,U,19540503,USA
@@ -2158,7 +2158,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 202157,Paola,Tampieri,U,19750426,ITA
 202158,Cristina,Cavina,U,19690302,ITA
 202159,Debbie,Robb,U,19620722,USA
-202160,Marsha,Bladel,U,,USA
+202160,Marsha,Bladel,U,NULL,USA
 202161,Linda,Allred,U,19690503,USA
 202162,Page,Bartelt,U,19740622,USA
 202163,Heather,Willens,U,19711011,USA
@@ -2194,7 +2194,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 202193,Maria Veronica,Widyadharma,U,19771109,INA
 202194,Anna,Klim,U,19751206,AUS
 202195,Petra,Gaspar,U,19770213,HUN
-202196,Karen,Denman,U,,AUS
+202196,Karen,Denman,U,NULL,AUS
 202197,Debbie,Chesterton,U,19600622,AUS
 202198,Shi Min,Lin,U,19711017,TPE
 202199,Su Lin,Lai,U,19670212,TPE
@@ -2204,12 +2204,12 @@ player_id,first_name,last_name,hand,birth_date,country_code
 202203,Yu Min,Fan Chiang,U,19771017,TPE
 202204,Yu Hsien,Liu,U,19740817,TPE
 202205,Shu Ping,Lin,U,19740226,AUS
-202206,Stephanie,Hales,U,,USA
+202206,Stephanie,Hales,U,NULL,USA
 202207,Michelle,Weiss,U,19610116,USA
 202208,Genevieve,Greiwe,U,19630819,USA
-202209,Glynis,Oconnor,U,,USA
+202209,Glynis,Oconnor,U,NULL,USA
 202210,Ann,Flint,U,19520526,USA
-202211,Allegra,Cesare,U,,USA
+202211,Allegra,Cesare,U,NULL,USA
 202212,Cricket,Manuel,U,19610507,USA
 202213,Bunny,Smith,U,19460729,USA
 202214,Holly Ann,Lloyd,U,19701218,USA
@@ -2218,15 +2218,15 @@ player_id,first_name,last_name,hand,birth_date,country_code
 202217,Kamila,Dadakhodjaeva,R,19831006,UZB
 202218,Anna,Zaporozhanova,U,19790809,UKR
 202219,Keiko,Nagatomi,U,19741122,JPN
-202220,Kuniyo,Tsukamoto,U,,JPN
+202220,Kuniyo,Tsukamoto,U,NULL,JPN
 202221,Cornelia,Lechner,U,19661113,GER
 202222,Kathy,Holton,U,19631005,USA
 202223,Soo Ok,Kim,U,19610813,KOR
 202224,Yoko,Kobayashi,U,19530509,JPN
-202225,Natalya,Borodina,U,,URS
-202226,Yoko,Mitsuko,U,,JPN
+202225,Natalya,Borodina,U,NULL,URS
+202226,Yoko,Mitsuko,U,NULL,JPN
 202227,Judith,Warringa,U,19650322,NED
-202228,Rie,Nakazaka,U,,JPN
+202228,Rie,Nakazaka,U,NULL,JPN
 202229,Sasano,Yoshiko,U,19730927,JPN
 202230,Mami,Donoshiro,U,19750308,JPN
 202231,Shiho,Hisamatsu,R,19790704,JPN
@@ -2240,7 +2240,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 202239,Nina,Voydat,U,19610207,USA
 202240,Donna,Rubin,U,19591005,USA
 202241,Cissie,Donigan,U,19600108,USA
-202242,Barbara,Hambridge,U,,RSA
+202242,Barbara,Hambridge,U,NULL,RSA
 202243,Nancy,Arendt,U,19640804,USA
 202244,Uschi,Ulrich,U,19590818,AUT
 202245,Desislava,Topalova,U,19780608,BUL
@@ -3591,27 +3591,27 @@ player_id,first_name,last_name,hand,birth_date,country_code
 203590,Ana Mihaela,Vladutu,R,19930219,ROU
 203591,Katy,Dunne,R,19950216,GBR
 203592,Melanie Ann,Clayton,U,19810905,AUS
-203593,Maree,Booth,U,,AUS
-203594,Susan,Kreymborg,U,,AUS
-203595,Helen,Middleton,U,,AUS
-203596,Helen,Luscombe,U,,AUS
-203597,Jenny,Combs,U,,AUS
-203598,Jackie,Monsour,U,,AUS
-203599,Jackie,Pinto,U,,AUS
-203600,G,Wilson,U,,AUS
-203601,Julie,Peters,U,,AUS
-203602,Kathy,Mantle,U,,AUS
-203603,Kerrie,Byrne,U,,AUS
+203593,Maree,Booth,U,NULL,AUS
+203594,Susan,Kreymborg,U,NULL,AUS
+203595,Helen,Middleton,U,NULL,AUS
+203596,Helen,Luscombe,U,NULL,AUS
+203597,Jenny,Combs,U,NULL,AUS
+203598,Jackie,Monsour,U,NULL,AUS
+203599,Jackie,Pinto,U,NULL,AUS
+203600,G,Wilson,U,NULL,AUS
+203601,Julie,Peters,U,NULL,AUS
+203602,Kathy,Mantle,U,NULL,AUS
+203603,Kerrie,Byrne,U,NULL,AUS
 203604,Sylvie,Gardette,U,19630531,FRA
-203605,Gwen,Warnock,U,,AUS
+203605,Gwen,Warnock,U,NULL,AUS
 203606,Yvette,Flu,U,19650906,NED
 203607,Betsy,Heidenberger,U,19600427,USA
 203608,Kirsty,Wenzel,U,19671017,AUS
 203609,Tracey,Moyle,U,19690208,AUS
 203610,Paula,Parentich,U,19691118,AUS
 203611,Genevieve,Dwyer,U,19690126,AUS
-203612,Petra,Tesarova,U,,TCH
-203613,Alison,De Vries,U,,AUS
+203612,Petra,Tesarova,U,NULL,TCH
+203613,Alison,De Vries,U,NULL,AUS
 203614,Robyn,Lamb,U,19640101,AUS
 203615,Wendy,Shipp,U,19730625,AUS
 203616,Tania,Everoll,U,19700903,AUS
@@ -3630,7 +3630,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 203629,Vanessa,Erlan,U,19710413,AUS
 203630,Samantha,Ewart,U,19710304,AUS
 203631,Jackie,Masters,U,19680520,AUS
-203632,Gina,Fogarty,U,,AUS
+203632,Gina,Fogarty,U,NULL,AUS
 203633,Anissa,Groves,U,19700517,AUS
 203634,Alexandra,Niepel,U,19700824,GBR
 203635,Angel,Cobbs,U,19610830,USA
@@ -3656,131 +3656,131 @@ player_id,first_name,last_name,hand,birth_date,country_code
 203655,Shannon,Peters,U,19690508,AUS
 203656,Jodi,Richardson,U,19770812,AUS
 203657,Donna,Stockton,U,19550626,USA
-203658,Jennifer,Fenwick,U,,AUS
-203659,J,Tobin,U,,AUS
+203658,Jennifer,Fenwick,U,NULL,AUS
+203659,J,Tobin,U,NULL,AUS
 203660,Michelle,Berrigan,U,19600229,AUS
-203661,Miyoko,Sugawara,U,,JPN
-203662,Diane,Eastburn,U,,AUS
-203663,Donna,Kelly,U,,AUS
-203664,Sue,Chancellor,U,,AUS
-203665,Amanda,Pryor,U,,AUS
+203661,Miyoko,Sugawara,U,NULL,JPN
+203662,Diane,Eastburn,U,NULL,AUS
+203663,Donna,Kelly,U,NULL,AUS
+203664,Sue,Chancellor,U,NULL,AUS
+203665,Amanda,Pryor,U,NULL,AUS
 203666,Dianne,Berkinshaw,U,19460330,AUS
 203667,Valerie,Franta,U,19540813,USA
-203668,Rosalyn,Mccann,U,,AUS
-203669,Eri,Murata,U,,JPN
-203670,M,Berta,U,,AUS
-203671,V,Von Demleaux,U,,AUS
-203672,S,Matthews,U,,AUS
-203673,C,Crawford,U,,AUS
-203674,K,Leslie,U,,AUS
-203675,Wendy,Pearson,U,,AUS
-203676,J,Carey,U,,AUS
-203677,Helen,Rice,U,,AUS
-203678,Evelyn,Lim,U,,SIN
-203679,M,Earl,U,,AUS
-203680,C,Mcquaide,U,,AUS
-203681,S,Middleton,U,,AUS
-203682,G,Thacker,U,,AUS
-203683,G,Ayre,U,,AUS
+203668,Rosalyn,Mccann,U,NULL,AUS
+203669,Eri,Murata,U,NULL,JPN
+203670,M,Berta,U,NULL,AUS
+203671,V,Von Demleaux,U,NULL,AUS
+203672,S,Matthews,U,NULL,AUS
+203673,C,Crawford,U,NULL,AUS
+203674,K,Leslie,U,NULL,AUS
+203675,Wendy,Pearson,U,NULL,AUS
+203676,J,Carey,U,NULL,AUS
+203677,Helen,Rice,U,NULL,AUS
+203678,Evelyn,Lim,U,NULL,SIN
+203679,M,Earl,U,NULL,AUS
+203680,C,Mcquaide,U,NULL,AUS
+203681,S,Middleton,U,NULL,AUS
+203682,G,Thacker,U,NULL,AUS
+203683,G,Ayre,U,NULL,AUS
 203684,Chloe,Carlotti,U,19820303,FRA
 203685,Jacqueline,Le Boubennec,U,19420318,FRA
-203686,Michele,Mizen,U,,FRA
+203686,Michele,Mizen,U,NULL,FRA
 203687,Rita,Felix,U,19470104,SUI
-203688,Stephanie,Bardsley,U,,CAN
-203689,Jacqueline,Berson,U,,FRA
+203688,Stephanie,Bardsley,U,NULL,CAN
+203689,Jacqueline,Berson,U,NULL,FRA
 203690,Leonora,Peralta,U,19471229,POR
 203691,Anne Marie,Cassaigne,U,19510314,FRA
 203692,Madeleine,Pegel,U,19440719,SWE
-203693,Marie Christine,Brochard,U,,FRA
-203694,Kumarani,Ranga Rao,U,,IND
-203695,T,Novaco,U,,FRA
-203696,Maria,Hollingsworth,U,,AUT
+203693,Marie Christine,Brochard,U,NULL,FRA
+203694,Kumarani,Ranga Rao,U,NULL,IND
+203695,T,Novaco,U,NULL,FRA
+203696,Maria,Hollingsworth,U,NULL,AUT
 203697,Lucinda,Crosby,U,19520717,USA
-203698,Christiane,Sarrazin,U,,FRA
-203699,J,Turner,U,,USA
+203698,Christiane,Sarrazin,U,NULL,FRA
+203699,J,Turner,U,NULL,USA
 203700,Yoshiro,Tanaka,U,19500226,JPN
 203701,Lucia,Bruce,U,19510916,URU
 203702,Ingrid,Sadlon,R,19460810,SUI
-203703,Chantal,Puget,U,,FRA
+203703,Chantal,Puget,U,NULL,FRA
 203704,Gina,Diaz Ponce,U,19550928,MEX
-203705,Susanne,Korpas,U,,GER
+203705,Susanne,Korpas,U,NULL,GER
 203706,Mi Ok,Lee,U,19520110,KOR
-203707,Andrea,Menezes,U,,BRA
+203707,Andrea,Menezes,U,NULL,BRA
 203708,Ines,Roget,U,19500219,ARG
 203709,Estela,Benavides,U,19470105,ESP
 203710,Maria Teresa,Salvidea Diaz,U,19490214,MEX
-203711,J,Ray,U,,USA
-203712,Huguette,Barat,U,,FRA
+203711,J,Ray,U,NULL,USA
+203712,Huguette,Barat,U,NULL,FRA
 203713,Silvana,Belardinelli,U,19550404,ITA
 203714,Marketa,Wallenfels,U,19440415,FRG
 203715,Karin,Boshoff,U,19530518,RSA
-203716,D,Jainer,U,,USA
-203717,K,Bluhm,U,,USA
-203718,Martine,Le Rays,U,,FRA
-203719,B,Dalzell,U,,USA
-203720,J,James,U,,USA
-203721,R,Witeker,U,,USA
-203722,L,Rios De Almeida,U,,BRA
+203716,D,Jainer,U,NULL,USA
+203717,K,Bluhm,U,NULL,USA
+203718,Martine,Le Rays,U,NULL,FRA
+203719,B,Dalzell,U,NULL,USA
+203720,J,James,U,NULL,USA
+203721,R,Witeker,U,NULL,USA
+203722,L,Rios De Almeida,U,NULL,BRA
 203723,Vera Lucia,Giugni,U,19500313,BRA
-203724,Meiko,Miyashita,U,,JPN
-203725,Patricia,Rime,U,,FRA
+203724,Meiko,Miyashita,U,NULL,JPN
+203725,Patricia,Rime,U,NULL,FRA
 203726,Laura,Falconieri,U,19670522,ITA
-203727,Elisabeth,Du Fresne Girard,U,,FRA
+203727,Elisabeth,Du Fresne Girard,U,NULL,FRA
 203728,Agnes,Graczol,U,19500421,HUN
-203729,Catherine,De Lorme,U,,FRA
+203729,Catherine,De Lorme,U,NULL,FRA
 203730,Barbara,Kral,U,19480727,POL
-203731,Cristina,Ribeiro Britto,U,,BRA
+203731,Cristina,Ribeiro Britto,U,NULL,BRA
 203732,Veronika,Buche,U,19490329,AUT
 203733,Martine,Bureau,U,19600626,FRA
 203734,Yolanda,Sumarno,U,19460730,INA
 203735,Antonella,Canapi,U,19571209,ITA
-203736,Martine,Cazaux,U,,FRA
+203736,Martine,Cazaux,U,NULL,FRA
 203737,Marillia,Matte,U,19560713,BRA
 203738,Michiko,Saji,U,19550303,JPN
-203739,N,Marman,U,,USA
-203740,Soraya,Guellas,U,,BRA
+203739,N,Marman,U,NULL,USA
+203740,Soraya,Guellas,U,NULL,BRA
 203741,Perrine,Du Puy,U,19580411,FRA
-203742,Saadia,Mezdel,U,,MAR
-203743,E,Kogl,U,,USA
-203744,Satoyo,Funaki,U,,JPN
-203745,F,Dawson,U,,USA
+203742,Saadia,Mezdel,U,NULL,MAR
+203743,E,Kogl,U,NULL,USA
+203744,Satoyo,Funaki,U,NULL,JPN
+203745,F,Dawson,U,NULL,USA
 203746,Wanda,Ferraz De Oliveira,U,19490607,BRA
-203747,Natalie,Scaramanga,U,,FRA
+203747,Natalie,Scaramanga,U,NULL,FRA
 203748,Caroline,Lane,U,19560622,USA
-203749,Agnes,Figueras,U,,FRA
+203749,Agnes,Figueras,U,NULL,FRA
 203750,Beatriz,Villaverde,U,19580605,ARG
 203751,Eva,Rozsavolgyi,U,19570217,HUN
-203752,Elizabeth,Dinopoulos,U,,FRA
+203752,Elizabeth,Dinopoulos,U,NULL,FRA
 203753,Elfia,Nizarwan,U,19590902,INA
-203754,Dominique,Oustric,U,,FRA
-203755,Carla,Mei,U,,ITA
-203756,Catherine,Chevalier,U,,FRA
-203757,A,Belladonna,U,,FRA
-203758,D,Maccloskey,U,,USA
-203759,Helen,Liebenberg,U,,RSA
-203760,Martine,Jodin,U,,FRA
-203761,Pascale,Bonneteau,U,,FRA
-203762,,Marine,U,,FRA
-203763,Catherine,Alzate,U,,FRA
-203764,Ayi,Sutarno,U,,INA
-203765,Cecilia,Barbat,U,,ARG
+203754,Dominique,Oustric,U,NULL,FRA
+203755,Carla,Mei,U,NULL,ITA
+203756,Catherine,Chevalier,U,NULL,FRA
+203757,A,Belladonna,U,NULL,FRA
+203758,D,Maccloskey,U,NULL,USA
+203759,Helen,Liebenberg,U,NULL,RSA
+203760,Martine,Jodin,U,NULL,FRA
+203761,Pascale,Bonneteau,U,NULL,FRA
+203762,NULL,Marine,U,NULL,FRA
+203763,Catherine,Alzate,U,NULL,FRA
+203764,Ayi,Sutarno,U,NULL,INA
+203765,Cecilia,Barbat,U,NULL,ARG
 203766,Eva,Fridenzi,U,19511015,HUN
-203767,M,Mesek,U,,FRA
-203768,Wendy,Maccloskey,U,,USA
-203769,Diana,Flickier,U,,ARG
-203770,Marion,Foldina,U,,FRG
-203771,Anne Marie,Casado,U,,FRA
+203767,M,Mesek,U,NULL,FRA
+203768,Wendy,Maccloskey,U,NULL,USA
+203769,Diana,Flickier,U,NULL,ARG
+203770,Marion,Foldina,U,NULL,FRG
+203771,Anne Marie,Casado,U,NULL,FRA
 203772,Nancy,Weigel,U,19530830,USA
 203773,Helena,Wimmer,U,19580910,AUT
 203774,Susan,Zaro,U,19570107,USA
 203775,Gretchen,Galt,U,19560201,USA
-203776,Anne,Fritz,U,,USA
-203777,Jeske,Van Erven,U,,NED
-203778,Sabine,Mueller,U,,FRG
+203776,Anne,Fritz,U,NULL,USA
+203777,Jeske,Van Erven,U,NULL,NED
+203778,Sabine,Mueller,U,NULL,FRG
 203779,Anna,Iuale,U,19570405,ITA
 203780,Amreeta,Ahluwalia,U,19601025,IND
 203781,Emmanuelle,Folcher,U,19620121,FRA
-203782,Kim,Seddon,U,,RSA
+203782,Kim,Seddon,U,NULL,RSA
 203783,Nathalie,Ballet,U,19670505,FRA
 203784,Cecile,Bourdais,U,19690218,FRA
 203785,Sabine,Lavrerotte,U,19530713,FRA
@@ -3788,9 +3788,9 @@ player_id,first_name,last_name,hand,birth_date,country_code
 203787,Holly,Danforth,U,19690811,USA
 203788,Daniela,Moise,U,19641204,ROU
 203789,Frederique,Martin,U,19690128,FRA
-203790,Ellen,Walliser,U,,FRA
-203791,Maria,Mendez,U,,ARG
-203792,Ann,Garbay,U,,FRA
+203790,Ellen,Walliser,U,NULL,FRA
+203791,Maria,Mendez,U,NULL,ARG
+203792,Ann,Garbay,U,NULL,FRA
 203793,Natalie,Rodriguez,U,19690624,CHI
 203794,Annika,Karlsson,U,19661004,SWE
 203795,Digna,Ketelaar,U,19670813,NED
@@ -3801,7 +3801,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 203800,Pretty,Marot,U,19710126,FRA
 203801,Marie Pierre,Villani,U,19710802,FRA
 203802,Geraldine,Ibrac,U,19740112,FRA
-203803,Carole,Luccarelli,U,,FRA
+203803,Carole,Luccarelli,U,NULL,FRA
 203804,Axelle,Thomas,U,19740522,FRA
 203805,Laurence,Duffaud,U,19750511,FRA
 203806,Cecile,Dorey,U,19740303,FRA
@@ -3815,14 +3815,14 @@ player_id,first_name,last_name,hand,birth_date,country_code
 203814,Katherine,Vymetal,U,19830226,GBR
 203815,Heidi,Farr,U,19820204,GBR
 203816,Siobhan,Nicholson,R,19660611,GBR
-203817,Lorrayne,Gracie,U,,GBR
+203817,Lorrayne,Gracie,U,NULL,GBR
 203818,Nicola,Lusty,U,19641018,GBR
 203819,Catherine,Berry,U,19640526,GBR
 203820,Caroline,Bhaguandas,U,19680405,GBR
-203821,Susan,Leach,U,,GBR
+203821,Susan,Leach,U,NULL,GBR
 203822,Sarah,Sullivan,U,19660112,GBR
 203823,Heidi,Narborough,U,19651226,GBR
-203824,Tonia,Bayley,U,,AUS
+203824,Tonia,Bayley,U,NULL,AUS
 203825,Jennifer,Obrien,U,19691216,IRL
 203826,Lynn,Jacobs,U,19600709,RSA
 203827,Louise,Fitzgerald,U,19700814,AUS
@@ -3864,31 +3864,31 @@ player_id,first_name,last_name,hand,birth_date,country_code
 203863,Beverly,Buckley,U,19530124,USA
 203864,Ann,Etheredge,U,19551013,USA
 203865,Robin,Khan,R,19540923,USA
-203866,A,Schroeder,U,,USA
-203867,Maria,Fernandez,U,,USA
-203868,Karen,Kennington,U,,USA
-203869,Karen,Dawson,U,,USA
-203870,Jenny,Gardiner,U,,USA
-203871,Lisa,Kearney,U,,USA
-203872,Kathy,Mueller,U,,USA
-203873,Pascale,Bernateau,U,,FRA
+203866,A,Schroeder,U,NULL,USA
+203867,Maria,Fernandez,U,NULL,USA
+203868,Karen,Kennington,U,NULL,USA
+203869,Karen,Dawson,U,NULL,USA
+203870,Jenny,Gardiner,U,NULL,USA
+203871,Lisa,Kearney,U,NULL,USA
+203872,Kathy,Mueller,U,NULL,USA
+203873,Pascale,Bernateau,U,NULL,FRA
 203874,Maria,Rothschild,U,19600424,USA
-203875,Judith,Principe,U,,USA
-203876,Becky,Bell,U,,USA
-203877,Connie,Yowell,U,,USA
-203878,Lori,Miller,U,,USA
+203875,Judith,Principe,U,NULL,USA
+203876,Becky,Bell,U,NULL,USA
+203877,Connie,Yowell,U,NULL,USA
+203878,Lori,Miller,U,NULL,USA
 203879,Joni,Urban,U,19651125,USA
-203880,Lisa,Bublitz,U,,USA
-203881,Suzanne,Jarell,U,,USA
+203880,Lisa,Bublitz,U,NULL,USA
+203881,Suzanne,Jarell,U,NULL,USA
 203882,Lucila,Becerra,U,19650722,MEX
 203883,Shandra,Livingston,U,19680519,USA
-203884,Merrilee,Keller,U,,USA
+203884,Merrilee,Keller,U,NULL,USA
 203885,Elsa,Rodriguez,U,19550913,COL
 203886,Joni,Van Ryck De Groot,U,19551017,JAM
 203887,Lara,De Angelis,U,19810318,ITA
 203888,Jennifer,Prah,U,19660615,USA
-203889,Hee Jeong,Baek,U,,KOR
-203890,Chris,Gillis,U,,USA
+203889,Hee Jeong,Baek,U,NULL,KOR
+203890,Chris,Gillis,U,NULL,USA
 203891,Trisha,Laux,U,19690203,USA
 203892,Stephanie,London,U,19690818,USA
 203893,Sonya,Hahn,U,19670825,USA
@@ -4001,7 +4001,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 204000,Mirja,Wagner,U,19780508,GER
 204001,Gitte,Moeller,R,19801106,GER
 204002,Alena,Scharfschwert,U,19810119,GER
-204003,Karen,Frawley,U,,AUS
+204003,Karen,Frawley,U,NULL,AUS
 204004,Amy,Jensen,U,19780731,AUS
 204005,Kim,Grant,R,19710501,RSA
 204006,Stacey,Jellen,U,19750105,USA
@@ -4341,7 +4341,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 204340,Bao Yi,Xu,U,19920305,CHN
 204341,Zhen,Yan,U,19930219,CHN
 204342,Nan Nan,Zhang,R,19920108,CHN
-204343,Xiaojing,Lu,U,,CHN
+204343,Xiaojing,Lu,U,NULL,CHN
 204344,Nigina,Rahmanova,U,19921216,UZB
 204345,Polina,Merenkova,U,19951111,UZB
 204346,Valeriya,Korotina,U,19960813,UZB
@@ -4801,7 +4801,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 204800,Sofia,Managadze,U,19780609,GEO
 204801,Marina,Soukholitko,U,19811223,RUS
 204802,Natalia,Romashina,U,19801018,RUS
-204803,Natalia,Vizhunova,U,,RUS
+204803,Natalia,Vizhunova,U,NULL,RUS
 204804,Juleya,Semenets,U,19791013,UKR
 204805,Victoria,Livanova,U,19810705,RUS
 204806,Anna,Barinova,U,19791005,LAT
@@ -6606,7 +6606,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 206605,Kathleen,Odaly,U,19740511,USA
 206606,Claudia,Herbas,U,19800304,BOL
 206607,Pilar,Piana,U,19800215,ECU
-206608,Florinda,Videa,U,,BOL
+206608,Florinda,Videa,U,NULL,BOL
 206609,Vicky,Barker,U,19760923,GBR
 206610,Kylene,Wong Simunyola,U,19790725,USA
 206611,Clara,Rios,U,19840128,BOL
@@ -7055,7 +7055,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 207054,Maria,Gil,U,19820111,ESP
 207055,Beatriz,Fraga,U,19811128,ESP
 207056,Marcela,Ferrari,U,19810123,ESP
-207057,Solma,Norovz Najeri,U,,ESP
+207057,Solma,Norovz Najeri,U,NULL,ESP
 207058,Patricia,Huelin Alvarez,U,19850613,ESP
 207059,Pilar,Santibanez Gomez Ull,U,19691122,ESP
 207060,Susana,De Andres Therond,U,19770115,ESP
@@ -7111,7 +7111,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 207110,Amy,Dillingham,U,19690628,USA
 207111,Audrey,Pierrich,U,19760709,FRA
 207112,Fabienne,Clavel,R,19850815,FRA
-207113,Joelie,Brousseaud,U,,FRA
+207113,Joelie,Brousseaud,U,NULL,FRA
 207114,Claire,Maiolini,U,19800520,FRA
 207115,Elodie,Navarro,U,19850829,FRA
 207116,Virginia,Tournebise,U,19770623,FRA
@@ -7128,8 +7128,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 207127,Romy,Hutchins,U,19800115,GBR
 207128,Julie,Zanin,U,19800311,FRA
 207129,Valentine,Vernaz,U,19780213,FRA
-207130,Geraldine,Rimes,U,,FRA
-207131,Charlotte,Sikorra,U,,FRA
+207130,Geraldine,Rimes,U,NULL,FRA
+207131,Charlotte,Sikorra,U,NULL,FRA
 207132,Ludivine,Nicolas,U,19780324,FRA
 207133,Raluca,Ciulei,R,19800213,ROU
 207134,Laurence,Poujoulat,U,19790422,SUI
@@ -7264,7 +7264,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 207263,Nikita,Bhardwaj,U,19830807,IND
 207264,Shalini,Thakar,U,19780218,IND
 207265,Reetu,Sethi,U,19781130,IND
-207266,Joy,Rodrigues,U,,IND
+207266,Joy,Rodrigues,U,NULL,IND
 207267,Tarminder,Grover,U,19790715,IND
 207268,Simmi,Rani,U,19811111,IND
 207269,Stutti,Smit,U,19800924,IND
@@ -7301,7 +7301,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 207300,Bernadette,Audra,U,19820416,INA
 207301,Sasha,Edelstein,U,19810220,ISR
 207302,Jihan,Patel,U,19820509,MRI
-207303,Maria Carmen,Gaso,U,,ESP
+207303,Maria Carmen,Gaso,U,NULL,ESP
 207304,Estefania,Daubiol,U,19830622,ESP
 207305,Maia,Ram,U,19850321,ISR
 207306,Rotem,Tepperberg,U,19810318,ISR
@@ -7480,7 +7480,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 207479,Jessie,Rochefort,R,19850207,CAN
 207480,Kendra,Segura,U,19790828,USA
 207481,Jamie,Macias,U,19801106,USA
-207482,Gabriela,Delgado,U,,MEX
+207482,Gabriela,Delgado,U,NULL,MEX
 207483,Claudia,Calderon,U,19840706,MEX
 207484,Bettina,Cremasco,U,19840607,MEX
 207485,Jackeline,Jacome,U,19830307,MEX
@@ -12078,730 +12078,730 @@ player_id,first_name,last_name,hand,birth_date,country_code
 212077,Kelly,Blanch,R,19800227,AUS
 212078,Gabriela,Duch,U,19850222,MEX
 212079,Amanda,Jasso,U,19860130,USA
-212080,Branislava,Ivanovic,,19750517,YUG
-212081,Helen,Asciak,,19630129,MLT
-212082,Lisa,Camenzuli,,19770115,MLT
-212083,Lynn Yin,Tan,,19800308,MAS
-212084,Nicole,Angat,,19820409,POC
-212085,Davilyn,Godinet,,19830610,POC
-212086,Olga,Dzuba,,19830418,KAZ
-212087,Valeria,Khazova,,19810331,KAZ
-212088,D,ESPINAL,,,DOM
-212089,Madeline,Sanchez,,19680510,DOM
-212090,Su Chen,Lin,,19700719,HKG
-212091,Adriana,Thaggard,,19770706,FIJ
-212092,Archana,Reddy,,19800705,FIJ
-212093,Yik Hui,Leow,,19840313,SIN
+212080,Branislava,Ivanovic,NULL,19750517,YUG
+212081,Helen,Asciak,NULL,19630129,MLT
+212082,Lisa,Camenzuli,NULL,19770115,MLT
+212083,Lynn Yin,Tan,NULL,19800308,MAS
+212084,Nicole,Angat,NULL,19820409,POC
+212085,Davilyn,Godinet,NULL,19830610,POC
+212086,Olga,Dzuba,NULL,19830418,KAZ
+212087,Valeria,Khazova,NULL,19810331,KAZ
+212088,D,ESPINAL,NULL,NULL,DOM
+212089,Madeline,Sanchez,NULL,19680510,DOM
+212090,Su Chen,Lin,NULL,19700719,HKG
+212091,Adriana,Thaggard,NULL,19770706,FIJ
+212092,Archana,Reddy,NULL,19800705,FIJ
+212093,Yik Hui,Leow,NULL,19840313,SIN
 212094,Shareen Rena,Lai,R,19771228,MAS
-212095,Chen Yee,Liaw,,19860209,MAS
-212096,Shalini,Perera,,19770512,SRI
-212097,Shaza,Tinawi,,19810130,SYR
-212098,Farah,Dayoub,,19750605,SYR
-212099,Sonya,Kumar,,19860111,SIN
-212100,Tina,Jacob,,19850606,SIN
-212101,Petroena,Fong,,19840119,FIJ
-212102,Viviana,Rivero,,19830121,BOL
-212103,Alexandra,Chong,,19810730,JAM
-212104,Tinesta,Rowe,,19851107,JAM
-212105,Leeza,Rooks,,19830829,TRI
-212106,Lisa,Fung Kee Fung,,19850403,TRI
-212107,Tenille,Elias,,19841210,TRI
-212108,Sasha,Fisher,,19870205,BER
-212109,Francine,Harvey,,19730319,ANT
-212110,Niki,Williams,,19820922,ANT
-212111,Zarah,De Silva,,19840415,BER
-212112,Isoke,Perry,,19830104,ANT
-212113,Maria Elena,Gittens,,19690416,PAN
-212114,Anais Marie,Moreno,,19820120,PAN
-212115,Tara,Lambert,,19810425,BER
-212116,Alexia Llysel,Marquez,,19690510,PAN
-212117,Lucia,Henkle Gomez,,19840611,GUA
-212118,Elena,Branker,,19820307,BAR
-212119,Luisa Elfride,Lopez,,19810214,GUA
-212120,Kyla,Hunte,,19801104,BAR
-212121,Mariola,Prado,,19790420,GUA
-212122,Shonette,Wilson,,19660626,BER
-212123,Ignacia,Marin,,19830322,CHI
-212124,Ilona,Giberte,,19841119,LAT
-212125,Carol,Cassar Torreggiani,,19680725,MLT
-212126,Tatevik,Babayan,,19840108,ARM
-212127,Ana,Gasparyan,,19751222,ARM
-212128,Y,FARID,,,EGY
-212129,Caroline,Oduor,,19860507,KEN
-212130,Evelyn,Otula,,19741227,KEN
-212131,Tankiso,Letseka,,19751004,LES
-212132,Liako,Selokoma,,19740125,LES
-212133,Esther,Mbugua,,19810118,KEN
-212134,Razalia,Phethu,,19821011,BOT
-212135,Ina,Sireteanu,,19860828,MDA
-212136,Iulia,Rozgon,,19840102,MDA
-212137,Kago,Phatshwane,,19800711,BOT
-212138,Mariem Nissaf,Bouchlaka,,19830414,TUN
-212139,S,BACCAR,,,TUN
-212140,Ludmila,Stavila,,19860616,MDA
-212141,Meriem,Zitouni,,19841023,TUN
-212142,Azza,Abbou,,19841221,TUN
-212143,Wing Shan,Cheung,,19860730,HKG
-212144,Alissa,Velts,,19810122,KAZ
-212145,Gurianna,Korinihona,,19841104,POC
-212146,Sarah,Wetz,,19800711,MLT
+212095,Chen Yee,Liaw,NULL,19860209,MAS
+212096,Shalini,Perera,NULL,19770512,SRI
+212097,Shaza,Tinawi,NULL,19810130,SYR
+212098,Farah,Dayoub,NULL,19750605,SYR
+212099,Sonya,Kumar,NULL,19860111,SIN
+212100,Tina,Jacob,NULL,19850606,SIN
+212101,Petroena,Fong,NULL,19840119,FIJ
+212102,Viviana,Rivero,NULL,19830121,BOL
+212103,Alexandra,Chong,NULL,19810730,JAM
+212104,Tinesta,Rowe,NULL,19851107,JAM
+212105,Leeza,Rooks,NULL,19830829,TRI
+212106,Lisa,Fung Kee Fung,NULL,19850403,TRI
+212107,Tenille,Elias,NULL,19841210,TRI
+212108,Sasha,Fisher,NULL,19870205,BER
+212109,Francine,Harvey,NULL,19730319,ANT
+212110,Niki,Williams,NULL,19820922,ANT
+212111,Zarah,De Silva,NULL,19840415,BER
+212112,Isoke,Perry,NULL,19830104,ANT
+212113,Maria Elena,Gittens,NULL,19690416,PAN
+212114,Anais Marie,Moreno,NULL,19820120,PAN
+212115,Tara,Lambert,NULL,19810425,BER
+212116,Alexia Llysel,Marquez,NULL,19690510,PAN
+212117,Lucia,Henkle Gomez,NULL,19840611,GUA
+212118,Elena,Branker,NULL,19820307,BAR
+212119,Luisa Elfride,Lopez,NULL,19810214,GUA
+212120,Kyla,Hunte,NULL,19801104,BAR
+212121,Mariola,Prado,NULL,19790420,GUA
+212122,Shonette,Wilson,NULL,19660626,BER
+212123,Ignacia,Marin,NULL,19830322,CHI
+212124,Ilona,Giberte,NULL,19841119,LAT
+212125,Carol,Cassar Torreggiani,NULL,19680725,MLT
+212126,Tatevik,Babayan,NULL,19840108,ARM
+212127,Ana,Gasparyan,NULL,19751222,ARM
+212128,Y,FARID,NULL,NULL,EGY
+212129,Caroline,Oduor,NULL,19860507,KEN
+212130,Evelyn,Otula,NULL,19741227,KEN
+212131,Tankiso,Letseka,NULL,19751004,LES
+212132,Liako,Selokoma,NULL,19740125,LES
+212133,Esther,Mbugua,NULL,19810118,KEN
+212134,Razalia,Phethu,NULL,19821011,BOT
+212135,Ina,Sireteanu,NULL,19860828,MDA
+212136,Iulia,Rozgon,NULL,19840102,MDA
+212137,Kago,Phatshwane,NULL,19800711,BOT
+212138,Mariem Nissaf,Bouchlaka,NULL,19830414,TUN
+212139,S,BACCAR,NULL,NULL,TUN
+212140,Ludmila,Stavila,NULL,19860616,MDA
+212141,Meriem,Zitouni,NULL,19841023,TUN
+212142,Azza,Abbou,NULL,19841221,TUN
+212143,Wing Shan,Cheung,NULL,19860730,HKG
+212144,Alissa,Velts,NULL,19810122,KAZ
+212145,Gurianna,Korinihona,NULL,19841104,POC
+212146,Sarah,Wetz,NULL,19800711,MLT
 212147,Rosanne,Dimech,R,19851027,MLT
-212148,Nadia,Kilani,,19820621,TUN
-212149,Jeannine,Niedhardt,,19800612,LIE
-212150,Sabrina,Vogt,,19820917,LIE
-212151,Lesedi,Ramocha,,19801128,BOT
-212152,Phemelo,Mogapi,,19850107,BOT
-212153,Karmelina,Rivera,,19820621,PUR
-212154,Maria,Calbeto,,19870421,PUR
-212155,Danielle,Paynter,,19810409,BER
-212156,Yimara,Figueroa,,19830906,PAN
-212157,Anabelle,Espinosa Rodriguez,,19820613,PAN
-212158,Yeniseik,Gomez,,19870830,PAN
-212159,Laura,Viquez,,19870313,CRC
-212160,Karla,Golfin,,19710207,CRC
-212161,Saira,Sanchinelli,,19750322,GUA
-212162,Masika,Williams,,19800826,ECA
-212163,Sylma,Phillip,,19630311,ECA
-212164,Nicole,Agostini,,19870710,TRI
-212165,Anneliese,Rose,,19781030,TRI
-212166,Lerissa,Maurice,,19870126,ECA
+212148,Nadia,Kilani,NULL,19820621,TUN
+212149,Jeannine,Niedhardt,NULL,19800612,LIE
+212150,Sabrina,Vogt,NULL,19820917,LIE
+212151,Lesedi,Ramocha,NULL,19801128,BOT
+212152,Phemelo,Mogapi,NULL,19850107,BOT
+212153,Karmelina,Rivera,NULL,19820621,PUR
+212154,Maria,Calbeto,NULL,19870421,PUR
+212155,Danielle,Paynter,NULL,19810409,BER
+212156,Yimara,Figueroa,NULL,19830906,PAN
+212157,Anabelle,Espinosa Rodriguez,NULL,19820613,PAN
+212158,Yeniseik,Gomez,NULL,19870830,PAN
+212159,Laura,Viquez,NULL,19870313,CRC
+212160,Karla,Golfin,NULL,19710207,CRC
+212161,Saira,Sanchinelli,NULL,19750322,GUA
+212162,Masika,Williams,NULL,19800826,ECA
+212163,Sylma,Phillip,NULL,19630311,ECA
+212164,Nicole,Agostini,NULL,19870710,TRI
+212165,Anneliese,Rose,NULL,19781030,TRI
+212166,Lerissa,Maurice,NULL,19870126,ECA
 212167,Si Nga,Lee,R,19851209,HKG
-212168,Marina,Spakova,,19860901,KAZ
-212169,Karina,Jarlkaganova,,19841208,KAZ
-212170,Norzafira,Taufik,,19870103,MAS
-212171,Francesca,LaO,,19760507,PHI
-212172,Maylani,Ah Hoy,,19750924,POC
-212173,Yulia,Klimchenko,,19830623,KGZ
-212174,Kunykei,Koichumananova,,19880923,KGZ
+212168,Marina,Spakova,NULL,19860901,KAZ
+212169,Karina,Jarlkaganova,NULL,19841208,KAZ
+212170,Norzafira,Taufik,NULL,19870103,MAS
+212171,Francesca,LaO,NULL,19760507,PHI
+212172,Maylani,Ah Hoy,NULL,19750924,POC
+212173,Yulia,Klimchenko,NULL,19830623,KGZ
+212174,Kunykei,Koichumananova,NULL,19880923,KGZ
 212175,Jessica,Sweeting,L,19880803,BAH
-212176,Andrea,Brenes,,19860722,CRC
-212177,Danielle,Cosgrove,,19861105,TRI
-212178,Ashley,Brooks,,19880517,BER
-212179,Linda,Svarena,,19860115,LAT
-212180,Stephanie,Pace,,19860823,MLT
-212181,Bianca,Gorbea,,19861218,PUR
-212182,Hazar,Sidki,,19840408,SYR
-212183,Ummarahmat,Hummetova,,19850515,TKM
-212184,Jenneta,Halliyeva,,19830130,TKM
-212185,Irene,George,,19831110,POC
-212186,Yekaterina,Morozova,,19880203,KAZ
-212187,Pei Ling,Tong,,19890611,SIN
-212188,Yun Ling,Ng,,19881214,SIN
-212189,Nivin,Kezbari,,19850115,SYR
-212190,Almira,Hallyeva,,19860118,TKM
-212191,Veronika,Babayan,,19880519,TKM
-212192,Meera,Kantaria,,19890224,KEN
-212193,Wanjika,Ngaruiya,,19890525,KEN
-212194,Laone,Botshoma,,19870716,BOT
-212195,Elna,De Villiers,,19860611,NAM
+212176,Andrea,Brenes,NULL,19860722,CRC
+212177,Danielle,Cosgrove,NULL,19861105,TRI
+212178,Ashley,Brooks,NULL,19880517,BER
+212179,Linda,Svarena,NULL,19860115,LAT
+212180,Stephanie,Pace,NULL,19860823,MLT
+212181,Bianca,Gorbea,NULL,19861218,PUR
+212182,Hazar,Sidki,NULL,19840408,SYR
+212183,Ummarahmat,Hummetova,NULL,19850515,TKM
+212184,Jenneta,Halliyeva,NULL,19830130,TKM
+212185,Irene,George,NULL,19831110,POC
+212186,Yekaterina,Morozova,NULL,19880203,KAZ
+212187,Pei Ling,Tong,NULL,19890611,SIN
+212188,Yun Ling,Ng,NULL,19881214,SIN
+212189,Nivin,Kezbari,NULL,19850115,SYR
+212190,Almira,Hallyeva,NULL,19860118,TKM
+212191,Veronika,Babayan,NULL,19880519,TKM
+212192,Meera,Kantaria,NULL,19890224,KEN
+212193,Wanjika,Ngaruiya,NULL,19890525,KEN
+212194,Laone,Botshoma,NULL,19870716,BOT
+212195,Elna,De Villiers,NULL,19860611,NAM
 212196,Alet,Boonzaaier,R,19830207,NAM
-212197,Elrien,De Villiers,,19880713,NAM
-212198,Selima,Frioui,,19870727,TUN
-212199,Inna,Gavrilenko,,19901228,TKM
-212200,Shao Fang,Ong,,19900728,SIN
+212197,Elrien,De Villiers,NULL,19880713,NAM
+212198,Selima,Frioui,NULL,19870727,TUN
+212199,Inna,Gavrilenko,NULL,19901228,TKM
+212200,Shao Fang,Ong,NULL,19900728,SIN
 212201,Tatyana,Ignatchenko,R,19890208,KAZ
-212202,Mariaryeni,Gutierrez,,19890505,VEN
-212203,Rym,Cherni,,19881223,TUN
-212204,Stephanie,Sullivan,,19881116,MLT
-212205,Sandra,Kristjansdottir,,19901020,ISL
-212206,Sigurlaug,Sigurdardottir,,19850420,ISL
-212207,Puleng,Tlhophane,,19880616,BOT
-212208,Rebekka,Petursdottir,,19871019,ISL
+212202,Mariaryeni,Gutierrez,NULL,19890505,VEN
+212203,Rym,Cherni,NULL,19881223,TUN
+212204,Stephanie,Sullivan,NULL,19881116,MLT
+212205,Sandra,Kristjansdottir,NULL,19901020,ISL
+212206,Sigurlaug,Sigurdardottir,NULL,19850420,ISL
+212207,Puleng,Tlhophane,NULL,19880616,BOT
+212208,Rebekka,Petursdottir,NULL,19871019,ISL
 212209,Suzelle,Davin,R,19880306,NAM
-212210,Ilina,Kroushovski,,19880604,CYP
-212211,Irina,Letseva,,19891218,CYP
-212212,Olga,Cosic,,19730112,MDA
-212213,Jacklyn,Lambert,,19880927,BER
-212214,Johanna,De Leon,,19801220,PAN
-212215,Nicole,Arosemena,,19900822,PAN
-212216,Geraldine,Leong,,19910531,HKG
-212217,Sybille,Khayat,,19900427,SYR
-212218,Vanessa,Boey,,19900730,SIN
-212219,Line,Jouayed,,19910916,SYR
-212220,Caitlin,Gordon,,19900903,BER
-212221,Stanislava,Cozirscaia,,19890630,MDA
-212222,Amel,Benhaj,,19891125,TUN
-212223,Tshidiso,Mosinyi,,19890730,BOT
-212224,Sidonia,Wolfinger,,19771204,LIE
-212225,Sofia,Barletta,,19890908,HON
-212226,Marisela,Aviles,,19901130,HON
-212227,Maria De Los Angeles,Cardenas,,19900628,HON
-212228,Ana Lilyan,Guzman,,19890607,GUA
-212229,Raye Ann,Sandy,,19920730,TRI
-212230,Olivia,Bennett,,19910109,TRI
-212231,Kristen,Lopez,,19910729,BAR
-212232,Carlista,Mohammed,,19900421,TRI
-212233,Shenelle,Mohammed,,19901004,TRI
-212234,Sahar,Al Disi,,19901011,JOR
-212235,Leen,Irani,,19870507,JOR
-212236,Pamela,Adom Mendez,,19911015,DOM
-212237,Katherine,Hoepelman,,19891117,DOM
-212238,Leyla Esther,Cabrera,,19900718,DOM
-212239,Shukufa,Abdullayeva,,19920924,AZE
-212240,Astrid,Tixier,,19860120,MRI
-212241,Diana,Bukajeva,,19910916,LAT
+212210,Ilina,Kroushovski,NULL,19880604,CYP
+212211,Irina,Letseva,NULL,19891218,CYP
+212212,Olga,Cosic,NULL,19730112,MDA
+212213,Jacklyn,Lambert,NULL,19880927,BER
+212214,Johanna,De Leon,NULL,19801220,PAN
+212215,Nicole,Arosemena,NULL,19900822,PAN
+212216,Geraldine,Leong,NULL,19910531,HKG
+212217,Sybille,Khayat,NULL,19900427,SYR
+212218,Vanessa,Boey,NULL,19900730,SIN
+212219,Line,Jouayed,NULL,19910916,SYR
+212220,Caitlin,Gordon,NULL,19900903,BER
+212221,Stanislava,Cozirscaia,NULL,19890630,MDA
+212222,Amel,Benhaj,NULL,19891125,TUN
+212223,Tshidiso,Mosinyi,NULL,19890730,BOT
+212224,Sidonia,Wolfinger,NULL,19771204,LIE
+212225,Sofia,Barletta,NULL,19890908,HON
+212226,Marisela,Aviles,NULL,19901130,HON
+212227,Maria De Los Angeles,Cardenas,NULL,19900628,HON
+212228,Ana Lilyan,Guzman,NULL,19890607,GUA
+212229,Raye Ann,Sandy,NULL,19920730,TRI
+212230,Olivia,Bennett,NULL,19910109,TRI
+212231,Kristen,Lopez,NULL,19910729,BAR
+212232,Carlista,Mohammed,NULL,19900421,TRI
+212233,Shenelle,Mohammed,NULL,19901004,TRI
+212234,Sahar,Al Disi,NULL,19901011,JOR
+212235,Leen,Irani,NULL,19870507,JOR
+212236,Pamela,Adom Mendez,NULL,19911015,DOM
+212237,Katherine,Hoepelman,NULL,19891117,DOM
+212238,Leyla Esther,Cabrera,NULL,19900718,DOM
+212239,Shukufa,Abdullayeva,NULL,19920924,AZE
+212240,Astrid,Tixier,NULL,19860120,MRI
+212241,Diana,Bukajeva,NULL,19910916,LAT
 212242,Marina,Kojanova,R,19890425,MDA
-212243,Nilupul,Goonasekera,,19910424,SRI
-212244,Amreetha,Muttiah,,19920112,SRI
-212245,Carolyn Ann,Lim Hui,,19920426,SIN
+212243,Nilupul,Goonasekera,NULL,19910424,SRI
+212244,Amreetha,Muttiah,NULL,19920112,SRI
+212245,Carolyn Ann,Lim Hui,NULL,19920426,SIN
 212246,Jithmie,Jayawickrema,R,19910607,SRI
-212247,Charlene,Tsangamwe,,19860213,ZIM
-212248,Soumia,Islami,,19751222,ISL
+212247,Charlene,Tsangamwe,NULL,19860213,ZIM
+212248,Soumia,Islami,NULL,19751222,ISL
 212249,Mia,Radulovic,R,19920114,MNE
-212250,Elizabeth,Tapia,,19911017,PAN
-212251,Nicole,Stanziola,,19900501,PAN
+212250,Elizabeth,Tapia,NULL,19911017,PAN
+212251,Nicole,Stanziola,NULL,19900501,PAN
 212252,Lee Anne,Lingo,R,19921015,TRI
-212253,Celina,Goetti,,19910802,SIN
-212254,Shadi,Tabatabai,,19800904,IRI
-212255,Ghazaleh,Torkaman,,19860703,IRI
+212253,Celina,Goetti,NULL,19910802,SIN
+212254,Shadi,Tabatabai,NULL,19800904,IRI
+212255,Ghazaleh,Torkaman,NULL,19860703,IRI
 212256,Madona,Najarian,R,19890506,IRI
-212257,Eirdis,Ragnarsdottir,,19931227,ISL
-212258,Olga,Zaicenco,,19911104,MDA
-212259,Alma Michelle,Espinosa Rodriguez,,19930805,PAN
-212260,Rosaline Zafir,Chavez Tello,,19930131,PAN
-212261,Sally,Bogaert Morel,,19780914,DOM
-212262,Dayna,Grazette,,19900120,TRI
-212263,Si Ying Julienne,Keong,,19941128,SIN
-212264,Diala,Jamaleddine,,19940131,SYR
-212265,Kett,Sadi,,19950122,SYR
+212257,Eirdis,Ragnarsdottir,NULL,19931227,ISL
+212258,Olga,Zaicenco,NULL,19911104,MDA
+212259,Alma Michelle,Espinosa Rodriguez,NULL,19930805,PAN
+212260,Rosaline Zafir,Chavez Tello,NULL,19930131,PAN
+212261,Sally,Bogaert Morel,NULL,19780914,DOM
+212262,Dayna,Grazette,NULL,19900120,TRI
+212263,Si Ying Julienne,Keong,NULL,19941128,SIN
+212264,Diala,Jamaleddine,NULL,19940131,SYR
+212265,Kett,Sadi,NULL,19950122,SYR
 212266,Khee Yen,Wee,R,19950114,SIN
-212267,Maria Clara,Bernardez,,19920221,DOM
-212268,Camila,Quesada,,19910313,CRC
-212269,Isabella,Escobar,,19920812,GUA
-212270,Niamh,Coveney,,19891109,IRL
-212271,Maria,Moya,,19861229,CRC
-212272,Breana,Stampfli,,19951204,TRI
-212273,Paloma,Castillo,,19830312,DOM
-212274,Emilia,Tenizbaeva,,19950908,KGZ
-212275,Alena,Panfilova,,19950731,KGZ
-212276,Clare,Fong,,19930503,SIN
-212277,Amangul,Mollayeva,,19960109,TKM
-212278,Sarah,Al Balushi,,19960629,OMA
-212279,Maliha,Al Awaidy,,19960125,OMA
-212280,Ana Sofia,Cordero,,19950806,PUR
-212281,Monica,Matias,,19961122,PUR
-212282,Michelle Marie,Valdez,,19950406,DOM
-212283,Ximena,Mino,,19950901,CRC
-212284,Dania,Navarro,,19890424,PAN
-212285,Mariella,Calderon,,19941212,CRC
-212286,Gabriela,Gonzalez,,19881008,PAN
-212287,Trevine,Sellier,,19930804,TRI
+212267,Maria Clara,Bernardez,NULL,19920221,DOM
+212268,Camila,Quesada,NULL,19910313,CRC
+212269,Isabella,Escobar,NULL,19920812,GUA
+212270,Niamh,Coveney,NULL,19891109,IRL
+212271,Maria,Moya,NULL,19861229,CRC
+212272,Breana,Stampfli,NULL,19951204,TRI
+212273,Paloma,Castillo,NULL,19830312,DOM
+212274,Emilia,Tenizbaeva,NULL,19950908,KGZ
+212275,Alena,Panfilova,NULL,19950731,KGZ
+212276,Clare,Fong,NULL,19930503,SIN
+212277,Amangul,Mollayeva,NULL,19960109,TKM
+212278,Sarah,Al Balushi,NULL,19960629,OMA
+212279,Maliha,Al Awaidy,NULL,19960125,OMA
+212280,Ana Sofia,Cordero,NULL,19950806,PUR
+212281,Monica,Matias,NULL,19961122,PUR
+212282,Michelle Marie,Valdez,NULL,19950406,DOM
+212283,Ximena,Mino,NULL,19950901,CRC
+212284,Dania,Navarro,NULL,19890424,PAN
+212285,Mariella,Calderon,NULL,19941212,CRC
+212286,Gabriela,Gonzalez,NULL,19881008,PAN
+212287,Trevine,Sellier,NULL,19930804,TRI
 212288,Gabrielle,Moxey,L,19931224,BAH
-212289,Beatriz,Maia,,19960528,BRA
-212290,Hannah En Xin,Chew,,19960514,SIN
-212291,Geraldine,Ang,,19971031,SIN
-212292,Nilushi,Fernando,,19940314,SRI
-212293,Roshenka,Fernando,,19920305,SRI
-212294,Thisuri,Molligoda,,19970828,SRI
-212295,Sahar,Najaei,,19961212,IRI
-212296,Seyedeh,Saadat,,19920913,IRI
-212297,Maria Giorgia,Farrugia Sacco,,19970622,MLT
-212298,Michelle Kerubo,Onyancha,,19960621,KEN
-212299,Veronica,Osogo Nabwire,,,KEN
-212300,Mara,Argyriou,,19961106,CYP
-212301,Carita,Moolman,,19940501,NAM
-212302,Lesedi Sheya,Jacobs,,19971001,NAM
-212303,Justina,Mikulskyte,,19960206,LTU
+212289,Beatriz,Maia,NULL,19960528,BRA
+212290,Hannah En Xin,Chew,NULL,19960514,SIN
+212291,Geraldine,Ang,NULL,19971031,SIN
+212292,Nilushi,Fernando,NULL,19940314,SRI
+212293,Roshenka,Fernando,NULL,19920305,SRI
+212294,Thisuri,Molligoda,NULL,19970828,SRI
+212295,Sahar,Najaei,NULL,19961212,IRI
+212296,Seyedeh,Saadat,NULL,19920913,IRI
+212297,Maria Giorgia,Farrugia Sacco,NULL,19970622,MLT
+212298,Michelle Kerubo,Onyancha,NULL,19960621,KEN
+212299,Veronica,Osogo Nabwire,NULL,NULL,KEN
+212300,Mara,Argyriou,NULL,19961106,CYP
+212301,Carita,Moolman,NULL,19940501,NAM
+212302,Lesedi Sheya,Jacobs,NULL,19971001,NAM
+212303,Justina,Mikulskyte,NULL,19960206,LTU
 212304,Maria,Siopacha,R,19970102,CYP
-212305,Joselyn Margarita,Treyes AlbarracN,,19970629,ECU
-212306,Paula,Castro,,19940529,ECU
-212307,Luisanna,Rodriguez,,19930907,DOM
-212308,Karla,Portalatin,,19970819,DOM
-212309,Maria Jose,Pintos,,19970426,URU
-212310,Mariela,Haug,,19970721,CRC
-212311,Sara,Quiroga,,19960617,URU
-212312,Juli,Raventos,,19951114,CRC
+212305,Joselyn Margarita,Treyes AlbarracN,NULL,19970629,ECU
+212306,Paula,Castro,NULL,19940529,ECU
+212307,Luisanna,Rodriguez,NULL,19930907,DOM
+212308,Karla,Portalatin,NULL,19970819,DOM
+212309,Maria Jose,Pintos,NULL,19970426,URU
+212310,Mariela,Haug,NULL,19970721,CRC
+212311,Sara,Quiroga,NULL,19960617,URU
+212312,Juli,Raventos,NULL,19951114,CRC
 212313,Hedda,Odegaard,L,19950107,NOR
-212314,Jahana,Bayramova,,19971105,TKM
+212314,Jahana,Bayramova,NULL,19971105,TKM
 212315,Thi Tam Hao,Tran,R,19900110,VIE
-212316,Rheeya,Doshi,,19960424,SIN
-212317,Sabina,Korsunova,,19860208,KGZ
+212316,Rheeya,Doshi,NULL,19960424,SIN
+212317,Sabina,Korsunova,NULL,19860208,KGZ
 212318,Aslina,Chua,R,19960126,MAS
-212319,Arina,Beliaeva,,19970814,KGZ
-212320,Arezou,Youlghouni,,19911007,IRI
-212321,Hagit,Zubary,,19600116,ISR
-212322,Dora,Alavantic,,19570301,YUG
-212323,Bente,Kjolstad,,19550403,NOR
-212324,Ellen,Grindvold,,19460730,NOR
-212325,Monique,Krecke,,19440324,LUX
-212326,Flore,Wagner,,19500809,LUX
-212327,Alina,Baraldi,,19571216,MEX
-212328,Jennifer,Waggott,,19430911,RHO
-212329,Fiona,Mckenzie,,19460604,RHO
-212330,Carla,Guarino De Galeazzi,,19560211,URU
-212331,Susan,Stone,,19500131,CAN
-212332,Susi,Eichenberger,,19460624,SUI
-212333,Loanita,Rachman,,19471106,INA
-212334,Gladys,Imperial,,,PHI
-212335,Marisa,Sanchez,,,PHI
-212336,Rafeket,Binyamini,,19640915,ISR
-212337,Orly,Bialistozky,,19641004,ISR
-212338,Janine,Strauss,,19501116,ISR
-212339,Marlene,Chumbez,,19681007,PER
-212340,Magdalena,Wiese,,19670304,PER
-212341,Rediet,Kefyalew,,19840221,ETH
-212342,Seble,Woldegebriel,,19840410,ETH
-212343,Olga,Zaitseva,,19620312,URS
-212344,Suthasini,Sirikaya,,19531107,THA
-212345,Chalada,Wattana,,19580519,THA
-212346,Sandra,Kellemberger,,19760709,BOL
-212347,Carolina,Torres,,19730625,COL
-212348,Min Kyung,Seol,,19601117,KOR
-212349,Lisa,Yap Sam,,19580513,JAM
-212350,Marianne,Bakken,,19790521,NOR
-212351,Metasebeya,Temesgen,,19770530,ETH
-212352,Line,Ullring,,19740401,NOR
-212353,Senait,Gebreail,,19801220,ETH
-212354,Dai Hwa,Wang,,19660218,TPE
-212355,Chiu Mei,Ho,,19620910,TPE
-212356,Mette,Sigmundstad,,19750326,NOR
-212357,Sheenagh,Cosgrove,,19840414,TRI
-212358,Temesgen,Metasebeya,,19770610,ETH
-212359,Tari Ann,Toro,,19770828,PUR
-212360,Anya,Moyston,,19830826,JAM
-212361,Fabienne,Gmeiner,,19790907,LIE
-212362,Elya,Constanta,,19800707,CYP
-212363,Christine,Vogt,,19790320,LIE
-212364,Elsie,Veentjer Spruyt,,19431207,NED
-212365,Dalia,Koriat,,19691105,ISR
-212366,Maija,Suonpaa,,19650525,FIN
-212367,Geraldine,Barniville,,19421107,IRL
-212368,Helen,Lennon,,19460414,IRL
-212369,Astrid,Sunde,,19640228,NOR
-212370,Jennifer,Thornton,,19650702,IRL
-212371,Sabine,Bernegger,,19540821,AUT
-212372,Claudia,Borgiani,,19660209,VEN
-212373,Stefania,Sernaglia,,,VEN
-212374,Caitriona,Ruane,,19620719,IRL
-212375,Bernadette,Davy,,19560921,IRL
-212376,Teodora,Tache,,19680930,ROU
-212377,Catriona,Mccarthy,,19740124,IRL
-212378,Joanna,Bauza,,19750808,PUR
-212379,Maribel,Amadeo,,19730323,PUR
-212380,Elina,Durchman,,19561124,FIN
-212381,Laila,Pirila,,19510610,FIN
-212382,Goda,Kuliesyte,,19821102,LTU
-212383,Elena,Arabadji,,19790505,MDA
-212384,Rakel,Petursdottir,,19810403,ISL
-212385,Stefania,Stefansdottir,,19780620,ISL
-212386,Margarita,Akbacheva,,19830419,ISL
-212387,Tanya,Volkova,,19840225,MDA
-212388,Mari Ann,Klougart,,19470427,DEN
-212389,Jelena,Gencic,,19361009,YUG
-212390,Florea De Maria,Urrea,,19690604,GUA
-212391,Paula,Alvarez,,,DOM
-212392,Alejandra,Gomez,,19740604,GUA
-212393,Monica,Aguero,,19710329,GUA
-212394,Nicole,Wagstaff,,19700522,ZIM
-212395,Lone,Vandborg,,19610805,DEN
-212396,Helene,Holter,,19730531,EST
-212397,Raminta,Mackeviciute,,19710508,LTU
-212398,Jeom Re,Park,,19620204,KOR
-212399,Shahira,Tawfik,,19720801,EGY
-212400,Anjy,Fahmy,,19710426,EGY
-212401,Angelika,Schadler,,19800429,LIE
-212402,Ginette,Huberty,,19621222,LUX
-212403,Monica,Munoz,,19661205,MEX
-212404,Josiane,Graas,,19480426,LUX
-212405,Elzbieta,Slesicka,,19540105,POL
-212406,Irina,Shevchenko,,19560216,URS
-212407,Rita,Krombach,,19511120,LUX
-212408,Simone,Wolter,,19561211,LUX
-212409,Kristina,Grunberg,,19680126,EST
-212410,Belkis,Rodriguez,,19650514,CUB
-212411,Rita,Pichardo,,19700522,CUB
-212412,Sally Anne,Mcdonald,,19621123,ZIM
-212413,Angela,Longo,,19660118,ZIM
-212414,Oksana,Bushevitsa,,19730720,LAT
-212415,Cleopatra,Lopez,,,PHI
-212416,Ljudmila,Pavlov,,19740630,YUG
-212417,Monika,Hassmann,,,AUT
-212418,Nahia,Abou Khalil,,19671101,LIB
-212419,Maya,Hajjar,,19640718,LIB
-212420,Saranga,Sangakkara,,19760301,SRI
-212421,Tania,Zaitouni,,19680813,LIB
-212422,Alexandra,Scholer,,19750413,LUX
-212423,Evelyne,Gmeiner,,19810910,LIE
-212424,Marlene,Zuleta,,19640813,CHI
-212425,Sasha,Hanna,,19770418,JAM
-212426,Kirsten,Robsahm,,19450501,NOR
-212427,May,Emara,,19800916,EGY
-212428,Mmaphala,Letsatle,,19721012,BOT
-212429,Gianfranca,Devercelli,,19731223,PER
-212430,Maluca,Llamas,,19620804,MEX
-212431,Chris Anne,Aston,,19670820,BAH
-212432,Kim,Cartwright,,19641117,BAH
-212433,Rina,Caniza,,19650218,PHI
-212434,Dyan,Castillejo,,19650915,PHI
-212435,Ewa,Zerdecka,,19670927,POL
-212436,Monika,Waniek,,19670508,POL
-212437,Therese,Arildsen,,19640625,DEN
-212438,Gaobolae,Seleka,,19720319,BOT
-212439,Hsiu Tsuan,Wen,,19630821,TPE
-212440,Indre,Kastanauskaite,,19800410,LTU
-212441,Jacqueline,Morales,,,MAR
-212442,Valisoa,Rafolomanantsiatosika,,19841108,MAD
-212443,Ku Maizan,Shak,,19660105,MAS
-212444,Cheah Sui,Kim,,19760309,MAS
-212445,Claudia,Brause,,19700829,URU
-212446,Elizabeth,Gibson,,19680311,TRI
-212447,Laura,Olave,,19750223,URU
-212448,Carla,Jimenez,,19780831,BOL
-212449,Chongrak,Sri Ud,,19620601,THA
-212450,Patricia,Rodriguez,,19750323,DOM
-212451,Susan,Butt,,19380319,CAN
-212452,Almut,Sturm,,19410407,FRG
-212453,Henrietta,Harris,,19680209,JAM
-212454,Alice,Alexandri,,,GRE
-212455,Michele,Kahn,,19390214,BEL
-212456,Liliana,Fernandez,,19620606,COL
-212457,Maria De Los Angeles,Ycaza,,19731116,ECU
-212458,Robyn,Hunt,,19501203,NZL
-212459,Tsedey,Kifle,,19801228,ETH
-212460,Nam Sook,Kim,,19581028,KOR
-212461,Patricia,Alvarenga,,19611017,POR
-212462,Vajira,Premaratne,,19730111,SRI
-212463,Evagreth,Emmenegger,,19480507,SUI
-212464,Yeon Sook,Kim,,19690923,KOR
-212465,Edna,Vasquez,,19800820,PUR
-212466,Ya Hui,Lin,,19691201,TPE
-212467,Siri,Mittet,,19730630,NOR
-212468,Maria Jose,Likibi,,19760515,CGO
-212469,Michelle,Likibi,,19731012,CGO
-212470,Florence,Mbugua,,19740621,KEN
-212471,Dorota,Dziekonska,,19620206,POL
-212472,Lilly,Cal Fong,,19840821,PAN
-212473,Karla,Hall Gonzalez,,19830331,PAN
-212474,Pascale,Welter,,19700422,LUX
-212475,Laura,Gatti,,19790810,SMR
-212476,Tze May,Lee,,19750607,MAS
-212477,Liv,Hubert,,19441231,NOR
-212478,Silvia,Gubler,,,SUI
-212479,Silvana,Casaretto,,19650130,URU
-212480,Andrea,Ritecz,,19651103,HUN
-212481,Anna,Nemeth,,19530806,HUN
-212482,Norma,Baylon,,,ARG
-212483,Anne,Moller,,19630423,DEN
-212484,Alexandra,Kleffel,,19780308,HKG
+212319,Arina,Beliaeva,NULL,19970814,KGZ
+212320,Arezou,Youlghouni,NULL,19911007,IRI
+212321,Hagit,Zubary,NULL,19600116,ISR
+212322,Dora,Alavantic,NULL,19570301,YUG
+212323,Bente,Kjolstad,NULL,19550403,NOR
+212324,Ellen,Grindvold,NULL,19460730,NOR
+212325,Monique,Krecke,NULL,19440324,LUX
+212326,Flore,Wagner,NULL,19500809,LUX
+212327,Alina,Baraldi,NULL,19571216,MEX
+212328,Jennifer,Waggott,NULL,19430911,RHO
+212329,Fiona,Mckenzie,NULL,19460604,RHO
+212330,Carla,Guarino De Galeazzi,NULL,19560211,URU
+212331,Susan,Stone,NULL,19500131,CAN
+212332,Susi,Eichenberger,NULL,19460624,SUI
+212333,Loanita,Rachman,NULL,19471106,INA
+212334,Gladys,Imperial,NULL,NULL,PHI
+212335,Marisa,Sanchez,NULL,NULL,PHI
+212336,Rafeket,Binyamini,NULL,19640915,ISR
+212337,Orly,Bialistozky,NULL,19641004,ISR
+212338,Janine,Strauss,NULL,19501116,ISR
+212339,Marlene,Chumbez,NULL,19681007,PER
+212340,Magdalena,Wiese,NULL,19670304,PER
+212341,Rediet,Kefyalew,NULL,19840221,ETH
+212342,Seble,Woldegebriel,NULL,19840410,ETH
+212343,Olga,Zaitseva,NULL,19620312,URS
+212344,Suthasini,Sirikaya,NULL,19531107,THA
+212345,Chalada,Wattana,NULL,19580519,THA
+212346,Sandra,Kellemberger,NULL,19760709,BOL
+212347,Carolina,Torres,NULL,19730625,COL
+212348,Min Kyung,Seol,NULL,19601117,KOR
+212349,Lisa,Yap Sam,NULL,19580513,JAM
+212350,Marianne,Bakken,NULL,19790521,NOR
+212351,Metasebeya,Temesgen,NULL,19770530,ETH
+212352,Line,Ullring,NULL,19740401,NOR
+212353,Senait,Gebreail,NULL,19801220,ETH
+212354,Dai Hwa,Wang,NULL,19660218,TPE
+212355,Chiu Mei,Ho,NULL,19620910,TPE
+212356,Mette,Sigmundstad,NULL,19750326,NOR
+212357,Sheenagh,Cosgrove,NULL,19840414,TRI
+212358,Temesgen,Metasebeya,NULL,19770610,ETH
+212359,Tari Ann,Toro,NULL,19770828,PUR
+212360,Anya,Moyston,NULL,19830826,JAM
+212361,Fabienne,Gmeiner,NULL,19790907,LIE
+212362,Elya,Constanta,NULL,19800707,CYP
+212363,Christine,Vogt,NULL,19790320,LIE
+212364,Elsie,Veentjer Spruyt,NULL,19431207,NED
+212365,Dalia,Koriat,NULL,19691105,ISR
+212366,Maija,Suonpaa,NULL,19650525,FIN
+212367,Geraldine,Barniville,NULL,19421107,IRL
+212368,Helen,Lennon,NULL,19460414,IRL
+212369,Astrid,Sunde,NULL,19640228,NOR
+212370,Jennifer,Thornton,NULL,19650702,IRL
+212371,Sabine,Bernegger,NULL,19540821,AUT
+212372,Claudia,Borgiani,NULL,19660209,VEN
+212373,Stefania,Sernaglia,NULL,NULL,VEN
+212374,Caitriona,Ruane,NULL,19620719,IRL
+212375,Bernadette,Davy,NULL,19560921,IRL
+212376,Teodora,Tache,NULL,19680930,ROU
+212377,Catriona,Mccarthy,NULL,19740124,IRL
+212378,Joanna,Bauza,NULL,19750808,PUR
+212379,Maribel,Amadeo,NULL,19730323,PUR
+212380,Elina,Durchman,NULL,19561124,FIN
+212381,Laila,Pirila,NULL,19510610,FIN
+212382,Goda,Kuliesyte,NULL,19821102,LTU
+212383,Elena,Arabadji,NULL,19790505,MDA
+212384,Rakel,Petursdottir,NULL,19810403,ISL
+212385,Stefania,Stefansdottir,NULL,19780620,ISL
+212386,Margarita,Akbacheva,NULL,19830419,ISL
+212387,Tanya,Volkova,NULL,19840225,MDA
+212388,Mari Ann,Klougart,NULL,19470427,DEN
+212389,Jelena,Gencic,NULL,19361009,YUG
+212390,Florea De Maria,Urrea,NULL,19690604,GUA
+212391,Paula,Alvarez,NULL,NULL,DOM
+212392,Alejandra,Gomez,NULL,19740604,GUA
+212393,Monica,Aguero,NULL,19710329,GUA
+212394,Nicole,Wagstaff,NULL,19700522,ZIM
+212395,Lone,Vandborg,NULL,19610805,DEN
+212396,Helene,Holter,NULL,19730531,EST
+212397,Raminta,Mackeviciute,NULL,19710508,LTU
+212398,Jeom Re,Park,NULL,19620204,KOR
+212399,Shahira,Tawfik,NULL,19720801,EGY
+212400,Anjy,Fahmy,NULL,19710426,EGY
+212401,Angelika,Schadler,NULL,19800429,LIE
+212402,Ginette,Huberty,NULL,19621222,LUX
+212403,Monica,Munoz,NULL,19661205,MEX
+212404,Josiane,Graas,NULL,19480426,LUX
+212405,Elzbieta,Slesicka,NULL,19540105,POL
+212406,Irina,Shevchenko,NULL,19560216,URS
+212407,Rita,Krombach,NULL,19511120,LUX
+212408,Simone,Wolter,NULL,19561211,LUX
+212409,Kristina,Grunberg,NULL,19680126,EST
+212410,Belkis,Rodriguez,NULL,19650514,CUB
+212411,Rita,Pichardo,NULL,19700522,CUB
+212412,Sally Anne,Mcdonald,NULL,19621123,ZIM
+212413,Angela,Longo,NULL,19660118,ZIM
+212414,Oksana,Bushevitsa,NULL,19730720,LAT
+212415,Cleopatra,Lopez,NULL,NULL,PHI
+212416,Ljudmila,Pavlov,NULL,19740630,YUG
+212417,Monika,Hassmann,NULL,NULL,AUT
+212418,Nahia,Abou Khalil,NULL,19671101,LIB
+212419,Maya,Hajjar,NULL,19640718,LIB
+212420,Saranga,Sangakkara,NULL,19760301,SRI
+212421,Tania,Zaitouni,NULL,19680813,LIB
+212422,Alexandra,Scholer,NULL,19750413,LUX
+212423,Evelyne,Gmeiner,NULL,19810910,LIE
+212424,Marlene,Zuleta,NULL,19640813,CHI
+212425,Sasha,Hanna,NULL,19770418,JAM
+212426,Kirsten,Robsahm,NULL,19450501,NOR
+212427,May,Emara,NULL,19800916,EGY
+212428,Mmaphala,Letsatle,NULL,19721012,BOT
+212429,Gianfranca,Devercelli,NULL,19731223,PER
+212430,Maluca,Llamas,NULL,19620804,MEX
+212431,Chris Anne,Aston,NULL,19670820,BAH
+212432,Kim,Cartwright,NULL,19641117,BAH
+212433,Rina,Caniza,NULL,19650218,PHI
+212434,Dyan,Castillejo,NULL,19650915,PHI
+212435,Ewa,Zerdecka,NULL,19670927,POL
+212436,Monika,Waniek,NULL,19670508,POL
+212437,Therese,Arildsen,NULL,19640625,DEN
+212438,Gaobolae,Seleka,NULL,19720319,BOT
+212439,Hsiu Tsuan,Wen,NULL,19630821,TPE
+212440,Indre,Kastanauskaite,NULL,19800410,LTU
+212441,Jacqueline,Morales,NULL,NULL,MAR
+212442,Valisoa,Rafolomanantsiatosika,NULL,19841108,MAD
+212443,Ku Maizan,Shak,NULL,19660105,MAS
+212444,Cheah Sui,Kim,NULL,19760309,MAS
+212445,Claudia,Brause,NULL,19700829,URU
+212446,Elizabeth,Gibson,NULL,19680311,TRI
+212447,Laura,Olave,NULL,19750223,URU
+212448,Carla,Jimenez,NULL,19780831,BOL
+212449,Chongrak,Sri Ud,NULL,19620601,THA
+212450,Patricia,Rodriguez,NULL,19750323,DOM
+212451,Susan,Butt,NULL,19380319,CAN
+212452,Almut,Sturm,NULL,19410407,FRG
+212453,Henrietta,Harris,NULL,19680209,JAM
+212454,Alice,Alexandri,NULL,NULL,GRE
+212455,Michele,Kahn,NULL,19390214,BEL
+212456,Liliana,Fernandez,NULL,19620606,COL
+212457,Maria De Los Angeles,Ycaza,NULL,19731116,ECU
+212458,Robyn,Hunt,NULL,19501203,NZL
+212459,Tsedey,Kifle,NULL,19801228,ETH
+212460,Nam Sook,Kim,NULL,19581028,KOR
+212461,Patricia,Alvarenga,NULL,19611017,POR
+212462,Vajira,Premaratne,NULL,19730111,SRI
+212463,Evagreth,Emmenegger,NULL,19480507,SUI
+212464,Yeon Sook,Kim,NULL,19690923,KOR
+212465,Edna,Vasquez,NULL,19800820,PUR
+212466,Ya Hui,Lin,NULL,19691201,TPE
+212467,Siri,Mittet,NULL,19730630,NOR
+212468,Maria Jose,Likibi,NULL,19760515,CGO
+212469,Michelle,Likibi,NULL,19731012,CGO
+212470,Florence,Mbugua,NULL,19740621,KEN
+212471,Dorota,Dziekonska,NULL,19620206,POL
+212472,Lilly,Cal Fong,NULL,19840821,PAN
+212473,Karla,Hall Gonzalez,NULL,19830331,PAN
+212474,Pascale,Welter,NULL,19700422,LUX
+212475,Laura,Gatti,NULL,19790810,SMR
+212476,Tze May,Lee,NULL,19750607,MAS
+212477,Liv,Hubert,NULL,19441231,NOR
+212478,Silvia,Gubler,NULL,NULL,SUI
+212479,Silvana,Casaretto,NULL,19650130,URU
+212480,Andrea,Ritecz,NULL,19651103,HUN
+212481,Anna,Nemeth,NULL,19530806,HUN
+212482,Norma,Baylon,NULL,NULL,ARG
+212483,Anne,Moller,NULL,19630423,DEN
+212484,Alexandra,Kleffel,NULL,19780308,HKG
 212485,Harisa,Delic,R,19810211,BIH
-212486,Renata,Skrzypczynska,,19660406,POL
-212487,Linda Beate,Andersen,,19760205,NOR
-212488,Lamia,Hameurlaine,,19740726,ALG
-212489,Barbara,Olszewska,,19431129,POL
-212490,Denise,Panagopoulou,,19640618,GRE
-212491,Edna,Olivarez,,19670114,PHI
-212492,Rima,Taki,,19730511,SYR
-212493,Ariana,Marshall,,19850306,BAR
-212494,Ni,Zhong,,19620520,CHN
-212495,Esra,Bayburt,,19750531,TUR
-212496,Asha,Jaja,,19831229,JAM
-212497,Susanna,Bostanjyan,,19770327,ARM
-212498,Tereza,Simonian,,19820830,ARM
-212499,Sara,Taweel,,19780829,SYR
-212500,Aradhana,Reddy,,19751116,IND
-212501,Lea,Degen,,,YUG
-212502,Eldina,Fazlic,,19800718,BIH
-212503,Sri,Utaminingsih,,19611019,INA
-212504,Louise,Tuff,,19610904,IRL
-212505,Lesley,OHalloran,,19651101,IRL
-212506,Rhona,Howett,,19650316,IRL
-212507,Soon Ho,Shin,,19591108,KOR
-212508,Naira,Santrosian,,19710221,ARM
-212509,Irina,Voskanyan,,19820411,ARM
-212510,Yvonne,Flynn,,19770727,IRL
-212511,Zara,Wolseley,,19750806,IRL
-212512,Juliana,Jonsdottir,,19790427,ISL
-212513,Mehry,Shawki,,19770308,EGY
-212514,Alexia,Gera,,19690424,MLT
-212515,Fiona,Martin,,19640721,ZIM
-212516,Kaja,Kond,,19670629,EST
-212517,Norzahara,Zainal,,19680923,SIN
-212518,Dionne,Lim,,19760213,SIN
-212519,Evangeline,Olivarez,,19720113,PHI
-212520,Froydis,Forberg,,19590419,NOR
-212521,Faratiana,Rasoarilalao,,19800112,MAD
-212522,Margarita,De Zuleta,,19290402,CHI
-212523,Joanna,Rossi,,19700620,CYP
-212524,Eleanor,Mcfadden,,,IRL
-212525,Klara,Bardoczy,,,HUN
-212526,Christina,Sotirova,,19501020,BUL
-212527,Peggy,Brixhe,,19250412,POR
-212528,Christine,Njeuma,,19730222,CMR
-212529,Nathalie,Sienkob,,19820213,CMR
-212530,Adriana,Velcheva,,19630604,BUL
-212531,Lindsay,Standen,,19581102,ZIM
-212532,Sonja,Fetz,,,SUI
-212533,Milly,Vagn Nielsen,,19210318,DEN
-212534,Pia,Balling,,19400620,DEN
-212535,Xantippe,Vassiliadou,,,GRE
-212536,Ingy,El Taweel,,19760915,EGY
-212537,Vaida,Martinkute,,19810623,LTU
-212538,Shaila,Ali,,19760103,KEN
-212539,Naheeda,Noormohamed,,19800131,KEN
-212540,Jeanine,Baillie,,19800626,TRI
-212541,Camille,Walter,,19730126,JAM
-212542,Lorena,Porras,,19800808,PAN
-212543,Ping Sr,Wang,,,CHN
-212544,Maria,Bolster,,19571115,IRL
-212545,Gabriela,Calderon,,19730210,BOL
-212546,Jennifer,Carter,,19760406,BAR
-212547,Melissa,Golfin,,19740506,CRC
-212548,Wendy,Brown,,19721225,ANT
-212549,Tara Deen,Moore,,19771124,ANT
-212550,Paola,Almeida,,19771018,CRC
-212551,Assa,Berthe,,19791105,SEN
-212552,Amy,Berthe,,19740409,SEN
-212553,Upeka,Wijeratne,,19780111,SRI
-212554,Kelly,Holland,,19640309,BER
-212555,Debra,Darrell,,19541109,BER
-212556,Natasha,Kelly,,19800926,TRI
-212557,Maria Fernanda,Carrillo,,19780920,GUA
-212558,Tiffini,Huggins,,19750718,TRI
-212559,Kim,Simmons,,19650510,BER
-212560,Donna,Bradshaw,,19570919,BER
-212561,Amira,Samara,,19820226,JAM
-212562,Donna,Fields Gibbs,,19710726,BAR
-212563,Milena,Leiva,,19671216,CRC
-212564,Ann,Simons,,19780816,BAH
-212565,Sharon,Green,,19591218,BAH
-212566,Ponamporn,Samawanthana,,19570118,THA
-212567,Stella,Kristjansdottir,,19810706,ISL
-212568,Lisa,Gebert,,19810630,MRI
-212569,Corinne,Ng Tung Hing,,19760317,MRI
-212570,Phyllis,Wilunda,,19781015,KEN
-212571,Chern Yi,Chiew,,19770617,MAS
-212572,Hermine,Sukiasyan,,19850410,ARM
-212573,Pavlina,Akritas,,19850105,CYP
-212574,Anna,Anastasiou,,19730726,CYP
-212575,Nicoletta,Pericleous,,19760919,CYP
+212486,Renata,Skrzypczynska,NULL,19660406,POL
+212487,Linda Beate,Andersen,NULL,19760205,NOR
+212488,Lamia,Hameurlaine,NULL,19740726,ALG
+212489,Barbara,Olszewska,NULL,19431129,POL
+212490,Denise,Panagopoulou,NULL,19640618,GRE
+212491,Edna,Olivarez,NULL,19670114,PHI
+212492,Rima,Taki,NULL,19730511,SYR
+212493,Ariana,Marshall,NULL,19850306,BAR
+212494,Ni,Zhong,NULL,19620520,CHN
+212495,Esra,Bayburt,NULL,19750531,TUR
+212496,Asha,Jaja,NULL,19831229,JAM
+212497,Susanna,Bostanjyan,NULL,19770327,ARM
+212498,Tereza,Simonian,NULL,19820830,ARM
+212499,Sara,Taweel,NULL,19780829,SYR
+212500,Aradhana,Reddy,NULL,19751116,IND
+212501,Lea,Degen,NULL,NULL,YUG
+212502,Eldina,Fazlic,NULL,19800718,BIH
+212503,Sri,Utaminingsih,NULL,19611019,INA
+212504,Louise,Tuff,NULL,19610904,IRL
+212505,Lesley,OHalloran,NULL,19651101,IRL
+212506,Rhona,Howett,NULL,19650316,IRL
+212507,Soon Ho,Shin,NULL,19591108,KOR
+212508,Naira,Santrosian,NULL,19710221,ARM
+212509,Irina,Voskanyan,NULL,19820411,ARM
+212510,Yvonne,Flynn,NULL,19770727,IRL
+212511,Zara,Wolseley,NULL,19750806,IRL
+212512,Juliana,Jonsdottir,NULL,19790427,ISL
+212513,Mehry,Shawki,NULL,19770308,EGY
+212514,Alexia,Gera,NULL,19690424,MLT
+212515,Fiona,Martin,NULL,19640721,ZIM
+212516,Kaja,Kond,NULL,19670629,EST
+212517,Norzahara,Zainal,NULL,19680923,SIN
+212518,Dionne,Lim,NULL,19760213,SIN
+212519,Evangeline,Olivarez,NULL,19720113,PHI
+212520,Froydis,Forberg,NULL,19590419,NOR
+212521,Faratiana,Rasoarilalao,NULL,19800112,MAD
+212522,Margarita,De Zuleta,NULL,19290402,CHI
+212523,Joanna,Rossi,NULL,19700620,CYP
+212524,Eleanor,Mcfadden,NULL,NULL,IRL
+212525,Klara,Bardoczy,NULL,NULL,HUN
+212526,Christina,Sotirova,NULL,19501020,BUL
+212527,Peggy,Brixhe,NULL,19250412,POR
+212528,Christine,Njeuma,NULL,19730222,CMR
+212529,Nathalie,Sienkob,NULL,19820213,CMR
+212530,Adriana,Velcheva,NULL,19630604,BUL
+212531,Lindsay,Standen,NULL,19581102,ZIM
+212532,Sonja,Fetz,NULL,NULL,SUI
+212533,Milly,Vagn Nielsen,NULL,19210318,DEN
+212534,Pia,Balling,NULL,19400620,DEN
+212535,Xantippe,Vassiliadou,NULL,NULL,GRE
+212536,Ingy,El Taweel,NULL,19760915,EGY
+212537,Vaida,Martinkute,NULL,19810623,LTU
+212538,Shaila,Ali,NULL,19760103,KEN
+212539,Naheeda,Noormohamed,NULL,19800131,KEN
+212540,Jeanine,Baillie,NULL,19800626,TRI
+212541,Camille,Walter,NULL,19730126,JAM
+212542,Lorena,Porras,NULL,19800808,PAN
+212543,Ping Sr,Wang,NULL,NULL,CHN
+212544,Maria,Bolster,NULL,19571115,IRL
+212545,Gabriela,Calderon,NULL,19730210,BOL
+212546,Jennifer,Carter,NULL,19760406,BAR
+212547,Melissa,Golfin,NULL,19740506,CRC
+212548,Wendy,Brown,NULL,19721225,ANT
+212549,Tara Deen,Moore,NULL,19771124,ANT
+212550,Paola,Almeida,NULL,19771018,CRC
+212551,Assa,Berthe,NULL,19791105,SEN
+212552,Amy,Berthe,NULL,19740409,SEN
+212553,Upeka,Wijeratne,NULL,19780111,SRI
+212554,Kelly,Holland,NULL,19640309,BER
+212555,Debra,Darrell,NULL,19541109,BER
+212556,Natasha,Kelly,NULL,19800926,TRI
+212557,Maria Fernanda,Carrillo,NULL,19780920,GUA
+212558,Tiffini,Huggins,NULL,19750718,TRI
+212559,Kim,Simmons,NULL,19650510,BER
+212560,Donna,Bradshaw,NULL,19570919,BER
+212561,Amira,Samara,NULL,19820226,JAM
+212562,Donna,Fields Gibbs,NULL,19710726,BAR
+212563,Milena,Leiva,NULL,19671216,CRC
+212564,Ann,Simons,NULL,19780816,BAH
+212565,Sharon,Green,NULL,19591218,BAH
+212566,Ponamporn,Samawanthana,NULL,19570118,THA
+212567,Stella,Kristjansdottir,NULL,19810706,ISL
+212568,Lisa,Gebert,NULL,19810630,MRI
+212569,Corinne,Ng Tung Hing,NULL,19760317,MRI
+212570,Phyllis,Wilunda,NULL,19781015,KEN
+212571,Chern Yi,Chiew,NULL,19770617,MAS
+212572,Hermine,Sukiasyan,NULL,19850410,ARM
+212573,Pavlina,Akritas,NULL,19850105,CYP
+212574,Anna,Anastasiou,NULL,19730726,CYP
+212575,Nicoletta,Pericleous,NULL,19760919,CYP
 212576,Renata,Ljukovcan,R,19851215,YUG
-212577,Annita,Stylianidou,,19850702,CYP
-212578,Michele,Wagner,,19750224,LUX
-212579,Alison,Vaughan,,19730706,ZIM
-212580,Lamia,Alami,,19750126,MAR
-212581,Victoria,Bakhtadze,,19770904,GEO
-212582,Ntswaki,Mawela,,19841103,BOT
-212583,Svetlana,Sinitsyna,,19650126,UZB
-212584,Vonjiniana,Rasamuel,,19851109,MAD
-212585,Solange,Rasoarivelo,,19790419,MAD
-212586,Yasmin,Kaya,,19710518,TUR
-212587,Alice,Lamport,,19700205,MRI
-212588,Christine,Lukalo,,19620107,KEN
-212589,Tatiana,Babina,,19780803,KAZ
-212590,Ninani,Coyne,,19781204,BOT
-212591,Onalenna,Leepile,,19781212,BOT
-212592,Dominique,Toliravo,,19841101,MAD
-212593,Glenda,Swan,,19451112,RSA
-212594,Marta,Varanda,,19650929,POR
-212595,Fatima,Santiago,,19670513,POR
-212596,Lori,Feingold,,19701023,BAH
-212597,Helene,Kappler,,19730315,VEN
-212598,Sagit,Doron,,19650430,ISR
-212599,Magali,Benitez,,19751209,PAR
-212600,Catalina,Ramirez,,19721229,COL
-212601,Agathe,Belibi,,19810602,CMR
-212602,Silvana,Vargas,,19790501,PER
-212603,Maria Jose,Olave,,19680809,URU
-212604,Maria Marta,Gallinal,,19660913,URU
-212605,Amanda,Trail,,19720206,NZL
-212606,Jennifer,Saberon,,19690120,PHI
-212607,Biljana,Kostic,,19490816,YUG
-212608,Florentina,Curpene,,19670826,ROU
-212609,Rosanna,Valerio,,19770507,DOM
-212610,Gloria,Escobar,,19620405,COL
-212611,Jennifer,Ligator,,19770318,CRC
-212612,Jean Marie,Lozano,,19671022,PHI
-212613,Beverly,Corbie,,19610615,TRI
-212614,Danuta,Rylska,,19381010,POL
-212615,Malgorzata,Sieradzka,,19620112,POL
-212616,Li Chuan,Hsieh,,19630202,TPE
-212617,Brigitte,Lorang,,19590912,LUX
-212618,Sylvana,Lazzarino,,19330519,ITA
-212619,Ann,Barclay,,19400131,CAN
-212620,Louise,Brown,,19221119,CAN
-212621,Graca,Cardoso,,19591206,POR
-212622,Conceicao,Rio,,19470623,POR
-212623,Reiko,Miyagi,,19220527,JPN
-212624,Kazuko,Kuromatsu,,19410727,JPN
-212625,Mara,Cohen Mintz,,19460409,ISR
-212626,Tova,Epstein,,19330402,ISR
-212627,Parvin,Afshar,,,IRI
-212628,Sadigheh,Akbari,,,IRI
-212629,Yu Lan,Liu,,19350630,TPE
-212630,Gitte,Ejlerskov,,19440112,DEN
-212631,Shiu Man,Chan,,19330313,TPE
-212632,Ruia,Morrison Davy,,19360505,NZL
-212633,Elizabeth,Terry,,19450105,NZL
-212634,Nora,Somoza,,19300808,ARG
-212635,Ana Maria,Bocio,,19431219,ARG
-212636,Kyeong Mi,Choi,,19550401,KOR
-212637,Deidre,Keller,,19400704,GBR
-212638,Andrea,Winkler,,19400917,AUT
-212639,Elza,Bellens,,,BEL
-212640,Benita,Senn,,19310823,CAN
-212641,Ulla,Pontoppidan,,,DEN
-212642,Alice,Wavre,,,SUI
-212643,Jenny,Ridderhof,,19361024,NED
-212644,Janine,Bourgnon,,,SUI
-212645,Maria Victoria,De Moggio,,19431126,COL
-212646,Yolande,Ramirez,,19350301,MEX
-212647,Zsuzsa,Kormoczy,,19240825,HUN
-212648,Zsofia,Broszmann,,19350627,HUN
-212649,Mary,Puljak,,19420218,URU
-212650,Leyla,Musalem,,19481020,CHI
-212651,Ruth,Hauknes,,19261114,NOR
-212652,Rosario,Briones,,,ECU
-212653,Hsiu,Lee,,19450308,TPE
-212654,Liu Shang,Ku,,,TPE
-212655,Katarina,Bartholdson,,19410225,SWE
-212656,Antonia,Prado,,,MEX
-212657,Patricia,Reyes,,19460407,MEX
-212658,Leena,Mutanen,,19430916,FIN
-212659,Helena,Laitinen,,19520914,FIN
-212660,Beatrice,Chrystman,,19530405,BRA
-212661,Maureen,Schwartz,,,BRA
-212662,Vera,Sukova,,19310613,TCH
-212663,Renee,Schuurman,,19391026,RSA
-212664,Margaret,Hunt,,19420425,RSA
-212665,Marketa,Prochova,,,TCH
-212666,Danielle,Meunier,,19600724,LUX
-212667,Jacqueline,Rees Lewis,,19351123,FRA
-212668,Yohko,Obata,,19410410,JPN
-212669,Margot,Dittmeyer,,19350807,FRG
-212670,Vera,Johansen,,19210925,DEN
-212671,Sriningdiah,Sutarniati,,19620114,INA
-212672,Monique,Bedoret,,19321025,BEL
-212673,Marianne,De Crop,,19601223,BEL
-212674,Natasha,Villarroel,,19720730,BOL
-212675,Vivian,Acra,,19780317,DOM
-212676,Natalie,Adsuar,,19751006,PUR
-212677,Claudia,Harrison,,19750830,ESA
-212678,Amanda,Browne,,19750401,BAR
-212679,Dyphany,Wilkinson,,19701212,BAH
-212680,Brenda,Santos,,19721104,PUR
-212681,Gillian,Carter,,19730730,BAR
-212682,Brenda,Rojas,,19720903,GUA
-212683,Lily,Aguirre,,19630316,GUA
-212684,Eugenia,Silantieva,,19780101,TJK
-212685,Youliya,Dimitrova,,19791109,TJK
-212686,Haleema,Rahim,,19800402,PAK
-212687,Nida,Waseem,,19821101,PAK
-212688,Joanna,Phang,,19780302,MAS
-212689,Pei Jyue,Lo,,19800902,MAS
-212690,Simone,Wichman,,19800223,POC
-212691,Pauline,Chan,,19670505,BRU
-212692,Fiona,Keasberry,,19650315,BRU
-212693,Natalia,Garcia,,19760629,DOM
-212694,Mal Sim,Park,,19650715,KOR
-212695,Sook Ja,Im,,19660201,KOR
-212696,Olesya,Artemeva,,19751002,UZB
-212697,Marie Christine,Goy,,19730326,LUX
-212698,Tossaporn,Summa,,19681028,THA
-212699,Hagit,Ohayon,,19700930,ISR
-212700,Tamara,Davis,,19790624,JAM
-212701,Andrea,Hoch,,19761106,LIE
-212702,Roongnapha,Surachet,,19720119,THA
-212703,Chanrisa,Rareang,,19680314,THA
-212704,Sarah,Castillejo,,19711210,PHI
-212705,Anne,Happonen,,19621102,FIN
-212706,Katherine,Camilleri,,19641210,MLT
-212707,Elexia,Stivala,,19730818,MLT
-212708,Janelle,Watson,,19790419,BAH
-212709,Jodi,Saunders,,19680607,BAH
-212710,Camille,Sesanker,,19801230,TRI
-212711,Leloba,Seitshiro,,19771220,BOT
-212712,Voralak,Vichienchai,,19680812,THA
-212713,Kerry Ann,Lim,,19731112,MAS
-212714,Shu Shin,Kam,,19660512,MAS
-212715,Claudia,Van Der Weck,,19611110,URU
-212716,Mariela,Clavijo,,19610401,URU
-212717,Nicola,Corn,,19800822,LIE
-212718,Claudia,Castro,,19800103,ESA
-212719,Marianne,Ward,,19731019,TRI
-212720,Ruth Tekle,Andemariam,,19770615,ETH
-212721,Lebogang,Seitshiro,,19740824,BOT
-212722,Genevieve,Etienne,,19551227,HAI
-212723,Jennifer,Adrien,,19800909,HAI
-212724,Pei Yuin,Keng,,19820329,MAS
-212725,Cheryl,Lewis,,19630727,ANT
-212726,Emmanuelle,Duval,,19810623,HAI
-212727,Allison,Tolson,,19680915,BER
-212728,Elizabeth,Osborne,,19711109,BER
-212729,Maral Khachik,Awanes,,19841030,IRQ
-212730,Alaa,A A Ali,,19741003,IRQ
-212731,Lisa,Kwok,,19700322,HKG
-212732,Yun Ning,Fu,,19781011,HKG
-212733,Su Peng,Ng,,19721121,MAS
-212734,Marisa,Howell,,19830801,BAR
-212735,Mesenbete,Shenkutee,,19620504,ETH
-212736,Samanthi,Wijesekera,,19830603,SRI
-212737,Manisha,Abeywardene,,19800229,SRI
-212738,Zihaida,Shantalova,,19830914,TJK
-212739,Mehvish,Chishtie,,19800102,PAK
-212740,Shahlio,Ibadullaeva,,19850101,TJK
-212741,Simin,Liu,,19830425,SIN
-212742,Dina,Dajani,,19750918,JOR
-212743,Roxana,Abdurakhmonova,,19850125,TJK
-212744,Dina,Naffa,,19840824,JOR
-212745,Salima Esmat,Salman,,19801105,IRQ
-212746,Hamidan,Bibi,,19600701,FIJ
-212747,Leena,Singarajah,,19720808,MAS
-212748,Tricia Ann,Greaves,,19811218,BAR
-212749,Mina,Abdul Rahman,,19761002,IRQ
-212750,Ishraq,Salman,,19761208,IRQ
-212751,Elena,Guerra,,19660626,ESP
-212752,Sandrella,Droubi,,19750805,SYR
-212753,Yee Hong,Tan,,19740310,SIN
-212754,Valerie,Tan,,19720610,SIN
-212755,Mariam,Rahim,,19760302,PAK
-212756,Kim,Brandford,,19710129,BAR
-212757,Sadia,Berthe Hoffman,,19630321,SEN
-212758,Saida,Berthe,,19600919,SEN
-212759,Gabrielle,Villiger,,19710607,SUI
-212760,Anushka,Rajiyah,,19821206,SRI
-212761,Ande,Tulp,,19750317,EST
-212762,Vera,Tere,,19560109,POC
-212763,Vita,Kaminskiate,,19700624,LTU
-212764,Sheau Shan,Liew,,19790224,MAS
-212765,Liliana,Rodriguez,,19690910,URU
-212766,Karla,Umana,,19621222,CRC
-212767,Robyn,Farrington,,19730112,BAH
-212768,Shieh Yen,Leong,,19731011,SIN
-212769,Fang Ling,Lin,,19680209,TPE
-212770,Ludmila,Makarova,,19570326,URS
-212771,Nosheen,Ehtesham,,19580914,PAK
-212772,Linda,Stewart,,19630111,NZL
-212773,Galia,Angelova,,19721110,BUL
-212774,Lara,Arnaout,,19810827,SYR
-212775,Wei Yen,Lai,,19800114,SIN
-212776,Stephanie,Bernadel,,19821015,HAI
-212777,Pia,Tamayo,,19620204,PHI
-212778,Maria Elena,Del Valle,,19810218,PUR
-212779,Khady NDeye,Diop,,19760729,SEN
-212780,Myriam,Berthe,,19671021,SEN
-212781,Kata,Gyorke,,19750911,HUN
-212782,Isabela,Martin,,19720204,ROU
-212783,Marina,Lidiya,,19930709,TKM
-212784,Jo,Sheridan,,19580319,IRL
-212785,Nenni,Delmestre,,,YUG
-212786,Yoon Ja,Han,,19570812,KOR
-212787,Pirjo,Ojala,,19610811,FIN
-212788,Tanja,Cerne,,19710410,YUG
-212789,Yael,Shavit,,19680503,ISR
-212790,Sarah,Rafael,,19700118,PHI
-212791,Monica,Wiese,,19691129,NOR
-212792,Karina,Heck,,19631230,PER
-212793,Yan,Sun,,19631125,CHN
-212794,Eun Ok,Cho,,19620420,KOR
-212795,Macarena,Miranda,,19710729,CHI
-212796,Waya,Walalangi,,19710205,INA
-212797,Yu Yu,Zhu,,19680207,CHN
-212798,Marianna,Ansio,,19660214,FIN
-212799,Eugenia,Escarate,,19711012,CHI
-212800,Krisna,Summa,,19730202,THA
-212801,Loredana,Bujor,,19720623,ROU
-212802,Louise,Wekesa,,19690704,KEN
-212803,Anita,Aggarwal,,19640301,KEN
+212577,Annita,Stylianidou,NULL,19850702,CYP
+212578,Michele,Wagner,NULL,19750224,LUX
+212579,Alison,Vaughan,NULL,19730706,ZIM
+212580,Lamia,Alami,NULL,19750126,MAR
+212581,Victoria,Bakhtadze,NULL,19770904,GEO
+212582,Ntswaki,Mawela,NULL,19841103,BOT
+212583,Svetlana,Sinitsyna,NULL,19650126,UZB
+212584,Vonjiniana,Rasamuel,NULL,19851109,MAD
+212585,Solange,Rasoarivelo,NULL,19790419,MAD
+212586,Yasmin,Kaya,NULL,19710518,TUR
+212587,Alice,Lamport,NULL,19700205,MRI
+212588,Christine,Lukalo,NULL,19620107,KEN
+212589,Tatiana,Babina,NULL,19780803,KAZ
+212590,Ninani,Coyne,NULL,19781204,BOT
+212591,Onalenna,Leepile,NULL,19781212,BOT
+212592,Dominique,Toliravo,NULL,19841101,MAD
+212593,Glenda,Swan,NULL,19451112,RSA
+212594,Marta,Varanda,NULL,19650929,POR
+212595,Fatima,Santiago,NULL,19670513,POR
+212596,Lori,Feingold,NULL,19701023,BAH
+212597,Helene,Kappler,NULL,19730315,VEN
+212598,Sagit,Doron,NULL,19650430,ISR
+212599,Magali,Benitez,NULL,19751209,PAR
+212600,Catalina,Ramirez,NULL,19721229,COL
+212601,Agathe,Belibi,NULL,19810602,CMR
+212602,Silvana,Vargas,NULL,19790501,PER
+212603,Maria Jose,Olave,NULL,19680809,URU
+212604,Maria Marta,Gallinal,NULL,19660913,URU
+212605,Amanda,Trail,NULL,19720206,NZL
+212606,Jennifer,Saberon,NULL,19690120,PHI
+212607,Biljana,Kostic,NULL,19490816,YUG
+212608,Florentina,Curpene,NULL,19670826,ROU
+212609,Rosanna,Valerio,NULL,19770507,DOM
+212610,Gloria,Escobar,NULL,19620405,COL
+212611,Jennifer,Ligator,NULL,19770318,CRC
+212612,Jean Marie,Lozano,NULL,19671022,PHI
+212613,Beverly,Corbie,NULL,19610615,TRI
+212614,Danuta,Rylska,NULL,19381010,POL
+212615,Malgorzata,Sieradzka,NULL,19620112,POL
+212616,Li Chuan,Hsieh,NULL,19630202,TPE
+212617,Brigitte,Lorang,NULL,19590912,LUX
+212618,Sylvana,Lazzarino,NULL,19330519,ITA
+212619,Ann,Barclay,NULL,19400131,CAN
+212620,Louise,Brown,NULL,19221119,CAN
+212621,Graca,Cardoso,NULL,19591206,POR
+212622,Conceicao,Rio,NULL,19470623,POR
+212623,Reiko,Miyagi,NULL,19220527,JPN
+212624,Kazuko,Kuromatsu,NULL,19410727,JPN
+212625,Mara,Cohen Mintz,NULL,19460409,ISR
+212626,Tova,Epstein,NULL,19330402,ISR
+212627,Parvin,Afshar,NULL,NULL,IRI
+212628,Sadigheh,Akbari,NULL,NULL,IRI
+212629,Yu Lan,Liu,NULL,19350630,TPE
+212630,Gitte,Ejlerskov,NULL,19440112,DEN
+212631,Shiu Man,Chan,NULL,19330313,TPE
+212632,Ruia,Morrison Davy,NULL,19360505,NZL
+212633,Elizabeth,Terry,NULL,19450105,NZL
+212634,Nora,Somoza,NULL,19300808,ARG
+212635,Ana Maria,Bocio,NULL,19431219,ARG
+212636,Kyeong Mi,Choi,NULL,19550401,KOR
+212637,Deidre,Keller,NULL,19400704,GBR
+212638,Andrea,Winkler,NULL,19400917,AUT
+212639,Elza,Bellens,NULL,NULL,BEL
+212640,Benita,Senn,NULL,19310823,CAN
+212641,Ulla,Pontoppidan,NULL,NULL,DEN
+212642,Alice,Wavre,NULL,NULL,SUI
+212643,Jenny,Ridderhof,NULL,19361024,NED
+212644,Janine,Bourgnon,NULL,NULL,SUI
+212645,Maria Victoria,De Moggio,NULL,19431126,COL
+212646,Yolande,Ramirez,NULL,19350301,MEX
+212647,Zsuzsa,Kormoczy,NULL,19240825,HUN
+212648,Zsofia,Broszmann,NULL,19350627,HUN
+212649,Mary,Puljak,NULL,19420218,URU
+212650,Leyla,Musalem,NULL,19481020,CHI
+212651,Ruth,Hauknes,NULL,19261114,NOR
+212652,Rosario,Briones,NULL,NULL,ECU
+212653,Hsiu,Lee,NULL,19450308,TPE
+212654,Liu Shang,Ku,NULL,NULL,TPE
+212655,Katarina,Bartholdson,NULL,19410225,SWE
+212656,Antonia,Prado,NULL,NULL,MEX
+212657,Patricia,Reyes,NULL,19460407,MEX
+212658,Leena,Mutanen,NULL,19430916,FIN
+212659,Helena,Laitinen,NULL,19520914,FIN
+212660,Beatrice,Chrystman,NULL,19530405,BRA
+212661,Maureen,Schwartz,NULL,NULL,BRA
+212662,Vera,Sukova,NULL,19310613,TCH
+212663,Renee,Schuurman,NULL,19391026,RSA
+212664,Margaret,Hunt,NULL,19420425,RSA
+212665,Marketa,Prochova,NULL,NULL,TCH
+212666,Danielle,Meunier,NULL,19600724,LUX
+212667,Jacqueline,Rees Lewis,NULL,19351123,FRA
+212668,Yohko,Obata,NULL,19410410,JPN
+212669,Margot,Dittmeyer,NULL,19350807,FRG
+212670,Vera,Johansen,NULL,19210925,DEN
+212671,Sriningdiah,Sutarniati,NULL,19620114,INA
+212672,Monique,Bedoret,NULL,19321025,BEL
+212673,Marianne,De Crop,NULL,19601223,BEL
+212674,Natasha,Villarroel,NULL,19720730,BOL
+212675,Vivian,Acra,NULL,19780317,DOM
+212676,Natalie,Adsuar,NULL,19751006,PUR
+212677,Claudia,Harrison,NULL,19750830,ESA
+212678,Amanda,Browne,NULL,19750401,BAR
+212679,Dyphany,Wilkinson,NULL,19701212,BAH
+212680,Brenda,Santos,NULL,19721104,PUR
+212681,Gillian,Carter,NULL,19730730,BAR
+212682,Brenda,Rojas,NULL,19720903,GUA
+212683,Lily,Aguirre,NULL,19630316,GUA
+212684,Eugenia,Silantieva,NULL,19780101,TJK
+212685,Youliya,Dimitrova,NULL,19791109,TJK
+212686,Haleema,Rahim,NULL,19800402,PAK
+212687,Nida,Waseem,NULL,19821101,PAK
+212688,Joanna,Phang,NULL,19780302,MAS
+212689,Pei Jyue,Lo,NULL,19800902,MAS
+212690,Simone,Wichman,NULL,19800223,POC
+212691,Pauline,Chan,NULL,19670505,BRU
+212692,Fiona,Keasberry,NULL,19650315,BRU
+212693,Natalia,Garcia,NULL,19760629,DOM
+212694,Mal Sim,Park,NULL,19650715,KOR
+212695,Sook Ja,Im,NULL,19660201,KOR
+212696,Olesya,Artemeva,NULL,19751002,UZB
+212697,Marie Christine,Goy,NULL,19730326,LUX
+212698,Tossaporn,Summa,NULL,19681028,THA
+212699,Hagit,Ohayon,NULL,19700930,ISR
+212700,Tamara,Davis,NULL,19790624,JAM
+212701,Andrea,Hoch,NULL,19761106,LIE
+212702,Roongnapha,Surachet,NULL,19720119,THA
+212703,Chanrisa,Rareang,NULL,19680314,THA
+212704,Sarah,Castillejo,NULL,19711210,PHI
+212705,Anne,Happonen,NULL,19621102,FIN
+212706,Katherine,Camilleri,NULL,19641210,MLT
+212707,Elexia,Stivala,NULL,19730818,MLT
+212708,Janelle,Watson,NULL,19790419,BAH
+212709,Jodi,Saunders,NULL,19680607,BAH
+212710,Camille,Sesanker,NULL,19801230,TRI
+212711,Leloba,Seitshiro,NULL,19771220,BOT
+212712,Voralak,Vichienchai,NULL,19680812,THA
+212713,Kerry Ann,Lim,NULL,19731112,MAS
+212714,Shu Shin,Kam,NULL,19660512,MAS
+212715,Claudia,Van Der Weck,NULL,19611110,URU
+212716,Mariela,Clavijo,NULL,19610401,URU
+212717,Nicola,Corn,NULL,19800822,LIE
+212718,Claudia,Castro,NULL,19800103,ESA
+212719,Marianne,Ward,NULL,19731019,TRI
+212720,Ruth Tekle,Andemariam,NULL,19770615,ETH
+212721,Lebogang,Seitshiro,NULL,19740824,BOT
+212722,Genevieve,Etienne,NULL,19551227,HAI
+212723,Jennifer,Adrien,NULL,19800909,HAI
+212724,Pei Yuin,Keng,NULL,19820329,MAS
+212725,Cheryl,Lewis,NULL,19630727,ANT
+212726,Emmanuelle,Duval,NULL,19810623,HAI
+212727,Allison,Tolson,NULL,19680915,BER
+212728,Elizabeth,Osborne,NULL,19711109,BER
+212729,Maral Khachik,Awanes,NULL,19841030,IRQ
+212730,Alaa,A A Ali,NULL,19741003,IRQ
+212731,Lisa,Kwok,NULL,19700322,HKG
+212732,Yun Ning,Fu,NULL,19781011,HKG
+212733,Su Peng,Ng,NULL,19721121,MAS
+212734,Marisa,Howell,NULL,19830801,BAR
+212735,Mesenbete,Shenkutee,NULL,19620504,ETH
+212736,Samanthi,Wijesekera,NULL,19830603,SRI
+212737,Manisha,Abeywardene,NULL,19800229,SRI
+212738,Zihaida,Shantalova,NULL,19830914,TJK
+212739,Mehvish,Chishtie,NULL,19800102,PAK
+212740,Shahlio,Ibadullaeva,NULL,19850101,TJK
+212741,Simin,Liu,NULL,19830425,SIN
+212742,Dina,Dajani,NULL,19750918,JOR
+212743,Roxana,Abdurakhmonova,NULL,19850125,TJK
+212744,Dina,Naffa,NULL,19840824,JOR
+212745,Salima Esmat,Salman,NULL,19801105,IRQ
+212746,Hamidan,Bibi,NULL,19600701,FIJ
+212747,Leena,Singarajah,NULL,19720808,MAS
+212748,Tricia Ann,Greaves,NULL,19811218,BAR
+212749,Mina,Abdul Rahman,NULL,19761002,IRQ
+212750,Ishraq,Salman,NULL,19761208,IRQ
+212751,Elena,Guerra,NULL,19660626,ESP
+212752,Sandrella,Droubi,NULL,19750805,SYR
+212753,Yee Hong,Tan,NULL,19740310,SIN
+212754,Valerie,Tan,NULL,19720610,SIN
+212755,Mariam,Rahim,NULL,19760302,PAK
+212756,Kim,Brandford,NULL,19710129,BAR
+212757,Sadia,Berthe Hoffman,NULL,19630321,SEN
+212758,Saida,Berthe,NULL,19600919,SEN
+212759,Gabrielle,Villiger,NULL,19710607,SUI
+212760,Anushka,Rajiyah,NULL,19821206,SRI
+212761,Ande,Tulp,NULL,19750317,EST
+212762,Vera,Tere,NULL,19560109,POC
+212763,Vita,Kaminskiate,NULL,19700624,LTU
+212764,Sheau Shan,Liew,NULL,19790224,MAS
+212765,Liliana,Rodriguez,NULL,19690910,URU
+212766,Karla,Umana,NULL,19621222,CRC
+212767,Robyn,Farrington,NULL,19730112,BAH
+212768,Shieh Yen,Leong,NULL,19731011,SIN
+212769,Fang Ling,Lin,NULL,19680209,TPE
+212770,Ludmila,Makarova,NULL,19570326,URS
+212771,Nosheen,Ehtesham,NULL,19580914,PAK
+212772,Linda,Stewart,NULL,19630111,NZL
+212773,Galia,Angelova,NULL,19721110,BUL
+212774,Lara,Arnaout,NULL,19810827,SYR
+212775,Wei Yen,Lai,NULL,19800114,SIN
+212776,Stephanie,Bernadel,NULL,19821015,HAI
+212777,Pia,Tamayo,NULL,19620204,PHI
+212778,Maria Elena,Del Valle,NULL,19810218,PUR
+212779,Khady NDeye,Diop,NULL,19760729,SEN
+212780,Myriam,Berthe,NULL,19671021,SEN
+212781,Kata,Gyorke,NULL,19750911,HUN
+212782,Isabela,Martin,NULL,19720204,ROU
+212783,Marina,Lidiya,NULL,19930709,TKM
+212784,Jo,Sheridan,NULL,19580319,IRL
+212785,Nenni,Delmestre,NULL,NULL,YUG
+212786,Yoon Ja,Han,NULL,19570812,KOR
+212787,Pirjo,Ojala,NULL,19610811,FIN
+212788,Tanja,Cerne,NULL,19710410,YUG
+212789,Yael,Shavit,NULL,19680503,ISR
+212790,Sarah,Rafael,NULL,19700118,PHI
+212791,Monica,Wiese,NULL,19691129,NOR
+212792,Karina,Heck,NULL,19631230,PER
+212793,Yan,Sun,NULL,19631125,CHN
+212794,Eun Ok,Cho,NULL,19620420,KOR
+212795,Macarena,Miranda,NULL,19710729,CHI
+212796,Waya,Walalangi,NULL,19710205,INA
+212797,Yu Yu,Zhu,NULL,19680207,CHN
+212798,Marianna,Ansio,NULL,19660214,FIN
+212799,Eugenia,Escarate,NULL,19711012,CHI
+212800,Krisna,Summa,NULL,19730202,THA
+212801,Loredana,Bujor,NULL,19720623,ROU
+212802,Louise,Wekesa,NULL,19690704,KEN
+212803,Anita,Aggarwal,NULL,19640301,KEN
 212804,Imogen,Golder,U,19920425,NZL
 212805,Paige Mary,Hourigan,R,19970203,NZL
 212806,Darya,Kryvets,U,19860111,UKR
@@ -12935,13 +12935,13 @@ player_id,first_name,last_name,hand,birth_date,country_code
 212934,Padma Preetham,Mahalingam,U,19780904,IND
 212935,Sumitra,Rao,U,19820317,IND
 212936,Nikhila,Palat,U,19820722,IND
-212937,Narayanee,Gopal,U,,IND
+212937,Narayanee,Gopal,U,NULL,IND
 212938,Shereen,Youssef,U,19840608,IND
 212939,Mamatha,Nandakumar,U,19840410,IND
 212940,Pallavi,Ravikumar,U,19800206,IND
-212941,Deepika,Krishnappa,U,,IND
+212941,Deepika,Krishnappa,U,NULL,IND
 212942,Oindrila,Majumder,U,19800718,IND
-212943,Praveeni,Srinivasan,U,,IND
+212943,Praveeni,Srinivasan,U,NULL,IND
 212944,Araceli,Borbolla,U,19800606,MEX
 212945,Guadalupe,Hernandez,U,19780411,MEX
 212946,Berenice,Alvarez,U,19790101,MEX
@@ -13018,10 +13018,10 @@ player_id,first_name,last_name,hand,birth_date,country_code
 213017,Chen Lu,Wu,U,19930906,CHN
 213018,Ceylin,Gunay,U,19980513,TUR
 213019,Tina,Rupert,L,19941028,SLO
-213020,Guljahan,Kadyrova,,19961107,TKM
-213021,Alyssa,Boey,,19960810,MAS
-213022,Maryam,Mazaheri,,19830223,IRI
-213023,Iman,Qureshi,,19970720,PAK
+213020,Guljahan,Kadyrova,NULL,19961107,TKM
+213021,Alyssa,Boey,NULL,19960810,MAS
+213022,Maryam,Mazaheri,NULL,19830223,IRI
+213023,Iman,Qureshi,NULL,19970720,PAK
 213024,Alissa,Finerman,U,19671209,USA
 213025,Blanca,Borbolla,U,19611108,MEX
 213026,Kirsten,Joern,U,19720329,GER
@@ -14611,36 +14611,36 @@ player_id,first_name,last_name,hand,birth_date,country_code
 214610,Aimee,Tarun,U,19940907,USA
 214611,Ziyin,Zhu,U,19981112,CAN
 214612,Alli,Hodges,U,19961203,USA
-214613,Iesha,Shepherd,,19990228,BAH
-214614,Sharon,Pesch,,19970323,LUX
-214615,Khanh Phi,Huynh,,19941210,VIE
-214616,Medhira,Samarasinghe,,19990203,SRI
-214617,Nethmi Himashi,Waduge,,19980810,SRI
-214618,Halla,Alajeely,,19990410,IRQ
-214619,Ghada,Alajeely,,19980108,IRQ
-214620,Sahar,Amini Hajibashi,,19880525,IRI
-214621,Sadaf,Sadeghvaziri,,19990726,IRI
-214622,Ani,Safaryan,,19980310,ARM
-214623,Lusine,Chobanyan,,19980418,ARM
-214624,Anastasia,Detiuc,,19981214,MDA
-214625,Eliza,Omirou,,19990825,CYP
-214626,Ida Seljevoll,Skancke,,19971102,NOR
-214627,Jane,Fennelly,,19941130,IRL
-214628,Katrina,Sammut,,19990923,MLT
-214629,Anna Soffia,Gronholm,,19990607,ISL
-214630,Hjordis Rosa,Gudmundsdottir,,19980706,ISL
-214631,Hera,Brynjarsdottir,,19971121,ISL
-214632,Ghazal,Pakbaten,,19980904,IRI
-214633,Andria,Tsaggaridou,,19970222,CYP
-214634,Camila,Ramazzini,,19970224,GUA
-214635,Karla,Contreras,,19990123,PAN
-214636,Daniela,Diez,,19970422,PAN
-214637,Kiana,Marshall,,19971014,BAR
-214638,Melena,Lopez,,19960726,BAR
-214639,Ancia,Ifill,,19931115,BAR
-214640,Tyler,Smith,,19961118,BER
-214641,Ariana,Rahmanparast,,19961229,CRC
-214642,Cayla,Cross,,19911008,BER
+214613,Iesha,Shepherd,NULL,19990228,BAH
+214614,Sharon,Pesch,NULL,19970323,LUX
+214615,Khanh Phi,Huynh,NULL,19941210,VIE
+214616,Medhira,Samarasinghe,NULL,19990203,SRI
+214617,Nethmi Himashi,Waduge,NULL,19980810,SRI
+214618,Halla,Alajeely,NULL,19990410,IRQ
+214619,Ghada,Alajeely,NULL,19980108,IRQ
+214620,Sahar,Amini Hajibashi,NULL,19880525,IRI
+214621,Sadaf,Sadeghvaziri,NULL,19990726,IRI
+214622,Ani,Safaryan,NULL,19980310,ARM
+214623,Lusine,Chobanyan,NULL,19980418,ARM
+214624,Anastasia,Detiuc,NULL,19981214,MDA
+214625,Eliza,Omirou,NULL,19990825,CYP
+214626,Ida Seljevoll,Skancke,NULL,19971102,NOR
+214627,Jane,Fennelly,NULL,19941130,IRL
+214628,Katrina,Sammut,NULL,19990923,MLT
+214629,Anna Soffia,Gronholm,NULL,19990607,ISL
+214630,Hjordis Rosa,Gudmundsdottir,NULL,19980706,ISL
+214631,Hera,Brynjarsdottir,NULL,19971121,ISL
+214632,Ghazal,Pakbaten,NULL,19980904,IRI
+214633,Andria,Tsaggaridou,NULL,19970222,CYP
+214634,Camila,Ramazzini,NULL,19970224,GUA
+214635,Karla,Contreras,NULL,19990123,PAN
+214636,Daniela,Diez,NULL,19970422,PAN
+214637,Kiana,Marshall,NULL,19971014,BAR
+214638,Melena,Lopez,NULL,19960726,BAR
+214639,Ancia,Ifill,NULL,19931115,BAR
+214640,Tyler,Smith,NULL,19961118,BER
+214641,Ariana,Rahmanparast,NULL,19961229,CRC
+214642,Cayla,Cross,NULL,19911008,BER
 214643,Ludmilla,Samsonova,U,19981111,RUS
 214644,Arina,Taluenko,U,19990110,KAZ
 214645,Anastasiya,Shleptsova,R,19960629,BLR
@@ -15014,8 +15014,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 215013,Marcelina,Podlinska,U,19990527,POL
 215014,Rosie,Cheng,R,19980801,NZL
 215015,Karine,Sarkisova,U,19980607,RUS
-215016,Eleonora,Molinaro,,20000904,LUX
-215017,Lauren,Deegan,,19971126,IRL
+215016,Eleonora,Molinaro,NULL,20000904,LUX
+215017,Lauren,Deegan,NULL,19971126,IRL
 215018,Destanee,Aiava,R,20000510,AUS
 215019,Maria Jose,Portillo Ramirez,R,19990508,MEX
 215020,Anna,Blinkova,R,19980910,RUS
@@ -15120,11 +15120,11 @@ player_id,first_name,last_name,hand,birth_date,country_code
 215119,Natsumi,Okamoto,U,19970102,JPN
 215120,Sara,Neves,U,20010210,POR
 215121,Simone,Simas,U,20000826,POR
-215122,Angeline Devi,Devanthiran,,19960501,SIN
-215123,Yus Syazlin Nabila Binti,Yusri,,19980310,MAS
-215124,Sara,Amini,,19970924,IRI
-215125,Saara,Kunakunova,,20010110,KGZ
-215126,Eliza,Askarova,,20000416,KGZ
+215122,Angeline Devi,Devanthiran,NULL,19960501,SIN
+215123,Yus Syazlin Nabila Binti,Yusri,NULL,19980310,MAS
+215124,Sara,Amini,NULL,19970924,IRI
+215125,Saara,Kunakunova,NULL,20010110,KGZ
+215126,Eliza,Askarova,NULL,20000416,KGZ
 215127,Julie,Byrne,R,19970716,IRL
 215128,Alexandra,Alegre Ferre,U,19990912,ESP
 215129,Alexandra,Dubrovina,U,19990928,RUS
@@ -15600,7 +15600,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 215599,Anna,Sedinkina,U,19981211,RUS
 215600,Anastasia,Golubeva,U,19991126,RUS
 215601,Franziska,Kommer,U,19990712,GER
-215602,Simona,Borisova,U,,BUL
+215602,Simona,Borisova,U,NULL,BUL
 215603,Lara,Biter,L,20010903,TUR
 215604,Alexa,Bortles,U,19980703,USA
 215605,Alyvia,Jones,U,20000503,USA
@@ -15740,7 +15740,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 215739,Sanja,Fabijancic,U,19991025,CHI
 215740,Maria Ignacia,Yapur Lopez,U,20010115,CHI
 215741,Valentina Andrea,Vasquez Pongruber,U,20010317,CHI
-215742,Corin,De Waal,U,,RSA
+215742,Corin,De Waal,U,NULL,RSA
 215743,Alexandra,Parra,R,19990414,VEN
 215744,Sofia,Ayuso,U,19990707,VEN
 215745,Laura,Rincon,U,19981017,COL
@@ -15754,13 +15754,13 @@ player_id,first_name,last_name,hand,birth_date,country_code
 215753,Dalia,Ahmed,U,20000718,EGY
 215754,Lea,Romain,U,19991128,FRA
 215755,Mahak,Jain,R,20010624,IND
-215756,Eva,Kolarovska,U,,SVK
+215756,Eva,Kolarovska,U,NULL,SVK
 215757,Florencia,Massardo Brain,U,20000406,CHI
-215758,Loveth,Donatus,U,,NGR
+215758,Loveth,Donatus,U,NULL,NGR
 215759,Patience,Onebamhoin,R,19890410,NGR
-215760,Nina,Kolar,U,,SLO
-215761,Aanu,Ayegbusi,U,,NGR
-215762,Christie,Nwankwo,U,,NGR
+215760,Nina,Kolar,U,NULL,SLO
+215761,Aanu,Ayegbusi,U,NULL,NGR
+215762,Christie,Nwankwo,U,NULL,NGR
 215763,Sofia,Sewing,R,19990722,USA
 215764,Anastassiya,Sharapova,U,19991117,KAZ
 215765,Oleksandra,Andrieieva,U,20001103,UKR
@@ -15782,12 +15782,12 @@ player_id,first_name,last_name,hand,birth_date,country_code
 215781,Salma,Abdelbaset,U,20010612,EGY
 215782,Habiba,Lasheen,R,19980101,EGY
 215783,Noor,Omara,U,20010522,EGY
-215784,Anastasia,Iamachkine,,20000912,PER
-215785,Maria Camila,Osorio Serrano,,20011222,COL
-215786,Julieanne,Bou,,20000607,PUR
-215787,Florencia,Rossi,,19980609,URU
-215788,Alejandra,Obando,,19940504,HON
-215789,Penelope,Abreu,,19990917,DOM
+215784,Anastasia,Iamachkine,NULL,20000912,PER
+215785,Maria Camila,Osorio Serrano,NULL,20011222,COL
+215786,Julieanne,Bou,NULL,20000607,PUR
+215787,Florencia,Rossi,NULL,19980609,URU
+215788,Alejandra,Obando,NULL,19940504,HON
+215789,Penelope,Abreu,NULL,19990917,DOM
 215790,Alexandra,Sanford,U,19990105,USA
 215791,Eden,Richardson,R,19980903,GBR
 215792,Alicja,Zduniak,U,19961218,POL
@@ -15826,8 +15826,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 215825,Alisa,Deen,U,19990115,NOR
 215826,Manni,Zhang,R,20020207,BRN
 215827,Tanasha,Khandpur,R,19961105,IND
-215828,Fabienne,Schmidt,U,,GER
-215829,Delisha,Guttikonda,U,,USA
+215828,Fabienne,Schmidt,U,NULL,GER
+215829,Delisha,Guttikonda,U,NULL,USA
 215830,Kristina,Baran,U,20000409,FRA
 215831,Mylene,Halemai,R,20010811,FRA
 215832,Gabriella,Da Silva Fick,R,20000823,AUS
@@ -15838,37 +15838,37 @@ player_id,first_name,last_name,hand,birth_date,country_code
 215837,Mariel,Rosales Martinez,R,19861228,MEX
 215838,Paulina,Cota,U,19990302,MEX
 215839,Zanya Manola,Sanchez,R,19990106,MEX
-215840,Haley,Giavara,U,,USA
+215840,Haley,Giavara,U,NULL,USA
 215841,Imperia,Martinez Mora,U,19991211,MEX
 215842,Maria Jose,Hernandez Magro Quiroz,U,20000706,MEX
-215843,Claudia Cecilia,Rosas Garcia,U,,MEX
-215844,Jenna,Friedel,U,,USA
+215843,Claudia Cecilia,Rosas Garcia,U,NULL,MEX
+215844,Jenna,Friedel,U,NULL,USA
 215845,Samanta,Villegas,U,20000719,MEX
 215846,Raffaela,Alhach,R,20010212,CAN
 215847,Nikita,Uberoi,R,19931021,USA
 215848,Karolina,Jaskiewicz,R,20000114,POL
 215849,Sinhee,Kim,U,19940225,KOR
 215850,Rebeka Margareta,Mertena,R,19991026,LAT
-215851,Hoda,Habib,U,,USA
+215851,Hoda,Habib,U,NULL,USA
 215852,Caroline,Furlaneto,U,20010810,BRA
 215853,Meredith,Roberts,U,19990310,USA
 215854,Jennifer Rosa,Dourado,U,20001211,BRA
 215855,Irys,Ekani,L,19971004,FRA
 215856,Myriam,Gheziel,U,20010705,FRA
-215857,Khim,Iglupas,,19980823,PHI
-215858,Charmaine Shi Yi,Seah,,20000225,SIN
-215859,Mayka,Zima,,19920411,POC
-215860,Nazli Nader,Redha,,20010412,BRN
-215861,Maram Mohamed,Sharif,,20010714,BRN
-215862,Vitalia,Stamat,,20010106,MDA
-215863,Katarina,Marinkovikj,,19990506,MKD
-215864,Anja,Draskovic,,20010218,MNE
-215865,Anna,Bowtell,,19990803,IRL
-215866,Jennifer,Timotin,,19991105,IRL
-215867,Anna,Savchenko,,19981004,CYP
-215868,Gerda,Zykute,,19990425,LTU
-215869,Paulina,Bakaite,,,LTU
-215870,Dona,Abo Habaga,,19960811,EGY
+215857,Khim,Iglupas,NULL,19980823,PHI
+215858,Charmaine Shi Yi,Seah,NULL,20000225,SIN
+215859,Mayka,Zima,NULL,19920411,POC
+215860,Nazli Nader,Redha,NULL,20010412,BRN
+215861,Maram Mohamed,Sharif,NULL,20010714,BRN
+215862,Vitalia,Stamat,NULL,20010106,MDA
+215863,Katarina,Marinkovikj,NULL,19990506,MKD
+215864,Anja,Draskovic,NULL,20010218,MNE
+215865,Anna,Bowtell,NULL,19990803,IRL
+215866,Jennifer,Timotin,NULL,19991105,IRL
+215867,Anna,Savchenko,NULL,19981004,CYP
+215868,Gerda,Zykute,NULL,19990425,LTU
+215869,Paulina,Bakaite,NULL,NULL,LTU
+215870,Dona,Abo Habaga,NULL,19960811,EGY
 215871,Laylo,Bahodyrova,U,19990123,UZB
 215872,Kamilla,Rakhimova,U,20010828,RUS
 215873,Tanysha,Dissanayake,U,20010807,GBR
@@ -16294,7 +16294,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216293,Rita Maria,Bentes De Oliveira Pinto,R,20000811,POR
 216294,Lucia,Quiterio,U,20000411,POR
 216295,Nikol,Dobrilova,U,20010415,BUL
-216296,Karolina,Kowall,U,,GER
+216296,Karolina,Kowall,U,NULL,GER
 216297,Tara,Damnjanovic,U,19990309,SRB
 216298,Elena,Trencheva,U,20020813,BUL
 216299,Ekaterina,Vishnevskaya,R,19991127,RUS
@@ -16310,8 +16310,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216309,Amanda Miguel,Perez Franco,R,19960313,MEX
 216310,Abigail,Cazarez Gonzalez,U,20000209,MEX
 216311,Ingrid Carolina,Millan,U,20011103,MEX
-216312,Maia,Sosa,U,,USA
-216313,Haina,Franco,U,,MEX
+216312,Maia,Sosa,U,NULL,USA
+216313,Haina,Franco,U,NULL,MEX
 216314,Claudia Paulina,Lopez,U,19970907,MEX
 216315,Anri,Nagata,U,20000503,JPN
 216316,Ayumi,Miyamoto,R,20001218,JPN
@@ -16424,139 +16424,139 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216423,Zeynep,Erman,U,20010621,TUR
 216424,Caroline,Dunleavy,U,19980929,USA
 216425,Vasiliki,Karvouni,U,20000627,GRE
-216426,Irene,Mani,,19831010,POC
-216427,Elvira,Yussupova,,19690403,KAZ
-216428,Sangaram,Shangamitra,,19830930,MAS
-216429,Vindya,Dayananda,,19861007,SRI
-216430,Tania,Rivera,,19830113,PUR
-216431,Alexis,Panton,,19850729,JAM
-216432,Lorna May,Lewis,,19690714,ANT
-216433,Anna Lee,Bryant,,19840925,BAR
-216434,G,NILAND,,,IRL
-216435,Krishna,Logeswari,,19850518,MAS
-216436,Nadine,Batliner,,19711227,LIE
-216437,Ivonne,Sonderegger,,19691130,CRC
-216438,M,POOS,,,LUX
-216439,Olga,Alexeeva,,19870207,KGZ
+216426,Irene,Mani,NULL,19831010,POC
+216427,Elvira,Yussupova,NULL,19690403,KAZ
+216428,Sangaram,Shangamitra,NULL,19830930,MAS
+216429,Vindya,Dayananda,NULL,19861007,SRI
+216430,Tania,Rivera,NULL,19830113,PUR
+216431,Alexis,Panton,NULL,19850729,JAM
+216432,Lorna May,Lewis,NULL,19690714,ANT
+216433,Anna Lee,Bryant,NULL,19840925,BAR
+216434,G,NILAND,NULL,NULL,IRL
+216435,Krishna,Logeswari,NULL,19850518,MAS
+216436,Nadine,Batliner,NULL,19711227,LIE
+216437,Ivonne,Sonderegger,NULL,19691130,CRC
+216438,M,POOS,NULL,NULL,LUX
+216439,Olga,Alexeeva,NULL,19870207,KGZ
 216440,Fabiana,Gomez,R,19861208,URU
-216441,Keva,Palmer,,19870812,BAH
-216442,Kara,Fisher,,19870205,BER
-216443,Angelita,Detudamo,,19860131,POC
-216444,Esther,Muscat,,19821201,MLT
-216445,Stella,Kyradji,,19870923,CYP
-216446,Tamara,Orwa,,19871212,KEN
-216447,Maria,Melihova,,19880619,MDA
-216448,Morgan,Lightbourne,,19871217,BER
-216449,Analisa,Miro,,,PAN
-216450,Paola,Calderon,,19900323,PUR
-216451,Laura,Lim,,19920426,SIN
-216452,Greta,Joksyte,,19910621,LTU
-216453,Emma,Taikie,,19711106,MRI
-216454,Leyla,Taracena,,19930319,HON
-216455,Elanqua,Griffin,,19910815,BAH
-216456,Pui Wing,Sher,,19920626,HKG
-216457,Ani,Nazari,,19840618,IRI
-216458,Rocio,Portela,,19920403,PUR
-216459,Gabriela,Vazquez,,19920319,PUR
-216460,Lynsey,Mccullough,,19910301,IRL
-216461,Arney,Johanessdottir,,19931208,ISL
+216441,Keva,Palmer,NULL,19870812,BAH
+216442,Kara,Fisher,NULL,19870205,BER
+216443,Angelita,Detudamo,NULL,19860131,POC
+216444,Esther,Muscat,NULL,19821201,MLT
+216445,Stella,Kyradji,NULL,19870923,CYP
+216446,Tamara,Orwa,NULL,19871212,KEN
+216447,Maria,Melihova,NULL,19880619,MDA
+216448,Morgan,Lightbourne,NULL,19871217,BER
+216449,Analisa,Miro,NULL,NULL,PAN
+216450,Paola,Calderon,NULL,19900323,PUR
+216451,Laura,Lim,NULL,19920426,SIN
+216452,Greta,Joksyte,NULL,19910621,LTU
+216453,Emma,Taikie,NULL,19711106,MRI
+216454,Leyla,Taracena,NULL,19930319,HON
+216455,Elanqua,Griffin,NULL,19910815,BAH
+216456,Pui Wing,Sher,NULL,19920626,HKG
+216457,Ani,Nazari,NULL,19840618,IRI
+216458,Rocio,Portela,NULL,19920403,PUR
+216459,Gabriela,Vazquez,NULL,19920319,PUR
+216460,Lynsey,Mccullough,NULL,19910301,IRL
+216461,Arney,Johanessdottir,NULL,19931208,ISL
 216462,Nelli,Buyuklianova,R,19931105,KGZ
-216463,Jennifer,Pusey,,19931103,GUA
-216464,Ming Ming Joy,Chia,,19960113,SIN
-216465,Ayna,Ereshova,,19920626,TKM
+216463,Jennifer,Pusey,NULL,19931103,GUA
+216464,Ming Ming Joy,Chia,NULL,19960113,SIN
+216465,Ayna,Ereshova,NULL,19920626,TKM
 216466,Tamara,Stanic,R,19920703,MNE
 216467,Mara Sofia,Martinez Santori,R,19950816,PUR
-216468,Ana Gabriela,Meis,,19951022,PAN
-216469,Rehmat,Johal,,19961009,SIN
+216468,Ana Gabriela,Meis,NULL,19951022,PAN
+216469,Rehmat,Johal,NULL,19961009,SIN
 216470,Ee Yi Olivia,Koh,R,19951218,SIN
-216471,Guljan,Muhammetkuliyeva,,19970917,TKM
-216472,Erica,Braschi,,19960710,PUR
+216471,Guljan,Muhammetkuliyeva,NULL,19970917,TKM
+216472,Erica,Braschi,NULL,19960710,PUR
 216473,Van Ai Ngog,Nguyen,R,19910403,VIE
-216474,Van,Nguyen Ai Ngoc,,,VIE
-216475,Nurin Nabilah,Roslan,,19980113,MAS
-216476,Rafaella,Baquerizo,,19980325,ECU
-216477,Michelle Li Sha,Khoo,,19971031,MAS
-216478,Minh Trang,Dao,,19961102,VIE
-216479,Thi Thanh Binh,Phan,,19920514,VIE
-216480,Wl Joanne,Koh,,19981101,SIN
-216481,Kemalie,Herath,,19930815,SRI
-216482,Erika,Botalieva,,19990627,KGZ
-216483,Rida,Khalid,,19970813,PAK
-216484,Milena,Avetisyan,,19990403,ARM
-216485,Atlanta ,Patsali,,19970211,CYP
-216486,Rebeca,Reyes,,19971113,GUA
-216487,Cherise,Slocombe,,19970623,BAR
-216488,Lize Elfrida,Moolman,,19971216,NAM
-216489,Malak Jasim,Fardan,,19961122,BRN
-216490,Nipada,Kaewborisut,,19740514,THA
-216491,Cindra,Maharaj,,19830218,TRI
-216492,Henriette,Kjaer Nielsen,,19700106,DEN
-216493,Jenny,Sotomayor,,19741201,PUR
-216494,Marianna,Keranen,,19840328,FIN
-216495,Beatriz,Luna,,19740219,PUR
-216496,Ingunn,Eiriksdottir,,19840125,ISL
-216497,Gabija,Talberga,,19760831,LAT
-216498,Amira,El Borolossy,,19770623,EGY
-216499,Mirina,Rajaoarisoa,,19820612,MAD
-216500,Natalia,De Cola,,19751121,URU
-216501,Jacinta,Ayers,,19630922,TRI
-216502,Ana,Rojas,,19731117,GUA
-216503,Danielle,Downey,,19840819,BER
-216504,Medina,Bajrambasic,,19801218,BIH
-216505,Shaniek,Pinder,,19850302,BAH
-216506,Lilit,Teloumian,,19780103,ARM
-216507,Sohini,Kumari,,19680105,IND
-216508,Aoife,ONeill,,19780328,IRL
-216509,Adisa,Salibasic,,19800218,BIH
-216510,Nozelina,Lukeman,,19681022,SIN
-216511,Chrystalla,Tritti,,19710217,CYP
-216512,Gill,Butterfield,,19431130,BER
-216513,Melania,Mirambell,,19780709,CRC
-216514,Anouschka,Boralessa,,19761205,SRI
-216515,Susan,King,,19690813,BAR
-216516,Gabriele,Masiliunaite,,19760410,LTU
-216517,Bettina,Niedhart,,19821030,LIE
-216518,Sylvia,Lokollo,,19780120,POC
-216519,Monika,Peciulionyte,,19840319,LTU
-216520,Molly,Ulvin,,19640417,NOR
-216521,Meang,Liew,,19760324,MAS
-216522,Svetlana,Zakharchenko,,19740413,UZB
-216523,Murjana,Boskova,,19771217,MKD
-216524,Bontshetse,Seleka,,19750626,BOT
-216525,Olga,Nin,,19801219,PUR
-216526,Claire,Gatt,,19731108,MLT
-216527,Marijana,Randjelovic,,19750725,YUG
-216528,Lynette,Tay,,19780519,SIN
-216529,Sara,Valverde,,19720131,CRC
-216530,Daniela,Agostinone,,19750611,VEN
-216531,Paola,Cespedes,,19750206,BOL
-216532,Kibibi,Moseley,,19780925,BAR
-216533,Eunice,Paravicini,,19820929,BOL
-216534,Xer Li,Woo,,19810717,MAS
-216535,Teng Lian,Kwong,,19600803,BRU
-216536,Kristin,Gunnarsdottir,,19790422,ISL
-216537,Nisha,Naraynsingh,,19801018,TRI
-216538,Luciana,Alfaro,,19621029,ESA
-216539,Evgenia,Tarasova,,19790227,KAZ
-216540,Yanelis,Jimenez Estevez,,19810313,CUB
-216541,Ivonne,Lorher,,19660126,PAN
-216542,Charisma,Billings,,19810122,ANT
-216543,Karen,Fisher,,19711231,HKG
-216544,Johanna,Bihr,,19750706,GUA
-216545,Walena,White,,19540218,FIJ
-216546,Si Yiah,Ling,,19780713,MAS
-216547,I Jin,Chew,,19680409,SIN
-216548,Su Haiza,Wan,,19731002,MAS
-216549,Lidia,Soulti,,19721211,GRE
-216550,Sara,Haider,,19770512,PAK
-216551,Meray,Malouf,,19810117,SYR
-216552,Catherine,Campbell,,19790312,TRI
-216553,King See,Lee,,19630226,SIN
-216554,Monica,Baez,,19780510,PUR
-216555,Fiona,Long,,19680306,IRL
-216556,Patricia,Sandagorda,,19730927,BOL
-216557,Kathryn,Katibi,,19701019,KEN
-216558,Dilshani,Manawadu,,19730731,SRI
+216474,Van,Nguyen Ai Ngoc,NULL,NULL,VIE
+216475,Nurin Nabilah,Roslan,NULL,19980113,MAS
+216476,Rafaella,Baquerizo,NULL,19980325,ECU
+216477,Michelle Li Sha,Khoo,NULL,19971031,MAS
+216478,Minh Trang,Dao,NULL,19961102,VIE
+216479,Thi Thanh Binh,Phan,NULL,19920514,VIE
+216480,Wl Joanne,Koh,NULL,19981101,SIN
+216481,Kemalie,Herath,NULL,19930815,SRI
+216482,Erika,Botalieva,NULL,19990627,KGZ
+216483,Rida,Khalid,NULL,19970813,PAK
+216484,Milena,Avetisyan,NULL,19990403,ARM
+216485,Atlanta,Patsali,NULL,19970211,CYP
+216486,Rebeca,Reyes,NULL,19971113,GUA
+216487,Cherise,Slocombe,NULL,19970623,BAR
+216488,Lize Elfrida,Moolman,NULL,19971216,NAM
+216489,Malak Jasim,Fardan,NULL,19961122,BRN
+216490,Nipada,Kaewborisut,NULL,19740514,THA
+216491,Cindra,Maharaj,NULL,19830218,TRI
+216492,Henriette,Kjaer Nielsen,NULL,19700106,DEN
+216493,Jenny,Sotomayor,NULL,19741201,PUR
+216494,Marianna,Keranen,NULL,19840328,FIN
+216495,Beatriz,Luna,NULL,19740219,PUR
+216496,Ingunn,Eiriksdottir,NULL,19840125,ISL
+216497,Gabija,Talberga,NULL,19760831,LAT
+216498,Amira,El Borolossy,NULL,19770623,EGY
+216499,Mirina,Rajaoarisoa,NULL,19820612,MAD
+216500,Natalia,De Cola,NULL,19751121,URU
+216501,Jacinta,Ayers,NULL,19630922,TRI
+216502,Ana,Rojas,NULL,19731117,GUA
+216503,Danielle,Downey,NULL,19840819,BER
+216504,Medina,Bajrambasic,NULL,19801218,BIH
+216505,Shaniek,Pinder,NULL,19850302,BAH
+216506,Lilit,Teloumian,NULL,19780103,ARM
+216507,Sohini,Kumari,NULL,19680105,IND
+216508,Aoife,ONeill,NULL,19780328,IRL
+216509,Adisa,Salibasic,NULL,19800218,BIH
+216510,Nozelina,Lukeman,NULL,19681022,SIN
+216511,Chrystalla,Tritti,NULL,19710217,CYP
+216512,Gill,Butterfield,NULL,19431130,BER
+216513,Melania,Mirambell,NULL,19780709,CRC
+216514,Anouschka,Boralessa,NULL,19761205,SRI
+216515,Susan,King,NULL,19690813,BAR
+216516,Gabriele,Masiliunaite,NULL,19760410,LTU
+216517,Bettina,Niedhart,NULL,19821030,LIE
+216518,Sylvia,Lokollo,NULL,19780120,POC
+216519,Monika,Peciulionyte,NULL,19840319,LTU
+216520,Molly,Ulvin,NULL,19640417,NOR
+216521,Meang,Liew,NULL,19760324,MAS
+216522,Svetlana,Zakharchenko,NULL,19740413,UZB
+216523,Murjana,Boskova,NULL,19771217,MKD
+216524,Bontshetse,Seleka,NULL,19750626,BOT
+216525,Olga,Nin,NULL,19801219,PUR
+216526,Claire,Gatt,NULL,19731108,MLT
+216527,Marijana,Randjelovic,NULL,19750725,YUG
+216528,Lynette,Tay,NULL,19780519,SIN
+216529,Sara,Valverde,NULL,19720131,CRC
+216530,Daniela,Agostinone,NULL,19750611,VEN
+216531,Paola,Cespedes,NULL,19750206,BOL
+216532,Kibibi,Moseley,NULL,19780925,BAR
+216533,Eunice,Paravicini,NULL,19820929,BOL
+216534,Xer Li,Woo,NULL,19810717,MAS
+216535,Teng Lian,Kwong,NULL,19600803,BRU
+216536,Kristin,Gunnarsdottir,NULL,19790422,ISL
+216537,Nisha,Naraynsingh,NULL,19801018,TRI
+216538,Luciana,Alfaro,NULL,19621029,ESA
+216539,Evgenia,Tarasova,NULL,19790227,KAZ
+216540,Yanelis,Jimenez Estevez,NULL,19810313,CUB
+216541,Ivonne,Lorher,NULL,19660126,PAN
+216542,Charisma,Billings,NULL,19810122,ANT
+216543,Karen,Fisher,NULL,19711231,HKG
+216544,Johanna,Bihr,NULL,19750706,GUA
+216545,Walena,White,NULL,19540218,FIJ
+216546,Si Yiah,Ling,NULL,19780713,MAS
+216547,I Jin,Chew,NULL,19680409,SIN
+216548,Su Haiza,Wan,NULL,19731002,MAS
+216549,Lidia,Soulti,NULL,19721211,GRE
+216550,Sara,Haider,NULL,19770512,PAK
+216551,Meray,Malouf,NULL,19810117,SYR
+216552,Catherine,Campbell,NULL,19790312,TRI
+216553,King See,Lee,NULL,19630226,SIN
+216554,Monica,Baez,NULL,19780510,PUR
+216555,Fiona,Long,NULL,19680306,IRL
+216556,Patricia,Sandagorda,NULL,19730927,BOL
+216557,Kathryn,Katibi,NULL,19701019,KEN
+216558,Dilshani,Manawadu,NULL,19730731,SRI
 216559,Izabela Gabriela,Novac,U,19990607,ROU
 216560,Luana,Stanciu,R,19960618,ROU
 216561,Selin,Karaer,U,19990809,TUR
@@ -16586,64 +16586,64 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216585,Hanna,Levina,R,19990124,INA
 216586,Hei Ching Claudia,Ng,R,20000803,HKG
 216587,Hong Yi Cody,Wong,U,20020314,HKG
-216588,Kaoru,Okamoto,U,,JPN
-216589,Helen,Fraser,U,,AUS
-216590,Robin,Lesh,U,,AUS
-216591,S,Goot,U,,AUS
-216592,Jennifer,Nelson,U,,AUS
-216593,Sei Rei,Cho,U,,TPE
-216594,Robyn,Davis,U,,AUS
-216595,Christine,King,U,,AUS
-216596,Barbara,Murphy,U,,AUS
-216597,Sharon,Oconnor,U,,AUS
+216588,Kaoru,Okamoto,U,NULL,JPN
+216589,Helen,Fraser,U,NULL,AUS
+216590,Robin,Lesh,U,NULL,AUS
+216591,S,Goot,U,NULL,AUS
+216592,Jennifer,Nelson,U,NULL,AUS
+216593,Sei Rei,Cho,U,NULL,TPE
+216594,Robyn,Davis,U,NULL,AUS
+216595,Christine,King,U,NULL,AUS
+216596,Barbara,Murphy,U,NULL,AUS
+216597,Sharon,Oconnor,U,NULL,AUS
 216598,Joy,Emerson,U,19440702,AUS
-216599,J,Lin,U,,CHN
-216600,Pamela,Southcombe,U,,AUS
-216601,Bernadette,Heavey,U,,AUS
-216602,Patricia,Ahern,U,,AUS
-216603,Michelle,Arnott,U,,AUS
-216604,Jennifer,Glynn,U,,AUS
-216605,Mary,Liddle,U,,AUS
+216599,J,Lin,U,NULL,CHN
+216600,Pamela,Southcombe,U,NULL,AUS
+216601,Bernadette,Heavey,U,NULL,AUS
+216602,Patricia,Ahern,U,NULL,AUS
+216603,Michelle,Arnott,U,NULL,AUS
+216604,Jennifer,Glynn,U,NULL,AUS
+216605,Mary,Liddle,U,NULL,AUS
 216606,Charleen,Hillebrand,U,19410918,USA
-216607,Judy,Forbes,U,,AUS
-216608,Cheryl,Germaine,U,,AUS
-216609,Suzanne,Lundgren,U,,SWE
-216610,Jenny,Burrows,U,,AUS
-216611,Wendy,Moore,U,,AUS
-216612,Beatrice,Abbas,U,,FRA
-216613,Maud,Galtier,U,,FRA
-216614,Dominique,Burel,U,,FRA
-216615,Eleanora,Dumitrescu,U,,ROU
-216616,Ekaterina,Rosianu,U,,ROU
+216607,Judy,Forbes,U,NULL,AUS
+216608,Cheryl,Germaine,U,NULL,AUS
+216609,Suzanne,Lundgren,U,NULL,SWE
+216610,Jenny,Burrows,U,NULL,AUS
+216611,Wendy,Moore,U,NULL,AUS
+216612,Beatrice,Abbas,U,NULL,FRA
+216613,Maud,Galtier,U,NULL,FRA
+216614,Dominique,Burel,U,NULL,FRA
+216615,Eleanora,Dumitrescu,U,NULL,ROU
+216616,Ekaterina,Rosianu,U,NULL,ROU
 216617,Patricia,Bianchi,U,19540304,ARG
 216618,Angela,Barrett,R,19320421,GBR
 216619,Doris,Hart,R,19250620,USA
 216620,Patricia,Mattes,U,19370601,USA
-216621,Jean,Knight,U,,GBR
-216622,Valerie,Forbes,U,,RSA
+216621,Jean,Knight,U,NULL,GBR
+216622,Valerie,Forbes,U,NULL,RSA
 216623,Beverley,Billington,U,19470913,NZL
-216624,Barbara,Walsh,U,,AUS
+216624,Barbara,Walsh,U,NULL,AUS
 216625,Penelope,Hardgrave,U,19470305,GBR
 216626,Thelma,Long,U,19181014,AUS
-216627,Wendy,Slaughter,U,,GBR
+216627,Wendy,Slaughter,U,NULL,GBR
 216628,Jenny,Helliar,U,19500616,GBR
-216629,Jan,Morton,U,,AUS
+216629,Jan,Morton,U,NULL,AUS
 216630,Gwynn,Sammel,U,19551026,RSA
 216631,Lorna,Whitfield,U,19570524,RSA
 216632,Pauline,Addie,R,19190806,USA
-216633,Mary,Mcanally,U,,GBR
+216633,Mary,Mcanally,U,NULL,GBR
 216634,Helen,Parez,U,19290507,USA
-216635,Mary,Johnson,U,,USA
+216635,Mary,Johnson,U,NULL,USA
 216636,Althea,Gibson,R,19270825,USA
 216637,Carrie,Fleming,U,19571026,USA
 216638,Cathy,Beene,U,19510822,USA
 216639,Karen,Feldman,U,19570408,USA
-216640,Claire,Chapman,U,,AUS
+216640,Claire,Chapman,U,NULL,AUS
 216641,Fiona,Moffitt,U,19600210,GBR
-216642,,Brown,U,,USA
-216643,Barbara,Lemberg,U,,USA
-216644,Denise,Taylor,U,,GBR
-216645,Revonne,Du Toit,U,,RSA
+216642,NULL,Brown,U,NULL,USA
+216643,Barbara,Lemberg,U,NULL,USA
+216644,Denise,Taylor,U,NULL,GBR
+216645,Revonne,Du Toit,U,NULL,RSA
 216646,Patricia,Brailsford,U,19531009,GBR
 216647,Ros,Lewis,U,19560124,GBR
 216648,Susan,Pendo,U,19611219,USA
@@ -16651,16 +16651,16 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216650,Claire,Pollard,U,19660809,GBR
 216651,Jan,Martin,U,19630609,USA
 216652,Diane,Donnelly,U,19650626,USA
-216653,Rayleen,Henningson,U,,SWE
+216653,Rayleen,Henningson,U,NULL,SWE
 216654,Sharon,Norgren,U,19640202,SWE
 216655,Carol,Neeld Lang,U,19620605,USA
-216656,Leanne,Palmisano,U,,USA
+216656,Leanne,Palmisano,U,NULL,USA
 216657,Shelley,Aguero,U,19631120,USA
-216658,Maureen,Rankine,U,,USA
+216658,Maureen,Rankine,U,NULL,USA
 216659,Lorrie,Zacharias,U,19601015,USA
 216660,Tiffany,Silveria,U,19600417,USA
 216661,Alice,Danila,U,19660314,GRE
-216662,Hiroko,Sato,U,,JPN
+216662,Hiroko,Sato,U,NULL,JPN
 216663,Donna,Littleton,U,19691021,AUS
 216664,Edith,Tatana,U,19680904,NZL
 216665,Malin,Nilsson,U,19690228,SWE
@@ -16671,15 +16671,15 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216670,Valerie,De La Noye,U,19731130,BEL
 216671,Simone,Hoormaert,U,19720417,BEL
 216672,Sarah,Brown,U,19741010,USA
-216673,Meg,Boyle,U,,USA
-216674,B,Rupp,U,,AUT
+216673,Meg,Boyle,U,NULL,USA
+216674,B,Rupp,U,NULL,AUT
 216675,Wendy,Frazer,U,19690527,AUS
 216676,Lorrae,Guse,U,19720418,AUS
 216677,Silvia,Correa,U,19710107,ARG
-216678,Tanya,Kovachka,U,,BUL
+216678,Tanya,Kovachka,U,NULL,BUL
 216679,Sue,Hatch,U,19640425,CAN
 216680,Pat,Henderson,U,19581025,CAN
-216681,Wendy,Pattenden,U,,USA
+216681,Wendy,Pattenden,U,NULL,USA
 216682,Lynn,Henderson,U,19660819,USA
 216683,Lindsay,Matthews,U,19700405,CAN
 216684,Heidi,Rosenbaum,U,19640507,USA
@@ -16688,22 +16688,22 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216687,Sheri,Yandle,U,19690629,USA
 216688,Diane,Mckeon,U,19710121,USA
 216689,Angela,Farley Wilson,U,19641211,USA
-216690,Nancy,Killingsworth,U,,USA
-216691,Keiko,Hayashi,U,,JPN
+216690,Nancy,Killingsworth,U,NULL,USA
+216691,Keiko,Hayashi,U,NULL,JPN
 216692,Liz,Wachter,U,19640423,USA
 216693,Jamie,Pisarcik,U,19630530,USA
 216694,Liza,Riefkohl,U,19631112,MEX
-216695,Stephanie,Meier,U,,FRG
-216696,Karen,Hueffman,U,,FRG
+216695,Stephanie,Meier,U,NULL,FRG
+216696,Karen,Hueffman,U,NULL,FRG
 216697,Sharon,Russell,U,19760420,BAH
-216698,,Mckinney,U,,USA
-216699,Ann,Gorneva Krulevitz,U,,ISR
-216700,,Munsell,U,,HKG
+216698,NULL,Mckinney,U,NULL,USA
+216699,Ann,Gorneva Krulevitz,U,NULL,ISR
+216700,NULL,Munsell,U,NULL,HKG
 216701,Laura,Hudson,U,19681210,USA
 216702,Debora,Garat,U,19710627,ARG
 216703,Karin,Hinterwirth,U,19630514,AUT
-216704,Michaela,Masur,U,,AUT
-216705,Jill,Patterson,U,,USA
+216704,Michaela,Masur,U,NULL,AUT
+216705,Jill,Patterson,U,NULL,USA
 216706,Courtney,Lord,U,19560622,USA
 216707,Michelle,Oldham,U,19720402,GBR
 216708,Tiffany,Brymer,U,19810121,USA
@@ -16712,13 +16712,13 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216711,Marisa,Georgitsi,U,19740529,GRE
 216712,Wendy,Nelson,U,19681001,USA
 216713,Elana,Clark,U,19730216,AUS
-216714,Sheila,Ohlsson,U,,USA
+216714,Sheila,Ohlsson,U,NULL,USA
 216715,Audrey,Ludwig,U,19760116,FRA
 216716,Rachel,King,U,19710131,AUS
 216717,Heidi,Allsmiller,U,19601007,USA
 216718,Julie,Walther,U,19610523,USA
 216719,Andrea,Piski,U,19770705,HUN
-216720,Aura,Gheorge,U,,FRG
+216720,Aura,Gheorge,U,NULL,FRG
 216721,Julia,Mertins,U,19741209,GER
 216722,Alexandra,Schneider,U,19760429,GER
 216723,Ainhoa,Torrens,U,19720403,ESP
@@ -16729,30 +16729,30 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216728,Dewi,Wijayanthi,U,19750929,INA
 216729,Altie,Barnard,U,19740102,NAM
 216730,Juliana,Gorka,U,19711107,GER
-216731,Barbel,Wohlfahrt,U,,GER
-216732,Jennifer,Rothschild,U,,USA
+216731,Barbel,Wohlfahrt,U,NULL,GER
+216732,Jennifer,Rothschild,U,NULL,USA
 216733,Naoko,Matsuki,U,19580222,JPN
-216734,Akiko,Ueda,U,,JPN
+216734,Akiko,Ueda,U,NULL,JPN
 216735,Cindy,Davis,U,19591207,USA
-216736,Ellen,Drieberger,U,,NED
-216737,Lynn,Rolley,U,,USA
+216736,Ellen,Drieberger,U,NULL,NED
+216737,Lynn,Rolley,U,NULL,USA
 216738,Federica,Lentini,U,19690908,ITA
 216739,Maria Antonietta,Trupia,U,19660419,ITA
-216740,I,Norman,U,,USA
+216740,I,Norman,U,NULL,USA
 216741,Lisa,Wilcox,U,19600808,USA
-216742,Alexandra,Boutellier,U,,FRA
+216742,Alexandra,Boutellier,U,NULL,FRA
 216743,Simone,Hermann,U,19710130,GER
 216744,Jill,Hamilton,U,19540907,USA
-216745,,Raimo,U,,CZE
-216746,Aschara,Moranon,U,,USA
+216745,NULL,Raimo,U,NULL,CZE
+216746,Aschara,Moranon,U,NULL,USA
 216747,Heidi,Djanogly,U,19720713,USA
 216748,Julie,Mckeon,U,19710609,USA
 216749,Camille,Baldrich,U,19730211,PUR
-216750,,Yoivera,U,,USA
+216750,NULL,Yoivera,U,NULL,USA
 216751,Diana,Foldenyi,U,19760818,HUN
 216752,Malgorzata,Jankowska,U,19760627,POL
 216753,Martina,Reinhardt,U,19650525,GER
-216754,G,Read,U,,USA
+216754,G,Read,U,NULL,USA
 216755,Roberta,Caldas,U,19690517,BRA
 216756,Ana,Carotini,U,19710520,BRA
 216757,Marcia,Paganini,U,19731026,BRA
@@ -16766,38 +16766,38 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216765,Asa,Flodin,U,19630216,SWE
 216766,Ann,Ehrmann,U,19660109,FRA
 216767,Mi Jeong,Lee,U,19680306,KOR
-216768,Kiki,Reuter,U,,GER
+216768,Kiki,Reuter,U,NULL,GER
 216769,Lucy,Fendig,U,19540402,USA
-216770,Cathy,Canuti,U,,USA
-216771,,Stafford,U,,USA
-216772,Emmy,Ho,U,,USA
-216773,,Gratton,U,,USA
-216774,Claudette,Laliberte,U,,USA
+216770,Cathy,Canuti,U,NULL,USA
+216771,NULL,Stafford,U,NULL,USA
+216772,Emmy,Ho,U,NULL,USA
+216773,NULL,Gratton,U,NULL,USA
+216774,Claudette,Laliberte,U,NULL,USA
 216775,Maria Eliana,Castro,U,19770621,PER
 216776,Grazia,Greco,U,19680718,ITA
-216777,Daniela,Russino,U,,ITA
-216778,Marine,Jacquet,U,,FRA
+216777,Daniela,Russino,U,NULL,ITA
+216778,Marine,Jacquet,U,NULL,FRA
 216779,Petra,Studnicka,U,19750914,GER
 216780,Lee Ann,Van Den Berg,U,19740408,NED
-216781,Ting,Wang,U,,CHN
-216782,Lisa,Barg,U,,USA
+216781,Ting,Wang,U,NULL,CHN
+216782,Lisa,Barg,U,NULL,USA
 216783,Lynn,Lewis,U,19631114,USA
-216784,Chisa,Packard,U,,JPN
+216784,Chisa,Packard,U,NULL,JPN
 216785,Masako,Nishina,U,19650311,JPN
 216786,Pamela,Buehler,U,19710807,LIE
-216787,Lindsay,Lee,U,,USA
+216787,Lindsay,Lee,U,NULL,USA
 216788,Lisa,Sassano,U,19630218,USA
-216789,Virginia,Brown,U,,USA
+216789,Virginia,Brown,U,NULL,USA
 216790,Lloyd,Hatcher,U,19451208,USA
 216791,Suzanne,Olson,U,19750612,USA
 216792,Caren,Schindler,U,19611110,USA
 216793,Allegra,Milholland,U,19720113,USA
-216794,Anne Sophie,Bruner,U,,NZL
-216795,Anje,Lauber,U,,GER
+216794,Anne Sophie,Bruner,U,NULL,NZL
+216795,Anje,Lauber,U,NULL,GER
 216796,Molly,Mcgrath,U,19630215,USA
 216797,Lori,Robertson,U,19600112,USA
 216798,Federica,Balzani,U,19850712,ITA
-216799,M,Mcgrath,U,,AUS
+216799,M,Mcgrath,U,NULL,AUS
 216800,Lisa,Mackey,U,19790830,AUS
 216801,Magalie,Gaillot,U,19800117,FRA
 216802,Virginie,Rabeau,U,19830327,FRA
@@ -16852,10 +16852,10 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216851,Jayne,Demichele,U,19741006,USA
 216852,Petra,Kostelnikova,U,19831030,CZE
 216853,Vera,Kostelnikova,U,19820403,CZE
-216854,Christine,Moroe,U,,USA
+216854,Christine,Moroe,U,NULL,USA
 216855,Alix,La Celarie,U,19800511,FRA
 216856,Carolina,Melicoff,U,19770926,MEX
-216857,Kyung Yee,Chang,U,,KOR
+216857,Kyung Yee,Chang,U,NULL,KOR
 216858,Lakschmi,Van Der Wart,U,19841212,NED
 216859,Aiko,Matsuda,U,19750220,JPN
 216860,Marina,Gojkovic,U,19790919,YUG
@@ -16878,7 +16878,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216877,Monika,Vinterova,U,19790110,SVK
 216878,Stefanie,Halder,U,19850129,GER
 216879,Sivan,Paz,U,19820629,ISR
-216880,Noemi,Minzberg,U,,ISR
+216880,Noemi,Minzberg,U,NULL,ISR
 216881,Ruth,Sverdloff,U,19650818,ISR
 216882,Martine,Belle,U,19850320,ITA
 216883,Ziva,Grasic,U,19810123,SLO
@@ -16956,7 +16956,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 216955,Andrea,Rose,U,19800213,CAN
 216956,Jacquie,Dobson,U,19610926,CAN
 216957,Collette,Oreilly,U,19640328,CAN
-216958,Skywalkie,Raimrova,U,,CZE
+216958,Skywalkie,Raimrova,U,NULL,CZE
 216959,Karen,Gebauer,U,19760422,CHI
 216960,Mariela,Marinaro,U,19750809,ARG
 216961,Natalia,Pellegrini,U,19780418,ARG
@@ -17037,11 +17037,11 @@ player_id,first_name,last_name,hand,birth_date,country_code
 217036,Susana,Carreras,U,19780108,ESP
 217037,Magdalena,Taltavull Fernandez,U,19781205,ESP
 217038,Beatriz,Pellon,U,19600915,ESP
-217039,Marta,Rozas,U,,ESP
+217039,Marta,Rozas,U,NULL,ESP
 217040,Jessica,Ortiz Diaz Oliver,U,19820216,ESP
 217041,Violeta,Fabe Martin,U,19821027,ESP
 217042,Carmen,Torres,U,19830511,ESP
-217043,Monica,Jimenez,U,,ESP
+217043,Monica,Jimenez,U,NULL,ESP
 217044,Patricia,Garcia,U,19800416,ESP
 217045,Carolina,Somalo,U,19740523,ESP
 217046,Monica,Chornet Velasco,U,19751014,ESP
@@ -17060,8 +17060,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 217059,Frederique,Mauger,U,19640825,FRA
 217060,Aurore,Esteve,U,19800809,FRA
 217061,Amanda,Peros,U,19790126,FRA
-217062,Nowlenn,Peltier,U,,FRA
-217063,Anne,Walrick,U,,FRA
+217062,Nowlenn,Peltier,U,NULL,FRA
+217063,Anne,Walrick,U,NULL,FRA
 217064,Davina,Mendiburu,U,19820925,FRA
 217065,Typhaine,Cottenier,U,19780521,FRA
 217066,Agnes,Lempereur,U,19670111,FRA
@@ -17139,7 +17139,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 217138,Laura,Tuzzi,U,19790318,ITA
 217139,Valeria,Cecchetti,U,19760803,ITA
 217140,Raffaella,Valentino,U,19770224,ITA
-217141,Makiko,Inekaku,U,,JPN
+217141,Makiko,Inekaku,U,NULL,JPN
 217142,Yuko,Miyajima,U,19710406,JPN
 217143,Tomoko,Tazawa,U,19710502,JPN
 217144,Yumiko,Nakazima,U,19750408,JPN
@@ -17172,13 +17172,13 @@ player_id,first_name,last_name,hand,birth_date,country_code
 217171,Monty,Morrison,U,19650506,USA
 217172,Edna,Espinosa,U,19721104,MEX
 217173,Mari Carmen,Espinosa,U,19620918,MEX
-217174,Grace,Summerside,U,,AUS
+217174,Grace,Summerside,U,NULL,AUS
 217175,Barbara,Soares,U,19820122,BRA
 217176,Gilda,Robleto,U,19520110,MEX
-217177,Elena,Ravnlanska,U,,MKD
+217177,Elena,Ravnlanska,U,NULL,MKD
 217178,Thea,De Weerd,U,19760211,NED
 217179,Hilke,Wilt,U,19800617,NED
-217180,Katja,Nossik,U,,NED
+217180,Katja,Nossik,U,NULL,NED
 217181,Josien,Boverhof,U,19780102,NED
 217182,Gabriella,Somers,U,19771207,BEL
 217183,Annette,Oosters,U,19790626,NED
@@ -17197,12 +17197,12 @@ player_id,first_name,last_name,hand,birth_date,country_code
 217196,Justyna,Richter,U,19790301,POL
 217197,Sabina,Kochan,U,19790831,POL
 217198,Urszula,Owsiak,U,19830627,POL
-217199,Dina,Jovanovic,U,,YUG
+217199,Dina,Jovanovic,U,NULL,YUG
 217200,Dagmara,Bednarczyk,U,19811124,POL
 217201,Alexandra,Kelly,U,19730913,GBR
 217202,Ingrid,Lucak,U,19731121,GBR
 217203,Sasha,Mattu,U,19770409,CAN
-217204,Robertina,Marcu,U,,ROU
+217204,Robertina,Marcu,U,NULL,ROU
 217205,Simona,Petru,U,19740307,ROU
 217206,Andreea,Seserman,U,19850122,ROU
 217207,Olena,Kuzmyk,U,19790210,UKR
@@ -17261,7 +17261,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 217260,Gulay,Torgay,U,19830105,TUR
 217261,Saffet Seden,Soyalp,U,19851103,TUR
 217262,Simge,Resmor,U,19790331,TUR
-217263,Inna,Brioukhovets,U,,UKR
+217263,Inna,Brioukhovets,U,NULL,UKR
 217264,Olga,Nefedova,U,19810510,RUS
 217265,Agustina,Saenz,U,19780327,URU
 217266,Magdalena,Cibils,U,19800521,URU
@@ -17271,7 +17271,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 217270,Chris,Payne,U,19610706,USA
 217271,Jennifer,Black,R,19810410,CAN
 217272,Ami,Fujiwara,U,19830626,JPN
-217273,Machiko,Fujiwara,U,,JPN
+217273,Machiko,Fujiwara,U,NULL,JPN
 217274,Christine,Simpson,U,19850303,USA
 217275,Rankin,Williams,U,19840126,USA
 217276,Julia,Roach,U,19850721,USA
@@ -17396,7 +17396,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 217395,Erika,Reggiane,U,19840315,BRA
 217396,Natasa,Krklec Jerinkic,U,19840909,YUG
 217397,Petrona,Bantay,U,19780416,PHI
-217398,Cindy,Hill,U,,USA
+217398,Cindy,Hill,U,NULL,USA
 217399,Kumi,Fukui,U,19841023,JPN
 217400,Iva,Puflerova,U,19790531,CZE
 217401,Alexandra,Demidova,U,19860614,SWE
@@ -17499,7 +17499,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 217498,Laetitia,Bonny,U,19810403,FRA
 217499,Maria,Garcia Planas,U,19870309,ESP
 217500,Andrea,Davidova,U,19860505,CZE
-217501,Yanet,Yanez,U,,CUB
+217501,Yanet,Yanez,U,NULL,CUB
 217502,Laura,Bastos,U,19860326,BRA
 217503,Silvia Carina,Mazzeo Da Silva,R,19700517,ARG
 217504,Amanda,Saiontz,U,19850102,USA
@@ -17730,7 +17730,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 217729,Elliesa,Ball,U,19920816,GBR
 217730,Erika,Faba Lopez,U,19930504,ESP
 217731,Natalia,Zamora Jimenez,U,19930417,ESP
-217732,Melanie,Tu,U,,USA
+217732,Melanie,Tu,U,NULL,USA
 217733,Mo,Cao,U,19910118,CHN
 217734,Andela,Brguljan,U,19930729,CRO
 217735,Yu Ting,Deng,U,19920215,CHN
@@ -18738,7 +18738,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 218737,Jin,Huang,U,19900115,CHN
 218738,Xin Tong,Liu,U,19920105,CHN
 218739,Ze Xin,Pu,U,19920112,CHN
-218740,Keri,Preng,U,,USA
+218740,Keri,Preng,U,NULL,USA
 218741,Gesualda,Marra,U,19720322,VEN
 218742,Anabela,Plasencia,U,19850417,MEX
 218743,Raquel,Pina,U,19881021,MEX
@@ -19476,7 +19476,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 219475,Louise,Ronaldson,U,19960721,GBR
 219476,Erin,Faulkner,U,19941226,USA
 219477,Sydney,Rider,U,19950909,USA
-219478,Katherine,Zordani,U,,USA
+219478,Katherine,Zordani,U,NULL,USA
 219479,Lauren,Gish,U,19990905,USA
 219480,Jennifer,Hauer,U,19960717,AUT
 219481,Elena,Cortimiglia,U,19951020,ITA
@@ -19536,11 +19536,11 @@ player_id,first_name,last_name,hand,birth_date,country_code
 219535,Tomomi,Takaichi,U,19960716,JPN
 219536,Nozomi,Ohya,R,19970125,JPN
 219537,Maria,Kajikawa,U,19941224,JPN
-219538,Marina,Komatsu,U,,JPN
+219538,Marina,Komatsu,U,NULL,JPN
 219539,Francesca,Vaghetti,U,19790408,ITA
 219540,Ginevra,Peiretti,R,19990515,ITA
 219541,Altea,Ricci,U,19990214,ITA
-219542,Yasmeen,Parviz,U,,ROU
+219542,Yasmeen,Parviz,U,NULL,ROU
 219543,Chunxi,Xin,U,20000122,CHN
 219544,Alix,Theodossiou,U,19950718,USA
 219545,Ann Cathrin,Hummel,R,20000428,GER
@@ -19790,7 +19790,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 219789,Katarina,Ljujic,U,19990609,SRB
 219790,Lenka,Antonijevic,U,19980716,SRB
 219791,Florencia,Garcia Vazquez,U,19971130,ARG
-219792,Anastasia,Sukhotina,U,,RUS
+219792,Anastasia,Sukhotina,U,NULL,RUS
 219793,Anna,Bini,U,19960101,ITA
 219794,Ruth,Artaza Martin,U,19980410,ESP
 219795,Alisa,Grachova,U,20000525,UKR
@@ -19833,7 +19833,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 219832,Selyn,Ozgur,U,19980210,TUR
 219833,Maria Victoria,Negoita,U,20000711,ROU
 219834,Alvina,Lai,R,19981227,HKG
-219835,Hei Ching Claudia,Ng,U,,HKG
+219835,Hei Ching Claudia,Ng,U,NULL,HKG
 219836,Avril,Look,U,20010324,HKG
 219837,Wai Yiu,Tsang,U,20000922,HKG
 219838,Wing Sze,Yu,U,20000315,HKG
@@ -19991,9 +19991,9 @@ player_id,first_name,last_name,hand,birth_date,country_code
 219990,Urska,Velec,U,19990811,SLO
 219991,Barbara,Belis,R,19980115,SLO
 219992,Lana,Stefanovic,U,20010712,SLO
-219993,Nina,Knez,U,,SLO
+219993,Nina,Knez,U,NULL,SLO
 219994,Noa,Revivo,U,20000316,ISR
-219995,Katsiaryna,Skachkova,U,,BLR
+219995,Katsiaryna,Skachkova,U,NULL,BLR
 219996,Kristina,Vasina,U,19991224,BLR
 219997,Ekaterina,Grib,U,20001212,BLR
 219998,Alesya,Yakubovich,U,20010420,BLR
@@ -20003,8 +20003,8 @@ player_id,first_name,last_name,hand,birth_date,country_code
 220002,Arielle,Nealy,U,20000910,USA
 220003,Marjorie,Antohi,U,19980202,USA
 220004,Anastasiya,Joyner,U,19990324,USA
-220005,Natasha,Subhash,U,,USA
-220006,Addison,Brown,U,,USA
+220005,Natasha,Subhash,U,NULL,USA
+220006,Addison,Brown,U,NULL,USA
 220007,Wanyu,Tang,U,19990109,CHN
 220008,Laura,Barona,R,19991016,ESP
 220009,Mbalia,Bangoura,U,19980107,USA
@@ -20012,15 +20012,15 @@ player_id,first_name,last_name,hand,birth_date,country_code
 220011,Anamarija,Spoljaric,U,19980702,CRO
 220012,Polina,Altukhova,U,20000611,RUS
 220013,Ekaterina,Davletova,L,19991229,RUS
-220014,Safiya,Carrington,U,,USA
+220014,Safiya,Carrington,U,NULL,USA
 220015,Taylor,Dean,U,20010406,USA
-220016,Alisia Stephanie,Manolescu,U,,CAN
+220016,Alisia Stephanie,Manolescu,U,NULL,CAN
 220017,Tereza,Susen,U,19950325,CAN
 220018,Yik Yan Suki,Law,U,19970101,HKG
-220019,Venia,Yeung,U,,HKG
+220019,Venia,Yeung,U,NULL,HKG
 220020,Elizabet,Hamaliy,U,20000916,UKR
 220021,Alessandra,Maya Thompson,U,19990614,ESP
-220022,Andrea,Gerhardt,U,,GER
+220022,Andrea,Gerhardt,U,NULL,GER
 220023,Sophie,Jacobeit,U,19870810,SUI
 220024,Barbora,Kijasova,R,19940302,CZE
 220025,Pauline,Demel,U,20000401,BEL
@@ -20175,93 +20175,93 @@ player_id,first_name,last_name,hand,birth_date,country_code
 220174,Shavit,Kimchi,U,20020112,ISR
 220175,Maria,Manilova,R,20000609,RUS
 220176,Natcharee,Teerachodjiranon,U,20021117,THA
-220177,Judita,Papista,,19581122,YUG
-220178,Veronica,Martinez,,19571003,MEX
-220179,Sally Ann,Lewis,,19590216,RHO
-220180,Julia,Kashevarova,,19630810,URS
-220181,Aila,Winkler,,19690729,YUG
-220182,Brenda,Nunns,,19450913,CAN
-220183,Elizabeth,Starkie,,19380831,GBR
-220184,Huey Ying,Chen,,19570805,TPE
-220185,Patricia,Hermeda,,19611015,CHI
-220186,Zarina,Galvan,,19700615,MEX
-220187,Nadine,Schmit,,19630505,LUX
-220188,Liv,Jagge,,19430225,NOR
-220189,Dionissia,Kotsia,,,GRE
-220190,Jackie,Castillejo,,19640119,PHI
-220191,Sue,Roux,,19491012,ZIM
-220192,Diana,Moskova,,19500122,BUL
-220193,Maria Carmen,Arnoso,,19441119,POR
-220194,Marina,Kondova,,19620112,BUL
-220195,Lise,Hahn Evers,,,DEN
-220196,Maria Paula,Abreu,,19610211,POR
-220197,Xiao Yu,Zhu,,19620303,CHN
-220198,Qing Qing,Gong,,19591023,CHN
-220199,Zhen Zhen,Xiang,,19590418,CHN
-220200,Lena,Dvornik,,,YUG
-220201,Carmencita,De La Rosa,,,PHI
-220202,Sirikanya,Hoonsiri,,19530924,THA
-220203,Maria Manuel,Cabral Lencastre,,19600630,POR
-220204,Malgorzata,Rejdych,,19570901,POL
-220205,Tamar,Levin,,19591111,ISR
-220206,Margaret,Burns,,,IRL
-220207,Lotte,Solbeck,,19520502,DEN
-220208,Edda,Herdy,,19400413,AUT
-220209,Mary,Marechal,,,BEL
-220210,Robyn,Ebbern,,19440702,AUS
-220211,Tone,Schirmer,,19410601,NOR
-220212,Maria Julia,Roverano,,19551101,URU
-220213,Eun Jeong,Cha,,19581124,KOR
-220214,Maya,Kerschbaum,,19530103,AUT
-220215,Gillian,Kay,,19411015,ISR
-220216,Renata,Ostermann,,19370614,FRG
-220217,Alex,Rotas,,19490916,GRE
-220218,Patricia,Rivera,,19501024,CHI
-220219,Jeong Ok,Choi,,19650221,KOR
-220220,Deanne,Bell,,,JAM
-220221,Ingrid,Willems,,19591201,BEL
-220222,Helga,Grille,,19730113,URU
-220223,Qin Di,Weng,,19640130,CHN
-220224,Pauline,Rodriguez,,19690624,CHI
-220225,Kjersti,Jensen,,19640521,NOR
-220226,Donna,Millington,,19690203,TRI
-220227,Claudia,Faillace,,19690501,BRA
-220228,Sheung,Pang,,19741212,HKG
-220229,Diane,Craig,,19640516,IRL
-220230,Caroline,Young,,19590919,SIN
-220231,Dorothy Jane,Suarez,,19680519,PHI
-220232,Lesley,Barbour,,19710216,ZIM
-220233,Stine,Vogt Andersen,,19680102,NOR
-220234,Wei,Hua,,19650804,CHN
-220235,Laura,Mannisto,,19700629,FIN
-220236,Yvette,Castillejo,,19700531,PHI
-220237,Jeanette,Gomez,,19650115,PHI
-220238,Neissa,Doumbia,,19610207,SEN
-220239,Meenal,Maharwal,R,,IND
-220240,Farah,Khalil,U,,EGY
-220241,Anastasiia,Chesnokova,R,,RUS
-220242,Lidya,Yargovan,U,,TUR
-220243,Isabella,Caballero,U,,BOL
-220244,Paola,Cortez Vargas,U,,BOL
-220245,Liria,Loria Pereyra,U,,BOL
-220246,Daria,Lukyanova,R,,RUS
-220247,Shufaa Changawa,Ruwa,R,,KEN
-220248,Katarina,Karanja,R,,KEN
-220249,Paige Wanjiku,Mbugua,U,,KEN
-220250,Polina,Smolskaya,U,,BLR
-220251,Idoia,Huerta Gallardo,U,,ESP
-220252,Paulina,Mecho Hernandez,U,,ESP
-220253,Shani,Gatterer,U,,ISR
-220254,Oluchukwu Jennifer,Ibeto,U,,ISR
+220177,Judita,Papista,NULL,19581122,YUG
+220178,Veronica,Martinez,NULL,19571003,MEX
+220179,Sally Ann,Lewis,NULL,19590216,RHO
+220180,Julia,Kashevarova,NULL,19630810,URS
+220181,Aila,Winkler,NULL,19690729,YUG
+220182,Brenda,Nunns,NULL,19450913,CAN
+220183,Elizabeth,Starkie,NULL,19380831,GBR
+220184,Huey Ying,Chen,NULL,19570805,TPE
+220185,Patricia,Hermeda,NULL,19611015,CHI
+220186,Zarina,Galvan,NULL,19700615,MEX
+220187,Nadine,Schmit,NULL,19630505,LUX
+220188,Liv,Jagge,NULL,19430225,NOR
+220189,Dionissia,Kotsia,NULL,NULL,GRE
+220190,Jackie,Castillejo,NULL,19640119,PHI
+220191,Sue,Roux,NULL,19491012,ZIM
+220192,Diana,Moskova,NULL,19500122,BUL
+220193,Maria Carmen,Arnoso,NULL,19441119,POR
+220194,Marina,Kondova,NULL,19620112,BUL
+220195,Lise,Hahn Evers,NULL,NULL,DEN
+220196,Maria Paula,Abreu,NULL,19610211,POR
+220197,Xiao Yu,Zhu,NULL,19620303,CHN
+220198,Qing Qing,Gong,NULL,19591023,CHN
+220199,Zhen Zhen,Xiang,NULL,19590418,CHN
+220200,Lena,Dvornik,NULL,NULL,YUG
+220201,Carmencita,De La Rosa,NULL,NULL,PHI
+220202,Sirikanya,Hoonsiri,NULL,19530924,THA
+220203,Maria Manuel,Cabral Lencastre,NULL,19600630,POR
+220204,Malgorzata,Rejdych,NULL,19570901,POL
+220205,Tamar,Levin,NULL,19591111,ISR
+220206,Margaret,Burns,NULL,NULL,IRL
+220207,Lotte,Solbeck,NULL,19520502,DEN
+220208,Edda,Herdy,NULL,19400413,AUT
+220209,Mary,Marechal,NULL,NULL,BEL
+220210,Robyn,Ebbern,NULL,19440702,AUS
+220211,Tone,Schirmer,NULL,19410601,NOR
+220212,Maria Julia,Roverano,NULL,19551101,URU
+220213,Eun Jeong,Cha,NULL,19581124,KOR
+220214,Maya,Kerschbaum,NULL,19530103,AUT
+220215,Gillian,Kay,NULL,19411015,ISR
+220216,Renata,Ostermann,NULL,19370614,FRG
+220217,Alex,Rotas,NULL,19490916,GRE
+220218,Patricia,Rivera,NULL,19501024,CHI
+220219,Jeong Ok,Choi,NULL,19650221,KOR
+220220,Deanne,Bell,NULL,NULL,JAM
+220221,Ingrid,Willems,NULL,19591201,BEL
+220222,Helga,Grille,NULL,19730113,URU
+220223,Qin Di,Weng,NULL,19640130,CHN
+220224,Pauline,Rodriguez,NULL,19690624,CHI
+220225,Kjersti,Jensen,NULL,19640521,NOR
+220226,Donna,Millington,NULL,19690203,TRI
+220227,Claudia,Faillace,NULL,19690501,BRA
+220228,Sheung,Pang,NULL,19741212,HKG
+220229,Diane,Craig,NULL,19640516,IRL
+220230,Caroline,Young,NULL,19590919,SIN
+220231,Dorothy Jane,Suarez,NULL,19680519,PHI
+220232,Lesley,Barbour,NULL,19710216,ZIM
+220233,Stine,Vogt Andersen,NULL,19680102,NOR
+220234,Wei,Hua,NULL,19650804,CHN
+220235,Laura,Mannisto,NULL,19700629,FIN
+220236,Yvette,Castillejo,NULL,19700531,PHI
+220237,Jeanette,Gomez,NULL,19650115,PHI
+220238,Neissa,Doumbia,NULL,19610207,SEN
+220239,Meenal,Maharwal,R,NULL,IND
+220240,Farah,Khalil,U,NULL,EGY
+220241,Anastasiia,Chesnokova,R,NULL,RUS
+220242,Lidya,Yargovan,U,NULL,TUR
+220243,Isabella,Caballero,U,NULL,BOL
+220244,Paola,Cortez Vargas,U,NULL,BOL
+220245,Liria,Loria Pereyra,U,NULL,BOL
+220246,Daria,Lukyanova,R,NULL,RUS
+220247,Shufaa Changawa,Ruwa,R,NULL,KEN
+220248,Katarina,Karanja,R,NULL,KEN
+220249,Paige Wanjiku,Mbugua,U,NULL,KEN
+220250,Polina,Smolskaya,U,NULL,BLR
+220251,Idoia,Huerta Gallardo,U,NULL,ESP
+220252,Paulina,Mecho Hernandez,U,NULL,ESP
+220253,Shani,Gatterer,U,NULL,ISR
+220254,Oluchukwu Jennifer,Ibeto,U,NULL,ISR
 220255,Varvara,Timofeeva,U,19860418,RUS
 220256,Montserrat,Gonzalez,U,19871115,MEX
-220257,Nour,Dib,U,,LIB
-220258,Viktoriya,Petrenko,U,,UKR
-220259,Daria,Nazarkina,U,,RUS
-220260,Anastasiya,Khrustaleva,U,,RUS
-220261,Yasmine,Khiri,U,,MAR
-220262,Ghita,Courdi,U,,MAR
-220263,Hind,Semlali,U,,MAR
+220257,Nour,Dib,U,NULL,LIB
+220258,Viktoriya,Petrenko,U,NULL,UKR
+220259,Daria,Nazarkina,U,NULL,RUS
+220260,Anastasiya,Khrustaleva,U,NULL,RUS
+220261,Yasmine,Khiri,U,NULL,MAR
+220262,Ghita,Courdi,U,NULL,MAR
+220263,Hind,Semlali,U,NULL,MAR
 220264,Leila,Koster,U,20020511,MAR
 220265,Soizette,Simmons,R,19870120,TTO
 220266,Kathleen,Kanev,U,20000728,GER
@@ -20450,7 +20450,7 @@ player_id,first_name,last_name,hand,birth_date,country_code
 220449,Dana,Ferreyra,U,20011018,ARG
 220450,Keyi,Zhou,U,20000914,CHN
 220451,Yufei,Long,U,19990121,CHN
-220452,Michele,Zmau,U,,POR
+220452,Michele,Zmau,U,NULL,POR
 220453,Adithya,Karunaratne,U,20011204,SRI
 220454,Yeon Woo,Ku,U,20030315,KOR
 220455,Ryoko,Ikeda,U,20030224,JPN

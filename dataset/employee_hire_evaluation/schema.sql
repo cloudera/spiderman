@@ -27,7 +27,7 @@ CREATE TABLE `employee_hire_evaluation`.`hiring` (
     `Shop_ID` INT,
     `Employee_ID` INT,
     `Start_from` TEXT,
-    `Is_full_time` BOOL,
+    `Is_full_time` CHAR(1),
     PRIMARY KEY (`Employee_ID`),
     FOREIGN KEY (`Employee_ID`) REFERENCES `employee_hire_evaluation`.`employee` (`Employee_ID`),
     FOREIGN KEY (`Shop_ID`) REFERENCES `employee_hire_evaluation`.`shop` (`Shop_ID`)

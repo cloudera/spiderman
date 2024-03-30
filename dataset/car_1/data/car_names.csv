@@ -300,7 +300,7 @@ MakeId,Model,Make
 299,chevrolet,chevrolet malibu classic (sw)
 300,chrysler,chrysler lebaron town @ country (sw)
 301,volkswagen,vw rabbit custom
-302,mazda, mazda glc deluxe
+302,mazda,mazda glc deluxe
 303,dodge,dodge colt hatchback custom
 304,amc,amc spirit dl
 305,mercedes,mercedes benz 300d
@@ -338,7 +338,7 @@ MakeId,Model,Make
 337,honda,honda civic 1500 gl
 338,renault,renault lecar deluxe
 339,subaru,subaru dl
-340, volkswagen,volkswagen rabbit
+340,volkswagen,volkswagen rabbit
 341,datsun,datsun 280-zx
 342,mazda,mazda rx-7 gs
 343,triumph,triumph tr7 coupe

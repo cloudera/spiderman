@@ -7,7 +7,7 @@ CREATE TABLE `loan_1`.`bank` (
     `branch_ID` INT,
     `bname` VARCHAR(20),
     `no_of_customers` INT,
-    `city` VARCHAR(10),
+    `city` VARCHAR(20),
     `state` VARCHAR(20),
     PRIMARY KEY (`branch_ID`)
 );
@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS `loan_1`.`customer`;
 CREATE TABLE `loan_1`.`customer` (
     `cust_ID` INT,
     `cust_name` VARCHAR(20),
-    `acc_type` CHAR(1),
+    `acc_type` VARCHAR(10),
     `acc_bal` INT,
     `no_of_loans` INT,
     `credit_score` INT,

@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS `products_for_hire`.`Bookings`;
 CREATE TABLE `products_for_hire`.`Bookings` (
     `booking_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
-    `booking_status_code` VARCHAR(10) NOT NULL,
+    `booking_status_code` VARCHAR(15) NOT NULL,
     `returned_damaged_yn` VARCHAR(40),
     `booking_start_date` DATETIME,
     `booking_end_date` DATETIME,

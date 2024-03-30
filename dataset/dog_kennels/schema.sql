@@ -12,7 +12,7 @@ CREATE TABLE `dog_kennels`.`Breeds` (
 DROP TABLE IF EXISTS `dog_kennels`.`Charges`;
 CREATE TABLE `dog_kennels`.`Charges` (
     `charge_id` INTEGER,
-    `charge_type` VARCHAR(10),
+    `charge_type` VARCHAR(20),
     `charge_amount` DECIMAL(19,4),
     PRIMARY KEY (`charge_id`)
 );
@@ -71,7 +71,7 @@ CREATE TABLE `dog_kennels`.`Dogs` (
 DROP TABLE IF EXISTS `dog_kennels`.`Professionals`;
 CREATE TABLE `dog_kennels`.`Professionals` (
     `professional_id` INTEGER,
-    `role_code` VARCHAR(10) NOT NULL,
+    `role_code` VARCHAR(20) NOT NULL,
     `first_name` VARCHAR(50),
     `street` VARCHAR(50),
     `city` VARCHAR(50),

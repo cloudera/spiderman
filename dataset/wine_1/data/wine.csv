@@ -181,7 +181,7 @@ No,Grape,Winery,Appelation,State,Name,Year,Price,Score,Cases,Drink
 180,Syrah,Stolpman,Santa Ynez Valley,California,Originals,2008,38,88,950,now
 181,Syrah,Boheme,Sonoma Coast,California,Que Syrah Vineyard,2006,40,87,185,now
 182,Syrah,J. Lohr,Paso Robles,California,Gesture Limited Release,2008,30,87,514,2011
-183,Syrah,Montes,Paso Robles,California,Star Angel ,2007,35,87,3000,now
+183,Syrah,Montes,Paso Robles,California,Star Angel,2007,35,87,3000,now
 184,Syrah,Rosenblum,Sonoma County,California,Kick Ranch Reserve,2007,45,87,496,2012
 185,Syrah,Stolpman,Santa Ynez Valley,California,Syrah,2008,30,87,1500,now
 186,Syrah,Zaca Mesa,Santa Ynez Valley,California,Syrah,2007,24,87,7651,now
@@ -264,7 +264,7 @@ No,Grape,Winery,Appelation,State,Name,Year,Price,Score,Cases,Drink
 263,Chardonnay,Au Bon Climat,Santa Barbara County,California,Los Alamos Vineyard Historic Vineyards Collection,2007,25,93,325,now
 264,Chardonnay,HdV,Carneros,California,Hyde Vineyards,2006,60,93,1562,now
 265,Chardonnay,Kistler,Carneros,California,Hudson Vineyard,2006,75,93,1818,now
-266,Chardonnay,Landmark,Sonoma County,California,Damaris Reserve ,2006,40,93,2000,now
+266,Chardonnay,Landmark,Sonoma County,California,Damaris Reserve,2006,40,93,2000,now
 267,Chardonnay,Pahlmeyer,Sonoma Coast,California,Chardonnay,2007,70,93,1620,now
 268,Chardonnay,Peirson Meyer,Sonoma Coast,California,Cahrles Heintz Vineyard,2007,55,93,300,now
 269,Chardonnay,Ridge,Santa Cruz Mountains,California,Santa Cruz Mountains Estate,2007,40,93,400,now

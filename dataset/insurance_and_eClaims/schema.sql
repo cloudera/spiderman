@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `insurance_and_eClaims`.`Claim_Headers`;
 CREATE TABLE `insurance_and_eClaims`.`Claim_Headers` (
     `Claim_Header_ID` INTEGER NOT NULL,
     `Claim_Status_Code` CHAR(15) NOT NULL,
-    `Claim_Type_Code` CHAR(15) NOT NULL,
+    `Claim_Type_Code` VARCHAR(30) NOT NULL,
     `Policy_ID` INTEGER NOT NULL,
     `Date_of_Claim` DATETIME,
     `Date_of_Settlement` DATETIME,

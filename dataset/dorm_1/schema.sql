@@ -21,14 +21,14 @@ CREATE TABLE `dorm_1`.`Dorm` (
     `dorm_name` VARCHAR(20),
     `student_capacity` INTEGER,
     `gender` VARCHAR(1),
-    UNIQUE (`dormid`)
+    PRIMARY KEY (`dormid`)
 );
 
 DROP TABLE IF EXISTS `dorm_1`.`Dorm_amenity`;
 CREATE TABLE `dorm_1`.`Dorm_amenity` (
     `amenid` INTEGER,
     `amenity_name` VARCHAR(25),
-    UNIQUE (`amenid`)
+    PRIMARY KEY (`amenid`)
 );
 
 DROP TABLE IF EXISTS `dorm_1`.`Has_amenity`;

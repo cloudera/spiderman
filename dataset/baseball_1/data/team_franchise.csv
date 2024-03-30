@@ -1,121 +1,121 @@
 franchise_id,franchise_name,active,na_assoc
-ALT,Altoona Mountain City,N,
-ANA,Los Angeles Angels of Anaheim,Y,
-ARI,Arizona Diamondbacks,Y,
+ALT,Altoona Mountain City,N,NULL
+ANA,Los Angeles Angels of Anaheim,Y,NULL
+ARI,Arizona Diamondbacks,Y,NULL
 ATH,Philadelphia Athletics,N,PNA
 ATL,Atlanta Braves,Y,BNA
-BAL,Baltimore Orioles,Y,
-BFB,Buffalo Bisons,N,
-BFL,Buffalo Bisons,N,
-BLC,Baltimore Canaries,,
-BLO,Baltimore Orioles,N,
-BLT,Baltimore Terrapins,N,
-BLU,Baltimore Monumentals,N,
-BNA,Boston Red Stockings,,ATL
-BOS,Boston Red Sox,Y,
-BRA,Brooklyn Atlantics,,
-BRD,Boston Reds,N,
-BRG,Brooklyn Gladiators,N,
-BRS,Boston Reds,N,
-BTT,Brooklyn Tip-Tops,N,
-BUF,Buffalo Bisons,N,
-BWW,Brooklyn Ward's Wonders,N,
-CBK,Columbus Buckeyes,N,
-CBL,Cleveland Blues,N,
-CEN,Philadelphia Centennials,,
-CFC,Cleveland Forest Citys,,
+BAL,Baltimore Orioles,Y,NULL
+BFB,Buffalo Bisons,N,NULL
+BFL,Buffalo Bisons,N,NULL
+BLC,Baltimore Canaries,NULL,NULL
+BLO,Baltimore Orioles,N,NULL
+BLT,Baltimore Terrapins,N,NULL
+BLU,Baltimore Monumentals,N,NULL
+BNA,Boston Red Stockings,NULL,ATL
+BOS,Boston Red Sox,Y,NULL
+BRA,Brooklyn Atlantics,NULL,NULL
+BRD,Boston Reds,N,NULL
+BRG,Brooklyn Gladiators,N,NULL
+BRS,Boston Reds,N,NULL
+BTT,Brooklyn Tip-Tops,N,NULL
+BUF,Buffalo Bisons,N,NULL
+BWW,Brooklyn Ward's Wonders,N,NULL
+CBK,Columbus Buckeyes,N,NULL
+CBL,Cleveland Blues,N,NULL
+CEN,Philadelphia Centennials,NULL,NULL
+CFC,Cleveland Forest Citys,NULL,NULL
 CHC,Chicago Cubs,Y,CNA
-CHH,Chicago Whales,N,
-CHP,Chicago Pirates,N,
-CHW,Chicago White Sox,Y,
-CIN,Cincinnati Reds,Y,
-CKK,Cincinnati Kelly's Killers,N,
-CLE,Cleveland Indians,Y,
-CLI,Cleveland Infants,N,
-CLS,Columbus Solons,N,
-CLV,Cleveland Spiders,N,
-CNA,Chicago White Stockings,,CHC
-CNR,Cincinnati Reds,N,
-COL,Colorado Rockies,Y,
-COR,Cincinnati Outlaw Reds,N,
-CPI,Chicago/Pittsburgh (Union League),N,
-DET,Detroit Tigers,Y,
-DTN,Detroit Wolverines,N,
-ECK,Brooklyn Eckfords,,
-FLA,Florida Marlins,Y,
+CHH,Chicago Whales,N,NULL
+CHP,Chicago Pirates,N,NULL
+CHW,Chicago White Sox,Y,NULL
+CIN,Cincinnati Reds,Y,NULL
+CKK,Cincinnati Kelly's Killers,N,NULL
+CLE,Cleveland Indians,Y,NULL
+CLI,Cleveland Infants,N,NULL
+CLS,Columbus Solons,N,NULL
+CLV,Cleveland Spiders,N,NULL
+CNA,Chicago White Stockings,NULL,CHC
+CNR,Cincinnati Reds,N,NULL
+COL,Colorado Rockies,Y,NULL
+COR,Cincinnati Outlaw Reds,N,NULL
+CPI,Chicago/Pittsburgh (Union League),N,NULL
+DET,Detroit Tigers,Y,NULL
+DTN,Detroit Wolverines,N,NULL
+ECK,Brooklyn Eckfords,NULL,NULL
+FLA,Florida Marlins,Y,NULL
 HAR,Hartford Dark Blues,N,HNA
-HNA,Hartford Dark Blues,,HAR
-HOU,Houston Astros,Y,
-IBL,Indianapolis Blues,N,
-IHO,Indianapolis Hoosiers,N,
-IND,Indianapolis Hoosiers,N,
-KCC,Kansas City Cowboys,N,
-KCN,Kansas City Cowboys,N,
-KCP,Kansas City Packers,N,
-KCR,Kansas City Royals,Y,
-KCU,Kansas City Cowboys,N,
-KEK,Fort Wayne Kekiongas,,
-LAD,Los Angeles Dodgers,Y,
-LGR,Louisville Grays,N,
-LOU,Louisville Colonels,N,
-MAN,Middletown Mansfields,,
-MAR,Baltimore Marylands,,
-MIL,Milwaukee Brewers,Y,
-MIN,Minnesota Twins,Y,
-MLA,Milwaukee Brewers,N,
-MLG,Milwaukee Grays,N,
-MLU,Milwaukee Brewers,N,
-NAT,Washington Nationals,,
-NEW,Newark Pepper,N,
-NHV,New Haven Elm Citys,,
-NNA,New York Mutuals,,NYU
-NYI,New York Giants,N,
-NYM,New York Mets,Y,
-NYP,New York Metropolitans,N,
+HNA,Hartford Dark Blues,NULL,HAR
+HOU,Houston Astros,Y,NULL
+IBL,Indianapolis Blues,N,NULL
+IHO,Indianapolis Hoosiers,N,NULL
+IND,Indianapolis Hoosiers,N,NULL
+KCC,Kansas City Cowboys,N,NULL
+KCN,Kansas City Cowboys,N,NULL
+KCP,Kansas City Packers,N,NULL
+KCR,Kansas City Royals,Y,NULL
+KCU,Kansas City Cowboys,N,NULL
+KEK,Fort Wayne Kekiongas,NULL,NULL
+LAD,Los Angeles Dodgers,Y,NULL
+LGR,Louisville Grays,N,NULL
+LOU,Louisville Colonels,N,NULL
+MAN,Middletown Mansfields,NULL,NULL
+MAR,Baltimore Marylands,NULL,NULL
+MIL,Milwaukee Brewers,Y,NULL
+MIN,Minnesota Twins,Y,NULL
+MLA,Milwaukee Brewers,N,NULL
+MLG,Milwaukee Grays,N,NULL
+MLU,Milwaukee Brewers,N,NULL
+NAT,Washington Nationals,NULL,NULL
+NEW,Newark Pepper,N,NULL
+NHV,New Haven Elm Citys,NULL,NULL
+NNA,New York Mutuals,NULL,NYU
+NYI,New York Giants,N,NULL
+NYM,New York Mets,Y,NULL
+NYP,New York Metropolitans,N,NULL
 NYU,New York Mutuals,N,NNA
-NYY,New York Yankees,Y,
-OAK,Oakland Athletics,Y,
-OLY,Washington Olympics,,
-PBB,Pittsburgh Burghers,N,
-PBS,Pittsburgh Rebels,N,
-PHA,Philadelphia Athletics,N,
-PHI,Philadelphia Phillies,Y,
-PHK,Philadelphia Keystones,N,
-PHQ,Philadelphia Athletics,N,
-PIT,Pittsburgh Pirates,Y,
-PNA,Philadelphia Athletics,,ATH
-PRO,Providence Grays,N,
-PWS,Philadelphia White Stockings,,
-RES,Elizabeth Resolutes,,
-RIC,Richmond Virginians,N,
-ROC,Rochester Broncos,N,
-ROK,Rockford Forest Citys,,
+NYY,New York Yankees,Y,NULL
+OAK,Oakland Athletics,Y,NULL
+OLY,Washington Olympics,NULL,NULL
+PBB,Pittsburgh Burghers,N,NULL
+PBS,Pittsburgh Rebels,N,NULL
+PHA,Philadelphia Athletics,N,NULL
+PHI,Philadelphia Phillies,Y,NULL
+PHK,Philadelphia Keystones,N,NULL
+PHQ,Philadelphia Athletics,N,NULL
+PIT,Pittsburgh Pirates,Y,NULL
+PNA,Philadelphia Athletics,NULL,ATH
+PRO,Providence Grays,N,NULL
+PWS,Philadelphia White Stockings,NULL,NULL
+RES,Elizabeth Resolutes,NULL,NULL
+RIC,Richmond Virginians,N,NULL
+ROC,Rochester Broncos,N,NULL
+ROK,Rockford Forest Citys,NULL,NULL
 SBS,St. Louis Brown Stockings,N,SNA
-SDP,San Diego Padres,Y,
-SEA,Seattle Mariners,Y,
-SFG,San Francisco Giants,Y,
-SLI,St. Louis Terriers,N,
-SLM,St. Louis Maroons,N,
-SLR,St. Louis Red Stockings,,
-SNA,St. Louis Brown Stockings,,SBS
-STL,St. Louis Cardinals,Y,
-STP,St. Paul Apostles,N,
-SYR,Syracuse Stars,N,
-SYS,Syracuse Stars,N,
-TBD,Tampa Bay Rays,Y,
-TEX,Texas Rangers,Y,
-TLM,Toledo Maumees,N,
-TOL,Toledo Blue Stockings,N,
-TOR,Toronto Blue Jays,Y,
-TRO,Troy Haymakers,,
-TRT,Troy Trojans,N,
-WAS,Washington Senators,N,
-WBL,Washington Blue Legs,,
-WES,Keokuk Westerns,,
-WIL,Wilmington Quicksteps,N,
-WNA,Washington Nationals,N,
-WNL,Washington Nationals,N,
-WNT,Washington Nationals,,
-WOR,Worcester Ruby Legs,N,
-WSN,Washington Nationals,Y,
-WST,Washington Statesmen,N,
+SDP,San Diego Padres,Y,NULL
+SEA,Seattle Mariners,Y,NULL
+SFG,San Francisco Giants,Y,NULL
+SLI,St. Louis Terriers,N,NULL
+SLM,St. Louis Maroons,N,NULL
+SLR,St. Louis Red Stockings,NULL,NULL
+SNA,St. Louis Brown Stockings,NULL,SBS
+STL,St. Louis Cardinals,Y,NULL
+STP,St. Paul Apostles,N,NULL
+SYR,Syracuse Stars,N,NULL
+SYS,Syracuse Stars,N,NULL
+TBD,Tampa Bay Rays,Y,NULL
+TEX,Texas Rangers,Y,NULL
+TLM,Toledo Maumees,N,NULL
+TOL,Toledo Blue Stockings,N,NULL
+TOR,Toronto Blue Jays,Y,NULL
+TRO,Troy Haymakers,NULL,NULL
+TRT,Troy Trojans,N,NULL
+WAS,Washington Senators,N,NULL
+WBL,Washington Blue Legs,NULL,NULL
+WES,Keokuk Westerns,NULL,NULL
+WIL,Wilmington Quicksteps,N,NULL
+WNA,Washington Nationals,N,NULL
+WNL,Washington Nationals,N,NULL
+WNT,Washington Nationals,NULL,NULL
+WOR,Worcester Ruby Legs,N,NULL
+WSN,Washington Nationals,Y,NULL
+WST,Washington Statesmen,N,NULL

@@ -35,7 +35,7 @@ CREATE TABLE `department_store`.`Department_Store_Chain` (
 DROP TABLE IF EXISTS `department_store`.`Customers`;
 CREATE TABLE `department_store`.`Customers` (
     `customer_id` INTEGER,
-    `payment_method_code` VARCHAR(10) NOT NULL,
+    `payment_method_code` VARCHAR(20) NOT NULL,
     `customer_code` VARCHAR(20),
     `customer_name` VARCHAR(80),
     `customer_address` VARCHAR(255),
@@ -134,7 +134,7 @@ CREATE TABLE `department_store`.`Staff_Department_Assignments` (
     `staff_id` INTEGER NOT NULL,
     `department_id` INTEGER NOT NULL,
     `date_assigned_from` DATETIME NOT NULL,
-    `job_title_code` VARCHAR(10) NOT NULL,
+    `job_title_code` VARCHAR(20) NOT NULL,
     `date_assigned_to` DATETIME,
     PRIMARY KEY (`staff_id`, `department_id`),
     FOREIGN KEY (`staff_id`) REFERENCES `department_store`.`Staff` (`staff_id`),

@@ -3,7 +3,7 @@ student_id,current_address_id,permanent_address_id,first_name,middle_name,last_n
 2,12,5,Hobart,Lorenz,Balistreri,1-009-710-5151,swift.kolby@example.com,304246,1976-10-26 02:33:06,2013-10-05 17:41:28,autem
 3,9,5,Warren,Violet,Gleichner,07661787471,johns.unique@example.net,3,2007-08-29 23:25:41,2007-03-31 09:53:19,facilis
 4,7,11,Jarvis,Aaliyah,Carroll,09700166582,jillian26@example.net,141072406,2014-03-28 05:48:23,2007-08-02 04:12:58,atque
-5,9,9,Milton,Vaughn,Christiansen,171-642-5684,lhartmann@example.org,,1973-05-19 19:12:46,2007-11-28 12:50:21,laborum
+5,9,9,Milton,Vaughn,Christiansen,171-642-5684,lhartmann@example.org,NULL,1973-05-19 19:12:46,2007-11-28 12:50:21,laborum
 6,6,3,Stanford,Mona,Rogahn,436.613.7683,skassulke@example.net,248,1997-03-20 16:47:25,2016-04-09 12:27:04,qui
 7,15,3,Frida,Aisha,Huel,1-879-796-8987x164,baumbach.lucious@example.org,668,2018-03-13 09:56:22,1997-11-16 08:54:33,dolorum
 8,1,5,Delaney,Judd,Ankunding,03174364122,dell43@example.net,402,1982-02-14 08:46:35,2004-12-08 05:29:11,voluptatem

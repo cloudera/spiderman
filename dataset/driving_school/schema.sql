@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS `driving_school`.`Customer_Payments`;
 CREATE TABLE `driving_school`.`Customer_Payments` (
     `customer_id` INTEGER NOT NULL,
     `datetime_payment` DATETIME NOT NULL,
-    `payment_method_code` VARCHAR(10) NOT NULL,
+    `payment_method_code` VARCHAR(20) NOT NULL,
     `amount_payment` DOUBLE,
     PRIMARY KEY (`customer_id`, `datetime_payment`),
     FOREIGN KEY (`customer_id`) REFERENCES `driving_school`.`Customers` (`customer_id`)

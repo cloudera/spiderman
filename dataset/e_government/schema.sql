@@ -92,7 +92,7 @@ CREATE TABLE `e_government`.`Party_Forms` (
     `party_id` INTEGER NOT NULL,
     `form_id` INTEGER NOT NULL,
     `date_completion_started` DATETIME NOT NULL,
-    `form_status_code` VARCHAR(15) NOT NULL,
+    `form_status_code` VARCHAR(20) NOT NULL,
     `date_fully_completed` DATETIME,
     PRIMARY KEY (`party_id`, `form_id`),
     FOREIGN KEY (`form_id`) REFERENCES `e_government`.`Forms` (`form_id`),

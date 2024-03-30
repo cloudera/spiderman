@@ -41,7 +41,7 @@ DROP TABLE IF EXISTS `orchestra`.`show`;
 CREATE TABLE `orchestra`.`show` (
     `Show_ID` INT,
     `Performance_ID` INT,
-    `If_first_show` BOOL,
+    `If_first_show` VARCHAR(15),
     `Result` TEXT,
     `Attendance` REAL,
     FOREIGN KEY (`Performance_ID`) REFERENCES `orchestra`.`performance` (`Performance_ID`)

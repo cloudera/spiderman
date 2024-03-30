@@ -92,7 +92,7 @@ CREATE TABLE `soccer_1`.`Team` (
     `team_short_name` TEXT,
     PRIMARY KEY (`id`),
     UNIQUE (`team_api_id`),
-    UNIQUE (`team_fifa_api_id`)
+    INDEX idx_team_fifa_api_id (`team_fifa_api_id`)
 );
 
 DROP TABLE IF EXISTS `soccer_1`.`Team_Attributes`;

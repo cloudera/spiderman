@@ -335,7 +335,7 @@ battijo01,1875,1,0,1,0
 bealsto01,1875,1,3,19,8
 bechtge01,1875,2,0,3,29
 bielaos01,1875,1,4,0,48
-blongjo01,1875,1,2,2,
+blongjo01,1875,1,2,2,NULL
 bondto01,1875,1,0,0,29
 boothed01,1875,1,3,1,60
 boydbi01,1875,1,0,0,12
@@ -360,7 +360,7 @@ devliji01,1875,1,0,3,1
 dolele01,1875,1,0,1,0
 edwar01,1875,1,0,1,0
 eggleda01,1875,1,2,65,0
-ellicjo01,1875,1,0,2,
+ellicjo01,1875,1,0,2,NULL
 evans01,1875,1,1,0,0
 fieldsa01,1875,1,0,0,1
 fieldsa01,1875,2,0,0,1
@@ -414,12 +414,12 @@ mcgeepa01,1875,2,0,13,0
 mcginti01,1875,1,0,0,2
 mckeljo01,1875,1,0,4,35
 mcmuljo01,1875,1,22,32,0
-mcsortr01,1875,1,6,1,
+mcsortr01,1875,1,6,1,NULL
 mcveyca01,1875,1,1,20,2
 metcaal01,1875,1,0,0,2
 millejo01,1875,2,1,0,1
 mooremo01,1875,1,0,0,2
-morgapi01,1875,1,3,7,
+morgapi01,1875,1,3,7,NULL
 murnati01,1875,1,1,24,1
 nelsoca01,1875,1,1,0,0
 nichotr01,1875,1,1,2,0
@@ -891,7 +891,7 @@ taylobi01,1881,1,0,0,5
 taylobi01,1881,3,23,0,0
 wardjo01,1881,1,0,4,36
 whitede01,1881,1,2,0,15
-whitnji01,1881,1,,,15
+whitnji01,1881,1,NULL,NULL,15
 woodge01,1881,1,80,0,0
 yorkto01,1881,1,85,0,0
 birchju01,1882,1,74,0,0
@@ -1042,7 +1042,7 @@ whitied01,1882,1,1,0,1
 whitnji01,1882,1,0,1,9
 wiedmst01,1882,1,1,2,2
 williju01,1882,2,0,9,1
-wisebi01,1882,1,,,
+wisebi01,1882,1,NULL,NULL,NULL
 wolfji01,1882,1,3,0,67
 woodge01,1882,1,84,0,0
 wyliere01,1882,1,0,1,0
@@ -1233,7 +1233,7 @@ weihepo01,1883,1,0,1,0
 welchmi01,1883,1,1,19,19
 wheelha01,1883,1,82,0,0
 whitied01,1883,1,3,3,0
-whitnji01,1883,1,,40,
+whitnji01,1883,1,NULL,40,NULL
 wiedmst01,1883,1,1,5,29
 winklge01,1883,1,3,1,0
 wolfji01,1883,1,0,1,77
@@ -1718,13 +1718,13 @@ whitegu01,1884,1,4,3,1
 whitemi01,1884,1,0,2,0
 whitied01,1884,1,1,0,1
 whitnar01,1884,1,0,1,0
-whitnji01,1884,1,,15,
-wiedmst01,1884,1,,,53
+whitnji01,1884,1,NULL,15,NULL
+wiedmst01,1884,1,NULL,NULL,53
 williwa01,1884,1,0,0,2
 wills01,1884,1,1,3,0
 wills01,1884,2,0,5,0
-wilsotu01,1884,1,,12,
-wisebi01,1884,1,,,
+wilsotu01,1884,1,NULL,12,NULL
+wisebi01,1884,1,NULL,NULL,NULL
 wolfji01,1884,1,0,1,101
 woodfr01,1884,1,0,0,6
 woodge01,1884,1,114,0,1
@@ -2119,7 +2119,7 @@ welchmi01,1886,1,0,3,0
 whitnji01,1886,1,2,9,11
 wiedmst01,1886,1,1,2,0
 winkege01,1886,1,0,0,1
-wisebi01,1886,1,,,
+wisebi01,1886,1,NULL,NULL,NULL
 wisesa01,1886,1,0,0,1
 wolfji01,1886,1,5,0,119
 woodge01,1886,1,96,1,0
@@ -2511,7 +2511,7 @@ werdepe01,1888,1,3,0,0
 werrijo01,1888,1,3,0,0
 weyhigu01,1888,1,0,1,1
 whitnji01,1888,1,0,0,3
-widnewi01,1888,1,,,
+widnewi01,1888,1,NULL,NULL,NULL
 wilmowa01,1888,1,119,0,0
 wiseni01,1888,1,0,0,1
 wisesa01,1888,1,4,0,0
@@ -2694,7 +2694,7 @@ weavefa01,1889,1,0,123,0
 welchcu01,1889,1,0,125,0
 weyhigu01,1889,1,0,1,0
 whitnji01,1889,1,0,0,1
-widnewi01,1889,1,,,
+widnewi01,1889,1,NULL,NULL,NULL
 wilmowa01,1889,1,107,1,0
 wisesa01,1889,1,0,0,10
 wolfji01,1889,1,0,0,88
@@ -2735,7 +2735,7 @@ caseyda01,1890,1,0,1,0
 churchi01,1890,1,3,0,0
 clarkar01,1890,1,3,1,30
 clarkbo01,1890,1,0,0,1
-clarkjo01,1890,1,1,,
+clarkjo01,1890,1,1,NULL,NULL
 clarksp01,1890,1,5,4,25
 colemjo01,1890,1,1,0,1
 conrobe01,1890,1,0,1,0
@@ -2980,7 +2980,7 @@ wellsja01,1890,1,3,0,0
 werdepe01,1890,1,0,4,1
 westbu01,1890,1,0,4,33
 whitnji01,1890,1,0,1,0
-whitrbi01,1890,1,,,
+whitrbi01,1890,1,NULL,NULL,NULL
 wilmowa01,1890,1,27,112,0
 wilsobi01,1890,1,4,8,13
 wolfji01,1890,1,0,0,123
@@ -3336,7 +3336,7 @@ welchcu01,1892,1,0,63,0
 welchcu01,1892,2,1,25,0
 weyhigu01,1892,1,2,3,2
 whistle01,1892,1,1,0,0
-willito01,1892,1,,,
+willito01,1892,1,NULL,NULL,NULL
 wilmowa01,1892,1,92,0,0
 wolfji01,1892,1,0,0,3
 woodge01,1892,1,21,0,0
@@ -3447,7 +3447,7 @@ stoveha01,1893,1,7,0,0
 stoveha01,1893,2,19,26,3
 stratsc01,1893,1,0,0,23
 striccu01,1893,1,0,0,12
-summeki01,1893,1,1,,
+summeki01,1893,1,1,NULL,NULL
 tayloja01,1893,1,2,1,0
 thompsa01,1893,1,0,0,131
 tiernmi01,1893,1,0,0,125
@@ -3466,7 +3466,7 @@ welchcu01,1893,1,14,0,0
 werdepe01,1893,1,0,0,1
 weyhigu01,1893,1,0,0,1
 whistle01,1893,2,0,0,9
-willito01,1893,1,,,
+willito01,1893,1,NULL,NULL,NULL
 wilmowa01,1893,1,84,10,0
 abbeych01,1894,1,54,74,0
 anderjo01,1894,1,15,1,0
@@ -3580,7 +3580,7 @@ virtuja01,1894,1,0,16,5
 wardpi01,1894,1,6,3,3
 weavefa01,1894,1,2,0,33
 weavefa01,1894,2,1,0,0
-whitrbi01,1894,2,,,
+whitrbi01,1894,2,NULL,NULL,NULL
 wilmowa01,1894,1,133,0,0
 zahnefr01,1894,1,0,0,2
 abbeych01,1895,1,3,98,31
@@ -3904,7 +3904,7 @@ wagneho01,1897,1,1,52,0
 wallabo01,1897,1,1,0,0
 wilmowa01,1897,1,5,1,3
 wilsopa01,1897,1,0,4,0
-wilsoze01,1897,1,,,
+wilsoze01,1897,1,NULL,NULL,NULL
 wriglze01,1897,1,4,13,19
 yeagege01,1897,1,2,1,7
 abbated01,1898,1,0,0,1
@@ -4035,7 +4035,7 @@ warnejo01,1898,1,0,0,1
 weyhigu01,1898,1,0,0,1
 wilmowa01,1898,1,6,0,29
 wilsopa01,1898,1,1,0,0
-wilsoze01,1898,1,,,
+wilsoze01,1898,1,NULL,NULL,NULL
 woodbo01,1898,1,1,0,0
 woodswa01,1898,1,2,4,5
 wriglze01,1898,1,0,2,1
@@ -4371,7 +4371,7 @@ waldrir01,1901,1,0,0,62
 waldrir01,1901,2,0,69,9
 walljo01,1901,1,0,0,1
 whitedo01,1901,1,1,0,0
-wickebo01,1901,1,,,
+wickebo01,1901,1,NULL,NULL,NULL
 woodbo01,1901,1,1,0,2
 yeagege01,1901,1,0,0,3
 anderjo01,1902,1,2,0,1
@@ -4564,10 +4564,10 @@ wardru01,1902,1,6,1,4
 washbli01,1902,1,0,2,1
 watkied01,1902,1,1,0,0
 whitedo01,1902,1,17,0,2
-wickebo01,1902,1,,,
+wickebo01,1902,1,NULL,NULL,NULL
 williar01,1902,1,4,0,22
-willipo01,1902,1,,,
-wiltssn01,1902,2,,,
+willipo01,1902,1,NULL,NULL,NULL
+wiltssn01,1902,2,NULL,NULL,NULL
 woodbo01,1902,1,0,0,2
 yeagege01,1902,1,0,0,1
 yeagejo01,1902,1,7,0,6
@@ -4705,9 +4705,9 @@ vickeru01,1903,1,0,1,0
 wagneho01,1903,1,1,0,11
 washbli01,1903,1,1,0,0
 whitedo01,1903,1,0,1,0
-wilheka01,1903,1,,,
-willipo01,1903,3,,,
-wilsohi01,1903,1,,,
+wilheka01,1903,1,NULL,NULL,NULL
+willipo01,1903,3,NULL,NULL,NULL
+wilsohi01,1903,1,NULL,NULL,NULL
 woodha01,1903,1,1,0,1
 anderjo01,1904,1,46,52,13
 archeji01,1904,1,1,0,0
@@ -4863,9 +4863,9 @@ vinsoru01,1904,1,15,0,0
 wagneho01,1904,1,6,2,0
 whitedo01,1904,1,0,2,0
 whiteja01,1904,1,1,0,0
-wickebo01,1904,1,,,
-williot01,1904,1,,,21
-wiltsho01,1904,1,,,
+wickebo01,1904,1,NULL,NULL,NULL
+williot01,1904,1,NULL,NULL,21
+wiltsho01,1904,1,NULL,NULL,NULL
 woodrsa01,1904,1,0,0,1
 abbated01,1905,1,0,1,0
 anderjo01,1905,1,1,19,2
@@ -5005,9 +5005,9 @@ wagneho01,1905,1,2,0,0
 wallaji01,1905,1,0,0,7
 walshed01,1905,1,1,1,3
 whitedo01,1905,1,1,0,0
-wickebo01,1905,1,,,
-wilheka01,1905,1,,,
-wiltsho01,1905,1,,,
+wickebo01,1905,1,NULL,NULL,NULL
+wilheka01,1905,1,NULL,NULL,NULL
+wiltsho01,1905,1,NULL,NULL,NULL
 abstebi01,1906,1,0,0,2
 altizda01,1906,1,0,0,2
 anderjo01,1906,1,151,0,0
@@ -5150,7 +5150,7 @@ titusjo01,1906,1,0,8,134
 vinsoru01,1906,1,7,0,0
 wagneho01,1906,1,0,0,2
 whitedo01,1906,1,0,1,0
-wiltsho01,1906,1,,,
+wiltsho01,1906,1,NULL,NULL,NULL
 altizda01,1907,1,0,19,0
 andergo01,1907,1,2,24,91
 anderjo01,1907,1,26,0,0
@@ -5296,7 +5296,7 @@ wadeha01,1907,1,1,0,0
 weldami01,1907,1,4,8,3
 whitedo01,1907,1,0,0,2
 whitege01,1907,1,2,0,0
-wiltsho01,1907,1,,,
+wiltsho01,1907,1,NULL,NULL,NULL
 wolteha01,1907,1,0,0,4
 wolteha01,1907,3,1,6,2
 zimmehe01,1907,1,1,0,0
@@ -5600,7 +5600,7 @@ wardjo04,1909,2,1,1,0
 weldami01,1909,1,7,10,3
 wheatza01,1909,1,25,1,0
 whitedo01,1909,1,1,35,4
-willeed01,1909,1,,,
+willeed01,1909,1,NULL,NULL,NULL
 wilsoch01,1909,1,0,0,154
 wolteha01,1909,1,0,0,9
 youngde01,1909,1,1,0,1
@@ -5749,7 +5749,7 @@ titusjo01,1910,1,1,0,142
 walshji01,1910,1,7,14,6
 wheatza01,1910,1,156,0,0
 whitedo01,1910,1,0,10,4
-willeed01,1910,1,,,
+willeed01,1910,1,NULL,NULL,NULL
 wilsoch01,1910,1,1,7,138
 wolteha01,1910,1,1,0,128
 zacheel01,1910,1,0,1,0
@@ -6442,7 +6442,7 @@ walshji02,1914,2,25,26,6
 warhoja01,1914,1,0,0,1
 wheatza01,1914,1,144,0,0
 whittpo01,1914,1,2,0,2
-whittpo01,1914,2,,38,
+whittpo01,1914,2,NULL,38,NULL
 wicklal01,1914,1,30,1,129
 willicy01,1914,1,22,7,0
 willigu02,1914,1,0,0,141
@@ -7359,8 +7359,8 @@ merklfr01,1920,1,1,0,0
 meusebo01,1920,1,16,0,48
 meuseir01,1920,1,99,0,43
 milancl01,1920,1,115,0,8
-milledo02,1920,1,0,1,
-millera03,1920,1,1,,
+milledo02,1920,1,0,1,NULL
+millera03,1920,1,1,NULL,NULL
 mitchcl01,1920,1,2,0,2
 muellhe01,1920,1,1,0,4
 murphed02,1920,1,0,0,19
@@ -8075,7 +8075,7 @@ willike01,1925,1,102,0,0
 wilsofr01,1925,1,9,0,1
 wilsoha01,1925,1,27,23,4
 wilsoji01,1925,1,1,0,0
-wingaer01,1925,1,,,
+wingaer01,1925,1,NULL,NULL,NULL
 wingoal01,1925,1,120,2,0
 wittwh01,1925,1,0,9,1
 wrighru01,1925,1,37,0,10
@@ -8201,10 +8201,10 @@ welshji01,1926,1,0,0,129
 wheatza01,1926,1,102,0,0
 willicy01,1926,1,0,0,93
 willike01,1926,1,91,1,0
-willile03,1926,1,,,
+willile03,1926,1,NULL,NULL,NULL
 wilsofr01,1926,1,50,1,6
 wilsoha01,1926,1,0,140,0
-wingaer01,1926,1,,,
+wingaer01,1926,1,NULL,NULL,NULL
 wingoal01,1926,1,61,0,14
 wittwh01,1926,1,3,17,2
 wrighru01,1926,1,5,0,0
@@ -9329,7 +9329,7 @@ watkige01,1935,1,128,20,1
 weintph01,1935,1,1,0,6
 westsa01,1935,1,0,135,0
 whitejo01,1935,1,0,98,0
-winegra01,1935,1,4,,
+winegra01,1935,1,4,NULL,NULL
 winseto01,1935,1,0,0,2
 wrighab01,1935,1,5,5,38
 youngpe01,1935,1,1,0,5

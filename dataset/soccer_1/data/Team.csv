@@ -7,13 +7,13 @@ id,team_api_id,team_fifa_api_id,team_long_name,team_short_name
 6,8635,229,RSC Anderlecht,AND
 7,9991,674,KAA Gent,GEN
 8,9998,1747,RAEC Mons,MON
-9,7947,,FCV Dender EH,DEN
+9,7947,NULL,FCV Dender EH,DEN
 10,9985,232,Standard de Liège,STL
 11,8203,110724,KV Mechelen,MEC
 12,8342,231,Club Brugge KV,CLB
 13,9999,546,KSV Roeselare,ROS
 14,8571,100081,KV Kortrijk,KOR
-15,4049,,Tubize,TUB
+15,4049,NULL,Tubize,TUB
 16,9996,111560,Royal Excel Mouscron,MOU
 17,10001,681,KVC Westerlo,WES
 18,9986,670,Sporting Charleroi,CHA
@@ -169,7 +169,7 @@ id,team_api_id,team_fifa_api_id,team_long_name,team_short_name
 26558,10235,246,Feyenoord,FEY
 26559,8614,100646,Sparta Rotterdam,SPA
 26560,10217,650,ADO Den Haag,HAA
-26561,6601,,FC Volendam,VOL
+26561,6601,NULL,FC Volendam,VOL
 26562,10228,1913,SC Heerenveen,HEE
 26563,10229,1906,AZ,ALK
 26564,9761,1904,NAC Breda,NAC
@@ -203,16 +203,16 @@ id,team_api_id,team_fifa_api_id,team_long_name,team_short_name
 33377,8023,110746,Pogoń Szczecin,POG
 33855,8027,112512,Zawisza Bydgoszcz,ZAW
 34337,8019,110565,Górnik Łęczna,LEC
-34816,177361,,Termalica Bruk-Bet Nieciecza,TBN
+34816,177361,NULL,Termalica Bruk-Bet Nieciecza,TBN
 35283,9773,236,FC Porto,POR
 35284,9807,1889,CF Os Belenenses,BEL
 35285,9768,237,Sporting CP,SCP
-35286,7992,,Trofense,TRO
+35286,7992,NULL,Trofense,TRO
 35287,7844,1887,Vitória Guimarães,GUI
 35288,10238,665,Vitória Setúbal,SET
 35289,6403,1892,FC Paços de Ferreira,FER
 35290,10264,1896,SC Braga,BRA
-35291,10213,,Amadora,AMA
+35291,10213,NULL,Amadora,AMA
 35292,10215,1901,Académica de Coimbra,ACA
 35293,7841,744,Rio Ave FC,RA
 35294,9772,234,SL Benfica,BEN
@@ -222,17 +222,17 @@ id,team_api_id,team_fifa_api_id,team_long_name,team_short_name
 35298,10212,1893,CS Marítimo,MAR
 35769,9771,1895,"União de Leiria, SAD",ULE
 35774,2033,111540,S.C. Olhanense,OLH
-36248,9765,,Portimonense,POR
+36248,9765,NULL,Portimonense,POR
 36253,10211,1897,SC Beira Mar,B-M
-36723,4064,,Feirense,FEI
+36723,4064,NULL,Feirense,FEI
 36735,9764,1888,Gil Vicente FC,GV
 37210,8348,1900,Moreirense FC,MOR
 37214,7842,10020,Estoril Praia,EST
 37696,158085,112513,FC Arouca,ARO
 38173,6547,100741,FC Penafiel,PEN
 38176,8613,1898,Boavista FC,BOA
-38789,6367,,Uniao da Madeira,MAD
-38791,188163,,Tondela,TON
+38789,6367,NULL,Uniao da Madeira,MAD
+38791,188163,NULL,Tondela,TON
 39387,8596,79,Falkirk,FAL
 39388,8548,86,Rangers,RAN
 39389,9860,80,Heart of Midlothian,HEA
@@ -297,4 +297,4 @@ id,team_api_id,team_fifa_api_id,team_long_name,team_short_name
 49837,10191,1715,FC Thun,THU
 50201,9777,324,Servette FC,SER
 50204,7730,1862,FC Lausanne-Sports,LAU
-51606,7896,,Lugano,LUG
+51606,7896,NULL,Lugano,LUG

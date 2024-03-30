@@ -5,7 +5,7 @@ CREATE DATABASE IF NOT EXISTS `assets_maintenance`;
 DROP TABLE IF EXISTS `assets_maintenance`.`Third_Party_Companies`;
 CREATE TABLE `assets_maintenance`.`Third_Party_Companies` (
     `company_id` INTEGER,
-    `company_type` VARCHAR(5) NOT NULL,
+    `company_type` VARCHAR(30) NOT NULL,
     `company_name` VARCHAR(255),
     `company_address` VARCHAR(255),
     `other_company_details` VARCHAR(255),
