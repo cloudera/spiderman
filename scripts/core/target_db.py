@@ -1,7 +1,7 @@
 from typing import Callable
 
 from sqlalchemy import create_engine, text
-from sqlalchemy_utils import database_exists, create_database
+from sqlalchemy_utils import database_exists, create_database, drop_database
 
 
 def batch(iterable, n=1):
@@ -12,8 +12,11 @@ def batch(iterable, n=1):
 def _format(values: list[str], punctuation: str) -> str:
     punctuated_values = []
     for value in values:
-        value = value.replace(punctuation, f'\\{punctuation}')
-        punctuated_values.append(f'{punctuation}{value}{punctuation}')
+        if value != "NULL":
+            value = value.replace(punctuation, f'\\{punctuation}') # Escape
+            if not value.startswith(punctuation):
+                value = f'{punctuation}{value}{punctuation}'
+        punctuated_values.append(value)
     str = ', '.join(punctuated_values)
     return f"({str})"
 
@@ -23,14 +26,19 @@ class TargetDB:
     url: str
     db_name: str
     dialect: str
+    reset: bool
     preprocessor: Callable[[str], str]
 
-    def __init__(self, url: str, db_name: str):
+    def __init__(self, url: str, db_name: str, reset: bool = False):
         self.url = f"{url}/{db_name}"
+        self.reset = reset
         self.db_name = db_name
 
     def __enter__(self):
         if not database_exists(self.url):
+            create_database(self.url)
+        elif self.reset:
+            drop_database(self.url)
             create_database(self.url)
 
         self.engine = create_engine(self.url)
@@ -54,7 +62,7 @@ class TargetDB:
 
         self.execute_statements(statements)
 
-    def insert(self, table_name: str, column_names: list[str], rows: list, batch_size: int = 1000):
+    def insert(self, table_name: str, column_names: list[str], rows: list, batch_size: int = 500):
         columns_str = _format(column_names, '`')
 
         insert_statements = []
