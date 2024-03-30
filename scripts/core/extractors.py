@@ -13,6 +13,12 @@ TABLE_DELIM = "\n\n"
 # Get list of table names, ordered based on foreign key dependency
 ordered_tables = read_json_dict(paths.ORDERED_TABLES)
 
+# Human curated details of data to be removed
+data_overrides = read_json_dict(paths.DATA_OVERRIDES)
+# Delete rows with invalid foreign key values or datatypes
+delete_filters = data_overrides["delete_filters"]
+add_data = data_overrides["add"]
+
 # Get schema of each table in the given list.
 def extract_schema(table_names: list[str], db: SourceDB) -> None:
     schema_ddls = [
@@ -32,6 +38,15 @@ def extract_schema(table_names: list[str], db: SourceDB) -> None:
         schema = schema + "\n" # New line at EOF
         write_str(file_path, schema)
 
+def filter_data(table_data: list[list], delete_filters: dict) -> list[list]:
+    column_names: list = table_data[0]
+    rows: list[list] = table_data[1:]
+
+    for col_name, filtered_values in delete_filters.items():
+        col_index = column_names.index(col_name)
+        rows = list(filter(lambda row: row[col_index] not in filtered_values, rows))
+
+    return [column_names] + rows
 
 # Get data of each table in the given list. Return false if any is missing.
 # Write to a CSV file if all are available and return true.
@@ -46,11 +61,26 @@ def extract_data(table_names: list[str], db: SourceDB) -> bool:
 
         if len(table_data) <= 1:
             # 1st row is always header. Data is missing if <= 1
+            print(f"Skipping DB `{db.name}` - Data not available for table `{table_name}`.")
             return True
 
     # Write data
     for table_name in table_names:
         table_data = table_data_map[table_name]
+
+        # Filter out rows with invalid data
+        table_path = f"{db.name}.{table_name}"
+        if table_path in delete_filters:
+            table_data = filter_data(table_data, delete_filters[table_path])
+
+        # Add missing data
+        if table_path in add_data:
+            table_data = table_data + add_data[table_path]
+
+        # Normalize data
+        table = db.get_table(table_name)
+        table_data = mysql.normalize_data(table_data, table)
+
         file_path = path.join(data_dir, f'{table_name}.csv')
         write_csv(file_path, table_data)
 

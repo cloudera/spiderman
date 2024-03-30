@@ -1,3 +1,4 @@
+import datetime
 from typing import List
 
 from core.source_db import Table, Column
@@ -16,6 +17,9 @@ def _correct_type(col: Column) -> str:
 
     if col_type.startswith("CHARACTER VARCHAR"):
         col_type = col_type.replace("CHARACTER VARCHAR", "VARCHAR")
+
+    if col_type == "TIMESTAMP":
+        col_type = "DATETIME"
 
     if col.is_primary_key and col_type == "TEXT":
         col_type = "VARCHAR(50)"
@@ -99,3 +103,49 @@ def build_table_ddl(table: Table) -> str:
 CREATE TABLE `{table.db_name}`.`{table.name}` (
 {defs_str}
 );"""
+
+
+def _order_columns(columns: list[Column], column_name: list[str]) -> list[Column]:
+    column_map = {}
+    for col in columns:
+        column_map[col.name] = col
+
+    return [column_map[name] for name in column_name]
+
+DATE_FORMAT = '%Y-%m-%d'
+def normalize_data(table_data: list[list], table: Table) -> list[list]:
+    column_names: list = table_data[0]
+    columns = _order_columns(table.columns, column_names)
+
+    rows: list[list] = table_data[1:]
+    for row in rows:
+        for idx in range(len(column_names)):
+            column = columns[idx]
+            value = row[idx]
+            type = column.type.upper()
+
+            if isinstance(value, str):
+                value = value.strip()
+
+            if value == "nil" or value == None:
+                value = ""
+
+            if value == "" and not column.is_not_null:
+                value = "NULL"
+
+            if value == "" and type in ["INT"]:
+                value = "NULL"
+
+            if type == "DATE":
+                try:
+                    value = datetime.datetime.strptime(value, '%d/%m/%Y %H:%M').strftime(DATE_FORMAT)
+                except:
+                    try:
+                        value = datetime.datetime.strptime(value, '%d-%b-%Y').strftime(DATE_FORMAT)
+                    except:
+                        pass
+                        # Use value as it is
+
+            row[idx] = value
+
+    return [column_names] + rows

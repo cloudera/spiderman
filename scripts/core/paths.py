@@ -4,3 +4,4 @@ SOURCE_DB_DIR = 'spider/database'
 
 ORDERED_TABLES = './source/ordered_tables.json'
 COLUMN_OVERRIDES = './source/column_overrides.json'
+DATA_OVERRIDES = './source/data_overrides.json'

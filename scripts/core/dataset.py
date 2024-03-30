@@ -39,12 +39,8 @@ def get_db_names(skip_list: list[str] = []) -> list[str]:
     if skip_list:
         print(f"Skipped DBs ({len(skip_list)}):", *skip_list)
         db_names = [name for name in db_names if name not in skip_list]
+    db_names.sort()
     return db_names
-
-def get_table_names(db_name: str) -> list[str]:
-    data_dir = path_to_data_dir(db_name)
-    table_files = _clean_names(os.listdir(data_dir))
-    return [path.splitext(file)[0] for file in table_files]
 
 def get_queries(db_name: str) -> list[list]:
     file_path = path_to_train_queries_file(db_name)

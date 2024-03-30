@@ -9,10 +9,11 @@ from typing import List, Union
 
 column_overrides = read_json_dict(paths.COLUMN_OVERRIDES)
 datatype_overrides = column_overrides["datatype"]
+primary_key_overrides = column_overrides["primary_key"]
 unique_overrides = column_overrides["unique"]
 foreign_key_overrides = column_overrides["foreign_key"]
+index_overrides = column_overrides["index"]
 
-INDENTATION = ""
 
 class Column(BaseModel):
     name: str
@@ -95,14 +96,16 @@ class SourceDB:
     def _get_indexed_column_names(self, table_name: str) -> set[str]:
         indexes = self._execute_pragma('index_list', table_name)
 
-        column_names = set()
+        table_path = f"{self.name}.{table_name}"
+        indexed_columns = set(index_overrides[table_path]) if table_path in index_overrides else set()
+
         for index in indexes:
             if index[3] == 'c': # Index created by CREATE INDEX statement
                 index_name = index[1]
                 index_info = self._execute_pragma('index_info', index_name)
-                column_names.add(index_info[0][2])
+                indexed_columns.add(index_info[0][2])
 
-        return column_names
+        return indexed_columns
 
     def _get_columns(self, table_name: str) -> List[Column]:
         columns_info = self._execute_pragma('table_info', table_name)
@@ -111,18 +114,21 @@ class SourceDB:
         unique_columns = self._get_unique_column_names(table_name)
         indexed_columns = self._get_indexed_column_names(table_name)
 
+        table_path = f"{self.name}.{table_name}"
+        pk_columns = set(primary_key_overrides[table_path]) if table_path in primary_key_overrides else set()
+
         for col in columns_info:
             col_name = col[1]
             col_type = col[2]
 
             # For all tables using *
             col_path = f"{self.name}.*.{col_name}"
-            if datatype_overrides and col_path in datatype_overrides:
+            if col_path in datatype_overrides:
                 col_type = datatype_overrides[col_path]
 
             # For specific tables
             col_path = f"{self.name}.{table_name}.{col_name}"
-            if datatype_overrides and col_path in datatype_overrides:
+            if col_path in datatype_overrides:
                 col_type = datatype_overrides[col_path]
 
             columns.append(Column(
@@ -130,7 +136,7 @@ class SourceDB:
                 type = col_type,
                 is_not_null = col[3],
                 default_val = col[4],
-                is_primary_key = (col[5] != 0),
+                is_primary_key = (col[5] != 0 or col_name in pk_columns),
                 is_unique = (col_name in unique_columns),
                 is_indexed = (col_name in indexed_columns)
             ))
@@ -149,11 +155,11 @@ class SourceDB:
             to_column = fk[4]
 
             path = f"{self.name}.{table_name}.{from_column}:table"
-            if foreign_key_overrides and path in foreign_key_overrides:
+            if path in foreign_key_overrides:
                 to_table = foreign_key_overrides[path]
 
             path = f"{self.name}.{table_name}.{from_column}:column"
-            if foreign_key_overrides and path in foreign_key_overrides:
+            if path in foreign_key_overrides:
                 to_column = foreign_key_overrides[path]
 
             if fk[1] == 0:
