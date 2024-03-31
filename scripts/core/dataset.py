@@ -82,12 +82,14 @@ def get_stats() -> dict:
         total_queries += len(queries)
 
     return {
-        "DBs available": len(db_names),
-        "DBs with training queries": dbs_with_train_queries,
+        "Total tables": total_tables,
+        "Total queries": total_queries,
+
+        "\nDBs with training queries": dbs_with_train_queries,
         "DBs with test queries": dbs_with_test_queries,
 
-        "Total tables": total_tables,
-        "Total queries": total_queries
+        "\nTotal available DBs": len(db_names),
+        "DB names": ", ".join(db_names)
     }
 
     #TODO: Get top 10 DBs and tables with maximum rows as part of stats

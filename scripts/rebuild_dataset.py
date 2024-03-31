@@ -21,5 +21,5 @@ with ZipReader(paths.SOURCE_ZIP) as sourceZip:
             extract_db(db_name, db_data)
             bar()
 
-print("DB extraction completed successfully.")
-print_dict(get_stats(), label="--- Dataset Stats ---")
+print("Dataset rebuild completed successfully.")
+print_dict(get_stats(), label="Dataset Stats")
