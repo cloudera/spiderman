@@ -15,7 +15,7 @@ def read_str(file_path: str) -> str:
 def write_str(file_path: str, data: str):
     create_missing_dir(file_path)
 
-    with open(file_path, "w", newline='') as str_file:
+    with open(file_path, "w+", newline='') as str_file:
         str_file.write(data)
 
 
@@ -32,7 +32,7 @@ def read_csv(file_path: str) -> list[list]:
 def write_csv(file_path: str, data: list[list], overwrite: bool = False):
     create_missing_dir(file_path)
 
-    with open(file_path, 'w', newline='') as csv_file:
+    with open(file_path, 'w+', newline='') as csv_file:
         csv_writer = csv.writer(csv_file)
         csv_writer.writerows(data)
 

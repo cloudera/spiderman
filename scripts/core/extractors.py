@@ -95,3 +95,24 @@ def extract_db(db_name: str, data: bytes):
         data_is_missing = extract_data(table_names, db)
         if not data_is_missing:
             extract_schema(table_names, db)
+
+def extract_queries(queries: list, is_test: bool):
+    db_queries: dict[str, list[list]] = {}
+
+    for query in queries:
+        db_name = query["db_id"]
+        question = query["question"]
+        query_txt = query["query"]
+
+        if db_name not in db_queries:
+            db_queries[db_name] = []
+
+        db_queries[db_name].append([question, query_txt])
+
+    for db_name in db_queries:
+        file_path = dataset.path_to_test_queries_file(db_name) if is_test \
+                    else dataset.path_to_train_queries_file(db_name)
+
+        if path.isfile(file_path): # Only rebuild, dont create skipped databases
+            data = [["question", "sql"]] + db_queries[db_name]
+            write_csv(file_path, data)
