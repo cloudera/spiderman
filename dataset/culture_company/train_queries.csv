@@ -1,39 +1,39 @@
 question,sql
-How many book clubs are there?,SELECT count(*) FROM book_club
-Count the number of book clubs.,SELECT count(*) FROM book_club
-"show the titles, and authors or editors for all books made after the year 1989.","SELECT book_title ,  author_or_editor FROM book_club WHERE YEAR  >  1989"
-What are the titles and authors or editors that correspond to books made after 1989?,"SELECT book_title ,  author_or_editor FROM book_club WHERE YEAR  >  1989"
-Show all distinct publishers for books.,SELECT DISTINCT publisher FROM book_club
-What are all the different book publishers?,SELECT DISTINCT publisher FROM book_club
-"Show the years, book titles, and publishers for all books, in descending order by year.","SELECT YEAR ,  book_title ,  publisher FROM book_club ORDER BY YEAR DESC"
-"What are the years, titles, and publishers for all books, ordered by year descending?","SELECT YEAR ,  book_title ,  publisher FROM book_club ORDER BY YEAR DESC"
-Show all publishers and the number of books for each publisher.,"SELECT publisher ,  count(*) FROM book_club GROUP BY publisher"
-How many books are there for each publisher?,"SELECT publisher ,  count(*) FROM book_club GROUP BY publisher"
-What is the publisher with most number of books?,SELECT publisher FROM book_club GROUP BY publisher ORDER BY count(*) DESC LIMIT 1
-Return the publisher that has published the most books.,SELECT publisher FROM book_club GROUP BY publisher ORDER BY count(*) DESC LIMIT 1
-Show all book categories and the number of books in each category.,"SELECT category ,  count(*) FROM book_club GROUP BY category"
-How many books fall into each category?,"SELECT category ,  count(*) FROM book_club GROUP BY category"
-List categories that have at least two books after year 1989.,SELECT category FROM book_club WHERE YEAR  >  1989 GROUP BY category HAVING count(*)  >=  2
-What categories have two or more corresponding books that were made after 1989?,SELECT category FROM book_club WHERE YEAR  >  1989 GROUP BY category HAVING count(*)  >=  2
-Show publishers with a book published in 1989 and a book in 1990.,SELECT publisher FROM book_club WHERE YEAR  =  1989 INTERSECT SELECT publisher FROM book_club WHERE YEAR  =  1990
-What are the publishers who have published a book in both 1989 and 1990?,SELECT publisher FROM book_club WHERE YEAR  =  1989 INTERSECT SELECT publisher FROM book_club WHERE YEAR  =  1990
-Show all publishers which do not have a book in 1989.,SELECT publisher FROM book_club EXCEPT SELECT publisher FROM book_club WHERE YEAR  =  1989
-Which publishers did not publish a book in 1989?,SELECT publisher FROM book_club EXCEPT SELECT publisher FROM book_club WHERE YEAR  =  1989
-"Show all movie titles, years, and directors, ordered by budget.","SELECT title ,  YEAR ,  director FROM movie ORDER BY budget_million"
-"What are the titles, years, and directors of all movies, ordered by budget in millions?","SELECT title ,  YEAR ,  director FROM movie ORDER BY budget_million"
-How many movie directors are there?,SELECT COUNT (DISTINCT director) FROM movie
-Count the number of different directors.,SELECT COUNT (DISTINCT director) FROM movie
-What is the title and director for the movie with highest worldwide gross in the year 2000 or before?,"SELECT title ,  director FROM movie WHERE YEAR  <=  2000 ORDER BY gross_worldwide DESC LIMIT 1"
-Return the title and director of the movie released in the year 2000 or earlier that had the highest worldwide gross.,"SELECT title ,  director FROM movie WHERE YEAR  <=  2000 ORDER BY gross_worldwide DESC LIMIT 1"
-Show all director names who have a movie in both year 1999 and 2000.,SELECT director FROM movie WHERE YEAR  =  2000 INTERSECT SELECT director FROM movie WHERE YEAR  =  1999
-Which directors had a movie both in the year 1999 and 2000?,SELECT director FROM movie WHERE YEAR  =  2000 INTERSECT SELECT director FROM movie WHERE YEAR  =  1999
-Show all director names who have a movie in the year 1999 or 2000.,SELECT director FROM movie WHERE YEAR  =  1999 OR YEAR  =  2000
-Which directors had a movie in either 1999 or 2000?,SELECT director FROM movie WHERE YEAR  =  1999 OR YEAR  =  2000
-"What is the average, maximum, and minimum budget for all movies before 2000.","SELECT avg(budget_million) ,  max(budget_million) ,  min(budget_million) FROM movie WHERE YEAR  <  2000"
-"Return the average, maximum, and minimum budgets in millions for movies made before the year 2000.","SELECT avg(budget_million) ,  max(budget_million) ,  min(budget_million) FROM movie WHERE YEAR  <  2000"
-List all company names with a book published by Alyson.,SELECT T1.company_name FROM culture_company AS T1 JOIN book_club AS T2 ON T1.book_club_id  =  T2.book_club_id WHERE T2.publisher  =  'Alyson'
-What are all the company names that have a book published by Alyson?,SELECT T1.company_name FROM culture_company AS T1 JOIN book_club AS T2 ON T1.book_club_id  =  T2.book_club_id WHERE T2.publisher  =  'Alyson'
-Show the movie titles and book titles for all companies in China.,"SELECT T1.title ,  T3.book_title FROM movie AS T1 JOIN culture_company AS T2 ON T1.movie_id  =  T2.movie_id JOIN book_club AS T3 ON T3.book_club_id  =  T2.book_club_id WHERE T2.incorporated_in  =  'China'"
-What are the titles of movies and books corresponding to companies incorporated in China?,"SELECT T1.title ,  T3.book_title FROM movie AS T1 JOIN culture_company AS T2 ON T1.movie_id  =  T2.movie_id JOIN book_club AS T3 ON T3.book_club_id  =  T2.book_club_id WHERE T2.incorporated_in  =  'China'"
-Show all company names with a movie directed in year 1999.,SELECT T2.company_name FROM movie AS T1 JOIN culture_company AS T2 ON T1.movie_id  =  T2.movie_id WHERE T1.year  =  1999
-What are all company names that have a corresponding movie directed in the year 1999?,SELECT T2.company_name FROM movie AS T1 JOIN culture_company AS T2 ON T1.movie_id  =  T2.movie_id WHERE T1.year  =  1999
+How many book clubs are there?,SELECT COUNT(*) FROM `book_club`
+Count the number of book clubs.,SELECT COUNT(*) FROM `book_club`
+"show the titles, and authors or editors for all books made after the year 1989.","SELECT `book_title`, `author_or_editor` FROM `book_club` WHERE `YEAR` > 1989"
+What are the titles and authors or editors that correspond to books made after 1989?,"SELECT `book_title`, `author_or_editor` FROM `book_club` WHERE `YEAR` > 1989"
+Show all distinct publishers for books.,SELECT DISTINCT `publisher` FROM `book_club`
+What are all the different book publishers?,SELECT DISTINCT `publisher` FROM `book_club`
+"Show the years, book titles, and publishers for all books, in descending order by year.","SELECT `YEAR`, `book_title`, `publisher` FROM `book_club` ORDER BY `YEAR` DESC"
+"What are the years, titles, and publishers for all books, ordered by year descending?","SELECT `YEAR`, `book_title`, `publisher` FROM `book_club` ORDER BY `YEAR` DESC"
+Show all publishers and the number of books for each publisher.,"SELECT `publisher`, COUNT(*) FROM `book_club` GROUP BY `publisher`"
+How many books are there for each publisher?,"SELECT `publisher`, COUNT(*) FROM `book_club` GROUP BY `publisher`"
+What is the publisher with most number of books?,SELECT `publisher` FROM `book_club` GROUP BY `publisher` ORDER BY COUNT(*) DESC LIMIT 1
+Return the publisher that has published the most books.,SELECT `publisher` FROM `book_club` GROUP BY `publisher` ORDER BY COUNT(*) DESC LIMIT 1
+Show all book categories and the number of books in each category.,"SELECT `category`, COUNT(*) FROM `book_club` GROUP BY `category`"
+How many books fall into each category?,"SELECT `category`, COUNT(*) FROM `book_club` GROUP BY `category`"
+List categories that have at least two books after year 1989.,SELECT `category` FROM `book_club` WHERE `YEAR` > 1989 GROUP BY `category` HAVING COUNT(*) >= 2
+What categories have two or more corresponding books that were made after 1989?,SELECT `category` FROM `book_club` WHERE `YEAR` > 1989 GROUP BY `category` HAVING COUNT(*) >= 2
+Show publishers with a book published in 1989 and a book in 1990.,SELECT `publisher` FROM `book_club` WHERE `YEAR` = 1989 INTERSECT SELECT `publisher` FROM `book_club` WHERE `YEAR` = 1990
+What are the publishers who have published a book in both 1989 and 1990?,SELECT `publisher` FROM `book_club` WHERE `YEAR` = 1989 INTERSECT SELECT `publisher` FROM `book_club` WHERE `YEAR` = 1990
+Show all publishers which do not have a book in 1989.,SELECT `publisher` FROM `book_club` EXCEPT SELECT `publisher` FROM `book_club` WHERE `YEAR` = 1989
+Which publishers did not publish a book in 1989?,SELECT `publisher` FROM `book_club` EXCEPT SELECT `publisher` FROM `book_club` WHERE `YEAR` = 1989
+"Show all movie titles, years, and directors, ordered by budget.","SELECT `title`, `YEAR`, `director` FROM `movie` ORDER BY `budget_million`"
+"What are the titles, years, and directors of all movies, ordered by budget in millions?","SELECT `title`, `YEAR`, `director` FROM `movie` ORDER BY `budget_million`"
+How many movie directors are there?,SELECT COUNT(DISTINCT `director`) FROM `movie`
+Count the number of different directors.,SELECT COUNT(DISTINCT `director`) FROM `movie`
+What is the title and director for the movie with highest worldwide gross in the year 2000 or before?,"SELECT `title`, `director` FROM `movie` WHERE `YEAR` <= 2000 ORDER BY `gross_worldwide` DESC LIMIT 1"
+Return the title and director of the movie released in the year 2000 or earlier that had the highest worldwide gross.,"SELECT `title`, `director` FROM `movie` WHERE `YEAR` <= 2000 ORDER BY `gross_worldwide` DESC LIMIT 1"
+Show all director names who have a movie in both year 1999 and 2000.,SELECT `director` FROM `movie` WHERE `YEAR` = 2000 INTERSECT SELECT `director` FROM `movie` WHERE `YEAR` = 1999
+Which directors had a movie both in the year 1999 and 2000?,SELECT `director` FROM `movie` WHERE `YEAR` = 2000 INTERSECT SELECT `director` FROM `movie` WHERE `YEAR` = 1999
+Show all director names who have a movie in the year 1999 or 2000.,SELECT `director` FROM `movie` WHERE `YEAR` = 1999 OR `YEAR` = 2000
+Which directors had a movie in either 1999 or 2000?,SELECT `director` FROM `movie` WHERE `YEAR` = 1999 OR `YEAR` = 2000
+"What is the average, maximum, and minimum budget for all movies before 2000.","SELECT AVG(`budget_million`), MAX(`budget_million`), MIN(`budget_million`) FROM `movie` WHERE `YEAR` < 2000"
+"Return the average, maximum, and minimum budgets in millions for movies made before the year 2000.","SELECT AVG(`budget_million`), MAX(`budget_million`), MIN(`budget_million`) FROM `movie` WHERE `YEAR` < 2000"
+List all company names with a book published by Alyson.,SELECT `T1`.`company_name` FROM `culture_company` AS `T1` JOIN `book_club` AS `T2` ON `T1`.`book_club_id` = `T2`.`book_club_id` WHERE `T2`.`publisher` = 'Alyson'
+What are all the company names that have a book published by Alyson?,SELECT `T1`.`company_name` FROM `culture_company` AS `T1` JOIN `book_club` AS `T2` ON `T1`.`book_club_id` = `T2`.`book_club_id` WHERE `T2`.`publisher` = 'Alyson'
+Show the movie titles and book titles for all companies in China.,"SELECT `T1`.`title`, `T3`.`book_title` FROM `movie` AS `T1` JOIN `culture_company` AS `T2` ON `T1`.`movie_id` = `T2`.`movie_id` JOIN `book_club` AS `T3` ON `T3`.`book_club_id` = `T2`.`book_club_id` WHERE `T2`.`incorporated_in` = 'China'"
+What are the titles of movies and books corresponding to companies incorporated in China?,"SELECT `T1`.`title`, `T3`.`book_title` FROM `movie` AS `T1` JOIN `culture_company` AS `T2` ON `T1`.`movie_id` = `T2`.`movie_id` JOIN `book_club` AS `T3` ON `T3`.`book_club_id` = `T2`.`book_club_id` WHERE `T2`.`incorporated_in` = 'China'"
+Show all company names with a movie directed in year 1999.,SELECT `T2`.`company_name` FROM `movie` AS `T1` JOIN `culture_company` AS `T2` ON `T1`.`movie_id` = `T2`.`movie_id` WHERE `T1`.`year` = 1999
+What are all company names that have a corresponding movie directed in the year 1999?,SELECT `T2`.`company_name` FROM `movie` AS `T1` JOIN `culture_company` AS `T2` ON `T1`.`movie_id` = `T2`.`movie_id` WHERE `T1`.`year` = 1999

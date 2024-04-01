@@ -1,16 +1,16 @@
 question,sql
-How many products are there?,SELECT count(*) FROM Products
-List the name of products in ascending order of price.,SELECT Product_Name FROM Products ORDER BY Product_Price ASC
-What are the names and type codes of products?,"SELECT Product_Name ,  Product_Type_Code FROM Products"
-"Show the prices of the products named ""Dining"" or ""Trading Policy"".","SELECT Product_Price FROM Products WHERE Product_Name  =  ""Dining"" OR Product_Name  =  ""Trading Policy"""
-What is the average price for products?,SELECT avg(Product_Price) FROM Products
-What is the name of the product with the highest price?,SELECT Product_Name FROM Products ORDER BY Product_Price DESC LIMIT 1
-Show different type codes of products and the number of products with each type code.,"SELECT Product_Type_Code ,  COUNT(*) FROM Products GROUP BY Product_Type_Code"
-Show the most common type code across products.,SELECT Product_Type_Code FROM Products GROUP BY Product_Type_Code ORDER BY COUNT(*) DESC LIMIT 1
-Show the product type codes that have at least two products.,SELECT Product_Type_Code FROM Products GROUP BY Product_Type_Code HAVING COUNT(*)  >=  2
-Show the product type codes that have both products with price higher than 4500 and products with price lower than 3000.,SELECT Product_Type_Code FROM Products WHERE Product_Price  >  4500 INTERSECT SELECT Product_Type_Code FROM Products WHERE Product_Price  <  3000
-Show the names of products and the number of events they are in.,"SELECT T1.Product_Name ,  COUNT(*) FROM Products AS T1 JOIN Products_in_Events AS T2 ON T1.Product_ID  =  T2.Product_ID GROUP BY T1.Product_Name"
-"Show the names of products and the number of events they are in, sorted by the number of events in descending order.","SELECT T1.Product_Name ,  COUNT(*) FROM Products AS T1 JOIN Products_in_Events AS T2 ON T1.Product_ID  =  T2.Product_ID GROUP BY T1.Product_Name ORDER BY COUNT(*) DESC"
-Show the names of products that are in at least two events.,SELECT T1.Product_Name FROM Products AS T1 JOIN Products_in_Events AS T2 ON T1.Product_ID  =  T2.Product_ID GROUP BY T1.Product_Name HAVING COUNT(*)  >=  2
-Show the names of products that are in at least two events in ascending alphabetical order of product name.,SELECT T1.Product_Name FROM Products AS T1 JOIN Products_in_Events AS T2 ON T1.Product_ID  =  T2.Product_ID GROUP BY T1.Product_Name HAVING COUNT(*)  >=  2 ORDER BY T1.Product_Name
-List the names of products that are not in any event.,SELECT Product_Name FROM Products WHERE Product_ID NOT IN (SELECT Product_ID FROM Products_in_Events)
+How many products are there?,SELECT COUNT(*) FROM `Products`
+List the name of products in ascending order of price.,SELECT `Product_Name` FROM `Products` ORDER BY `Product_Price` ASC
+What are the names and type codes of products?,"SELECT `Product_Name`, `Product_Type_Code` FROM `Products`"
+"Show the prices of the products named ""Dining"" or ""Trading Policy"".",SELECT `Product_Price` FROM `Products` WHERE `Product_Name` = `Dining` OR `Product_Name` = `Trading Policy`
+What is the average price for products?,SELECT AVG(`Product_Price`) FROM `Products`
+What is the name of the product with the highest price?,SELECT `Product_Name` FROM `Products` ORDER BY `Product_Price` DESC LIMIT 1
+Show different type codes of products and the number of products with each type code.,"SELECT `Product_Type_Code`, COUNT(*) FROM `Products` GROUP BY `Product_Type_Code`"
+Show the most common type code across products.,SELECT `Product_Type_Code` FROM `Products` GROUP BY `Product_Type_Code` ORDER BY COUNT(*) DESC LIMIT 1
+Show the product type codes that have at least two products.,SELECT `Product_Type_Code` FROM `Products` GROUP BY `Product_Type_Code` HAVING COUNT(*) >= 2
+Show the product type codes that have both products with price higher than 4500 and products with price lower than 3000.,SELECT `Product_Type_Code` FROM `Products` WHERE `Product_Price` > 4500 INTERSECT SELECT `Product_Type_Code` FROM `Products` WHERE `Product_Price` < 3000
+Show the names of products and the number of events they are in.,"SELECT `T1`.`Product_Name`, COUNT(*) FROM `Products` AS `T1` JOIN `Products_in_Events` AS `T2` ON `T1`.`Product_ID` = `T2`.`Product_ID` GROUP BY `T1`.`Product_Name`"
+"Show the names of products and the number of events they are in, sorted by the number of events in descending order.","SELECT `T1`.`Product_Name`, COUNT(*) FROM `Products` AS `T1` JOIN `Products_in_Events` AS `T2` ON `T1`.`Product_ID` = `T2`.`Product_ID` GROUP BY `T1`.`Product_Name` ORDER BY COUNT(*) DESC"
+Show the names of products that are in at least two events.,SELECT `T1`.`Product_Name` FROM `Products` AS `T1` JOIN `Products_in_Events` AS `T2` ON `T1`.`Product_ID` = `T2`.`Product_ID` GROUP BY `T1`.`Product_Name` HAVING COUNT(*) >= 2
+Show the names of products that are in at least two events in ascending alphabetical order of product name.,SELECT `T1`.`Product_Name` FROM `Products` AS `T1` JOIN `Products_in_Events` AS `T2` ON `T1`.`Product_ID` = `T2`.`Product_ID` GROUP BY `T1`.`Product_Name` HAVING COUNT(*) >= 2 ORDER BY `T1`.`Product_Name`
+List the names of products that are not in any event.,SELECT `Product_Name` FROM `Products` WHERE NOT `Product_ID` IN (SELECT `Product_ID` FROM `Products_in_Events`)

@@ -1,31 +1,31 @@
 question,sql
-How many singers are there?,SELECT count(*) FROM singer
-What is the count of singers?,SELECT count(*) FROM singer
-List the name of singers in ascending order of net worth.,SELECT Name FROM singer ORDER BY Net_Worth_Millions ASC
-What are the names of singers ordered by ascending net worth?,SELECT Name FROM singer ORDER BY Net_Worth_Millions ASC
-What are the birth year and citizenship of singers?,"SELECT Birth_Year ,  Citizenship FROM singer"
-What are the birth years and citizenships of the singers?,"SELECT Birth_Year ,  Citizenship FROM singer"
-"List the name of singers whose citizenship is not ""France"".","SELECT Name FROM singer WHERE Citizenship != ""France"""
-What are the names of the singers who are not French citizens?,"SELECT Name FROM singer WHERE Citizenship != ""France"""
-Show the name of singers whose birth year is either 1948 or 1949?,SELECT Name FROM singer WHERE Birth_Year  =  1948 OR Birth_Year  =  1949
-What are the names of the singers whose birth years are either 1948 or 1949?,SELECT Name FROM singer WHERE Birth_Year  =  1948 OR Birth_Year  =  1949
-What is the name of the singer with the largest net worth?,SELECT Name FROM singer ORDER BY Net_Worth_Millions DESC LIMIT 1
-What is the name of the singer who is worth the most?,SELECT Name FROM singer ORDER BY Net_Worth_Millions DESC LIMIT 1
-Show different citizenship of singers and the number of singers of each citizenship.,"SELECT Citizenship ,  COUNT(*) FROM singer GROUP BY Citizenship"
-"For each citizenship, how many singers are from that country?","SELECT Citizenship ,  COUNT(*) FROM singer GROUP BY Citizenship"
-Please show the most common citizenship of singers.,SELECT Citizenship FROM singer GROUP BY Citizenship ORDER BY COUNT(*) DESC LIMIT 1
-What is the most common singer citizenship ?,select citizenship from singer group by citizenship order by count(*) desc limit 1
-Show different citizenships and the maximum net worth of singers of each citizenship.,"SELECT Citizenship ,  max(Net_Worth_Millions) FROM singer GROUP BY Citizenship"
-"For each citizenship, what is the maximum net worth?","SELECT Citizenship ,  max(Net_Worth_Millions) FROM singer GROUP BY Citizenship"
-Show titles of songs and names of singers.,"SELECT T2.Title ,  T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID"
-What are the song titles and singer names?,"SELECT T2.Title ,  T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID"
-Show distinct names of singers that have songs with sales more than 300000.,SELECT DISTINCT T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID WHERE T2.Sales  >  300000
-what are the different names of the singers that have sales more than 300000?,SELECT DISTINCT T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID WHERE T2.Sales  >  300000
-Show the names of singers that have more than one song.,SELECT T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID GROUP BY T1.Name HAVING COUNT(*)  >  1
-What are the names of the singers that have more than one songs?,SELECT T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID GROUP BY T1.Name HAVING COUNT(*)  >  1
-Show the names of singers and the total sales of their songs.,"SELECT T1.Name ,  sum(T2.Sales) FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID GROUP BY T1.Name"
-"For each singer name, what is the total sales for their songs?","SELECT T1.Name ,  sum(T2.Sales) FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID GROUP BY T1.Name"
-List the name of singers that do not have any song.,SELECT Name FROM singer WHERE Singer_ID NOT IN (SELECT Singer_ID FROM song)
-What is the sname of every sing that does not have any song?,SELECT Name FROM singer WHERE Singer_ID NOT IN (SELECT Singer_ID FROM song)
-Show the citizenship shared by singers with birth year before 1945 and after 1955.,SELECT Citizenship FROM singer WHERE Birth_Year  <  1945 INTERSECT SELECT Citizenship FROM singer WHERE Birth_Year  >  1955
-What are the citizenships that are shared by singers with a birth year before 1945 and after 1955?,SELECT Citizenship FROM singer WHERE Birth_Year  <  1945 INTERSECT SELECT Citizenship FROM singer WHERE Birth_Year  >  1955
+How many singers are there?,SELECT COUNT(*) FROM `singer`
+What is the count of singers?,SELECT COUNT(*) FROM `singer`
+List the name of singers in ascending order of net worth.,SELECT `Name` FROM `singer` ORDER BY `Net_Worth_Millions` ASC
+What are the names of singers ordered by ascending net worth?,SELECT `Name` FROM `singer` ORDER BY `Net_Worth_Millions` ASC
+What are the birth year and citizenship of singers?,"SELECT `Birth_Year`, `Citizenship` FROM `singer`"
+What are the birth years and citizenships of the singers?,"SELECT `Birth_Year`, `Citizenship` FROM `singer`"
+"List the name of singers whose citizenship is not ""France"".",SELECT `Name` FROM `singer` WHERE `Citizenship` <> `France`
+What are the names of the singers who are not French citizens?,SELECT `Name` FROM `singer` WHERE `Citizenship` <> `France`
+Show the name of singers whose birth year is either 1948 or 1949?,SELECT `Name` FROM `singer` WHERE `Birth_Year` = 1948 OR `Birth_Year` = 1949
+What are the names of the singers whose birth years are either 1948 or 1949?,SELECT `Name` FROM `singer` WHERE `Birth_Year` = 1948 OR `Birth_Year` = 1949
+What is the name of the singer with the largest net worth?,SELECT `Name` FROM `singer` ORDER BY `Net_Worth_Millions` DESC LIMIT 1
+What is the name of the singer who is worth the most?,SELECT `Name` FROM `singer` ORDER BY `Net_Worth_Millions` DESC LIMIT 1
+Show different citizenship of singers and the number of singers of each citizenship.,"SELECT `Citizenship`, COUNT(*) FROM `singer` GROUP BY `Citizenship`"
+"For each citizenship, how many singers are from that country?","SELECT `Citizenship`, COUNT(*) FROM `singer` GROUP BY `Citizenship`"
+Please show the most common citizenship of singers.,SELECT `Citizenship` FROM `singer` GROUP BY `Citizenship` ORDER BY COUNT(*) DESC LIMIT 1
+What is the most common singer citizenship ?,SELECT `citizenship` FROM `singer` GROUP BY `citizenship` ORDER BY COUNT(*) DESC LIMIT 1
+Show different citizenships and the maximum net worth of singers of each citizenship.,"SELECT `Citizenship`, MAX(`Net_Worth_Millions`) FROM `singer` GROUP BY `Citizenship`"
+"For each citizenship, what is the maximum net worth?","SELECT `Citizenship`, MAX(`Net_Worth_Millions`) FROM `singer` GROUP BY `Citizenship`"
+Show titles of songs and names of singers.,"SELECT `T2`.`Title`, `T1`.`Name` FROM `singer` AS `T1` JOIN `song` AS `T2` ON `T1`.`Singer_ID` = `T2`.`Singer_ID`"
+What are the song titles and singer names?,"SELECT `T2`.`Title`, `T1`.`Name` FROM `singer` AS `T1` JOIN `song` AS `T2` ON `T1`.`Singer_ID` = `T2`.`Singer_ID`"
+Show distinct names of singers that have songs with sales more than 300000.,SELECT DISTINCT `T1`.`Name` FROM `singer` AS `T1` JOIN `song` AS `T2` ON `T1`.`Singer_ID` = `T2`.`Singer_ID` WHERE `T2`.`Sales` > 300000
+what are the different names of the singers that have sales more than 300000?,SELECT DISTINCT `T1`.`Name` FROM `singer` AS `T1` JOIN `song` AS `T2` ON `T1`.`Singer_ID` = `T2`.`Singer_ID` WHERE `T2`.`Sales` > 300000
+Show the names of singers that have more than one song.,SELECT `T1`.`Name` FROM `singer` AS `T1` JOIN `song` AS `T2` ON `T1`.`Singer_ID` = `T2`.`Singer_ID` GROUP BY `T1`.`Name` HAVING COUNT(*) > 1
+What are the names of the singers that have more than one songs?,SELECT `T1`.`Name` FROM `singer` AS `T1` JOIN `song` AS `T2` ON `T1`.`Singer_ID` = `T2`.`Singer_ID` GROUP BY `T1`.`Name` HAVING COUNT(*) > 1
+Show the names of singers and the total sales of their songs.,"SELECT `T1`.`Name`, SUM(`T2`.`Sales`) FROM `singer` AS `T1` JOIN `song` AS `T2` ON `T1`.`Singer_ID` = `T2`.`Singer_ID` GROUP BY `T1`.`Name`"
+"For each singer name, what is the total sales for their songs?","SELECT `T1`.`Name`, SUM(`T2`.`Sales`) FROM `singer` AS `T1` JOIN `song` AS `T2` ON `T1`.`Singer_ID` = `T2`.`Singer_ID` GROUP BY `T1`.`Name`"
+List the name of singers that do not have any song.,SELECT `Name` FROM `singer` WHERE NOT `Singer_ID` IN (SELECT `Singer_ID` FROM `song`)
+What is the sname of every sing that does not have any song?,SELECT `Name` FROM `singer` WHERE NOT `Singer_ID` IN (SELECT `Singer_ID` FROM `song`)
+Show the citizenship shared by singers with birth year before 1945 and after 1955.,SELECT `Citizenship` FROM `singer` WHERE `Birth_Year` < 1945 INTERSECT SELECT `Citizenship` FROM `singer` WHERE `Birth_Year` > 1955
+What are the citizenships that are shared by singers with a birth year before 1945 and after 1955?,SELECT `Citizenship` FROM `singer` WHERE `Birth_Year` < 1945 INTERSECT SELECT `Citizenship` FROM `singer` WHERE `Birth_Year` > 1955

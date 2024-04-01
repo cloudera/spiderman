@@ -1,17 +1,17 @@
 question,sql
-list the local authorities and services provided by all stations.,"SELECT local_authority ,  services FROM station"
-show all train numbers and names ordered by their time from early to late.,"SELECT train_number ,  name FROM train ORDER BY TIME"
-"Give me the times and numbers of all trains that go to Chennai, ordered by time.","SELECT TIME ,  train_number FROM train WHERE destination  =  'Chennai' ORDER BY TIME"
-How many trains have 'Express' in their names?,"SELECT count(*) FROM train WHERE name LIKE ""%Express%"""
-Find the number and time of the train that goes from Chennai to Guruvayur.,"SELECT train_number ,  TIME FROM train WHERE origin  =  'Chennai' AND destination  =  'Guruvayur'"
-Find the number of trains starting from each origin.,"SELECT origin ,  count(*) FROM train GROUP BY origin"
-Find the name of the train whose route runs through greatest number of stations.,SELECT t1.name FROM train AS t1 JOIN route AS t2 ON t1.id  =  t2.train_id GROUP BY t2.train_id ORDER BY count(*) DESC LIMIT 1
-"Find the number of trains for each station, as well as the station network name and services.","SELECT count(*) ,  t1.network_name ,  t1.services FROM station AS t1 JOIN route AS t2 ON t1.id  =  t2.station_id GROUP BY t2.station_id"
-What is the average high temperature for each day of week?,"SELECT avg(high_temperature) ,  day_of_week FROM weekly_weather GROUP BY day_of_week"
-Give me the maximum low temperature and average precipitation at the Amersham station.,"SELECT max(t1.low_temperature) ,  avg(t1.precipitation) FROM weekly_weather AS t1 JOIN station AS t2 ON t1.station_id  =  t2.id WHERE t2.network_name  =  ""Amersham"""
-Find names and times of trains that run through stations for the local authority Chiltern.,"SELECT t3.name ,  t3.time FROM station AS t1 JOIN route AS t2 ON t1.id  =  t2.station_id JOIN train AS t3 ON t2.train_id  =  t3.id WHERE t1.local_authority  =  ""Chiltern"""
-How many different services are provided by all stations?,SELECT count(DISTINCT services) FROM station
-Find the id and local authority of the station with has the highest average high temperature.,"SELECT t2.id ,  t2.local_authority FROM weekly_weather AS t1 JOIN station AS t2 ON t1.station_id  =  t2.id GROUP BY t1.station_id ORDER BY avg(high_temperature) DESC LIMIT 1"
-Find the id and local authority of the station whose maximum precipitation is higher than 50.,"SELECT t2.id ,  t2.local_authority FROM weekly_weather AS t1 JOIN station AS t2 ON t1.station_id  =  t2.id GROUP BY t1.station_id HAVING max(t1.precipitation)  >  50"
-show the lowest low temperature and highest wind speed in miles per hour.,"SELECT min(low_temperature) ,  max(wind_speed_mph) FROM weekly_weather"
-Find the origins from which more than 1 train starts.,SELECT origin FROM train GROUP BY origin HAVING count(*)  >  1
+list the local authorities and services provided by all stations.,"SELECT `local_authority`, `services` FROM `station`"
+show all train numbers and names ordered by their time from early to late.,"SELECT `train_number`, `name` FROM `train` ORDER BY `TIME`"
+"Give me the times and numbers of all trains that go to Chennai, ordered by time.","SELECT `TIME`, `train_number` FROM `train` WHERE `destination` = 'Chennai' ORDER BY `TIME`"
+How many trains have 'Express' in their names?,SELECT COUNT(*) FROM `train` WHERE `name` LIKE `%Express%`
+Find the number and time of the train that goes from Chennai to Guruvayur.,"SELECT `train_number`, `TIME` FROM `train` WHERE `origin` = 'Chennai' AND `destination` = 'Guruvayur'"
+Find the number of trains starting from each origin.,"SELECT `origin`, COUNT(*) FROM `train` GROUP BY `origin`"
+Find the name of the train whose route runs through greatest number of stations.,SELECT `t1`.`name` FROM `train` AS `t1` JOIN `route` AS `t2` ON `t1`.`id` = `t2`.`train_id` GROUP BY `t2`.`train_id` ORDER BY COUNT(*) DESC LIMIT 1
+"Find the number of trains for each station, as well as the station network name and services.","SELECT COUNT(*), `t1`.`network_name`, `t1`.`services` FROM `station` AS `t1` JOIN `route` AS `t2` ON `t1`.`id` = `t2`.`station_id` GROUP BY `t2`.`station_id`"
+What is the average high temperature for each day of week?,"SELECT AVG(`high_temperature`), `day_of_week` FROM `weekly_weather` GROUP BY `day_of_week`"
+Give me the maximum low temperature and average precipitation at the Amersham station.,"SELECT MAX(`t1`.`low_temperature`), AVG(`t1`.`precipitation`) FROM `weekly_weather` AS `t1` JOIN `station` AS `t2` ON `t1`.`station_id` = `t2`.`id` WHERE `t2`.`network_name` = `Amersham`"
+Find names and times of trains that run through stations for the local authority Chiltern.,"SELECT `t3`.`name`, `t3`.`time` FROM `station` AS `t1` JOIN `route` AS `t2` ON `t1`.`id` = `t2`.`station_id` JOIN `train` AS `t3` ON `t2`.`train_id` = `t3`.`id` WHERE `t1`.`local_authority` = `Chiltern`"
+How many different services are provided by all stations?,SELECT COUNT(DISTINCT `services`) FROM `station`
+Find the id and local authority of the station with has the highest average high temperature.,"SELECT `t2`.`id`, `t2`.`local_authority` FROM `weekly_weather` AS `t1` JOIN `station` AS `t2` ON `t1`.`station_id` = `t2`.`id` GROUP BY `t1`.`station_id` ORDER BY AVG(`high_temperature`) DESC LIMIT 1"
+Find the id and local authority of the station whose maximum precipitation is higher than 50.,"SELECT `t2`.`id`, `t2`.`local_authority` FROM `weekly_weather` AS `t1` JOIN `station` AS `t2` ON `t1`.`station_id` = `t2`.`id` GROUP BY `t1`.`station_id` HAVING MAX(`t1`.`precipitation`) > 50"
+show the lowest low temperature and highest wind speed in miles per hour.,"SELECT MIN(`low_temperature`), MAX(`wind_speed_mph`) FROM `weekly_weather`"
+Find the origins from which more than 1 train starts.,SELECT `origin` FROM `train` GROUP BY `origin` HAVING COUNT(*) > 1

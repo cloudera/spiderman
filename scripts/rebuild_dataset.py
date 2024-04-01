@@ -35,6 +35,7 @@ with ZipReader(paths.SOURCE_ZIP) as sourceZip:
         train_queries += json.loads(sourceZip.read_file(paths.TRAIN_QUERIES_2))
         test_queries = json.loads(sourceZip.read_file(paths.TEST_QUERIES))
 
+        print("Extracting queries...")
         extract_queries(train_queries, False)
         extract_queries(test_queries, True)
 

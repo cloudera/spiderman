@@ -1,45 +1,45 @@
 question,sql
-How many branches where have more than average number of memberships are there?,SELECT count(*) FROM branch WHERE membership_amount  >  (SELECT avg(membership_amount) FROM branch)
-What is the number of branches that have more than the average number of memberships?,SELECT count(*) FROM branch WHERE membership_amount  >  (SELECT avg(membership_amount) FROM branch)
-"Show name, address road, and city for all branches sorted by open year.","SELECT name ,  address_road ,  city FROM branch ORDER BY open_year"
-"What are the names, address roads, and cities of the branches ordered by opening year?","SELECT name ,  address_road ,  city FROM branch ORDER BY open_year"
-What are names for top three branches with most number of membership?,SELECT name FROM branch ORDER BY membership_amount DESC LIMIT 3
-What are the names for the 3 branches that have the most memberships?,SELECT name FROM branch ORDER BY membership_amount DESC LIMIT 3
-Show all distinct city where branches with at least 100 memberships are located.,SELECT DISTINCT city FROM branch WHERE membership_amount  >=  100
-What are the different cities that have more than 100 memberships?,SELECT DISTINCT city FROM branch WHERE membership_amount  >=  100
-List all open years when at least two shops are opened.,SELECT open_year FROM branch GROUP BY open_year HAVING count(*)  >=  2
-What are the opening years in which at least two shops opened?,SELECT open_year FROM branch GROUP BY open_year HAVING count(*)  >=  2
-Show minimum and maximum amount of memberships for all branches opened in 2011 or located at city London.,"SELECT min(membership_amount) ,  max(membership_amount) FROM branch WHERE open_year  =  2011 OR city  =  'London'"
-What are the minimum and maximum membership amounts for all branches that either opened in 2011 or are located in London?,"SELECT min(membership_amount) ,  max(membership_amount) FROM branch WHERE open_year  =  2011 OR city  =  'London'"
-Show the city and the number of branches opened before 2010 for each city.,"SELECT city ,  count(*) FROM branch WHERE open_year  <  2010 GROUP BY city"
-"For each city, how many branches opened before 2010?","SELECT city ,  count(*) FROM branch WHERE open_year  <  2010 GROUP BY city"
-How many different levels do members have?,SELECT count(DISTINCT LEVEL) FROM member
-What are the different membership levels?,SELECT count(DISTINCT LEVEL) FROM member
-"Show card number, name, and hometown for all members in a descending order of level.","SELECT card_number ,  name ,  hometown FROM member ORDER BY LEVEL DESC"
-"What are the card numbers, names, and hometowns of every member ordered by descending level?","SELECT card_number ,  name ,  hometown FROM member ORDER BY LEVEL DESC"
-Show the membership level with most number of members.,SELECT LEVEL FROM member GROUP BY LEVEL ORDER BY count(*) DESC LIMIT 1
-What is the membership level with the most people?,SELECT LEVEL FROM member GROUP BY LEVEL ORDER BY count(*) DESC LIMIT 1
-Show all member names and registered branch names sorted by register year.,"SELECT T3.name ,  T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id ORDER BY T1.register_year"
-What are the names of the members and branches at which they are registered sorted by year of registration?,"SELECT T3.name ,  T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id ORDER BY T1.register_year"
-Show all branch names with the number of members in each branch registered after 2015.,"SELECT T2.name ,  count(*) FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T1.register_year  >  2015 GROUP BY T2.branch_id"
-"For each branch id, what are the names of the branches that were registered after 2015?","SELECT T2.name ,  count(*) FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T1.register_year  >  2015 GROUP BY T2.branch_id"
-Show member names without any registered branch.,SELECT name FROM member WHERE member_id NOT IN (SELECT member_id FROM membership_register_branch)
-What are the names of the members that have never registered at any branch?,SELECT name FROM member WHERE member_id NOT IN (SELECT member_id FROM membership_register_branch)
-List the branch name and city without any registered members.,"SELECT name ,  city FROM branch WHERE branch_id NOT IN (SELECT branch_id FROM membership_register_branch)"
-What are the names and cities of the branches that do not have any registered members?,"SELECT name ,  city FROM branch WHERE branch_id NOT IN (SELECT branch_id FROM membership_register_branch)"
-What is the name and open year for the branch with most number of memberships registered in 2016?,"SELECT T2.name ,  T2.open_year FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T1.register_year  =  2016 GROUP BY T2.branch_id ORDER BY count(*) DESC LIMIT 1"
-What is the name and opening year for the branch that registered the most members in 2016?,"SELECT T2.name ,  T2.open_year FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T1.register_year  =  2016 GROUP BY T2.branch_id ORDER BY count(*) DESC LIMIT 1"
-Show the member name and hometown who registered a branch in 2016.,"SELECT T2.name ,  T2.hometown FROM membership_register_branch AS T1 JOIN member AS T2 ON T1.member_id  =  T2.member_id WHERE T1.register_year  =  2016"
-What are the member names and hometowns of those who registered at a branch in 2016?,"SELECT T2.name ,  T2.hometown FROM membership_register_branch AS T1 JOIN member AS T2 ON T1.member_id  =  T2.member_id WHERE T1.register_year  =  2016"
-Show all city with a branch opened in 2001 and a branch with more than 100 membership.,SELECT city FROM branch WHERE open_year  =  2001 AND membership_amount  >  100
-What are the cities that have a branch that opened in 2001 and a branch with more than 100 members?,SELECT city FROM branch WHERE open_year  =  2001 AND membership_amount  >  100
-Show all cities without a branch having more than 100 memberships.,SELECT city FROM branch EXCEPT SELECT city FROM branch WHERE membership_amount  >  100
-What are the cities that do not have any branches with more than 100 members?,SELECT city FROM branch EXCEPT SELECT city FROM branch WHERE membership_amount  >  100
-What is the sum of total pounds of purchase in year 2018 for all branches in London?,SELECT sum(total_pounds) FROM purchase AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T2.city  =  'London' AND T1.year  =  2018
-How many total pounds were purchased in the year 2018 at all London branches?,SELECT sum(total_pounds) FROM purchase AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T2.city  =  'London' AND T1.year  =  2018
-What is the total number of purchases for members with level 6?,SELECT count(*) FROM purchase AS T1 JOIN member AS T2 ON T1.member_id  =  T2.member_id WHERE T2.level  =  6
-What are the total purchases for members rated at level 6?,SELECT count(*) FROM purchase AS T1 JOIN member AS T2 ON T1.member_id  =  T2.member_id WHERE T2.level  =  6
-"Find the name of branches where have some members whose hometown is in Louisville, Kentucky and some in Hiram, Georgia.","SELECT T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id WHERE T3.Hometown  =  'Louisville ,  Kentucky' INTERSECT SELECT T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id WHERE T3.Hometown  =  'Hiram ,  Georgia'"
-"What are the names of the branches that have some members with a hometown in Louisville, Kentucky and also those from Hiram, Goergia?","SELECT T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id WHERE T3.Hometown  =  'Louisville ,  Kentucky' INTERSECT SELECT T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id WHERE T3.Hometown  =  'Hiram ,  Georgia'"
-"list the card number of all members whose hometown address includes word ""Kentucky"".","SELECT card_number FROM member WHERE Hometown LIKE ""%Kentucky%"""
-What are the card numbers of members from Kentucky?,"SELECT card_number FROM member WHERE Hometown LIKE ""%Kentucky%"""
+How many branches where have more than average number of memberships are there?,SELECT COUNT(*) FROM `branch` WHERE `membership_amount` > (SELECT AVG(`membership_amount`) FROM `branch`)
+What is the number of branches that have more than the average number of memberships?,SELECT COUNT(*) FROM `branch` WHERE `membership_amount` > (SELECT AVG(`membership_amount`) FROM `branch`)
+"Show name, address road, and city for all branches sorted by open year.","SELECT `name`, `address_road`, `city` FROM `branch` ORDER BY `open_year`"
+"What are the names, address roads, and cities of the branches ordered by opening year?","SELECT `name`, `address_road`, `city` FROM `branch` ORDER BY `open_year`"
+What are names for top three branches with most number of membership?,SELECT `name` FROM `branch` ORDER BY `membership_amount` DESC LIMIT 3
+What are the names for the 3 branches that have the most memberships?,SELECT `name` FROM `branch` ORDER BY `membership_amount` DESC LIMIT 3
+Show all distinct city where branches with at least 100 memberships are located.,SELECT DISTINCT `city` FROM `branch` WHERE `membership_amount` >= 100
+What are the different cities that have more than 100 memberships?,SELECT DISTINCT `city` FROM `branch` WHERE `membership_amount` >= 100
+List all open years when at least two shops are opened.,SELECT `open_year` FROM `branch` GROUP BY `open_year` HAVING COUNT(*) >= 2
+What are the opening years in which at least two shops opened?,SELECT `open_year` FROM `branch` GROUP BY `open_year` HAVING COUNT(*) >= 2
+Show minimum and maximum amount of memberships for all branches opened in 2011 or located at city London.,"SELECT MIN(`membership_amount`), MAX(`membership_amount`) FROM `branch` WHERE `open_year` = 2011 OR `city` = 'London'"
+What are the minimum and maximum membership amounts for all branches that either opened in 2011 or are located in London?,"SELECT MIN(`membership_amount`), MAX(`membership_amount`) FROM `branch` WHERE `open_year` = 2011 OR `city` = 'London'"
+Show the city and the number of branches opened before 2010 for each city.,"SELECT `city`, COUNT(*) FROM `branch` WHERE `open_year` < 2010 GROUP BY `city`"
+"For each city, how many branches opened before 2010?","SELECT `city`, COUNT(*) FROM `branch` WHERE `open_year` < 2010 GROUP BY `city`"
+How many different levels do members have?,SELECT COUNT(DISTINCT `LEVEL`) FROM `member`
+What are the different membership levels?,SELECT COUNT(DISTINCT `LEVEL`) FROM `member`
+"Show card number, name, and hometown for all members in a descending order of level.","SELECT `card_number`, `name`, `hometown` FROM `member` ORDER BY `LEVEL` DESC"
+"What are the card numbers, names, and hometowns of every member ordered by descending level?","SELECT `card_number`, `name`, `hometown` FROM `member` ORDER BY `LEVEL` DESC"
+Show the membership level with most number of members.,SELECT `LEVEL` FROM `member` GROUP BY `LEVEL` ORDER BY COUNT(*) DESC LIMIT 1
+What is the membership level with the most people?,SELECT `LEVEL` FROM `member` GROUP BY `LEVEL` ORDER BY COUNT(*) DESC LIMIT 1
+Show all member names and registered branch names sorted by register year.,"SELECT `T3`.`name`, `T2`.`name` FROM `membership_register_branch` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` JOIN `member` AS `T3` ON `T1`.`member_id` = `T3`.`member_id` ORDER BY `T1`.`register_year`"
+What are the names of the members and branches at which they are registered sorted by year of registration?,"SELECT `T3`.`name`, `T2`.`name` FROM `membership_register_branch` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` JOIN `member` AS `T3` ON `T1`.`member_id` = `T3`.`member_id` ORDER BY `T1`.`register_year`"
+Show all branch names with the number of members in each branch registered after 2015.,"SELECT `T2`.`name`, COUNT(*) FROM `membership_register_branch` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` WHERE `T1`.`register_year` > 2015 GROUP BY `T2`.`branch_id`"
+"For each branch id, what are the names of the branches that were registered after 2015?","SELECT `T2`.`name`, COUNT(*) FROM `membership_register_branch` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` WHERE `T1`.`register_year` > 2015 GROUP BY `T2`.`branch_id`"
+Show member names without any registered branch.,SELECT `name` FROM `member` WHERE NOT `member_id` IN (SELECT `member_id` FROM `membership_register_branch`)
+What are the names of the members that have never registered at any branch?,SELECT `name` FROM `member` WHERE NOT `member_id` IN (SELECT `member_id` FROM `membership_register_branch`)
+List the branch name and city without any registered members.,"SELECT `name`, `city` FROM `branch` WHERE NOT `branch_id` IN (SELECT `branch_id` FROM `membership_register_branch`)"
+What are the names and cities of the branches that do not have any registered members?,"SELECT `name`, `city` FROM `branch` WHERE NOT `branch_id` IN (SELECT `branch_id` FROM `membership_register_branch`)"
+What is the name and open year for the branch with most number of memberships registered in 2016?,"SELECT `T2`.`name`, `T2`.`open_year` FROM `membership_register_branch` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` WHERE `T1`.`register_year` = 2016 GROUP BY `T2`.`branch_id` ORDER BY COUNT(*) DESC LIMIT 1"
+What is the name and opening year for the branch that registered the most members in 2016?,"SELECT `T2`.`name`, `T2`.`open_year` FROM `membership_register_branch` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` WHERE `T1`.`register_year` = 2016 GROUP BY `T2`.`branch_id` ORDER BY COUNT(*) DESC LIMIT 1"
+Show the member name and hometown who registered a branch in 2016.,"SELECT `T2`.`name`, `T2`.`hometown` FROM `membership_register_branch` AS `T1` JOIN `member` AS `T2` ON `T1`.`member_id` = `T2`.`member_id` WHERE `T1`.`register_year` = 2016"
+What are the member names and hometowns of those who registered at a branch in 2016?,"SELECT `T2`.`name`, `T2`.`hometown` FROM `membership_register_branch` AS `T1` JOIN `member` AS `T2` ON `T1`.`member_id` = `T2`.`member_id` WHERE `T1`.`register_year` = 2016"
+Show all city with a branch opened in 2001 and a branch with more than 100 membership.,SELECT `city` FROM `branch` WHERE `open_year` = 2001 AND `membership_amount` > 100
+What are the cities that have a branch that opened in 2001 and a branch with more than 100 members?,SELECT `city` FROM `branch` WHERE `open_year` = 2001 AND `membership_amount` > 100
+Show all cities without a branch having more than 100 memberships.,SELECT `city` FROM `branch` EXCEPT SELECT `city` FROM `branch` WHERE `membership_amount` > 100
+What are the cities that do not have any branches with more than 100 members?,SELECT `city` FROM `branch` EXCEPT SELECT `city` FROM `branch` WHERE `membership_amount` > 100
+What is the sum of total pounds of purchase in year 2018 for all branches in London?,SELECT SUM(`total_pounds`) FROM `purchase` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` WHERE `T2`.`city` = 'London' AND `T1`.`year` = 2018
+How many total pounds were purchased in the year 2018 at all London branches?,SELECT SUM(`total_pounds`) FROM `purchase` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` WHERE `T2`.`city` = 'London' AND `T1`.`year` = 2018
+What is the total number of purchases for members with level 6?,SELECT COUNT(*) FROM `purchase` AS `T1` JOIN `member` AS `T2` ON `T1`.`member_id` = `T2`.`member_id` WHERE `T2`.`level` = 6
+What are the total purchases for members rated at level 6?,SELECT COUNT(*) FROM `purchase` AS `T1` JOIN `member` AS `T2` ON `T1`.`member_id` = `T2`.`member_id` WHERE `T2`.`level` = 6
+"Find the name of branches where have some members whose hometown is in Louisville, Kentucky and some in Hiram, Georgia.","SELECT `T2`.`name` FROM `membership_register_branch` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` JOIN `member` AS `T3` ON `T1`.`member_id` = `T3`.`member_id` WHERE `T3`.`Hometown` = 'Louisville ,  Kentucky' INTERSECT SELECT `T2`.`name` FROM `membership_register_branch` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` JOIN `member` AS `T3` ON `T1`.`member_id` = `T3`.`member_id` WHERE `T3`.`Hometown` = 'Hiram ,  Georgia'"
+"What are the names of the branches that have some members with a hometown in Louisville, Kentucky and also those from Hiram, Goergia?","SELECT `T2`.`name` FROM `membership_register_branch` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` JOIN `member` AS `T3` ON `T1`.`member_id` = `T3`.`member_id` WHERE `T3`.`Hometown` = 'Louisville ,  Kentucky' INTERSECT SELECT `T2`.`name` FROM `membership_register_branch` AS `T1` JOIN `branch` AS `T2` ON `T1`.`branch_id` = `T2`.`branch_id` JOIN `member` AS `T3` ON `T1`.`member_id` = `T3`.`member_id` WHERE `T3`.`Hometown` = 'Hiram ,  Georgia'"
+"list the card number of all members whose hometown address includes word ""Kentucky"".",SELECT `card_number` FROM `member` WHERE `Hometown` LIKE `%Kentucky%`
+What are the card numbers of members from Kentucky?,SELECT `card_number` FROM `member` WHERE `Hometown` LIKE `%Kentucky%`

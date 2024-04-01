@@ -1,31 +1,31 @@
 question,sql
-How many ships are there?,SELECT count(*) FROM ship
-What is the number of ships?,SELECT count(*) FROM ship
-List the name of ships in ascending order of tonnage.,SELECT Name FROM ship ORDER BY Tonnage ASC
-what are the names of the ships ordered by ascending tonnage?,SELECT Name FROM ship ORDER BY Tonnage ASC
-What are the type and nationality of ships?,"SELECT TYPE ,  Nationality FROM ship"
-What are the types and nationalities of every ship?,"SELECT TYPE ,  Nationality FROM ship"
-"List the name of ships whose nationality is not ""United States"".","SELECT Name FROM ship WHERE Nationality != ""United States"""
-What are the names of the ships that are not from the United States?,"SELECT Name FROM ship WHERE Nationality != ""United States"""
-Show the name of ships whose nationality is either United States or United Kingdom.,"SELECT Name FROM ship WHERE Nationality  =  ""United States"" OR Nationality  =  ""United Kingdom"""
-What are the names of the ships  that are from either the US or the UK?,"SELECT Name FROM ship WHERE Nationality  =  ""United States"" OR Nationality  =  ""United Kingdom"""
-What is the name of the ship with the largest tonnage?,SELECT Name FROM ship ORDER BY Tonnage DESC LIMIT 1
-What is the ship with the largest amount of tonnage called?,SELECT Name FROM ship ORDER BY Tonnage DESC LIMIT 1
-Show different types of ships and the number of ships of each type.,"SELECT TYPE ,  COUNT(*) FROM ship GROUP BY TYPE"
-"For each type, how many ships are there?","SELECT TYPE ,  COUNT(*) FROM ship GROUP BY TYPE"
-Please show the most common type of ships.,SELECT TYPE FROM ship GROUP BY TYPE ORDER BY COUNT(*) DESC LIMIT 1
-What is the most common type of ships?,SELECT TYPE FROM ship GROUP BY TYPE ORDER BY COUNT(*) DESC LIMIT 1
-List the nations that have more than two ships.,SELECT Nationality FROM ship GROUP BY Nationality HAVING COUNT(*)  >  2
-What are the nations that have more than two ships?,SELECT Nationality FROM ship GROUP BY Nationality HAVING COUNT(*)  >  2
-Show different types of ships and the average tonnage of ships of each type.,"SELECT TYPE ,  avg(Tonnage) FROM ship GROUP BY TYPE"
-"For each type, what is the average tonnage?","SELECT TYPE ,  avg(Tonnage) FROM ship GROUP BY TYPE"
-"Show codes and fates of missions, and names of ships involved.","SELECT T1.Code ,  T1.Fate ,  T2.Name FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID"
-"What are the mission codes, fates, and names of the ships involved?","SELECT T1.Code ,  T1.Fate ,  T2.Name FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID"
-Show names of ships involved in a mission launched after 1928.,SELECT T2.Name FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID WHERE T1.Launched_Year  >  1928
-What are the names of ships that were involved in a mission launched after 1928?,SELECT T2.Name FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID WHERE T1.Launched_Year  >  1928
-"Show the distinct fate of missions that involve ships with nationality ""United States""","SELECT DISTINCT T1.Fate FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID WHERE T2.Nationality  =  ""United States"""
-What are the different fates of the mission that involved ships from the United States?,"SELECT DISTINCT T1.Fate FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID WHERE T2.Nationality  =  ""United States"""
-List the name of ships that are not involved in any mission,SELECT Name FROM ship WHERE Ship_ID NOT IN (SELECT Ship_ID FROM mission)
-What are the names of the ships that are not involved in any missions?,SELECT Name FROM ship WHERE Ship_ID NOT IN (SELECT Ship_ID FROM mission)
-Show the types of ships that have both ships with tonnage larger than 6000 and ships with tonnage smaller than 4000.,SELECT TYPE FROM ship WHERE Tonnage  >  6000 INTERSECT SELECT TYPE FROM ship WHERE Tonnage  <  4000
-What are the types of the ships that have both shiips with tonnage more than 6000 and those with tonnage less than 4000?,SELECT TYPE FROM ship WHERE Tonnage  >  6000 INTERSECT SELECT TYPE FROM ship WHERE Tonnage  <  4000
+How many ships are there?,SELECT COUNT(*) FROM `ship`
+What is the number of ships?,SELECT COUNT(*) FROM `ship`
+List the name of ships in ascending order of tonnage.,SELECT `Name` FROM `ship` ORDER BY `Tonnage` ASC
+what are the names of the ships ordered by ascending tonnage?,SELECT `Name` FROM `ship` ORDER BY `Tonnage` ASC
+What are the type and nationality of ships?,"SELECT `TYPE`, `Nationality` FROM `ship`"
+What are the types and nationalities of every ship?,"SELECT `TYPE`, `Nationality` FROM `ship`"
+"List the name of ships whose nationality is not ""United States"".",SELECT `Name` FROM `ship` WHERE `Nationality` <> `United States`
+What are the names of the ships that are not from the United States?,SELECT `Name` FROM `ship` WHERE `Nationality` <> `United States`
+Show the name of ships whose nationality is either United States or United Kingdom.,SELECT `Name` FROM `ship` WHERE `Nationality` = `United States` OR `Nationality` = `United Kingdom`
+What are the names of the ships  that are from either the US or the UK?,SELECT `Name` FROM `ship` WHERE `Nationality` = `United States` OR `Nationality` = `United Kingdom`
+What is the name of the ship with the largest tonnage?,SELECT `Name` FROM `ship` ORDER BY `Tonnage` DESC LIMIT 1
+What is the ship with the largest amount of tonnage called?,SELECT `Name` FROM `ship` ORDER BY `Tonnage` DESC LIMIT 1
+Show different types of ships and the number of ships of each type.,"SELECT `TYPE`, COUNT(*) FROM `ship` GROUP BY `TYPE`"
+"For each type, how many ships are there?","SELECT `TYPE`, COUNT(*) FROM `ship` GROUP BY `TYPE`"
+Please show the most common type of ships.,SELECT `TYPE` FROM `ship` GROUP BY `TYPE` ORDER BY COUNT(*) DESC LIMIT 1
+What is the most common type of ships?,SELECT `TYPE` FROM `ship` GROUP BY `TYPE` ORDER BY COUNT(*) DESC LIMIT 1
+List the nations that have more than two ships.,SELECT `Nationality` FROM `ship` GROUP BY `Nationality` HAVING COUNT(*) > 2
+What are the nations that have more than two ships?,SELECT `Nationality` FROM `ship` GROUP BY `Nationality` HAVING COUNT(*) > 2
+Show different types of ships and the average tonnage of ships of each type.,"SELECT `TYPE`, AVG(`Tonnage`) FROM `ship` GROUP BY `TYPE`"
+"For each type, what is the average tonnage?","SELECT `TYPE`, AVG(`Tonnage`) FROM `ship` GROUP BY `TYPE`"
+"Show codes and fates of missions, and names of ships involved.","SELECT `T1`.`Code`, `T1`.`Fate`, `T2`.`Name` FROM `mission` AS `T1` JOIN `ship` AS `T2` ON `T1`.`Ship_ID` = `T2`.`Ship_ID`"
+"What are the mission codes, fates, and names of the ships involved?","SELECT `T1`.`Code`, `T1`.`Fate`, `T2`.`Name` FROM `mission` AS `T1` JOIN `ship` AS `T2` ON `T1`.`Ship_ID` = `T2`.`Ship_ID`"
+Show names of ships involved in a mission launched after 1928.,SELECT `T2`.`Name` FROM `mission` AS `T1` JOIN `ship` AS `T2` ON `T1`.`Ship_ID` = `T2`.`Ship_ID` WHERE `T1`.`Launched_Year` > 1928
+What are the names of ships that were involved in a mission launched after 1928?,SELECT `T2`.`Name` FROM `mission` AS `T1` JOIN `ship` AS `T2` ON `T1`.`Ship_ID` = `T2`.`Ship_ID` WHERE `T1`.`Launched_Year` > 1928
+"Show the distinct fate of missions that involve ships with nationality ""United States""",SELECT DISTINCT `T1`.`Fate` FROM `mission` AS `T1` JOIN `ship` AS `T2` ON `T1`.`Ship_ID` = `T2`.`Ship_ID` WHERE `T2`.`Nationality` = `United States`
+What are the different fates of the mission that involved ships from the United States?,SELECT DISTINCT `T1`.`Fate` FROM `mission` AS `T1` JOIN `ship` AS `T2` ON `T1`.`Ship_ID` = `T2`.`Ship_ID` WHERE `T2`.`Nationality` = `United States`
+List the name of ships that are not involved in any mission,SELECT `Name` FROM `ship` WHERE NOT `Ship_ID` IN (SELECT `Ship_ID` FROM `mission`)
+What are the names of the ships that are not involved in any missions?,SELECT `Name` FROM `ship` WHERE NOT `Ship_ID` IN (SELECT `Ship_ID` FROM `mission`)
+Show the types of ships that have both ships with tonnage larger than 6000 and ships with tonnage smaller than 4000.,SELECT `TYPE` FROM `ship` WHERE `Tonnage` > 6000 INTERSECT SELECT `TYPE` FROM `ship` WHERE `Tonnage` < 4000
+What are the types of the ships that have both shiips with tonnage more than 6000 and those with tonnage less than 4000?,SELECT `TYPE` FROM `ship` WHERE `Tonnage` > 6000 INTERSECT SELECT `TYPE` FROM `ship` WHERE `Tonnage` < 4000

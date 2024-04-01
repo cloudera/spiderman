@@ -1,21 +1,21 @@
 question,sql
-How many buildings are there?,SELECT count(*) FROM building
-"Show the name, street address, and number of floors for all buildings ordered by the number of floors.","SELECT name ,  street_address ,  floors FROM building ORDER BY floors"
-What is the name of the tallest building?,SELECT name FROM building ORDER BY height_feet DESC LIMIT 1
-"What are the average, maximum, and minimum number of floors for all buildings?","SELECT avg(floors) ,  max(floors) ,  min(floors) FROM building"
-Show the number of buildings with a height above the average or a number of floors above the average.,SELECT count(*) FROM building WHERE height_feet  >  (SELECT avg(height_feet) FROM building) OR floors  >  (SELECT avg(floors) FROM building)
-List the names of buildings with at least 200 feet of height and with at least 20 floors.,SELECT name FROM building WHERE height_feet  >=  200 AND floors  >=  20
-"Show the names and locations of institutions that are founded after 1990 and have the type ""Private"".","SELECT institution ,  LOCATION FROM institution WHERE founded  >  1990 AND TYPE  =  'Private'"
-"Show institution types, along with the number of institutions and total enrollment for each type.","SELECT TYPE ,  count(*) ,  sum(enrollment) FROM institution GROUP BY TYPE"
-Show the institution type with the largest number of institutions.,SELECT TYPE FROM institution GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
-Show the institution type with an institution founded after 1990 and an institution with at least 1000 enrollment.,SELECT TYPE FROM institution WHERE founded  >  1990 AND enrollment  >=  1000
-Show the name of buildings that do not have any institution.,SELECT name FROM building WHERE building_id NOT IN (SELECT building_id FROM institution)
-Show the names of buildings except for those having an institution founded in 2003.,SELECT name FROM building EXCEPT SELECT T1.name FROM building AS T1 JOIN institution AS T2 ON T1.building_id  =  T2.building_id WHERE T2.founded  =  2003
-"For each building, show the name of the building and the number of institutions in it.","SELECT T1.name ,  count(*) FROM building AS T1 JOIN institution AS T2 ON T1.building_id  =  T2.building_id GROUP BY T1.building_id"
-Show the names and heights of buildings with at least two institutions founded after 1880.,"SELECT T1.name ,  T1.height_feet FROM building AS T1 JOIN institution AS T2 ON T1.building_id  =  T2.building_id WHERE T2.founded  >  1880 GROUP BY T1.building_id HAVING count(*)  >=  2"
-Show all the distinct institution types.,SELECT DISTINCT TYPE FROM institution
-Show institution names along with the number of proteins for each institution.,"SELECT T1.institution ,  count(*) FROM institution AS T1 JOIN protein AS T2 ON T1.institution_id  =  T2.institution_id GROUP BY T1.institution_id"
-"How many proteins are associated with an institution founded after 1880 or an institution with type ""Private""?",SELECT count(*) FROM institution AS T1 JOIN protein AS T2 ON T1.institution_id  =  T2.institution_id WHERE T1.founded  >  1880 OR T1.type  =  'Private'
-Show the protein name and the institution name.,"SELECT T2.protein_name ,  T1.institution FROM institution AS T1 JOIN protein AS T2 ON T1.institution_id  =  T2.institution_id"
-How many proteins are associated with an institution in a building with at least 20 floors?,SELECT count(*) FROM institution AS T1 JOIN protein AS T2 ON T1.institution_id  =  T2.institution_id JOIN building AS T3 ON T3.building_id  =  T1.building_id WHERE T3.floors  >=  20
-How many institutions do not have an associated protein in our record?,SELECT count(*) FROM institution WHERE institution_id NOT IN (SELECT institution_id FROM protein)
+How many buildings are there?,SELECT COUNT(*) FROM `building`
+"Show the name, street address, and number of floors for all buildings ordered by the number of floors.","SELECT `name`, `street_address`, `floors` FROM `building` ORDER BY `floors`"
+What is the name of the tallest building?,SELECT `name` FROM `building` ORDER BY `height_feet` DESC LIMIT 1
+"What are the average, maximum, and minimum number of floors for all buildings?","SELECT AVG(`floors`), MAX(`floors`), MIN(`floors`) FROM `building`"
+Show the number of buildings with a height above the average or a number of floors above the average.,SELECT COUNT(*) FROM `building` WHERE `height_feet` > (SELECT AVG(`height_feet`) FROM `building`) OR `floors` > (SELECT AVG(`floors`) FROM `building`)
+List the names of buildings with at least 200 feet of height and with at least 20 floors.,SELECT `name` FROM `building` WHERE `height_feet` >= 200 AND `floors` >= 20
+"Show the names and locations of institutions that are founded after 1990 and have the type ""Private"".","SELECT `institution`, `LOCATION` FROM `institution` WHERE `founded` > 1990 AND `TYPE` = 'Private'"
+"Show institution types, along with the number of institutions and total enrollment for each type.","SELECT `TYPE`, COUNT(*), SUM(`enrollment`) FROM `institution` GROUP BY `TYPE`"
+Show the institution type with the largest number of institutions.,SELECT `TYPE` FROM `institution` GROUP BY `TYPE` ORDER BY COUNT(*) DESC LIMIT 1
+Show the institution type with an institution founded after 1990 and an institution with at least 1000 enrollment.,SELECT `TYPE` FROM `institution` WHERE `founded` > 1990 AND `enrollment` >= 1000
+Show the name of buildings that do not have any institution.,SELECT `name` FROM `building` WHERE NOT `building_id` IN (SELECT `building_id` FROM `institution`)
+Show the names of buildings except for those having an institution founded in 2003.,SELECT `name` FROM `building` EXCEPT SELECT `T1`.`name` FROM `building` AS `T1` JOIN `institution` AS `T2` ON `T1`.`building_id` = `T2`.`building_id` WHERE `T2`.`founded` = 2003
+"For each building, show the name of the building and the number of institutions in it.","SELECT `T1`.`name`, COUNT(*) FROM `building` AS `T1` JOIN `institution` AS `T2` ON `T1`.`building_id` = `T2`.`building_id` GROUP BY `T1`.`building_id`"
+Show the names and heights of buildings with at least two institutions founded after 1880.,"SELECT `T1`.`name`, `T1`.`height_feet` FROM `building` AS `T1` JOIN `institution` AS `T2` ON `T1`.`building_id` = `T2`.`building_id` WHERE `T2`.`founded` > 1880 GROUP BY `T1`.`building_id` HAVING COUNT(*) >= 2"
+Show all the distinct institution types.,SELECT DISTINCT `TYPE` FROM `institution`
+Show institution names along with the number of proteins for each institution.,"SELECT `T1`.`institution`, COUNT(*) FROM `institution` AS `T1` JOIN `protein` AS `T2` ON `T1`.`institution_id` = `T2`.`institution_id` GROUP BY `T1`.`institution_id`"
+"How many proteins are associated with an institution founded after 1880 or an institution with type ""Private""?",SELECT COUNT(*) FROM `institution` AS `T1` JOIN `protein` AS `T2` ON `T1`.`institution_id` = `T2`.`institution_id` WHERE `T1`.`founded` > 1880 OR `T1`.`type` = 'Private'
+Show the protein name and the institution name.,"SELECT `T2`.`protein_name`, `T1`.`institution` FROM `institution` AS `T1` JOIN `protein` AS `T2` ON `T1`.`institution_id` = `T2`.`institution_id`"
+How many proteins are associated with an institution in a building with at least 20 floors?,SELECT COUNT(*) FROM `institution` AS `T1` JOIN `protein` AS `T2` ON `T1`.`institution_id` = `T2`.`institution_id` JOIN `building` AS `T3` ON `T3`.`building_id` = `T1`.`building_id` WHERE `T3`.`floors` >= 20
+How many institutions do not have an associated protein in our record?,SELECT COUNT(*) FROM `institution` WHERE NOT `institution_id` IN (SELECT `institution_id` FROM `protein`)

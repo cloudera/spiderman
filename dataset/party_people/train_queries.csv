@@ -1,45 +1,45 @@
 question,sql
-How many regions do we have?,SELECT count(*) FROM region
-Count the number of regions.,SELECT count(*) FROM region
-Show all distinct region names ordered by their labels.,SELECT DISTINCT region_name FROM region ORDER BY Label
-"What are the different region names, ordered by labels?",SELECT DISTINCT region_name FROM region ORDER BY Label
-How many parties do we have?,SELECT count(DISTINCT party_name) FROM party
-Count the number of different parties.,SELECT count(DISTINCT party_name) FROM party
-"Show the ministers and the time they took and left office, listed by the time they left office.","SELECT minister ,  took_office ,  left_office FROM party ORDER BY left_office"
-"Who are the ministers, when did they take office, and when did they leave office, ordered by when they left office?","SELECT minister ,  took_office ,  left_office FROM party ORDER BY left_office"
-Show the minister who took office after 1961 or before 1959.,SELECT minister FROM party WHERE took_office  >  1961 OR took_office  <  1959
-Who are the ministers who took office after 1961 or before 1959?,SELECT minister FROM party WHERE took_office  >  1961 OR took_office  <  1959
-Show all ministers who do not belong to Progress Party.,SELECT minister FROM party WHERE party_name != 'Progress Party'
-Which ministers are not a part of the Progress Party?,SELECT minister FROM party WHERE party_name != 'Progress Party'
-Show all ministers and parties they belong to in descending order of the time they took office.,"SELECT minister ,  party_name FROM party ORDER BY took_office DESC"
-"Who are the ministers and what parties do they belong to, listed descending by the times they took office?","SELECT minister ,  party_name FROM party ORDER BY took_office DESC"
-Return the minister who left office at the latest time.,SELECT minister FROM party ORDER BY left_office DESC LIMIT 1
-Which minister left office the latest?,SELECT minister FROM party ORDER BY left_office DESC LIMIT 1
-List member names and their party names.,"SELECT T1.member_name ,  T2.party_name FROM Member AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id"
-What are the names of members and their corresponding parties?,"SELECT T1.member_name ,  T2.party_name FROM Member AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id"
-Show all party names and the number of members in each party.,"SELECT T2.party_name ,  count(*) FROM Member AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id GROUP BY T1.party_id"
-How many members are in each party?,"SELECT T2.party_name ,  count(*) FROM Member AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id GROUP BY T1.party_id"
-What is the name of party with most number of members?,SELECT T2.party_name FROM Member AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id GROUP BY T1.party_id ORDER BY count(*) DESC LIMIT 1
-Return the name of the party with the most members.,SELECT T2.party_name FROM Member AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id GROUP BY T1.party_id ORDER BY count(*) DESC LIMIT 1
-Show all party names and their region names.,"SELECT T1.party_name ,  T2.region_name FROM party AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id"
-What are the names of parties and their respective regions?,"SELECT T1.party_name ,  T2.region_name FROM party AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id"
-Show names of parties that does not have any members.,SELECT party_name FROM party WHERE party_id NOT IN (SELECT party_id FROM Member)
-What are the names of parties that have no members?,SELECT party_name FROM party WHERE party_id NOT IN (SELECT party_id FROM Member)
-Show the member names which are in both the party with id 3 and the party with id 1.,SELECT member_name FROM member WHERE party_id  =  3 INTERSECT SELECT member_name FROM member WHERE party_id  =  1
-Which member names are shared among members in the party with the id 3 and the party with the id 1?,SELECT member_name FROM member WHERE party_id  =  3 INTERSECT SELECT member_name FROM member WHERE party_id  =  1
-Show member names that are not in the Progress Party.,"SELECT T1.member_name FROM Member AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id WHERE T2.Party_name != ""Progress Party"""
-Which member names corresponding to members who are not in the Progress Party?,"SELECT T1.member_name FROM Member AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id WHERE T2.Party_name != ""Progress Party"""
-How many party events do we have?,SELECT count(*) FROM party_events
-Count the number of party events.,SELECT count(*) FROM party_events
-Show party names and the number of events for each party.,"SELECT T2.party_name ,  count(*) FROM party_events AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id GROUP BY T1.party_id"
-How many events are there for each party?,"SELECT T2.party_name ,  count(*) FROM party_events AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id GROUP BY T1.party_id"
-Show all member names who are not in charge of any event.,SELECT member_name FROM member EXCEPT SELECT T1.member_name FROM member AS T1 JOIN party_events AS T2 ON T1.member_id  =  T2.member_in_charge_id
-What are the names of members who are not in charge of any events?,SELECT member_name FROM member EXCEPT SELECT T1.member_name FROM member AS T1 JOIN party_events AS T2 ON T1.member_id  =  T2.member_in_charge_id
-What are the names of parties with at least 2 events?,SELECT T2.party_name FROM party_events AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id GROUP BY T1.party_id HAVING count(*)  >=  2
-Return the names of parties that have two or more events.,SELECT T2.party_name FROM party_events AS T1 JOIN party AS T2 ON T1.party_id  =  T2.party_id GROUP BY T1.party_id HAVING count(*)  >=  2
-What is the name of member in charge of greatest number of events?,SELECT T1.member_name FROM member AS T1 JOIN party_events AS T2 ON T1.member_id  =  T2.member_in_charge_id GROUP BY T2.member_in_charge_id ORDER BY count(*) DESC LIMIT 1
-Return the name of the member who is in charge of the most events.,SELECT T1.member_name FROM member AS T1 JOIN party_events AS T2 ON T1.member_id  =  T2.member_in_charge_id GROUP BY T2.member_in_charge_id ORDER BY count(*) DESC LIMIT 1
-find the event names that have more than 2 records.,SELECT event_name FROM party_events GROUP BY event_name HAVING count(*)  >  2
-Which event names were used more than twice for party events?,SELECT event_name FROM party_events GROUP BY event_name HAVING count(*)  >  2
-How many Annual Meeting events happened in the United Kingdom region?,"SELECT count(*) FROM region AS t1 JOIN party AS t2 ON t1.region_id  =  t2.region_id JOIN party_events AS t3 ON t2.party_id  =  t3.party_id WHERE t1.region_name  =  ""United Kingdom"" AND t3.Event_Name  =  ""Annaual Meeting"""
-Count the number of Annual Meeting events that took place in the region of the United Kingdom.,"SELECT count(*) FROM region AS t1 JOIN party AS t2 ON t1.region_id  =  t2.region_id JOIN party_events AS t3 ON t2.party_id  =  t3.party_id WHERE t1.region_name  =  ""United Kingdom"" AND t3.Event_Name  =  ""Annaual Meeting"""
+How many regions do we have?,SELECT COUNT(*) FROM `region`
+Count the number of regions.,SELECT COUNT(*) FROM `region`
+Show all distinct region names ordered by their labels.,SELECT DISTINCT `region_name` FROM `region` ORDER BY `Label`
+"What are the different region names, ordered by labels?",SELECT DISTINCT `region_name` FROM `region` ORDER BY `Label`
+How many parties do we have?,SELECT COUNT(DISTINCT `party_name`) FROM `party`
+Count the number of different parties.,SELECT COUNT(DISTINCT `party_name`) FROM `party`
+"Show the ministers and the time they took and left office, listed by the time they left office.","SELECT `minister`, `took_office`, `left_office` FROM `party` ORDER BY `left_office`"
+"Who are the ministers, when did they take office, and when did they leave office, ordered by when they left office?","SELECT `minister`, `took_office`, `left_office` FROM `party` ORDER BY `left_office`"
+Show the minister who took office after 1961 or before 1959.,SELECT `minister` FROM `party` WHERE `took_office` > 1961 OR `took_office` < 1959
+Who are the ministers who took office after 1961 or before 1959?,SELECT `minister` FROM `party` WHERE `took_office` > 1961 OR `took_office` < 1959
+Show all ministers who do not belong to Progress Party.,SELECT `minister` FROM `party` WHERE `party_name` <> 'Progress Party'
+Which ministers are not a part of the Progress Party?,SELECT `minister` FROM `party` WHERE `party_name` <> 'Progress Party'
+Show all ministers and parties they belong to in descending order of the time they took office.,"SELECT `minister`, `party_name` FROM `party` ORDER BY `took_office` DESC"
+"Who are the ministers and what parties do they belong to, listed descending by the times they took office?","SELECT `minister`, `party_name` FROM `party` ORDER BY `took_office` DESC"
+Return the minister who left office at the latest time.,SELECT `minister` FROM `party` ORDER BY `left_office` DESC LIMIT 1
+Which minister left office the latest?,SELECT `minister` FROM `party` ORDER BY `left_office` DESC LIMIT 1
+List member names and their party names.,"SELECT `T1`.`member_name`, `T2`.`party_name` FROM `Member` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id`"
+What are the names of members and their corresponding parties?,"SELECT `T1`.`member_name`, `T2`.`party_name` FROM `Member` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id`"
+Show all party names and the number of members in each party.,"SELECT `T2`.`party_name`, COUNT(*) FROM `Member` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id` GROUP BY `T1`.`party_id`"
+How many members are in each party?,"SELECT `T2`.`party_name`, COUNT(*) FROM `Member` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id` GROUP BY `T1`.`party_id`"
+What is the name of party with most number of members?,SELECT `T2`.`party_name` FROM `Member` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id` GROUP BY `T1`.`party_id` ORDER BY COUNT(*) DESC LIMIT 1
+Return the name of the party with the most members.,SELECT `T2`.`party_name` FROM `Member` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id` GROUP BY `T1`.`party_id` ORDER BY COUNT(*) DESC LIMIT 1
+Show all party names and their region names.,"SELECT `T1`.`party_name`, `T2`.`region_name` FROM `party` AS `T1` JOIN `region` AS `T2` ON `T1`.`region_id` = `T2`.`region_id`"
+What are the names of parties and their respective regions?,"SELECT `T1`.`party_name`, `T2`.`region_name` FROM `party` AS `T1` JOIN `region` AS `T2` ON `T1`.`region_id` = `T2`.`region_id`"
+Show names of parties that does not have any members.,SELECT `party_name` FROM `party` WHERE NOT `party_id` IN (SELECT `party_id` FROM `Member`)
+What are the names of parties that have no members?,SELECT `party_name` FROM `party` WHERE NOT `party_id` IN (SELECT `party_id` FROM `Member`)
+Show the member names which are in both the party with id 3 and the party with id 1.,SELECT `member_name` FROM `member` WHERE `party_id` = 3 INTERSECT SELECT `member_name` FROM `member` WHERE `party_id` = 1
+Which member names are shared among members in the party with the id 3 and the party with the id 1?,SELECT `member_name` FROM `member` WHERE `party_id` = 3 INTERSECT SELECT `member_name` FROM `member` WHERE `party_id` = 1
+Show member names that are not in the Progress Party.,SELECT `T1`.`member_name` FROM `Member` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id` WHERE `T2`.`Party_name` <> `Progress Party`
+Which member names corresponding to members who are not in the Progress Party?,SELECT `T1`.`member_name` FROM `Member` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id` WHERE `T2`.`Party_name` <> `Progress Party`
+How many party events do we have?,SELECT COUNT(*) FROM `party_events`
+Count the number of party events.,SELECT COUNT(*) FROM `party_events`
+Show party names and the number of events for each party.,"SELECT `T2`.`party_name`, COUNT(*) FROM `party_events` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id` GROUP BY `T1`.`party_id`"
+How many events are there for each party?,"SELECT `T2`.`party_name`, COUNT(*) FROM `party_events` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id` GROUP BY `T1`.`party_id`"
+Show all member names who are not in charge of any event.,SELECT `member_name` FROM `member` EXCEPT SELECT `T1`.`member_name` FROM `member` AS `T1` JOIN `party_events` AS `T2` ON `T1`.`member_id` = `T2`.`member_in_charge_id`
+What are the names of members who are not in charge of any events?,SELECT `member_name` FROM `member` EXCEPT SELECT `T1`.`member_name` FROM `member` AS `T1` JOIN `party_events` AS `T2` ON `T1`.`member_id` = `T2`.`member_in_charge_id`
+What are the names of parties with at least 2 events?,SELECT `T2`.`party_name` FROM `party_events` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id` GROUP BY `T1`.`party_id` HAVING COUNT(*) >= 2
+Return the names of parties that have two or more events.,SELECT `T2`.`party_name` FROM `party_events` AS `T1` JOIN `party` AS `T2` ON `T1`.`party_id` = `T2`.`party_id` GROUP BY `T1`.`party_id` HAVING COUNT(*) >= 2
+What is the name of member in charge of greatest number of events?,SELECT `T1`.`member_name` FROM `member` AS `T1` JOIN `party_events` AS `T2` ON `T1`.`member_id` = `T2`.`member_in_charge_id` GROUP BY `T2`.`member_in_charge_id` ORDER BY COUNT(*) DESC LIMIT 1
+Return the name of the member who is in charge of the most events.,SELECT `T1`.`member_name` FROM `member` AS `T1` JOIN `party_events` AS `T2` ON `T1`.`member_id` = `T2`.`member_in_charge_id` GROUP BY `T2`.`member_in_charge_id` ORDER BY COUNT(*) DESC LIMIT 1
+find the event names that have more than 2 records.,SELECT `event_name` FROM `party_events` GROUP BY `event_name` HAVING COUNT(*) > 2
+Which event names were used more than twice for party events?,SELECT `event_name` FROM `party_events` GROUP BY `event_name` HAVING COUNT(*) > 2
+How many Annual Meeting events happened in the United Kingdom region?,SELECT COUNT(*) FROM `region` AS `t1` JOIN `party` AS `t2` ON `t1`.`region_id` = `t2`.`region_id` JOIN `party_events` AS `t3` ON `t2`.`party_id` = `t3`.`party_id` WHERE `t1`.`region_name` = `United Kingdom` AND `t3`.`Event_Name` = `Annaual Meeting`
+Count the number of Annual Meeting events that took place in the region of the United Kingdom.,SELECT COUNT(*) FROM `region` AS `t1` JOIN `party` AS `t2` ON `t1`.`region_id` = `t2`.`region_id` JOIN `party_events` AS `t3` ON `t2`.`party_id` = `t3`.`party_id` WHERE `t1`.`region_name` = `United Kingdom` AND `t3`.`Event_Name` = `Annaual Meeting`

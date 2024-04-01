@@ -1,45 +1,45 @@
 question,sql
-"Find the name and access counts of all documents, in alphabetic order of the document name.","SELECT document_name ,  access_count FROM documents ORDER BY document_name"
-"What are the names of all the documents, as well as the access counts of each, ordered alphabetically?","SELECT document_name ,  access_count FROM documents ORDER BY document_name"
-"Find the name of the document that has been accessed the greatest number of times, as well as the count of how many times it has been accessed?","SELECT document_name ,  access_count FROM documents ORDER BY access_count DESC LIMIT 1"
-"What is the name of the document which has been accessed the most times, as well as the number of times it has been accessed?","SELECT document_name ,  access_count FROM documents ORDER BY access_count DESC LIMIT 1"
-Find the types of documents with more than 4 documents.,SELECT document_type_code FROM documents GROUP BY document_type_code HAVING count(*)  >  4
-What are the codes of types of documents of which there are for or more?,SELECT document_type_code FROM documents GROUP BY document_type_code HAVING count(*)  >  4
-Find the total access count of all documents in the most popular document type.,SELECT sum(access_count) FROM documents GROUP BY document_type_code ORDER BY count(*) DESC LIMIT 1
-What is the total access count of documents that are of the most common document type?,SELECT sum(access_count) FROM documents GROUP BY document_type_code ORDER BY count(*) DESC LIMIT 1
-What is the average access count of documents?,SELECT avg(access_count) FROM documents
-Find the average access count across all documents?,SELECT avg(access_count) FROM documents
-What is the structure of the document with the least number of accesses?,SELECT t2.document_structure_description FROM documents AS t1 JOIN document_structures AS t2 ON t1.document_structure_code  =  t2.document_structure_code GROUP BY t1.document_structure_code ORDER BY count(*) DESC LIMIT 1
-Return the structure description of the document that has been accessed the fewest number of times.,SELECT t2.document_structure_description FROM documents AS t1 JOIN document_structures AS t2 ON t1.document_structure_code  =  t2.document_structure_code GROUP BY t1.document_structure_code ORDER BY count(*) DESC LIMIT 1
-"What is the type of the document named ""David CV""?","SELECT document_type_code FROM documents WHERE document_name  =  ""David CV"""
-"Return the type code of the document named ""David CV"".","SELECT document_type_code FROM documents WHERE document_name  =  ""David CV"""
-Find the list of documents that are both in the most three popular type and have the most three popular structure.,SELECT document_name FROM documents GROUP BY document_type_code ORDER BY count(*) DESC LIMIT 3 INTERSECT SELECT document_name FROM documents GROUP BY document_structure_code ORDER BY count(*) DESC LIMIT 3
-What are the names of documents that have both one of the three most common types and one of three most common structures?,SELECT document_name FROM documents GROUP BY document_type_code ORDER BY count(*) DESC LIMIT 3 INTERSECT SELECT document_name FROM documents GROUP BY document_structure_code ORDER BY count(*) DESC LIMIT 3
-What document types do have more than 10000 total access number.,SELECT document_type_code FROM documents GROUP BY document_type_code HAVING sum(access_count)  >  10000
-Return the codes of the document types that do not have a total access count of over 10000.,SELECT document_type_code FROM documents GROUP BY document_type_code HAVING sum(access_count)  >  10000
-"What are all the section titles of the document named ""David CV""?","SELECT t2.section_title FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code WHERE t1.document_name  =  ""David CV"""
-"Give the section titles of the document with the name ""David CV"".","SELECT t2.section_title FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code WHERE t1.document_name  =  ""David CV"""
-Find all the name of documents without any sections.,SELECT document_name FROM documents WHERE document_code NOT IN (SELECT document_code FROM document_sections)
-What are the names of documents that do not have any sections?,SELECT document_name FROM documents WHERE document_code NOT IN (SELECT document_code FROM document_sections)
-List all the username and passwords of users with the most popular role.,"SELECT user_name ,  password FROM users GROUP BY role_code ORDER BY count(*) DESC LIMIT 1"
-What are the usernames and passwords of users that have the most common role?,"SELECT user_name ,  password FROM users GROUP BY role_code ORDER BY count(*) DESC LIMIT 1"
-"Find the average access counts of documents with functional area ""Acknowledgement"".","SELECT avg(t1.access_count) FROM documents AS t1 JOIN document_functional_areas AS t2 ON t1.document_code  =  t2.document_code JOIN functional_areas AS t3 ON t2.functional_area_code  =  t3.functional_area_code WHERE t3.functional_area_description  =  ""Acknowledgement"""
-"What are the average access counts of documents that have the functional area description ""Acknowledgement""?","SELECT avg(t1.access_count) FROM documents AS t1 JOIN document_functional_areas AS t2 ON t1.document_code  =  t2.document_code JOIN functional_areas AS t3 ON t2.functional_area_code  =  t3.functional_area_code WHERE t3.functional_area_description  =  ""Acknowledgement"""
-Find names of the document without any images.,SELECT document_name FROM documents EXCEPT SELECT t1.document_name FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code JOIN document_sections_images AS t3 ON t2.section_id  =  t3.section_id
-What are the names of documents that do not have any images?,SELECT document_name FROM documents EXCEPT SELECT t1.document_name FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code JOIN document_sections_images AS t3 ON t2.section_id  =  t3.section_id
-What is the name of the document with the most number of sections?,SELECT t1.document_name FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code GROUP BY t1.document_code ORDER BY count(*) DESC LIMIT 1
-Return the name of the document that has the most sections.,SELECT t1.document_name FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code GROUP BY t1.document_code ORDER BY count(*) DESC LIMIT 1
-"List all the document names which contains ""CV"".","SELECT document_name FROM documents WHERE document_name LIKE ""%CV%"""
-"What are the names of documents that contain the substring ""CV""?","SELECT document_name FROM documents WHERE document_name LIKE ""%CV%"""
-How many users are logged in?,SELECT count(*) FROM users WHERE user_login  =  1
-Count the number of users that are logged in.,SELECT count(*) FROM users WHERE user_login  =  1
-Find the description of the most popular role among the users that have logged in.,SELECT role_description FROM ROLES WHERE role_code  =  (SELECT role_code FROM users WHERE user_login  =  1 GROUP BY role_code ORDER BY count(*) DESC LIMIT 1)
-What is the description of the most popular role among users that have logged in?,SELECT role_description FROM ROLES WHERE role_code  =  (SELECT role_code FROM users WHERE user_login  =  1 GROUP BY role_code ORDER BY count(*) DESC LIMIT 1)
-Find the average access count of documents with the least popular structure.,SELECT avg(access_count) FROM documents GROUP BY document_structure_code ORDER BY count(*) ASC LIMIT 1
-What is the average access count of documents that have the least common structure?,SELECT avg(access_count) FROM documents GROUP BY document_structure_code ORDER BY count(*) ASC LIMIT 1
-List all the image name and URLs in the order of their names.,"SELECT image_name ,  image_url FROM images ORDER BY image_name"
-"What are the names and urls of images, sorted alphabetically?","SELECT image_name ,  image_url FROM images ORDER BY image_name"
-Find the number of users in each role.,"SELECT count(*) ,  role_code FROM users GROUP BY role_code"
-"What are the different role codes for users, and how many users have each?","SELECT count(*) ,  role_code FROM users GROUP BY role_code"
-What document types have more than 2 corresponding documents?,SELECT document_type_code FROM documents GROUP BY document_type_code HAVING count(*)  >  2
-Give the codes of document types that have more than 2 corresponding documents.,SELECT document_type_code FROM documents GROUP BY document_type_code HAVING count(*)  >  2
+"Find the name and access counts of all documents, in alphabetic order of the document name.","SELECT `document_name`, `access_count` FROM `documents` ORDER BY `document_name`"
+"What are the names of all the documents, as well as the access counts of each, ordered alphabetically?","SELECT `document_name`, `access_count` FROM `documents` ORDER BY `document_name`"
+"Find the name of the document that has been accessed the greatest number of times, as well as the count of how many times it has been accessed?","SELECT `document_name`, `access_count` FROM `documents` ORDER BY `access_count` DESC LIMIT 1"
+"What is the name of the document which has been accessed the most times, as well as the number of times it has been accessed?","SELECT `document_name`, `access_count` FROM `documents` ORDER BY `access_count` DESC LIMIT 1"
+Find the types of documents with more than 4 documents.,SELECT `document_type_code` FROM `documents` GROUP BY `document_type_code` HAVING COUNT(*) > 4
+What are the codes of types of documents of which there are for or more?,SELECT `document_type_code` FROM `documents` GROUP BY `document_type_code` HAVING COUNT(*) > 4
+Find the total access count of all documents in the most popular document type.,SELECT SUM(`access_count`) FROM `documents` GROUP BY `document_type_code` ORDER BY COUNT(*) DESC LIMIT 1
+What is the total access count of documents that are of the most common document type?,SELECT SUM(`access_count`) FROM `documents` GROUP BY `document_type_code` ORDER BY COUNT(*) DESC LIMIT 1
+What is the average access count of documents?,SELECT AVG(`access_count`) FROM `documents`
+Find the average access count across all documents?,SELECT AVG(`access_count`) FROM `documents`
+What is the structure of the document with the least number of accesses?,SELECT `t2`.`document_structure_description` FROM `documents` AS `t1` JOIN `document_structures` AS `t2` ON `t1`.`document_structure_code` = `t2`.`document_structure_code` GROUP BY `t1`.`document_structure_code` ORDER BY COUNT(*) DESC LIMIT 1
+Return the structure description of the document that has been accessed the fewest number of times.,SELECT `t2`.`document_structure_description` FROM `documents` AS `t1` JOIN `document_structures` AS `t2` ON `t1`.`document_structure_code` = `t2`.`document_structure_code` GROUP BY `t1`.`document_structure_code` ORDER BY COUNT(*) DESC LIMIT 1
+"What is the type of the document named ""David CV""?",SELECT `document_type_code` FROM `documents` WHERE `document_name` = `David CV`
+"Return the type code of the document named ""David CV"".",SELECT `document_type_code` FROM `documents` WHERE `document_name` = `David CV`
+Find the list of documents that are both in the most three popular type and have the most three popular structure.,SELECT `document_name` FROM `documents` GROUP BY `document_type_code` ORDER BY COUNT(*) DESC LIMIT 3 INTERSECT SELECT `document_name` FROM `documents` GROUP BY `document_structure_code` ORDER BY COUNT(*) DESC LIMIT 3
+What are the names of documents that have both one of the three most common types and one of three most common structures?,SELECT `document_name` FROM `documents` GROUP BY `document_type_code` ORDER BY COUNT(*) DESC LIMIT 3 INTERSECT SELECT `document_name` FROM `documents` GROUP BY `document_structure_code` ORDER BY COUNT(*) DESC LIMIT 3
+What document types do have more than 10000 total access number.,SELECT `document_type_code` FROM `documents` GROUP BY `document_type_code` HAVING SUM(`access_count`) > 10000
+Return the codes of the document types that do not have a total access count of over 10000.,SELECT `document_type_code` FROM `documents` GROUP BY `document_type_code` HAVING SUM(`access_count`) > 10000
+"What are all the section titles of the document named ""David CV""?",SELECT `t2`.`section_title` FROM `documents` AS `t1` JOIN `document_sections` AS `t2` ON `t1`.`document_code` = `t2`.`document_code` WHERE `t1`.`document_name` = `David CV`
+"Give the section titles of the document with the name ""David CV"".",SELECT `t2`.`section_title` FROM `documents` AS `t1` JOIN `document_sections` AS `t2` ON `t1`.`document_code` = `t2`.`document_code` WHERE `t1`.`document_name` = `David CV`
+Find all the name of documents without any sections.,SELECT `document_name` FROM `documents` WHERE NOT `document_code` IN (SELECT `document_code` FROM `document_sections`)
+What are the names of documents that do not have any sections?,SELECT `document_name` FROM `documents` WHERE NOT `document_code` IN (SELECT `document_code` FROM `document_sections`)
+List all the username and passwords of users with the most popular role.,"SELECT `user_name`, `password` FROM `users` GROUP BY `role_code` ORDER BY COUNT(*) DESC LIMIT 1"
+What are the usernames and passwords of users that have the most common role?,"SELECT `user_name`, `password` FROM `users` GROUP BY `role_code` ORDER BY COUNT(*) DESC LIMIT 1"
+"Find the average access counts of documents with functional area ""Acknowledgement"".",SELECT AVG(`t1`.`access_count`) FROM `documents` AS `t1` JOIN `document_functional_areas` AS `t2` ON `t1`.`document_code` = `t2`.`document_code` JOIN `functional_areas` AS `t3` ON `t2`.`functional_area_code` = `t3`.`functional_area_code` WHERE `t3`.`functional_area_description` = `Acknowledgement`
+"What are the average access counts of documents that have the functional area description ""Acknowledgement""?",SELECT AVG(`t1`.`access_count`) FROM `documents` AS `t1` JOIN `document_functional_areas` AS `t2` ON `t1`.`document_code` = `t2`.`document_code` JOIN `functional_areas` AS `t3` ON `t2`.`functional_area_code` = `t3`.`functional_area_code` WHERE `t3`.`functional_area_description` = `Acknowledgement`
+Find names of the document without any images.,SELECT `document_name` FROM `documents` EXCEPT SELECT `t1`.`document_name` FROM `documents` AS `t1` JOIN `document_sections` AS `t2` ON `t1`.`document_code` = `t2`.`document_code` JOIN `document_sections_images` AS `t3` ON `t2`.`section_id` = `t3`.`section_id`
+What are the names of documents that do not have any images?,SELECT `document_name` FROM `documents` EXCEPT SELECT `t1`.`document_name` FROM `documents` AS `t1` JOIN `document_sections` AS `t2` ON `t1`.`document_code` = `t2`.`document_code` JOIN `document_sections_images` AS `t3` ON `t2`.`section_id` = `t3`.`section_id`
+What is the name of the document with the most number of sections?,SELECT `t1`.`document_name` FROM `documents` AS `t1` JOIN `document_sections` AS `t2` ON `t1`.`document_code` = `t2`.`document_code` GROUP BY `t1`.`document_code` ORDER BY COUNT(*) DESC LIMIT 1
+Return the name of the document that has the most sections.,SELECT `t1`.`document_name` FROM `documents` AS `t1` JOIN `document_sections` AS `t2` ON `t1`.`document_code` = `t2`.`document_code` GROUP BY `t1`.`document_code` ORDER BY COUNT(*) DESC LIMIT 1
+"List all the document names which contains ""CV"".",SELECT `document_name` FROM `documents` WHERE `document_name` LIKE `%CV%`
+"What are the names of documents that contain the substring ""CV""?",SELECT `document_name` FROM `documents` WHERE `document_name` LIKE `%CV%`
+How many users are logged in?,SELECT COUNT(*) FROM `users` WHERE `user_login` = 1
+Count the number of users that are logged in.,SELECT COUNT(*) FROM `users` WHERE `user_login` = 1
+Find the description of the most popular role among the users that have logged in.,SELECT `role_description` FROM `ROLES` WHERE `role_code` = (SELECT `role_code` FROM `users` WHERE `user_login` = 1 GROUP BY `role_code` ORDER BY COUNT(*) DESC LIMIT 1)
+What is the description of the most popular role among users that have logged in?,SELECT `role_description` FROM `ROLES` WHERE `role_code` = (SELECT `role_code` FROM `users` WHERE `user_login` = 1 GROUP BY `role_code` ORDER BY COUNT(*) DESC LIMIT 1)
+Find the average access count of documents with the least popular structure.,SELECT AVG(`access_count`) FROM `documents` GROUP BY `document_structure_code` ORDER BY COUNT(*) ASC LIMIT 1
+What is the average access count of documents that have the least common structure?,SELECT AVG(`access_count`) FROM `documents` GROUP BY `document_structure_code` ORDER BY COUNT(*) ASC LIMIT 1
+List all the image name and URLs in the order of their names.,"SELECT `image_name`, `image_url` FROM `images` ORDER BY `image_name`"
+"What are the names and urls of images, sorted alphabetically?","SELECT `image_name`, `image_url` FROM `images` ORDER BY `image_name`"
+Find the number of users in each role.,"SELECT COUNT(*), `role_code` FROM `users` GROUP BY `role_code`"
+"What are the different role codes for users, and how many users have each?","SELECT COUNT(*), `role_code` FROM `users` GROUP BY `role_code`"
+What document types have more than 2 corresponding documents?,SELECT `document_type_code` FROM `documents` GROUP BY `document_type_code` HAVING COUNT(*) > 2
+Give the codes of document types that have more than 2 corresponding documents.,SELECT `document_type_code` FROM `documents` GROUP BY `document_type_code` HAVING COUNT(*) > 2

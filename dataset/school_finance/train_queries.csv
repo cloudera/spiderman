@@ -1,27 +1,27 @@
 question,sql
-How many schools are there?,SELECT count(*) FROM school
-Count the number of schools.,SELECT count(*) FROM school
-Show all school names in alphabetical order.,SELECT school_name FROM school ORDER BY school_name
-"List the name, location, mascot for all schools.","SELECT school_name ,  LOCATION ,  mascot FROM school"
-What are the total and average enrollment of all schools?,"SELECT sum(enrollment) ,  avg(enrollment) FROM school"
-What are the mascots for schools with enrollments above the average?,SELECT mascot FROM school WHERE enrollment  >  (SELECT avg(enrollment) FROM school)
-List the name of the school with the smallest enrollment.,SELECT school_name FROM school ORDER BY enrollment LIMIT 1
-"Show the average, maximum, minimum enrollment of all schools.","SELECT avg(enrollment) ,  max(enrollment) ,  min(enrollment) FROM school"
-Show each county along with the number of schools and total enrollment in each county.,"SELECT county ,  count(*) ,  sum(enrollment) FROM school GROUP BY county"
-"How many donors have endowment for school named ""Glenn""?","SELECT count(DISTINCT T1.donator_name) FROM endowment AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T2.school_name  =  ""Glenn"""
-List each donator name and the amount of endowment in descending order of the amount of endowment.,"SELECT donator_name ,  sum(amount) FROM endowment GROUP BY donator_name ORDER BY sum(amount) DESC"
-List the names of the schools without any endowment.,SELECT school_name FROM school WHERE school_id NOT IN (SELECT school_id FROM endowment)
-List all the names of schools with an endowment amount smaller than or equal to 10.,SELECT T2.school_name FROM endowment AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id GROUP BY T1.school_id HAVING sum(T1.amount)  <=  10
-"Show the names of donors who donated to both school ""Glenn"" and ""Triton.""",SELECT T1.donator_name FROM endowment AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T2.school_name  =  'Glenn' INTERSECT SELECT T1.donator_name FROM endowment AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T2.school_name  =  'Triton'
-Show the names of all the donors except those whose donation amount less than 9.,SELECT donator_name FROM endowment EXCEPT SELECT donator_name FROM endowment WHERE amount  <  9
-List the amount and donor name for the largest amount of donation.,"SELECT amount ,  donator_name FROM endowment ORDER BY amount DESC LIMIT 1"
-How many budgets are above 3000 in year 2001 or before?,SELECT count(*) FROM budget WHERE budgeted  >  3000 AND YEAR  <=  2001
-Count the number of budgets in year 2001 or before whose budgeted amount is greater than 3000,SELECT count(*) FROM budget WHERE budgeted  >  3000 AND YEAR  <=  2001
-"Show each school name, its budgeted amount, and invested amount in year 2002 or after.","SELECT T2.school_name ,  T1.budgeted ,  T1.invested FROM budget AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T1.year  >=  2002"
-Show all donor names.,SELECT DISTINCT donator_name FROM endowment
-How many budget record has a budget amount smaller than the invested amount?,SELECT count(*) FROM budget WHERE budgeted  <  invested
-"What is the total budget amount for school ""Glenn"" in all years?",SELECT sum(T1.budgeted) FROM budget AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T2.school_name  =  'Glenn'
-Show the names of schools with a total budget amount greater than 100 or a total endowment greater than 10.,SELECT T2.school_name FROM budget AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id JOIN endowment AS T3 ON T2.school_id  =  T3.school_id GROUP BY T2.school_name HAVING sum(T1.budgeted)  >  100 OR sum(T3.amount)  >  10
-Find the names of schools that have more than one donator with donation amount above 8.5.,SELECT T2.School_name FROM endowment AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T1.amount  >  8.5 GROUP BY T1.school_id HAVING count(*)  >  1
-Find the number of schools that have more than one donator whose donation amount is less than 8.5.,SELECT count(*) FROM (SELECT * FROM endowment WHERE amount  >  8.5 GROUP BY school_id HAVING count(*)  >  1)
-"List the name, IHSAA Football Class, and Mascot of the schools that have more than 6000 of budgeted amount or were founded before 2003, in the order of percent of total invested budget and total budgeted budget.","SELECT T1.School_name ,  T1.Mascot ,  T1.IHSAA_Football_Class FROM school AS T1 JOIN budget AS T2 ON T1.school_id  =  T2.school_id WHERE Budgeted  >  6000 OR YEAR  <  2003 ORDER BY T2.total_budget_percent_invested ,  T2.total_budget_percent_budgeted"
+How many schools are there?,SELECT COUNT(*) FROM `school`
+Count the number of schools.,SELECT COUNT(*) FROM `school`
+Show all school names in alphabetical order.,SELECT `school_name` FROM `school` ORDER BY `school_name`
+"List the name, location, mascot for all schools.","SELECT `school_name`, `LOCATION`, `mascot` FROM `school`"
+What are the total and average enrollment of all schools?,"SELECT SUM(`enrollment`), AVG(`enrollment`) FROM `school`"
+What are the mascots for schools with enrollments above the average?,SELECT `mascot` FROM `school` WHERE `enrollment` > (SELECT AVG(`enrollment`) FROM `school`)
+List the name of the school with the smallest enrollment.,SELECT `school_name` FROM `school` ORDER BY `enrollment` LIMIT 1
+"Show the average, maximum, minimum enrollment of all schools.","SELECT AVG(`enrollment`), MAX(`enrollment`), MIN(`enrollment`) FROM `school`"
+Show each county along with the number of schools and total enrollment in each county.,"SELECT `county`, COUNT(*), SUM(`enrollment`) FROM `school` GROUP BY `county`"
+"How many donors have endowment for school named ""Glenn""?",SELECT COUNT(DISTINCT `T1`.`donator_name`) FROM `endowment` AS `T1` JOIN `school` AS `T2` ON `T1`.`school_id` = `T2`.`school_id` WHERE `T2`.`school_name` = `Glenn`
+List each donator name and the amount of endowment in descending order of the amount of endowment.,"SELECT `donator_name`, SUM(`amount`) FROM `endowment` GROUP BY `donator_name` ORDER BY SUM(`amount`) DESC"
+List the names of the schools without any endowment.,SELECT `school_name` FROM `school` WHERE NOT `school_id` IN (SELECT `school_id` FROM `endowment`)
+List all the names of schools with an endowment amount smaller than or equal to 10.,SELECT `T2`.`school_name` FROM `endowment` AS `T1` JOIN `school` AS `T2` ON `T1`.`school_id` = `T2`.`school_id` GROUP BY `T1`.`school_id` HAVING SUM(`T1`.`amount`) <= 10
+"Show the names of donors who donated to both school ""Glenn"" and ""Triton.""",SELECT `T1`.`donator_name` FROM `endowment` AS `T1` JOIN `school` AS `T2` ON `T1`.`school_id` = `T2`.`school_id` WHERE `T2`.`school_name` = 'Glenn' INTERSECT SELECT `T1`.`donator_name` FROM `endowment` AS `T1` JOIN `school` AS `T2` ON `T1`.`school_id` = `T2`.`school_id` WHERE `T2`.`school_name` = 'Triton'
+Show the names of all the donors except those whose donation amount less than 9.,SELECT `donator_name` FROM `endowment` EXCEPT SELECT `donator_name` FROM `endowment` WHERE `amount` < 9
+List the amount and donor name for the largest amount of donation.,"SELECT `amount`, `donator_name` FROM `endowment` ORDER BY `amount` DESC LIMIT 1"
+How many budgets are above 3000 in year 2001 or before?,SELECT COUNT(*) FROM `budget` WHERE `budgeted` > 3000 AND `YEAR` <= 2001
+Count the number of budgets in year 2001 or before whose budgeted amount is greater than 3000,SELECT COUNT(*) FROM `budget` WHERE `budgeted` > 3000 AND `YEAR` <= 2001
+"Show each school name, its budgeted amount, and invested amount in year 2002 or after.","SELECT `T2`.`school_name`, `T1`.`budgeted`, `T1`.`invested` FROM `budget` AS `T1` JOIN `school` AS `T2` ON `T1`.`school_id` = `T2`.`school_id` WHERE `T1`.`year` >= 2002"
+Show all donor names.,SELECT DISTINCT `donator_name` FROM `endowment`
+How many budget record has a budget amount smaller than the invested amount?,SELECT COUNT(*) FROM `budget` WHERE `budgeted` < `invested`
+"What is the total budget amount for school ""Glenn"" in all years?",SELECT SUM(`T1`.`budgeted`) FROM `budget` AS `T1` JOIN `school` AS `T2` ON `T1`.`school_id` = `T2`.`school_id` WHERE `T2`.`school_name` = 'Glenn'
+Show the names of schools with a total budget amount greater than 100 or a total endowment greater than 10.,SELECT `T2`.`school_name` FROM `budget` AS `T1` JOIN `school` AS `T2` ON `T1`.`school_id` = `T2`.`school_id` JOIN `endowment` AS `T3` ON `T2`.`school_id` = `T3`.`school_id` GROUP BY `T2`.`school_name` HAVING SUM(`T1`.`budgeted`) > 100 OR SUM(`T3`.`amount`) > 10
+Find the names of schools that have more than one donator with donation amount above 8.5.,SELECT `T2`.`School_name` FROM `endowment` AS `T1` JOIN `school` AS `T2` ON `T1`.`school_id` = `T2`.`school_id` WHERE `T1`.`amount` > 8.5 GROUP BY `T1`.`school_id` HAVING COUNT(*) > 1
+Find the number of schools that have more than one donator whose donation amount is less than 8.5.,SELECT COUNT(*) FROM (SELECT * FROM `endowment` WHERE `amount` > 8.5 GROUP BY `school_id` HAVING COUNT(*) > 1)
+"List the name, IHSAA Football Class, and Mascot of the schools that have more than 6000 of budgeted amount or were founded before 2003, in the order of percent of total invested budget and total budgeted budget.","SELECT `T1`.`School_name`, `T1`.`Mascot`, `T1`.`IHSAA_Football_Class` FROM `school` AS `T1` JOIN `budget` AS `T2` ON `T1`.`school_id` = `T2`.`school_id` WHERE `Budgeted` > 6000 OR `YEAR` < 2003 ORDER BY `T2`.`total_budget_percent_invested`, `T2`.`total_budget_percent_budgeted`"

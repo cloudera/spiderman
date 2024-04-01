@@ -1,41 +1,41 @@
 question,sql
-How many farms are there?,SELECT count(*) FROM farm
-Count the number of farms.,SELECT count(*) FROM farm
-List the total number of horses on farms in ascending order.,SELECT Total_Horses FROM farm ORDER BY Total_Horses ASC
-"What is the total horses record for each farm, sorted ascending?",SELECT Total_Horses FROM farm ORDER BY Total_Horses ASC
-"What are the hosts of competitions whose theme is not ""Aliens""?",SELECT Hosts FROM farm_competition WHERE Theme !=  'Aliens'
-Return the hosts of competitions for which the theme is not Aliens?,SELECT Hosts FROM farm_competition WHERE Theme !=  'Aliens'
-What are the themes of farm competitions sorted by year in ascending order?,SELECT Theme FROM farm_competition ORDER BY YEAR ASC
-"Return the themes of farm competitions, sorted by year ascending.",SELECT Theme FROM farm_competition ORDER BY YEAR ASC
-What is the average number of working horses of farms with more than 5000 total number of horses?,SELECT avg(Working_Horses) FROM farm WHERE Total_Horses  >  5000
-Give the average number of working horses on farms with more than 5000 total horses.,SELECT avg(Working_Horses) FROM farm WHERE Total_Horses  >  5000
-What are the maximum and minimum number of cows across all farms.,"SELECT max(Cows) ,  min(Cows) FROM farm"
-Return the maximum and minimum number of cows across all farms.,"SELECT max(Cows) ,  min(Cows) FROM farm"
-How many different statuses do cities have?,SELECT count(DISTINCT Status) FROM city
-Count the number of different statuses.,SELECT count(DISTINCT Status) FROM city
-List official names of cities in descending order of population.,SELECT Official_Name FROM city ORDER BY Population DESC
-"What are the official names of cities, ordered descending by population?",SELECT Official_Name FROM city ORDER BY Population DESC
-List the official name and status of the city with the largest population.,"SELECT Official_Name ,  Status FROM city ORDER BY Population DESC LIMIT 1"
-What is the official name and status of the city with the most residents?,"SELECT Official_Name ,  Status FROM city ORDER BY Population DESC LIMIT 1"
-Show the years and the official names of the host cities of competitions.,"SELECT T2.Year ,  T1.Official_Name FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID"
-Give the years and official names of the cities of each competition.,"SELECT T2.Year ,  T1.Official_Name FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID"
-Show the official names of the cities that have hosted more than one competition.,SELECT T1.Official_Name FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID GROUP BY T2.Host_city_ID HAVING COUNT(*)  >  1
-What are the official names of cities that have hosted more than one competition?,SELECT T1.Official_Name FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID GROUP BY T2.Host_city_ID HAVING COUNT(*)  >  1
-Show the status of the city that has hosted the greatest number of competitions.,SELECT T1.Status FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID GROUP BY T2.Host_city_ID ORDER BY COUNT(*) DESC LIMIT 1
-What is the status of the city that has hosted the most competitions?,SELECT T1.Status FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID GROUP BY T2.Host_city_ID ORDER BY COUNT(*) DESC LIMIT 1
-Please show the themes of competitions with host cities having populations larger than 1000.,SELECT T2.Theme FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID WHERE T1.Population  >  1000
-What are the themes of competitions that have corresponding host cities with more than 1000 residents?,SELECT T2.Theme FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID WHERE T1.Population  >  1000
-Please show the different statuses of cities and the average population of cities with each status.,"SELECT Status ,  avg(Population) FROM city GROUP BY Status"
-What are the statuses and average populations of each city?,"SELECT Status ,  avg(Population) FROM city GROUP BY Status"
-"Please show the different statuses, ordered by the number of cities that have each.",SELECT Status FROM city GROUP BY Status ORDER BY COUNT(*) ASC
-"Return the different statuses of cities, ascending by frequency.",SELECT Status FROM city GROUP BY Status ORDER BY COUNT(*) ASC
-List the most common type of Status across cities.,SELECT Status FROM city GROUP BY Status ORDER BY COUNT(*) DESC LIMIT 1
-What is the most common status across all cities?,SELECT Status FROM city GROUP BY Status ORDER BY COUNT(*) DESC LIMIT 1
-List the official names of cities that have not held any competition.,SELECT Official_Name FROM city WHERE City_ID NOT IN (SELECT Host_city_ID FROM farm_competition)
-What are the official names of cities that have not hosted a farm competition?,SELECT Official_Name FROM city WHERE City_ID NOT IN (SELECT Host_city_ID FROM farm_competition)
-Show the status shared by cities with population bigger than 1500 and smaller than 500.,SELECT Status FROM city WHERE Population  >  1500 INTERSECT SELECT Status FROM city WHERE Population  <  500
-Which statuses correspond to both cities that have a population over 1500 and cities that have a population lower than 500?,SELECT Status FROM city WHERE Population  >  1500 INTERSECT SELECT Status FROM city WHERE Population  <  500
-Find the official names of cities with population bigger than 1500 or smaller than 500.,SELECT Official_Name FROM city WHERE Population  >  1500 OR Population  <  500
-What are the official names of cities that have population over 1500 or less than 500?,SELECT Official_Name FROM city WHERE Population  >  1500 OR Population  <  500
-"Show the census ranking of cities whose status are not ""Village"".","SELECT Census_Ranking FROM city WHERE Status !=  ""Village"""
-"What are the census rankings of cities that do not have the status ""Village""?","SELECT Census_Ranking FROM city WHERE Status !=  ""Village"""
+How many farms are there?,SELECT COUNT(*) FROM `farm`
+Count the number of farms.,SELECT COUNT(*) FROM `farm`
+List the total number of horses on farms in ascending order.,SELECT `Total_Horses` FROM `farm` ORDER BY `Total_Horses` ASC
+"What is the total horses record for each farm, sorted ascending?",SELECT `Total_Horses` FROM `farm` ORDER BY `Total_Horses` ASC
+"What are the hosts of competitions whose theme is not ""Aliens""?",SELECT `Hosts` FROM `farm_competition` WHERE `Theme` <> 'Aliens'
+Return the hosts of competitions for which the theme is not Aliens?,SELECT `Hosts` FROM `farm_competition` WHERE `Theme` <> 'Aliens'
+What are the themes of farm competitions sorted by year in ascending order?,SELECT `Theme` FROM `farm_competition` ORDER BY `YEAR` ASC
+"Return the themes of farm competitions, sorted by year ascending.",SELECT `Theme` FROM `farm_competition` ORDER BY `YEAR` ASC
+What is the average number of working horses of farms with more than 5000 total number of horses?,SELECT AVG(`Working_Horses`) FROM `farm` WHERE `Total_Horses` > 5000
+Give the average number of working horses on farms with more than 5000 total horses.,SELECT AVG(`Working_Horses`) FROM `farm` WHERE `Total_Horses` > 5000
+What are the maximum and minimum number of cows across all farms.,"SELECT MAX(`Cows`), MIN(`Cows`) FROM `farm`"
+Return the maximum and minimum number of cows across all farms.,"SELECT MAX(`Cows`), MIN(`Cows`) FROM `farm`"
+How many different statuses do cities have?,SELECT COUNT(DISTINCT `Status`) FROM `city`
+Count the number of different statuses.,SELECT COUNT(DISTINCT `Status`) FROM `city`
+List official names of cities in descending order of population.,SELECT `Official_Name` FROM `city` ORDER BY `Population` DESC
+"What are the official names of cities, ordered descending by population?",SELECT `Official_Name` FROM `city` ORDER BY `Population` DESC
+List the official name and status of the city with the largest population.,"SELECT `Official_Name`, `Status` FROM `city` ORDER BY `Population` DESC LIMIT 1"
+What is the official name and status of the city with the most residents?,"SELECT `Official_Name`, `Status` FROM `city` ORDER BY `Population` DESC LIMIT 1"
+Show the years and the official names of the host cities of competitions.,"SELECT `T2`.`Year`, `T1`.`Official_Name` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID`"
+Give the years and official names of the cities of each competition.,"SELECT `T2`.`Year`, `T1`.`Official_Name` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID`"
+Show the official names of the cities that have hosted more than one competition.,SELECT `T1`.`Official_Name` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` GROUP BY `T2`.`Host_city_ID` HAVING COUNT(*) > 1
+What are the official names of cities that have hosted more than one competition?,SELECT `T1`.`Official_Name` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` GROUP BY `T2`.`Host_city_ID` HAVING COUNT(*) > 1
+Show the status of the city that has hosted the greatest number of competitions.,SELECT `T1`.`Status` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` GROUP BY `T2`.`Host_city_ID` ORDER BY COUNT(*) DESC LIMIT 1
+What is the status of the city that has hosted the most competitions?,SELECT `T1`.`Status` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` GROUP BY `T2`.`Host_city_ID` ORDER BY COUNT(*) DESC LIMIT 1
+Please show the themes of competitions with host cities having populations larger than 1000.,SELECT `T2`.`Theme` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` WHERE `T1`.`Population` > 1000
+What are the themes of competitions that have corresponding host cities with more than 1000 residents?,SELECT `T2`.`Theme` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` WHERE `T1`.`Population` > 1000
+Please show the different statuses of cities and the average population of cities with each status.,"SELECT `Status`, AVG(`Population`) FROM `city` GROUP BY `Status`"
+What are the statuses and average populations of each city?,"SELECT `Status`, AVG(`Population`) FROM `city` GROUP BY `Status`"
+"Please show the different statuses, ordered by the number of cities that have each.",SELECT `Status` FROM `city` GROUP BY `Status` ORDER BY COUNT(*) ASC
+"Return the different statuses of cities, ascending by frequency.",SELECT `Status` FROM `city` GROUP BY `Status` ORDER BY COUNT(*) ASC
+List the most common type of Status across cities.,SELECT `Status` FROM `city` GROUP BY `Status` ORDER BY COUNT(*) DESC LIMIT 1
+What is the most common status across all cities?,SELECT `Status` FROM `city` GROUP BY `Status` ORDER BY COUNT(*) DESC LIMIT 1
+List the official names of cities that have not held any competition.,SELECT `Official_Name` FROM `city` WHERE NOT `City_ID` IN (SELECT `Host_city_ID` FROM `farm_competition`)
+What are the official names of cities that have not hosted a farm competition?,SELECT `Official_Name` FROM `city` WHERE NOT `City_ID` IN (SELECT `Host_city_ID` FROM `farm_competition`)
+Show the status shared by cities with population bigger than 1500 and smaller than 500.,SELECT `Status` FROM `city` WHERE `Population` > 1500 INTERSECT SELECT `Status` FROM `city` WHERE `Population` < 500
+Which statuses correspond to both cities that have a population over 1500 and cities that have a population lower than 500?,SELECT `Status` FROM `city` WHERE `Population` > 1500 INTERSECT SELECT `Status` FROM `city` WHERE `Population` < 500
+Find the official names of cities with population bigger than 1500 or smaller than 500.,SELECT `Official_Name` FROM `city` WHERE `Population` > 1500 OR `Population` < 500
+What are the official names of cities that have population over 1500 or less than 500?,SELECT `Official_Name` FROM `city` WHERE `Population` > 1500 OR `Population` < 500
+"Show the census ranking of cities whose status are not ""Village"".",SELECT `Census_Ranking` FROM `city` WHERE `Status` <> `Village`
+"What are the census rankings of cities that do not have the status ""Village""?",SELECT `Census_Ranking` FROM `city` WHERE `Status` <> `Village`

@@ -1,31 +1,31 @@
 question,sql
-Show all the locations where no cinema has capacity over 800.,SELECT LOCATION FROM cinema EXCEPT SELECT LOCATION FROM cinema WHERE capacity  >  800
-Show all the locations where some cinemas were opened in both year 2010 and year 2011.,SELECT LOCATION FROM cinema WHERE openning_year  =  2010 INTERSECT SELECT LOCATION FROM cinema WHERE openning_year  =  2011
-How many cinema do we have?,SELECT count(*) FROM cinema
-Count the number of cinemas.,SELECT count(*) FROM cinema
-"Show name, opening year, and capacity for each cinema.","SELECT name ,  openning_year ,  capacity FROM cinema"
-Show the cinema name and location for cinemas with capacity above average.,"SELECT name ,  LOCATION FROM cinema WHERE capacity  >  (SELECT avg(capacity) FROM cinema)"
-What are all the locations with a cinema?,SELECT DISTINCT LOCATION FROM cinema
-Find the distinct locations that has a cinema.,SELECT DISTINCT LOCATION FROM cinema
-Show all the cinema names and opening years in descending order of opening year.,"SELECT name ,  openning_year FROM cinema ORDER BY openning_year DESC"
-What are the name and location of the cinema with the largest capacity?,"SELECT name ,  LOCATION FROM cinema ORDER BY capacity DESC LIMIT 1"
-"Show the average, minimum, and maximum capacity for all the cinemas opened in year 2011 or later.","SELECT avg(capacity) ,  min(capacity) ,  max(capacity) FROM cinema WHERE openning_year  >=  2011"
-Show each location and the number of cinemas there.,"SELECT LOCATION ,  count(*) FROM cinema GROUP BY LOCATION"
-What is the location with the most cinemas opened in year 2010 or later?,SELECT LOCATION FROM cinema WHERE openning_year  >=  2010 GROUP BY LOCATION ORDER BY count(*) DESC LIMIT 1
-Show all the locations with at least two cinemas with capacity above 300.,SELECT LOCATION FROM cinema WHERE capacity  >  300 GROUP BY LOCATION HAVING count(*)  >=  2
-Which locations have 2 or more cinemas with capacity over 300?,SELECT LOCATION FROM cinema WHERE capacity  >  300 GROUP BY LOCATION HAVING count(*)  >=  2
-Show the title and director for all films.,"SELECT title ,  directed_by FROM film"
-What are the title and director of each film?,"SELECT title ,  directed_by FROM film"
-Show all directors.,SELECT DISTINCT directed_by FROM film
-Who are all the directors?,SELECT DISTINCT directed_by FROM film
-List all directors along with the number of films directed by each director.,"SELECT directed_by ,  count(*) FROM film GROUP BY directed_by"
-What is total number of show times per dat for each cinema?,"SELECT T2.name ,  sum(T1.show_times_per_day) FROM schedule AS T1 JOIN cinema AS T2 ON T1.cinema_id  =  T2.cinema_id GROUP BY T1.cinema_id"
-What are the title and maximum price of each film?,"SELECT T2.title ,  max(T1.price) FROM schedule AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id GROUP BY T1.film_id"
-Give me the title and highest price for each film.,"SELECT T2.title ,  max(T1.price) FROM schedule AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id GROUP BY T1.film_id"
-"Show cinema name, film title, date, and price for each record in schedule.","SELECT T3.name ,  T2.title ,  T1.date ,  T1.price FROM schedule AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id JOIN cinema AS T3 ON T1.cinema_id  =  T3.cinema_id"
-What are the title and director of the films without any schedule?,"SELECT title ,  directed_by FROM film WHERE film_id NOT IN (SELECT film_id FROM schedule)"
-Show director with the largest number of show times in total.,SELECT T2.directed_by FROM schedule AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id GROUP BY T2.directed_by ORDER BY sum(T1.show_times_per_day) DESC LIMIT 1
-Find the locations that have more than one movie theater with capacity above 300.,SELECT LOCATION FROM cinema WHERE capacity  >  300 GROUP BY LOCATION HAVING count(*)  >  1
-In which locations are there more than one movie theater with capacity above 300?,SELECT LOCATION FROM cinema WHERE capacity  >  300 GROUP BY LOCATION HAVING count(*)  >  1
-How many films have the word 'Dummy' in their titles?,"SELECT count(*) FROM film WHERE title LIKE ""%Dummy%"""
-Count the number of films whose title contains the word 'Dummy'.,"SELECT count(*) FROM film WHERE title LIKE ""%Dummy%"""
+Show all the locations where no cinema has capacity over 800.,SELECT `LOCATION` FROM `cinema` EXCEPT SELECT `LOCATION` FROM `cinema` WHERE `capacity` > 800
+Show all the locations where some cinemas were opened in both year 2010 and year 2011.,SELECT `LOCATION` FROM `cinema` WHERE `openning_year` = 2010 INTERSECT SELECT `LOCATION` FROM `cinema` WHERE `openning_year` = 2011
+How many cinema do we have?,SELECT COUNT(*) FROM `cinema`
+Count the number of cinemas.,SELECT COUNT(*) FROM `cinema`
+"Show name, opening year, and capacity for each cinema.","SELECT `name`, `openning_year`, `capacity` FROM `cinema`"
+Show the cinema name and location for cinemas with capacity above average.,"SELECT `name`, `LOCATION` FROM `cinema` WHERE `capacity` > (SELECT AVG(`capacity`) FROM `cinema`)"
+What are all the locations with a cinema?,SELECT DISTINCT `LOCATION` FROM `cinema`
+Find the distinct locations that has a cinema.,SELECT DISTINCT `LOCATION` FROM `cinema`
+Show all the cinema names and opening years in descending order of opening year.,"SELECT `name`, `openning_year` FROM `cinema` ORDER BY `openning_year` DESC"
+What are the name and location of the cinema with the largest capacity?,"SELECT `name`, `LOCATION` FROM `cinema` ORDER BY `capacity` DESC LIMIT 1"
+"Show the average, minimum, and maximum capacity for all the cinemas opened in year 2011 or later.","SELECT AVG(`capacity`), MIN(`capacity`), MAX(`capacity`) FROM `cinema` WHERE `openning_year` >= 2011"
+Show each location and the number of cinemas there.,"SELECT `LOCATION`, COUNT(*) FROM `cinema` GROUP BY `LOCATION`"
+What is the location with the most cinemas opened in year 2010 or later?,SELECT `LOCATION` FROM `cinema` WHERE `openning_year` >= 2010 GROUP BY `LOCATION` ORDER BY COUNT(*) DESC LIMIT 1
+Show all the locations with at least two cinemas with capacity above 300.,SELECT `LOCATION` FROM `cinema` WHERE `capacity` > 300 GROUP BY `LOCATION` HAVING COUNT(*) >= 2
+Which locations have 2 or more cinemas with capacity over 300?,SELECT `LOCATION` FROM `cinema` WHERE `capacity` > 300 GROUP BY `LOCATION` HAVING COUNT(*) >= 2
+Show the title and director for all films.,"SELECT `title`, `directed_by` FROM `film`"
+What are the title and director of each film?,"SELECT `title`, `directed_by` FROM `film`"
+Show all directors.,SELECT DISTINCT `directed_by` FROM `film`
+Who are all the directors?,SELECT DISTINCT `directed_by` FROM `film`
+List all directors along with the number of films directed by each director.,"SELECT `directed_by`, COUNT(*) FROM `film` GROUP BY `directed_by`"
+What is total number of show times per dat for each cinema?,"SELECT `T2`.`name`, SUM(`T1`.`show_times_per_day`) FROM `schedule` AS `T1` JOIN `cinema` AS `T2` ON `T1`.`cinema_id` = `T2`.`cinema_id` GROUP BY `T1`.`cinema_id`"
+What are the title and maximum price of each film?,"SELECT `T2`.`title`, MAX(`T1`.`price`) FROM `schedule` AS `T1` JOIN `film` AS `T2` ON `T1`.`film_id` = `T2`.`film_id` GROUP BY `T1`.`film_id`"
+Give me the title and highest price for each film.,"SELECT `T2`.`title`, MAX(`T1`.`price`) FROM `schedule` AS `T1` JOIN `film` AS `T2` ON `T1`.`film_id` = `T2`.`film_id` GROUP BY `T1`.`film_id`"
+"Show cinema name, film title, date, and price for each record in schedule.","SELECT `T3`.`name`, `T2`.`title`, `T1`.`date`, `T1`.`price` FROM `schedule` AS `T1` JOIN `film` AS `T2` ON `T1`.`film_id` = `T2`.`film_id` JOIN `cinema` AS `T3` ON `T1`.`cinema_id` = `T3`.`cinema_id`"
+What are the title and director of the films without any schedule?,"SELECT `title`, `directed_by` FROM `film` WHERE NOT `film_id` IN (SELECT `film_id` FROM `schedule`)"
+Show director with the largest number of show times in total.,SELECT `T2`.`directed_by` FROM `schedule` AS `T1` JOIN `film` AS `T2` ON `T1`.`film_id` = `T2`.`film_id` GROUP BY `T2`.`directed_by` ORDER BY SUM(`T1`.`show_times_per_day`) DESC LIMIT 1
+Find the locations that have more than one movie theater with capacity above 300.,SELECT `LOCATION` FROM `cinema` WHERE `capacity` > 300 GROUP BY `LOCATION` HAVING COUNT(*) > 1
+In which locations are there more than one movie theater with capacity above 300?,SELECT `LOCATION` FROM `cinema` WHERE `capacity` > 300 GROUP BY `LOCATION` HAVING COUNT(*) > 1
+How many films have the word 'Dummy' in their titles?,SELECT COUNT(*) FROM `film` WHERE `title` LIKE `%Dummy%`
+Count the number of films whose title contains the word 'Dummy'.,SELECT COUNT(*) FROM `film` WHERE `title` LIKE `%Dummy%`

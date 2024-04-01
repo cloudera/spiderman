@@ -1,59 +1,59 @@
 question,sql
-How many countries are there in total?,SELECT count(*) FROM country
-Count the number of countries.,SELECT count(*) FROM country
-Show the country name and capital of all countries.,"SELECT Country_name ,  Capital FROM country"
-What are the names and capitals of each country?,"SELECT Country_name ,  Capital FROM country"
-"Show all official native languages that contain the word ""English"".","SELECT Official_native_language FROM country WHERE Official_native_language LIKE ""%English%"""
-"What are the official native languages that contain the string ""English"".","SELECT Official_native_language FROM country WHERE Official_native_language LIKE ""%English%"""
-Show all distinct positions of matches.,SELECT DISTINCT POSITION FROM match_season
-What are the different positions for match season?,SELECT DISTINCT POSITION FROM match_season
-Show the players from college UCLA.,"SELECT Player FROM match_season WHERE College  =  ""UCLA"""
-Who are the players from UCLA?,"SELECT Player FROM match_season WHERE College  =  ""UCLA"""
-Show the distinct position of players from college UCLA or Duke.,"SELECT DISTINCT POSITION FROM match_season WHERE College  =  ""UCLA"" OR College  =  ""Duke"""
-What are the different positions of players from UCLA or Duke colleges?,"SELECT DISTINCT POSITION FROM match_season WHERE College  =  ""UCLA"" OR College  =  ""Duke"""
-Show the draft pick numbers and draft classes of players whose positions are defenders.,"SELECT Draft_Pick_Number ,  Draft_Class FROM match_season WHERE POSITION  =  ""Defender"""
-What are the draft pick numbers and draft classes for players who play the Defender position?,"SELECT Draft_Pick_Number ,  Draft_Class FROM match_season WHERE POSITION  =  ""Defender"""
-How many distinct teams are involved in match seasons?,SELECT count(DISTINCT Team) FROM match_season
-Count the number of different teams involved in match season.,SELECT count(DISTINCT Team) FROM match_season
-Show the players and the years played.,"SELECT Player ,  Years_Played FROM player"
-Who are the different players and how many years has each played?,"SELECT Player ,  Years_Played FROM player"
-Show all team names.,SELECT Name FROM Team
-What are the names of all teams?,SELECT Name FROM Team
-"Show the season, the player, and the name of the country that player belongs to.","SELECT T2.Season ,  T2.Player ,  T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country"
-"For each player, what are their name, season, and country that they belong to?","SELECT T2.Season ,  T2.Player ,  T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country"
-Which players are from Indonesia?,"SELECT T2.Player FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T1.Country_name  =  ""Indonesia"""
-Who are the players from Indonesia?,"SELECT T2.Player FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T1.Country_name  =  ""Indonesia"""
-What are the distinct positions of the players from a country whose capital is Dublin?,"SELECT DISTINCT T2.Position FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T1.Capital  =  ""Dublin"""
-Give the different positions of players who play for the country with the capital Dublin.,"SELECT DISTINCT T2.Position FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T1.Capital  =  ""Dublin"""
-What are the official languages of the countries of players from Maryland or Duke college?,"SELECT T1.Official_native_language FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.College  =  ""Maryland"" OR T2.College  =  ""Duke"""
-Return the official native languages of countries who have players from Maryland or Duke colleges.,"SELECT T1.Official_native_language FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.College  =  ""Maryland"" OR T2.College  =  ""Duke"""
-How many distinct official languages are there among countries of players whose positions are defenders.,"SELECT count(DISTINCT T1.Official_native_language) FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  ""Defender"""
-Count the number of different official languages corresponding to countries that players who play Defender are from.,"SELECT count(DISTINCT T1.Official_native_language) FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  ""Defender"""
-"Show the season, the player, and the name of the team that players belong to.","SELECT T1.Season ,  T1.Player ,  T2.Name FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id"
-"Who are the different players, what season do they play in, and what is the name of the team they are on?","SELECT T1.Season ,  T1.Player ,  T2.Name FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id"
-"Show the positions of the players from the team with name ""Ryley Goldner"".","SELECT T1.Position FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  ""Ryley Goldner"""
-Return the positions of players on the team Ryley Goldner.,"SELECT T1.Position FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  ""Ryley Goldner"""
-"How many distinct colleges are associated with players from the team with name ""Columbus Crew"".","SELECT count(DISTINCT T1.College) FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  ""Columbus Crew"""
-Count the number of different colleges that players who play for Columbus Crew are from.,"SELECT count(DISTINCT T1.College) FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  ""Columbus Crew"""
-"Show the players and years played for players from team ""Columbus Crew"".","SELECT T1.Player , T1.Years_Played FROM player AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  ""Columbus Crew"""
-"What are the players who played for Columbus Crew, and how many years did each play for?","SELECT T1.Player , T1.Years_Played FROM player AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  ""Columbus Crew"""
-Show the position of players and the corresponding number of players.,"SELECT POSITION ,  COUNT(*) FROM match_season GROUP BY POSITION"
-How many players played each position?,"SELECT POSITION ,  COUNT(*) FROM match_season GROUP BY POSITION"
-Show the country names and the corresponding number of players.,"SELECT Country_name ,  COUNT(*) FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country GROUP BY T1.Country_name"
-How many players are from each country?,"SELECT Country_name ,  COUNT(*) FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country GROUP BY T1.Country_name"
-Return all players sorted by college in ascending alphabetical order.,SELECT player FROM match_season ORDER BY College ASC
-"What are all the players who played in match season, sorted by college in ascending alphabetical order?",SELECT player FROM match_season ORDER BY College ASC
-Show the most common position of players in match seasons.,SELECT POSITION FROM match_season GROUP BY POSITION ORDER BY count(*) DESC LIMIT 1
-What is the position that is most common among players in match seasons?,SELECT POSITION FROM match_season GROUP BY POSITION ORDER BY count(*) DESC LIMIT 1
-Show the top 3 most common colleges of players in match seasons.,SELECT College FROM match_season GROUP BY College ORDER BY count(*) DESC LIMIT 3
-What are the three colleges from which the most players are from?,SELECT College FROM match_season GROUP BY College ORDER BY count(*) DESC LIMIT 3
-Show the name of colleges that have at least two players.,SELECT College FROM match_season GROUP BY College HAVING count(*)  >=  2
-What are the names of all colleges that have two or more players?,SELECT College FROM match_season GROUP BY College HAVING count(*)  >=  2
-Show the name of colleges that have at least two players in descending alphabetical order.,SELECT College FROM match_season GROUP BY College HAVING count(*)  >=  2 ORDER BY College DESC
-"What are the names of colleges that have two or more players, listed in descending alphabetical order?",SELECT College FROM match_season GROUP BY College HAVING count(*)  >=  2 ORDER BY College DESC
-What are the names of teams that do no have match season record?,SELECT Name FROM team WHERE Team_id NOT IN (SELECT Team FROM match_season)
-Return the names of teams that have no match season record.,SELECT Name FROM team WHERE Team_id NOT IN (SELECT Team FROM match_season)
-What are the names of countries that have both players with position forward and players with position defender?,"SELECT T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  ""Forward"" INTERSECT SELECT T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  ""Defender"""
-"Return the names of countries that have players that play the Forward position, as well as players who play the Defender position.","SELECT T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  ""Forward"" INTERSECT SELECT T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  ""Defender"""
-Which college have both players with position midfielder and players with position defender?,"SELECT College FROM match_season WHERE POSITION  =  ""Midfielder"" INTERSECT SELECT College FROM match_season WHERE POSITION  =  ""Defender"""
-"Return the colleges that have players who play the Midfielder position, as well as players who play the Defender position.","SELECT College FROM match_season WHERE POSITION  =  ""Midfielder"" INTERSECT SELECT College FROM match_season WHERE POSITION  =  ""Defender"""
+How many countries are there in total?,SELECT COUNT(*) FROM `country`
+Count the number of countries.,SELECT COUNT(*) FROM `country`
+Show the country name and capital of all countries.,"SELECT `Country_name`, `Capital` FROM `country`"
+What are the names and capitals of each country?,"SELECT `Country_name`, `Capital` FROM `country`"
+"Show all official native languages that contain the word ""English"".",SELECT `Official_native_language` FROM `country` WHERE `Official_native_language` LIKE `%English%`
+"What are the official native languages that contain the string ""English"".",SELECT `Official_native_language` FROM `country` WHERE `Official_native_language` LIKE `%English%`
+Show all distinct positions of matches.,SELECT DISTINCT `POSITION` FROM `match_season`
+What are the different positions for match season?,SELECT DISTINCT `POSITION` FROM `match_season`
+Show the players from college UCLA.,SELECT `Player` FROM `match_season` WHERE `College` = `UCLA`
+Who are the players from UCLA?,SELECT `Player` FROM `match_season` WHERE `College` = `UCLA`
+Show the distinct position of players from college UCLA or Duke.,SELECT DISTINCT `POSITION` FROM `match_season` WHERE `College` = `UCLA` OR `College` = `Duke`
+What are the different positions of players from UCLA or Duke colleges?,SELECT DISTINCT `POSITION` FROM `match_season` WHERE `College` = `UCLA` OR `College` = `Duke`
+Show the draft pick numbers and draft classes of players whose positions are defenders.,"SELECT `Draft_Pick_Number`, `Draft_Class` FROM `match_season` WHERE `POSITION` = `Defender`"
+What are the draft pick numbers and draft classes for players who play the Defender position?,"SELECT `Draft_Pick_Number`, `Draft_Class` FROM `match_season` WHERE `POSITION` = `Defender`"
+How many distinct teams are involved in match seasons?,SELECT COUNT(DISTINCT `Team`) FROM `match_season`
+Count the number of different teams involved in match season.,SELECT COUNT(DISTINCT `Team`) FROM `match_season`
+Show the players and the years played.,"SELECT `Player`, `Years_Played` FROM `player`"
+Who are the different players and how many years has each played?,"SELECT `Player`, `Years_Played` FROM `player`"
+Show all team names.,SELECT `Name` FROM `Team`
+What are the names of all teams?,SELECT `Name` FROM `Team`
+"Show the season, the player, and the name of the country that player belongs to.","SELECT `T2`.`Season`, `T2`.`Player`, `T1`.`Country_name` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country`"
+"For each player, what are their name, season, and country that they belong to?","SELECT `T2`.`Season`, `T2`.`Player`, `T1`.`Country_name` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country`"
+Which players are from Indonesia?,SELECT `T2`.`Player` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T1`.`Country_name` = `Indonesia`
+Who are the players from Indonesia?,SELECT `T2`.`Player` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T1`.`Country_name` = `Indonesia`
+What are the distinct positions of the players from a country whose capital is Dublin?,SELECT DISTINCT `T2`.`Position` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T1`.`Capital` = `Dublin`
+Give the different positions of players who play for the country with the capital Dublin.,SELECT DISTINCT `T2`.`Position` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T1`.`Capital` = `Dublin`
+What are the official languages of the countries of players from Maryland or Duke college?,SELECT `T1`.`Official_native_language` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T2`.`College` = `Maryland` OR `T2`.`College` = `Duke`
+Return the official native languages of countries who have players from Maryland or Duke colleges.,SELECT `T1`.`Official_native_language` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T2`.`College` = `Maryland` OR `T2`.`College` = `Duke`
+How many distinct official languages are there among countries of players whose positions are defenders.,SELECT COUNT(DISTINCT `T1`.`Official_native_language`) FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T2`.`Position` = `Defender`
+Count the number of different official languages corresponding to countries that players who play Defender are from.,SELECT COUNT(DISTINCT `T1`.`Official_native_language`) FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T2`.`Position` = `Defender`
+"Show the season, the player, and the name of the team that players belong to.","SELECT `T1`.`Season`, `T1`.`Player`, `T2`.`Name` FROM `match_season` AS `T1` JOIN `team` AS `T2` ON `T1`.`Team` = `T2`.`Team_id`"
+"Who are the different players, what season do they play in, and what is the name of the team they are on?","SELECT `T1`.`Season`, `T1`.`Player`, `T2`.`Name` FROM `match_season` AS `T1` JOIN `team` AS `T2` ON `T1`.`Team` = `T2`.`Team_id`"
+"Show the positions of the players from the team with name ""Ryley Goldner"".",SELECT `T1`.`Position` FROM `match_season` AS `T1` JOIN `team` AS `T2` ON `T1`.`Team` = `T2`.`Team_id` WHERE `T2`.`Name` = `Ryley Goldner`
+Return the positions of players on the team Ryley Goldner.,SELECT `T1`.`Position` FROM `match_season` AS `T1` JOIN `team` AS `T2` ON `T1`.`Team` = `T2`.`Team_id` WHERE `T2`.`Name` = `Ryley Goldner`
+"How many distinct colleges are associated with players from the team with name ""Columbus Crew"".",SELECT COUNT(DISTINCT `T1`.`College`) FROM `match_season` AS `T1` JOIN `team` AS `T2` ON `T1`.`Team` = `T2`.`Team_id` WHERE `T2`.`Name` = `Columbus Crew`
+Count the number of different colleges that players who play for Columbus Crew are from.,SELECT COUNT(DISTINCT `T1`.`College`) FROM `match_season` AS `T1` JOIN `team` AS `T2` ON `T1`.`Team` = `T2`.`Team_id` WHERE `T2`.`Name` = `Columbus Crew`
+"Show the players and years played for players from team ""Columbus Crew"".","SELECT `T1`.`Player`, `T1`.`Years_Played` FROM `player` AS `T1` JOIN `team` AS `T2` ON `T1`.`Team` = `T2`.`Team_id` WHERE `T2`.`Name` = `Columbus Crew`"
+"What are the players who played for Columbus Crew, and how many years did each play for?","SELECT `T1`.`Player`, `T1`.`Years_Played` FROM `player` AS `T1` JOIN `team` AS `T2` ON `T1`.`Team` = `T2`.`Team_id` WHERE `T2`.`Name` = `Columbus Crew`"
+Show the position of players and the corresponding number of players.,"SELECT `POSITION`, COUNT(*) FROM `match_season` GROUP BY `POSITION`"
+How many players played each position?,"SELECT `POSITION`, COUNT(*) FROM `match_season` GROUP BY `POSITION`"
+Show the country names and the corresponding number of players.,"SELECT `Country_name`, COUNT(*) FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` GROUP BY `T1`.`Country_name`"
+How many players are from each country?,"SELECT `Country_name`, COUNT(*) FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` GROUP BY `T1`.`Country_name`"
+Return all players sorted by college in ascending alphabetical order.,SELECT `player` FROM `match_season` ORDER BY `College` ASC
+"What are all the players who played in match season, sorted by college in ascending alphabetical order?",SELECT `player` FROM `match_season` ORDER BY `College` ASC
+Show the most common position of players in match seasons.,SELECT `POSITION` FROM `match_season` GROUP BY `POSITION` ORDER BY COUNT(*) DESC LIMIT 1
+What is the position that is most common among players in match seasons?,SELECT `POSITION` FROM `match_season` GROUP BY `POSITION` ORDER BY COUNT(*) DESC LIMIT 1
+Show the top 3 most common colleges of players in match seasons.,SELECT `College` FROM `match_season` GROUP BY `College` ORDER BY COUNT(*) DESC LIMIT 3
+What are the three colleges from which the most players are from?,SELECT `College` FROM `match_season` GROUP BY `College` ORDER BY COUNT(*) DESC LIMIT 3
+Show the name of colleges that have at least two players.,SELECT `College` FROM `match_season` GROUP BY `College` HAVING COUNT(*) >= 2
+What are the names of all colleges that have two or more players?,SELECT `College` FROM `match_season` GROUP BY `College` HAVING COUNT(*) >= 2
+Show the name of colleges that have at least two players in descending alphabetical order.,SELECT `College` FROM `match_season` GROUP BY `College` HAVING COUNT(*) >= 2 ORDER BY `College` DESC
+"What are the names of colleges that have two or more players, listed in descending alphabetical order?",SELECT `College` FROM `match_season` GROUP BY `College` HAVING COUNT(*) >= 2 ORDER BY `College` DESC
+What are the names of teams that do no have match season record?,SELECT `Name` FROM `team` WHERE NOT `Team_id` IN (SELECT `Team` FROM `match_season`)
+Return the names of teams that have no match season record.,SELECT `Name` FROM `team` WHERE NOT `Team_id` IN (SELECT `Team` FROM `match_season`)
+What are the names of countries that have both players with position forward and players with position defender?,SELECT `T1`.`Country_name` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T2`.`Position` = `Forward` INTERSECT SELECT `T1`.`Country_name` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T2`.`Position` = `Defender`
+"Return the names of countries that have players that play the Forward position, as well as players who play the Defender position.",SELECT `T1`.`Country_name` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T2`.`Position` = `Forward` INTERSECT SELECT `T1`.`Country_name` FROM `country` AS `T1` JOIN `match_season` AS `T2` ON `T1`.`Country_id` = `T2`.`Country` WHERE `T2`.`Position` = `Defender`
+Which college have both players with position midfielder and players with position defender?,SELECT `College` FROM `match_season` WHERE `POSITION` = `Midfielder` INTERSECT SELECT `College` FROM `match_season` WHERE `POSITION` = `Defender`
+"Return the colleges that have players who play the Midfielder position, as well as players who play the Defender position.",SELECT `College` FROM `match_season` WHERE `POSITION` = `Midfielder` INTERSECT SELECT `College` FROM `match_season` WHERE `POSITION` = `Defender`

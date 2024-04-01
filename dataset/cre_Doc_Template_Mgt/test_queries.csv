@@ -1,85 +1,85 @@
 question,sql
-How many documents do we have?,SELECT count(*) FROM Documents
-Count the number of documents.,SELECT count(*) FROM Documents
-"List document IDs, document names, and document descriptions for all documents.","SELECT document_id ,  document_name ,  document_description FROM Documents"
-"What are the ids, names, and descriptions for all documents?","SELECT document_id ,  document_name ,  document_description FROM Documents"
-What is the document name and template id for document with description with the letter 'w' in it?,"SELECT document_name ,  template_id FROM Documents WHERE Document_Description LIKE ""%w%"""
-Return the names and template ids for documents that contain the letter w in their description.,"SELECT document_name ,  template_id FROM Documents WHERE Document_Description LIKE ""%w%"""
-"What is the document id, template id and description for document named ""Robbin CV""?","SELECT document_id ,  template_id ,  Document_Description FROM Documents WHERE document_name  =  ""Robbin CV"""
-"Return the document id, template id, and description for the document with the name Robbin CV.","SELECT document_id ,  template_id ,  Document_Description FROM Documents WHERE document_name  =  ""Robbin CV"""
-How many different templates do all document use?,SELECT count(DISTINCT template_id) FROM Documents
-Count the number of different templates used for documents.,SELECT count(DISTINCT template_id) FROM Documents
-How many documents are using the template with type code 'PPT'?,SELECT count(*) FROM Documents AS T1 JOIN Templates AS T2 ON T1.Template_ID  =  T2.Template_ID WHERE T2.Template_Type_Code  =  'PPT'
-Count the number of documents that use the PPT template type.,SELECT count(*) FROM Documents AS T1 JOIN Templates AS T2 ON T1.Template_ID  =  T2.Template_ID WHERE T2.Template_Type_Code  =  'PPT'
-Show all template ids and number of documents using each template.,"SELECT template_id ,  count(*) FROM Documents GROUP BY template_id"
-"What are all different template ids used for documents, and how many times were each of them used?","SELECT template_id ,  count(*) FROM Documents GROUP BY template_id"
-What is the id and type code for the template used by the most documents?,"SELECT T1.template_id ,  T2.Template_Type_Code FROM Documents AS T1 JOIN Templates AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_id ORDER BY count(*) DESC LIMIT 1"
-Return the id and type code of the template that is used for the greatest number of documents.,"SELECT T1.template_id ,  T2.Template_Type_Code FROM Documents AS T1 JOIN Templates AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_id ORDER BY count(*) DESC LIMIT 1"
-Show ids for all templates that are used by more than one document.,SELECT template_id FROM Documents GROUP BY template_id HAVING count(*)  >  1
-What are the template ids of any templates used in more than a single document?,SELECT template_id FROM Documents GROUP BY template_id HAVING count(*)  >  1
-Show ids for all templates not used by any document.,SELECT template_id FROM Templates EXCEPT SELECT template_id FROM Documents
-What are the ids for templates that are not used in any documents?,SELECT template_id FROM Templates EXCEPT SELECT template_id FROM Documents
-How many templates do we have?,SELECT count(*) FROM Templates
-Count the number of templates.,SELECT count(*) FROM Templates
-"Show template ids, version numbers, and template type codes for all templates.","SELECT template_id ,  version_number ,  template_type_code FROM Templates"
-"What are the ids, version numbers, and type codes for each template?","SELECT template_id ,  version_number ,  template_type_code FROM Templates"
-Show all distinct template type codes for all templates.,SELECT DISTINCT template_type_code FROM Templates
-What are the different template type codes?,SELECT DISTINCT template_type_code FROM Templates
-What are the ids of templates with template type code PP or PPT?,"SELECT template_id FROM Templates WHERE template_type_code  =  ""PP"" OR template_type_code  =  ""PPT"""
-Return the ids of templates that have the code PP or PPT.,"SELECT template_id FROM Templates WHERE template_type_code  =  ""PP"" OR template_type_code  =  ""PPT"""
-How many templates have template type code CV?,"SELECT count(*) FROM Templates WHERE template_type_code  =  ""CV"""
-Count the number of templates of the type CV.,"SELECT count(*) FROM Templates WHERE template_type_code  =  ""CV"""
-What is the version number and template type code for the template with version number later than 5?,"SELECT version_number ,  template_type_code FROM Templates WHERE version_number  >  5"
-Return the version numbers and template type codes of templates with a version number greater than 5.,"SELECT version_number ,  template_type_code FROM Templates WHERE version_number  >  5"
-Show all template type codes and number of templates for each.,"SELECT template_type_code ,  count(*) FROM Templates GROUP BY template_type_code"
-"What are the different template type codes, and how many templates correspond to each?","SELECT template_type_code ,  count(*) FROM Templates GROUP BY template_type_code"
-Which template type code has most number of templates?,SELECT template_type_code FROM Templates GROUP BY template_type_code ORDER BY count(*) DESC LIMIT 1
-Return the type code of the template type that the most templates belong to.,SELECT template_type_code FROM Templates GROUP BY template_type_code ORDER BY count(*) DESC LIMIT 1
-Show all template type codes with less than three templates.,SELECT template_type_code FROM Templates GROUP BY template_type_code HAVING count(*)  <  3
-What are the codes of template types that have fewer than 3 templates?,SELECT template_type_code FROM Templates GROUP BY template_type_code HAVING count(*)  <  3
-What the smallest version number and its template type code?,"SELECT min(Version_Number) ,  template_type_code FROM Templates"
-"Return the lowest version number, along with its corresponding template type code.","SELECT min(Version_Number) ,  template_type_code FROM Templates"
-"What is the template type code of the template used by document with the name ""Data base""?","SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id WHERE T2.document_name  =  ""Data base"""
-Return the template type code of the template that is used by a document named Data base.,"SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id WHERE T2.document_name  =  ""Data base"""
-Show all document names using templates with template type code BK.,"SELECT T2.document_name FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id WHERE T1.template_type_code  =  ""BK"""
-What are the names of documents that use templates with the code BK?,"SELECT T2.document_name FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id WHERE T1.template_type_code  =  ""BK"""
-Show all template type codes and the number of documents using each type.,"SELECT T1.template_type_code ,  count(*) FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code"
-"What are the different template type codes, and how many documents use each type?","SELECT T1.template_type_code ,  count(*) FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code"
-Which template type code is used by most number of documents?,SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code ORDER BY count(*) DESC LIMIT 1
-Return the code of the template type that is most commonly used in documents.,SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code ORDER BY count(*) DESC LIMIT 1
-Show all template type codes that are not used by any document.,SELECT template_type_code FROM Templates EXCEPT SELECT template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id
-What are the codes of template types that are not used for any document?,SELECT template_type_code FROM Templates EXCEPT SELECT template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id
-Show all template type codes and descriptions.,"SELECT template_type_code ,  template_type_description FROM Ref_template_types"
-What are the type codes and descriptions for all template types?,"SELECT template_type_code ,  template_type_description FROM Ref_template_types"
-"What is the template type descriptions for template type code ""AD"".","SELECT template_type_description FROM Ref_template_types WHERE template_type_code  =  ""AD"""
-Return the template type description of the template type with the code AD.,"SELECT template_type_description FROM Ref_template_types WHERE template_type_code  =  ""AD"""
-"What is the template type code for template type description ""Book"".","SELECT template_type_code FROM Ref_template_types WHERE template_type_description  =  ""Book"""
-"Return the type code of the template type with the description ""Book"".","SELECT template_type_code FROM Ref_template_types WHERE template_type_description  =  ""Book"""
-What are the distinct template type descriptions for the templates ever used by any document?,SELECT DISTINCT T1.template_type_description FROM Ref_template_types AS T1 JOIN Templates AS T2 ON T1.template_type_code  = T2.template_type_code JOIN Documents AS T3 ON T2.Template_ID  =  T3.template_ID
-Return the different descriptions for templates that have been used in a document.,SELECT DISTINCT T1.template_type_description FROM Ref_template_types AS T1 JOIN Templates AS T2 ON T1.template_type_code  = T2.template_type_code JOIN Documents AS T3 ON T2.Template_ID  =  T3.template_ID
-"What are the template ids with template type description ""Presentation"".","SELECT T2.template_id FROM Ref_template_types AS T1 JOIN Templates AS T2 ON T1.template_type_code  = T2.template_type_code WHERE T1.template_type_description  =  ""Presentation"""
-Return the ids corresponding to templates with the description 'Presentation'.,"SELECT T2.template_id FROM Ref_template_types AS T1 JOIN Templates AS T2 ON T1.template_type_code  = T2.template_type_code WHERE T1.template_type_description  =  ""Presentation"""
-How many paragraphs in total?,SELECT count(*) FROM Paragraphs
-Count the number of paragraphs.,SELECT count(*) FROM Paragraphs
-How many paragraphs for the document with name 'Summer Show'?,SELECT count(*) FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_ID  =  T2.document_ID WHERE T2.document_name  =  'Summer Show'
-Count the number of paragraphs in the document named 'Summer Show'.,SELECT count(*) FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_ID  =  T2.document_ID WHERE T2.document_name  =  'Summer Show'
-Show paragraph details for paragraph with text 'Korea ' .,select other_details from paragraphs where paragraph_text like 'korea'
-What are the details for the paragraph that includes the text 'Korea ' ?,select other_details from paragraphs where paragraph_text like 'korea'
-Show all paragraph ids and texts for the document with name 'Welcome to NY'.,"SELECT T1.paragraph_id ,   T1.paragraph_text FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.Document_Name  =  'Welcome to NY'"
-What are the ids and texts of paragraphs in the document titled 'Welcome to NY'?,"SELECT T1.paragraph_id ,   T1.paragraph_text FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.Document_Name  =  'Welcome to NY'"
-"Show all paragraph texts for the document ""Customer reviews"".","SELECT T1.paragraph_text FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.document_name  =  ""Customer reviews"""
-What are the paragraph texts for the document with the name 'Customer reviews'?,"SELECT T1.paragraph_text FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.document_name  =  ""Customer reviews"""
-Show all document ids and the number of paragraphs in each document. Order by document id.,"SELECT document_id ,  count(*) FROM Paragraphs GROUP BY document_id ORDER BY document_id"
-"Return the different document ids along with the number of paragraphs corresponding to each, ordered by id.","SELECT document_id ,  count(*) FROM Paragraphs GROUP BY document_id ORDER BY document_id"
-"Show all document ids, names and the number of paragraphs in each document.","SELECT T1.document_id ,  T2.document_name ,  count(*) FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id GROUP BY T1.document_id"
-"What are the ids and names of each document, as well as the number of paragraphs in each?","SELECT T1.document_id ,  T2.document_name ,  count(*) FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id GROUP BY T1.document_id"
-List all document ids with at least two paragraphs.,SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*)  >=  2
-What are the ids of documents that have 2 or more paragraphs?,SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*)  >=  2
-What is the document id and name with greatest number of paragraphs?,"SELECT T1.document_id ,  T2.document_name FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id GROUP BY T1.document_id ORDER BY count(*) DESC LIMIT 1"
-Return the id and name of the document with the most paragraphs.,"SELECT T1.document_id ,  T2.document_name FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id GROUP BY T1.document_id ORDER BY count(*) DESC LIMIT 1"
-What is the document id with least number of paragraphs?,SELECT document_id FROM Paragraphs GROUP BY document_id ORDER BY count(*) ASC LIMIT 1
-Return the id of the document with the fewest paragraphs.,SELECT document_id FROM Paragraphs GROUP BY document_id ORDER BY count(*) ASC LIMIT 1
-What is the document id with 1 to 2 paragraphs?,SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*) BETWEEN 1 AND 2
-Give the ids of documents that have between one and two paragraphs.,SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*) BETWEEN 1 AND 2
-Show the document id with paragraph text 'Brazil' and 'Ireland'.,SELECT document_id FROM Paragraphs WHERE paragraph_text  =  'Brazil' INTERSECT SELECT document_id FROM Paragraphs WHERE paragraph_text  =  'Ireland'
-What are the ids of documents that contain the paragraph text 'Brazil' and 'Ireland'?,SELECT document_id FROM Paragraphs WHERE paragraph_text  =  'Brazil' INTERSECT SELECT document_id FROM Paragraphs WHERE paragraph_text  =  'Ireland'
+How many documents do we have?,SELECT COUNT(*) FROM `Documents`
+Count the number of documents.,SELECT COUNT(*) FROM `Documents`
+"List document IDs, document names, and document descriptions for all documents.","SELECT `document_id`, `document_name`, `document_description` FROM `Documents`"
+"What are the ids, names, and descriptions for all documents?","SELECT `document_id`, `document_name`, `document_description` FROM `Documents`"
+What is the document name and template id for document with description with the letter 'w' in it?,"SELECT `document_name`, `template_id` FROM `Documents` WHERE `Document_Description` LIKE `%w%`"
+Return the names and template ids for documents that contain the letter w in their description.,"SELECT `document_name`, `template_id` FROM `Documents` WHERE `Document_Description` LIKE `%w%`"
+"What is the document id, template id and description for document named ""Robbin CV""?","SELECT `document_id`, `template_id`, `Document_Description` FROM `Documents` WHERE `document_name` = `Robbin CV`"
+"Return the document id, template id, and description for the document with the name Robbin CV.","SELECT `document_id`, `template_id`, `Document_Description` FROM `Documents` WHERE `document_name` = `Robbin CV`"
+How many different templates do all document use?,SELECT COUNT(DISTINCT `template_id`) FROM `Documents`
+Count the number of different templates used for documents.,SELECT COUNT(DISTINCT `template_id`) FROM `Documents`
+How many documents are using the template with type code 'PPT'?,SELECT COUNT(*) FROM `Documents` AS `T1` JOIN `Templates` AS `T2` ON `T1`.`Template_ID` = `T2`.`Template_ID` WHERE `T2`.`Template_Type_Code` = 'PPT'
+Count the number of documents that use the PPT template type.,SELECT COUNT(*) FROM `Documents` AS `T1` JOIN `Templates` AS `T2` ON `T1`.`Template_ID` = `T2`.`Template_ID` WHERE `T2`.`Template_Type_Code` = 'PPT'
+Show all template ids and number of documents using each template.,"SELECT `template_id`, COUNT(*) FROM `Documents` GROUP BY `template_id`"
+"What are all different template ids used for documents, and how many times were each of them used?","SELECT `template_id`, COUNT(*) FROM `Documents` GROUP BY `template_id`"
+What is the id and type code for the template used by the most documents?,"SELECT `T1`.`template_id`, `T2`.`Template_Type_Code` FROM `Documents` AS `T1` JOIN `Templates` AS `T2` ON `T1`.`template_id` = `T2`.`template_id` GROUP BY `T1`.`template_id` ORDER BY COUNT(*) DESC LIMIT 1"
+Return the id and type code of the template that is used for the greatest number of documents.,"SELECT `T1`.`template_id`, `T2`.`Template_Type_Code` FROM `Documents` AS `T1` JOIN `Templates` AS `T2` ON `T1`.`template_id` = `T2`.`template_id` GROUP BY `T1`.`template_id` ORDER BY COUNT(*) DESC LIMIT 1"
+Show ids for all templates that are used by more than one document.,SELECT `template_id` FROM `Documents` GROUP BY `template_id` HAVING COUNT(*) > 1
+What are the template ids of any templates used in more than a single document?,SELECT `template_id` FROM `Documents` GROUP BY `template_id` HAVING COUNT(*) > 1
+Show ids for all templates not used by any document.,SELECT `template_id` FROM `Templates` EXCEPT SELECT `template_id` FROM `Documents`
+What are the ids for templates that are not used in any documents?,SELECT `template_id` FROM `Templates` EXCEPT SELECT `template_id` FROM `Documents`
+How many templates do we have?,SELECT COUNT(*) FROM `Templates`
+Count the number of templates.,SELECT COUNT(*) FROM `Templates`
+"Show template ids, version numbers, and template type codes for all templates.","SELECT `template_id`, `version_number`, `template_type_code` FROM `Templates`"
+"What are the ids, version numbers, and type codes for each template?","SELECT `template_id`, `version_number`, `template_type_code` FROM `Templates`"
+Show all distinct template type codes for all templates.,SELECT DISTINCT `template_type_code` FROM `Templates`
+What are the different template type codes?,SELECT DISTINCT `template_type_code` FROM `Templates`
+What are the ids of templates with template type code PP or PPT?,SELECT `template_id` FROM `Templates` WHERE `template_type_code` = `PP` OR `template_type_code` = `PPT`
+Return the ids of templates that have the code PP or PPT.,SELECT `template_id` FROM `Templates` WHERE `template_type_code` = `PP` OR `template_type_code` = `PPT`
+How many templates have template type code CV?,SELECT COUNT(*) FROM `Templates` WHERE `template_type_code` = `CV`
+Count the number of templates of the type CV.,SELECT COUNT(*) FROM `Templates` WHERE `template_type_code` = `CV`
+What is the version number and template type code for the template with version number later than 5?,"SELECT `version_number`, `template_type_code` FROM `Templates` WHERE `version_number` > 5"
+Return the version numbers and template type codes of templates with a version number greater than 5.,"SELECT `version_number`, `template_type_code` FROM `Templates` WHERE `version_number` > 5"
+Show all template type codes and number of templates for each.,"SELECT `template_type_code`, COUNT(*) FROM `Templates` GROUP BY `template_type_code`"
+"What are the different template type codes, and how many templates correspond to each?","SELECT `template_type_code`, COUNT(*) FROM `Templates` GROUP BY `template_type_code`"
+Which template type code has most number of templates?,SELECT `template_type_code` FROM `Templates` GROUP BY `template_type_code` ORDER BY COUNT(*) DESC LIMIT 1
+Return the type code of the template type that the most templates belong to.,SELECT `template_type_code` FROM `Templates` GROUP BY `template_type_code` ORDER BY COUNT(*) DESC LIMIT 1
+Show all template type codes with less than three templates.,SELECT `template_type_code` FROM `Templates` GROUP BY `template_type_code` HAVING COUNT(*) < 3
+What are the codes of template types that have fewer than 3 templates?,SELECT `template_type_code` FROM `Templates` GROUP BY `template_type_code` HAVING COUNT(*) < 3
+What the smallest version number and its template type code?,"SELECT MIN(`Version_Number`), `template_type_code` FROM `Templates`"
+"Return the lowest version number, along with its corresponding template type code.","SELECT MIN(`Version_Number`), `template_type_code` FROM `Templates`"
+"What is the template type code of the template used by document with the name ""Data base""?",SELECT `T1`.`template_type_code` FROM `Templates` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`template_id` = `T2`.`template_id` WHERE `T2`.`document_name` = `Data base`
+Return the template type code of the template that is used by a document named Data base.,SELECT `T1`.`template_type_code` FROM `Templates` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`template_id` = `T2`.`template_id` WHERE `T2`.`document_name` = `Data base`
+Show all document names using templates with template type code BK.,SELECT `T2`.`document_name` FROM `Templates` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`template_id` = `T2`.`template_id` WHERE `T1`.`template_type_code` = `BK`
+What are the names of documents that use templates with the code BK?,SELECT `T2`.`document_name` FROM `Templates` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`template_id` = `T2`.`template_id` WHERE `T1`.`template_type_code` = `BK`
+Show all template type codes and the number of documents using each type.,"SELECT `T1`.`template_type_code`, COUNT(*) FROM `Templates` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`template_id` = `T2`.`template_id` GROUP BY `T1`.`template_type_code`"
+"What are the different template type codes, and how many documents use each type?","SELECT `T1`.`template_type_code`, COUNT(*) FROM `Templates` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`template_id` = `T2`.`template_id` GROUP BY `T1`.`template_type_code`"
+Which template type code is used by most number of documents?,SELECT `T1`.`template_type_code` FROM `Templates` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`template_id` = `T2`.`template_id` GROUP BY `T1`.`template_type_code` ORDER BY COUNT(*) DESC LIMIT 1
+Return the code of the template type that is most commonly used in documents.,SELECT `T1`.`template_type_code` FROM `Templates` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`template_id` = `T2`.`template_id` GROUP BY `T1`.`template_type_code` ORDER BY COUNT(*) DESC LIMIT 1
+Show all template type codes that are not used by any document.,SELECT `template_type_code` FROM `Templates` EXCEPT SELECT `template_type_code` FROM `Templates` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`template_id` = `T2`.`template_id`
+What are the codes of template types that are not used for any document?,SELECT `template_type_code` FROM `Templates` EXCEPT SELECT `template_type_code` FROM `Templates` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`template_id` = `T2`.`template_id`
+Show all template type codes and descriptions.,"SELECT `template_type_code`, `template_type_description` FROM `Ref_template_types`"
+What are the type codes and descriptions for all template types?,"SELECT `template_type_code`, `template_type_description` FROM `Ref_template_types`"
+"What is the template type descriptions for template type code ""AD"".",SELECT `template_type_description` FROM `Ref_template_types` WHERE `template_type_code` = `AD`
+Return the template type description of the template type with the code AD.,SELECT `template_type_description` FROM `Ref_template_types` WHERE `template_type_code` = `AD`
+"What is the template type code for template type description ""Book"".",SELECT `template_type_code` FROM `Ref_template_types` WHERE `template_type_description` = `Book`
+"Return the type code of the template type with the description ""Book"".",SELECT `template_type_code` FROM `Ref_template_types` WHERE `template_type_description` = `Book`
+What are the distinct template type descriptions for the templates ever used by any document?,SELECT DISTINCT `T1`.`template_type_description` FROM `Ref_template_types` AS `T1` JOIN `Templates` AS `T2` ON `T1`.`template_type_code` = `T2`.`template_type_code` JOIN `Documents` AS `T3` ON `T2`.`Template_ID` = `T3`.`template_ID`
+Return the different descriptions for templates that have been used in a document.,SELECT DISTINCT `T1`.`template_type_description` FROM `Ref_template_types` AS `T1` JOIN `Templates` AS `T2` ON `T1`.`template_type_code` = `T2`.`template_type_code` JOIN `Documents` AS `T3` ON `T2`.`Template_ID` = `T3`.`template_ID`
+"What are the template ids with template type description ""Presentation"".",SELECT `T2`.`template_id` FROM `Ref_template_types` AS `T1` JOIN `Templates` AS `T2` ON `T1`.`template_type_code` = `T2`.`template_type_code` WHERE `T1`.`template_type_description` = `Presentation`
+Return the ids corresponding to templates with the description 'Presentation'.,SELECT `T2`.`template_id` FROM `Ref_template_types` AS `T1` JOIN `Templates` AS `T2` ON `T1`.`template_type_code` = `T2`.`template_type_code` WHERE `T1`.`template_type_description` = `Presentation`
+How many paragraphs in total?,SELECT COUNT(*) FROM `Paragraphs`
+Count the number of paragraphs.,SELECT COUNT(*) FROM `Paragraphs`
+How many paragraphs for the document with name 'Summer Show'?,SELECT COUNT(*) FROM `Paragraphs` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`document_ID` = `T2`.`document_ID` WHERE `T2`.`document_name` = 'Summer Show'
+Count the number of paragraphs in the document named 'Summer Show'.,SELECT COUNT(*) FROM `Paragraphs` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`document_ID` = `T2`.`document_ID` WHERE `T2`.`document_name` = 'Summer Show'
+Show paragraph details for paragraph with text 'Korea ' .,SELECT `other_details` FROM `paragraphs` WHERE `paragraph_text` LIKE 'korea'
+What are the details for the paragraph that includes the text 'Korea ' ?,SELECT `other_details` FROM `paragraphs` WHERE `paragraph_text` LIKE 'korea'
+Show all paragraph ids and texts for the document with name 'Welcome to NY'.,"SELECT `T1`.`paragraph_id`, `T1`.`paragraph_text` FROM `Paragraphs` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` WHERE `T2`.`Document_Name` = 'Welcome to NY'"
+What are the ids and texts of paragraphs in the document titled 'Welcome to NY'?,"SELECT `T1`.`paragraph_id`, `T1`.`paragraph_text` FROM `Paragraphs` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` WHERE `T2`.`Document_Name` = 'Welcome to NY'"
+"Show all paragraph texts for the document ""Customer reviews"".",SELECT `T1`.`paragraph_text` FROM `Paragraphs` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` WHERE `T2`.`document_name` = `Customer reviews`
+What are the paragraph texts for the document with the name 'Customer reviews'?,SELECT `T1`.`paragraph_text` FROM `Paragraphs` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` WHERE `T2`.`document_name` = `Customer reviews`
+Show all document ids and the number of paragraphs in each document. Order by document id.,"SELECT `document_id`, COUNT(*) FROM `Paragraphs` GROUP BY `document_id` ORDER BY `document_id`"
+"Return the different document ids along with the number of paragraphs corresponding to each, ordered by id.","SELECT `document_id`, COUNT(*) FROM `Paragraphs` GROUP BY `document_id` ORDER BY `document_id`"
+"Show all document ids, names and the number of paragraphs in each document.","SELECT `T1`.`document_id`, `T2`.`document_name`, COUNT(*) FROM `Paragraphs` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` GROUP BY `T1`.`document_id`"
+"What are the ids and names of each document, as well as the number of paragraphs in each?","SELECT `T1`.`document_id`, `T2`.`document_name`, COUNT(*) FROM `Paragraphs` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` GROUP BY `T1`.`document_id`"
+List all document ids with at least two paragraphs.,SELECT `document_id` FROM `Paragraphs` GROUP BY `document_id` HAVING COUNT(*) >= 2
+What are the ids of documents that have 2 or more paragraphs?,SELECT `document_id` FROM `Paragraphs` GROUP BY `document_id` HAVING COUNT(*) >= 2
+What is the document id and name with greatest number of paragraphs?,"SELECT `T1`.`document_id`, `T2`.`document_name` FROM `Paragraphs` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` GROUP BY `T1`.`document_id` ORDER BY COUNT(*) DESC LIMIT 1"
+Return the id and name of the document with the most paragraphs.,"SELECT `T1`.`document_id`, `T2`.`document_name` FROM `Paragraphs` AS `T1` JOIN `Documents` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` GROUP BY `T1`.`document_id` ORDER BY COUNT(*) DESC LIMIT 1"
+What is the document id with least number of paragraphs?,SELECT `document_id` FROM `Paragraphs` GROUP BY `document_id` ORDER BY COUNT(*) ASC LIMIT 1
+Return the id of the document with the fewest paragraphs.,SELECT `document_id` FROM `Paragraphs` GROUP BY `document_id` ORDER BY COUNT(*) ASC LIMIT 1
+What is the document id with 1 to 2 paragraphs?,SELECT `document_id` FROM `Paragraphs` GROUP BY `document_id` HAVING COUNT(*) BETWEEN 1 AND 2
+Give the ids of documents that have between one and two paragraphs.,SELECT `document_id` FROM `Paragraphs` GROUP BY `document_id` HAVING COUNT(*) BETWEEN 1 AND 2
+Show the document id with paragraph text 'Brazil' and 'Ireland'.,SELECT `document_id` FROM `Paragraphs` WHERE `paragraph_text` = 'Brazil' INTERSECT SELECT `document_id` FROM `Paragraphs` WHERE `paragraph_text` = 'Ireland'
+What are the ids of documents that contain the paragraph text 'Brazil' and 'Ireland'?,SELECT `document_id` FROM `Paragraphs` WHERE `paragraph_text` = 'Brazil' INTERSECT SELECT `document_id` FROM `Paragraphs` WHERE `paragraph_text` = 'Ireland'

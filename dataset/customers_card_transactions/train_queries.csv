@@ -1,81 +1,81 @@
 question,sql
-How many accounts do we have?,SELECT count(*) FROM Accounts
-Count the number of accounts.,SELECT count(*) FROM Accounts
-"Show ids, customer ids, names for all accounts.","SELECT account_id ,  customer_id ,  account_name FROM Accounts"
-"What are the account ids, customer ids, and account names for all the accounts?","SELECT account_id ,  customer_id ,  account_name FROM Accounts"
-Show other account details for account with name 338.,"SELECT other_account_details FROM Accounts WHERE account_name  =  ""338"""
-What are the other account details for the account with the name 338?,"SELECT other_account_details FROM Accounts WHERE account_name  =  ""338"""
-"What is the first name, last name, and phone of the customer with account name 162?","SELECT T2.customer_first_name ,  T2.customer_last_name ,  T2.customer_phone FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.account_name  =  ""162"""
-Give the full name and phone of the customer who has the account name 162.,"SELECT T2.customer_first_name ,  T2.customer_last_name ,  T2.customer_phone FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.account_name  =  ""162"""
-How many accounts does the customer with first name Art and last name Turcotte have?,"SELECT count(*) FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  ""Art"" AND T2.customer_last_name  =  ""Turcotte"""
-Return the number of accounts that the customer with the first name Art and last name Turcotte has.,"SELECT count(*) FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  ""Art"" AND T2.customer_last_name  =  ""Turcotte"""
-Show all customer ids and the number of accounts for each customer.,"SELECT customer_id ,  count(*) FROM Accounts GROUP BY customer_id"
-How many accounts are there for each customer id?,"SELECT customer_id ,  count(*) FROM Accounts GROUP BY customer_id"
-Show the customer id and number of accounts with most accounts.,"SELECT customer_id ,  count(*) FROM Accounts GROUP BY customer_id ORDER BY count(*) DESC LIMIT 1"
-"What is the customer id of the customer with the most accounts, and how many accounts does this person have?","SELECT customer_id ,  count(*) FROM Accounts GROUP BY customer_id ORDER BY count(*) DESC LIMIT 1"
-"What is the customer first, last name and id with least number of accounts.","SELECT T2.customer_first_name ,  T2.customer_last_name ,  T1.customer_id FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) ASC LIMIT 1"
-Give the full name and customer id of the customer with the fewest accounts.,"SELECT T2.customer_first_name ,  T2.customer_last_name ,  T1.customer_id FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) ASC LIMIT 1"
-Show the number of all customers without an account.,SELECT count(*) FROM Customers WHERE customer_id NOT IN (SELECT customer_id FROM Accounts)
-How many customers do not have an account?,SELECT count(*) FROM Customers WHERE customer_id NOT IN (SELECT customer_id FROM Accounts)
-Show the first names and last names of customers without any account.,"SELECT customer_first_name ,  customer_last_name FROM Customers EXCEPT SELECT T1.customer_first_name ,  T1.customer_last_name FROM Customers AS T1 JOIN Accounts AS T2 ON T1.customer_id  =  T2.customer_id"
-What are the full names of customers who do not have any accounts?,"SELECT customer_first_name ,  customer_last_name FROM Customers EXCEPT SELECT T1.customer_first_name ,  T1.customer_last_name FROM Customers AS T1 JOIN Accounts AS T2 ON T1.customer_id  =  T2.customer_id"
-Show distinct first and last names for all customers with an account.,"SELECT DISTINCT T1.customer_first_name ,  T1.customer_last_name FROM Customers AS T1 JOIN Accounts AS T2 ON T1.customer_id  =  T2.customer_id"
-What are the full names of customers who have accounts?,"SELECT DISTINCT T1.customer_first_name ,  T1.customer_last_name FROM Customers AS T1 JOIN Accounts AS T2 ON T1.customer_id  =  T2.customer_id"
-How many customers have an account?,SELECT count(DISTINCT customer_id) FROM Accounts
-Count the number of customers who hold an account.,SELECT count(DISTINCT customer_id) FROM Accounts
-How many customers do we have?,SELECT count(*) FROM Customers
-Count the number of customers.,SELECT count(*) FROM Customers
-"Show ids, first names, last names, and phones for all customers.","SELECT customer_id ,  customer_first_name ,  customer_last_name ,  customer_phone FROM Customers"
-"What are the ids, full names, and phones of each customer?","SELECT customer_id ,  customer_first_name ,  customer_last_name ,  customer_phone FROM Customers"
-What is the phone and email for customer with first name Aniyah and last name Feest?,"SELECT customer_phone ,  customer_email FROM Customers WHERE customer_first_name  =  ""Aniyah"" AND customer_last_name  =  ""Feest"""
-Return the phone and email of the customer with the first name Aniyah and last name Feest.,"SELECT customer_phone ,  customer_email FROM Customers WHERE customer_first_name  =  ""Aniyah"" AND customer_last_name  =  ""Feest"""
-Show the number of customer cards.,SELECT count(*) FROM Customers_cards
-How many customer cards are there?,SELECT count(*) FROM Customers_cards
-"Show ids, customer ids, card type codes, card numbers for all cards.","SELECT card_id ,  customer_id ,  card_type_code ,  card_number FROM Customers_cards"
-"What are card ids, customer ids, card types, and card numbers for each customer card?","SELECT card_id ,  customer_id ,  card_type_code ,  card_number FROM Customers_cards"
-Show the date valid from and the date valid to for the card with card number '4560596484842'.,"SELECT date_valid_from ,  date_valid_to FROM Customers_cards WHERE card_number  =  ""4560596484842"""
-What are the valid from and valid to dates for the card with the number 4560596484842?,"SELECT date_valid_from ,  date_valid_to FROM Customers_cards WHERE card_number  =  ""4560596484842"""
-"What is the first name, last name, and phone of the customer with card 4560596484842.","SELECT T2.customer_first_name ,  T2.customer_last_name ,  T2.customer_phone FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.card_number  =  ""4560596484842"""
-Return the full name and phone of the customer who has card number 4560596484842.,"SELECT T2.customer_first_name ,  T2.customer_last_name ,  T2.customer_phone FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.card_number  =  ""4560596484842"""
-How many cards does customer Art Turcotte have?,"SELECT count(*) FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  ""Art"" AND T2.customer_last_name  =  ""Turcotte"""
-Count the number of cards the customer with the first name Art and last name Turcotte has.,"SELECT count(*) FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  ""Art"" AND T2.customer_last_name  =  ""Turcotte"""
-How many debit cards do we have?,"SELECT count(*) FROM Customers_cards WHERE card_type_code  =  ""Debit"""
-Count the number of customer cards of the type Debit.,"SELECT count(*) FROM Customers_cards WHERE card_type_code  =  ""Debit"""
-How many credit cards does customer Blanche Huels have?,"SELECT count(*) FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  ""Blanche"" AND T2.customer_last_name  =  ""Huels"" AND T1.card_type_code  =  ""Credit"""
-Count the number of credit cards that the customer with first name Blanche and last name Huels has.,"SELECT count(*) FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  ""Blanche"" AND T2.customer_last_name  =  ""Huels"" AND T1.card_type_code  =  ""Credit"""
-Show all customer ids and the number of cards owned by each customer.,"SELECT customer_id ,  count(*) FROM Customers_cards GROUP BY customer_id"
-"What are the different customer ids, and how many cards does each one hold?","SELECT customer_id ,  count(*) FROM Customers_cards GROUP BY customer_id"
-"What is the customer id with most number of cards, and how many does he have?","SELECT customer_id ,  count(*) FROM Customers_cards GROUP BY customer_id ORDER BY count(*) DESC LIMIT 1"
-"Return the id of the customer who has the most cards, as well as the number of cards.","SELECT customer_id ,  count(*) FROM Customers_cards GROUP BY customer_id ORDER BY count(*) DESC LIMIT 1"
-"Show id, first and last names for all customers with at least two cards.","SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >=  2"
-What are the ids and full names of customers who hold two or more cards?,"SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >=  2"
-"What is the customer id, first and last name with least number of accounts.","SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) ASC LIMIT 1"
-Return the id and full name of the customer who has the fewest accounts.,"SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) ASC LIMIT 1"
-Show all card type codes and the number of cards in each type.,"SELECT card_type_code ,  count(*) FROM Customers_cards GROUP BY card_type_code"
-"What are the different card types, and how many cards are there of each?","SELECT card_type_code ,  count(*) FROM Customers_cards GROUP BY card_type_code"
-What is the card type code with most number of cards?,SELECT card_type_code FROM Customers_cards GROUP BY card_type_code ORDER BY count(*) DESC LIMIT 1
-Return the code of the card type that is most common.,SELECT card_type_code FROM Customers_cards GROUP BY card_type_code ORDER BY count(*) DESC LIMIT 1
-Show card type codes with at least 5 cards.,SELECT card_type_code FROM Customers_cards GROUP BY card_type_code HAVING count(*)  >=  5
-What are the codes of card types that have 5 or more cards?,SELECT card_type_code FROM Customers_cards GROUP BY card_type_code HAVING count(*)  >=  5
-Show all card type codes and the number of customers holding cards in each type.,"SELECT card_type_code ,  count(DISTINCT customer_id) FROM Customers_cards GROUP BY card_type_code"
-"What are the different card type codes, and how many different customers hold each type?","SELECT card_type_code ,  count(DISTINCT customer_id) FROM Customers_cards GROUP BY card_type_code"
-Show the customer ids and firstname without a credit card.,"SELECT customer_id ,  customer_first_name FROM Customers EXCEPT SELECT T1.customer_id ,  T2.customer_first_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE card_type_code  =  ""Credit"""
-What are the ids and first names of customers who do not hold a credit card?,"SELECT customer_id ,  customer_first_name FROM Customers EXCEPT SELECT T1.customer_id ,  T2.customer_first_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE card_type_code  =  ""Credit"""
-Show all card type codes.,SELECT DISTINCT card_type_code FROM Customers_Cards
-What are the different card type codes?,SELECT DISTINCT card_type_code FROM Customers_Cards
-Show the number of card types.,SELECT count(DISTINCT card_type_code) FROM Customers_Cards
-How many different card types are there?,SELECT count(DISTINCT card_type_code) FROM Customers_Cards
-Show all transaction types.,SELECT DISTINCT transaction_type FROM Financial_Transactions
-What are the different types of transactions?,SELECT DISTINCT transaction_type FROM Financial_Transactions
-Show the number of transaction types.,SELECT count(DISTINCT transaction_type) FROM Financial_Transactions
-How many different types of transactions are there?,SELECT count(DISTINCT transaction_type) FROM Financial_Transactions
-What is the average and total transaction amount?,"SELECT avg(transaction_amount) ,  sum(transaction_amount) FROM Financial_transactions"
-"Return the average transaction amount, as well as the total amount of all transactions.","SELECT avg(transaction_amount) ,  sum(transaction_amount) FROM Financial_transactions"
-Show the card type codes and the number of transactions.,"SELECT T2.card_type_code ,  count(*) FROM Financial_transactions AS T1 JOIN Customers_cards AS T2 ON T1.card_id  =  T2.card_id GROUP BY T2.card_type_code"
-"What are the different card types, and how many transactions have been made with each?","SELECT T2.card_type_code ,  count(*) FROM Financial_transactions AS T1 JOIN Customers_cards AS T2 ON T1.card_id  =  T2.card_id GROUP BY T2.card_type_code"
-Show the transaction type and the number of transactions.,"SELECT transaction_type ,  count(*) FROM Financial_transactions GROUP BY transaction_type"
-"What are the different transaction types, and how many transactions of each have taken place?","SELECT transaction_type ,  count(*) FROM Financial_transactions GROUP BY transaction_type"
-What is the transaction type that has processed the greatest total amount in transactions?,SELECT transaction_type FROM Financial_transactions GROUP BY transaction_type ORDER BY sum(transaction_amount) DESC LIMIT 1
-Return the type of transaction with the highest total amount.,SELECT transaction_type FROM Financial_transactions GROUP BY transaction_type ORDER BY sum(transaction_amount) DESC LIMIT 1
-Show the account id and the number of transactions for each account,"SELECT account_id ,  count(*) FROM Financial_transactions GROUP BY account_id"
-"What are the different account ids that have made financial transactions, as well as how many transactions correspond to each?","SELECT account_id ,  count(*) FROM Financial_transactions GROUP BY account_id"
+How many accounts do we have?,SELECT COUNT(*) FROM `Accounts`
+Count the number of accounts.,SELECT COUNT(*) FROM `Accounts`
+"Show ids, customer ids, names for all accounts.","SELECT `account_id`, `customer_id`, `account_name` FROM `Accounts`"
+"What are the account ids, customer ids, and account names for all the accounts?","SELECT `account_id`, `customer_id`, `account_name` FROM `Accounts`"
+Show other account details for account with name 338.,SELECT `other_account_details` FROM `Accounts` WHERE `account_name` = `338`
+What are the other account details for the account with the name 338?,SELECT `other_account_details` FROM `Accounts` WHERE `account_name` = `338`
+"What is the first name, last name, and phone of the customer with account name 162?","SELECT `T2`.`customer_first_name`, `T2`.`customer_last_name`, `T2`.`customer_phone` FROM `Accounts` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `T1`.`account_name` = `162`"
+Give the full name and phone of the customer who has the account name 162.,"SELECT `T2`.`customer_first_name`, `T2`.`customer_last_name`, `T2`.`customer_phone` FROM `Accounts` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `T1`.`account_name` = `162`"
+How many accounts does the customer with first name Art and last name Turcotte have?,SELECT COUNT(*) FROM `Accounts` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `T2`.`customer_first_name` = `Art` AND `T2`.`customer_last_name` = `Turcotte`
+Return the number of accounts that the customer with the first name Art and last name Turcotte has.,SELECT COUNT(*) FROM `Accounts` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `T2`.`customer_first_name` = `Art` AND `T2`.`customer_last_name` = `Turcotte`
+Show all customer ids and the number of accounts for each customer.,"SELECT `customer_id`, COUNT(*) FROM `Accounts` GROUP BY `customer_id`"
+How many accounts are there for each customer id?,"SELECT `customer_id`, COUNT(*) FROM `Accounts` GROUP BY `customer_id`"
+Show the customer id and number of accounts with most accounts.,"SELECT `customer_id`, COUNT(*) FROM `Accounts` GROUP BY `customer_id` ORDER BY COUNT(*) DESC LIMIT 1"
+"What is the customer id of the customer with the most accounts, and how many accounts does this person have?","SELECT `customer_id`, COUNT(*) FROM `Accounts` GROUP BY `customer_id` ORDER BY COUNT(*) DESC LIMIT 1"
+"What is the customer first, last name and id with least number of accounts.","SELECT `T2`.`customer_first_name`, `T2`.`customer_last_name`, `T1`.`customer_id` FROM `Accounts` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` GROUP BY `T1`.`customer_id` ORDER BY COUNT(*) ASC LIMIT 1"
+Give the full name and customer id of the customer with the fewest accounts.,"SELECT `T2`.`customer_first_name`, `T2`.`customer_last_name`, `T1`.`customer_id` FROM `Accounts` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` GROUP BY `T1`.`customer_id` ORDER BY COUNT(*) ASC LIMIT 1"
+Show the number of all customers without an account.,SELECT COUNT(*) FROM `Customers` WHERE NOT `customer_id` IN (SELECT `customer_id` FROM `Accounts`)
+How many customers do not have an account?,SELECT COUNT(*) FROM `Customers` WHERE NOT `customer_id` IN (SELECT `customer_id` FROM `Accounts`)
+Show the first names and last names of customers without any account.,"SELECT `customer_first_name`, `customer_last_name` FROM `Customers` EXCEPT SELECT `T1`.`customer_first_name`, `T1`.`customer_last_name` FROM `Customers` AS `T1` JOIN `Accounts` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id`"
+What are the full names of customers who do not have any accounts?,"SELECT `customer_first_name`, `customer_last_name` FROM `Customers` EXCEPT SELECT `T1`.`customer_first_name`, `T1`.`customer_last_name` FROM `Customers` AS `T1` JOIN `Accounts` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id`"
+Show distinct first and last names for all customers with an account.,"SELECT DISTINCT `T1`.`customer_first_name`, `T1`.`customer_last_name` FROM `Customers` AS `T1` JOIN `Accounts` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id`"
+What are the full names of customers who have accounts?,"SELECT DISTINCT `T1`.`customer_first_name`, `T1`.`customer_last_name` FROM `Customers` AS `T1` JOIN `Accounts` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id`"
+How many customers have an account?,SELECT COUNT(DISTINCT `customer_id`) FROM `Accounts`
+Count the number of customers who hold an account.,SELECT COUNT(DISTINCT `customer_id`) FROM `Accounts`
+How many customers do we have?,SELECT COUNT(*) FROM `Customers`
+Count the number of customers.,SELECT COUNT(*) FROM `Customers`
+"Show ids, first names, last names, and phones for all customers.","SELECT `customer_id`, `customer_first_name`, `customer_last_name`, `customer_phone` FROM `Customers`"
+"What are the ids, full names, and phones of each customer?","SELECT `customer_id`, `customer_first_name`, `customer_last_name`, `customer_phone` FROM `Customers`"
+What is the phone and email for customer with first name Aniyah and last name Feest?,"SELECT `customer_phone`, `customer_email` FROM `Customers` WHERE `customer_first_name` = `Aniyah` AND `customer_last_name` = `Feest`"
+Return the phone and email of the customer with the first name Aniyah and last name Feest.,"SELECT `customer_phone`, `customer_email` FROM `Customers` WHERE `customer_first_name` = `Aniyah` AND `customer_last_name` = `Feest`"
+Show the number of customer cards.,SELECT COUNT(*) FROM `Customers_cards`
+How many customer cards are there?,SELECT COUNT(*) FROM `Customers_cards`
+"Show ids, customer ids, card type codes, card numbers for all cards.","SELECT `card_id`, `customer_id`, `card_type_code`, `card_number` FROM `Customers_cards`"
+"What are card ids, customer ids, card types, and card numbers for each customer card?","SELECT `card_id`, `customer_id`, `card_type_code`, `card_number` FROM `Customers_cards`"
+Show the date valid from and the date valid to for the card with card number '4560596484842'.,"SELECT `date_valid_from`, `date_valid_to` FROM `Customers_cards` WHERE `card_number` = `4560596484842`"
+What are the valid from and valid to dates for the card with the number 4560596484842?,"SELECT `date_valid_from`, `date_valid_to` FROM `Customers_cards` WHERE `card_number` = `4560596484842`"
+"What is the first name, last name, and phone of the customer with card 4560596484842.","SELECT `T2`.`customer_first_name`, `T2`.`customer_last_name`, `T2`.`customer_phone` FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `T1`.`card_number` = `4560596484842`"
+Return the full name and phone of the customer who has card number 4560596484842.,"SELECT `T2`.`customer_first_name`, `T2`.`customer_last_name`, `T2`.`customer_phone` FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `T1`.`card_number` = `4560596484842`"
+How many cards does customer Art Turcotte have?,SELECT COUNT(*) FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `T2`.`customer_first_name` = `Art` AND `T2`.`customer_last_name` = `Turcotte`
+Count the number of cards the customer with the first name Art and last name Turcotte has.,SELECT COUNT(*) FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `T2`.`customer_first_name` = `Art` AND `T2`.`customer_last_name` = `Turcotte`
+How many debit cards do we have?,SELECT COUNT(*) FROM `Customers_cards` WHERE `card_type_code` = `Debit`
+Count the number of customer cards of the type Debit.,SELECT COUNT(*) FROM `Customers_cards` WHERE `card_type_code` = `Debit`
+How many credit cards does customer Blanche Huels have?,SELECT COUNT(*) FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `T2`.`customer_first_name` = `Blanche` AND `T2`.`customer_last_name` = `Huels` AND `T1`.`card_type_code` = `Credit`
+Count the number of credit cards that the customer with first name Blanche and last name Huels has.,SELECT COUNT(*) FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `T2`.`customer_first_name` = `Blanche` AND `T2`.`customer_last_name` = `Huels` AND `T1`.`card_type_code` = `Credit`
+Show all customer ids and the number of cards owned by each customer.,"SELECT `customer_id`, COUNT(*) FROM `Customers_cards` GROUP BY `customer_id`"
+"What are the different customer ids, and how many cards does each one hold?","SELECT `customer_id`, COUNT(*) FROM `Customers_cards` GROUP BY `customer_id`"
+"What is the customer id with most number of cards, and how many does he have?","SELECT `customer_id`, COUNT(*) FROM `Customers_cards` GROUP BY `customer_id` ORDER BY COUNT(*) DESC LIMIT 1"
+"Return the id of the customer who has the most cards, as well as the number of cards.","SELECT `customer_id`, COUNT(*) FROM `Customers_cards` GROUP BY `customer_id` ORDER BY COUNT(*) DESC LIMIT 1"
+"Show id, first and last names for all customers with at least two cards.","SELECT `T1`.`customer_id`, `T2`.`customer_first_name`, `T2`.`customer_last_name` FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` GROUP BY `T1`.`customer_id` HAVING COUNT(*) >= 2"
+What are the ids and full names of customers who hold two or more cards?,"SELECT `T1`.`customer_id`, `T2`.`customer_first_name`, `T2`.`customer_last_name` FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` GROUP BY `T1`.`customer_id` HAVING COUNT(*) >= 2"
+"What is the customer id, first and last name with least number of accounts.","SELECT `T1`.`customer_id`, `T2`.`customer_first_name`, `T2`.`customer_last_name` FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` GROUP BY `T1`.`customer_id` ORDER BY COUNT(*) ASC LIMIT 1"
+Return the id and full name of the customer who has the fewest accounts.,"SELECT `T1`.`customer_id`, `T2`.`customer_first_name`, `T2`.`customer_last_name` FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` GROUP BY `T1`.`customer_id` ORDER BY COUNT(*) ASC LIMIT 1"
+Show all card type codes and the number of cards in each type.,"SELECT `card_type_code`, COUNT(*) FROM `Customers_cards` GROUP BY `card_type_code`"
+"What are the different card types, and how many cards are there of each?","SELECT `card_type_code`, COUNT(*) FROM `Customers_cards` GROUP BY `card_type_code`"
+What is the card type code with most number of cards?,SELECT `card_type_code` FROM `Customers_cards` GROUP BY `card_type_code` ORDER BY COUNT(*) DESC LIMIT 1
+Return the code of the card type that is most common.,SELECT `card_type_code` FROM `Customers_cards` GROUP BY `card_type_code` ORDER BY COUNT(*) DESC LIMIT 1
+Show card type codes with at least 5 cards.,SELECT `card_type_code` FROM `Customers_cards` GROUP BY `card_type_code` HAVING COUNT(*) >= 5
+What are the codes of card types that have 5 or more cards?,SELECT `card_type_code` FROM `Customers_cards` GROUP BY `card_type_code` HAVING COUNT(*) >= 5
+Show all card type codes and the number of customers holding cards in each type.,"SELECT `card_type_code`, COUNT(DISTINCT `customer_id`) FROM `Customers_cards` GROUP BY `card_type_code`"
+"What are the different card type codes, and how many different customers hold each type?","SELECT `card_type_code`, COUNT(DISTINCT `customer_id`) FROM `Customers_cards` GROUP BY `card_type_code`"
+Show the customer ids and firstname without a credit card.,"SELECT `customer_id`, `customer_first_name` FROM `Customers` EXCEPT SELECT `T1`.`customer_id`, `T2`.`customer_first_name` FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `card_type_code` = `Credit`"
+What are the ids and first names of customers who do not hold a credit card?,"SELECT `customer_id`, `customer_first_name` FROM `Customers` EXCEPT SELECT `T1`.`customer_id`, `T2`.`customer_first_name` FROM `Customers_cards` AS `T1` JOIN `Customers` AS `T2` ON `T1`.`customer_id` = `T2`.`customer_id` WHERE `card_type_code` = `Credit`"
+Show all card type codes.,SELECT DISTINCT `card_type_code` FROM `Customers_Cards`
+What are the different card type codes?,SELECT DISTINCT `card_type_code` FROM `Customers_Cards`
+Show the number of card types.,SELECT COUNT(DISTINCT `card_type_code`) FROM `Customers_Cards`
+How many different card types are there?,SELECT COUNT(DISTINCT `card_type_code`) FROM `Customers_Cards`
+Show all transaction types.,SELECT DISTINCT `transaction_type` FROM `Financial_Transactions`
+What are the different types of transactions?,SELECT DISTINCT `transaction_type` FROM `Financial_Transactions`
+Show the number of transaction types.,SELECT COUNT(DISTINCT `transaction_type`) FROM `Financial_Transactions`
+How many different types of transactions are there?,SELECT COUNT(DISTINCT `transaction_type`) FROM `Financial_Transactions`
+What is the average and total transaction amount?,"SELECT AVG(`transaction_amount`), SUM(`transaction_amount`) FROM `Financial_transactions`"
+"Return the average transaction amount, as well as the total amount of all transactions.","SELECT AVG(`transaction_amount`), SUM(`transaction_amount`) FROM `Financial_transactions`"
+Show the card type codes and the number of transactions.,"SELECT `T2`.`card_type_code`, COUNT(*) FROM `Financial_transactions` AS `T1` JOIN `Customers_cards` AS `T2` ON `T1`.`card_id` = `T2`.`card_id` GROUP BY `T2`.`card_type_code`"
+"What are the different card types, and how many transactions have been made with each?","SELECT `T2`.`card_type_code`, COUNT(*) FROM `Financial_transactions` AS `T1` JOIN `Customers_cards` AS `T2` ON `T1`.`card_id` = `T2`.`card_id` GROUP BY `T2`.`card_type_code`"
+Show the transaction type and the number of transactions.,"SELECT `transaction_type`, COUNT(*) FROM `Financial_transactions` GROUP BY `transaction_type`"
+"What are the different transaction types, and how many transactions of each have taken place?","SELECT `transaction_type`, COUNT(*) FROM `Financial_transactions` GROUP BY `transaction_type`"
+What is the transaction type that has processed the greatest total amount in transactions?,SELECT `transaction_type` FROM `Financial_transactions` GROUP BY `transaction_type` ORDER BY SUM(`transaction_amount`) DESC LIMIT 1
+Return the type of transaction with the highest total amount.,SELECT `transaction_type` FROM `Financial_transactions` GROUP BY `transaction_type` ORDER BY SUM(`transaction_amount`) DESC LIMIT 1
+Show the account id and the number of transactions for each account,"SELECT `account_id`, COUNT(*) FROM `Financial_transactions` GROUP BY `account_id`"
+"What are the different account ids that have made financial transactions, as well as how many transactions correspond to each?","SELECT `account_id`, COUNT(*) FROM `Financial_transactions` GROUP BY `account_id`"

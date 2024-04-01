@@ -1,91 +1,91 @@
 question,sql
-How many calendar items do we have?,SELECT count(*) FROM Ref_calendar
-Count the number of all the calendar items.,SELECT count(*) FROM Ref_calendar
-Show all calendar dates and day Numbers.,"SELECT calendar_date ,  day_Number FROM Ref_calendar"
-What are all the calendar dates and day Numbers?,"SELECT calendar_date ,  day_Number FROM Ref_calendar"
-Show the number of document types.,SELECT count(*) FROM Ref_document_types
-How many document types are there?,SELECT count(*) FROM Ref_document_types
-List all document type codes and document type names.,"SELECT document_type_code ,  document_type_name FROM Ref_document_types"
-What are all the document type codes and document type names?,"SELECT document_type_code ,  document_type_name FROM Ref_document_types"
-What is the name and description for document type code RV?,"SELECT document_type_name ,  document_type_description FROM Ref_document_types WHERE document_type_code  =  ""RV"""
-Give me the name and description of the document type code RV.,"SELECT document_type_name ,  document_type_description FROM Ref_document_types WHERE document_type_code  =  ""RV"""
-"What is the document type code for document type ""Paper""?","SELECT document_type_code FROM Ref_document_types WHERE document_type_name  =  ""Paper"""
-"Find the code of the document type ""Paper"".","SELECT document_type_code FROM Ref_document_types WHERE document_type_name  =  ""Paper"""
-Show the number of documents with document type code CV or BK.,"SELECT count(*) FROM All_documents WHERE document_type_code  =  ""CV"" OR document_type_code  =  ""BK"""
-How many documents have document type code CV or BK?,"SELECT count(*) FROM All_documents WHERE document_type_code  =  ""CV"" OR document_type_code  =  ""BK"""
-"What is the date when the document ""Marry CV"" was stored?","SELECT date_stored FROM All_documents WHERE Document_name  =  ""Marry CV"""
-"When was the document named ""Marry CV"" stored? Give me the date.","SELECT date_stored FROM All_documents WHERE Document_name  =  ""Marry CV"""
-What is the day Number and date of all the documents?,"SELECT T2.day_Number ,  T1.Date_Stored FROM All_documents AS T1 JOIN Ref_calendar AS T2 ON T1.date_stored  =  T2.calendar_date"
-Return the day Number and stored date for all the documents.,"SELECT T2.day_Number ,  T1.Date_Stored FROM All_documents AS T1 JOIN Ref_calendar AS T2 ON T1.date_stored  =  T2.calendar_date"
-"What is the document type name for the document with name ""How to read a book""?","SELECT T2.document_type_name FROM All_documents AS T1 JOIN Ref_document_types AS T2 ON T1.document_type_code  =  T2.document_type_code WHERE T1.document_name  =  ""How to read a book"""
-"Find the document type name of the document named ""How to read a book"".","SELECT T2.document_type_name FROM All_documents AS T1 JOIN Ref_document_types AS T2 ON T1.document_type_code  =  T2.document_type_code WHERE T1.document_name  =  ""How to read a book"""
-Show the number of locations.,SELECT count(*) FROM Ref_locations
-How many locations are listed in the database?,SELECT count(*) FROM Ref_locations
-List all location codes and location names.,"SELECT location_code ,  location_name FROM Ref_locations"
-What are all the location codes and location names?,"SELECT location_code ,  location_name FROM Ref_locations"
-What are the name and description for location code x?,"SELECT location_name ,  location_description FROM Ref_locations WHERE location_code  =  ""x"""
-Give me the name and description of the location with code x.,"SELECT location_name ,  location_description FROM Ref_locations WHERE location_code  =  ""x"""
-"What is the location code for the country ""Canada""?","SELECT location_code FROM Ref_locations WHERE location_name  =  ""Canada"""
-"Show the location code of the country ""Canada"".","SELECT location_code FROM Ref_locations WHERE location_name  =  ""Canada"""
-How many roles are there?,SELECT count(*) FROM ROLES
-Count the total number of roles listed.,SELECT count(*) FROM ROLES
-"List all role codes, role names, and role descriptions.","SELECT role_code ,  role_name ,  role_description FROM ROLES"
-"What are all the role codes, role names, and role descriptions?","SELECT role_code ,  role_name ,  role_description FROM ROLES"
-"What are the name and description for role code ""MG""?","SELECT role_name ,  role_description FROM ROLES WHERE role_code  =  ""MG"""
-"Find the name and description of the role with code ""MG"".","SELECT role_name ,  role_description FROM ROLES WHERE role_code  =  ""MG"""
-"Show the description for role name ""Proof Reader"".","SELECT role_description FROM ROLES WHERE role_name  =  ""Proof Reader"""
-"What is the description of the role named ""Proof Reader""?","SELECT role_description FROM ROLES WHERE role_name  =  ""Proof Reader"""
-How many employees do we have?,SELECT count(*) FROM Employees
-Find the number of employees we have.,SELECT count(*) FROM Employees
-"Show the name, role code, and date of birth for the employee with name 'Armani'.","SELECT employee_name ,  role_code ,  date_of_birth FROM Employees WHERE employee_Name  =  'Armani'"
-"What are the name, role code, and date of birth of the employee named 'Armani'?","SELECT employee_name ,  role_code ,  date_of_birth FROM Employees WHERE employee_Name  =  'Armani'"
-What is the id for the employee called Ebba?,"SELECT employee_ID FROM Employees WHERE employee_name  =  ""Ebba"""
-Show the id of the employee named Ebba.,"SELECT employee_ID FROM Employees WHERE employee_name  =  ""Ebba"""
-"Show the names of all the employees with role ""HR"".","SELECT employee_name FROM Employees WHERE role_code  =  ""HR"""
-"Which employees have the role with code ""HR""? Find their names.","SELECT employee_name FROM Employees WHERE role_code  =  ""HR"""
-Show all role codes and the number of employees in each role.,"SELECT role_code ,  count(*) FROM Employees GROUP BY role_code"
-What is the code of each role and the number of employees in each role?,"SELECT role_code ,  count(*) FROM Employees GROUP BY role_code"
-What is the role code with the largest number of employees?,SELECT role_code FROM Employees GROUP BY role_code ORDER BY count(*) DESC LIMIT 1
-Find the code of the role that have the most employees.,SELECT role_code FROM Employees GROUP BY role_code ORDER BY count(*) DESC LIMIT 1
-Show all role codes with at least 3 employees.,SELECT role_code FROM Employees GROUP BY role_code HAVING count(*)  >=  3
-What are the roles with three or more employees? Give me the role codes.,SELECT role_code FROM Employees GROUP BY role_code HAVING count(*)  >=  3
-Show the role code with the least employees.,SELECT role_code FROM Employees GROUP BY role_code ORDER BY count(*) ASC LIMIT 1
-What is the role with the smallest number of employees? Find the role codes.,SELECT role_code FROM Employees GROUP BY role_code ORDER BY count(*) ASC LIMIT 1
-What is the role name and role description for employee called Ebba?,"SELECT T2.role_name ,  T2.role_description FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T1.employee_name  =  ""Ebba"""
-Show the name and description of the role played by the employee named Ebba.,"SELECT T2.role_name ,  T2.role_description FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T1.employee_name  =  ""Ebba"""
-Show the names of employees with role name Editor.,"SELECT T1.employee_name FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T2.role_name  =  ""Editor"""
-"Find the names of all the employees whose the role name is ""Editor"".","SELECT T1.employee_name FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T2.role_name  =  ""Editor"""
-"Show the employee ids for all employees with role name ""Human Resource"" or ""Manager"".","SELECT T1.employee_id FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T2.role_name  =  ""Human Resource"" OR T2.role_name  =  ""Manager"""
-"What are the employee ids of the employees whose role name is ""Human Resource"" or ""Manager""?","SELECT T1.employee_id FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T2.role_name  =  ""Human Resource"" OR T2.role_name  =  ""Manager"""
-What are the different location codes for documents?,SELECT DISTINCT location_code FROM Document_locations
-Give me all the distinct location codes for documents.,SELECT DISTINCT location_code FROM Document_locations
-"Show the location name for document ""Robin CV"".","SELECT T3.location_name FROM All_documents AS T1 JOIN Document_locations AS T2 ON T1.document_id  =  T2.document_id JOIN Ref_locations AS T3 ON T2.location_code  =  T3.location_code WHERE T1.document_name  =  ""Robin CV"""
-"What is the location name of the document ""Robin CV""?","SELECT T3.location_name FROM All_documents AS T1 JOIN Document_locations AS T2 ON T1.document_id  =  T2.document_id JOIN Ref_locations AS T3 ON T2.location_code  =  T3.location_code WHERE T1.document_name  =  ""Robin CV"""
-"Show the location code, the starting date and ending data in that location for all the documents.","SELECT location_code ,  date_in_location_from ,  date_in_locaton_to FROM Document_locations"
-"What are each document's location code, and starting date and ending data in that location?","SELECT location_code ,  date_in_location_from ,  date_in_locaton_to FROM Document_locations"
-"What is ""the date in location from"" and ""the date in location to"" for the document with name ""Robin CV""?","SELECT T1.date_in_location_from ,  T1.date_in_locaton_to FROM Document_locations AS T1 JOIN All_documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.document_name  =  ""Robin CV"""
-"Find the starting date and ending data in location for the document named ""Robin CV"".","SELECT T1.date_in_location_from ,  T1.date_in_locaton_to FROM Document_locations AS T1 JOIN All_documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.document_name  =  ""Robin CV"""
-Show the location codes and the number of documents in each location.,"SELECT location_code ,  count(*) FROM Document_locations GROUP BY location_code"
-What is the code of each location and the number of documents in that location?,"SELECT location_code ,  count(*) FROM Document_locations GROUP BY location_code"
-What is the location code with the most documents?,SELECT location_code FROM Document_locations GROUP BY location_code ORDER BY count(*) DESC LIMIT 1
-Find the code of the location with the largest number of documents.,SELECT location_code FROM Document_locations GROUP BY location_code ORDER BY count(*) DESC LIMIT 1
-Show the location codes with at least 3 documents.,SELECT location_code FROM Document_locations GROUP BY location_code HAVING count(*)  >=  3
-What are the codes of the locations with at least three documents?,SELECT location_code FROM Document_locations GROUP BY location_code HAVING count(*)  >=  3
-Show the location name and code with the least documents.,"SELECT T2.location_name ,  T1.location_code FROM Document_locations AS T1 JOIN Ref_locations AS T2 ON T1.location_code  =  T2.location_code GROUP BY T1.location_code ORDER BY count(*) ASC LIMIT 1"
-What are the name and code of the location with the smallest number of documents?,"SELECT T2.location_name ,  T1.location_code FROM Document_locations AS T1 JOIN Ref_locations AS T2 ON T1.location_code  =  T2.location_code GROUP BY T1.location_code ORDER BY count(*) ASC LIMIT 1"
-What are the names of the employees who authorised the destruction and the employees who destroyed the corresponding documents?,"SELECT T2.employee_name ,  T3.employee_name FROM Documents_to_be_destroyed AS T1 JOIN Employees AS T2 ON T1.Destruction_Authorised_by_Employee_ID = T2.employee_id JOIN Employees AS T3 ON T1.Destroyed_by_Employee_ID = T3.employee_id;"
-List the names of the employees who authorized the destruction of documents and the employees who destroyed the corresponding documents.,"SELECT T2.employee_name ,  T3.employee_name FROM Documents_to_be_destroyed AS T1 JOIN Employees AS T2 ON T1.Destruction_Authorised_by_Employee_ID = T2.employee_id JOIN Employees AS T3 ON T1.Destroyed_by_Employee_ID = T3.employee_id;"
-Show the id of each employee and the number of document destruction authorised by that employee.,"SELECT Destruction_Authorised_by_Employee_ID ,  count(*) FROM Documents_to_be_destroyed GROUP BY Destruction_Authorised_by_Employee_ID"
-What are the id of each employee and the number of document destruction authorised by that employee?,"SELECT Destruction_Authorised_by_Employee_ID ,  count(*) FROM Documents_to_be_destroyed GROUP BY Destruction_Authorised_by_Employee_ID"
-Show the employee ids and the number of documents destroyed by each employee.,"SELECT Destroyed_by_Employee_ID ,  count(*) FROM Documents_to_be_destroyed GROUP BY Destroyed_by_Employee_ID"
-What are the id of each employee and the number of document destroyed by that employee?,"SELECT Destroyed_by_Employee_ID ,  count(*) FROM Documents_to_be_destroyed GROUP BY Destroyed_by_Employee_ID"
-Show the ids of the employees who don't authorize destruction for any document.,SELECT employee_id FROM Employees EXCEPT SELECT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
-Which employees do not authorize destruction for any document? Give me their employee ids.,SELECT employee_id FROM Employees EXCEPT SELECT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
-Show the ids of all employees who have authorized destruction.,SELECT DISTINCT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
-What are the ids of all the employees who authorize document destruction?,SELECT DISTINCT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
-Show the ids of all employees who have destroyed a document.,SELECT DISTINCT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed
-What are the ids of all the employees who have destroyed documents?,SELECT DISTINCT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed
-Show the ids of all employees who don't destroy any document.,SELECT employee_id FROM Employees EXCEPT SELECT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed
-Which employees do not destroy any document? Find their employee ids.,SELECT employee_id FROM Employees EXCEPT SELECT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed
-Show the ids of all employees who have either destroyed a document or made an authorization to do this.,SELECT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed UNION SELECT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
-Which employees have either destroyed a document or made an authorization to do so? Return their employee ids.,SELECT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed UNION SELECT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
+How many calendar items do we have?,SELECT COUNT(*) FROM `Ref_calendar`
+Count the number of all the calendar items.,SELECT COUNT(*) FROM `Ref_calendar`
+Show all calendar dates and day Numbers.,"SELECT `calendar_date`, `day_Number` FROM `Ref_calendar`"
+What are all the calendar dates and day Numbers?,"SELECT `calendar_date`, `day_Number` FROM `Ref_calendar`"
+Show the number of document types.,SELECT COUNT(*) FROM `Ref_document_types`
+How many document types are there?,SELECT COUNT(*) FROM `Ref_document_types`
+List all document type codes and document type names.,"SELECT `document_type_code`, `document_type_name` FROM `Ref_document_types`"
+What are all the document type codes and document type names?,"SELECT `document_type_code`, `document_type_name` FROM `Ref_document_types`"
+What is the name and description for document type code RV?,"SELECT `document_type_name`, `document_type_description` FROM `Ref_document_types` WHERE `document_type_code` = `RV`"
+Give me the name and description of the document type code RV.,"SELECT `document_type_name`, `document_type_description` FROM `Ref_document_types` WHERE `document_type_code` = `RV`"
+"What is the document type code for document type ""Paper""?",SELECT `document_type_code` FROM `Ref_document_types` WHERE `document_type_name` = `Paper`
+"Find the code of the document type ""Paper"".",SELECT `document_type_code` FROM `Ref_document_types` WHERE `document_type_name` = `Paper`
+Show the number of documents with document type code CV or BK.,SELECT COUNT(*) FROM `All_documents` WHERE `document_type_code` = `CV` OR `document_type_code` = `BK`
+How many documents have document type code CV or BK?,SELECT COUNT(*) FROM `All_documents` WHERE `document_type_code` = `CV` OR `document_type_code` = `BK`
+"What is the date when the document ""Marry CV"" was stored?",SELECT `date_stored` FROM `All_documents` WHERE `Document_name` = `Marry CV`
+"When was the document named ""Marry CV"" stored? Give me the date.",SELECT `date_stored` FROM `All_documents` WHERE `Document_name` = `Marry CV`
+What is the day Number and date of all the documents?,"SELECT `T2`.`day_Number`, `T1`.`Date_Stored` FROM `All_documents` AS `T1` JOIN `Ref_calendar` AS `T2` ON `T1`.`date_stored` = `T2`.`calendar_date`"
+Return the day Number and stored date for all the documents.,"SELECT `T2`.`day_Number`, `T1`.`Date_Stored` FROM `All_documents` AS `T1` JOIN `Ref_calendar` AS `T2` ON `T1`.`date_stored` = `T2`.`calendar_date`"
+"What is the document type name for the document with name ""How to read a book""?",SELECT `T2`.`document_type_name` FROM `All_documents` AS `T1` JOIN `Ref_document_types` AS `T2` ON `T1`.`document_type_code` = `T2`.`document_type_code` WHERE `T1`.`document_name` = `How to read a book`
+"Find the document type name of the document named ""How to read a book"".",SELECT `T2`.`document_type_name` FROM `All_documents` AS `T1` JOIN `Ref_document_types` AS `T2` ON `T1`.`document_type_code` = `T2`.`document_type_code` WHERE `T1`.`document_name` = `How to read a book`
+Show the number of locations.,SELECT COUNT(*) FROM `Ref_locations`
+How many locations are listed in the database?,SELECT COUNT(*) FROM `Ref_locations`
+List all location codes and location names.,"SELECT `location_code`, `location_name` FROM `Ref_locations`"
+What are all the location codes and location names?,"SELECT `location_code`, `location_name` FROM `Ref_locations`"
+What are the name and description for location code x?,"SELECT `location_name`, `location_description` FROM `Ref_locations` WHERE `location_code` = `x`"
+Give me the name and description of the location with code x.,"SELECT `location_name`, `location_description` FROM `Ref_locations` WHERE `location_code` = `x`"
+"What is the location code for the country ""Canada""?",SELECT `location_code` FROM `Ref_locations` WHERE `location_name` = `Canada`
+"Show the location code of the country ""Canada"".",SELECT `location_code` FROM `Ref_locations` WHERE `location_name` = `Canada`
+How many roles are there?,SELECT COUNT(*) FROM `ROLES`
+Count the total number of roles listed.,SELECT COUNT(*) FROM `ROLES`
+"List all role codes, role names, and role descriptions.","SELECT `role_code`, `role_name`, `role_description` FROM `ROLES`"
+"What are all the role codes, role names, and role descriptions?","SELECT `role_code`, `role_name`, `role_description` FROM `ROLES`"
+"What are the name and description for role code ""MG""?","SELECT `role_name`, `role_description` FROM `ROLES` WHERE `role_code` = `MG`"
+"Find the name and description of the role with code ""MG"".","SELECT `role_name`, `role_description` FROM `ROLES` WHERE `role_code` = `MG`"
+"Show the description for role name ""Proof Reader"".",SELECT `role_description` FROM `ROLES` WHERE `role_name` = `Proof Reader`
+"What is the description of the role named ""Proof Reader""?",SELECT `role_description` FROM `ROLES` WHERE `role_name` = `Proof Reader`
+How many employees do we have?,SELECT COUNT(*) FROM `Employees`
+Find the number of employees we have.,SELECT COUNT(*) FROM `Employees`
+"Show the name, role code, and date of birth for the employee with name 'Armani'.","SELECT `employee_name`, `role_code`, `date_of_birth` FROM `Employees` WHERE `employee_Name` = 'Armani'"
+"What are the name, role code, and date of birth of the employee named 'Armani'?","SELECT `employee_name`, `role_code`, `date_of_birth` FROM `Employees` WHERE `employee_Name` = 'Armani'"
+What is the id for the employee called Ebba?,SELECT `employee_ID` FROM `Employees` WHERE `employee_name` = `Ebba`
+Show the id of the employee named Ebba.,SELECT `employee_ID` FROM `Employees` WHERE `employee_name` = `Ebba`
+"Show the names of all the employees with role ""HR"".",SELECT `employee_name` FROM `Employees` WHERE `role_code` = `HR`
+"Which employees have the role with code ""HR""? Find their names.",SELECT `employee_name` FROM `Employees` WHERE `role_code` = `HR`
+Show all role codes and the number of employees in each role.,"SELECT `role_code`, COUNT(*) FROM `Employees` GROUP BY `role_code`"
+What is the code of each role and the number of employees in each role?,"SELECT `role_code`, COUNT(*) FROM `Employees` GROUP BY `role_code`"
+What is the role code with the largest number of employees?,SELECT `role_code` FROM `Employees` GROUP BY `role_code` ORDER BY COUNT(*) DESC LIMIT 1
+Find the code of the role that have the most employees.,SELECT `role_code` FROM `Employees` GROUP BY `role_code` ORDER BY COUNT(*) DESC LIMIT 1
+Show all role codes with at least 3 employees.,SELECT `role_code` FROM `Employees` GROUP BY `role_code` HAVING COUNT(*) >= 3
+What are the roles with three or more employees? Give me the role codes.,SELECT `role_code` FROM `Employees` GROUP BY `role_code` HAVING COUNT(*) >= 3
+Show the role code with the least employees.,SELECT `role_code` FROM `Employees` GROUP BY `role_code` ORDER BY COUNT(*) ASC LIMIT 1
+What is the role with the smallest number of employees? Find the role codes.,SELECT `role_code` FROM `Employees` GROUP BY `role_code` ORDER BY COUNT(*) ASC LIMIT 1
+What is the role name and role description for employee called Ebba?,"SELECT `T2`.`role_name`, `T2`.`role_description` FROM `Employees` AS `T1` JOIN `ROLES` AS `T2` ON `T1`.`role_code` = `T2`.`role_code` WHERE `T1`.`employee_name` = `Ebba`"
+Show the name and description of the role played by the employee named Ebba.,"SELECT `T2`.`role_name`, `T2`.`role_description` FROM `Employees` AS `T1` JOIN `ROLES` AS `T2` ON `T1`.`role_code` = `T2`.`role_code` WHERE `T1`.`employee_name` = `Ebba`"
+Show the names of employees with role name Editor.,SELECT `T1`.`employee_name` FROM `Employees` AS `T1` JOIN `ROLES` AS `T2` ON `T1`.`role_code` = `T2`.`role_code` WHERE `T2`.`role_name` = `Editor`
+"Find the names of all the employees whose the role name is ""Editor"".",SELECT `T1`.`employee_name` FROM `Employees` AS `T1` JOIN `ROLES` AS `T2` ON `T1`.`role_code` = `T2`.`role_code` WHERE `T2`.`role_name` = `Editor`
+"Show the employee ids for all employees with role name ""Human Resource"" or ""Manager"".",SELECT `T1`.`employee_id` FROM `Employees` AS `T1` JOIN `ROLES` AS `T2` ON `T1`.`role_code` = `T2`.`role_code` WHERE `T2`.`role_name` = `Human Resource` OR `T2`.`role_name` = `Manager`
+"What are the employee ids of the employees whose role name is ""Human Resource"" or ""Manager""?",SELECT `T1`.`employee_id` FROM `Employees` AS `T1` JOIN `ROLES` AS `T2` ON `T1`.`role_code` = `T2`.`role_code` WHERE `T2`.`role_name` = `Human Resource` OR `T2`.`role_name` = `Manager`
+What are the different location codes for documents?,SELECT DISTINCT `location_code` FROM `Document_locations`
+Give me all the distinct location codes for documents.,SELECT DISTINCT `location_code` FROM `Document_locations`
+"Show the location name for document ""Robin CV"".",SELECT `T3`.`location_name` FROM `All_documents` AS `T1` JOIN `Document_locations` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` JOIN `Ref_locations` AS `T3` ON `T2`.`location_code` = `T3`.`location_code` WHERE `T1`.`document_name` = `Robin CV`
+"What is the location name of the document ""Robin CV""?",SELECT `T3`.`location_name` FROM `All_documents` AS `T1` JOIN `Document_locations` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` JOIN `Ref_locations` AS `T3` ON `T2`.`location_code` = `T3`.`location_code` WHERE `T1`.`document_name` = `Robin CV`
+"Show the location code, the starting date and ending data in that location for all the documents.","SELECT `location_code`, `date_in_location_from`, `date_in_locaton_to` FROM `Document_locations`"
+"What are each document's location code, and starting date and ending data in that location?","SELECT `location_code`, `date_in_location_from`, `date_in_locaton_to` FROM `Document_locations`"
+"What is ""the date in location from"" and ""the date in location to"" for the document with name ""Robin CV""?","SELECT `T1`.`date_in_location_from`, `T1`.`date_in_locaton_to` FROM `Document_locations` AS `T1` JOIN `All_documents` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` WHERE `T2`.`document_name` = `Robin CV`"
+"Find the starting date and ending data in location for the document named ""Robin CV"".","SELECT `T1`.`date_in_location_from`, `T1`.`date_in_locaton_to` FROM `Document_locations` AS `T1` JOIN `All_documents` AS `T2` ON `T1`.`document_id` = `T2`.`document_id` WHERE `T2`.`document_name` = `Robin CV`"
+Show the location codes and the number of documents in each location.,"SELECT `location_code`, COUNT(*) FROM `Document_locations` GROUP BY `location_code`"
+What is the code of each location and the number of documents in that location?,"SELECT `location_code`, COUNT(*) FROM `Document_locations` GROUP BY `location_code`"
+What is the location code with the most documents?,SELECT `location_code` FROM `Document_locations` GROUP BY `location_code` ORDER BY COUNT(*) DESC LIMIT 1
+Find the code of the location with the largest number of documents.,SELECT `location_code` FROM `Document_locations` GROUP BY `location_code` ORDER BY COUNT(*) DESC LIMIT 1
+Show the location codes with at least 3 documents.,SELECT `location_code` FROM `Document_locations` GROUP BY `location_code` HAVING COUNT(*) >= 3
+What are the codes of the locations with at least three documents?,SELECT `location_code` FROM `Document_locations` GROUP BY `location_code` HAVING COUNT(*) >= 3
+Show the location name and code with the least documents.,"SELECT `T2`.`location_name`, `T1`.`location_code` FROM `Document_locations` AS `T1` JOIN `Ref_locations` AS `T2` ON `T1`.`location_code` = `T2`.`location_code` GROUP BY `T1`.`location_code` ORDER BY COUNT(*) ASC LIMIT 1"
+What are the name and code of the location with the smallest number of documents?,"SELECT `T2`.`location_name`, `T1`.`location_code` FROM `Document_locations` AS `T1` JOIN `Ref_locations` AS `T2` ON `T1`.`location_code` = `T2`.`location_code` GROUP BY `T1`.`location_code` ORDER BY COUNT(*) ASC LIMIT 1"
+What are the names of the employees who authorised the destruction and the employees who destroyed the corresponding documents?,"SELECT `T2`.`employee_name`, `T3`.`employee_name` FROM `Documents_to_be_destroyed` AS `T1` JOIN `Employees` AS `T2` ON `T1`.`Destruction_Authorised_by_Employee_ID` = `T2`.`employee_id` JOIN `Employees` AS `T3` ON `T1`.`Destroyed_by_Employee_ID` = `T3`.`employee_id`"
+List the names of the employees who authorized the destruction of documents and the employees who destroyed the corresponding documents.,"SELECT `T2`.`employee_name`, `T3`.`employee_name` FROM `Documents_to_be_destroyed` AS `T1` JOIN `Employees` AS `T2` ON `T1`.`Destruction_Authorised_by_Employee_ID` = `T2`.`employee_id` JOIN `Employees` AS `T3` ON `T1`.`Destroyed_by_Employee_ID` = `T3`.`employee_id`"
+Show the id of each employee and the number of document destruction authorised by that employee.,"SELECT `Destruction_Authorised_by_Employee_ID`, COUNT(*) FROM `Documents_to_be_destroyed` GROUP BY `Destruction_Authorised_by_Employee_ID`"
+What are the id of each employee and the number of document destruction authorised by that employee?,"SELECT `Destruction_Authorised_by_Employee_ID`, COUNT(*) FROM `Documents_to_be_destroyed` GROUP BY `Destruction_Authorised_by_Employee_ID`"
+Show the employee ids and the number of documents destroyed by each employee.,"SELECT `Destroyed_by_Employee_ID`, COUNT(*) FROM `Documents_to_be_destroyed` GROUP BY `Destroyed_by_Employee_ID`"
+What are the id of each employee and the number of document destroyed by that employee?,"SELECT `Destroyed_by_Employee_ID`, COUNT(*) FROM `Documents_to_be_destroyed` GROUP BY `Destroyed_by_Employee_ID`"
+Show the ids of the employees who don't authorize destruction for any document.,SELECT `employee_id` FROM `Employees` EXCEPT SELECT `Destruction_Authorised_by_Employee_ID` FROM `Documents_to_be_destroyed`
+Which employees do not authorize destruction for any document? Give me their employee ids.,SELECT `employee_id` FROM `Employees` EXCEPT SELECT `Destruction_Authorised_by_Employee_ID` FROM `Documents_to_be_destroyed`
+Show the ids of all employees who have authorized destruction.,SELECT DISTINCT `Destruction_Authorised_by_Employee_ID` FROM `Documents_to_be_destroyed`
+What are the ids of all the employees who authorize document destruction?,SELECT DISTINCT `Destruction_Authorised_by_Employee_ID` FROM `Documents_to_be_destroyed`
+Show the ids of all employees who have destroyed a document.,SELECT DISTINCT `Destroyed_by_Employee_ID` FROM `Documents_to_be_destroyed`
+What are the ids of all the employees who have destroyed documents?,SELECT DISTINCT `Destroyed_by_Employee_ID` FROM `Documents_to_be_destroyed`
+Show the ids of all employees who don't destroy any document.,SELECT `employee_id` FROM `Employees` EXCEPT SELECT `Destroyed_by_Employee_ID` FROM `Documents_to_be_destroyed`
+Which employees do not destroy any document? Find their employee ids.,SELECT `employee_id` FROM `Employees` EXCEPT SELECT `Destroyed_by_Employee_ID` FROM `Documents_to_be_destroyed`
+Show the ids of all employees who have either destroyed a document or made an authorization to do this.,SELECT `Destroyed_by_Employee_ID` FROM `Documents_to_be_destroyed` UNION SELECT `Destruction_Authorised_by_Employee_ID` FROM `Documents_to_be_destroyed`
+Which employees have either destroyed a document or made an authorization to do so? Return their employee ids.,SELECT `Destroyed_by_Employee_ID` FROM `Documents_to_be_destroyed` UNION SELECT `Destruction_Authorised_by_Employee_ID` FROM `Documents_to_be_destroyed`

@@ -1,63 +1,63 @@
 question,sql
-Find the total number of players.,SELECT count(*) FROM players
-How many players are there?,SELECT count(*) FROM players
-Find the total number of matches.,SELECT count(*) FROM matches
-Count the number of matches.,SELECT count(*) FROM matches
-List the first name and birth date of all players from the country with code USA.,"SELECT first_name ,  birth_date FROM players WHERE country_code  =  'USA'"
-What are the first names and birth dates of players from the USA?,"SELECT first_name ,  birth_date FROM players WHERE country_code  =  'USA'"
-Find the average age of losers and winners of all matches.,"SELECT avg(loser_age) ,  avg(winner_age) FROM matches"
-What are the average ages of losers and winners across matches?,"SELECT avg(loser_age) ,  avg(winner_age) FROM matches"
-Find the average rank of winners in all matches.,SELECT avg(winner_rank) FROM matches
-What is the average rank for winners in all matches?,SELECT avg(winner_rank) FROM matches
-Find the highest rank of losers in all matches.,SELECT min(loser_rank) FROM matches
-What is the best rank of losers across all matches?,SELECT min(loser_rank) FROM matches
-find the number of distinct country codes of all players.,SELECT count(DISTINCT country_code) FROM players
-How many distinct countries do players come from?,SELECT count(DISTINCT country_code) FROM players
-Find the number of distinct name of losers.,SELECT count(DISTINCT loser_name) FROM matches
-How many different loser names are there?,SELECT count(DISTINCT loser_name) FROM matches
-Find the name of tourney that has more than 10 matches.,SELECT tourney_name FROM matches GROUP BY tourney_name HAVING count(*)  >  10
-What are the names of tournaments that have more than 10 matches?,SELECT tourney_name FROM matches GROUP BY tourney_name HAVING count(*)  >  10
-List the names of all winners who played in both 2013 and 2016.,SELECT winner_name FROM matches WHERE YEAR  =  2013 INTERSECT SELECT winner_name FROM matches WHERE YEAR  =  2016
-What are the names of players who won in both 2013 and 2016?,SELECT winner_name FROM matches WHERE YEAR  =  2013 INTERSECT SELECT winner_name FROM matches WHERE YEAR  =  2016
-List the number of all matches who played in years of 2013 or 2016.,SELECT count(*) FROM matches WHERE YEAR  =  2013 OR YEAR  =  2016
-How many matches were played in 2013 or 2016?,SELECT count(*) FROM matches WHERE YEAR  =  2013 OR YEAR  =  2016
-What are the country code and first name of the players who won in both tourney WTA Championships and Australian Open?,"SELECT T1.country_code ,  T1.first_name FROM players AS T1 JOIN matches AS T2 ON T1.player_id  =  T2.winner_id WHERE T2.tourney_name  =  'WTA Championships' INTERSECT SELECT T1.country_code ,  T1.first_name FROM players AS T1 JOIN matches AS T2 ON T1.player_id  =  T2.winner_id WHERE T2.tourney_name  =  'Australian Open'"
-What are the first names and country codes for players who won both the WTA Championships and the Australian Open?,"SELECT T1.country_code ,  T1.first_name FROM players AS T1 JOIN matches AS T2 ON T1.player_id  =  T2.winner_id WHERE T2.tourney_name  =  'WTA Championships' INTERSECT SELECT T1.country_code ,  T1.first_name FROM players AS T1 JOIN matches AS T2 ON T1.player_id  =  T2.winner_id WHERE T2.tourney_name  =  'Australian Open'"
-Find the first name and country code of the oldest player.,"SELECT first_name ,  country_code FROM players ORDER BY birth_date LIMIT 1"
-What is the first name and country code of the oldest player?,"SELECT first_name ,  country_code FROM players ORDER BY birth_date LIMIT 1"
-List the first and last name of all players in the order of birth date.,"SELECT first_name ,  last_name FROM players ORDER BY birth_date"
-"What are the full names of all players, sorted by birth date?","SELECT first_name ,  last_name FROM players ORDER BY birth_date"
-List the first and last name of all players who are left / L hand in the order of birth date.,"SELECT first_name ,  last_name FROM players WHERE hand  =  'L' ORDER BY birth_date"
-"What are the full names of all left handed players, in order of birth date?","SELECT first_name ,  last_name FROM players WHERE hand  =  'L' ORDER BY birth_date"
-Find the first name and country code of the player who did the most number of tours.,"SELECT T1.country_code ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id ORDER BY T2.tours DESC LIMIT 1"
-What is the first name and country code of the player with the most tours?,"SELECT T1.country_code ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id ORDER BY T2.tours DESC LIMIT 1"
-Find the year that has the most number of matches.,SELECT YEAR FROM matches GROUP BY YEAR ORDER BY count(*) DESC LIMIT 1
-Which year had the most matches?,SELECT YEAR FROM matches GROUP BY YEAR ORDER BY count(*) DESC LIMIT 1
-Find the name and rank points of the winner who won the most times.,"SELECT winner_name ,  winner_rank_points FROM matches GROUP BY winner_name ORDER BY count(*) DESC LIMIT 1"
-"What is the name of the winner who has won the most matches, and how many rank points does this player have?","SELECT winner_name ,  winner_rank_points FROM matches GROUP BY winner_name ORDER BY count(*) DESC LIMIT 1"
-Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.,SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1
-What is the name of the winner with the most rank points who participated in the Australian Open tournament?,SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1
-find the names of loser and winner who played in the match with greatest number of minutes.,"SELECT winner_name ,  loser_name FROM matches ORDER BY minutes DESC LIMIT 1"
-What are the names of the winner and loser who played in the longest match?,"SELECT winner_name ,  loser_name FROM matches ORDER BY minutes DESC LIMIT 1"
-Find the average ranking for each player and their first name.,"SELECT avg(ranking) ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id GROUP BY T1.first_name"
-"What are the first names of all players, and their average rankings?","SELECT avg(ranking) ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id GROUP BY T1.first_name"
-Find the total ranking points for each player and their first name.,"SELECT sum(ranking_points) ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id GROUP BY T1.first_name"
-"What are the first names of all players, and their total ranking points?","SELECT sum(ranking_points) ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id GROUP BY T1.first_name"
-find the number of players for each country.,"SELECT count(*) ,  country_code FROM players GROUP BY country_code"
-How many players are from each country?,"SELECT count(*) ,  country_code FROM players GROUP BY country_code"
-find the code of the country where has the greatest number of players.,SELECT country_code FROM players GROUP BY country_code ORDER BY count(*) DESC LIMIT 1
-What is the code of the country with the most players?,SELECT country_code FROM players GROUP BY country_code ORDER BY count(*) DESC LIMIT 1
-Find the codes of countries that have more than 50 players.,SELECT country_code FROM players GROUP BY country_code HAVING count(*)  >  50
-What are the codes of countries with more than 50 players?,SELECT country_code FROM players GROUP BY country_code HAVING count(*)  >  50
-Find the total number of tours for each ranking date.,"SELECT sum(tours) ,  ranking_date FROM rankings GROUP BY ranking_date"
-How many total tours were there for each ranking date?,"SELECT sum(tours) ,  ranking_date FROM rankings GROUP BY ranking_date"
-Find the number of matches happened in each year.,"SELECT count(*) ,  YEAR FROM matches GROUP BY YEAR"
-How many matches were played in each year?,"SELECT count(*) ,  YEAR FROM matches GROUP BY YEAR"
-Find the name and rank of the 3 youngest winners across all matches.,"SELECT DISTINCT winner_name ,  winner_rank FROM matches ORDER BY winner_age LIMIT 3"
-What are the names and ranks of the three youngest winners across all matches?,"SELECT DISTINCT winner_name ,  winner_rank FROM matches ORDER BY winner_age LIMIT 3"
-How many different winners both participated in the WTA Championships and were left handed?,SELECT count(DISTINCT winner_name) FROM matches WHERE tourney_name  =  'WTA Championships' AND winner_hand  =  'L'
-Find the number of left handed winners who participated in the WTA Championships.,SELECT count(DISTINCT winner_name) FROM matches WHERE tourney_name  =  'WTA Championships' AND winner_hand  =  'L'
-"Find the first name, country code and birth date of the winner who has the highest rank points in all matches.","SELECT T1.first_name ,  T1.country_code ,  T1.birth_date FROM players AS T1 JOIN matches AS T2 ON T1.player_id  =  T2.winner_id ORDER BY T2.winner_rank_points DESC LIMIT 1"
-"What is the first name, country code, and birth date of the player with the most winner rank points across all matches?","SELECT T1.first_name ,  T1.country_code ,  T1.birth_date FROM players AS T1 JOIN matches AS T2 ON T1.player_id  =  T2.winner_id ORDER BY T2.winner_rank_points DESC LIMIT 1"
-Find the number of players for each hand type.,"SELECT count(*) ,  hand FROM players GROUP BY hand"
-How many players are there for each hand type?,"SELECT count(*) ,  hand FROM players GROUP BY hand"
+Find the total number of players.,SELECT COUNT(*) FROM `players`
+How many players are there?,SELECT COUNT(*) FROM `players`
+Find the total number of matches.,SELECT COUNT(*) FROM `matches`
+Count the number of matches.,SELECT COUNT(*) FROM `matches`
+List the first name and birth date of all players from the country with code USA.,"SELECT `first_name`, `birth_date` FROM `players` WHERE `country_code` = 'USA'"
+What are the first names and birth dates of players from the USA?,"SELECT `first_name`, `birth_date` FROM `players` WHERE `country_code` = 'USA'"
+Find the average age of losers and winners of all matches.,"SELECT AVG(`loser_age`), AVG(`winner_age`) FROM `matches`"
+What are the average ages of losers and winners across matches?,"SELECT AVG(`loser_age`), AVG(`winner_age`) FROM `matches`"
+Find the average rank of winners in all matches.,SELECT AVG(`winner_rank`) FROM `matches`
+What is the average rank for winners in all matches?,SELECT AVG(`winner_rank`) FROM `matches`
+Find the highest rank of losers in all matches.,SELECT MIN(`loser_rank`) FROM `matches`
+What is the best rank of losers across all matches?,SELECT MIN(`loser_rank`) FROM `matches`
+find the number of distinct country codes of all players.,SELECT COUNT(DISTINCT `country_code`) FROM `players`
+How many distinct countries do players come from?,SELECT COUNT(DISTINCT `country_code`) FROM `players`
+Find the number of distinct name of losers.,SELECT COUNT(DISTINCT `loser_name`) FROM `matches`
+How many different loser names are there?,SELECT COUNT(DISTINCT `loser_name`) FROM `matches`
+Find the name of tourney that has more than 10 matches.,SELECT `tourney_name` FROM `matches` GROUP BY `tourney_name` HAVING COUNT(*) > 10
+What are the names of tournaments that have more than 10 matches?,SELECT `tourney_name` FROM `matches` GROUP BY `tourney_name` HAVING COUNT(*) > 10
+List the names of all winners who played in both 2013 and 2016.,SELECT `winner_name` FROM `matches` WHERE `YEAR` = 2013 INTERSECT SELECT `winner_name` FROM `matches` WHERE `YEAR` = 2016
+What are the names of players who won in both 2013 and 2016?,SELECT `winner_name` FROM `matches` WHERE `YEAR` = 2013 INTERSECT SELECT `winner_name` FROM `matches` WHERE `YEAR` = 2016
+List the number of all matches who played in years of 2013 or 2016.,SELECT COUNT(*) FROM `matches` WHERE `YEAR` = 2013 OR `YEAR` = 2016
+How many matches were played in 2013 or 2016?,SELECT COUNT(*) FROM `matches` WHERE `YEAR` = 2013 OR `YEAR` = 2016
+What are the country code and first name of the players who won in both tourney WTA Championships and Australian Open?,"SELECT `T1`.`country_code`, `T1`.`first_name` FROM `players` AS `T1` JOIN `matches` AS `T2` ON `T1`.`player_id` = `T2`.`winner_id` WHERE `T2`.`tourney_name` = 'WTA Championships' INTERSECT SELECT `T1`.`country_code`, `T1`.`first_name` FROM `players` AS `T1` JOIN `matches` AS `T2` ON `T1`.`player_id` = `T2`.`winner_id` WHERE `T2`.`tourney_name` = 'Australian Open'"
+What are the first names and country codes for players who won both the WTA Championships and the Australian Open?,"SELECT `T1`.`country_code`, `T1`.`first_name` FROM `players` AS `T1` JOIN `matches` AS `T2` ON `T1`.`player_id` = `T2`.`winner_id` WHERE `T2`.`tourney_name` = 'WTA Championships' INTERSECT SELECT `T1`.`country_code`, `T1`.`first_name` FROM `players` AS `T1` JOIN `matches` AS `T2` ON `T1`.`player_id` = `T2`.`winner_id` WHERE `T2`.`tourney_name` = 'Australian Open'"
+Find the first name and country code of the oldest player.,"SELECT `first_name`, `country_code` FROM `players` ORDER BY `birth_date` LIMIT 1"
+What is the first name and country code of the oldest player?,"SELECT `first_name`, `country_code` FROM `players` ORDER BY `birth_date` LIMIT 1"
+List the first and last name of all players in the order of birth date.,"SELECT `first_name`, `last_name` FROM `players` ORDER BY `birth_date`"
+"What are the full names of all players, sorted by birth date?","SELECT `first_name`, `last_name` FROM `players` ORDER BY `birth_date`"
+List the first and last name of all players who are left / L hand in the order of birth date.,"SELECT `first_name`, `last_name` FROM `players` WHERE `hand` = 'L' ORDER BY `birth_date`"
+"What are the full names of all left handed players, in order of birth date?","SELECT `first_name`, `last_name` FROM `players` WHERE `hand` = 'L' ORDER BY `birth_date`"
+Find the first name and country code of the player who did the most number of tours.,"SELECT `T1`.`country_code`, `T1`.`first_name` FROM `players` AS `T1` JOIN `rankings` AS `T2` ON `T1`.`player_id` = `T2`.`player_id` ORDER BY `T2`.`tours` DESC LIMIT 1"
+What is the first name and country code of the player with the most tours?,"SELECT `T1`.`country_code`, `T1`.`first_name` FROM `players` AS `T1` JOIN `rankings` AS `T2` ON `T1`.`player_id` = `T2`.`player_id` ORDER BY `T2`.`tours` DESC LIMIT 1"
+Find the year that has the most number of matches.,SELECT `YEAR` FROM `matches` GROUP BY `YEAR` ORDER BY COUNT(*) DESC LIMIT 1
+Which year had the most matches?,SELECT `YEAR` FROM `matches` GROUP BY `YEAR` ORDER BY COUNT(*) DESC LIMIT 1
+Find the name and rank points of the winner who won the most times.,"SELECT `winner_name`, `winner_rank_points` FROM `matches` GROUP BY `winner_name` ORDER BY COUNT(*) DESC LIMIT 1"
+"What is the name of the winner who has won the most matches, and how many rank points does this player have?","SELECT `winner_name`, `winner_rank_points` FROM `matches` GROUP BY `winner_name` ORDER BY COUNT(*) DESC LIMIT 1"
+Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.,SELECT `winner_name` FROM `matches` WHERE `tourney_name` = 'Australian Open' ORDER BY `winner_rank_points` DESC LIMIT 1
+What is the name of the winner with the most rank points who participated in the Australian Open tournament?,SELECT `winner_name` FROM `matches` WHERE `tourney_name` = 'Australian Open' ORDER BY `winner_rank_points` DESC LIMIT 1
+find the names of loser and winner who played in the match with greatest number of minutes.,"SELECT `winner_name`, `loser_name` FROM `matches` ORDER BY `minutes` DESC LIMIT 1"
+What are the names of the winner and loser who played in the longest match?,"SELECT `winner_name`, `loser_name` FROM `matches` ORDER BY `minutes` DESC LIMIT 1"
+Find the average ranking for each player and their first name.,"SELECT AVG(`ranking`), `T1`.`first_name` FROM `players` AS `T1` JOIN `rankings` AS `T2` ON `T1`.`player_id` = `T2`.`player_id` GROUP BY `T1`.`first_name`"
+"What are the first names of all players, and their average rankings?","SELECT AVG(`ranking`), `T1`.`first_name` FROM `players` AS `T1` JOIN `rankings` AS `T2` ON `T1`.`player_id` = `T2`.`player_id` GROUP BY `T1`.`first_name`"
+Find the total ranking points for each player and their first name.,"SELECT SUM(`ranking_points`), `T1`.`first_name` FROM `players` AS `T1` JOIN `rankings` AS `T2` ON `T1`.`player_id` = `T2`.`player_id` GROUP BY `T1`.`first_name`"
+"What are the first names of all players, and their total ranking points?","SELECT SUM(`ranking_points`), `T1`.`first_name` FROM `players` AS `T1` JOIN `rankings` AS `T2` ON `T1`.`player_id` = `T2`.`player_id` GROUP BY `T1`.`first_name`"
+find the number of players for each country.,"SELECT COUNT(*), `country_code` FROM `players` GROUP BY `country_code`"
+How many players are from each country?,"SELECT COUNT(*), `country_code` FROM `players` GROUP BY `country_code`"
+find the code of the country where has the greatest number of players.,SELECT `country_code` FROM `players` GROUP BY `country_code` ORDER BY COUNT(*) DESC LIMIT 1
+What is the code of the country with the most players?,SELECT `country_code` FROM `players` GROUP BY `country_code` ORDER BY COUNT(*) DESC LIMIT 1
+Find the codes of countries that have more than 50 players.,SELECT `country_code` FROM `players` GROUP BY `country_code` HAVING COUNT(*) > 50
+What are the codes of countries with more than 50 players?,SELECT `country_code` FROM `players` GROUP BY `country_code` HAVING COUNT(*) > 50
+Find the total number of tours for each ranking date.,"SELECT SUM(`tours`), `ranking_date` FROM `rankings` GROUP BY `ranking_date`"
+How many total tours were there for each ranking date?,"SELECT SUM(`tours`), `ranking_date` FROM `rankings` GROUP BY `ranking_date`"
+Find the number of matches happened in each year.,"SELECT COUNT(*), `YEAR` FROM `matches` GROUP BY `YEAR`"
+How many matches were played in each year?,"SELECT COUNT(*), `YEAR` FROM `matches` GROUP BY `YEAR`"
+Find the name and rank of the 3 youngest winners across all matches.,"SELECT DISTINCT `winner_name`, `winner_rank` FROM `matches` ORDER BY `winner_age` LIMIT 3"
+What are the names and ranks of the three youngest winners across all matches?,"SELECT DISTINCT `winner_name`, `winner_rank` FROM `matches` ORDER BY `winner_age` LIMIT 3"
+How many different winners both participated in the WTA Championships and were left handed?,SELECT COUNT(DISTINCT `winner_name`) FROM `matches` WHERE `tourney_name` = 'WTA Championships' AND `winner_hand` = 'L'
+Find the number of left handed winners who participated in the WTA Championships.,SELECT COUNT(DISTINCT `winner_name`) FROM `matches` WHERE `tourney_name` = 'WTA Championships' AND `winner_hand` = 'L'
+"Find the first name, country code and birth date of the winner who has the highest rank points in all matches.","SELECT `T1`.`first_name`, `T1`.`country_code`, `T1`.`birth_date` FROM `players` AS `T1` JOIN `matches` AS `T2` ON `T1`.`player_id` = `T2`.`winner_id` ORDER BY `T2`.`winner_rank_points` DESC LIMIT 1"
+"What is the first name, country code, and birth date of the player with the most winner rank points across all matches?","SELECT `T1`.`first_name`, `T1`.`country_code`, `T1`.`birth_date` FROM `players` AS `T1` JOIN `matches` AS `T2` ON `T1`.`player_id` = `T2`.`winner_id` ORDER BY `T2`.`winner_rank_points` DESC LIMIT 1"
+Find the number of players for each hand type.,"SELECT COUNT(*), `hand` FROM `players` GROUP BY `hand`"
+How many players are there for each hand type?,"SELECT COUNT(*), `hand` FROM `players` GROUP BY `hand`"

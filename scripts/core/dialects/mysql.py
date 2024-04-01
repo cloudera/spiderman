@@ -1,6 +1,7 @@
 import datetime
 from typing import List
 
+import sqlglot
 from core.source_db import Table, Column
 
 
@@ -149,3 +150,6 @@ def normalize_data(table_data: list[list], table: Table) -> list[list]:
             row[idx] = value
 
     return [column_names] + rows
+
+def normalize_sql(sql: str) -> str:
+    return sqlglot.transpile(sql, write="mysql", identify=True)[0]

@@ -1,28 +1,28 @@
 question,sql
-"Find the emails of the user named ""Mary"".",SELECT email FROM user_profiles WHERE name  =  'Mary'
-"What is the partition id of the user named ""Iron Man"".",SELECT partitionid FROM user_profiles WHERE name  =  'Iron Man'
-How many users are there?,SELECT count(*) FROM user_profiles
-How many followers does each user have?,SELECT count(*) FROM follows
-Find the number of followers for each user.,SELECT count(*) FROM follows GROUP BY f1
-Find the number of tweets in record.,SELECT count(*) FROM tweets
-Find the number of users who posted some tweets.,SELECT count(DISTINCT UID) FROM tweets
-Find the name and email of the user whose name contains the word ‘Swift’.,"SELECT name ,  email FROM user_profiles WHERE name LIKE '%Swift%'"
-Find the names of users whose emails contain ‘superstar’ or ‘edu’.,SELECT name FROM user_profiles WHERE email LIKE '%superstar%' OR email LIKE '%edu%'
-Return the text of tweets about the topic 'intern'.,SELECT text FROM tweets WHERE text LIKE '%intern%'
-Find the name and email of the users who have more than 1000 followers.,"SELECT name ,  email FROM user_profiles WHERE followers  >  1000"
-"Find the names of the users whose number of followers is greater than that of the user named ""Tyler Swift"".",SELECT T1.name FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f1 GROUP BY T2.f1 HAVING count(*)  >  (SELECT count(*) FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f1 WHERE T1.name  =  'Tyler Swift')
-Find the name and email for the users who have more than one follower.,"SELECT T1.name ,  T1.email FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f1 GROUP BY T2.f1 HAVING count(*)  >  1"
-Find the names of users who have more than one tweet.,SELECT T1.name FROM user_profiles AS T1 JOIN tweets AS T2 ON T1.uid  =  T2.uid GROUP BY T2.uid HAVING count(*)  >  1
-Find the id of users who are followed by Mary and Susan.,"SELECT T2.f1 FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f2 WHERE T1.name  =  ""Mary"" INTERSECT SELECT T2.f1 FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f2 WHERE T1.name  =  ""Susan"""
-Find the id of users who are followed by Mary or Susan.,"SELECT T2.f1 FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f2 WHERE T1.name  =  ""Mary"" OR T1.name  =  ""Susan"""
-Find the name of the user who has the largest number of followers.,SELECT name FROM user_profiles ORDER BY followers DESC LIMIT 1
-Find the name and email of the user followed by the least number of people.,"SELECT name ,  email FROM user_profiles ORDER BY followers LIMIT 1"
-"List the name and number of followers for each user, and sort the results by the number of followers in descending order.","SELECT name ,  followers FROM user_profiles ORDER BY followers DESC"
-List the names of 5 users followed by the largest number of other users.,SELECT name FROM user_profiles ORDER BY followers DESC LIMIT 5
-List the text of all tweets in the order of date.,SELECT text FROM tweets ORDER BY createdate
-Find the name of each user and number of tweets tweeted by each of them.,"SELECT T1.name ,  count(*) FROM user_profiles AS T1 JOIN tweets AS T2 ON T1.uid  =  T2.uid GROUP BY T2.uid"
-Find the name and partition id for users who tweeted less than twice.,"SELECT T1.name ,  T1.partitionid FROM user_profiles AS T1 JOIN tweets AS T2 ON T1.uid  =  T2.uid GROUP BY T2.uid HAVING count(*)  <  2"
-"Find the name of the user who tweeted more than once, and number of tweets tweeted by them.","SELECT T1.name ,  count(*) FROM user_profiles AS T1 JOIN tweets AS T2 ON T1.uid  =  T2.uid GROUP BY T2.uid HAVING count(*)  >  1"
-Find the average number of followers for the users who do not have any tweet.,SELECT avg(followers) FROM user_profiles WHERE UID NOT IN (SELECT UID FROM tweets)
-Find the average number of followers for the users who had some tweets.,SELECT avg(followers) FROM user_profiles WHERE UID IN (SELECT UID FROM tweets)
-Find the maximum and total number of followers of all users.,"SELECT max(followers) ,  sum(followers) FROM user_profiles"
+"Find the emails of the user named ""Mary"".",SELECT `email` FROM `user_profiles` WHERE `name` = 'Mary'
+"What is the partition id of the user named ""Iron Man"".",SELECT `partitionid` FROM `user_profiles` WHERE `name` = 'Iron Man'
+How many users are there?,SELECT COUNT(*) FROM `user_profiles`
+How many followers does each user have?,SELECT COUNT(*) FROM `follows`
+Find the number of followers for each user.,SELECT COUNT(*) FROM `follows` GROUP BY `f1`
+Find the number of tweets in record.,SELECT COUNT(*) FROM `tweets`
+Find the number of users who posted some tweets.,SELECT COUNT(DISTINCT `UID`) FROM `tweets`
+Find the name and email of the user whose name contains the word ‘Swift’.,"SELECT `name`, `email` FROM `user_profiles` WHERE `name` LIKE '%Swift%'"
+Find the names of users whose emails contain ‘superstar’ or ‘edu’.,SELECT `name` FROM `user_profiles` WHERE `email` LIKE '%superstar%' OR `email` LIKE '%edu%'
+Return the text of tweets about the topic 'intern'.,SELECT `text` FROM `tweets` WHERE `text` LIKE '%intern%'
+Find the name and email of the users who have more than 1000 followers.,"SELECT `name`, `email` FROM `user_profiles` WHERE `followers` > 1000"
+"Find the names of the users whose number of followers is greater than that of the user named ""Tyler Swift"".",SELECT `T1`.`name` FROM `user_profiles` AS `T1` JOIN `follows` AS `T2` ON `T1`.`uid` = `T2`.`f1` GROUP BY `T2`.`f1` HAVING COUNT(*) > (SELECT COUNT(*) FROM `user_profiles` AS `T1` JOIN `follows` AS `T2` ON `T1`.`uid` = `T2`.`f1` WHERE `T1`.`name` = 'Tyler Swift')
+Find the name and email for the users who have more than one follower.,"SELECT `T1`.`name`, `T1`.`email` FROM `user_profiles` AS `T1` JOIN `follows` AS `T2` ON `T1`.`uid` = `T2`.`f1` GROUP BY `T2`.`f1` HAVING COUNT(*) > 1"
+Find the names of users who have more than one tweet.,SELECT `T1`.`name` FROM `user_profiles` AS `T1` JOIN `tweets` AS `T2` ON `T1`.`uid` = `T2`.`uid` GROUP BY `T2`.`uid` HAVING COUNT(*) > 1
+Find the id of users who are followed by Mary and Susan.,SELECT `T2`.`f1` FROM `user_profiles` AS `T1` JOIN `follows` AS `T2` ON `T1`.`uid` = `T2`.`f2` WHERE `T1`.`name` = `Mary` INTERSECT SELECT `T2`.`f1` FROM `user_profiles` AS `T1` JOIN `follows` AS `T2` ON `T1`.`uid` = `T2`.`f2` WHERE `T1`.`name` = `Susan`
+Find the id of users who are followed by Mary or Susan.,SELECT `T2`.`f1` FROM `user_profiles` AS `T1` JOIN `follows` AS `T2` ON `T1`.`uid` = `T2`.`f2` WHERE `T1`.`name` = `Mary` OR `T1`.`name` = `Susan`
+Find the name of the user who has the largest number of followers.,SELECT `name` FROM `user_profiles` ORDER BY `followers` DESC LIMIT 1
+Find the name and email of the user followed by the least number of people.,"SELECT `name`, `email` FROM `user_profiles` ORDER BY `followers` LIMIT 1"
+"List the name and number of followers for each user, and sort the results by the number of followers in descending order.","SELECT `name`, `followers` FROM `user_profiles` ORDER BY `followers` DESC"
+List the names of 5 users followed by the largest number of other users.,SELECT `name` FROM `user_profiles` ORDER BY `followers` DESC LIMIT 5
+List the text of all tweets in the order of date.,SELECT `text` FROM `tweets` ORDER BY `createdate`
+Find the name of each user and number of tweets tweeted by each of them.,"SELECT `T1`.`name`, COUNT(*) FROM `user_profiles` AS `T1` JOIN `tweets` AS `T2` ON `T1`.`uid` = `T2`.`uid` GROUP BY `T2`.`uid`"
+Find the name and partition id for users who tweeted less than twice.,"SELECT `T1`.`name`, `T1`.`partitionid` FROM `user_profiles` AS `T1` JOIN `tweets` AS `T2` ON `T1`.`uid` = `T2`.`uid` GROUP BY `T2`.`uid` HAVING COUNT(*) < 2"
+"Find the name of the user who tweeted more than once, and number of tweets tweeted by them.","SELECT `T1`.`name`, COUNT(*) FROM `user_profiles` AS `T1` JOIN `tweets` AS `T2` ON `T1`.`uid` = `T2`.`uid` GROUP BY `T2`.`uid` HAVING COUNT(*) > 1"
+Find the average number of followers for the users who do not have any tweet.,SELECT AVG(`followers`) FROM `user_profiles` WHERE NOT `UID` IN (SELECT `UID` FROM `tweets`)
+Find the average number of followers for the users who had some tweets.,SELECT AVG(`followers`) FROM `user_profiles` WHERE `UID` IN (SELECT `UID` FROM `tweets`)
+Find the maximum and total number of followers of all users.,"SELECT MAX(`followers`), SUM(`followers`) FROM `user_profiles`"

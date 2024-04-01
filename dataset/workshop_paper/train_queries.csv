@@ -1,31 +1,31 @@
 question,sql
-How many submissions are there?,SELECT count(*) FROM submission
-Count the number of submissions.,SELECT count(*) FROM submission
-List the authors of submissions in ascending order of scores.,SELECT Author FROM submission ORDER BY Scores ASC
-Find the author for each submission and list them in ascending order of submission score.,SELECT Author FROM submission ORDER BY Scores ASC
-What are the authors of submissions and their colleges?,"SELECT Author ,  College FROM submission"
-"For each submission, show the author and their affiliated college.","SELECT Author ,  College FROM submission"
-"Show the names of authors from college ""Florida"" or ""Temple""","SELECT Author FROM submission WHERE College  =  ""Florida"" OR College  =  ""Temple"""
-"Which authors with submissions are from college ""Florida"" or ""Temple""?","SELECT Author FROM submission WHERE College  =  ""Florida"" OR College  =  ""Temple"""
-What is the average score of submissions?,SELECT avg(Scores) FROM submission
-Compute the average score of submissions.,SELECT avg(Scores) FROM submission
-What is the author of the submission with the highest score?,SELECT Author FROM submission ORDER BY Scores DESC LIMIT 1
-Find the author who achieved the highest score in a submission.,SELECT Author FROM submission ORDER BY Scores DESC LIMIT 1
-Show different colleges along with the number of authors of submission from each college.,"SELECT College ,  COUNT(*) FROM submission GROUP BY College"
-"For each college, return the college name and the count of authors with submissions from that college.","SELECT College ,  COUNT(*) FROM submission GROUP BY College"
-Show the most common college of authors of submissions.,SELECT College FROM submission GROUP BY College ORDER BY COUNT(*) DESC LIMIT 1
-Which college has the most authors with submissions?,SELECT College FROM submission GROUP BY College ORDER BY COUNT(*) DESC LIMIT 1
-Show the colleges that have both authors with submission score larger than 90 and authors with submission score smaller than 80.,SELECT College FROM submission WHERE Scores  >  90 INTERSECT SELECT College FROM submission WHERE Scores  <  80
-Which colleges have both authors with submission score above 90 and authors with submission score below 80?,SELECT College FROM submission WHERE Scores  >  90 INTERSECT SELECT College FROM submission WHERE Scores  <  80
-Show the authors of submissions and the acceptance results of their submissions.,"SELECT T2.Author ,  T1.Result FROM acceptance AS T1 JOIN submission AS T2 ON T1.Submission_ID  =  T2.Submission_ID"
-"For each submission, find its author and acceptance result.","SELECT T2.Author ,  T1.Result FROM acceptance AS T1 JOIN submission AS T2 ON T1.Submission_ID  =  T2.Submission_ID"
-Show the result of the submission with the highest score.,SELECT T1.Result FROM acceptance AS T1 JOIN submission AS T2 ON T1.Submission_ID  =  T2.Submission_ID ORDER BY T2.Scores DESC LIMIT 1
-Which submission received the highest score in acceptance result. Show me the result.,SELECT T1.Result FROM acceptance AS T1 JOIN submission AS T2 ON T1.Submission_ID  =  T2.Submission_ID ORDER BY T2.Scores DESC LIMIT 1
-Show each author and the number of workshops they submitted to.,"SELECT T2.Author ,  COUNT(DISTINCT T1.workshop_id) FROM acceptance AS T1 JOIN submission AS T2 ON T1.Submission_ID  =  T2.Submission_ID GROUP BY T2.Author"
-How many workshops did each author submit to? Return the author name and the number of workshops.,"SELECT T2.Author ,  COUNT(DISTINCT T1.workshop_id) FROM acceptance AS T1 JOIN submission AS T2 ON T1.Submission_ID  =  T2.Submission_ID GROUP BY T2.Author"
-Show the authors who have submissions to more than one workshop.,SELECT T2.Author FROM acceptance AS T1 JOIN submission AS T2 ON T1.Submission_ID  =  T2.Submission_ID GROUP BY T2.Author HAVING COUNT(DISTINCT T1.workshop_id)  >  1
-Which authors have submitted to more than one workshop?,SELECT T2.Author FROM acceptance AS T1 JOIN submission AS T2 ON T1.Submission_ID  =  T2.Submission_ID GROUP BY T2.Author HAVING COUNT(DISTINCT T1.workshop_id)  >  1
-Show the date and venue of each workshop in ascending alphabetical order of the venue.,"SELECT Date ,  Venue FROM workshop ORDER BY Venue"
-Sort the each workshop in alphabetical order of the venue. Return the date and venue of each workshop.,"SELECT Date ,  Venue FROM workshop ORDER BY Venue"
-List the authors who do not have submission to any workshop.,SELECT Author FROM submission WHERE Submission_ID NOT IN (SELECT Submission_ID FROM acceptance)
-Which authors did not submit to any workshop?,SELECT Author FROM submission WHERE Submission_ID NOT IN (SELECT Submission_ID FROM acceptance)
+How many submissions are there?,SELECT COUNT(*) FROM `submission`
+Count the number of submissions.,SELECT COUNT(*) FROM `submission`
+List the authors of submissions in ascending order of scores.,SELECT `Author` FROM `submission` ORDER BY `Scores` ASC
+Find the author for each submission and list them in ascending order of submission score.,SELECT `Author` FROM `submission` ORDER BY `Scores` ASC
+What are the authors of submissions and their colleges?,"SELECT `Author`, `College` FROM `submission`"
+"For each submission, show the author and their affiliated college.","SELECT `Author`, `College` FROM `submission`"
+"Show the names of authors from college ""Florida"" or ""Temple""",SELECT `Author` FROM `submission` WHERE `College` = `Florida` OR `College` = `Temple`
+"Which authors with submissions are from college ""Florida"" or ""Temple""?",SELECT `Author` FROM `submission` WHERE `College` = `Florida` OR `College` = `Temple`
+What is the average score of submissions?,SELECT AVG(`Scores`) FROM `submission`
+Compute the average score of submissions.,SELECT AVG(`Scores`) FROM `submission`
+What is the author of the submission with the highest score?,SELECT `Author` FROM `submission` ORDER BY `Scores` DESC LIMIT 1
+Find the author who achieved the highest score in a submission.,SELECT `Author` FROM `submission` ORDER BY `Scores` DESC LIMIT 1
+Show different colleges along with the number of authors of submission from each college.,"SELECT `College`, COUNT(*) FROM `submission` GROUP BY `College`"
+"For each college, return the college name and the count of authors with submissions from that college.","SELECT `College`, COUNT(*) FROM `submission` GROUP BY `College`"
+Show the most common college of authors of submissions.,SELECT `College` FROM `submission` GROUP BY `College` ORDER BY COUNT(*) DESC LIMIT 1
+Which college has the most authors with submissions?,SELECT `College` FROM `submission` GROUP BY `College` ORDER BY COUNT(*) DESC LIMIT 1
+Show the colleges that have both authors with submission score larger than 90 and authors with submission score smaller than 80.,SELECT `College` FROM `submission` WHERE `Scores` > 90 INTERSECT SELECT `College` FROM `submission` WHERE `Scores` < 80
+Which colleges have both authors with submission score above 90 and authors with submission score below 80?,SELECT `College` FROM `submission` WHERE `Scores` > 90 INTERSECT SELECT `College` FROM `submission` WHERE `Scores` < 80
+Show the authors of submissions and the acceptance results of their submissions.,"SELECT `T2`.`Author`, `T1`.`Result` FROM `acceptance` AS `T1` JOIN `submission` AS `T2` ON `T1`.`Submission_ID` = `T2`.`Submission_ID`"
+"For each submission, find its author and acceptance result.","SELECT `T2`.`Author`, `T1`.`Result` FROM `acceptance` AS `T1` JOIN `submission` AS `T2` ON `T1`.`Submission_ID` = `T2`.`Submission_ID`"
+Show the result of the submission with the highest score.,SELECT `T1`.`Result` FROM `acceptance` AS `T1` JOIN `submission` AS `T2` ON `T1`.`Submission_ID` = `T2`.`Submission_ID` ORDER BY `T2`.`Scores` DESC LIMIT 1
+Which submission received the highest score in acceptance result. Show me the result.,SELECT `T1`.`Result` FROM `acceptance` AS `T1` JOIN `submission` AS `T2` ON `T1`.`Submission_ID` = `T2`.`Submission_ID` ORDER BY `T2`.`Scores` DESC LIMIT 1
+Show each author and the number of workshops they submitted to.,"SELECT `T2`.`Author`, COUNT(DISTINCT `T1`.`workshop_id`) FROM `acceptance` AS `T1` JOIN `submission` AS `T2` ON `T1`.`Submission_ID` = `T2`.`Submission_ID` GROUP BY `T2`.`Author`"
+How many workshops did each author submit to? Return the author name and the number of workshops.,"SELECT `T2`.`Author`, COUNT(DISTINCT `T1`.`workshop_id`) FROM `acceptance` AS `T1` JOIN `submission` AS `T2` ON `T1`.`Submission_ID` = `T2`.`Submission_ID` GROUP BY `T2`.`Author`"
+Show the authors who have submissions to more than one workshop.,SELECT `T2`.`Author` FROM `acceptance` AS `T1` JOIN `submission` AS `T2` ON `T1`.`Submission_ID` = `T2`.`Submission_ID` GROUP BY `T2`.`Author` HAVING COUNT(DISTINCT `T1`.`workshop_id`) > 1
+Which authors have submitted to more than one workshop?,SELECT `T2`.`Author` FROM `acceptance` AS `T1` JOIN `submission` AS `T2` ON `T1`.`Submission_ID` = `T2`.`Submission_ID` GROUP BY `T2`.`Author` HAVING COUNT(DISTINCT `T1`.`workshop_id`) > 1
+Show the date and venue of each workshop in ascending alphabetical order of the venue.,"SELECT `Date`, `Venue` FROM `workshop` ORDER BY `Venue`"
+Sort the each workshop in alphabetical order of the venue. Return the date and venue of each workshop.,"SELECT `Date`, `Venue` FROM `workshop` ORDER BY `Venue`"
+List the authors who do not have submission to any workshop.,SELECT `Author` FROM `submission` WHERE NOT `Submission_ID` IN (SELECT `Submission_ID` FROM `acceptance`)
+Which authors did not submit to any workshop?,SELECT `Author` FROM `submission` WHERE NOT `Submission_ID` IN (SELECT `Submission_ID` FROM `acceptance`)

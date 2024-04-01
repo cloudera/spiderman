@@ -1,8 +1,8 @@
 question,sql
-List all department names ordered by their starting date.,SELECT dname FROM department ORDER BY mgr_start_date
-find all dependent names who have a spouse relation with some employee.,SELECT Dependent_name FROM dependent WHERE relationship  =  'Spouse'
-how many female dependents are there?,SELECT count(*) FROM dependent WHERE sex  =  'F'
-Find the names of departments that are located in Houston.,SELECT t1.dname FROM department AS t1 JOIN dept_locations AS t2 ON t1.dnumber  =  t2.dnumber WHERE t2.dlocation  =  'Houston'
-Return the first names and last names of employees who earn more than 30000 in salary.,"SELECT fname ,  lname FROM employee WHERE salary  >  30000"
-Find the number of employees of each gender whose salary is lower than 50000.,"SELECT count(*) ,  sex FROM employee WHERE salary  <  50000 GROUP BY sex"
-"list the first and last names, and the addresses of all employees in the ascending order of their birth date.","SELECT fname ,  lname ,  address FROM employee ORDER BY Bdate"
+List all department names ordered by their starting date.,SELECT `dname` FROM `department` ORDER BY `mgr_start_date`
+find all dependent names who have a spouse relation with some employee.,SELECT `Dependent_name` FROM `dependent` WHERE `relationship` = 'Spouse'
+how many female dependents are there?,SELECT COUNT(*) FROM `dependent` WHERE `sex` = 'F'
+Find the names of departments that are located in Houston.,SELECT `t1`.`dname` FROM `department` AS `t1` JOIN `dept_locations` AS `t2` ON `t1`.`dnumber` = `t2`.`dnumber` WHERE `t2`.`dlocation` = 'Houston'
+Return the first names and last names of employees who earn more than 30000 in salary.,"SELECT `fname`, `lname` FROM `employee` WHERE `salary` > 30000"
+Find the number of employees of each gender whose salary is lower than 50000.,"SELECT COUNT(*), `sex` FROM `employee` WHERE `salary` < 50000 GROUP BY `sex`"
+"list the first and last names, and the addresses of all employees in the ascending order of their birth date.","SELECT `fname`, `lname`, `address` FROM `employee` ORDER BY `Bdate`"

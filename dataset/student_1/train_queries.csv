@@ -1,69 +1,69 @@
 question,sql
-Find the number of students in total.,SELECT count(*) FROM list
-How many students are there?,SELECT count(*) FROM list
-Find the last names of students studying in room 111.,SELECT lastname FROM list WHERE classroom  =  111
-What are the last names of students in room 111?,SELECT lastname FROM list WHERE classroom  =  111
-Find the first names of students studying in room 108.,SELECT firstname FROM list WHERE classroom  =  108
-What are the first names of students in room 108?,SELECT firstname FROM list WHERE classroom  =  108
-What are the first names of students studying in room 107?,SELECT DISTINCT firstname FROM list WHERE classroom  =  107
-List the first names of all the students in room 107.,SELECT DISTINCT firstname FROM list WHERE classroom  =  107
-For each classroom report the grade that is taught in it. Report just the classroom number and the grade number.,"SELECT DISTINCT classroom ,  grade FROM list"
-What are the grade number and classroom number of each class in the list?,"SELECT DISTINCT classroom ,  grade FROM list"
-Which grade is studying in classroom 103?,SELECT DISTINCT grade FROM list WHERE classroom  =  103
-Find the grade taught in classroom 103.,SELECT DISTINCT grade FROM list WHERE classroom  =  103
-Find the grade studying in room 105.,SELECT DISTINCT grade FROM list WHERE classroom  =  105
-Which grade is studying in room 105?,SELECT DISTINCT grade FROM list WHERE classroom  =  105
-Which classrooms are used by grade 4?,SELECT DISTINCT classroom FROM list WHERE grade  =  4
-Find the classrooms in which grade 4 is studying.,SELECT DISTINCT classroom FROM list WHERE grade  =  4
-Which classrooms are used by grade 5?,SELECT DISTINCT classroom FROM list WHERE grade  =  5
-Show me the classrooms grade 5 is using.,SELECT DISTINCT classroom FROM list WHERE grade  =  5
-Find the last names of the teachers that teach fifth grade.,SELECT DISTINCT T2.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE grade  =  5
-what are the last names of the teachers who teach grade 5?,SELECT DISTINCT T2.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE grade  =  5
-Find the first names of the teachers that teach first grade.,SELECT DISTINCT T2.firstname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE grade  =  1
-What are the first names of the teachers who teach grade 1?,SELECT DISTINCT T2.firstname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE grade  =  1
-Find the first names of all the teachers that teach in classroom 110.,SELECT firstname FROM teachers WHERE classroom  =  110
-Which teachers teach in classroom 110? Give me their first names.,SELECT firstname FROM teachers WHERE classroom  =  110
-Find the last names of teachers teaching in classroom 109.,SELECT lastname FROM teachers WHERE classroom  =  109
-Which teachers teach in classroom 109? Give me their last names.,SELECT lastname FROM teachers WHERE classroom  =  109
-Report the first name and last name of all the teachers.,"SELECT DISTINCT firstname ,  lastname FROM teachers"
-What are the first name and last name of all the teachers?,"SELECT DISTINCT firstname ,  lastname FROM teachers"
-Report the first name and last name of all the students.,"SELECT DISTINCT firstname ,  lastname FROM list"
-Show each student's first name and last name.,"SELECT DISTINCT firstname ,  lastname FROM list"
-Find all students taught by OTHA MOYER. Output the first and last names of the students.,"SELECT T1.firstname ,  T1.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""OTHA"" AND T2.lastname  =  ""MOYER"""
-Which students study under the teacher named OTHA MOYER? Give me the first and last names of the students.,"SELECT T1.firstname ,  T1.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""OTHA"" AND T2.lastname  =  ""MOYER"""
-Find all students taught by MARROTTE KIRK. Output first and last names of students.,"SELECT T1.firstname ,  T1.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""MARROTTE"" AND T2.lastname  =  ""KIRK"""
-Which are the first and last names of the students taught by MARROTTE KIRK?,"SELECT T1.firstname ,  T1.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""MARROTTE"" AND T2.lastname  =  ""KIRK"""
-Find the first and last name of all the teachers that teach EVELINA BROMLEY.,"SELECT T2.firstname ,  T2.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.firstname  =  ""EVELINA"" AND T1.lastname  =  ""BROMLEY"""
-Which teachers teach the student named EVELINA BROMLEY? Give me the first and last name  of the teachers.,"SELECT T2.firstname ,  T2.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.firstname  =  ""EVELINA"" AND T1.lastname  =  ""BROMLEY"""
-Find the last names of all the teachers that teach GELL TAMI.,"SELECT T2.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.firstname  =  ""GELL"" AND T1.lastname  =  ""TAMI"""
-What are the last names of the teachers who teach the student called GELL TAMI?,"SELECT T2.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.firstname  =  ""GELL"" AND T1.lastname  =  ""TAMI"""
-How many students does LORIA ONDERSMA teaches?,"SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""LORIA"" AND T2.lastname  =  ""ONDERSMA"""
-Count the number of students the teacher LORIA ONDERSMA teaches.,"SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""LORIA"" AND T2.lastname  =  ""ONDERSMA"""
-How many students does KAWA GORDON teaches?,"SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""KAWA"" AND T2.lastname  =  ""GORDON"""
-Find the number of students taught by the teacher KAWA GORDON.,"SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""KAWA"" AND T2.lastname  =  ""GORDON"""
-Find the number of students taught by TARRING LEIA.,"SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""TARRING"" AND T2.lastname  =  ""LEIA"""
-How many students are taught by teacher TARRING LEIA?,"SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""TARRING"" AND T2.lastname  =  ""LEIA"""
-How many teachers does the student named CHRISSY NABOZNY have?,"SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.firstname  =  ""CHRISSY"" AND T1.lastname  =  ""NABOZNY"""
-Find the number of teachers who teach the student called CHRISSY NABOZNY.,"SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.firstname  =  ""CHRISSY"" AND T1.lastname  =  ""NABOZNY"""
-How many teachers does the student named MADLOCK RAY have?,"SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.firstname  =  ""MADLOCK"" AND T1.lastname  =  ""RAY"""
-Find the number of teachers who teach the student called MADLOCK RAY.,"SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.firstname  =  ""MADLOCK"" AND T1.lastname  =  ""RAY"""
-Find all first-grade students who are NOT taught by OTHA MOYER. Report their first and last names.,"SELECT DISTINCT T1.firstname ,  T1.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.grade  =  1 EXCEPT SELECT T1.firstname ,  T1.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""OTHA"" AND T2.lastname  =  ""MOYER"""
-What are the first and last names of the first-grade students who are NOT taught by teacher OTHA MOYER?,"SELECT DISTINCT T1.firstname ,  T1.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.grade  =  1 EXCEPT SELECT T1.firstname ,  T1.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  ""OTHA"" AND T2.lastname  =  ""MOYER"""
-Find the last names of the students in third grade that are not taught by COVIN JEROME.,"SELECT DISTINCT T1.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.grade  =  3 AND T2.firstname != ""COVIN"" AND T2.lastname != ""JEROME"""
-Which students in third grade are not taught by teacher COVIN JEROME? Give me the last names of the students.,"SELECT DISTINCT T1.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T1.grade  =  3 AND T2.firstname != ""COVIN"" AND T2.lastname != ""JEROME"""
-"For each grade, report the grade, the number of classrooms in which it is taught and the total number of students in the grade.","SELECT grade ,  count(DISTINCT classroom) ,  count(*) FROM list GROUP BY grade"
-"For each grade, return the grade number, the number of classrooms used for the grade, and the total number of students enrolled in the grade.","SELECT grade ,  count(DISTINCT classroom) ,  count(*) FROM list GROUP BY grade"
-"For each classroom, report the classroom number and the number of grades using it.","SELECT classroom ,  count(DISTINCT grade) FROM list GROUP BY classroom"
-"For each classroom, show the classroom number and count the number of distinct grades that use the room.","SELECT classroom ,  count(DISTINCT grade) FROM list GROUP BY classroom"
-Which classroom has the most students?,SELECT classroom FROM list GROUP BY classroom ORDER BY count(*) DESC LIMIT 1
-Find the classroom that the most students use.,SELECT classroom FROM list GROUP BY classroom ORDER BY count(*) DESC LIMIT 1
-Report the number of students in each classroom.,"SELECT classroom ,  count(*) FROM list GROUP BY classroom"
-"For each classroom, show the classroom number and find how many students are using it.","SELECT classroom ,  count(*) FROM list GROUP BY classroom"
-"For each grade 0 classroom, report the total number of students.","SELECT classroom ,  count(*) FROM list WHERE grade  =  ""0"" GROUP BY classroom"
-"For each grade 0 classroom, return the classroom number and the count of students.","SELECT classroom ,  count(*) FROM list WHERE grade  =  ""0"" GROUP BY classroom"
-Report the total number of students for each fourth-grade classroom.,"SELECT classroom ,  count(*) FROM list WHERE grade  =  ""4"" GROUP BY classroom"
-"For each fourth-grade classroom, show the classroom number and the total number of students using it.","SELECT classroom ,  count(*) FROM list WHERE grade  =  ""4"" GROUP BY classroom"
-Find the name of the teacher who teaches the largest number of students.,"SELECT T2.firstname ,  T2.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom GROUP BY T2.firstname ,  T2.lastname ORDER BY count(*) DESC LIMIT 1"
-Which teacher teaches the most students? Give me the first name and last name of the teacher.,"SELECT T2.firstname ,  T2.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom GROUP BY T2.firstname ,  T2.lastname ORDER BY count(*) DESC LIMIT 1"
-Find the number of students in one classroom.,"SELECT count(*) ,  classroom FROM list GROUP BY classroom"
-How many students does one classroom have?,"SELECT count(*) ,  classroom FROM list GROUP BY classroom"
+Find the number of students in total.,SELECT COUNT(*) FROM `list`
+How many students are there?,SELECT COUNT(*) FROM `list`
+Find the last names of students studying in room 111.,SELECT `lastname` FROM `list` WHERE `classroom` = 111
+What are the last names of students in room 111?,SELECT `lastname` FROM `list` WHERE `classroom` = 111
+Find the first names of students studying in room 108.,SELECT `firstname` FROM `list` WHERE `classroom` = 108
+What are the first names of students in room 108?,SELECT `firstname` FROM `list` WHERE `classroom` = 108
+What are the first names of students studying in room 107?,SELECT DISTINCT `firstname` FROM `list` WHERE `classroom` = 107
+List the first names of all the students in room 107.,SELECT DISTINCT `firstname` FROM `list` WHERE `classroom` = 107
+For each classroom report the grade that is taught in it. Report just the classroom number and the grade number.,"SELECT DISTINCT `classroom`, `grade` FROM `list`"
+What are the grade number and classroom number of each class in the list?,"SELECT DISTINCT `classroom`, `grade` FROM `list`"
+Which grade is studying in classroom 103?,SELECT DISTINCT `grade` FROM `list` WHERE `classroom` = 103
+Find the grade taught in classroom 103.,SELECT DISTINCT `grade` FROM `list` WHERE `classroom` = 103
+Find the grade studying in room 105.,SELECT DISTINCT `grade` FROM `list` WHERE `classroom` = 105
+Which grade is studying in room 105?,SELECT DISTINCT `grade` FROM `list` WHERE `classroom` = 105
+Which classrooms are used by grade 4?,SELECT DISTINCT `classroom` FROM `list` WHERE `grade` = 4
+Find the classrooms in which grade 4 is studying.,SELECT DISTINCT `classroom` FROM `list` WHERE `grade` = 4
+Which classrooms are used by grade 5?,SELECT DISTINCT `classroom` FROM `list` WHERE `grade` = 5
+Show me the classrooms grade 5 is using.,SELECT DISTINCT `classroom` FROM `list` WHERE `grade` = 5
+Find the last names of the teachers that teach fifth grade.,SELECT DISTINCT `T2`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `grade` = 5
+what are the last names of the teachers who teach grade 5?,SELECT DISTINCT `T2`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `grade` = 5
+Find the first names of the teachers that teach first grade.,SELECT DISTINCT `T2`.`firstname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `grade` = 1
+What are the first names of the teachers who teach grade 1?,SELECT DISTINCT `T2`.`firstname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `grade` = 1
+Find the first names of all the teachers that teach in classroom 110.,SELECT `firstname` FROM `teachers` WHERE `classroom` = 110
+Which teachers teach in classroom 110? Give me their first names.,SELECT `firstname` FROM `teachers` WHERE `classroom` = 110
+Find the last names of teachers teaching in classroom 109.,SELECT `lastname` FROM `teachers` WHERE `classroom` = 109
+Which teachers teach in classroom 109? Give me their last names.,SELECT `lastname` FROM `teachers` WHERE `classroom` = 109
+Report the first name and last name of all the teachers.,"SELECT DISTINCT `firstname`, `lastname` FROM `teachers`"
+What are the first name and last name of all the teachers?,"SELECT DISTINCT `firstname`, `lastname` FROM `teachers`"
+Report the first name and last name of all the students.,"SELECT DISTINCT `firstname`, `lastname` FROM `list`"
+Show each student's first name and last name.,"SELECT DISTINCT `firstname`, `lastname` FROM `list`"
+Find all students taught by OTHA MOYER. Output the first and last names of the students.,"SELECT `T1`.`firstname`, `T1`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `OTHA` AND `T2`.`lastname` = `MOYER`"
+Which students study under the teacher named OTHA MOYER? Give me the first and last names of the students.,"SELECT `T1`.`firstname`, `T1`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `OTHA` AND `T2`.`lastname` = `MOYER`"
+Find all students taught by MARROTTE KIRK. Output first and last names of students.,"SELECT `T1`.`firstname`, `T1`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `MARROTTE` AND `T2`.`lastname` = `KIRK`"
+Which are the first and last names of the students taught by MARROTTE KIRK?,"SELECT `T1`.`firstname`, `T1`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `MARROTTE` AND `T2`.`lastname` = `KIRK`"
+Find the first and last name of all the teachers that teach EVELINA BROMLEY.,"SELECT `T2`.`firstname`, `T2`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`firstname` = `EVELINA` AND `T1`.`lastname` = `BROMLEY`"
+Which teachers teach the student named EVELINA BROMLEY? Give me the first and last name  of the teachers.,"SELECT `T2`.`firstname`, `T2`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`firstname` = `EVELINA` AND `T1`.`lastname` = `BROMLEY`"
+Find the last names of all the teachers that teach GELL TAMI.,SELECT `T2`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`firstname` = `GELL` AND `T1`.`lastname` = `TAMI`
+What are the last names of the teachers who teach the student called GELL TAMI?,SELECT `T2`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`firstname` = `GELL` AND `T1`.`lastname` = `TAMI`
+How many students does LORIA ONDERSMA teaches?,SELECT COUNT(*) FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `LORIA` AND `T2`.`lastname` = `ONDERSMA`
+Count the number of students the teacher LORIA ONDERSMA teaches.,SELECT COUNT(*) FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `LORIA` AND `T2`.`lastname` = `ONDERSMA`
+How many students does KAWA GORDON teaches?,SELECT COUNT(*) FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `KAWA` AND `T2`.`lastname` = `GORDON`
+Find the number of students taught by the teacher KAWA GORDON.,SELECT COUNT(*) FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `KAWA` AND `T2`.`lastname` = `GORDON`
+Find the number of students taught by TARRING LEIA.,SELECT COUNT(*) FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `TARRING` AND `T2`.`lastname` = `LEIA`
+How many students are taught by teacher TARRING LEIA?,SELECT COUNT(*) FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `TARRING` AND `T2`.`lastname` = `LEIA`
+How many teachers does the student named CHRISSY NABOZNY have?,SELECT COUNT(*) FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`firstname` = `CHRISSY` AND `T1`.`lastname` = `NABOZNY`
+Find the number of teachers who teach the student called CHRISSY NABOZNY.,SELECT COUNT(*) FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`firstname` = `CHRISSY` AND `T1`.`lastname` = `NABOZNY`
+How many teachers does the student named MADLOCK RAY have?,SELECT COUNT(*) FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`firstname` = `MADLOCK` AND `T1`.`lastname` = `RAY`
+Find the number of teachers who teach the student called MADLOCK RAY.,SELECT COUNT(*) FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`firstname` = `MADLOCK` AND `T1`.`lastname` = `RAY`
+Find all first-grade students who are NOT taught by OTHA MOYER. Report their first and last names.,"SELECT DISTINCT `T1`.`firstname`, `T1`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`grade` = 1 EXCEPT SELECT `T1`.`firstname`, `T1`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `OTHA` AND `T2`.`lastname` = `MOYER`"
+What are the first and last names of the first-grade students who are NOT taught by teacher OTHA MOYER?,"SELECT DISTINCT `T1`.`firstname`, `T1`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`grade` = 1 EXCEPT SELECT `T1`.`firstname`, `T1`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T2`.`firstname` = `OTHA` AND `T2`.`lastname` = `MOYER`"
+Find the last names of the students in third grade that are not taught by COVIN JEROME.,SELECT DISTINCT `T1`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`grade` = 3 AND `T2`.`firstname` <> `COVIN` AND `T2`.`lastname` <> `JEROME`
+Which students in third grade are not taught by teacher COVIN JEROME? Give me the last names of the students.,SELECT DISTINCT `T1`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` WHERE `T1`.`grade` = 3 AND `T2`.`firstname` <> `COVIN` AND `T2`.`lastname` <> `JEROME`
+"For each grade, report the grade, the number of classrooms in which it is taught and the total number of students in the grade.","SELECT `grade`, COUNT(DISTINCT `classroom`), COUNT(*) FROM `list` GROUP BY `grade`"
+"For each grade, return the grade number, the number of classrooms used for the grade, and the total number of students enrolled in the grade.","SELECT `grade`, COUNT(DISTINCT `classroom`), COUNT(*) FROM `list` GROUP BY `grade`"
+"For each classroom, report the classroom number and the number of grades using it.","SELECT `classroom`, COUNT(DISTINCT `grade`) FROM `list` GROUP BY `classroom`"
+"For each classroom, show the classroom number and count the number of distinct grades that use the room.","SELECT `classroom`, COUNT(DISTINCT `grade`) FROM `list` GROUP BY `classroom`"
+Which classroom has the most students?,SELECT `classroom` FROM `list` GROUP BY `classroom` ORDER BY COUNT(*) DESC LIMIT 1
+Find the classroom that the most students use.,SELECT `classroom` FROM `list` GROUP BY `classroom` ORDER BY COUNT(*) DESC LIMIT 1
+Report the number of students in each classroom.,"SELECT `classroom`, COUNT(*) FROM `list` GROUP BY `classroom`"
+"For each classroom, show the classroom number and find how many students are using it.","SELECT `classroom`, COUNT(*) FROM `list` GROUP BY `classroom`"
+"For each grade 0 classroom, report the total number of students.","SELECT `classroom`, COUNT(*) FROM `list` WHERE `grade` = `0` GROUP BY `classroom`"
+"For each grade 0 classroom, return the classroom number and the count of students.","SELECT `classroom`, COUNT(*) FROM `list` WHERE `grade` = `0` GROUP BY `classroom`"
+Report the total number of students for each fourth-grade classroom.,"SELECT `classroom`, COUNT(*) FROM `list` WHERE `grade` = `4` GROUP BY `classroom`"
+"For each fourth-grade classroom, show the classroom number and the total number of students using it.","SELECT `classroom`, COUNT(*) FROM `list` WHERE `grade` = `4` GROUP BY `classroom`"
+Find the name of the teacher who teaches the largest number of students.,"SELECT `T2`.`firstname`, `T2`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` GROUP BY `T2`.`firstname`, `T2`.`lastname` ORDER BY COUNT(*) DESC LIMIT 1"
+Which teacher teaches the most students? Give me the first name and last name of the teacher.,"SELECT `T2`.`firstname`, `T2`.`lastname` FROM `list` AS `T1` JOIN `teachers` AS `T2` ON `T1`.`classroom` = `T2`.`classroom` GROUP BY `T2`.`firstname`, `T2`.`lastname` ORDER BY COUNT(*) DESC LIMIT 1"
+Find the number of students in one classroom.,"SELECT COUNT(*), `classroom` FROM `list` GROUP BY `classroom`"
+How many students does one classroom have?,"SELECT COUNT(*), `classroom` FROM `list` GROUP BY `classroom`"

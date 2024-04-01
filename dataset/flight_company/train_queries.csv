@@ -1,20 +1,20 @@
 question,sql
-How many flights have a velocity larger than 200?,SELECT count(*) FROM flight WHERE velocity  >  200
-"List the vehicle flight number, date and pilot of all the flights, ordered by altitude.","SELECT vehicle_flight_number ,  date ,  pilot FROM flight ORDER BY altitude ASC"
-"List the id, country, city and name of the airports ordered alphabetically by the name.","SELECT id ,  country ,  city ,  name FROM airport ORDER BY name"
-What is maximum group equity shareholding of the companies?,SELECT max(group_equity_shareholding) FROM operate_company
-What is the velocity of the pilot named 'Thompson'?,SELECT avg(velocity) FROM flight WHERE pilot  =  'Thompson'
-What are the names and types of the companies that have ever operated a flight?,"SELECT T1.name ,  T1.type FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id"
-What are the names of the airports which are not in the country 'Iceland'?,SELECT name FROM airport WHERE country != 'Iceland'
-What are the distinct types of the companies that have operated any flights with velocity less than 200?,SELECT DISTINCT T1.type FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id WHERE T2.velocity  <  200
-What are the ids and names of the companies that operated more than one flight?,"SELECT T1.id ,  T1.name FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id GROUP BY T1.id HAVING count(*)  >  1"
-"What is the id, name and IATA code of the airport that had most number of flights?","SELECT T1.id ,  T1.name ,  T1.IATA FROM airport AS T1 JOIN flight AS T2 ON T1.id  =  T2.airport_id GROUP BY T2.id ORDER BY count(*) DESC LIMIT 1"
-What are the different pilot names who had piloted a flight in the country 'United States' or in the airport named 'Billund Airport'?,SELECT DISTINCT T2.pilot FROM airport AS T1 JOIN flight AS T2 ON T1.id  =  T2.airport_id WHERE T1.country  =  'United States' OR T1.name  =  'Billund Airport'
-"What is the most common company type, and how many are there?","SELECT TYPE ,  count(*) FROM operate_company GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1"
-How many airports haven't the pilot 'Thompson' driven an aircraft?,SELECT count(*) FROM airport WHERE id NOT IN ( SELECT airport_id FROM flight WHERE pilot  =  'Thompson' );
-List the name of the pilots who have flied for both a company that mainly provide 'Cargo' services and a company that runs 'Catering services' activities.,SELECT T2.pilot FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id WHERE T1.principal_activities  =  'Cargo' INTERSECT SELECT T2.pilot FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id WHERE T1.principal_activities  =  'Catering services'
-Which of the airport names contains the word 'international'?,SELECT name FROM airport WHERE name LIKE '%international%'
-How many companies operates airlines in each airport?,"SELECT T3.id ,  count(*) FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id JOIN airport AS T3 ON T2.airport_id  =  T3.id GROUP BY T3.id"
-how many airports are there in each country?,"SELECT count(*) ,  country FROM airport GROUP BY country"
-which countries have more than 2 airports?,SELECT country FROM airport GROUP BY country HAVING count(*)  >  2
-which pilot is in charge of the most number of flights?,SELECT pilot FROM flight GROUP BY pilot ORDER BY count(*) DESC LIMIT 1
+How many flights have a velocity larger than 200?,SELECT COUNT(*) FROM `flight` WHERE `velocity` > 200
+"List the vehicle flight number, date and pilot of all the flights, ordered by altitude.","SELECT `vehicle_flight_number`, `date`, `pilot` FROM `flight` ORDER BY `altitude` ASC"
+"List the id, country, city and name of the airports ordered alphabetically by the name.","SELECT `id`, `country`, `city`, `name` FROM `airport` ORDER BY `name`"
+What is maximum group equity shareholding of the companies?,SELECT MAX(`group_equity_shareholding`) FROM `operate_company`
+What is the velocity of the pilot named 'Thompson'?,SELECT AVG(`velocity`) FROM `flight` WHERE `pilot` = 'Thompson'
+What are the names and types of the companies that have ever operated a flight?,"SELECT `T1`.`name`, `T1`.`type` FROM `operate_company` AS `T1` JOIN `flight` AS `t2` ON `T1`.`id` = `T2`.`company_id`"
+What are the names of the airports which are not in the country 'Iceland'?,SELECT `name` FROM `airport` WHERE `country` <> 'Iceland'
+What are the distinct types of the companies that have operated any flights with velocity less than 200?,SELECT DISTINCT `T1`.`type` FROM `operate_company` AS `T1` JOIN `flight` AS `t2` ON `T1`.`id` = `T2`.`company_id` WHERE `T2`.`velocity` < 200
+What are the ids and names of the companies that operated more than one flight?,"SELECT `T1`.`id`, `T1`.`name` FROM `operate_company` AS `T1` JOIN `flight` AS `t2` ON `T1`.`id` = `T2`.`company_id` GROUP BY `T1`.`id` HAVING COUNT(*) > 1"
+"What is the id, name and IATA code of the airport that had most number of flights?","SELECT `T1`.`id`, `T1`.`name`, `T1`.`IATA` FROM `airport` AS `T1` JOIN `flight` AS `T2` ON `T1`.`id` = `T2`.`airport_id` GROUP BY `T2`.`id` ORDER BY COUNT(*) DESC LIMIT 1"
+What are the different pilot names who had piloted a flight in the country 'United States' or in the airport named 'Billund Airport'?,SELECT DISTINCT `T2`.`pilot` FROM `airport` AS `T1` JOIN `flight` AS `T2` ON `T1`.`id` = `T2`.`airport_id` WHERE `T1`.`country` = 'United States' OR `T1`.`name` = 'Billund Airport'
+"What is the most common company type, and how many are there?","SELECT `TYPE`, COUNT(*) FROM `operate_company` GROUP BY `TYPE` ORDER BY COUNT(*) DESC LIMIT 1"
+How many airports haven't the pilot 'Thompson' driven an aircraft?,SELECT COUNT(*) FROM `airport` WHERE NOT `id` IN (SELECT `airport_id` FROM `flight` WHERE `pilot` = 'Thompson')
+List the name of the pilots who have flied for both a company that mainly provide 'Cargo' services and a company that runs 'Catering services' activities.,SELECT `T2`.`pilot` FROM `operate_company` AS `T1` JOIN `flight` AS `t2` ON `T1`.`id` = `T2`.`company_id` WHERE `T1`.`principal_activities` = 'Cargo' INTERSECT SELECT `T2`.`pilot` FROM `operate_company` AS `T1` JOIN `flight` AS `t2` ON `T1`.`id` = `T2`.`company_id` WHERE `T1`.`principal_activities` = 'Catering services'
+Which of the airport names contains the word 'international'?,SELECT `name` FROM `airport` WHERE `name` LIKE '%international%'
+How many companies operates airlines in each airport?,"SELECT `T3`.`id`, COUNT(*) FROM `operate_company` AS `T1` JOIN `flight` AS `t2` ON `T1`.`id` = `T2`.`company_id` JOIN `airport` AS `T3` ON `T2`.`airport_id` = `T3`.`id` GROUP BY `T3`.`id`"
+how many airports are there in each country?,"SELECT COUNT(*), `country` FROM `airport` GROUP BY `country`"
+which countries have more than 2 airports?,SELECT `country` FROM `airport` GROUP BY `country` HAVING COUNT(*) > 2
+which pilot is in charge of the most number of flights?,SELECT `pilot` FROM `flight` GROUP BY `pilot` ORDER BY COUNT(*) DESC LIMIT 1

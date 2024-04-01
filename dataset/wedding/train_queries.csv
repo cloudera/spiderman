@@ -1,21 +1,21 @@
 question,sql
-How many churches opened before 1850 are there?,SELECT count(*) FROM Church WHERE Open_Date  <  1850
-"Show the name, open date, and organizer for all churches.","SELECT name ,  open_date ,  organized_by FROM Church"
-List all church names in descending order of opening date.,SELECT name FROM church ORDER BY open_date DESC
-Show the opening year in whcih at least two churches opened.,SELECT open_date FROM church GROUP BY open_date HAVING count(*)  >=  2
-Show the organizer and name for churches that opened between 1830 and 1840.,"SELECT organized_by ,  name FROM church WHERE open_date BETWEEN 1830 AND 1840"
-Show all opening years and the number of churches that opened in that year.,"SELECT open_date ,  count(*) FROM church GROUP BY open_date"
-Show the name and opening year for three churches that opened most recently.,"SELECT name ,  open_date FROM church ORDER BY open_date DESC LIMIT 3"
-How many female people are older than 30 in our record?,SELECT count(*) FROM people WHERE is_male  =  'F' AND age  >  30
-Show the country where people older than 30 and younger than 25 are from.,SELECT country FROM people WHERE age  <  25 INTERSECT SELECT country FROM people WHERE age  >  30
-"Show the minimum, maximum, and average age for all people.","SELECT min(age) ,  max(age) ,  avg(age) FROM people"
-Show the name and country for all people whose age is smaller than the average.,"SELECT name ,  country FROM people WHERE age  <  (SELECT avg(age) FROM people)"
-Show the pair of male and female names in all weddings after year 2014,"SELECT T2.name ,  T3.name FROM wedding AS T1 JOIN people AS T2 ON T1.male_id  =  T2.people_id JOIN people AS T3 ON T1.female_id  =  T3.people_id WHERE T1.year  >  2014"
-Show the name and age for all male people who don't have a wedding.,"SELECT name ,  age FROM people WHERE is_male  =  'T' AND people_id NOT IN (SELECT male_id FROM wedding)"
-Show all church names except for those that had a wedding in year 2015.,SELECT name FROM church EXCEPT SELECT T1.name FROM church AS T1 JOIN wedding AS T2 ON T1.church_id  =  T2.church_id WHERE T2.year  =  2015
-Show all church names that have hosted least two weddings.,SELECT T1.name FROM church AS T1 JOIN wedding AS T2 ON T1.church_id  =  T2.church_id GROUP BY T1.church_id HAVING count(*)  >=  2
-Show the names for all females from Canada having a wedding in year 2016.,SELECT T2.name FROM wedding AS T1 JOIN people AS T2 ON T1.female_id  =  T2.people_id WHERE T1.year  =  2016 AND T2.is_male  =  'F' AND T2.country  =  'Canada'
-How many weddings are there in year 2016?,SELECT count(*) FROM wedding WHERE YEAR  =  2016
-Show the church names for the weddings of all people older than 30.,SELECT T4.name FROM wedding AS T1 JOIN people AS T2 ON T1.male_id  =  T2.people_id JOIN people AS T3 ON T1.female_id  =  T3.people_id JOIN church AS T4 ON T4.church_id  =  T1.church_id WHERE T2.age  >  30 OR T3.age  >  30
-Show all countries and the number of people from each country.,"SELECT country ,  count(*) FROM people GROUP BY country"
-How many churches have a wedding in year 2016?,SELECT COUNT (DISTINCT church_id) FROM wedding WHERE YEAR  =  2016
+How many churches opened before 1850 are there?,SELECT COUNT(*) FROM `Church` WHERE `Open_Date` < 1850
+"Show the name, open date, and organizer for all churches.","SELECT `name`, `open_date`, `organized_by` FROM `Church`"
+List all church names in descending order of opening date.,SELECT `name` FROM `church` ORDER BY `open_date` DESC
+Show the opening year in whcih at least two churches opened.,SELECT `open_date` FROM `church` GROUP BY `open_date` HAVING COUNT(*) >= 2
+Show the organizer and name for churches that opened between 1830 and 1840.,"SELECT `organized_by`, `name` FROM `church` WHERE `open_date` BETWEEN 1830 AND 1840"
+Show all opening years and the number of churches that opened in that year.,"SELECT `open_date`, COUNT(*) FROM `church` GROUP BY `open_date`"
+Show the name and opening year for three churches that opened most recently.,"SELECT `name`, `open_date` FROM `church` ORDER BY `open_date` DESC LIMIT 3"
+How many female people are older than 30 in our record?,SELECT COUNT(*) FROM `people` WHERE `is_male` = 'F' AND `age` > 30
+Show the country where people older than 30 and younger than 25 are from.,SELECT `country` FROM `people` WHERE `age` < 25 INTERSECT SELECT `country` FROM `people` WHERE `age` > 30
+"Show the minimum, maximum, and average age for all people.","SELECT MIN(`age`), MAX(`age`), AVG(`age`) FROM `people`"
+Show the name and country for all people whose age is smaller than the average.,"SELECT `name`, `country` FROM `people` WHERE `age` < (SELECT AVG(`age`) FROM `people`)"
+Show the pair of male and female names in all weddings after year 2014,"SELECT `T2`.`name`, `T3`.`name` FROM `wedding` AS `T1` JOIN `people` AS `T2` ON `T1`.`male_id` = `T2`.`people_id` JOIN `people` AS `T3` ON `T1`.`female_id` = `T3`.`people_id` WHERE `T1`.`year` > 2014"
+Show the name and age for all male people who don't have a wedding.,"SELECT `name`, `age` FROM `people` WHERE `is_male` = 'T' AND NOT `people_id` IN (SELECT `male_id` FROM `wedding`)"
+Show all church names except for those that had a wedding in year 2015.,SELECT `name` FROM `church` EXCEPT SELECT `T1`.`name` FROM `church` AS `T1` JOIN `wedding` AS `T2` ON `T1`.`church_id` = `T2`.`church_id` WHERE `T2`.`year` = 2015
+Show all church names that have hosted least two weddings.,SELECT `T1`.`name` FROM `church` AS `T1` JOIN `wedding` AS `T2` ON `T1`.`church_id` = `T2`.`church_id` GROUP BY `T1`.`church_id` HAVING COUNT(*) >= 2
+Show the names for all females from Canada having a wedding in year 2016.,SELECT `T2`.`name` FROM `wedding` AS `T1` JOIN `people` AS `T2` ON `T1`.`female_id` = `T2`.`people_id` WHERE `T1`.`year` = 2016 AND `T2`.`is_male` = 'F' AND `T2`.`country` = 'Canada'
+How many weddings are there in year 2016?,SELECT COUNT(*) FROM `wedding` WHERE `YEAR` = 2016
+Show the church names for the weddings of all people older than 30.,SELECT `T4`.`name` FROM `wedding` AS `T1` JOIN `people` AS `T2` ON `T1`.`male_id` = `T2`.`people_id` JOIN `people` AS `T3` ON `T1`.`female_id` = `T3`.`people_id` JOIN `church` AS `T4` ON `T4`.`church_id` = `T1`.`church_id` WHERE `T2`.`age` > 30 OR `T3`.`age` > 30
+Show all countries and the number of people from each country.,"SELECT `country`, COUNT(*) FROM `people` GROUP BY `country`"
+How many churches have a wedding in year 2016?,SELECT COUNT(DISTINCT `church_id`) FROM `wedding` WHERE `YEAR` = 2016

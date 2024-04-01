@@ -102,12 +102,14 @@ def extract_queries(queries: list, is_test: bool):
     for query in queries:
         db_name = query["db_id"]
         question = query["question"]
-        query_txt = query["query"]
+        sql = query["query"]
+
+        sql = mysql.normalize_sql(sql)
 
         if db_name not in db_queries:
             db_queries[db_name] = []
 
-        db_queries[db_name].append([question, query_txt])
+        db_queries[db_name].append([question, sql])
 
     for db_name in db_queries:
         file_path = dataset.path_to_test_queries_file(db_name) if is_test \
