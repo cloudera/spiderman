@@ -15,7 +15,7 @@ sh Miniconda3-latest-Linux-x86_64.sh
 ```
 ### Setup Environment
 ```
-conda create --name spiderman-env python=3.9.16
+conda create --name spiderman-env python=3.12.2
 conda activate spiderman-env
 pip install -r requirements.txt
 ```
