@@ -9,6 +9,8 @@ SpiderMan is a better version of the [Spider 1.0](https://yale-lily.github.io/sp
 - Data has been corrected for schema based validations.
 - Queries have been improved for successful execution in MySQL and other DB systems.
 
+SpiderMan is split into 2 parts - Dataset, and scripts that makes it easy to work with the dataset.
+
 ## Dataset
 The dataset comprises of 157 databases. Each of them come with their own respective schema, data and queries. We currently don't have queries that span across databases. Train test split happens at the database level.
 
@@ -19,7 +21,7 @@ The dataset comprises of 157 databases. Each of them come with their own respect
 |Total|7760|779|157|
 
 ## Scripts
-Following scripts makes it easy to use the dataset.
+Following scripts makes it easy to use the dataset. Follow the [Setup](#setup) section ot get your system ready to run these scripts.
 
 ### Load Dataset
 Creates schema of all the databases, and insert their data into a DB system. It accepts one argument - A SQLAlchemy 2.0 compatible URL to the destination database. More details on the URL is available [here](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls).
@@ -55,28 +57,31 @@ python ./scripts/rebuild_dataset.py
 9 databases from the source would be skipped as they lack data - imdb, formula_1, music_2, yelp, academic, restaurants, scholar, sakila_1, geo.
 
 ## Setup
-### Install OS Dependencies
-#### CentOS
-```
-yum install python-pip gcc gcc-c++ python-virtualenv cyrus-sasl-devel
-```
+Following commands are for macOS.
 
-### Setup Conda
-```
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-sh Miniconda3-latest-Linux-x86_64.sh
-```
-### Setup Environment
+### Create Environment
 ```
 conda create --name spiderman-env python=3.12.2
 conda activate spiderman-env
-pip install -r requirements.txt
 ```
 
-## Setup MySQL
+### Setup MySQL
 ```
+# Install MySQL server
 brew install mysql pkg-config
+
+# Install MySQL library
 pip install mysqlclient
+
+# Create user and set privileges
+mysql -u root
+> CREATE USER 'spiderman'@'localhost' IDENTIFIED BY 'spiderman';
+> GRANT ALL PRIVILEGES ON *.* TO 'spiderman'@'localhost';
+```
+
+### Install Dependencies
+```
+pip install -r requirements.txt
 ```
 
 # Citation
