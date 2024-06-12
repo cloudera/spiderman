@@ -12,7 +12,7 @@ from utils.filesystem import read_str, read_json_dict
 ordered_tables = read_json_dict(paths.ORDERED_TABLES)
 
 
-args = get_args(description="Insert SpiderMan into DB system")
+args = get_args(description="Load SpiderMan into DB system")
 
 db_names = get_db_names()
 
