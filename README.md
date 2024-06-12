@@ -90,7 +90,7 @@ If you find this to be useful, please consider citing:
 ```
 @inproceedings{SpiderMan,
   title  = {SpiderMan: A Comprehensive Human-Annotated Dataset for SQL AI Tasks Across Diverse Domains and Complexity Levels},
-  author = {Sreenath Somarajapuram},
+  author = {Sreenath Somarajapuram and Athira},
   year   = 2024
 }
 ```
