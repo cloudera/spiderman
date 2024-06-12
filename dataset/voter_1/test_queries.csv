@@ -1,16 +1,16 @@
 question,sql
-How many states are there?,SELECT COUNT(*) FROM `area_code_state`
-"List the contestant numbers and names, ordered by contestant name descending.","SELECT `contestant_number`, `contestant_name` FROM `contestants` ORDER BY `contestant_name` DESC"
-"List the vote ids, phone numbers and states of all votes.","SELECT `vote_id`, `phone_number`, `state` FROM `votes`"
-What are the maximum and minimum values of area codes?,"SELECT MAX(`area_code`), MIN(`area_code`) FROM `area_code_state`"
-What is last date created of votes from the state 'CA'?,SELECT MAX(`created`) FROM `votes` WHERE `state` = 'CA'
-What are the names of the contestants whose names are not 'Jessie Alloway',SELECT `contestant_name` FROM `contestants` WHERE `contestant_name` <> 'Jessie Alloway'
-What are the distinct states and create time of all votes?,"SELECT DISTINCT `state`, `created` FROM `votes`"
-What are the contestant numbers and names of the contestants who had at least two votes?,"SELECT `T1`.`contestant_number`, `T1`.`contestant_name` FROM `contestants` AS `T1` JOIN `votes` AS `T2` ON `T1`.`contestant_number` = `T2`.`contestant_number` GROUP BY `T1`.`contestant_number` HAVING COUNT(*) >= 2"
-"Of all the contestants who got voted, what is the contestant number and name of the contestant who got least votes?","SELECT `T1`.`contestant_number`, `T1`.`contestant_name` FROM `contestants` AS `T1` JOIN `votes` AS `T2` ON `T1`.`contestant_number` = `T2`.`contestant_number` GROUP BY `T1`.`contestant_number` ORDER BY COUNT(*) ASC LIMIT 1"
-What are the number of votes from state 'NY' or 'CA'?,SELECT COUNT(*) FROM `votes` WHERE `state` = 'NY' OR `state` = 'CA'
-How many contestants did not get voted?,SELECT COUNT(*) FROM `contestants` WHERE NOT `contestant_number` IN (SELECT `contestant_number` FROM `votes`)
-What is the area code in which the most voters voted?,SELECT `T1`.`area_code` FROM `area_code_state` AS `T1` JOIN `votes` AS `T2` ON `T1`.`state` = `T2`.`state` GROUP BY `T1`.`area_code` ORDER BY COUNT(*) DESC LIMIT 1
-"What are the create dates, states, and phone numbers of the votes that were for the contestant named 'Tabatha Gehling'?","SELECT `T2`.`created`, `T2`.`state`, `T2`.`phone_number` FROM `contestants` AS `T1` JOIN `votes` AS `T2` ON `T1`.`contestant_number` = `T2`.`contestant_number` WHERE `T1`.`contestant_name` = 'Tabatha Gehling'"
-List the area codes in which voters voted both for the contestant 'Tabatha Gehling' and the contestant 'Kelly Clauss'.,SELECT `T3`.`area_code` FROM `contestants` AS `T1` JOIN `votes` AS `T2` ON `T1`.`contestant_number` = `T2`.`contestant_number` JOIN `area_code_state` AS `T3` ON `T2`.`state` = `T3`.`state` WHERE `T1`.`contestant_name` = 'Tabatha Gehling' INTERSECT SELECT `T3`.`area_code` FROM `contestants` AS `T1` JOIN `votes` AS `T2` ON `T1`.`contestant_number` = `T2`.`contestant_number` JOIN `area_code_state` AS `T3` ON `T2`.`state` = `T3`.`state` WHERE `T1`.`contestant_name` = 'Kelly Clauss'
-Return the names of the contestants whose names contain the substring 'Al' .,SELECT `contestant_name` FROM `contestants` WHERE `contestant_name` LIKE `%al%`
+How many states are there?,SELECT COUNT(*) FROM `AREA_CODE_STATE`
+"List the contestant numbers and names, ordered by contestant name descending.","SELECT `contestant_number`, `contestant_name` FROM `CONTESTANTS` ORDER BY `contestant_name` DESC"
+"List the vote ids, phone numbers and states of all votes.","SELECT `vote_id`, `phone_number`, `state` FROM `VOTES`"
+What are the maximum and minimum values of area codes?,"SELECT MAX(`area_code`), MIN(`area_code`) FROM `AREA_CODE_STATE`"
+What is last date created of votes from the state 'CA'?,SELECT MAX(`created`) FROM `VOTES` WHERE `state` = 'CA'
+What are the names of the contestants whose names are not 'Jessie Alloway',SELECT `contestant_name` FROM `CONTESTANTS` WHERE `contestant_name` <> 'Jessie Alloway'
+What are the distinct states and create time of all votes?,"SELECT DISTINCT `state`, `created` FROM `VOTES`"
+What are the contestant numbers and names of the contestants who had at least two votes?,"SELECT `t1`.`contestant_number`, `t1`.`contestant_name` FROM `CONTESTANTS` AS `t1` JOIN `VOTES` AS `t2` ON `t1`.`contestant_number` = `t2`.`contestant_number` GROUP BY `t1`.`contestant_number`, `t1`.`contestant_name` HAVING COUNT(*) >= 2"
+"Of all the contestants who got voted, what is the contestant number and name of the contestant who got least votes?","SELECT `t1`.`contestant_number`, `t1`.`contestant_name` FROM `CONTESTANTS` AS `t1` JOIN `VOTES` AS `t2` ON `t1`.`contestant_number` = `t2`.`contestant_number` GROUP BY `t1`.`contestant_number`, `t1`.`contestant_name` ORDER BY COUNT(*) ASC LIMIT 1"
+What are the number of votes from state 'NY' or 'CA'?,SELECT COUNT(*) FROM `VOTES` WHERE `state` = 'NY' OR `state` = 'CA'
+How many contestants did not get voted?,SELECT COUNT(*) FROM `CONTESTANTS` WHERE NOT `contestant_number` IN (SELECT `contestant_number` FROM `VOTES`)
+What is the area code in which the most voters voted?,SELECT `t1`.`area_code` FROM `AREA_CODE_STATE` AS `t1` JOIN `VOTES` AS `t2` ON `t1`.`state` = `t2`.`state` GROUP BY `t1`.`area_code` ORDER BY COUNT(*) DESC LIMIT 1
+"What are the create dates, states, and phone numbers of the votes that were for the contestant named 'Tabatha Gehling'?","SELECT `t2`.`created`, `t2`.`state`, `t2`.`phone_number` FROM `CONTESTANTS` AS `t1` JOIN `VOTES` AS `t2` ON `t1`.`contestant_number` = `t2`.`contestant_number` WHERE `t1`.`contestant_name` = 'Tabatha Gehling'"
+List the area codes in which voters voted both for the contestant 'Tabatha Gehling' and the contestant 'Kelly Clauss'.,SELECT `t3`.`area_code` FROM `CONTESTANTS` AS `t1` JOIN `VOTES` AS `t2` ON `t1`.`contestant_number` = `t2`.`contestant_number` JOIN `AREA_CODE_STATE` AS `t3` ON `t2`.`state` = `t3`.`state` WHERE `t1`.`contestant_name` = 'Tabatha Gehling' INTERSECT SELECT `t3`.`area_code` FROM `CONTESTANTS` AS `t1` JOIN `VOTES` AS `t2` ON `t1`.`contestant_number` = `t2`.`contestant_number` JOIN `AREA_CODE_STATE` AS `t3` ON `t2`.`state` = `t3`.`state` WHERE `t1`.`contestant_name` = 'Kelly Clauss'
+Return the names of the contestants whose names contain the substring 'Al' .,SELECT `contestant_name` FROM `CONTESTANTS` WHERE `contestant_name` LIKE '%al%'

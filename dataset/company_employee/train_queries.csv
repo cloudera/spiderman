@@ -2,16 +2,16 @@ question,sql
 How many companies are headquartered in the US?,SELECT COUNT(*) FROM `company` WHERE `Headquarters` = 'USA'
 List the names of companies by ascending number of sales.,SELECT `Name` FROM `company` ORDER BY `Sales_in_Billion` ASC
 What are the headquarters and industries of all companies?,"SELECT `Headquarters`, `Industry` FROM `company`"
-Show the names of companies in the banking or retailing industry?,SELECT `Name` FROM `company` WHERE `Industry` = `Banking` OR `Industry` = `Retailing`
+Show the names of companies in the banking or retailing industry?,SELECT `Name` FROM `company` WHERE `Industry` = 'Banking' OR `Industry` = 'Retailing'
 What is the maximum and minimum market value of companies?,"SELECT MAX(`Market_Value_in_Billion`), MIN(`Market_Value_in_Billion`) FROM `company`"
 What is the headquarter of the company with the largest sales?,SELECT `Headquarters` FROM `company` ORDER BY `Sales_in_Billion` DESC LIMIT 1
 Show the different headquarters and number of companies at each headquarter.,"SELECT `Headquarters`, COUNT(*) FROM `company` GROUP BY `Headquarters`"
 Show the most common headquarter for companies.,SELECT `Headquarters` FROM `company` GROUP BY `Headquarters` ORDER BY COUNT(*) DESC LIMIT 1
 Show the headquarters that have at least two companies.,SELECT `Headquarters` FROM `company` GROUP BY `Headquarters` HAVING COUNT(*) >= 2
-Show the headquarters that have both companies in banking industry and companies in oil and gas industry.,SELECT `Headquarters` FROM `company` WHERE `Industry` = `Banking` INTERSECT SELECT `Headquarters` FROM `company` WHERE `Industry` = `Oil and gas`
-Show the names of companies and of employees.,"SELECT `T3`.`Name`, `T2`.`Name` FROM `employment` AS `T1` JOIN `people` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` JOIN `company` AS `T3` ON `T1`.`Company_ID` = `T3`.`Company_ID`"
-Show names of companies and that of employees in descending order of number of years working for that employee.,"SELECT `T3`.`Name`, `T2`.`Name` FROM `employment` AS `T1` JOIN `people` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` JOIN `company` AS `T3` ON `T1`.`Company_ID` = `T3`.`Company_ID` ORDER BY `T1`.`Year_working`"
-Show the names of employees that work for companies with sales bigger than 200.,SELECT `T2`.`Name` FROM `employment` AS `T1` JOIN `people` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` JOIN `company` AS `T3` ON `T1`.`Company_ID` = `T3`.`Company_ID` WHERE `T3`.`Sales_in_Billion` > 200
-Show the names of companies and the number of employees they have,"SELECT `T3`.`Name`, COUNT(*) FROM `employment` AS `T1` JOIN `people` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` JOIN `company` AS `T3` ON `T1`.`Company_ID` = `T3`.`Company_ID` GROUP BY `T3`.`Name`"
+Show the headquarters that have both companies in banking industry and companies in oil and gas industry.,SELECT `Headquarters` FROM `company` WHERE `Industry` = 'Banking' INTERSECT SELECT `Headquarters` FROM `company` WHERE `Industry` = 'Oil and gas'
+Show the names of companies and of employees.,"SELECT `t3`.`Name`, `t2`.`Name` FROM `employment` AS `t1` JOIN `people` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` JOIN `company` AS `t3` ON `t1`.`Company_ID` = `t3`.`Company_ID`"
+Show names of companies and that of employees in descending order of number of years working for that employee.,"SELECT `t3`.`Name`, `t2`.`Name` FROM `employment` AS `t1` JOIN `people` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` JOIN `company` AS `t3` ON `t1`.`Company_ID` = `t3`.`Company_ID` ORDER BY `t1`.`Year_working`"
+Show the names of employees that work for companies with sales bigger than 200.,SELECT `t2`.`Name` FROM `employment` AS `t1` JOIN `people` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` JOIN `company` AS `t3` ON `t1`.`Company_ID` = `t3`.`Company_ID` WHERE `t3`.`Sales_in_Billion` > 200
+Show the names of companies and the number of employees they have,"SELECT `t3`.`Name`, COUNT(*) FROM `employment` AS `t1` JOIN `people` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` JOIN `company` AS `t3` ON `t1`.`Company_ID` = `t3`.`Company_ID` GROUP BY `t3`.`Name`"
 List the names of people that are not employed by any company,SELECT `Name` FROM `people` WHERE NOT `People_ID` IN (SELECT `People_ID` FROM `employment`)
 list the names of the companies with more than 200 sales in the descending order of sales and profits.,"SELECT `name` FROM `company` WHERE `Sales_in_Billion` > 200 ORDER BY `Sales_in_Billion`, `Profits_in_Billion` DESC"

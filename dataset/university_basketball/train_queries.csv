@@ -31,8 +31,8 @@ Find the schools that were either founded after 1850 or public.,SELECT `school` 
 What are the schools that were either founded before 1850 or are public?,SELECT `school` FROM `university` WHERE `founded` > 1850 OR `affiliation` = 'Public'
 Find how many different affiliation types there are.,SELECT COUNT(DISTINCT `affiliation`) FROM `university`
 Count the number of different affiliation types.,SELECT COUNT(DISTINCT `affiliation`) FROM `university`
-Find how many school locations have the word 'NY'.,SELECT COUNT(*) FROM `university` WHERE `LOCATION` LIKE `%NY%`
-How many universities have a location that contains NY?,SELECT COUNT(*) FROM `university` WHERE `LOCATION` LIKE `%NY%`
+Find how many school locations have the word 'NY'.,SELECT COUNT(*) FROM `university` WHERE `LOCATION` LIKE '%NY%'
+How many universities have a location that contains NY?,SELECT COUNT(*) FROM `university` WHERE `LOCATION` LIKE '%NY%'
 Find the team names of the universities whose enrollments are smaller than the average enrollment size.,SELECT `t2`.`team_name` FROM `university` AS `t1` JOIN `basketball_match` AS `t2` ON `t1`.`school_id` = `t2`.`school_id` WHERE `enrollment` < (SELECT AVG(`enrollment`) FROM `university`)
 What are the names of teams from universities that have a below average enrollment?,SELECT `t2`.`team_name` FROM `university` AS `t1` JOIN `basketball_match` AS `t2` ON `t1`.`school_id` = `t2`.`school_id` WHERE `enrollment` < (SELECT AVG(`enrollment`) FROM `university`)
 Find the number of universities that have over a 20000 enrollment size for each affiliation type.,"SELECT COUNT(*), `affiliation` FROM `university` WHERE `enrollment` > 20000 GROUP BY `affiliation`"

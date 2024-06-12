@@ -19,13 +19,13 @@ What are the title and director of each film?,"SELECT `title`, `directed_by` FRO
 Show all directors.,SELECT DISTINCT `directed_by` FROM `film`
 Who are all the directors?,SELECT DISTINCT `directed_by` FROM `film`
 List all directors along with the number of films directed by each director.,"SELECT `directed_by`, COUNT(*) FROM `film` GROUP BY `directed_by`"
-What is total number of show times per dat for each cinema?,"SELECT `T2`.`name`, SUM(`T1`.`show_times_per_day`) FROM `schedule` AS `T1` JOIN `cinema` AS `T2` ON `T1`.`cinema_id` = `T2`.`cinema_id` GROUP BY `T1`.`cinema_id`"
-What are the title and maximum price of each film?,"SELECT `T2`.`title`, MAX(`T1`.`price`) FROM `schedule` AS `T1` JOIN `film` AS `T2` ON `T1`.`film_id` = `T2`.`film_id` GROUP BY `T1`.`film_id`"
-Give me the title and highest price for each film.,"SELECT `T2`.`title`, MAX(`T1`.`price`) FROM `schedule` AS `T1` JOIN `film` AS `T2` ON `T1`.`film_id` = `T2`.`film_id` GROUP BY `T1`.`film_id`"
-"Show cinema name, film title, date, and price for each record in schedule.","SELECT `T3`.`name`, `T2`.`title`, `T1`.`date`, `T1`.`price` FROM `schedule` AS `T1` JOIN `film` AS `T2` ON `T1`.`film_id` = `T2`.`film_id` JOIN `cinema` AS `T3` ON `T1`.`cinema_id` = `T3`.`cinema_id`"
+What is total number of show times per dat for each cinema?,"SELECT `t2`.`name`, SUM(`t1`.`show_times_per_day`) FROM `schedule` AS `t1` JOIN `cinema` AS `t2` ON `t1`.`cinema_id` = `t2`.`cinema_id` GROUP BY `t2`.`name`"
+What are the title and maximum price of each film?,"SELECT `t2`.`title`, MAX(`t1`.`price`) FROM `schedule` AS `t1` JOIN `film` AS `t2` ON `t1`.`film_id` = `t2`.`film_id` GROUP BY `t2`.`title`"
+Give me the title and highest price for each film.,"SELECT `t2`.`title`, MAX(`t1`.`price`) FROM `schedule` AS `t1` JOIN `film` AS `t2` ON `t1`.`film_id` = `t2`.`film_id` GROUP BY `t2`.`title`"
+"Show cinema name, film title, date, and price for each record in schedule.","SELECT `t3`.`name`, `t2`.`title`, `t1`.`date`, `t1`.`price` FROM `schedule` AS `t1` JOIN `film` AS `t2` ON `t1`.`film_id` = `t2`.`film_id` JOIN `cinema` AS `t3` ON `t1`.`cinema_id` = `t3`.`cinema_id`"
 What are the title and director of the films without any schedule?,"SELECT `title`, `directed_by` FROM `film` WHERE NOT `film_id` IN (SELECT `film_id` FROM `schedule`)"
-Show director with the largest number of show times in total.,SELECT `T2`.`directed_by` FROM `schedule` AS `T1` JOIN `film` AS `T2` ON `T1`.`film_id` = `T2`.`film_id` GROUP BY `T2`.`directed_by` ORDER BY SUM(`T1`.`show_times_per_day`) DESC LIMIT 1
+Show director with the largest number of show times in total.,SELECT `t2`.`directed_by` FROM `schedule` AS `t1` JOIN `film` AS `t2` ON `t1`.`film_id` = `t2`.`film_id` GROUP BY `t2`.`directed_by` ORDER BY SUM(`t1`.`show_times_per_day`) DESC LIMIT 1
 Find the locations that have more than one movie theater with capacity above 300.,SELECT `LOCATION` FROM `cinema` WHERE `capacity` > 300 GROUP BY `LOCATION` HAVING COUNT(*) > 1
 In which locations are there more than one movie theater with capacity above 300?,SELECT `LOCATION` FROM `cinema` WHERE `capacity` > 300 GROUP BY `LOCATION` HAVING COUNT(*) > 1
-How many films have the word 'Dummy' in their titles?,SELECT COUNT(*) FROM `film` WHERE `title` LIKE `%Dummy%`
-Count the number of films whose title contains the word 'Dummy'.,SELECT COUNT(*) FROM `film` WHERE `title` LIKE `%Dummy%`
+How many films have the word 'Dummy' in their titles?,SELECT COUNT(*) FROM `film` WHERE `title` LIKE '%Dummy%'
+Count the number of films whose title contains the word 'Dummy'.,SELECT COUNT(*) FROM `film` WHERE `title` LIKE '%Dummy%'

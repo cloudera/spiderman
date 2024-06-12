@@ -3,14 +3,14 @@ How many pilots are there?,SELECT COUNT(*) FROM `pilot`
 List the names of pilots in ascending order of rank.,SELECT `Pilot_name` FROM `pilot` ORDER BY `Rank` ASC
 What are the positions and teams of pilots?,"SELECT `POSITION`, `Team` FROM `pilot`"
 List the distinct positions of pilots older than 30.,SELECT DISTINCT `POSITION` FROM `pilot` WHERE `Age` > 30
-"Show the names of pilots from team ""Bradley"" or ""Fordham"".",SELECT `Pilot_name` FROM `pilot` WHERE `Team` = `Bradley` OR `Team` = `Fordham`
+"Show the names of pilots from team ""Bradley"" or ""Fordham"".",SELECT `Pilot_name` FROM `pilot` WHERE `Team` = 'Bradley' OR `Team` = 'Fordham'
 What is the joined year of the pilot of the highest rank?,SELECT `Join_Year` FROM `pilot` ORDER BY `Rank` ASC LIMIT 1
 What are the different nationalities of pilots? Show each nationality and the number of pilots of each nationality.,"SELECT `Nationality`, COUNT(*) FROM `pilot` GROUP BY `Nationality`"
 Show the most common nationality of pilots.,SELECT `Nationality` FROM `pilot` GROUP BY `Nationality` ORDER BY COUNT(*) DESC LIMIT 1
 Show the pilot positions that have both pilots joining after year 2005 and pilots joining before 2000.,SELECT `POSITION` FROM `pilot` WHERE `Join_Year` < 2000 INTERSECT SELECT `POSITION` FROM `pilot` WHERE `Join_Year` > 2005
-Show the names of pilots and models of aircrafts they have flied with.,"SELECT `T3`.`Pilot_name`, `T2`.`Model` FROM `pilot_record` AS `T1` JOIN `aircraft` AS `T2` ON `T1`.`Aircraft_ID` = `T2`.`Aircraft_ID` JOIN `pilot` AS `T3` ON `T1`.`Pilot_ID` = `T3`.`Pilot_ID`"
-Show the names of pilots and fleet series of the aircrafts they have flied with in ascending order of the rank of the pilot.,"SELECT `T3`.`Pilot_name`, `T2`.`Fleet_Series` FROM `pilot_record` AS `T1` JOIN `aircraft` AS `T2` ON `T1`.`Aircraft_ID` = `T2`.`Aircraft_ID` JOIN `pilot` AS `T3` ON `T1`.`Pilot_ID` = `T3`.`Pilot_ID` ORDER BY `T3`.`Rank`"
-Show the fleet series of the aircrafts flied by pilots younger than 34,SELECT `T2`.`Fleet_Series` FROM `pilot_record` AS `T1` JOIN `aircraft` AS `T2` ON `T1`.`Aircraft_ID` = `T2`.`Aircraft_ID` JOIN `pilot` AS `T3` ON `T1`.`Pilot_ID` = `T3`.`Pilot_ID` WHERE `T3`.`Age` < 34
-Show the names of pilots and the number of records they have.,"SELECT `T2`.`Pilot_name`, COUNT(*) FROM `pilot_record` AS `T1` JOIN `pilot` AS `T2` ON `T1`.`pilot_ID` = `T2`.`pilot_ID` GROUP BY `T2`.`Pilot_name`"
-Show names of pilots that have more than one record.,"SELECT `T2`.`Pilot_name`, COUNT(*) FROM `pilot_record` AS `T1` JOIN `pilot` AS `T2` ON `T1`.`pilot_ID` = `T2`.`pilot_ID` GROUP BY `T2`.`Pilot_name` HAVING COUNT(*) > 1"
+Show the names of pilots and models of aircrafts they have flied with.,"SELECT `t3`.`Pilot_name`, `t2`.`Model` FROM `pilot_record` AS `t1` JOIN `aircraft` AS `t2` ON `t1`.`Aircraft_ID` = `t2`.`Aircraft_ID` JOIN `pilot` AS `t3` ON `t1`.`Pilot_ID` = `t3`.`Pilot_ID`"
+Show the names of pilots and fleet series of the aircrafts they have flied with in ascending order of the rank of the pilot.,"SELECT `t3`.`Pilot_name`, `t2`.`Fleet_Series` FROM `pilot_record` AS `t1` JOIN `aircraft` AS `t2` ON `t1`.`Aircraft_ID` = `t2`.`Aircraft_ID` JOIN `pilot` AS `t3` ON `t1`.`Pilot_ID` = `t3`.`Pilot_ID` ORDER BY `t3`.`Rank`"
+Show the fleet series of the aircrafts flied by pilots younger than 34,SELECT `t2`.`Fleet_Series` FROM `pilot_record` AS `t1` JOIN `aircraft` AS `t2` ON `t1`.`Aircraft_ID` = `t2`.`Aircraft_ID` JOIN `pilot` AS `t3` ON `t1`.`Pilot_ID` = `t3`.`Pilot_ID` WHERE `t3`.`Age` < 34
+Show the names of pilots and the number of records they have.,"SELECT `t2`.`Pilot_name`, COUNT(*) FROM `pilot_record` AS `t1` JOIN `pilot` AS `t2` ON `t1`.`pilot_ID` = `t2`.`pilot_ID` GROUP BY `t2`.`Pilot_name`"
+Show names of pilots that have more than one record.,"SELECT `t2`.`Pilot_name`, COUNT(*) FROM `pilot_record` AS `t1` JOIN `pilot` AS `t2` ON `t1`.`pilot_ID` = `t2`.`pilot_ID` GROUP BY `t2`.`Pilot_name` HAVING COUNT(*) > 1"
 List the names of pilots that do not have any record.,SELECT `Pilot_name` FROM `pilot` WHERE NOT `Pilot_ID` IN (SELECT `Pilot_ID` FROM `pilot_record`)

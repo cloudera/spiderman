@@ -17,14 +17,14 @@ What are the minimum and maximum number of products across all the shops?,"SELEC
 "Sort all the shops by number products in descending order, and return the name, location and district of each shop.","SELECT `name`, `LOCATION`, `district` FROM `shop` ORDER BY `number_products` DESC"
 Find the names of stores whose number products is more than the average number of products.,SELECT `name` FROM `shop` WHERE `number_products` > (SELECT AVG(`number_products`) FROM `shop`)
 Which shops' number products is above the average? Give me the shop names.,SELECT `name` FROM `shop` WHERE `number_products` > (SELECT AVG(`number_products`) FROM `shop`)
-find the name of employee who was awarded the most times in the evaluation.,SELECT `t1`.`name` FROM `employee` AS `t1` JOIN `evaluation` AS `t2` ON `t1`.`Employee_ID` = `t2`.`Employee_ID` GROUP BY `t2`.`Employee_ID` ORDER BY COUNT(*) DESC LIMIT 1
-Which employee received the most awards in evaluations? Give me the employee name.,SELECT `t1`.`name` FROM `employee` AS `t1` JOIN `evaluation` AS `t2` ON `t1`.`Employee_ID` = `t2`.`Employee_ID` GROUP BY `t2`.`Employee_ID` ORDER BY COUNT(*) DESC LIMIT 1
+find the name of employee who was awarded the most times in the evaluation.,SELECT `t1`.`name` FROM `employee` AS `t1` JOIN `evaluation` AS `t2` ON `t1`.`Employee_ID` = `t2`.`Employee_ID` GROUP BY `t1`.`name` ORDER BY COUNT(*) DESC LIMIT 1
+Which employee received the most awards in evaluations? Give me the employee name.,SELECT `t1`.`name` FROM `employee` AS `t1` JOIN `evaluation` AS `t2` ON `t1`.`Employee_ID` = `t2`.`Employee_ID` GROUP BY `t1`.`name` ORDER BY COUNT(*) DESC LIMIT 1
 Find the name of the employee who got the highest one time bonus.,SELECT `t1`.`name` FROM `employee` AS `t1` JOIN `evaluation` AS `t2` ON `t1`.`Employee_ID` = `t2`.`Employee_ID` ORDER BY `t2`.`bonus` DESC LIMIT 1
 Which employee received the biggest bonus? Give me the employee name.,SELECT `t1`.`name` FROM `employee` AS `t1` JOIN `evaluation` AS `t2` ON `t1`.`Employee_ID` = `t2`.`Employee_ID` ORDER BY `t2`.`bonus` DESC LIMIT 1
 Find the names of employees who never won any award in the evaluation.,SELECT `name` FROM `employee` WHERE NOT `Employee_ID` IN (SELECT `Employee_ID` FROM `evaluation`)
 What are the names of the employees who never received any evaluation?,SELECT `name` FROM `employee` WHERE NOT `Employee_ID` IN (SELECT `Employee_ID` FROM `evaluation`)
-What is the name of the shop that is hiring the largest number of employees?,SELECT `t2`.`name` FROM `hiring` AS `t1` JOIN `shop` AS `t2` ON `t1`.`shop_id` = `t2`.`shop_id` GROUP BY `t1`.`shop_id` ORDER BY COUNT(*) DESC LIMIT 1
-Which shop has the most employees? Give me the shop name.,SELECT `t2`.`name` FROM `hiring` AS `t1` JOIN `shop` AS `t2` ON `t1`.`shop_id` = `t2`.`shop_id` GROUP BY `t1`.`shop_id` ORDER BY COUNT(*) DESC LIMIT 1
+What is the name of the shop that is hiring the largest number of employees?,SELECT `t2`.`name` FROM `hiring` AS `t1` JOIN `shop` AS `t2` ON `t1`.`shop_id` = `t2`.`shop_id` GROUP BY `t2`.`name` ORDER BY COUNT(*) DESC LIMIT 1
+Which shop has the most employees? Give me the shop name.,SELECT `t2`.`name` FROM `hiring` AS `t1` JOIN `shop` AS `t2` ON `t1`.`shop_id` = `t2`.`shop_id` GROUP BY `t2`.`name` ORDER BY COUNT(*) DESC LIMIT 1
 Find the name of the shops that do not hire any employee.,SELECT `name` FROM `shop` WHERE NOT `shop_id` IN (SELECT `shop_id` FROM `hiring`)
 Which shops run with no employees? Find the shop names,SELECT `name` FROM `shop` WHERE NOT `shop_id` IN (SELECT `shop_id` FROM `hiring`)
 Find the number of employees hired in each shop; show the shop name as well.,"SELECT COUNT(*), `t2`.`name` FROM `hiring` AS `t1` JOIN `shop` AS `t2` ON `t1`.`shop_id` = `t2`.`shop_id` GROUP BY `t2`.`name`"

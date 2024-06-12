@@ -1,81 +1,81 @@
 question,sql
-"Which country does Airline ""JetBlue Airways"" belong to?",SELECT `Country` FROM `AIRLINES` WHERE `Airline` = `JetBlue Airways`
-What country is Jetblue Airways affiliated with?,SELECT `Country` FROM `AIRLINES` WHERE `Airline` = `JetBlue Airways`
-"What is the abbreviation of Airline ""JetBlue Airways""?",SELECT `Abbreviation` FROM `AIRLINES` WHERE `Airline` = `JetBlue Airways`
-Which abbreviation corresponds to Jetblue Airways?,SELECT `Abbreviation` FROM `AIRLINES` WHERE `Airline` = `JetBlue Airways`
-"List all airline names and their abbreviations in ""USA"".","SELECT `Airline`, `Abbreviation` FROM `AIRLINES` WHERE `Country` = `USA`"
-What are the airline names and abbreviations for airlines in the USA?,"SELECT `Airline`, `Abbreviation` FROM `AIRLINES` WHERE `Country` = `USA`"
-List the airport code and name in the city of Anthony.,"SELECT `AirportCode`, `AirportName` FROM `AIRPORTS` WHERE `city` = `Anthony`"
-Give the airport code and airport name corresonding to the city Anthony.,"SELECT `AirportCode`, `AirportName` FROM `AIRPORTS` WHERE `city` = `Anthony`"
-How many airlines do we have?,SELECT COUNT(*) FROM `AIRLINES`
-What is the total number of airlines?,SELECT COUNT(*) FROM `AIRLINES`
-How many airports do we have?,SELECT COUNT(*) FROM `AIRPORTS`
-Return the number of  airports.,SELECT COUNT(*) FROM `AIRPORTS`
-How many flights do we have?,SELECT COUNT(*) FROM `FLIGHTS`
-Return the number of flights.,SELECT COUNT(*) FROM `FLIGHTS`
-Which airline has abbreviation 'UAL'?,SELECT `Airline` FROM `AIRLINES` WHERE `Abbreviation` = `UAL`
-Give the airline with abbreviation 'UAL'.,SELECT `Airline` FROM `AIRLINES` WHERE `Abbreviation` = `UAL`
-How many airlines are from USA?,SELECT COUNT(*) FROM `AIRLINES` WHERE `Country` = `USA`
-Return the number of airlines in the USA.,SELECT COUNT(*) FROM `AIRLINES` WHERE `Country` = `USA`
-Which city and country is the Alton airport at?,"SELECT `City`, `Country` FROM `AIRPORTS` WHERE `AirportName` = `Alton`"
-Give the city and country for the Alton airport.,"SELECT `City`, `Country` FROM `AIRPORTS` WHERE `AirportName` = `Alton`"
-What is the airport name for airport 'AKO'?,SELECT `AirportName` FROM `AIRPORTS` WHERE `AirportCode` = `AKO`
-Return the name of the airport with code 'AKO'.,SELECT `AirportName` FROM `AIRPORTS` WHERE `AirportCode` = `AKO`
-What are airport names at City 'Aberdeen'?,SELECT `AirportName` FROM `AIRPORTS` WHERE `City` = `Aberdeen`
-What are the names of airports in Aberdeen?,SELECT `AirportName` FROM `AIRPORTS` WHERE `City` = `Aberdeen`
-How many flights depart from 'APG'?,SELECT COUNT(*) FROM `FLIGHTS` WHERE `SourceAirport` = `APG`
-Count the number of flights departing from 'APG'.,SELECT COUNT(*) FROM `FLIGHTS` WHERE `SourceAirport` = `APG`
-How many flights have destination ATO?,SELECT COUNT(*) FROM `FLIGHTS` WHERE `DestAirport` = `ATO`
-Count the number of flights into ATO.,SELECT COUNT(*) FROM `FLIGHTS` WHERE `DestAirport` = `ATO`
-How many flights depart from City Aberdeen?,SELECT COUNT(*) FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`SourceAirport` = `T2`.`AirportCode` WHERE `T2`.`City` = `Aberdeen`
-Return the number of flights departing from Aberdeen.,SELECT COUNT(*) FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`SourceAirport` = `T2`.`AirportCode` WHERE `T2`.`City` = `Aberdeen`
-How many flights arriving in Aberdeen city?,SELECT COUNT(*) FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`DestAirport` = `T2`.`AirportCode` WHERE `T2`.`City` = `Aberdeen`
-Return the number of flights arriving in Aberdeen.,SELECT COUNT(*) FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`DestAirport` = `T2`.`AirportCode` WHERE `T2`.`City` = `Aberdeen`
-How many flights depart from City 'Aberdeen' and have destination City 'Ashley'?,SELECT COUNT(*) FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`DestAirport` = `T2`.`AirportCode` JOIN `AIRPORTS` AS `T3` ON `T1`.`SourceAirport` = `T3`.`AirportCode` WHERE `T2`.`City` = `Ashley` AND `T3`.`City` = `Aberdeen`
-How many flights fly from Aberdeen to Ashley?,SELECT COUNT(*) FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`DestAirport` = `T2`.`AirportCode` JOIN `AIRPORTS` AS `T3` ON `T1`.`SourceAirport` = `T3`.`AirportCode` WHERE `T2`.`City` = `Ashley` AND `T3`.`City` = `Aberdeen`
-How many flights does airline 'JetBlue Airways' have?,SELECT COUNT(*) FROM `FLIGHTS` AS `T1` JOIN `AIRLINES` AS `T2` ON `T1`.`Airline` = `T2`.`uid` WHERE `T2`.`Airline` = `JetBlue Airways`
-Give the number of Jetblue Airways flights.,SELECT COUNT(*) FROM `FLIGHTS` AS `T1` JOIN `AIRLINES` AS `T2` ON `T1`.`Airline` = `T2`.`uid` WHERE `T2`.`Airline` = `JetBlue Airways`
-How many 'United Airlines' flights go to Airport 'ASY'?,SELECT COUNT(*) FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T2`.`Airline` = `T1`.`uid` WHERE `T1`.`Airline` = `United Airlines` AND `T2`.`DestAirport` = `ASY`
-Count the number of United Airlines flights arriving in ASY Airport.,SELECT COUNT(*) FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T2`.`Airline` = `T1`.`uid` WHERE `T1`.`Airline` = `United Airlines` AND `T2`.`DestAirport` = `ASY`
-How many 'United Airlines' flights depart from Airport 'AHD'?,SELECT COUNT(*) FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T2`.`Airline` = `T1`.`uid` WHERE `T1`.`Airline` = `United Airlines` AND `T2`.`SourceAirport` = `AHD`
-Return the number of United Airlines flights leaving from AHD Airport.,SELECT COUNT(*) FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T2`.`Airline` = `T1`.`uid` WHERE `T1`.`Airline` = `United Airlines` AND `T2`.`SourceAirport` = `AHD`
-How many United Airlines flights go to City 'Aberdeen'?,SELECT COUNT(*) FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`DestAirport` = `T2`.`AirportCode` JOIN `AIRLINES` AS `T3` ON `T3`.`uid` = `T1`.`Airline` WHERE `T2`.`City` = `Aberdeen` AND `T3`.`Airline` = `United Airlines`
-Count the number of United Airlines flights that arrive in Aberdeen.,SELECT COUNT(*) FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`DestAirport` = `T2`.`AirportCode` JOIN `AIRLINES` AS `T3` ON `T3`.`uid` = `T1`.`Airline` WHERE `T2`.`City` = `Aberdeen` AND `T3`.`Airline` = `United Airlines`
-Which city has most number of arriving flights?,SELECT `T1`.`City` FROM `AIRPORTS` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`AirportCode` = `T2`.`DestAirport` GROUP BY `T1`.`City` ORDER BY COUNT(*) DESC LIMIT 1
-Which city has the most frequent destination airport?,SELECT `T1`.`City` FROM `AIRPORTS` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`AirportCode` = `T2`.`DestAirport` GROUP BY `T1`.`City` ORDER BY COUNT(*) DESC LIMIT 1
-Which city has most number of departing flights?,SELECT `T1`.`City` FROM `AIRPORTS` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`AirportCode` = `T2`.`SourceAirport` GROUP BY `T1`.`City` ORDER BY COUNT(*) DESC LIMIT 1
-Which city is the most frequent source airport?,SELECT `T1`.`City` FROM `AIRPORTS` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`AirportCode` = `T2`.`SourceAirport` GROUP BY `T1`.`City` ORDER BY COUNT(*) DESC LIMIT 1
-What is the code of airport that has the highest number of flights?,SELECT `T1`.`AirportCode` FROM `AIRPORTS` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`AirportCode` = `T2`.`DestAirport` OR `T1`.`AirportCode` = `T2`.`SourceAirport` GROUP BY `T1`.`AirportCode` ORDER BY COUNT(*) DESC LIMIT 1
-What is the airport code of the airport with the most flights?,SELECT `T1`.`AirportCode` FROM `AIRPORTS` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`AirportCode` = `T2`.`DestAirport` OR `T1`.`AirportCode` = `T2`.`SourceAirport` GROUP BY `T1`.`AirportCode` ORDER BY COUNT(*) DESC LIMIT 1
-What is the code of airport that has fewest number of flights?,SELECT `T1`.`AirportCode` FROM `AIRPORTS` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`AirportCode` = `T2`.`DestAirport` OR `T1`.`AirportCode` = `T2`.`SourceAirport` GROUP BY `T1`.`AirportCode` ORDER BY COUNT(*) LIMIT 1
-Give the code of the airport with the least flights.,SELECT `T1`.`AirportCode` FROM `AIRPORTS` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`AirportCode` = `T2`.`DestAirport` OR `T1`.`AirportCode` = `T2`.`SourceAirport` GROUP BY `T1`.`AirportCode` ORDER BY COUNT(*) LIMIT 1
-Which airline has most number of flights?,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` GROUP BY `T1`.`Airline` ORDER BY COUNT(*) DESC LIMIT 1
-What airline serves the most flights?,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` GROUP BY `T1`.`Airline` ORDER BY COUNT(*) DESC LIMIT 1
-Find the abbreviation and country of the airline that has fewest number of flights?,"SELECT `T1`.`Abbreviation`, `T1`.`Country` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` GROUP BY `T1`.`Airline` ORDER BY COUNT(*) LIMIT 1"
-What is the abbreviation of the airilne has the fewest flights and what country is it in?,"SELECT `T1`.`Abbreviation`, `T1`.`Country` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` GROUP BY `T1`.`Airline` ORDER BY COUNT(*) LIMIT 1"
-What are airlines that have some flight departing from airport 'AHD'?,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`SourceAirport` = `AHD`
-Which airlines have a flight with source airport AHD?,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`SourceAirport` = `AHD`
-What are airlines that have flights arriving at airport 'AHD'?,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`DestAirport` = `AHD`
-Which airlines have a flight with destination airport AHD?,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`DestAirport` = `AHD`
-Find all airlines that have flights from both airports 'APG' and 'CVO'.,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`SourceAirport` = `APG` INTERSECT SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`SourceAirport` = `CVO`
-Which airlines have departing flights from both APG and CVO airports?,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`SourceAirport` = `APG` INTERSECT SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`SourceAirport` = `CVO`
-Find all airlines that have flights from airport 'CVO' but not from 'APG'.,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`SourceAirport` = `CVO` EXCEPT SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`SourceAirport` = `APG`
-Which airlines have departures from CVO but not from APG airports?,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`SourceAirport` = `CVO` EXCEPT SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` WHERE `T2`.`SourceAirport` = `APG`
-Find all airlines that have at least 10 flights.,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` GROUP BY `T1`.`Airline` HAVING COUNT(*) > 10
-Which airlines have at least 10 flights?,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` GROUP BY `T1`.`Airline` HAVING COUNT(*) > 10
-Find all airlines that have fewer than 200 flights.,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` GROUP BY `T1`.`Airline` HAVING COUNT(*) < 200
-Which airlines have less than 200 flights?,SELECT `T1`.`Airline` FROM `AIRLINES` AS `T1` JOIN `FLIGHTS` AS `T2` ON `T1`.`uid` = `T2`.`Airline` GROUP BY `T1`.`Airline` HAVING COUNT(*) < 200
-"What are flight numbers of Airline ""United Airlines""?",SELECT `T1`.`FlightNo` FROM `FLIGHTS` AS `T1` JOIN `AIRLINES` AS `T2` ON `T2`.`uid` = `T1`.`Airline` WHERE `T2`.`Airline` = `United Airlines`
-Which flight numbers correspond to United Airlines flights?,SELECT `T1`.`FlightNo` FROM `FLIGHTS` AS `T1` JOIN `AIRLINES` AS `T2` ON `T2`.`uid` = `T1`.`Airline` WHERE `T2`.`Airline` = `United Airlines`
-"What are flight numbers of flights departing from Airport ""APG""?",SELECT `FlightNo` FROM `FLIGHTS` WHERE `SourceAirport` = `APG`
-Give the flight numbers of flights leaving from APG.,SELECT `FlightNo` FROM `FLIGHTS` WHERE `SourceAirport` = `APG`
-"What are flight numbers of flights arriving at Airport ""APG""?",SELECT `FlightNo` FROM `FLIGHTS` WHERE `DestAirport` = `APG`
-Give the flight numbers of flights landing at APG.,SELECT `FlightNo` FROM `FLIGHTS` WHERE `DestAirport` = `APG`
-"What are flight numbers of flights departing from City ""Aberdeen ""?",SELECT `T1`.`FlightNo` FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`SourceAirport` = `T2`.`AirportCode` WHERE `T2`.`City` = `Aberdeen`
-Give the flight numbers of flights leaving from Aberdeen.,SELECT `T1`.`FlightNo` FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`SourceAirport` = `T2`.`AirportCode` WHERE `T2`.`City` = `Aberdeen`
-"What are flight numbers of flights arriving at City ""Aberdeen""?",SELECT `T1`.`FlightNo` FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`DestAirport` = `T2`.`AirportCode` WHERE `T2`.`City` = `Aberdeen`
-Give the flight numbers of flights arriving in Aberdeen.,SELECT `T1`.`FlightNo` FROM `FLIGHTS` AS `T1` JOIN `AIRPORTS` AS `T2` ON `T1`.`DestAirport` = `T2`.`AirportCode` WHERE `T2`.`City` = `Aberdeen`
-Find the number of flights landing in the city of Aberdeen or Abilene.,SELECT COUNT(*) FROM `Flights` AS `T1` JOIN `Airports` AS `T2` ON `T1`.`DestAirport` = `T2`.`AirportCode` WHERE `T2`.`city` = `Aberdeen` OR `T2`.`city` = `Abilene`
-How many flights land in Aberdeen or Abilene?,SELECT COUNT(*) FROM `Flights` AS `T1` JOIN `Airports` AS `T2` ON `T1`.`DestAirport` = `T2`.`AirportCode` WHERE `T2`.`city` = `Aberdeen` OR `T2`.`city` = `Abilene`
-Find the name of airports which do not have any flight in and out.,SELECT `AirportName` FROM `Airports` WHERE NOT `AirportCode` IN (SELECT `SourceAirport` FROM `Flights` UNION SELECT `DestAirport` FROM `Flights`)
-Which airports do not have departing or arriving flights?,SELECT `AirportName` FROM `Airports` WHERE NOT `AirportCode` IN (SELECT `SourceAirport` FROM `Flights` UNION SELECT `DestAirport` FROM `Flights`)
+"Which country does Airline ""JetBlue Airways"" belong to?",SELECT `Country` FROM `airlines` WHERE `Airline` = 'JetBlue Airways'
+What country is Jetblue Airways affiliated with?,SELECT `Country` FROM `airlines` WHERE `Airline` = 'JetBlue Airways'
+"What is the abbreviation of Airline ""JetBlue Airways""?",SELECT `Abbreviation` FROM `airlines` WHERE `Airline` = 'JetBlue Airways'
+Which abbreviation corresponds to Jetblue Airways?,SELECT `Abbreviation` FROM `airlines` WHERE `Airline` = 'JetBlue Airways'
+"List all airline names and their abbreviations in ""USA"".","SELECT `Airline`, `Abbreviation` FROM `airlines` WHERE `Country` = 'USA'"
+What are the airline names and abbreviations for airlines in the USA?,"SELECT `Airline`, `Abbreviation` FROM `airlines` WHERE `Country` = 'USA'"
+List the airport code and name in the city of Anthony.,"SELECT `AirportCode`, `AirportName` FROM `airports` WHERE `city` = 'Anthony'"
+Give the airport code and airport name corresonding to the city Anthony.,"SELECT `AirportCode`, `AirportName` FROM `airports` WHERE `city` = 'Anthony'"
+How many airlines do we have?,SELECT COUNT(*) FROM `airlines`
+What is the total number of airlines?,SELECT COUNT(*) FROM `airlines`
+How many airports do we have?,SELECT COUNT(*) FROM `airports`
+Return the number of  airports.,SELECT COUNT(*) FROM `airports`
+How many flights do we have?,SELECT COUNT(*) FROM `flights`
+Return the number of flights.,SELECT COUNT(*) FROM `flights`
+Which airline has abbreviation 'UAL'?,SELECT `Airline` FROM `airlines` WHERE `Abbreviation` = 'UAL'
+Give the airline with abbreviation 'UAL'.,SELECT `Airline` FROM `airlines` WHERE `Abbreviation` = 'UAL'
+How many airlines are from USA?,SELECT COUNT(*) FROM `airlines` WHERE `Country` = 'USA'
+Return the number of airlines in the USA.,SELECT COUNT(*) FROM `airlines` WHERE `Country` = 'USA'
+Which city and country is the Alton airport at?,"SELECT `City`, `Country` FROM `airports` WHERE `AirportName` = 'Alton'"
+Give the city and country for the Alton airport.,"SELECT `City`, `Country` FROM `airports` WHERE `AirportName` = 'Alton'"
+What is the airport name for airport 'AKO'?,SELECT `AirportName` FROM `airports` WHERE `AirportCode` = 'AKO'
+Return the name of the airport with code 'AKO'.,SELECT `AirportName` FROM `airports` WHERE `AirportCode` = 'AKO'
+What are airport names at City 'Aberdeen'?,SELECT `AirportName` FROM `airports` WHERE `City` = 'Aberdeen'
+What are the names of airports in Aberdeen?,SELECT `AirportName` FROM `airports` WHERE `City` = 'Aberdeen'
+How many flights depart from 'APG'?,SELECT COUNT(*) FROM `flights` WHERE `SourceAirport` = 'APG'
+Count the number of flights departing from 'APG'.,SELECT COUNT(*) FROM `flights` WHERE `SourceAirport` = 'APG'
+How many flights have destination ATO?,SELECT COUNT(*) FROM `flights` WHERE `DestAirport` = 'ATO'
+Count the number of flights into ATO.,SELECT COUNT(*) FROM `flights` WHERE `DestAirport` = 'ATO'
+How many flights depart from City Aberdeen?,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`SourceAirport` = `t2`.`AirportCode` WHERE `t2`.`City` = 'Aberdeen'
+Return the number of flights departing from Aberdeen.,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`SourceAirport` = `t2`.`AirportCode` WHERE `t2`.`City` = 'Aberdeen'
+How many flights arriving in Aberdeen city?,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`DestAirport` = `t2`.`AirportCode` WHERE `t2`.`City` = 'Aberdeen'
+Return the number of flights arriving in Aberdeen.,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`DestAirport` = `t2`.`AirportCode` WHERE `t2`.`City` = 'Aberdeen'
+How many flights depart from City 'Aberdeen' and have destination City 'Ashley'?,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`DestAirport` = `t2`.`AirportCode` JOIN `airports` AS `t3` ON `t1`.`SourceAirport` = `t3`.`AirportCode` WHERE `t2`.`City` = 'Ashley' AND `t3`.`City` = 'Aberdeen'
+How many flights fly from Aberdeen to Ashley?,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`DestAirport` = `t2`.`AirportCode` JOIN `airports` AS `t3` ON `t1`.`SourceAirport` = `t3`.`AirportCode` WHERE `t2`.`City` = 'Ashley' AND `t3`.`City` = 'Aberdeen'
+How many flights does airline 'JetBlue Airways' have?,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airlines` AS `t2` ON `t1`.`Airline` = `t2`.`uid` WHERE `t2`.`Airline` = 'JetBlue Airways'
+Give the number of Jetblue Airways flights.,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airlines` AS `t2` ON `t1`.`Airline` = `t2`.`uid` WHERE `t2`.`Airline` = 'JetBlue Airways'
+How many 'United Airlines' flights go to Airport 'ASY'?,SELECT COUNT(*) FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t2`.`Airline` = `t1`.`uid` WHERE `t1`.`Airline` = 'United Airlines' AND `t2`.`DestAirport` = 'ASY'
+Count the number of United Airlines flights arriving in ASY Airport.,SELECT COUNT(*) FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t2`.`Airline` = `t1`.`uid` WHERE `t1`.`Airline` = 'United Airlines' AND `t2`.`DestAirport` = 'ASY'
+How many 'United Airlines' flights depart from Airport 'AHD'?,SELECT COUNT(*) FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t2`.`Airline` = `t1`.`uid` WHERE `t1`.`Airline` = 'United Airlines' AND `t2`.`SourceAirport` = 'AHD'
+Return the number of United Airlines flights leaving from AHD Airport.,SELECT COUNT(*) FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t2`.`Airline` = `t1`.`uid` WHERE `t1`.`Airline` = 'United Airlines' AND `t2`.`SourceAirport` = 'AHD'
+How many United Airlines flights go to City 'Aberdeen'?,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`DestAirport` = `t2`.`AirportCode` JOIN `airlines` AS `t3` ON `t3`.`uid` = `t1`.`Airline` WHERE `t2`.`City` = 'Aberdeen' AND `t3`.`Airline` = 'United Airlines'
+Count the number of United Airlines flights that arrive in Aberdeen.,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`DestAirport` = `t2`.`AirportCode` JOIN `airlines` AS `t3` ON `t3`.`uid` = `t1`.`Airline` WHERE `t2`.`City` = 'Aberdeen' AND `t3`.`Airline` = 'United Airlines'
+Which city has most number of arriving flights?,SELECT `t1`.`City` FROM `airports` AS `t1` JOIN `flights` AS `t2` ON `t1`.`AirportCode` = `t2`.`DestAirport` GROUP BY `t1`.`City` ORDER BY COUNT(*) DESC LIMIT 1
+Which city has the most frequent destination airport?,SELECT `t1`.`City` FROM `airports` AS `t1` JOIN `flights` AS `t2` ON `t1`.`AirportCode` = `t2`.`DestAirport` GROUP BY `t1`.`City` ORDER BY COUNT(*) DESC LIMIT 1
+Which city has most number of departing flights?,SELECT `t1`.`City` FROM `airports` AS `t1` JOIN `flights` AS `t2` ON `t1`.`AirportCode` = `t2`.`SourceAirport` GROUP BY `t1`.`City` ORDER BY COUNT(*) DESC LIMIT 1
+Which city is the most frequent source airport?,SELECT `t1`.`City` FROM `airports` AS `t1` JOIN `flights` AS `t2` ON `t1`.`AirportCode` = `t2`.`SourceAirport` GROUP BY `t1`.`City` ORDER BY COUNT(*) DESC LIMIT 1
+What is the code of airport that has the highest number of flights?,SELECT `t1`.`AirportCode` FROM `airports` AS `t1` JOIN `flights` AS `t2` ON `t1`.`AirportCode` = `t2`.`DestAirport` OR `t1`.`AirportCode` = `t2`.`SourceAirport` GROUP BY `t1`.`AirportCode` ORDER BY COUNT(*) DESC LIMIT 1
+What is the airport code of the airport with the most flights?,SELECT `t1`.`AirportCode` FROM `airports` AS `t1` JOIN `flights` AS `t2` ON `t1`.`AirportCode` = `t2`.`DestAirport` OR `t1`.`AirportCode` = `t2`.`SourceAirport` GROUP BY `t1`.`AirportCode` ORDER BY COUNT(*) DESC LIMIT 1
+What is the code of airport that has fewest number of flights?,SELECT `t1`.`AirportCode` FROM `airports` AS `t1` JOIN `flights` AS `t2` ON `t1`.`AirportCode` = `t2`.`DestAirport` OR `t1`.`AirportCode` = `t2`.`SourceAirport` GROUP BY `t1`.`AirportCode` ORDER BY COUNT(*) LIMIT 1
+Give the code of the airport with the least flights.,SELECT `t1`.`AirportCode` FROM `airports` AS `t1` JOIN `flights` AS `t2` ON `t1`.`AirportCode` = `t2`.`DestAirport` OR `t1`.`AirportCode` = `t2`.`SourceAirport` GROUP BY `t1`.`AirportCode` ORDER BY COUNT(*) LIMIT 1
+Which airline has most number of flights?,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` GROUP BY `t1`.`Airline` ORDER BY COUNT(*) DESC LIMIT 1
+What airline serves the most flights?,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` GROUP BY `t1`.`Airline` ORDER BY COUNT(*) DESC LIMIT 1
+Find the abbreviation and country of the airline that has fewest number of flights?,"SELECT `t1`.`Abbreviation`, `t1`.`Country` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` GROUP BY `t1`.`Abbreviation`, `t1`.`Country` ORDER BY COUNT(*) LIMIT 1"
+What is the abbreviation of the airilne has the fewest flights and what country is it in?,"SELECT `t1`.`Abbreviation`, `t1`.`Country` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` GROUP BY `t1`.`Abbreviation`, `t1`.`Country` ORDER BY COUNT(*) LIMIT 1"
+What are airlines that have some flight departing from airport 'AHD'?,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`SourceAirport` = 'AHD'
+Which airlines have a flight with source airport AHD?,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`SourceAirport` = 'AHD'
+What are airlines that have flights arriving at airport 'AHD'?,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`DestAirport` = 'AHD'
+Which airlines have a flight with destination airport AHD?,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`DestAirport` = 'AHD'
+Find all airlines that have flights from both airports 'APG' and 'CVO'.,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`SourceAirport` = 'APG' INTERSECT SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`SourceAirport` = 'CVO'
+Which airlines have departing flights from both APG and CVO airports?,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`SourceAirport` = 'APG' INTERSECT SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`SourceAirport` = 'CVO'
+Find all airlines that have flights from airport 'CVO' but not from 'APG'.,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`SourceAirport` = 'CVO' EXCEPT SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`SourceAirport` = 'APG'
+Which airlines have departures from CVO but not from APG airports?,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`SourceAirport` = 'CVO' EXCEPT SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` WHERE `t2`.`SourceAirport` = 'APG'
+Find all airlines that have at least 10 flights.,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` GROUP BY `t1`.`Airline` HAVING COUNT(*) > 10
+Which airlines have at least 10 flights?,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` GROUP BY `t1`.`Airline` HAVING COUNT(*) > 10
+Find all airlines that have fewer than 200 flights.,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` GROUP BY `t1`.`Airline` HAVING COUNT(*) < 200
+Which airlines have less than 200 flights?,SELECT `t1`.`Airline` FROM `airlines` AS `t1` JOIN `flights` AS `t2` ON `t1`.`uid` = `t2`.`Airline` GROUP BY `t1`.`Airline` HAVING COUNT(*) < 200
+"What are flight numbers of Airline ""United Airlines""?",SELECT `t1`.`FlightNo` FROM `flights` AS `t1` JOIN `airlines` AS `t2` ON `t2`.`uid` = `t1`.`Airline` WHERE `t2`.`Airline` = 'United Airlines'
+Which flight numbers correspond to United Airlines flights?,SELECT `t1`.`FlightNo` FROM `flights` AS `t1` JOIN `airlines` AS `t2` ON `t2`.`uid` = `t1`.`Airline` WHERE `t2`.`Airline` = 'United Airlines'
+"What are flight numbers of flights departing from Airport ""APG""?",SELECT `FlightNo` FROM `flights` WHERE `SourceAirport` = 'APG'
+Give the flight numbers of flights leaving from APG.,SELECT `FlightNo` FROM `flights` WHERE `SourceAirport` = 'APG'
+"What are flight numbers of flights arriving at Airport ""APG""?",SELECT `FlightNo` FROM `flights` WHERE `DestAirport` = 'APG'
+Give the flight numbers of flights landing at APG.,SELECT `FlightNo` FROM `flights` WHERE `DestAirport` = 'APG'
+"What are flight numbers of flights departing from City ""Aberdeen ""?",SELECT `t1`.`FlightNo` FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`SourceAirport` = `t2`.`AirportCode` WHERE `t2`.`City` = 'Aberdeen'
+Give the flight numbers of flights leaving from Aberdeen.,SELECT `t1`.`FlightNo` FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`SourceAirport` = `t2`.`AirportCode` WHERE `t2`.`City` = 'Aberdeen'
+"What are flight numbers of flights arriving at City ""Aberdeen""?",SELECT `t1`.`FlightNo` FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`DestAirport` = `t2`.`AirportCode` WHERE `t2`.`City` = 'Aberdeen'
+Give the flight numbers of flights arriving in Aberdeen.,SELECT `t1`.`FlightNo` FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`DestAirport` = `t2`.`AirportCode` WHERE `t2`.`City` = 'Aberdeen'
+Find the number of flights landing in the city of Aberdeen or Abilene.,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`DestAirport` = `t2`.`AirportCode` WHERE `t2`.`city` = 'Aberdeen' OR `t2`.`city` = 'Abilene'
+How many flights land in Aberdeen or Abilene?,SELECT COUNT(*) FROM `flights` AS `t1` JOIN `airports` AS `t2` ON `t1`.`DestAirport` = `t2`.`AirportCode` WHERE `t2`.`city` = 'Aberdeen' OR `t2`.`city` = 'Abilene'
+Find the name of airports which do not have any flight in and out.,SELECT `AirportName` FROM `airports` WHERE NOT `AirportCode` IN (SELECT `SourceAirport` FROM `flights` UNION SELECT `DestAirport` FROM `flights`)
+Which airports do not have departing or arriving flights?,SELECT `AirportName` FROM `airports` WHERE NOT `AirportCode` IN (SELECT `SourceAirport` FROM `flights` UNION SELECT `DestAirport` FROM `flights`)

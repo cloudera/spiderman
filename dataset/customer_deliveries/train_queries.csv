@@ -1,17 +1,17 @@
 question,sql
-Find the ids of orders whose status is 'Success'.,SELECT `actual_order_id` FROM `actual_orders` WHERE `order_status_code` = 'Success'
-Find the name and price of the product that has been ordered the greatest number of times.,"SELECT `t1`.`product_name`, `t1`.`product_price` FROM `products` AS `t1` JOIN `regular_order_products` AS `t2` ON `t1`.`product_id` = `t2`.`product_id` GROUP BY `t2`.`product_id` ORDER BY COUNT(*) DESC LIMIT 1"
-Find the number of customers in total.,SELECT COUNT(*) FROM `customers`
-How many different payment methods are there?,SELECT COUNT(DISTINCT `payment_method`) FROM `customers`
-Show the details of all trucks in the order of their license number.,SELECT `truck_details` FROM `trucks` ORDER BY `truck_licence_number`
-Find the name of the most expensive product.,SELECT `product_name` FROM `products` ORDER BY `product_price` DESC LIMIT 1
-Find the names of customers who are not living in the state of California.,SELECT `customer_name` FROM `customers` EXCEPT SELECT `t1`.`customer_name` FROM `customers` AS `t1` JOIN `customer_addresses` AS `t2` ON `t1`.`customer_id` = `t2`.`customer_id` JOIN `addresses` AS `t3` ON `t2`.`address_id` = `t3`.`address_id` WHERE `t3`.`state_province_county` = 'California'
-List the names and emails of customers who payed by Visa card.,"SELECT `customer_email`, `customer_name` FROM `customers` WHERE `payment_method` = 'Visa'"
-Find the names and phone numbers of customers living in California state.,"SELECT `t1`.`customer_name`, `t1`.`customer_phone` FROM `customers` AS `t1` JOIN `customer_addresses` AS `t2` ON `t1`.`customer_id` = `t2`.`customer_id` JOIN `addresses` AS `t3` ON `t2`.`address_id` = `t3`.`address_id` WHERE `t3`.`state_province_county` = 'California'"
-Find the states which do not have any employee in their record.,SELECT `state_province_county` FROM `addresses` WHERE NOT `address_id` IN (SELECT `employee_address_id` FROM `Employees`)
+Find the ids of orders whose status is 'Success'.,SELECT `actual_order_id` FROM `Actual_Orders` WHERE `order_status_code` = 'Success'
+Find the name and price of the product that has been ordered the greatest number of times.,"SELECT `t1`.`product_name`, `t1`.`product_price` FROM `Products` AS `t1` JOIN `Regular_Order_Products` AS `t2` ON `t1`.`product_id` = `t2`.`product_id` GROUP BY `t1`.`product_name`, `t1`.`product_price` ORDER BY COUNT(*) DESC LIMIT 1"
+Find the number of customers in total.,SELECT COUNT(*) FROM `Customers`
+How many different payment methods are there?,SELECT COUNT(DISTINCT `payment_method`) FROM `Customers`
+Show the details of all trucks in the order of their license number.,SELECT `truck_details` FROM `Trucks` ORDER BY `truck_licence_number`
+Find the name of the most expensive product.,SELECT `product_name` FROM `Products` ORDER BY `product_price` DESC LIMIT 1
+Find the names of customers who are not living in the state of California.,SELECT `customer_name` FROM `Customers` EXCEPT SELECT `t1`.`customer_name` FROM `Customers` AS `t1` JOIN `Customer_Addresses` AS `t2` ON `t1`.`customer_id` = `t2`.`customer_id` JOIN `Addresses` AS `t3` ON `t2`.`address_id` = `t3`.`address_id` WHERE `t3`.`state_province_county` = 'California'
+List the names and emails of customers who payed by Visa card.,"SELECT `customer_email`, `customer_name` FROM `Customers` WHERE `payment_method` = 'Visa'"
+Find the names and phone numbers of customers living in California state.,"SELECT `t1`.`customer_name`, `t1`.`customer_phone` FROM `Customers` AS `t1` JOIN `Customer_Addresses` AS `t2` ON `t1`.`customer_id` = `t2`.`customer_id` JOIN `Addresses` AS `t3` ON `t2`.`address_id` = `t3`.`address_id` WHERE `t3`.`state_province_county` = 'California'"
+Find the states which do not have any employee in their record.,SELECT `state_province_county` FROM `Addresses` WHERE NOT `address_id` IN (SELECT `employee_address_id` FROM `Employees`)
 "List the names, phone numbers, and emails of all customers sorted by their dates of becoming customers.","SELECT `customer_name`, `customer_phone`, `customer_email` FROM `Customers` ORDER BY `date_became_customer`"
 Find the name of the first 5 customers.,SELECT `customer_name` FROM `Customers` ORDER BY `date_became_customer` LIMIT 5
 Find the payment method that is used most frequently.,SELECT `payment_method` FROM `Customers` GROUP BY `payment_method` ORDER BY COUNT(*) DESC LIMIT 1
 List the names of all routes in alphabetic order.,SELECT `route_name` FROM `Delivery_Routes` ORDER BY `route_name`
-Find the name of route that has the highest number of deliveries.,SELECT `t1`.`route_name` FROM `Delivery_Routes` AS `t1` JOIN `Delivery_Route_Locations` AS `t2` ON `t1`.`route_id` = `t2`.`route_id` GROUP BY `t1`.`route_id` ORDER BY COUNT(*) DESC LIMIT 1
-List the state names and the number of customers living in each state.,"SELECT `t2`.`state_province_county`, COUNT(*) FROM `customer_addresses` AS `t1` JOIN `addresses` AS `t2` ON `t1`.`address_id` = `t2`.`address_id` GROUP BY `t2`.`state_province_county`"
+Find the name of route that has the highest number of deliveries.,SELECT `t1`.`route_name` FROM `Delivery_Routes` AS `t1` JOIN `Delivery_Route_Locations` AS `t2` ON `t1`.`route_id` = `t2`.`route_id` GROUP BY `t1`.`route_name` ORDER BY COUNT(*) DESC LIMIT 1
+List the state names and the number of customers living in each state.,"SELECT `t2`.`state_province_county`, COUNT(*) FROM `Customer_Addresses` AS `t1` JOIN `Addresses` AS `t2` ON `t1`.`address_id` = `t2`.`address_id` GROUP BY `t2`.`state_province_county`"

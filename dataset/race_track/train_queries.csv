@@ -25,19 +25,19 @@ What is the race class with most number of races.,SELECT `CLASS` FROM `race` GRO
 Give the class of races that is most common.,SELECT `CLASS` FROM `race` GROUP BY `CLASS` ORDER BY COUNT(*) DESC LIMIT 1
 List the race class with at least two races.,SELECT `CLASS` FROM `race` GROUP BY `CLASS` HAVING COUNT(*) >= 2
 What are the classes of races that have two or more corresponding races?,SELECT `CLASS` FROM `race` GROUP BY `CLASS` HAVING COUNT(*) >= 2
-What are the names for tracks without a race in class 'GT'.,SELECT `name` FROM `track` EXCEPT SELECT `T2`.`name` FROM `race` AS `T1` JOIN `track` AS `T2` ON `T1`.`track_id` = `T2`.`track_id` WHERE `T1`.`class` = 'GT'
-Give the names of tracks that do not have a race in the class 'GT'.,SELECT `name` FROM `track` EXCEPT SELECT `T2`.`name` FROM `race` AS `T1` JOIN `track` AS `T2` ON `T1`.`track_id` = `T2`.`track_id` WHERE `T1`.`class` = 'GT'
+What are the names for tracks without a race in class 'GT'.,SELECT `name` FROM `track` EXCEPT SELECT `t2`.`name` FROM `race` AS `t1` JOIN `track` AS `t2` ON `t1`.`track_id` = `t2`.`track_id` WHERE `t1`.`class` = 'GT'
+Give the names of tracks that do not have a race in the class 'GT'.,SELECT `name` FROM `track` EXCEPT SELECT `t2`.`name` FROM `race` AS `t1` JOIN `track` AS `t2` ON `t1`.`track_id` = `t2`.`track_id` WHERE `t1`.`class` = 'GT'
 Show all track names that have had no races.,SELECT `name` FROM `track` WHERE NOT `track_id` IN (SELECT `track_id` FROM `race`)
 Return the names of tracks that have no had any races.,SELECT `name` FROM `track` WHERE NOT `track_id` IN (SELECT `track_id` FROM `race`)
 Show year where a track with a seating at least 5000 opened and a track with seating no more than 4000 opened.,SELECT `year_opened` FROM `track` WHERE `seating` BETWEEN 4000 AND 5000
 What are the years of opening for tracks with seating between 4000 and 5000?,SELECT `year_opened` FROM `track` WHERE `seating` BETWEEN 4000 AND 5000
-Show the name of track and the number of races in each track.,"SELECT `T2`.`name`, COUNT(*) FROM `race` AS `T1` JOIN `track` AS `T2` ON `T1`.`track_id` = `T2`.`track_id` GROUP BY `T1`.`track_id`"
-"What are the names of different tracks, and how many races has each had?","SELECT `T2`.`name`, COUNT(*) FROM `race` AS `T1` JOIN `track` AS `T2` ON `T1`.`track_id` = `T2`.`track_id` GROUP BY `T1`.`track_id`"
-Show the name of track with most number of races.,SELECT `T2`.`name` FROM `race` AS `T1` JOIN `track` AS `T2` ON `T1`.`track_id` = `T2`.`track_id` GROUP BY `T1`.`track_id` ORDER BY COUNT(*) DESC LIMIT 1
-What is the name of the track that has had the greatest number of races?,SELECT `T2`.`name` FROM `race` AS `T1` JOIN `track` AS `T2` ON `T1`.`track_id` = `T2`.`track_id` GROUP BY `T1`.`track_id` ORDER BY COUNT(*) DESC LIMIT 1
-Show the name and date for each race and its track name.,"SELECT `T1`.`name`, `T1`.`date`, `T2`.`name` FROM `race` AS `T1` JOIN `track` AS `T2` ON `T1`.`track_id` = `T2`.`track_id`"
-"What are the names and dates of races, and the names of the tracks where they are held?","SELECT `T1`.`name`, `T1`.`date`, `T2`.`name` FROM `race` AS `T1` JOIN `track` AS `T2` ON `T1`.`track_id` = `T2`.`track_id`"
-Show the name and location of track with 1 race.,"SELECT `T2`.`name`, `T2`.`location` FROM `race` AS `T1` JOIN `track` AS `T2` ON `T1`.`track_id` = `T2`.`track_id` GROUP BY `T1`.`track_id` HAVING COUNT(*) = 1"
-What are the names and locations of tracks that have had exactly 1 race?,"SELECT `T2`.`name`, `T2`.`location` FROM `race` AS `T1` JOIN `track` AS `T2` ON `T1`.`track_id` = `T2`.`track_id` GROUP BY `T1`.`track_id` HAVING COUNT(*) = 1"
+Show the name of track and the number of races in each track.,"SELECT `t2`.`name`, COUNT(*) FROM `race` AS `t1` JOIN `track` AS `t2` ON `t1`.`track_id` = `t2`.`track_id` GROUP BY `t2`.`name`"
+"What are the names of different tracks, and how many races has each had?","SELECT `t2`.`name`, COUNT(*) FROM `race` AS `t1` JOIN `track` AS `t2` ON `t1`.`track_id` = `t2`.`track_id` GROUP BY `t2`.`name`"
+Show the name of track with most number of races.,SELECT `t2`.`name` FROM `race` AS `t1` JOIN `track` AS `t2` ON `t1`.`track_id` = `t2`.`track_id` GROUP BY `t2`.`name` ORDER BY COUNT(*) DESC LIMIT 1
+What is the name of the track that has had the greatest number of races?,SELECT `t2`.`name` FROM `race` AS `t1` JOIN `track` AS `t2` ON `t1`.`track_id` = `t2`.`track_id` GROUP BY `t2`.`name` ORDER BY COUNT(*) DESC LIMIT 1
+Show the name and date for each race and its track name.,"SELECT `t1`.`name`, `t1`.`date`, `t2`.`name` FROM `race` AS `t1` JOIN `track` AS `t2` ON `t1`.`track_id` = `t2`.`track_id`"
+"What are the names and dates of races, and the names of the tracks where they are held?","SELECT `t1`.`name`, `t1`.`date`, `t2`.`name` FROM `race` AS `t1` JOIN `track` AS `t2` ON `t1`.`track_id` = `t2`.`track_id`"
+Show the name and location of track with 1 race.,"SELECT `t2`.`name`, `t2`.`location` FROM `race` AS `t1` JOIN `track` AS `t2` ON `t1`.`track_id` = `t2`.`track_id` GROUP BY `t2`.`name`, `t2`.`location` HAVING COUNT(*) = 1"
+What are the names and locations of tracks that have had exactly 1 race?,"SELECT `t2`.`name`, `t2`.`location` FROM `race` AS `t1` JOIN `track` AS `t2` ON `t1`.`track_id` = `t2`.`track_id` GROUP BY `t2`.`name`, `t2`.`location` HAVING COUNT(*) = 1"
 Find the locations where have both tracks with more than 90000 seats and tracks with less than 70000 seats.,SELECT `LOCATION` FROM `track` WHERE `seating` > 90000 INTERSECT SELECT `LOCATION` FROM `track` WHERE `seating` < 70000
 "What are the locations that have both tracks with more than 90000 seats, and tracks with fewer than 70000 seats?",SELECT `LOCATION` FROM `track` WHERE `seating` > 90000 INTERSECT SELECT `LOCATION` FROM `track` WHERE `seating` < 70000

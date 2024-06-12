@@ -23,27 +23,27 @@ Find the captain rank that has no captain in Third-rate ship of the line class.,
 What are the ranks of captains that have no captain that are in the Third-rate ship of the line class?,SELECT `rank` FROM `captain` EXCEPT SELECT `rank` FROM `captain` WHERE `CLASS` = 'Third-rate ship of the line'
 What is the name of the youngest captain?,SELECT `name` FROM `captain` ORDER BY `age` LIMIT 1
 Return the name of the youngest captain.,SELECT `name` FROM `captain` ORDER BY `age` LIMIT 1
-how many ships are there?,SELECT COUNT(*) FROM `ship`
-Count the number of ships.,SELECT COUNT(*) FROM `ship`
-"Find the name, type, and flag of the ship that is built in the most recent year.","SELECT `name`, `TYPE`, `flag` FROM `ship` ORDER BY `built_year` DESC LIMIT 1"
-"What is the name, type, and flag of the ship that was built in the most recent year?","SELECT `name`, `TYPE`, `flag` FROM `ship` ORDER BY `built_year` DESC LIMIT 1"
-"Group by ships by flag, and return number of ships that have each flag.","SELECT COUNT(*), `flag` FROM `ship` GROUP BY `flag`"
-"What are the different ship flags, and how many ships have each?","SELECT COUNT(*), `flag` FROM `ship` GROUP BY `flag`"
-Which flag is most widely used among all ships?,SELECT `flag` FROM `ship` GROUP BY `flag` ORDER BY COUNT(*) DESC LIMIT 1
-Return the flag that is most common among all ships.,SELECT `flag` FROM `ship` GROUP BY `flag` ORDER BY COUNT(*) DESC LIMIT 1
-List all ship names in the order of built year and class.,"SELECT `name` FROM `ship` ORDER BY `built_year`, `CLASS`"
-"What are the names of ships, ordered by year they were built and their class?","SELECT `name` FROM `ship` ORDER BY `built_year`, `CLASS`"
-Find the ship type that are used by both ships with Panama and Malta flags.,SELECT `TYPE` FROM `ship` WHERE `flag` = 'Panama' INTERSECT SELECT `TYPE` FROM `ship` WHERE `flag` = 'Malta'
-What types of ships have both ships that have Panama Flags and Malta flags?,SELECT `TYPE` FROM `ship` WHERE `flag` = 'Panama' INTERSECT SELECT `TYPE` FROM `ship` WHERE `flag` = 'Malta'
-In which year were most of ships built?,SELECT `built_year` FROM `ship` GROUP BY `built_year` ORDER BY COUNT(*) DESC LIMIT 1
-What is the year in which most ships were built?,SELECT `built_year` FROM `ship` GROUP BY `built_year` ORDER BY COUNT(*) DESC LIMIT 1
-Find the name of the ships that have more than one captain.,SELECT `t1`.`name` FROM `ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` GROUP BY `t2`.`ship_id` HAVING COUNT(*) > 1
-What are the names of ships that have more than one captain?,SELECT `t1`.`name` FROM `ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` GROUP BY `t2`.`ship_id` HAVING COUNT(*) > 1
-what are the names and classes of the ships that do not have any captain yet?,"SELECT `name`, `CLASS` FROM `ship` WHERE NOT `ship_id` IN (SELECT `ship_id` FROM `captain`)"
-Return the names and classes of ships that do not have a captain?,"SELECT `name`, `CLASS` FROM `ship` WHERE NOT `ship_id` IN (SELECT `ship_id` FROM `captain`)"
-Find the name of the ship that is steered by the youngest captain.,SELECT `t1`.`name` FROM `ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` ORDER BY `t2`.`age` LIMIT 1
-What is the name of the ship that is commanded by the youngest captain?,SELECT `t1`.`name` FROM `ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` ORDER BY `t2`.`age` LIMIT 1
-Find the name and flag of ships that are not steered by any captain with Midshipman rank.,"SELECT `name`, `flag` FROM `ship` WHERE NOT `ship_id` IN (SELECT `ship_id` FROM `captain` WHERE `rank` = 'Midshipman')"
-What are the names and flags of ships that do not have a captain with the rank of Midshipman?,"SELECT `name`, `flag` FROM `ship` WHERE NOT `ship_id` IN (SELECT `ship_id` FROM `captain` WHERE `rank` = 'Midshipman')"
-Find the name of the ships that are steered by both a captain with Midshipman rank and a captain with Lieutenant rank.,SELECT `t1`.`name` FROM `ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` WHERE `t2`.`rank` = 'Midshipman' INTERSECT SELECT `t1`.`name` FROM `ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` WHERE `t2`.`rank` = 'Lieutenant'
-What are the names of ships that are commanded by both captains with the rank of Midshipman and captains with the rank of Lieutenant?,SELECT `t1`.`name` FROM `ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` WHERE `t2`.`rank` = 'Midshipman' INTERSECT SELECT `t1`.`name` FROM `ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` WHERE `t2`.`rank` = 'Lieutenant'
+how many ships are there?,SELECT COUNT(*) FROM `Ship`
+Count the number of ships.,SELECT COUNT(*) FROM `Ship`
+"Find the name, type, and flag of the ship that is built in the most recent year.","SELECT `name`, `TYPE`, `flag` FROM `Ship` ORDER BY `built_year` DESC LIMIT 1"
+"What is the name, type, and flag of the ship that was built in the most recent year?","SELECT `name`, `TYPE`, `flag` FROM `Ship` ORDER BY `built_year` DESC LIMIT 1"
+"Group by ships by flag, and return number of ships that have each flag.","SELECT COUNT(*), `flag` FROM `Ship` GROUP BY `flag`"
+"What are the different ship flags, and how many ships have each?","SELECT COUNT(*), `flag` FROM `Ship` GROUP BY `flag`"
+Which flag is most widely used among all ships?,SELECT `flag` FROM `Ship` GROUP BY `flag` ORDER BY COUNT(*) DESC LIMIT 1
+Return the flag that is most common among all ships.,SELECT `flag` FROM `Ship` GROUP BY `flag` ORDER BY COUNT(*) DESC LIMIT 1
+List all ship names in the order of built year and class.,"SELECT `name` FROM `Ship` ORDER BY `built_year`, `CLASS`"
+"What are the names of ships, ordered by year they were built and their class?","SELECT `name` FROM `Ship` ORDER BY `built_year`, `CLASS`"
+Find the ship type that are used by both ships with Panama and Malta flags.,SELECT `TYPE` FROM `Ship` WHERE `flag` = 'Panama' INTERSECT SELECT `TYPE` FROM `Ship` WHERE `flag` = 'Malta'
+What types of ships have both ships that have Panama Flags and Malta flags?,SELECT `TYPE` FROM `Ship` WHERE `flag` = 'Panama' INTERSECT SELECT `TYPE` FROM `Ship` WHERE `flag` = 'Malta'
+In which year were most of ships built?,SELECT `built_year` FROM `Ship` GROUP BY `built_year` ORDER BY COUNT(*) DESC LIMIT 1
+What is the year in which most ships were built?,SELECT `built_year` FROM `Ship` GROUP BY `built_year` ORDER BY COUNT(*) DESC LIMIT 1
+Find the name of the ships that have more than one captain.,SELECT `t1`.`name` FROM `Ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` GROUP BY `t1`.`name` HAVING COUNT(*) > 1
+What are the names of ships that have more than one captain?,SELECT `t1`.`name` FROM `Ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` GROUP BY `t1`.`name` HAVING COUNT(*) > 1
+what are the names and classes of the ships that do not have any captain yet?,"SELECT `name`, `CLASS` FROM `Ship` WHERE NOT `ship_id` IN (SELECT `ship_id` FROM `captain`)"
+Return the names and classes of ships that do not have a captain?,"SELECT `name`, `CLASS` FROM `Ship` WHERE NOT `ship_id` IN (SELECT `ship_id` FROM `captain`)"
+Find the name of the ship that is steered by the youngest captain.,SELECT `t1`.`name` FROM `Ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` ORDER BY `t2`.`age` LIMIT 1
+What is the name of the ship that is commanded by the youngest captain?,SELECT `t1`.`name` FROM `Ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` ORDER BY `t2`.`age` LIMIT 1
+Find the name and flag of ships that are not steered by any captain with Midshipman rank.,"SELECT `name`, `flag` FROM `Ship` WHERE NOT `ship_id` IN (SELECT `ship_id` FROM `captain` WHERE `rank` = 'Midshipman')"
+What are the names and flags of ships that do not have a captain with the rank of Midshipman?,"SELECT `name`, `flag` FROM `Ship` WHERE NOT `ship_id` IN (SELECT `ship_id` FROM `captain` WHERE `rank` = 'Midshipman')"
+Find the name of the ships that are steered by both a captain with Midshipman rank and a captain with Lieutenant rank.,SELECT `t1`.`name` FROM `Ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` WHERE `t2`.`rank` = 'Midshipman' INTERSECT SELECT `t1`.`name` FROM `Ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` WHERE `t2`.`rank` = 'Lieutenant'
+What are the names of ships that are commanded by both captains with the rank of Midshipman and captains with the rank of Lieutenant?,SELECT `t1`.`name` FROM `Ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` WHERE `t2`.`rank` = 'Midshipman' INTERSECT SELECT `t1`.`name` FROM `Ship` AS `t1` JOIN `captain` AS `t2` ON `t1`.`ship_id` = `t2`.`ship_id` WHERE `t2`.`rank` = 'Lieutenant'

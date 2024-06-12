@@ -5,12 +5,12 @@ Show the names and grades of each high schooler.,"SELECT `name`, `grade` FROM `H
 What are the names and grades for each high schooler?,"SELECT `name`, `grade` FROM `Highschooler`"
 Show all the grades of the high schoolers.,SELECT `grade` FROM `Highschooler`
 What is the grade of each high schooler?,SELECT `grade` FROM `Highschooler`
-What grade is Kyle in?,SELECT `grade` FROM `Highschooler` WHERE `name` = `Kyle`
-Return the grade for the high schooler named Kyle.,SELECT `grade` FROM `Highschooler` WHERE `name` = `Kyle`
+What grade is Kyle in?,SELECT `grade` FROM `Highschooler` WHERE `name` = 'Kyle'
+Return the grade for the high schooler named Kyle.,SELECT `grade` FROM `Highschooler` WHERE `name` = 'Kyle'
 Show the names of all high schoolers in grade 10.,SELECT `name` FROM `Highschooler` WHERE `grade` = 10
 What are the names of all high schoolers in grade 10?,SELECT `name` FROM `Highschooler` WHERE `grade` = 10
-Show the ID of the high schooler named Kyle.,SELECT `ID` FROM `Highschooler` WHERE `name` = `Kyle`
-What is Kyle's id?,SELECT `ID` FROM `Highschooler` WHERE `name` = `Kyle`
+Show the ID of the high schooler named Kyle.,SELECT `ID` FROM `Highschooler` WHERE `name` = 'Kyle'
+What is Kyle's id?,SELECT `ID` FROM `Highschooler` WHERE `name` = 'Kyle'
 How many high schoolers are there in grade 9 or 10?,SELECT COUNT(*) FROM `Highschooler` WHERE `grade` = 9 OR `grade` = 10
 Count the number of high schoolers in grades 9 or 10.,SELECT COUNT(*) FROM `Highschooler` WHERE `grade` = 9 OR `grade` = 10
 Show the number of high schoolers for each grade.,"SELECT `grade`, COUNT(*) FROM `Highschooler` GROUP BY `grade`"
@@ -21,37 +21,37 @@ Show me all grades that have at least 4 students.,SELECT `grade` FROM `Highschoo
 Which grades have 4 or more high schoolers?,SELECT `grade` FROM `Highschooler` GROUP BY `grade` HAVING COUNT(*) >= 4
 Show the student IDs and numbers of friends corresponding to each.,"SELECT `student_id`, COUNT(*) FROM `Friend` GROUP BY `student_id`"
 How many friends does each student have?,"SELECT `student_id`, COUNT(*) FROM `Friend` GROUP BY `student_id`"
-Show the names of high school students and their corresponding number of friends.,"SELECT `T2`.`name`, COUNT(*) FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id`"
-What are the names of the high schoolers and how many friends does each have?,"SELECT `T2`.`name`, COUNT(*) FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id`"
-What is the name of the high schooler who has the greatest number of friends?,SELECT `T2`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id` ORDER BY COUNT(*) DESC LIMIT 1
-Return the name of the high school student with the most friends.,SELECT `T2`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id` ORDER BY COUNT(*) DESC LIMIT 1
-Show the names of high schoolers who have at least 3 friends.,SELECT `T2`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id` HAVING COUNT(*) >= 3
-What are the names of high schoolers who have 3 or more friends?,SELECT `T2`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id` HAVING COUNT(*) >= 3
-Show the names of all of the high schooler Kyle's friends.,SELECT `T3`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` JOIN `Highschooler` AS `T3` ON `T1`.`friend_id` = `T3`.`id` WHERE `T2`.`name` = `Kyle`
-Return the names of friends of the high school student Kyle.,SELECT `T3`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` JOIN `Highschooler` AS `T3` ON `T1`.`friend_id` = `T3`.`id` WHERE `T2`.`name` = `Kyle`
-How many friends does the high school student Kyle have?,SELECT COUNT(*) FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` WHERE `T2`.`name` = `Kyle`
-Count the number of friends Kyle has.,SELECT COUNT(*) FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` WHERE `T2`.`name` = `Kyle`
+Show the names of high school students and their corresponding number of friends.,"SELECT `t2`.`name`, COUNT(*) FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name`"
+What are the names of the high schoolers and how many friends does each have?,"SELECT `t2`.`name`, COUNT(*) FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name`"
+What is the name of the high schooler who has the greatest number of friends?,SELECT `t2`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name` ORDER BY COUNT(*) DESC LIMIT 1
+Return the name of the high school student with the most friends.,SELECT `t2`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name` ORDER BY COUNT(*) DESC LIMIT 1
+Show the names of high schoolers who have at least 3 friends.,SELECT `t2`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name` HAVING COUNT(*) >= 3
+What are the names of high schoolers who have 3 or more friends?,SELECT `t2`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name` HAVING COUNT(*) >= 3
+Show the names of all of the high schooler Kyle's friends.,SELECT `t3`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` JOIN `Highschooler` AS `t3` ON `t1`.`friend_id` = `t3`.`id` WHERE `t2`.`name` = 'Kyle'
+Return the names of friends of the high school student Kyle.,SELECT `t3`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` JOIN `Highschooler` AS `t3` ON `t1`.`friend_id` = `t3`.`id` WHERE `t2`.`name` = 'Kyle'
+How many friends does the high school student Kyle have?,SELECT COUNT(*) FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` WHERE `t2`.`name` = 'Kyle'
+Count the number of friends Kyle has.,SELECT COUNT(*) FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` WHERE `t2`.`name` = 'Kyle'
 Show ids of all students who do not have any friends.,SELECT `id` FROM `Highschooler` EXCEPT SELECT `student_id` FROM `Friend`
 What are the ids of high school students who do not have friends?,SELECT `id` FROM `Highschooler` EXCEPT SELECT `student_id` FROM `Friend`
-Show names of all high school students who do not have any friends.,SELECT `name` FROM `Highschooler` EXCEPT SELECT `T2`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id`
-What are the names of students who have no friends?,SELECT `name` FROM `Highschooler` EXCEPT SELECT `T2`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id`
+Show names of all high school students who do not have any friends.,SELECT `name` FROM `Highschooler` EXCEPT SELECT `t2`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id`
+What are the names of students who have no friends?,SELECT `name` FROM `Highschooler` EXCEPT SELECT `t2`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id`
 Show the ids of high schoolers who have friends and are also liked by someone else.,SELECT `student_id` FROM `Friend` INTERSECT SELECT `liked_id` FROM `Likes`
 What are the ids of students who both have friends and are liked?,SELECT `student_id` FROM `Friend` INTERSECT SELECT `liked_id` FROM `Likes`
-Show name of all students who have some friends and also are liked by someone else.,SELECT `T2`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` INTERSECT SELECT `T2`.`name` FROM `Likes` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`liked_id` = `T2`.`id`
-What are the names of high schoolers who both have friends and are liked?,SELECT `T2`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` INTERSECT SELECT `T2`.`name` FROM `Likes` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`liked_id` = `T2`.`id`
+Show name of all students who have some friends and also are liked by someone else.,SELECT `t2`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` INTERSECT SELECT `t2`.`name` FROM `Likes` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`liked_id` = `t2`.`id`
+What are the names of high schoolers who both have friends and are liked?,SELECT `t2`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` INTERSECT SELECT `t2`.`name` FROM `Likes` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`liked_id` = `t2`.`id`
 Count the number of likes for each student id.,"SELECT `student_id`, COUNT(*) FROM `Likes` GROUP BY `student_id`"
 How many likes correspond to each student id?,"SELECT `student_id`, COUNT(*) FROM `Likes` GROUP BY `student_id`"
-"Show the names of high schoolers who have likes, and numbers of likes for each.","SELECT `T2`.`name`, COUNT(*) FROM `Likes` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id`"
-"What are the names of high schoolers who have likes, and how many likes does each have?","SELECT `T2`.`name`, COUNT(*) FROM `Likes` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id`"
-What is the name of the high schooler who has the greatest number of likes?,SELECT `T2`.`name` FROM `Likes` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id` ORDER BY COUNT(*) DESC LIMIT 1
-Give the name of the student with the most likes.,SELECT `T2`.`name` FROM `Likes` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id` ORDER BY COUNT(*) DESC LIMIT 1
-Show the names of students who have at least 2 likes.,SELECT `T2`.`name` FROM `Likes` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id` HAVING COUNT(*) >= 2
-What are the names of students who have 2 or more likes?,SELECT `T2`.`name` FROM `Likes` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` GROUP BY `T1`.`student_id` HAVING COUNT(*) >= 2
-Show the names of students who have a grade higher than 5 and have at least 2 friends.,SELECT `T2`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` WHERE `T2`.`grade` > 5 GROUP BY `T1`.`student_id` HAVING COUNT(*) >= 2
-What are the names of high schoolers who have a grade of over 5 and have 2 or more friends?,SELECT `T2`.`name` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` WHERE `T2`.`grade` > 5 GROUP BY `T1`.`student_id` HAVING COUNT(*) >= 2
-How many likes does Kyle have?,SELECT COUNT(*) FROM `Likes` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` WHERE `T2`.`name` = `Kyle`
-Return the number of likes that the high schooler named Kyle has.,SELECT COUNT(*) FROM `Likes` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id` WHERE `T2`.`name` = `Kyle`
-Find the average grade of all students who have some friends.,SELECT AVG(`grade`) FROM `Highschooler` WHERE `id` IN (SELECT `T1`.`student_id` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id`)
-What is the average grade of students who have friends?,SELECT AVG(`grade`) FROM `Highschooler` WHERE `id` IN (SELECT `T1`.`student_id` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id`)
-Find the minimum grade of students who have no friends.,SELECT MIN(`grade`) FROM `Highschooler` WHERE NOT `id` IN (SELECT `T1`.`student_id` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id`)
-What is the lowest grade of students who do not have any friends?,SELECT MIN(`grade`) FROM `Highschooler` WHERE NOT `id` IN (SELECT `T1`.`student_id` FROM `Friend` AS `T1` JOIN `Highschooler` AS `T2` ON `T1`.`student_id` = `T2`.`id`)
+"Show the names of high schoolers who have likes, and numbers of likes for each.","SELECT `t2`.`name`, COUNT(*) FROM `Likes` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name`"
+"What are the names of high schoolers who have likes, and how many likes does each have?","SELECT `t2`.`name`, COUNT(*) FROM `Likes` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name`"
+What is the name of the high schooler who has the greatest number of likes?,SELECT `t2`.`name` FROM `Likes` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name` ORDER BY COUNT(*) DESC LIMIT 1
+Give the name of the student with the most likes.,SELECT `t2`.`name` FROM `Likes` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name` ORDER BY COUNT(*) DESC LIMIT 1
+Show the names of students who have at least 2 likes.,SELECT `t2`.`name` FROM `Likes` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name` HAVING COUNT(*) >= 2
+What are the names of students who have 2 or more likes?,SELECT `t2`.`name` FROM `Likes` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` GROUP BY `t2`.`name` HAVING COUNT(*) >= 2
+Show the names of students who have a grade higher than 5 and have at least 2 friends.,SELECT `t2`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` WHERE `t2`.`grade` > 5 GROUP BY `t2`.`name` HAVING COUNT(*) >= 2
+What are the names of high schoolers who have a grade of over 5 and have 2 or more friends?,SELECT `t2`.`name` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` WHERE `t2`.`grade` > 5 GROUP BY `t2`.`name` HAVING COUNT(*) >= 2
+How many likes does Kyle have?,SELECT COUNT(*) FROM `Likes` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` WHERE `t2`.`name` = 'Kyle'
+Return the number of likes that the high schooler named Kyle has.,SELECT COUNT(*) FROM `Likes` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id` WHERE `t2`.`name` = 'Kyle'
+Find the average grade of all students who have some friends.,SELECT AVG(`grade`) FROM `Highschooler` WHERE `id` IN (SELECT `t1`.`student_id` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id`)
+What is the average grade of students who have friends?,SELECT AVG(`grade`) FROM `Highschooler` WHERE `id` IN (SELECT `t1`.`student_id` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id`)
+Find the minimum grade of students who have no friends.,SELECT MIN(`grade`) FROM `Highschooler` WHERE NOT `id` IN (SELECT `t1`.`student_id` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id`)
+What is the lowest grade of students who do not have any friends?,SELECT MIN(`grade`) FROM `Highschooler` WHERE NOT `id` IN (SELECT `t1`.`student_id` FROM `Friend` AS `t1` JOIN `Highschooler` AS `t2` ON `t1`.`student_id` = `t2`.`id`)

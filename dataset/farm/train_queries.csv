@@ -17,14 +17,14 @@ List official names of cities in descending order of population.,SELECT `Officia
 "What are the official names of cities, ordered descending by population?",SELECT `Official_Name` FROM `city` ORDER BY `Population` DESC
 List the official name and status of the city with the largest population.,"SELECT `Official_Name`, `Status` FROM `city` ORDER BY `Population` DESC LIMIT 1"
 What is the official name and status of the city with the most residents?,"SELECT `Official_Name`, `Status` FROM `city` ORDER BY `Population` DESC LIMIT 1"
-Show the years and the official names of the host cities of competitions.,"SELECT `T2`.`Year`, `T1`.`Official_Name` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID`"
-Give the years and official names of the cities of each competition.,"SELECT `T2`.`Year`, `T1`.`Official_Name` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID`"
-Show the official names of the cities that have hosted more than one competition.,SELECT `T1`.`Official_Name` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` GROUP BY `T2`.`Host_city_ID` HAVING COUNT(*) > 1
-What are the official names of cities that have hosted more than one competition?,SELECT `T1`.`Official_Name` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` GROUP BY `T2`.`Host_city_ID` HAVING COUNT(*) > 1
-Show the status of the city that has hosted the greatest number of competitions.,SELECT `T1`.`Status` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` GROUP BY `T2`.`Host_city_ID` ORDER BY COUNT(*) DESC LIMIT 1
-What is the status of the city that has hosted the most competitions?,SELECT `T1`.`Status` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` GROUP BY `T2`.`Host_city_ID` ORDER BY COUNT(*) DESC LIMIT 1
-Please show the themes of competitions with host cities having populations larger than 1000.,SELECT `T2`.`Theme` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` WHERE `T1`.`Population` > 1000
-What are the themes of competitions that have corresponding host cities with more than 1000 residents?,SELECT `T2`.`Theme` FROM `city` AS `T1` JOIN `farm_competition` AS `T2` ON `T1`.`City_ID` = `T2`.`Host_city_ID` WHERE `T1`.`Population` > 1000
+Show the years and the official names of the host cities of competitions.,"SELECT `t2`.`Year`, `t1`.`Official_Name` FROM `city` AS `t1` JOIN `farm_competition` AS `t2` ON `t1`.`City_ID` = `t2`.`Host_city_ID`"
+Give the years and official names of the cities of each competition.,"SELECT `t2`.`Year`, `t1`.`Official_Name` FROM `city` AS `t1` JOIN `farm_competition` AS `t2` ON `t1`.`City_ID` = `t2`.`Host_city_ID`"
+Show the official names of the cities that have hosted more than one competition.,SELECT `t1`.`Official_Name` FROM `city` AS `t1` JOIN `farm_competition` AS `t2` ON `t1`.`City_ID` = `t2`.`Host_city_ID` GROUP BY `t1`.`Official_Name` HAVING COUNT(*) > 1
+What are the official names of cities that have hosted more than one competition?,SELECT `t1`.`Official_Name` FROM `city` AS `t1` JOIN `farm_competition` AS `t2` ON `t1`.`City_ID` = `t2`.`Host_city_ID` GROUP BY `t1`.`Official_Name` HAVING COUNT(*) > 1
+Show the status of the city that has hosted the greatest number of competitions.,SELECT `t1`.`Status` FROM `city` AS `t1` JOIN `farm_competition` AS `t2` ON `t1`.`City_ID` = `t2`.`Host_city_ID` GROUP BY `t1`.`Status` ORDER BY COUNT(*) DESC LIMIT 1
+What is the status of the city that has hosted the most competitions?,SELECT `t1`.`Status` FROM `city` AS `t1` JOIN `farm_competition` AS `t2` ON `t1`.`City_ID` = `t2`.`Host_city_ID` GROUP BY `t1`.`Status` ORDER BY COUNT(*) DESC LIMIT 1
+Please show the themes of competitions with host cities having populations larger than 1000.,SELECT `t2`.`Theme` FROM `city` AS `t1` JOIN `farm_competition` AS `t2` ON `t1`.`City_ID` = `t2`.`Host_city_ID` WHERE `t1`.`Population` > 1000
+What are the themes of competitions that have corresponding host cities with more than 1000 residents?,SELECT `t2`.`Theme` FROM `city` AS `t1` JOIN `farm_competition` AS `t2` ON `t1`.`City_ID` = `t2`.`Host_city_ID` WHERE `t1`.`Population` > 1000
 Please show the different statuses of cities and the average population of cities with each status.,"SELECT `Status`, AVG(`Population`) FROM `city` GROUP BY `Status`"
 What are the statuses and average populations of each city?,"SELECT `Status`, AVG(`Population`) FROM `city` GROUP BY `Status`"
 "Please show the different statuses, ordered by the number of cities that have each.",SELECT `Status` FROM `city` GROUP BY `Status` ORDER BY COUNT(*) ASC
@@ -37,5 +37,5 @@ Show the status shared by cities with population bigger than 1500 and smaller th
 Which statuses correspond to both cities that have a population over 1500 and cities that have a population lower than 500?,SELECT `Status` FROM `city` WHERE `Population` > 1500 INTERSECT SELECT `Status` FROM `city` WHERE `Population` < 500
 Find the official names of cities with population bigger than 1500 or smaller than 500.,SELECT `Official_Name` FROM `city` WHERE `Population` > 1500 OR `Population` < 500
 What are the official names of cities that have population over 1500 or less than 500?,SELECT `Official_Name` FROM `city` WHERE `Population` > 1500 OR `Population` < 500
-"Show the census ranking of cities whose status are not ""Village"".",SELECT `Census_Ranking` FROM `city` WHERE `Status` <> `Village`
-"What are the census rankings of cities that do not have the status ""Village""?",SELECT `Census_Ranking` FROM `city` WHERE `Status` <> `Village`
+"Show the census ranking of cities whose status are not ""Village"".",SELECT `Census_Ranking` FROM `city` WHERE `Status` <> 'Village'
+"What are the census rankings of cities that do not have the status ""Village""?",SELECT `Census_Ranking` FROM `city` WHERE `Status` <> 'Village'

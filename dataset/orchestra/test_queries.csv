@@ -7,24 +7,24 @@ List the names of conductors in ascending order of age.,SELECT `Name` FROM `cond
 "Return the names of conductors that do not have the nationality ""USA"".",SELECT `Name` FROM `conductor` WHERE `Nationality` <> 'USA'
 What are the record companies of orchestras in descending order of years in which they were founded?,SELECT `Record_Company` FROM `orchestra` ORDER BY `Year_of_Founded` DESC
 "Return the record companies of orchestras, sorted descending by the years in which they were founded.",SELECT `Record_Company` FROM `orchestra` ORDER BY `Year_of_Founded` DESC
-What is the average attendance of shows?,SELECT AVG(`Attendance`) FROM `SHOW`
-Return the average attendance across all shows.,SELECT AVG(`Attendance`) FROM `SHOW`
-"What are the maximum and minimum share of performances whose type is not ""Live final"".","SELECT MAX(`SHARE`), MIN(`SHARE`) FROM `performance` WHERE `TYPE` <> `Live final`"
-"Return the maximum and minimum shares for performances that do not have the type ""Live final"".","SELECT MAX(`SHARE`), MIN(`SHARE`) FROM `performance` WHERE `TYPE` <> `Live final`"
+What is the average attendance of shows?,SELECT AVG(`Attendance`) FROM `show`
+Return the average attendance across all shows.,SELECT AVG(`Attendance`) FROM `show`
+"What are the maximum and minimum share of performances whose type is not ""Live final"".","SELECT MAX(`SHARE`), MIN(`SHARE`) FROM `performance` WHERE `TYPE` <> 'Live final'"
+"Return the maximum and minimum shares for performances that do not have the type ""Live final"".","SELECT MAX(`SHARE`), MIN(`SHARE`) FROM `performance` WHERE `TYPE` <> 'Live final'"
 How many different nationalities do conductors have?,SELECT COUNT(DISTINCT `Nationality`) FROM `conductor`
 Count the number of different nationalities of conductors.,SELECT COUNT(DISTINCT `Nationality`) FROM `conductor`
 List names of conductors in descending order of years of work.,SELECT `Name` FROM `conductor` ORDER BY `Year_of_Work` DESC
 "What are the names of conductors, sorted descending by the number of years they have worked?",SELECT `Name` FROM `conductor` ORDER BY `Year_of_Work` DESC
 List the name of the conductor with the most years of work.,SELECT `Name` FROM `conductor` ORDER BY `Year_of_Work` DESC LIMIT 1
 What is the name of the conductor who has worked the greatest number of years?,SELECT `Name` FROM `conductor` ORDER BY `Year_of_Work` DESC LIMIT 1
-Show the names of conductors and the orchestras they have conducted.,"SELECT `T1`.`Name`, `T2`.`Orchestra` FROM `conductor` AS `T1` JOIN `orchestra` AS `T2` ON `T1`.`Conductor_ID` = `T2`.`Conductor_ID`"
-What are the names of conductors as well as the corresonding orchestras that they have conducted?,"SELECT `T1`.`Name`, `T2`.`Orchestra` FROM `conductor` AS `T1` JOIN `orchestra` AS `T2` ON `T1`.`Conductor_ID` = `T2`.`Conductor_ID`"
-Show the names of conductors that have conducted more than one orchestras.,SELECT `T1`.`Name` FROM `conductor` AS `T1` JOIN `orchestra` AS `T2` ON `T1`.`Conductor_ID` = `T2`.`Conductor_ID` GROUP BY `T2`.`Conductor_ID` HAVING COUNT(*) > 1
-What are the names of conductors who have conducted at more than one orchestra?,SELECT `T1`.`Name` FROM `conductor` AS `T1` JOIN `orchestra` AS `T2` ON `T1`.`Conductor_ID` = `T2`.`Conductor_ID` GROUP BY `T2`.`Conductor_ID` HAVING COUNT(*) > 1
-Show the name of the conductor that has conducted the most number of orchestras.,SELECT `T1`.`Name` FROM `conductor` AS `T1` JOIN `orchestra` AS `T2` ON `T1`.`Conductor_ID` = `T2`.`Conductor_ID` GROUP BY `T2`.`Conductor_ID` ORDER BY COUNT(*) DESC LIMIT 1
-What is the name of the conductor who has conducted the most orchestras?,SELECT `T1`.`Name` FROM `conductor` AS `T1` JOIN `orchestra` AS `T2` ON `T1`.`Conductor_ID` = `T2`.`Conductor_ID` GROUP BY `T2`.`Conductor_ID` ORDER BY COUNT(*) DESC LIMIT 1
-Please show the name of the conductor that has conducted orchestras founded after 2008.,SELECT `T1`.`Name` FROM `conductor` AS `T1` JOIN `orchestra` AS `T2` ON `T1`.`Conductor_ID` = `T2`.`Conductor_ID` WHERE `Year_of_Founded` > 2008
-What are the names of conductors who have conducted orchestras founded after the year 2008?,SELECT `T1`.`Name` FROM `conductor` AS `T1` JOIN `orchestra` AS `T2` ON `T1`.`Conductor_ID` = `T2`.`Conductor_ID` WHERE `Year_of_Founded` > 2008
+Show the names of conductors and the orchestras they have conducted.,"SELECT `t1`.`Name`, `t2`.`Orchestra` FROM `conductor` AS `t1` JOIN `orchestra` AS `t2` ON `t1`.`Conductor_ID` = `t2`.`Conductor_ID`"
+What are the names of conductors as well as the corresonding orchestras that they have conducted?,"SELECT `t1`.`Name`, `t2`.`Orchestra` FROM `conductor` AS `t1` JOIN `orchestra` AS `t2` ON `t1`.`Conductor_ID` = `t2`.`Conductor_ID`"
+Show the names of conductors that have conducted more than one orchestras.,SELECT `t1`.`Name` FROM `conductor` AS `t1` JOIN `orchestra` AS `t2` ON `t1`.`Conductor_ID` = `t2`.`Conductor_ID` GROUP BY `t1`.`Name` HAVING COUNT(*) > 1
+What are the names of conductors who have conducted at more than one orchestra?,SELECT `t1`.`Name` FROM `conductor` AS `t1` JOIN `orchestra` AS `t2` ON `t1`.`Conductor_ID` = `t2`.`Conductor_ID` GROUP BY `t1`.`Name` HAVING COUNT(*) > 1
+Show the name of the conductor that has conducted the most number of orchestras.,SELECT `t1`.`Name` FROM `conductor` AS `t1` JOIN `orchestra` AS `t2` ON `t1`.`Conductor_ID` = `t2`.`Conductor_ID` GROUP BY `t1`.`Name` ORDER BY COUNT(*) DESC LIMIT 1
+What is the name of the conductor who has conducted the most orchestras?,SELECT `t1`.`Name` FROM `conductor` AS `t1` JOIN `orchestra` AS `t2` ON `t1`.`Conductor_ID` = `t2`.`Conductor_ID` GROUP BY `t1`.`Name` ORDER BY COUNT(*) DESC LIMIT 1
+Please show the name of the conductor that has conducted orchestras founded after 2008.,SELECT `t1`.`Name` FROM `conductor` AS `t1` JOIN `orchestra` AS `t2` ON `t1`.`Conductor_ID` = `t2`.`Conductor_ID` WHERE `Year_of_Founded` > 2008
+What are the names of conductors who have conducted orchestras founded after the year 2008?,SELECT `t1`.`Name` FROM `conductor` AS `t1` JOIN `orchestra` AS `t2` ON `t1`.`Conductor_ID` = `t2`.`Conductor_ID` WHERE `Year_of_Founded` > 2008
 Please show the different record companies and the corresponding number of orchestras.,"SELECT `Record_Company`, COUNT(*) FROM `orchestra` GROUP BY `Record_Company`"
 How many orchestras does each record company manage?,"SELECT `Record_Company`, COUNT(*) FROM `orchestra` GROUP BY `Record_Company`"
 Please show the record formats of orchestras in ascending order of count.,SELECT `Major_Record_Format` FROM `orchestra` GROUP BY `Major_Record_Format` ORDER BY COUNT(*) ASC
@@ -35,7 +35,7 @@ List the names of orchestras that have no performance.,SELECT `Orchestra` FROM `
 What are the orchestras that do not have any performances?,SELECT `Orchestra` FROM `orchestra` WHERE NOT `Orchestra_ID` IN (SELECT `Orchestra_ID` FROM `performance`)
 Show the record companies shared by orchestras founded before 2003 and after 2003.,SELECT `Record_Company` FROM `orchestra` WHERE `Year_of_Founded` < 2003 INTERSECT SELECT `Record_Company` FROM `orchestra` WHERE `Year_of_Founded` > 2003
 What are the record companies that are used by both orchestras founded before 2003 and those founded after 2003?,SELECT `Record_Company` FROM `orchestra` WHERE `Year_of_Founded` < 2003 INTERSECT SELECT `Record_Company` FROM `orchestra` WHERE `Year_of_Founded` > 2003
-"Find the number of orchestras whose record format is ""CD"" or ""DVD"".",SELECT COUNT(*) FROM `orchestra` WHERE `Major_Record_Format` = `CD` OR `Major_Record_Format` = `DVD`
-Count the number of orchestras that have CD or DVD as their record format.,SELECT COUNT(*) FROM `orchestra` WHERE `Major_Record_Format` = `CD` OR `Major_Record_Format` = `DVD`
-Show the years in which orchestras that have given more than one performance are founded.,SELECT `Year_of_Founded` FROM `orchestra` AS `T1` JOIN `performance` AS `T2` ON `T1`.`Orchestra_ID` = `T2`.`Orchestra_ID` GROUP BY `T2`.`Orchestra_ID` HAVING COUNT(*) > 1
-What are years of founding for orchestras that have had more than a single performance?,SELECT `Year_of_Founded` FROM `orchestra` AS `T1` JOIN `performance` AS `T2` ON `T1`.`Orchestra_ID` = `T2`.`Orchestra_ID` GROUP BY `T2`.`Orchestra_ID` HAVING COUNT(*) > 1
+"Find the number of orchestras whose record format is ""CD"" or ""DVD"".",SELECT COUNT(*) FROM `orchestra` WHERE `Major_Record_Format` = 'CD' OR `Major_Record_Format` = 'DVD'
+Count the number of orchestras that have CD or DVD as their record format.,SELECT COUNT(*) FROM `orchestra` WHERE `Major_Record_Format` = 'CD' OR `Major_Record_Format` = 'DVD'
+Show the years in which orchestras that have given more than one performance are founded.,SELECT `Year_of_Founded` FROM `orchestra` AS `t1` JOIN `performance` AS `t2` ON `t1`.`Orchestra_ID` = `t2`.`Orchestra_ID` GROUP BY `Year_of_Founded` HAVING COUNT(*) > 1
+What are years of founding for orchestras that have had more than a single performance?,SELECT `Year_of_Founded` FROM `orchestra` AS `t1` JOIN `performance` AS `t2` ON `t1`.`Orchestra_ID` = `t2`.`Orchestra_ID` GROUP BY `Year_of_Founded` HAVING COUNT(*) > 1

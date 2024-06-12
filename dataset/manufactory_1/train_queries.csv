@@ -1,81 +1,81 @@
 question,sql
-Who is the founder of Sony?,SELECT `founder` FROM `manufacturers` WHERE `name` = 'Sony'
-Return the founder of Sony.,SELECT `founder` FROM `manufacturers` WHERE `name` = 'Sony'
-Where is the headquarter of the company founded by James?,SELECT `headquarter` FROM `manufacturers` WHERE `founder` = 'James'
-What is the headquarter of the company whose founder is James?,SELECT `headquarter` FROM `manufacturers` WHERE `founder` = 'James'
-"Find all manufacturers' names and their headquarters, sorted by the ones with highest revenue first.","SELECT `name`, `headquarter` FROM `manufacturers` ORDER BY `revenue` DESC"
-"What are the names and headquarters of all manufacturers, ordered by revenue descending?","SELECT `name`, `headquarter` FROM `manufacturers` ORDER BY `revenue` DESC"
-"What are the average, maximum and total revenues of all companies?","SELECT AVG(`revenue`), MAX(`revenue`), SUM(`revenue`) FROM `manufacturers`"
-"Return the average, maximum, and total revenues across all manufacturers.","SELECT AVG(`revenue`), MAX(`revenue`), SUM(`revenue`) FROM `manufacturers`"
-How many companies were created by Andy?,SELECT COUNT(*) FROM `manufacturers` WHERE `founder` = 'Andy'
-Return the number of companies created by Andy.,SELECT COUNT(*) FROM `manufacturers` WHERE `founder` = 'Andy'
-Find the total revenue created by the companies whose headquarter is located at Austin.,SELECT SUM(`revenue`) FROM `manufacturers` WHERE `headquarter` = 'Austin'
-What is the sum of revenue from companies with headquarters in Austin?,SELECT SUM(`revenue`) FROM `manufacturers` WHERE `headquarter` = 'Austin'
-What are the different cities listed?,SELECT DISTINCT `headquarter` FROM `manufacturers`
-Give the distinct headquarters of manufacturers.,SELECT DISTINCT `headquarter` FROM `manufacturers`
-Find the number of manufactures that are based in Tokyo or Beijing.,SELECT COUNT(*) FROM `manufacturers` WHERE `headquarter` = 'Tokyo' OR `headquarter` = 'Beijing'
-How many manufacturers have headquarters in either Tokyo or Beijing?,SELECT COUNT(*) FROM `manufacturers` WHERE `headquarter` = 'Tokyo' OR `headquarter` = 'Beijing'
-Find the founder of the company whose name begins with the letter 'S'.,SELECT `founder` FROM `manufacturers` WHERE `name` LIKE 'S%'
-Who is the founders of companies whose first letter is S?,SELECT `founder` FROM `manufacturers` WHERE `name` LIKE 'S%'
-Find the name of companies whose revenue is between 100 and 150.,SELECT `name` FROM `manufacturers` WHERE `revenue` BETWEEN 100 AND 150
-What are the names of companies with revenue between 100 and 150?,SELECT `name` FROM `manufacturers` WHERE `revenue` BETWEEN 100 AND 150
-What is the total revenue of all companies whose main office is at Tokyo or Taiwan?,SELECT SUM(`revenue`) FROM `manufacturers` WHERE `Headquarter` = 'Tokyo' OR `Headquarter` = 'Taiwan'
-Return the total revenue of companies with headquarters in Tokyo or Taiwan.,SELECT SUM(`revenue`) FROM `manufacturers` WHERE `Headquarter` = 'Tokyo' OR `Headquarter` = 'Taiwan'
-Find the name of product that is produced by both companies Creative Labs and Sony.,SELECT `T1`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` WHERE `T2`.`name` = 'Creative Labs' INTERSECT SELECT `T1`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` WHERE `T2`.`name` = 'Sony'
-What are the names of products produced by both Creative Labs and Sony?,SELECT `T1`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` WHERE `T2`.`name` = 'Creative Labs' INTERSECT SELECT `T1`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` WHERE `T2`.`name` = 'Sony'
-"Find the name, headquarter and founder of the manufacturer that has the highest revenue.","SELECT `name`, `headquarter`, `founder` FROM `manufacturers` ORDER BY `revenue` DESC LIMIT 1"
-"What are the names, headquarters and founders of the company with the highest revenue?","SELECT `name`, `headquarter`, `founder` FROM `manufacturers` ORDER BY `revenue` DESC LIMIT 1"
-"Find the name, headquarter and revenue of all manufacturers sorted by their revenue in the descending order.","SELECT `name`, `headquarter`, `revenue` FROM `manufacturers` ORDER BY `revenue` DESC"
-"What are the names, headquarters and revenues for manufacturers, sorted by revenue descending?","SELECT `name`, `headquarter`, `revenue` FROM `manufacturers` ORDER BY `revenue` DESC"
-Find the name of companies whose revenue is greater than the average revenue of all companies.,SELECT `name` FROM `manufacturers` WHERE `revenue` > (SELECT AVG(`revenue`) FROM `manufacturers`)
-What are the names of manufacturers with revenue greater than the average of all revenues?,SELECT `name` FROM `manufacturers` WHERE `revenue` > (SELECT AVG(`revenue`) FROM `manufacturers`)
-Find the name of companies whose revenue is smaller than the revenue of all companies based in Austin.,SELECT `name` FROM `manufacturers` WHERE `revenue` < (SELECT MIN(`revenue`) FROM `manufacturers` WHERE `headquarter` = 'Austin')
-What are the names of companies with revenue less than the lowest revenue of any manufacturer in Austin?,SELECT `name` FROM `manufacturers` WHERE `revenue` < (SELECT MIN(`revenue`) FROM `manufacturers` WHERE `headquarter` = 'Austin')
-Find the total revenue of companies whose revenue is larger than the revenue of some companies based in Austin.,SELECT SUM(`revenue`) FROM `manufacturers` WHERE `revenue` > (SELECT MIN(`revenue`) FROM `manufacturers` WHERE `headquarter` = 'Austin')
-What is the total revenue of companies with revenue greater than the lowest revenue of any manufacturer in Austin?,SELECT SUM(`revenue`) FROM `manufacturers` WHERE `revenue` > (SELECT MIN(`revenue`) FROM `manufacturers` WHERE `headquarter` = 'Austin')
-Find the total revenue of companies of each founder.,"SELECT SUM(`revenue`), `founder` FROM `manufacturers` GROUP BY `founder`"
-What is the total revenue of companies started by founder?,"SELECT SUM(`revenue`), `founder` FROM `manufacturers` GROUP BY `founder`"
-Find the name and revenue of the company that earns the highest revenue in each city.,"SELECT `name`, MAX(`revenue`), `Headquarter` FROM `manufacturers` GROUP BY `Headquarter`"
-What are the names and revenues of the companies with the highest revenues in each headquarter city?,"SELECT `name`, MAX(`revenue`), `Headquarter` FROM `manufacturers` GROUP BY `Headquarter`"
-Find the total revenue for each manufacturer.,"SELECT SUM(`revenue`), `name` FROM `manufacturers` GROUP BY `name`"
-What is the total revenue of each manufacturer?,"SELECT SUM(`revenue`), `name` FROM `manufacturers` GROUP BY `name`"
-"Find the average prices of all products from each manufacture, and list each company's name.","SELECT AVG(`T1`.`price`), `T2`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` GROUP BY `T2`.`name`"
-What are the average prices of products for each manufacturer?,"SELECT AVG(`T1`.`price`), `T2`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` GROUP BY `T2`.`name`"
-Find the number of different products that are produced by companies at different headquarter cities.,"SELECT COUNT(DISTINCT `T1`.`name`), `T2`.`Headquarter` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` GROUP BY `T2`.`Headquarter`"
-How many different products are produced in each headquarter city?,"SELECT COUNT(DISTINCT `T1`.`name`), `T2`.`Headquarter` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` GROUP BY `T2`.`Headquarter`"
-Find number of products which Sony does not make.,SELECT COUNT(DISTINCT `name`) FROM `products` WHERE NOT `name` IN (SELECT `T1`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` WHERE `T2`.`name` = 'Sony')
-How many products are not made by Sony?,SELECT COUNT(DISTINCT `name`) FROM `products` WHERE NOT `name` IN (SELECT `T1`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` WHERE `T2`.`name` = 'Sony')
-Find the name of companies that do not make DVD drive.,SELECT `name` FROM `manufacturers` EXCEPT SELECT `T2`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` WHERE `T1`.`name` = 'DVD drive'
-What are the names of companies that do not make DVD drives?,SELECT `name` FROM `manufacturers` EXCEPT SELECT `T2`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` WHERE `T1`.`name` = 'DVD drive'
-"Find the number of products for each manufacturer, showing the name of each company.","SELECT COUNT(*), `T2`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` GROUP BY `T2`.`name`"
-How many products are there for each manufacturer?,"SELECT COUNT(*), `T2`.`name` FROM `products` AS `T1` JOIN `manufacturers` AS `T2` ON `T1`.`Manufacturer` = `T2`.`code` GROUP BY `T2`.`name`"
+Who is the founder of Sony?,SELECT `founder` FROM `Manufacturers` WHERE `name` = 'Sony'
+Return the founder of Sony.,SELECT `founder` FROM `Manufacturers` WHERE `name` = 'Sony'
+Where is the headquarter of the company founded by James?,SELECT `headquarter` FROM `Manufacturers` WHERE `founder` = 'James'
+What is the headquarter of the company whose founder is James?,SELECT `headquarter` FROM `Manufacturers` WHERE `founder` = 'James'
+"Find all manufacturers' names and their headquarters, sorted by the ones with highest revenue first.","SELECT `name`, `headquarter` FROM `Manufacturers` ORDER BY `revenue` DESC"
+"What are the names and headquarters of all manufacturers, ordered by revenue descending?","SELECT `name`, `headquarter` FROM `Manufacturers` ORDER BY `revenue` DESC"
+"What are the average, maximum and total revenues of all companies?","SELECT AVG(`revenue`), MAX(`revenue`), SUM(`revenue`) FROM `Manufacturers`"
+"Return the average, maximum, and total revenues across all manufacturers.","SELECT AVG(`revenue`), MAX(`revenue`), SUM(`revenue`) FROM `Manufacturers`"
+How many companies were created by Andy?,SELECT COUNT(*) FROM `Manufacturers` WHERE `founder` = 'Andy'
+Return the number of companies created by Andy.,SELECT COUNT(*) FROM `Manufacturers` WHERE `founder` = 'Andy'
+Find the total revenue created by the companies whose headquarter is located at Austin.,SELECT SUM(`revenue`) FROM `Manufacturers` WHERE `headquarter` = 'Austin'
+What is the sum of revenue from companies with headquarters in Austin?,SELECT SUM(`revenue`) FROM `Manufacturers` WHERE `headquarter` = 'Austin'
+What are the different cities listed?,SELECT DISTINCT `headquarter` FROM `Manufacturers`
+Give the distinct headquarters of manufacturers.,SELECT DISTINCT `headquarter` FROM `Manufacturers`
+Find the number of manufactures that are based in Tokyo or Beijing.,SELECT COUNT(*) FROM `Manufacturers` WHERE `headquarter` = 'Tokyo' OR `headquarter` = 'Beijing'
+How many manufacturers have headquarters in either Tokyo or Beijing?,SELECT COUNT(*) FROM `Manufacturers` WHERE `headquarter` = 'Tokyo' OR `headquarter` = 'Beijing'
+Find the founder of the company whose name begins with the letter 'S'.,SELECT `founder` FROM `Manufacturers` WHERE `name` LIKE 'S%'
+Who is the founders of companies whose first letter is S?,SELECT `founder` FROM `Manufacturers` WHERE `name` LIKE 'S%'
+Find the name of companies whose revenue is between 100 and 150.,SELECT `name` FROM `Manufacturers` WHERE `revenue` BETWEEN 100 AND 150
+What are the names of companies with revenue between 100 and 150?,SELECT `name` FROM `Manufacturers` WHERE `revenue` BETWEEN 100 AND 150
+What is the total revenue of all companies whose main office is at Tokyo or Taiwan?,SELECT SUM(`revenue`) FROM `Manufacturers` WHERE `Headquarter` = 'Tokyo' OR `Headquarter` = 'Taiwan'
+Return the total revenue of companies with headquarters in Tokyo or Taiwan.,SELECT SUM(`revenue`) FROM `Manufacturers` WHERE `Headquarter` = 'Tokyo' OR `Headquarter` = 'Taiwan'
+Find the name of product that is produced by both companies Creative Labs and Sony.,SELECT `t1`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` WHERE `t2`.`name` = 'Creative Labs' INTERSECT SELECT `t1`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` WHERE `t2`.`name` = 'Sony'
+What are the names of products produced by both Creative Labs and Sony?,SELECT `t1`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` WHERE `t2`.`name` = 'Creative Labs' INTERSECT SELECT `t1`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` WHERE `t2`.`name` = 'Sony'
+"Find the name, headquarter and founder of the manufacturer that has the highest revenue.","SELECT `name`, `headquarter`, `founder` FROM `Manufacturers` ORDER BY `revenue` DESC LIMIT 1"
+"What are the names, headquarters and founders of the company with the highest revenue?","SELECT `name`, `headquarter`, `founder` FROM `Manufacturers` ORDER BY `revenue` DESC LIMIT 1"
+"Find the name, headquarter and revenue of all manufacturers sorted by their revenue in the descending order.","SELECT `name`, `headquarter`, `revenue` FROM `Manufacturers` ORDER BY `revenue` DESC"
+"What are the names, headquarters and revenues for manufacturers, sorted by revenue descending?","SELECT `name`, `headquarter`, `revenue` FROM `Manufacturers` ORDER BY `revenue` DESC"
+Find the name of companies whose revenue is greater than the average revenue of all companies.,SELECT `name` FROM `Manufacturers` WHERE `revenue` > (SELECT AVG(`revenue`) FROM `Manufacturers`)
+What are the names of manufacturers with revenue greater than the average of all revenues?,SELECT `name` FROM `Manufacturers` WHERE `revenue` > (SELECT AVG(`revenue`) FROM `Manufacturers`)
+Find the name of companies whose revenue is smaller than the revenue of all companies based in Austin.,SELECT `name` FROM `Manufacturers` WHERE `revenue` < (SELECT MIN(`revenue`) FROM `Manufacturers` WHERE `headquarter` = 'Austin')
+What are the names of companies with revenue less than the lowest revenue of any manufacturer in Austin?,SELECT `name` FROM `Manufacturers` WHERE `revenue` < (SELECT MIN(`revenue`) FROM `Manufacturers` WHERE `headquarter` = 'Austin')
+Find the total revenue of companies whose revenue is larger than the revenue of some companies based in Austin.,SELECT SUM(`revenue`) FROM `Manufacturers` WHERE `revenue` > (SELECT MIN(`revenue`) FROM `Manufacturers` WHERE `headquarter` = 'Austin')
+What is the total revenue of companies with revenue greater than the lowest revenue of any manufacturer in Austin?,SELECT SUM(`revenue`) FROM `Manufacturers` WHERE `revenue` > (SELECT MIN(`revenue`) FROM `Manufacturers` WHERE `headquarter` = 'Austin')
+Find the total revenue of companies of each founder.,"SELECT SUM(`revenue`), `founder` FROM `Manufacturers` GROUP BY `founder`"
+What is the total revenue of companies started by founder?,"SELECT SUM(`revenue`), `founder` FROM `Manufacturers` GROUP BY `founder`"
+Find the name and revenue of the company that earns the highest revenue in each city.,"SELECT `name`, MAX(`revenue`), `Headquarter` FROM `Manufacturers` GROUP BY `name`, `Headquarter`"
+What are the names and revenues of the companies with the highest revenues in each headquarter city?,"SELECT `name`, MAX(`revenue`), `Headquarter` FROM `Manufacturers` GROUP BY `name`, `Headquarter`"
+Find the total revenue for each manufacturer.,"SELECT SUM(`revenue`), `name` FROM `Manufacturers` GROUP BY `name`"
+What is the total revenue of each manufacturer?,"SELECT SUM(`revenue`), `name` FROM `Manufacturers` GROUP BY `name`"
+"Find the average prices of all products from each manufacture, and list each company's name.","SELECT AVG(`t1`.`price`), `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` GROUP BY `t2`.`name`"
+What are the average prices of products for each manufacturer?,"SELECT AVG(`t1`.`price`), `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` GROUP BY `t2`.`name`"
+Find the number of different products that are produced by companies at different headquarter cities.,"SELECT COUNT(DISTINCT `t1`.`name`), `t2`.`Headquarter` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` GROUP BY `t2`.`Headquarter`"
+How many different products are produced in each headquarter city?,"SELECT COUNT(DISTINCT `t1`.`name`), `t2`.`Headquarter` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` GROUP BY `t2`.`Headquarter`"
+Find number of products which Sony does not make.,SELECT COUNT(DISTINCT `name`) FROM `Products` WHERE NOT `name` IN (SELECT `t1`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` WHERE `t2`.`name` = 'Sony')
+How many products are not made by Sony?,SELECT COUNT(DISTINCT `name`) FROM `Products` WHERE NOT `name` IN (SELECT `t1`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` WHERE `t2`.`name` = 'Sony')
+Find the name of companies that do not make DVD drive.,SELECT `name` FROM `Manufacturers` EXCEPT SELECT `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` WHERE `t1`.`name` = 'DVD drive'
+What are the names of companies that do not make DVD drives?,SELECT `name` FROM `Manufacturers` EXCEPT SELECT `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` WHERE `t1`.`name` = 'DVD drive'
+"Find the number of products for each manufacturer, showing the name of each company.","SELECT COUNT(*), `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` GROUP BY `t2`.`name`"
+How many products are there for each manufacturer?,"SELECT COUNT(*), `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`Manufacturer` = `t2`.`code` GROUP BY `t2`.`name`"
 Select the names of all the products in the store.,SELECT `Name` FROM `Products`
 What are the names of all products?,SELECT `Name` FROM `Products`
-Select the names and the prices of all the products in the store.,"SELECT `name`, `price` FROM `products`"
-What are the names and prices of all products in the store?,"SELECT `name`, `price` FROM `products`"
-Select the name of the products with a price less than or equal to $200.,SELECT `name` FROM `products` WHERE `price` <= 200
-What are the names of products with price at most 200?,SELECT `name` FROM `products` WHERE `price` <= 200
-Find all information of all the products with a price between $60 and $120.,SELECT * FROM `products` WHERE `price` BETWEEN 60 AND 120
-What is all the information of all the products that have a price between 60 and 120?,SELECT * FROM `products` WHERE `price` BETWEEN 60 AND 120
-Compute the average price of all the products.,SELECT AVG(`price`) FROM `products`
-What is the average price across all products?,SELECT AVG(`price`) FROM `products`
-Compute the average price of all products with manufacturer code equal to 2.,SELECT AVG(`price`) FROM `products` WHERE `Manufacturer` = 2
-What is the average price of products with manufacturer codes equal to 2?,SELECT AVG(`price`) FROM `products` WHERE `Manufacturer` = 2
-Compute the number of products with a price larger than or equal to $180.,SELECT COUNT(*) FROM `products` WHERE `price` >= 180
-How many products have prices of at least 180?,SELECT COUNT(*) FROM `products` WHERE `price` >= 180
-"Select the name and price of all products with a price larger than or equal to $180, and sort first by price (in descending order), and then by name  (in ascending order).","SELECT `name`, `price` FROM `products` WHERE `price` >= 180 ORDER BY `price` DESC, `name` ASC"
-"What are the names and prices of products that cost at least 180, sorted by price decreasing and name ascending?","SELECT `name`, `price` FROM `products` WHERE `price` >= 180 ORDER BY `price` DESC, `name` ASC"
-Select all the data from the products and each product's manufacturer.,SELECT * FROM `products` AS `T1` JOIN `Manufacturers` AS `T2` ON `T1`.`manufacturer` = `T2`.`code`
-"What is all the product data, as well as  each product's manufacturer?",SELECT * FROM `products` AS `T1` JOIN `Manufacturers` AS `T2` ON `T1`.`manufacturer` = `T2`.`code`
+Select the names and the prices of all the products in the store.,"SELECT `name`, `price` FROM `Products`"
+What are the names and prices of all products in the store?,"SELECT `name`, `price` FROM `Products`"
+Select the name of the products with a price less than or equal to $200.,SELECT `name` FROM `Products` WHERE `price` <= 200
+What are the names of products with price at most 200?,SELECT `name` FROM `Products` WHERE `price` <= 200
+Find all information of all the products with a price between $60 and $120.,SELECT * FROM `Products` WHERE `price` BETWEEN 60 AND 120
+What is all the information of all the products that have a price between 60 and 120?,SELECT * FROM `Products` WHERE `price` BETWEEN 60 AND 120
+Compute the average price of all the products.,SELECT AVG(`price`) FROM `Products`
+What is the average price across all products?,SELECT AVG(`price`) FROM `Products`
+Compute the average price of all products with manufacturer code equal to 2.,SELECT AVG(`price`) FROM `Products` WHERE `Manufacturer` = 2
+What is the average price of products with manufacturer codes equal to 2?,SELECT AVG(`price`) FROM `Products` WHERE `Manufacturer` = 2
+Compute the number of products with a price larger than or equal to $180.,SELECT COUNT(*) FROM `Products` WHERE `price` >= 180
+How many products have prices of at least 180?,SELECT COUNT(*) FROM `Products` WHERE `price` >= 180
+"Select the name and price of all products with a price larger than or equal to $180, and sort first by price (in descending order), and then by name  (in ascending order).","SELECT `name`, `price` FROM `Products` WHERE `price` >= 180 ORDER BY `price` DESC, `name` ASC"
+"What are the names and prices of products that cost at least 180, sorted by price decreasing and name ascending?","SELECT `name`, `price` FROM `Products` WHERE `price` >= 180 ORDER BY `price` DESC, `name` ASC"
+Select all the data from the products and each product's manufacturer.,SELECT * FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`manufacturer` = `t2`.`code`
+"What is all the product data, as well as  each product's manufacturer?",SELECT * FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`manufacturer` = `t2`.`code`
 "Select the average price of each manufacturer's products, showing only the manufacturer's code.","SELECT AVG(`Price`), `Manufacturer` FROM `Products` GROUP BY `Manufacturer`"
 "What are the average prices of products, grouped by manufacturer code?","SELECT AVG(`Price`), `Manufacturer` FROM `Products` GROUP BY `Manufacturer`"
-"Select the average price of each manufacturer's products, showing the manufacturer's name.","SELECT AVG(`T1`.`Price`), `T2`.`name` FROM `products` AS `T1` JOIN `Manufacturers` AS `T2` ON `T1`.`manufacturer` = `T2`.`code` GROUP BY `T2`.`name`"
-"What are the average prices of products, grouped by manufacturer name?","SELECT AVG(`T1`.`Price`), `T2`.`name` FROM `products` AS `T1` JOIN `Manufacturers` AS `T2` ON `T1`.`manufacturer` = `T2`.`code` GROUP BY `T2`.`name`"
-Select the names of manufacturer whose products have an average price higher than or equal to $150.,"SELECT AVG(`T1`.`Price`), `T2`.`name` FROM `products` AS `T1` JOIN `Manufacturers` AS `T2` ON `T1`.`manufacturer` = `T2`.`code` GROUP BY `T2`.`name` HAVING AVG(`T1`.`price`) >= 150"
-What are the names and average prices of products for manufacturers whose products cost on average 150 or more?,"SELECT AVG(`T1`.`Price`), `T2`.`name` FROM `products` AS `T1` JOIN `Manufacturers` AS `T2` ON `T1`.`manufacturer` = `T2`.`code` GROUP BY `T2`.`name` HAVING AVG(`T1`.`price`) >= 150"
+"Select the average price of each manufacturer's products, showing the manufacturer's name.","SELECT AVG(`t1`.`Price`), `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`manufacturer` = `t2`.`code` GROUP BY `t2`.`name`"
+"What are the average prices of products, grouped by manufacturer name?","SELECT AVG(`t1`.`Price`), `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`manufacturer` = `t2`.`code` GROUP BY `t2`.`name`"
+Select the names of manufacturer whose products have an average price higher than or equal to $150.,"SELECT AVG(`t1`.`Price`), `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`manufacturer` = `t2`.`code` GROUP BY `t2`.`name` HAVING AVG(`t1`.`price`) >= 150"
+What are the names and average prices of products for manufacturers whose products cost on average 150 or more?,"SELECT AVG(`t1`.`Price`), `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`manufacturer` = `t2`.`code` GROUP BY `t2`.`name` HAVING AVG(`t1`.`price`) >= 150"
 Select the name and price of the cheapest product.,"SELECT `name`, `price` FROM `Products` ORDER BY `price` ASC LIMIT 1"
 What is the name and price of the cheapest product?,"SELECT `name`, `price` FROM `Products` ORDER BY `price` ASC LIMIT 1"
-Select the name of each manufacturer along with the name and price of its most expensive product.,"SELECT `T1`.`Name`, MAX(`T1`.`Price`), `T2`.`name` FROM `products` AS `T1` JOIN `Manufacturers` AS `T2` ON `T1`.`manufacturer` = `T2`.`code` GROUP BY `T2`.`name`"
-"For each manufacturer name, what are the names and prices of their most expensive product?","SELECT `T1`.`Name`, MAX(`T1`.`Price`), `T2`.`name` FROM `products` AS `T1` JOIN `Manufacturers` AS `T2` ON `T1`.`manufacturer` = `T2`.`code` GROUP BY `T2`.`name`"
-Select the code of the product that is cheapest in each product category.,"SELECT `code`, `name`, MIN(`price`) FROM `products` GROUP BY `name`"
-What are the codes and names of the cheapest products in each category?,"SELECT `code`, `name`, MIN(`price`) FROM `products` GROUP BY `name`"
+Select the name of each manufacturer along with the name and price of its most expensive product.,"SELECT `t1`.`Name`, MAX(`t1`.`Price`), `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`manufacturer` = `t2`.`code` GROUP BY `t1`.`Name`, `t2`.`name`"
+"For each manufacturer name, what are the names and prices of their most expensive product?","SELECT `t1`.`Name`, MAX(`t1`.`Price`), `t2`.`name` FROM `Products` AS `t1` JOIN `Manufacturers` AS `t2` ON `t1`.`manufacturer` = `t2`.`code` GROUP BY `t1`.`Name`, `t2`.`name`"
+Select the code of the product that is cheapest in each product category.,"SELECT `code`, `name`, MIN(`price`) FROM `Products` GROUP BY `code`, `name`"
+What are the codes and names of the cheapest products in each category?,"SELECT `code`, `name`, MIN(`price`) FROM `Products` GROUP BY `code`, `name`"

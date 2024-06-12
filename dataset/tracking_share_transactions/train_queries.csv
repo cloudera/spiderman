@@ -1,42 +1,42 @@
 question,sql
-Find the number of investors in total.,SELECT COUNT(*) FROM `INVESTORS`
-Show all investor details.,SELECT `Investor_details` FROM `INVESTORS`
-Show all distinct lot details.,SELECT DISTINCT `lot_details` FROM `LOTS`
-Show the maximum amount of transaction.,SELECT MAX(`amount_of_transaction`) FROM `TRANSACTIONS`
-Show all date and share count of transactions.,"SELECT `date_of_transaction`, `share_count` FROM `TRANSACTIONS`"
-What is the total share of transactions?,SELECT SUM(`share_count`) FROM `TRANSACTIONS`
-Show all transaction ids with transaction code 'PUR'.,SELECT `transaction_id` FROM `TRANSACTIONS` WHERE `transaction_type_code` = 'PUR'
-"Show all dates of transactions whose type code is ""SALE"".",SELECT `date_of_transaction` FROM `TRANSACTIONS` WHERE `transaction_type_code` = `SALE`
-"Show the average amount of transactions with type code ""SALE"".",SELECT AVG(`amount_of_transaction`) FROM `TRANSACTIONS` WHERE `transaction_type_code` = `SALE`
-"Show the description of transaction type with code ""PUR"".",SELECT `transaction_type_description` FROM `Ref_Transaction_Types` WHERE `transaction_type_code` = `PUR`
-"Show the minimum amount of transactions whose type code is ""PUR"" and whose share count is bigger than 50.",SELECT MIN(`amount_of_transaction`) FROM `TRANSACTIONS` WHERE `transaction_type_code` = `PUR` AND `share_count` > 50
-Show the maximum share count of transactions where the amount is smaller than 10000,SELECT MAX(`share_count`) FROM `TRANSACTIONS` WHERE `amount_of_transaction` < 10000
-Show the dates of transactions if the share count is bigger than 100 or the amount is bigger than 1000.,SELECT `date_of_transaction` FROM `TRANSACTIONS` WHERE `share_count` > 100 OR `amount_of_transaction` > 1000
-Show the transaction type descriptions and dates if the share count is smaller than 10.,"SELECT `T1`.`transaction_type_description`, `T2`.`date_of_transaction` FROM `Ref_Transaction_Types` AS `T1` JOIN `TRANSACTIONS` AS `T2` ON `T1`.`transaction_type_code` = `T2`.`transaction_type_code` WHERE `T2`.`share_count` < 10"
-Show details of all investors if they make any transaction with share count greater than 100.,SELECT `T1`.`Investor_details` FROM `INVESTORS` AS `T1` JOIN `TRANSACTIONS` AS `T2` ON `T1`.`investor_id` = `T2`.`investor_id` WHERE `T2`.`share_count` > 100
-How many distinct transaction types are used in the transactions?,SELECT COUNT(DISTINCT `transaction_type_code`) FROM `TRANSACTIONS`
-Return the lot details and investor ids.,"SELECT `lot_details`, `investor_id` FROM `LOTS`"
-"Return the lot details of lots that belong to investors with details ""l""?",SELECT `T2`.`lot_details` FROM `INVESTORS` AS `T1` JOIN `LOTS` AS `T2` ON `T1`.`investor_id` = `T2`.`investor_id` WHERE `T1`.`Investor_details` = `l`
-What are the purchase details of transactions with amount bigger than 10000?,SELECT `T1`.`purchase_details` FROM `PURCHASES` AS `T1` JOIN `TRANSACTIONS` AS `T2` ON `T1`.`purchase_transaction_id` = `T2`.`transaction_id` WHERE `T2`.`amount_of_transaction` > 10000
-What are the sale details and dates of transactions with amount smaller than 3000?,"SELECT `T1`.`sales_details`, `T2`.`date_of_transaction` FROM `SALES` AS `T1` JOIN `TRANSACTIONS` AS `T2` ON `T1`.`sales_transaction_id` = `T2`.`transaction_id` WHERE `T2`.`amount_of_transaction` < 3000"
-What are the lot details of lots associated with transactions with share count smaller than 50?,SELECT `T1`.`lot_details` FROM `LOTS` AS `T1` JOIN `TRANSACTIONS_LOTS` AS `T2` ON `T1`.`lot_id` = `T2`.`transaction_id` JOIN `TRANSACTIONS` AS `T3` ON `T2`.`transaction_id` = `T3`.`transaction_id` WHERE `T3`.`share_count` < 50
-"What are the lot details of lots associated with transactions whose share count is bigger than 100 and whose type code is ""PUR""?",SELECT `T1`.`lot_details` FROM `LOTS` AS `T1` JOIN `TRANSACTIONS_LOTS` AS `T2` ON `T1`.`lot_id` = `T2`.`transaction_id` JOIN `TRANSACTIONS` AS `T3` ON `T2`.`transaction_id` = `T3`.`transaction_id` WHERE `T3`.`share_count` > 100 AND `T3`.`transaction_type_code` = `PUR`
-Show the average transaction amount for different transaction types.,"SELECT `transaction_type_code`, AVG(`amount_of_transaction`) FROM `TRANSACTIONS` GROUP BY `transaction_type_code`"
-Show the maximum and minimum share count of different transaction types.,"SELECT `transaction_type_code`, MAX(`share_count`), MIN(`share_count`) FROM `TRANSACTIONS` GROUP BY `transaction_type_code`"
-Show the average share count of transactions for different investors.,"SELECT `investor_id`, AVG(`share_count`) FROM `TRANSACTIONS` GROUP BY `investor_id`"
-"Show the average share count of transactions each each investor, ordered by average share count.","SELECT `investor_id`, AVG(`share_count`) FROM `TRANSACTIONS` GROUP BY `investor_id` ORDER BY AVG(`share_count`)"
-Show the average amount of transactions for different investors.,"SELECT `investor_id`, AVG(`amount_of_transaction`) FROM `TRANSACTIONS` GROUP BY `investor_id`"
-Show the average amount of transactions for different lots.,"SELECT `T2`.`lot_id`, AVG(`amount_of_transaction`) FROM `TRANSACTIONS` AS `T1` JOIN `Transactions_Lots` AS `T2` ON `T1`.`transaction_id` = `T2`.`transaction_id` GROUP BY `T2`.`lot_id`"
-"Show the average amount of transactions for different lots, ordered by average amount of transactions.","SELECT `T2`.`lot_id`, AVG(`amount_of_transaction`) FROM `TRANSACTIONS` AS `T1` JOIN `Transactions_Lots` AS `T2` ON `T1`.`transaction_id` = `T2`.`transaction_id` GROUP BY `T2`.`lot_id` ORDER BY AVG(`amount_of_transaction`)"
-"Show the number of transactions with transaction type code ""SALE"" for different investors if it is larger than 0.","SELECT `investor_id`, COUNT(*) FROM `TRANSACTIONS` WHERE `transaction_type_code` = `SALE` GROUP BY `investor_id`"
-Show the number of transactions for different investors.,"SELECT `investor_id`, COUNT(*) FROM `TRANSACTIONS` GROUP BY `investor_id`"
-Show the transaction type code that occurs the fewest times.,SELECT `transaction_type_code` FROM `TRANSACTIONS` GROUP BY `transaction_type_code` ORDER BY COUNT(*) ASC LIMIT 1
-Show the transaction type code that occurs the most frequently.,SELECT `transaction_type_code` FROM `TRANSACTIONS` GROUP BY `transaction_type_code` ORDER BY COUNT(*) DESC LIMIT 1
-Show the description of the transaction type that occurs most frequently.,SELECT `T1`.`transaction_type_description` FROM `Ref_Transaction_Types` AS `T1` JOIN `TRANSACTIONS` AS `T2` ON `T1`.`transaction_type_code` = `T2`.`transaction_type_code` GROUP BY `T1`.`transaction_type_code` ORDER BY COUNT(*) DESC LIMIT 1
-Show the id and details of the investor that has the largest number of transactions.,"SELECT `T2`.`investor_id`, `T1`.`Investor_details` FROM `INVESTORS` AS `T1` JOIN `TRANSACTIONS` AS `T2` ON `T1`.`investor_id` = `T2`.`investor_id` GROUP BY `T2`.`investor_id` ORDER BY COUNT(*) DESC LIMIT 1"
-Show the id and details for the investors who have the top 3 number of transactions.,"SELECT `T2`.`investor_id`, `T1`.`Investor_details` FROM `INVESTORS` AS `T1` JOIN `TRANSACTIONS` AS `T2` ON `T1`.`investor_id` = `T2`.`investor_id` GROUP BY `T2`.`investor_id` ORDER BY COUNT(*) DESC LIMIT 3"
-Show the ids of the investors who have at least two transactions.,SELECT `T2`.`investor_id` FROM `INVESTORS` AS `T1` JOIN `TRANSACTIONS` AS `T2` ON `T1`.`investor_id` = `T2`.`investor_id` GROUP BY `T2`.`investor_id` HAVING COUNT(*) >= 2
-"Show the ids and details of the investors who have at least two transactions with type code ""SALE"".","SELECT `T2`.`investor_id`, `T1`.`Investor_details` FROM `INVESTORS` AS `T1` JOIN `TRANSACTIONS` AS `T2` ON `T1`.`investor_id` = `T2`.`investor_id` WHERE `T2`.`transaction_type_code` = `SALE` GROUP BY `T2`.`investor_id` HAVING COUNT(*) >= 2"
-What are the dates of transactions with at least 100 share count or amount bigger than 100?,SELECT `date_of_transaction` FROM `TRANSACTIONS` WHERE `share_count` >= 100 OR `amount_of_transaction` >= 100
-What are the details of all sales and purchases?,SELECT `sales_details` FROM `sales` UNION SELECT `purchase_details` FROM `purchases`
-What are the details of the lots which are not used in any transactions?,SELECT `lot_details` FROM `Lots` EXCEPT SELECT `T1`.`lot_details` FROM `Lots` AS `T1` JOIN `transactions_lots` AS `T2` ON `T1`.`lot_id` = `T2`.`lot_id`
+Find the number of investors in total.,SELECT COUNT(*) FROM `Investors`
+Show all investor details.,SELECT `Investor_details` FROM `Investors`
+Show all distinct lot details.,SELECT DISTINCT `lot_details` FROM `Lots`
+Show the maximum amount of transaction.,SELECT MAX(`amount_of_transaction`) FROM `Transactions`
+Show all date and share count of transactions.,"SELECT `date_of_transaction`, `share_count` FROM `Transactions`"
+What is the total share of transactions?,SELECT SUM(`share_count`) FROM `Transactions`
+Show all transaction ids with transaction code 'PUR'.,SELECT `transaction_id` FROM `Transactions` WHERE `transaction_type_code` = 'PUR'
+"Show all dates of transactions whose type code is ""SALE"".",SELECT `date_of_transaction` FROM `Transactions` WHERE `transaction_type_code` = 'SALE'
+"Show the average amount of transactions with type code ""SALE"".",SELECT AVG(`amount_of_transaction`) FROM `Transactions` WHERE `transaction_type_code` = 'SALE'
+"Show the description of transaction type with code ""PUR"".",SELECT `transaction_type_description` FROM `Ref_Transaction_Types` WHERE `transaction_type_code` = 'PUR'
+"Show the minimum amount of transactions whose type code is ""PUR"" and whose share count is bigger than 50.",SELECT MIN(`amount_of_transaction`) FROM `Transactions` WHERE `transaction_type_code` = 'PUR' AND `share_count` > 50
+Show the maximum share count of transactions where the amount is smaller than 10000,SELECT MAX(`share_count`) FROM `Transactions` WHERE `amount_of_transaction` < 10000
+Show the dates of transactions if the share count is bigger than 100 or the amount is bigger than 1000.,SELECT `date_of_transaction` FROM `Transactions` WHERE `share_count` > 100 OR `amount_of_transaction` > 1000
+Show the transaction type descriptions and dates if the share count is smaller than 10.,"SELECT `t1`.`transaction_type_description`, `t2`.`date_of_transaction` FROM `Ref_Transaction_Types` AS `t1` JOIN `Transactions` AS `t2` ON `t1`.`transaction_type_code` = `t2`.`transaction_type_code` WHERE `t2`.`share_count` < 10"
+Show details of all investors if they make any transaction with share count greater than 100.,SELECT `t1`.`Investor_details` FROM `Investors` AS `t1` JOIN `Transactions` AS `t2` ON `t1`.`investor_id` = `t2`.`investor_id` WHERE `t2`.`share_count` > 100
+How many distinct transaction types are used in the transactions?,SELECT COUNT(DISTINCT `transaction_type_code`) FROM `Transactions`
+Return the lot details and investor ids.,"SELECT `lot_details`, `investor_id` FROM `Lots`"
+"Return the lot details of lots that belong to investors with details ""l""?",SELECT `t2`.`lot_details` FROM `Investors` AS `t1` JOIN `Lots` AS `t2` ON `t1`.`investor_id` = `t2`.`investor_id` WHERE `t1`.`Investor_details` = 'l'
+What are the purchase details of transactions with amount bigger than 10000?,SELECT `t1`.`purchase_details` FROM `Purchases` AS `t1` JOIN `Transactions` AS `t2` ON `t1`.`purchase_transaction_id` = `t2`.`transaction_id` WHERE `t2`.`amount_of_transaction` > 10000
+What are the sale details and dates of transactions with amount smaller than 3000?,"SELECT `t1`.`sales_details`, `t2`.`date_of_transaction` FROM `Sales` AS `t1` JOIN `Transactions` AS `t2` ON `t1`.`sales_transaction_id` = `t2`.`transaction_id` WHERE `t2`.`amount_of_transaction` < 3000"
+What are the lot details of lots associated with transactions with share count smaller than 50?,SELECT `t1`.`lot_details` FROM `Lots` AS `t1` JOIN `Transactions_Lots` AS `t2` ON `t1`.`lot_id` = `t2`.`transaction_id` JOIN `Transactions` AS `t3` ON `t2`.`transaction_id` = `t3`.`transaction_id` WHERE `t3`.`share_count` < 50
+"What are the lot details of lots associated with transactions whose share count is bigger than 100 and whose type code is ""PUR""?",SELECT `t1`.`lot_details` FROM `Lots` AS `t1` JOIN `Transactions_Lots` AS `t2` ON `t1`.`lot_id` = `t2`.`transaction_id` JOIN `Transactions` AS `t3` ON `t2`.`transaction_id` = `t3`.`transaction_id` WHERE `t3`.`share_count` > 100 AND `t3`.`transaction_type_code` = 'PUR'
+Show the average transaction amount for different transaction types.,"SELECT `transaction_type_code`, AVG(`amount_of_transaction`) FROM `Transactions` GROUP BY `transaction_type_code`"
+Show the maximum and minimum share count of different transaction types.,"SELECT `transaction_type_code`, MAX(`share_count`), MIN(`share_count`) FROM `Transactions` GROUP BY `transaction_type_code`"
+Show the average share count of transactions for different investors.,"SELECT `investor_id`, AVG(`share_count`) FROM `Transactions` GROUP BY `investor_id`"
+"Show the average share count of transactions each each investor, ordered by average share count.","SELECT `investor_id`, AVG(`share_count`) FROM `Transactions` GROUP BY `investor_id` ORDER BY AVG(`share_count`)"
+Show the average amount of transactions for different investors.,"SELECT `investor_id`, AVG(`amount_of_transaction`) FROM `Transactions` GROUP BY `investor_id`"
+Show the average amount of transactions for different lots.,"SELECT `t2`.`lot_id`, AVG(`amount_of_transaction`) FROM `Transactions` AS `t1` JOIN `Transactions_Lots` AS `t2` ON `t1`.`transaction_id` = `t2`.`transaction_id` GROUP BY `t2`.`lot_id`"
+"Show the average amount of transactions for different lots, ordered by average amount of transactions.","SELECT `t2`.`lot_id`, AVG(`amount_of_transaction`) FROM `Transactions` AS `t1` JOIN `Transactions_Lots` AS `t2` ON `t1`.`transaction_id` = `t2`.`transaction_id` GROUP BY `t2`.`lot_id` ORDER BY AVG(`amount_of_transaction`)"
+"Show the number of transactions with transaction type code ""SALE"" for different investors if it is larger than 0.","SELECT `investor_id`, COUNT(*) FROM `Transactions` WHERE `transaction_type_code` = 'SALE' GROUP BY `investor_id`"
+Show the number of transactions for different investors.,"SELECT `investor_id`, COUNT(*) FROM `Transactions` GROUP BY `investor_id`"
+Show the transaction type code that occurs the fewest times.,SELECT `transaction_type_code` FROM `Transactions` GROUP BY `transaction_type_code` ORDER BY COUNT(*) ASC LIMIT 1
+Show the transaction type code that occurs the most frequently.,SELECT `transaction_type_code` FROM `Transactions` GROUP BY `transaction_type_code` ORDER BY COUNT(*) DESC LIMIT 1
+Show the description of the transaction type that occurs most frequently.,SELECT `t1`.`transaction_type_description` FROM `Ref_Transaction_Types` AS `t1` JOIN `Transactions` AS `t2` ON `t1`.`transaction_type_code` = `t2`.`transaction_type_code` GROUP BY `t1`.`transaction_type_description` ORDER BY COUNT(*) DESC LIMIT 1
+Show the id and details of the investor that has the largest number of transactions.,"SELECT `t2`.`investor_id`, `t1`.`Investor_details` FROM `Investors` AS `t1` JOIN `Transactions` AS `t2` ON `t1`.`investor_id` = `t2`.`investor_id` GROUP BY `t2`.`investor_id`, `t1`.`Investor_details` ORDER BY COUNT(*) DESC LIMIT 1"
+Show the id and details for the investors who have the top 3 number of transactions.,"SELECT `t2`.`investor_id`, `t1`.`Investor_details` FROM `Investors` AS `t1` JOIN `Transactions` AS `t2` ON `t1`.`investor_id` = `t2`.`investor_id` GROUP BY `t2`.`investor_id`, `t1`.`Investor_details` ORDER BY COUNT(*) DESC LIMIT 3"
+Show the ids of the investors who have at least two transactions.,SELECT `t2`.`investor_id` FROM `Investors` AS `t1` JOIN `Transactions` AS `t2` ON `t1`.`investor_id` = `t2`.`investor_id` GROUP BY `t2`.`investor_id` HAVING COUNT(*) >= 2
+"Show the ids and details of the investors who have at least two transactions with type code ""SALE"".","SELECT `t2`.`investor_id`, `t1`.`Investor_details` FROM `Investors` AS `t1` JOIN `Transactions` AS `t2` ON `t1`.`investor_id` = `t2`.`investor_id` WHERE `t2`.`transaction_type_code` = 'SALE' GROUP BY `t2`.`investor_id`, `t1`.`Investor_details` HAVING COUNT(*) >= 2"
+What are the dates of transactions with at least 100 share count or amount bigger than 100?,SELECT `date_of_transaction` FROM `Transactions` WHERE `share_count` >= 100 OR `amount_of_transaction` >= 100
+What are the details of all sales and purchases?,SELECT `sales_details` FROM `Sales` UNION SELECT `purchase_details` FROM `Purchases`
+What are the details of the lots which are not used in any transactions?,SELECT `lot_details` FROM `Lots` EXCEPT SELECT `t1`.`lot_details` FROM `Lots` AS `t1` JOIN `Transactions_Lots` AS `t2` ON `t1`.`lot_id` = `t2`.`lot_id`

@@ -1,5 +1,5 @@
 question,sql
 How many available features are there in total?,SELECT COUNT(*) FROM `Other_Available_Features`
-What is the feature type name of feature AirCon?,SELECT `T2`.`feature_type_name` FROM `Other_Available_Features` AS `T1` JOIN `Ref_Feature_Types` AS `T2` ON `T1`.`feature_type_code` = `T2`.`feature_type_code` WHERE `T1`.`feature_name` = `AirCon`
-Show the property type descriptions of properties belonging to that code.,SELECT `T2`.`property_type_description` FROM `Properties` AS `T1` JOIN `Ref_Property_Types` AS `T2` ON `T1`.`property_type_code` = `T2`.`property_type_code` GROUP BY `T1`.`property_type_code`
-What are the names of properties that are either houses or apartments with more than 1 room?,SELECT `property_name` FROM `Properties` WHERE `property_type_code` = `House` UNION SELECT `property_name` FROM `Properties` WHERE `property_type_code` = `Apartment` AND `room_count` > 1
+What is the feature type name of feature AirCon?,SELECT `t2`.`feature_type_name` FROM `Other_Available_Features` AS `t1` JOIN `Ref_Feature_Types` AS `t2` ON `t1`.`feature_type_code` = `t2`.`feature_type_code` WHERE `t1`.`feature_name` = 'AirCon'
+Show the property type descriptions of properties belonging to that code.,SELECT `t2`.`property_type_description` FROM `Properties` AS `t1` JOIN `Ref_Property_Types` AS `t2` ON `t1`.`property_type_code` = `t2`.`property_type_code` GROUP BY `t2`.`property_type_description`
+What are the names of properties that are either houses or apartments with more than 1 room?,SELECT `property_name` FROM `Properties` WHERE `property_type_code` = 'House' UNION SELECT `property_name` FROM `Properties` WHERE `property_type_code` = 'Apartment' AND `room_count` > 1

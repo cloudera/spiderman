@@ -11,20 +11,20 @@ What is the money rank of the poker player with the highest earnings?,SELECT `Mo
 Return the money rank of the player with the greatest earnings.,SELECT `Money_Rank` FROM `poker_player` ORDER BY `Earnings` DESC LIMIT 1
 What is the maximum number of final tables made among poker players with earnings less than 200000?,SELECT MAX(`Final_Table_Made`) FROM `poker_player` WHERE `Earnings` < 200000
 Return the maximum final tables made across all poker players who have earnings below 200000.,SELECT MAX(`Final_Table_Made`) FROM `poker_player` WHERE `Earnings` < 200000
-What are the names of poker players?,SELECT `T1`.`Name` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID`
-Return the names of all the poker players.,SELECT `T1`.`Name` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID`
-What are the names of poker players whose earnings is higher than 300000?,SELECT `T1`.`Name` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` WHERE `T2`.`Earnings` > 300000
-Give the names of poker players who have earnings above 300000.,SELECT `T1`.`Name` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` WHERE `T2`.`Earnings` > 300000
-List the names of poker players ordered by the final tables made in ascending order.,SELECT `T1`.`Name` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` ORDER BY `T2`.`Final_Table_Made`
-"What are the names of poker players, ordered ascending by the number of final tables they have made?",SELECT `T1`.`Name` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` ORDER BY `T2`.`Final_Table_Made`
-What is the birth date of the poker player with the lowest earnings?,SELECT `T1`.`Birth_Date` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` ORDER BY `T2`.`Earnings` ASC LIMIT 1
-Return the birth date of the poker player with the lowest earnings.,SELECT `T1`.`Birth_Date` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` ORDER BY `T2`.`Earnings` ASC LIMIT 1
-What is the money rank of the tallest poker player?,SELECT `T2`.`Money_Rank` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` ORDER BY `T1`.`Height` DESC LIMIT 1
-Return the money rank of the poker player with the greatest height.,SELECT `T2`.`Money_Rank` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` ORDER BY `T1`.`Height` DESC LIMIT 1
-What is the average earnings of poker players with height higher than 200?,SELECT AVG(`T2`.`Earnings`) FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` WHERE `T1`.`Height` > 200
-Give average earnings of poker players who are taller than 200.,SELECT AVG(`T2`.`Earnings`) FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` WHERE `T1`.`Height` > 200
-What are the names of poker players in descending order of earnings?,SELECT `T1`.`Name` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` ORDER BY `T2`.`Earnings` DESC
-Return the names of poker players sorted by their earnings descending.,SELECT `T1`.`Name` FROM `people` AS `T1` JOIN `poker_player` AS `T2` ON `T1`.`People_ID` = `T2`.`People_ID` ORDER BY `T2`.`Earnings` DESC
+What are the names of poker players?,SELECT `t1`.`Name` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID`
+Return the names of all the poker players.,SELECT `t1`.`Name` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID`
+What are the names of poker players whose earnings is higher than 300000?,SELECT `t1`.`Name` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` WHERE `t2`.`Earnings` > 300000
+Give the names of poker players who have earnings above 300000.,SELECT `t1`.`Name` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` WHERE `t2`.`Earnings` > 300000
+List the names of poker players ordered by the final tables made in ascending order.,SELECT `t1`.`Name` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` ORDER BY `t2`.`Final_Table_Made`
+"What are the names of poker players, ordered ascending by the number of final tables they have made?",SELECT `t1`.`Name` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` ORDER BY `t2`.`Final_Table_Made`
+What is the birth date of the poker player with the lowest earnings?,SELECT `t1`.`Birth_Date` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` ORDER BY `t2`.`Earnings` ASC LIMIT 1
+Return the birth date of the poker player with the lowest earnings.,SELECT `t1`.`Birth_Date` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` ORDER BY `t2`.`Earnings` ASC LIMIT 1
+What is the money rank of the tallest poker player?,SELECT `t2`.`Money_Rank` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` ORDER BY `t1`.`Height` DESC LIMIT 1
+Return the money rank of the poker player with the greatest height.,SELECT `t2`.`Money_Rank` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` ORDER BY `t1`.`Height` DESC LIMIT 1
+What is the average earnings of poker players with height higher than 200?,SELECT AVG(`t2`.`Earnings`) FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` WHERE `t1`.`Height` > 200
+Give average earnings of poker players who are taller than 200.,SELECT AVG(`t2`.`Earnings`) FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` WHERE `t1`.`Height` > 200
+What are the names of poker players in descending order of earnings?,SELECT `t1`.`Name` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` ORDER BY `t2`.`Earnings` DESC
+Return the names of poker players sorted by their earnings descending.,SELECT `t1`.`Name` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` ORDER BY `t2`.`Earnings` DESC
 What are different nationalities of people and the corresponding number of people from each nation?,"SELECT `Nationality`, COUNT(*) FROM `people` GROUP BY `Nationality`"
 How many people are there of each nationality?,"SELECT `Nationality`, COUNT(*) FROM `people` GROUP BY `Nationality`"
 What is the most common nationality of people?,SELECT `Nationality` FROM `people` GROUP BY `Nationality` ORDER BY COUNT(*) DESC LIMIT 1
@@ -33,8 +33,8 @@ What are the nationalities that are shared by at least two people?,SELECT `Natio
 Return the nationalities for which there are two or more people.,SELECT `Nationality` FROM `people` GROUP BY `Nationality` HAVING COUNT(*) >= 2
 List the names and birth dates of people in ascending alphabetical order of name.,"SELECT `Name`, `Birth_Date` FROM `people` ORDER BY `Name` ASC"
 "What are the names and birth dates of people, ordered by their names in alphabetical order?","SELECT `Name`, `Birth_Date` FROM `people` ORDER BY `Name` ASC"
-"Show names of people whose nationality is not ""Russia"".",SELECT `Name` FROM `people` WHERE `Nationality` <> `Russia`
-What are the names of people who are not from Russia?,SELECT `Name` FROM `people` WHERE `Nationality` <> `Russia`
+"Show names of people whose nationality is not ""Russia"".",SELECT `Name` FROM `people` WHERE `Nationality` <> 'Russia'
+What are the names of people who are not from Russia?,SELECT `Name` FROM `people` WHERE `Nationality` <> 'Russia'
 List the names of people that are not poker players.,SELECT `Name` FROM `people` WHERE NOT `People_ID` IN (SELECT `People_ID` FROM `poker_player`)
 What are the names of people who do not play poker?,SELECT `Name` FROM `people` WHERE NOT `People_ID` IN (SELECT `People_ID` FROM `poker_player`)
 How many distinct nationalities are there?,SELECT COUNT(DISTINCT `Nationality`) FROM `people`

@@ -13,18 +13,18 @@ What are the names and location of the shops in ascending alphabetical order of 
 "Return the names and locations of shops, ordered by name in alphabetical order.","SELECT `Shop_Name`, `LOCATION` FROM `shop` ORDER BY `Shop_Name` ASC"
 How many different software platforms are there for devices?,SELECT COUNT(DISTINCT `Software_Platform`) FROM `device`
 Count the number of different software platforms.,SELECT COUNT(DISTINCT `Software_Platform`) FROM `device`
-"List the open date of open year of the shop named ""Apple"".","SELECT `Open_Date`, `Open_Year` FROM `shop` WHERE `Shop_Name` = `Apple`"
-What are the open dates and years for the shop named Apple?,"SELECT `Open_Date`, `Open_Year` FROM `shop` WHERE `Shop_Name` = `Apple`"
+"List the open date of open year of the shop named ""Apple"".","SELECT `Open_Date`, `Open_Year` FROM `shop` WHERE `Shop_Name` = 'Apple'"
+What are the open dates and years for the shop named Apple?,"SELECT `Open_Date`, `Open_Year` FROM `shop` WHERE `Shop_Name` = 'Apple'"
 List the name of the shop with the latest open year.,SELECT `Shop_Name` FROM `shop` ORDER BY `Open_Year` DESC LIMIT 1
 What is the shop name corresponding to the shop that opened in the most recent year?,SELECT `Shop_Name` FROM `shop` ORDER BY `Open_Year` DESC LIMIT 1
-Show names of shops and the carriers of devices they have in stock.,"SELECT `T3`.`Shop_Name`, `T2`.`Carrier` FROM `stock` AS `T1` JOIN `device` AS `T2` ON `T1`.`Device_ID` = `T2`.`Device_ID` JOIN `shop` AS `T3` ON `T1`.`Shop_ID` = `T3`.`Shop_ID`"
-"What are the names of device shops, and what are the carriers that they carry devices in stock for?","SELECT `T3`.`Shop_Name`, `T2`.`Carrier` FROM `stock` AS `T1` JOIN `device` AS `T2` ON `T1`.`Device_ID` = `T2`.`Device_ID` JOIN `shop` AS `T3` ON `T1`.`Shop_ID` = `T3`.`Shop_ID`"
-Show names of shops that have more than one kind of device in stock.,SELECT `T2`.`Shop_Name` FROM `stock` AS `T1` JOIN `shop` AS `T2` ON `T1`.`Shop_ID` = `T2`.`Shop_ID` GROUP BY `T1`.`Shop_ID` HAVING COUNT(*) > 1
-What are the names of shops that have more than a single kind of device in stock?,SELECT `T2`.`Shop_Name` FROM `stock` AS `T1` JOIN `shop` AS `T2` ON `T1`.`Shop_ID` = `T2`.`Shop_ID` GROUP BY `T1`.`Shop_ID` HAVING COUNT(*) > 1
-Show the name of the shop that has the most kind of devices in stock.,SELECT `T2`.`Shop_Name` FROM `stock` AS `T1` JOIN `shop` AS `T2` ON `T1`.`Shop_ID` = `T2`.`Shop_ID` GROUP BY `T1`.`Shop_ID` ORDER BY COUNT(*) DESC LIMIT 1
-What is the name of the shop that has the most different kinds of devices in stock?,SELECT `T2`.`Shop_Name` FROM `stock` AS `T1` JOIN `shop` AS `T2` ON `T1`.`Shop_ID` = `T2`.`Shop_ID` GROUP BY `T1`.`Shop_ID` ORDER BY COUNT(*) DESC LIMIT 1
-Show the name of the shop that have the largest quantity of devices in stock.,SELECT `T2`.`Shop_Name` FROM `stock` AS `T1` JOIN `shop` AS `T2` ON `T1`.`Shop_ID` = `T2`.`Shop_ID` GROUP BY `T1`.`Shop_ID` ORDER BY SUM(`T1`.`quantity`) DESC LIMIT 1
-What is the name of the shop that has the greatest quantity of devices in stock?,SELECT `T2`.`Shop_Name` FROM `stock` AS `T1` JOIN `shop` AS `T2` ON `T1`.`Shop_ID` = `T2`.`Shop_ID` GROUP BY `T1`.`Shop_ID` ORDER BY SUM(`T1`.`quantity`) DESC LIMIT 1
+Show names of shops and the carriers of devices they have in stock.,"SELECT `t3`.`Shop_Name`, `t2`.`Carrier` FROM `stock` AS `t1` JOIN `device` AS `t2` ON `t1`.`Device_ID` = `t2`.`Device_ID` JOIN `shop` AS `t3` ON `t1`.`Shop_ID` = `t3`.`Shop_ID`"
+"What are the names of device shops, and what are the carriers that they carry devices in stock for?","SELECT `t3`.`Shop_Name`, `t2`.`Carrier` FROM `stock` AS `t1` JOIN `device` AS `t2` ON `t1`.`Device_ID` = `t2`.`Device_ID` JOIN `shop` AS `t3` ON `t1`.`Shop_ID` = `t3`.`Shop_ID`"
+Show names of shops that have more than one kind of device in stock.,SELECT `t2`.`Shop_Name` FROM `stock` AS `t1` JOIN `shop` AS `t2` ON `t1`.`Shop_ID` = `t2`.`Shop_ID` GROUP BY `t2`.`Shop_Name` HAVING COUNT(*) > 1
+What are the names of shops that have more than a single kind of device in stock?,SELECT `t2`.`Shop_Name` FROM `stock` AS `t1` JOIN `shop` AS `t2` ON `t1`.`Shop_ID` = `t2`.`Shop_ID` GROUP BY `t2`.`Shop_Name` HAVING COUNT(*) > 1
+Show the name of the shop that has the most kind of devices in stock.,SELECT `t2`.`Shop_Name` FROM `stock` AS `t1` JOIN `shop` AS `t2` ON `t1`.`Shop_ID` = `t2`.`Shop_ID` GROUP BY `t2`.`Shop_Name` ORDER BY COUNT(*) DESC LIMIT 1
+What is the name of the shop that has the most different kinds of devices in stock?,SELECT `t2`.`Shop_Name` FROM `stock` AS `t1` JOIN `shop` AS `t2` ON `t1`.`Shop_ID` = `t2`.`Shop_ID` GROUP BY `t2`.`Shop_Name` ORDER BY COUNT(*) DESC LIMIT 1
+Show the name of the shop that have the largest quantity of devices in stock.,SELECT `t2`.`Shop_Name` FROM `stock` AS `t1` JOIN `shop` AS `t2` ON `t1`.`Shop_ID` = `t2`.`Shop_ID` GROUP BY `t2`.`Shop_Name` ORDER BY SUM(`t1`.`quantity`) DESC LIMIT 1
+What is the name of the shop that has the greatest quantity of devices in stock?,SELECT `t2`.`Shop_Name` FROM `stock` AS `t1` JOIN `shop` AS `t2` ON `t1`.`Shop_ID` = `t2`.`Shop_ID` GROUP BY `t2`.`Shop_Name` ORDER BY SUM(`t1`.`quantity`) DESC LIMIT 1
 Please show different software platforms and the corresponding number of devices using each.,"SELECT `Software_Platform`, COUNT(*) FROM `device` GROUP BY `Software_Platform`"
 "What are the different software platforms for devices, and how many devices have each?","SELECT `Software_Platform`, COUNT(*) FROM `device` GROUP BY `Software_Platform`"
 Please show the software platforms of devices in descending order of the count.,SELECT `Software_Platform` FROM `device` GROUP BY `Software_Platform` ORDER BY COUNT(*) DESC
@@ -37,5 +37,5 @@ Show the locations shared by shops with open year later than 2012 and shops with
 Which locations contains both shops that opened after the year 2012 and shops that opened before 2008?,SELECT `LOCATION` FROM `shop` WHERE `Open_Year` > 2012 INTERSECT SELECT `LOCATION` FROM `shop` WHERE `Open_Year` < 2008
 List the carriers of devices that have no devices in stock.,SELECT `Carrier` FROM `device` WHERE NOT `Device_ID` IN (SELECT `Device_ID` FROM `stock`)
 What are the carriers of devices that are not in stock anywhere?,SELECT `Carrier` FROM `device` WHERE NOT `Device_ID` IN (SELECT `Device_ID` FROM `stock`)
-Show the carriers of devices in stock at more than one shop.,SELECT `T2`.`Carrier` FROM `stock` AS `T1` JOIN `device` AS `T2` ON `T1`.`Device_ID` = `T2`.`Device_ID` GROUP BY `T1`.`Device_ID` HAVING COUNT(*) > 1
-What are the carriers of devices that are in stock in more than a single shop?,SELECT `T2`.`Carrier` FROM `stock` AS `T1` JOIN `device` AS `T2` ON `T1`.`Device_ID` = `T2`.`Device_ID` GROUP BY `T1`.`Device_ID` HAVING COUNT(*) > 1
+Show the carriers of devices in stock at more than one shop.,SELECT `t2`.`Carrier` FROM `stock` AS `t1` JOIN `device` AS `t2` ON `t1`.`Device_ID` = `t2`.`Device_ID` GROUP BY `t2`.`Carrier` HAVING COUNT(*) > 1
+What are the carriers of devices that are in stock in more than a single shop?,SELECT `t2`.`Carrier` FROM `stock` AS `t1` JOIN `device` AS `t2` ON `t1`.`Device_ID` = `t2`.`Device_ID` GROUP BY `t2`.`Carrier` HAVING COUNT(*) > 1

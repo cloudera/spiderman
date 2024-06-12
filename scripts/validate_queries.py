@@ -23,7 +23,7 @@ with alive_bar(len(db_names)) as bar:
 
             count = len(queries)
             for idx, query in enumerate(queries):
-                bar.text(f">>>>>>>> DB: {db_name} | {idx} | Query: {idx}/{count}")
+                bar.text(f">>>>> DB: {db_name} | {idx} | Query: {idx}/{count}")
                 try:
                     db.execute(query[1])
                 except Exception as e:
