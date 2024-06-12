@@ -4,6 +4,7 @@ from typing import Tuple
 
 from utils.filesystem import read_csv, read_str
 
+
 BASE_DIR = './dataset'
 
 def path_to_data_dir(db_name: str) -> str:
@@ -56,39 +57,41 @@ def get_data(db_name: str, table_name: str) -> Tuple[list, list[list]]:
     return rows[0], rows[1:]
 
 def get_stats() -> dict:
-    dbs_with_data = 0
-    total_tables = 0
-    total_queries = 0
-    dbs_with_train_queries = 0
-    dbs_with_test_queries = 0
+    train_queries = 0
+    train_tables = 0
+    train_dbs = 0
+
+    test_queries = 0
+    test_tables = 0
+    test_dbs = 0
 
     db_names = get_db_names()
     for db_name in db_names:
-        if path.exists(path_to_data_dir(db_name)):
-            dbs_with_data += 1
-        else:
-            print("No data for DB :", db_name)
+        query_count = len(get_queries(db_name))
+        tables_count = read_str(path_to_schema_file(db_name)).count('CREATE TABLE')
 
         if path.exists(path_to_train_queries_file(db_name)):
-            dbs_with_train_queries += 1
+            train_queries += query_count
+            train_tables += tables_count
+            train_dbs += 1
 
         if path.exists(path_to_test_queries_file(db_name)):
-            dbs_with_test_queries += 1
-
-        schema = read_str(path_to_schema_file(db_name))
-        total_tables += schema.count('CREATE TABLE')
-
-        queries = get_queries(db_name)
-        total_queries += len(queries)
+            test_queries += query_count
+            test_tables += tables_count
+            test_dbs += 1
 
     return {
-        "Total tables": total_tables,
-        "Total queries": total_queries,
+        "Train queries": train_queries,
+        "Tables used in train queries": train_tables,
+        "DBs with train queries": train_dbs,
 
-        "\nDBs with training queries": dbs_with_train_queries,
-        "DBs with test queries": dbs_with_test_queries,
+        "Test queries": test_queries,
+        "Tables used in test queries": test_tables,
+        "DBs with test queries": test_dbs,
 
-        "\nTotal available DBs": len(db_names),
+        "Total queries": train_queries + test_queries,
+        "Total tables": train_tables + test_tables,
+        "Total DBs": len(db_names),
         "DB names": ", ".join(db_names)
     }
 
