@@ -1,18 +1,18 @@
 # SpiderMan
-A comprehensive human-annotated plain-text dataset for SQL AI tasks across diverse domains and complexity levels.
+A comprehensive, high quality, human-annotated plain-text dataset for SQL AI tasks across diverse domains and complexity levels.
 
 ## Why SpiderMan
-SpiderMan is a better version of the [Spider 1.0](https://yale-lily.github.io/spider) dataset.
+SpiderMan is an improved version of the [Spider 1.0](https://yale-lily.github.io/spider) dataset.
 
-- You get the databases in plain-text format instead of a set of sqlite files. And that makes it easy for you to load the dataset into any database of your choice.
+- The databases are made available in plain-text format instead of a set of sqlite files. This makes it easy for you to load the dataset into any database of your choice.
 - Schema has been standardized - Corrected table ordering, column data-types, primary / foreign key constraints and indexes.
 - Data has been corrected for schema based validations.
 - Queries have been improved for successful execution in MySQL and other DB systems.
 
-SpiderMan is split into 2 parts - Dataset, and scripts that makes it easy to work with the dataset.
+SpiderMan is split into 2 parts - Dataset and scripts.
 
 ## Dataset
-The dataset comprises of 157 databases. Each of them come with their own respective schema, data and queries. We currently don't have queries that span across databases. Train test split happens at the database level.
+The dataset comprises of 157 databases. Each of them come with their own respective schema, data and queries. We currently do not have queries that span across databases. Train-test split happens at the database level.
 
 ||Queries|Tables|Databases|
 |-|-|-|-|
@@ -21,7 +21,7 @@ The dataset comprises of 157 databases. Each of them come with their own respect
 |Total|7760|779|157|
 
 ## Scripts
-Following scripts makes it easy to use the dataset. Follow the [Setup](#setup) section ot get your system ready to run these scripts.
+The scripts provided below make it easy to use the dataset. Follow the [Setup](#setup) section to get your system ready to run these scripts.
 
 ### Load Dataset
 Creates schema of all the databases, and insert their data into a DB system. It accepts one argument - A SQLAlchemy 2.0 compatible URL to the destination database. More details on the URL is available [here](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls).
@@ -32,7 +32,7 @@ Eg: python ./scripts/load_dataset.py 'mysql://spiderman:spiderman@127.0.0.1:3306
 ```
 
 ### Validate Queries
-Once the dataset is loaded, you can run the following script to try executing the queries. It checks successful completion of all the queries, query results are not verified at this point.
+Once the dataset is loaded, you can run the following script to execute the queries. It checks successful completion of all the queries. Query results are not verified at this point.
 ```
 python scripts/validate_queries.py 'mysql://<username>:<password>@<host>:3306'
 
@@ -54,7 +54,7 @@ python ./scripts/download_source.py
 # Rebuild
 python ./scripts/rebuild_dataset.py
 ```
-9 databases from the source would be skipped as they lack data - imdb, formula_1, music_2, yelp, academic, restaurants, scholar, sakila_1, geo.
+9 databases from the source would be skipped as they do not have data - imdb, formula_1, music_2, yelp, academic, restaurants, scholar, sakila_1, geo.
 
 ## Setup
 Following commands are for macOS.
