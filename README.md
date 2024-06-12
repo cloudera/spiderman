@@ -102,5 +102,5 @@ SpiderMan is a refined version of the [Spider dataset](https://yale-lily.github.
 ```
 
 # License
-
-[CC BY-SA 4.0 license](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
+- Dataset license : [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
+- Scripts license : [Apache 2.0](https://apache.org/licenses/LICENSE-2.0.txt)
