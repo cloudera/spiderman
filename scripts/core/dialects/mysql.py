@@ -1,10 +1,12 @@
 import datetime
 from typing import List
 
-import sqlglot
+from sqlglot import exp, parse_one, Dialects
+
 from core.source_db import Table, Column
 
 
+# --- Schema --------------------------------------------------------
 INDENTATION = "    "
 
 def _correct_type(col: Column) -> str:
@@ -106,6 +108,7 @@ CREATE TABLE `{table.db_name}`.`{table.name}` (
 );"""
 
 
+# --- Data ----------------------------------------------------------
 def _order_columns(columns: list[Column], column_name: list[str]) -> list[Column]:
     column_map = {}
     for col in columns:
@@ -151,5 +154,102 @@ def normalize_data(table_data: list[list], table: Table) -> list[list]:
 
     return [column_names] + rows
 
-def normalize_sql(sql: str) -> str:
-    return sqlglot.transpile(sql, write="mysql", identify=True)[0]
+
+# --- Query ---------------------------------------------------------
+
+# Correct table names - Queries in the source have case inconsistency issues with table names
+def _table_transformer(node, valid_table_name_map: dict[str, str]):
+    if isinstance(node, exp.Table):
+        name_key = node.name.lower()
+        if name_key in valid_table_name_map:
+            node_str = str(node)
+            node_str = node_str.replace(node.name, valid_table_name_map[name_key])
+            return parse_one(node_str)
+    return node
+
+def _has_aggregated_function(node) -> bool:
+    for select in node.selects:
+        if isinstance(select, exp.Min): return True
+        if isinstance(select, exp.Max): return True
+        if isinstance(select, exp.Count): return True
+        if isinstance(select, exp.Avg): return True
+    return False
+
+# Add missing Group Bys
+def _group_by_transformer(node):
+    if isinstance(node, exp.Select):
+        node_str = str(node).upper()
+        if "GROUP BY" in node_str or _has_aggregated_function(node):
+            columns = []
+            for select in node.selects:
+                if isinstance(select, exp.Column):
+                    columns.append(str(select))
+            if columns:
+                return node.group_by(", ".join(columns), append = False)
+    return node
+
+# Make all aliases into lower case - Alias in source have case inconsistency issues
+def _alias_transformer(node, valid_table_names: list[str]):
+    is_alias = False
+
+    # Inside FROM
+    if isinstance(node, exp.TableAlias):
+        is_alias = True
+
+    # Inside WHERE clauses
+    if isinstance(node.parent, exp.Column) and str(node) == str(node.parent.table):
+        is_alias = True
+
+    if is_alias:
+        node_str = str(node)
+        if node_str not in valid_table_names:
+            normalized_alias = node_str.lower()
+            if node_str != normalized_alias:
+                return parse_one(normalized_alias)
+
+    return node
+
+# Split FROM with multiple tables into JOIN - FROM XTable x, YTable y JOIN ZTable z → FROM XTable x JOIN YTable y JOIN ZTable z
+def _join_transformer(sql: str) -> str:
+    # Couldn't force sqlglot to avoid comma separated join hence this hack
+
+    sub_sqls = sql.split("SELECT")
+
+    final_sqls = []
+    for sub_sql in sub_sqls:
+        sql_upper = sub_sql.upper()
+        from_index = sql_upper.find(" FROM ")
+        last_join_index = sql_upper.rfind(" JOIN ")
+
+        if from_index != -1 and last_join_index != -1:
+            # Replace , in between FROM and JOIN to JOIN
+            segment = sub_sql[from_index:last_join_index]
+            segment = segment.replace(", ", " JOIN ")
+            sub_sql = sub_sql[:from_index] + segment + sub_sql[last_join_index:]
+
+        final_sqls.append(sub_sql)
+
+    return "SELECT".join(final_sqls)
+
+def _get_name_map(table_names: list[str]) -> dict[str, str]:
+    table_name_map: dict[str, str] = {}
+    for table_name in table_names:
+        name_key = table_name.lower()
+        table_name_map[name_key] = table_name
+
+    return table_name_map
+
+def normalize_sql(sql: str, valid_table_names: list[str]) -> str:
+    sql = sql.replace("\"", "'")
+
+    expression_tree = parse_one(sql, read=Dialects.SQLITE)
+
+    expression_tree = expression_tree.transform(_alias_transformer, valid_table_names)
+    expression_tree = expression_tree.transform(_table_transformer, _get_name_map(valid_table_names))
+    expression_tree = expression_tree.transform(_group_by_transformer)
+
+    sql = expression_tree.sql(dialect=Dialects.MYSQL, identify=True)
+
+    sql = _join_transformer(sql)
+
+    return sql

@@ -3,21 +3,28 @@ from typing import Dict
 
 import core.dataset as dataset
 import core.paths as paths
-import core.dialects.mysql as mysql
+
+from core.dialects import mysql
 from core.source_db import SourceDB
 from utils.filesystem import write_csv, write_str, read_json_dict
 
 
 TABLE_DELIM = "\n\n"
 
-# Get list of table names, ordered based on foreign key dependency
+# List of table names, ordered based on foreign key dependency
 ordered_tables = read_json_dict(paths.ORDERED_TABLES)
 
-# Human curated details of data to be removed
+# Details of modifications to be made on the data
 data_overrides = read_json_dict(paths.DATA_OVERRIDES)
 # Delete rows with invalid foreign key values or datatypes
 delete_filters = data_overrides["delete_filters"]
 add_data = data_overrides["add"]
+
+# Detail of transformations to be made on the query
+query_overrides = read_json_dict(paths.QUERY_OVERRIDES)
+full_replace = query_overrides["full_replace"]
+skipped_questions = query_overrides["skip"]
+
 
 # Get schema of each table in the given list.
 def extract_schema(table_names: list[str], db: SourceDB) -> None:
@@ -96,15 +103,39 @@ def extract_db(db_name: str, data: bytes):
         if not data_is_missing:
             extract_schema(table_names, db)
 
-def extract_queries(queries: list, is_test: bool):
-    db_queries: dict[str, list[list]] = {}
+def _dedupe_queries(queries: list) -> list:
+    deduped_queries: list = []
+    query_set = set()
 
     for query in queries:
         db_name = query["db_id"]
         question = query["question"]
         sql = query["query"]
 
-        sql = mysql.normalize_sql(sql)
+        key = f"{db_name}|{question}|{sql}"
+        if key not in query_set:
+            query_set.add(key)
+            deduped_queries.append(query)
+
+    return deduped_queries
+
+def extract_queries(queries: list, is_test: bool):
+    db_queries: dict[str, list[list]] = {}
+
+    queries = _dedupe_queries(queries)
+
+    for query in queries:
+        db_name = query["db_id"]
+        question = query["question"]
+        sql = query["query"]
+
+        if question in skipped_questions.get(db_name, []):
+            continue
+
+        sql = full_replace.get(db_name, {}).get(question, sql)
+
+        valid_table_names: list[str] = ordered_tables[db_name]
+        sql = mysql.normalize_sql(sql, valid_table_names)
 
         if db_name not in db_queries:
             db_queries[db_name] = []

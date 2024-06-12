@@ -1,4 +1,3 @@
-import argparse
 import json
 from alive_progress import alive_bar
 
@@ -9,19 +8,8 @@ from core.dataset import get_stats
 import core.paths as paths
 
 
-parser = argparse.ArgumentParser(description=f"SpiderMan - Rebuild dataset")
-parser.add_argument(
-    "-q",
-    "--rebuild-queries",
-    default=False,
-    action=argparse.BooleanOptionalAction,
-    help="Rebuild queries along with schema and data. Is disabled by default."
-)
-args = parser.parse_args()
-
-
-print("Extracting SCHEMA and DATA of databases.")
-with ZipReader(paths.SOURCE_ZIP) as sourceZip:
+def extract_schema_and_data(sourceZip: ZipReader):
+    print("Extracting SCHEMA and DATA of databases.")
     files = sourceZip.list_sqlite_files_in(paths.SOURCE_DB_DIR)
     with alive_bar(len(files)) as bar:
         for file in files:
@@ -30,14 +18,20 @@ with ZipReader(paths.SOURCE_ZIP) as sourceZip:
             extract_db(db_name, db_data)
             bar()
 
-    if args.rebuild_queries:
-        train_queries = json.loads(sourceZip.read_file(paths.TRAIN_QUERIES_1))
-        train_queries += json.loads(sourceZip.read_file(paths.TRAIN_QUERIES_2))
-        test_queries = json.loads(sourceZip.read_file(paths.TEST_QUERIES))
+def extract_train_and_test_queries(sourceZip: ZipReader):
+    train_queries = json.loads(sourceZip.read_file(paths.TRAIN_QUERIES_1))
+    train_queries += json.loads(sourceZip.read_file(paths.TRAIN_QUERIES_2))
+    test_queries = json.loads(sourceZip.read_file(paths.TEST_QUERIES))
 
-        print("Extracting queries...")
-        extract_queries(train_queries, False)
-        extract_queries(test_queries, True)
+    print("Extracting train queries...")
+    extract_queries(train_queries, False)
 
-print("Dataset rebuild completed successfully.")
-print_dict(get_stats(), label="Dataset Stats")
+    print("Extracting test queries...")
+    extract_queries(test_queries, True)
+
+with ZipReader(paths.SOURCE_ZIP) as sourceZip:
+    extract_schema_and_data(sourceZip)
+    extract_train_and_test_queries(sourceZip)
+
+    print("Dataset rebuild completed successfully.")
+    print_dict(get_stats(), label="Dataset Stats")
