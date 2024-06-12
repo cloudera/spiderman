@@ -1,0 +1,171 @@
+{
+    "datatype": {
+        "academic.publication.cid": "INT",
+
+        "aircraft.match.Winning_Aircraft": "INT",
+        "aircraft.match.Winning_Pilot": "INT",
+
+        "apartment_rentals.Apartment_Buildings.building_short_name": "VARCHAR(30)",
+        "apartment_rentals.Guests.gender_code": "VARCHAR(10)",
+        "apartment_rentals.View_Unit_Status.available_yn": "CHAR(1)",
+
+        "architecture.architect.id": "INT",
+
+        "assets_maintenance.Third_Party_Companies.company_type": "VARCHAR(30)",
+
+        "baseball_1.*.college_id": "VARCHAR(50)",
+        "baseball_1.*.park_id": "VARCHAR(50)",
+        "baseball_1.*.player_id": "VARCHAR(50)",
+        "baseball_1.*.team_id": "VARCHAR(50)",
+
+        "bike_1.trip.zip_code": "VARCHAR(20)",
+
+        "car_1.car_makers.Country": "INT",
+        "car_1.car_names.Model": "VARCHAR(20)",
+
+        "city_record.hosting_city.Host_City": "INT",
+
+        "company_employee.company.Company_ID": "INT",
+
+        "concert_singer.concert.Stadium_ID": "INT",
+        "concert_singer.singer.Is_male": "CHAR(1)",
+        "concert_singer.singer_in_concert.Singer_ID": "INT",
+
+        "cre_Drama_Workshop_Groups.Addresses.Address_ID": "INT",
+        "cre_Drama_Workshop_Groups.Bookings.Workshop_Group_ID": "INT",
+        "cre_Drama_Workshop_Groups.Customers.Customer_ID": "INT",
+        "cre_Drama_Workshop_Groups.Products.Product_ID": "INT",
+        "cre_Drama_Workshop_Groups.Ref_Payment_Methods.payment_method_code": "CHAR (15)",
+        "cre_Drama_Workshop_Groups.Stores.Store_ID": "INT",
+
+        "culture_company.culture_company.book_club_id": "INT",
+        "culture_company.culture_company.movie_id": "INT",
+
+        "customer_deliveries.Delivery_Route_Locations.location_code": "VARCHAR(20)",
+        "customer_deliveries.Order_Deliveries.location_code": "VARCHAR(20)",
+
+        "customers_and_products_contacts.Contacts.gender": "VARCHAR(10)",
+
+        "debate.debate_people.If_Affirmative_Win": "CHAR(1)",
+
+        "department_store.Customers.payment_method_code": "VARCHAR(20)",
+        "department_store.Staff_Department_Assignments.job_title_code": "VARCHAR(20)",
+
+        "dog_kennels.Charges.charge_type": "VARCHAR(20)",
+        "dog_kennels.Professionals.role_code": "VARCHAR(20)",
+
+        "driving_school.Customer_Payments.payment_method_code": "VARCHAR(20)",
+        "driving_school.Party_Forms.form_status_code": "VARCHAR(20)",
+
+        "e_government.Party_Forms.form_status_code": "VARCHAR(20)",
+
+        "employee_hire_evaluation.evaluation.Employee_ID": "INT",
+        "employee_hire_evaluation.hiring.Is_full_time": "CHAR(1)",
+
+        "flight_2.flights.DestAirport": "VARCHAR(50)",
+        "flight_2.flights.SourceAirport": "VARCHAR(50)",
+        "flight_4.routes.alid": "INT",
+        "flight_4.routes.src_apid": "INT",
+
+        "geo.*.state_name": "VARCHAR(100)",
+        "geo.river.traverse": "VARCHAR(100)",
+
+        "hr_1.countries.REGION_ID": "INT",
+        "hr_1.regions.REGION_ID": "INT",
+
+        "inn_1.Reservations.Room": "VARCHAR(50)",
+
+        "insurance_and_eClaims.Claim_Headers.Claim_Type_Code": "VARCHAR(30)",
+
+        "insurance_fnol.Available_Policies.policy_type_code": "VARCHAR(20)",
+
+        "loan_1.bank.city": "VARCHAR(20)",
+        "loan_1.customer.acc_type": "VARCHAR(10)",
+        "loan_1.customer.cust_ID": "INT",
+        "loan_1.loan.branch_ID": "INT",
+        "loan_1.loan.cust_ID": "INT",
+        "loan_1.loan.loan_ID": "INT",
+
+        "machine_repair.technician.technician_id": "INT",
+
+        "museum_visit.visit.visitor_ID": "INT",
+
+        "orchestra.show.If_first_show": "VARCHAR(15)",
+
+        "party_host.party_host.Is_Main_in_Charge": "CHAR(1)",
+
+        "party_people.member.Party_ID": "INT",
+
+        "performance_attendance.member.Member_ID": "INT",
+        "performance_attendance.performance.Performance_ID": "INT",
+
+        "phone_1.phone.chip_model": "VARCHAR(20)",
+        "phone_1.phone.screen_mode": "REAL",
+
+        "phone_market.phone_market.Phone_ID": "INT",
+
+        "pilot_record.pilot_record.Date": "DATE",
+
+        "products_for_hire.Bookings.booking_status_code": "VARCHAR(15)",
+
+        "protein_institute.*.Institution_id": "INT",
+        "protein_institute.*.building_id": "INT",
+
+        "race_track.race.Track_ID": "INT",
+
+        "restaurants.*.CITY_NAME": "VARCHAR(100)",
+
+        "sakila_1.film.rating": "VARCHAR(10)",
+
+        "school_bus.school_bus.If_full_time": "CHAR(1)",
+
+        "school_finance.School.School_id": "INT",
+
+        "shop_membership.membership_register_branch.Branch_ID": "INT",
+        "shop_membership.purchase.Branch_ID": "INT",
+        "shop_membership.purchase.Year": "VARCHAR(10)",
+
+        "station_weather.weekly_weather.day_of_week": "VARCHAR(20)",
+
+        "student_assessment.Courses.course_id": "INT",
+
+        "tvshow.Cartoon.Channel": "INT",
+        "tvshow.TV_Channel.id": "INT",
+        "tvshow.TV_series.Channel": "INT",
+
+        "voter_1.VOTES.phone_number": "VARCHAR(10)",
+
+        "wine_1.wine.Appelation": "VARCHAR(50)",
+        "wine_1.wine.Grape": "VARCHAR(50)",
+
+        "world_1.country.Continent": "VARCHAR(30)",
+        "world_1.countrylanguage.IsOfficial": "VARCHAR(5)",
+
+        "wrestler.Elimination.Wrestler_ID": "INT",
+
+        "yelp.*.business_id": "VARCHAR(100)",
+        "yelp.*.user_id": "VARCHAR(100)"
+    },
+    "primary_key": {
+        "baseball_1.college": ["college_id"],
+        "baseball_1.player": ["player_id"],
+        "baseball_1.park": ["park_id"],
+
+        "dorm_1.Dorm": ["dormid"],
+        "dorm_1.Dorm_amenity": ["amenid"]
+    },
+    "unique": {
+    },
+    "foreign_key": {
+        "baseball_1.fielding_postseason.team_id:table": "team",
+        "restaurants.LOCATION.RESTAURANT_ID:column": "ID",
+        "imdb.tags.kid:column": "id"
+    },
+    "index": {
+        "baseball_1.team": ["team_id"],
+
+        "soccer_1.Team": ["team_fifa_api_id"],
+
+        "voter_1.AREA_CODE_STATE": ["state"]
+    }
+}

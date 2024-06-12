@@ -1,0 +1,106 @@
+{
+    "full_replace": {
+        "assets_maintenance": {
+            "What is the description of the type of the company who concluded its contracts most recently?": "SELECT c.company_type, c.company_name, c.company_address, c.other_company_details FROM assets_maintenance.Third_Party_Companies c JOIN assets_maintenance.Maintenance_Contracts mc ON c.company_id = mc.maintenance_contract_company_id WHERE mc.contract_end_date = ( SELECT MAX(contract_end_date) FROM assets_maintenance.Maintenance_Contracts )"
+        },
+        "baseball_1": {
+            "What is the total number of postseason games that team Boston Red Stockings participated in?": "SELECT COUNT(*) AS total_postseason_games FROM postseason AS p JOIN team AS t ON (p.team_id_winner = t.team_id OR p.team_id_loser = t.team_id) WHERE t.name = 'Boston Red Stockings'",
+            "How many times in total did the team Boston Red Stockings participate in postseason games?": "SELECT COUNT(*) FROM ( SELECT DISTINCT p.year FROM baseball_1.postseason p JOIN baseball_1.team t ON p.team_id_winner = t.team_id OR p.team_id_loser = t.team_id WHERE t.name = 'Boston Red Stockings' ) AS postseason_years"
+        },
+        "bike_1": {
+            "How many trips started from Mountain View city and ended at Palo Alto city?": "SELECT COUNT(*) FROM `station` AS `t1` JOIN `trip` AS `t2` ON `t1`.`id` = `t2`.`start_station_id` JOIN `station` AS `t3` ON `t2`.`end_station_id` = `t3`.`id` WHERE `t1`.`city` = 'Mountain View' AND `t3`.`city` = 'Palo Alto'",
+            "How many trips stated from  a station in Mountain View and ended at one in Palo Alto?": "SELECT COUNT(*) FROM `station` AS `t1` JOIN `trip` AS `t2` ON `t1`.`id` = `t2`.`start_station_id` JOIN `station` AS `t3` ON `t2`.`end_station_id` = `t3`.`id` WHERE `t1`.`city` = 'Mountain View' AND `t3`.`city` = 'Palo Alto'"
+        },
+        "climbing": {
+            "List the distinct ranges of the mountains with the top 3 prominence.": "SELECT DISTINCT m.`Range`, m.`Prominence` FROM `mountain` m ORDER BY m.`Prominence` DESC LIMIT 3",
+            "What are the different ranges of the 3 mountains with the highest prominence?": "SELECT DISTINCT `Range`, `Prominence` FROM `mountain` ORDER BY `Prominence` DESC LIMIT 3"
+        },
+        "college_3": {
+            "Find the last names of faculties who are members of computer science department.": "SELECT `t2`.`Lname` FROM `Department` AS `t1` JOIN `Faculty` AS `t2` JOIN `Member_of` AS `t3` ON `t1`.`DNO` = `t3`.`DNO` AND `t2`.`FacID` = `t3`.`FacID` WHERE `t1`.`DName` = 'Computer Science'",
+            "What are the last names of faculty who are part of the computer science department?": "SELECT `t2`.`Lname` FROM `Department` AS `t1` JOIN `Faculty` AS `t2` JOIN `Member_of` AS `t3` ON `t1`.`DNO` = `t3`.`DNO` AND `t2`.`FacID` = `t3`.`FacID` WHERE `t1`.`DName` = 'Computer Science'"
+        },
+        "department_store": {
+            "Return the distinct name of customers whose order status is Pending, in the order of customer id.": "SELECT DISTINCT `t1`.`customer_name`, `t2`.`customer_id` FROM `Customers` AS `t1` JOIN `Customer_Orders` AS `t2` ON `t1`.`customer_id` = `t2`.`customer_id` WHERE `t2`.`order_status_code` = 'Pending' ORDER BY `t2`.`customer_id`",
+            "What are the distinct names of customers with an order status of Pending, sorted by customer id?": "SELECT DISTINCT `t1`.`customer_name`, `t2`.`customer_id` FROM `Customers` AS `t1` JOIN `Customer_Orders` AS `t2` ON `t1`.`customer_id` = `t2`.`customer_id` WHERE `t2`.`order_status_code` = 'Pending' ORDER BY `t2`.`customer_id`"
+        },
+        "flight_4": {
+            "How many cities are there that have more than 3 airports?": "SELECT COUNT(*) FROM (SELECT `city` FROM `airports` GROUP BY `city` HAVING COUNT(*) > 3) AS derived_table",
+            "What is the count of cities with more than 3 airports?": "SELECT COUNT(*) FROM (SELECT `city` FROM `airports` GROUP BY `city` HAVING COUNT(*) > 3) AS derived_table"
+        },
+        "movie_1": {
+            "Find the names of all reviewers who have ratings with a NULL value for the date.": "SELECT DISTINCT `name` FROM `Reviewer` AS `t1` JOIN `Rating` AS `t2` ON `t1`.`rID` = `t2`.`rID` WHERE `ratingDate` IS NULL",
+            "What are the different names of all reviewers whose ratings do not have a date field?": "SELECT DISTINCT `name` FROM `Reviewer` AS `t1` JOIN `Rating` AS `t2` ON `t1`.`rID` = `t2`.`rID` WHERE `ratingDate` IS NULL"
+        },
+        "orchestra": {
+            "What is the average attendance of shows?": "SELECT AVG(`Attendance`) FROM `show`",
+            "Return the average attendance across all shows.": "SELECT AVG(`Attendance`) FROM `show`"
+        },
+        "party_people": {
+            "Show all distinct region names ordered by their labels.": "SELECT DISTINCT `region_name`, `Label` FROM `region` ORDER BY `Label`",
+            "What are the different region names, ordered by labels?": "SELECT DISTINCT `region_name`, `Label` FROM `region` ORDER BY `Label`"
+        },
+        "restaurant_1": {
+            "How many restaurant is the Sandwich type restaurant?": "SELECT COUNT(DISTINCT r.ResID) AS SandwichTypeRestaurantCount FROM Type_Of_Restaurant tor JOIN Restaurant_Type rt ON tor.ResTypeID = rt.ResTypeID JOIN Restaurant r ON tor.ResID = r.ResID WHERE rt.ResTypeName = 'Sandwich'"
+        },
+        "school_finance": {
+            "Find the number of schools that have more than one donator whose donation amount is less than 8.5.": "SELECT COUNT(*) FROM (SELECT `school_id` FROM `endowment` WHERE `amount` > 8.5 GROUP BY `school_id` HAVING COUNT(*) > 1) AS derived_table"
+        },
+        "soccer_1": {
+            "Who are the top 3 players in terms of overall rating?": "SELECT DISTINCT `t1`.`player_name`, `overall_rating` FROM `Player` AS `t1` JOIN `Player_Attributes` AS `t2` ON `t1`.`player_api_id` = `t2`.`player_api_id` ORDER BY `overall_rating` DESC LIMIT 3",
+            "List the names and birthdays of the top five players in terms of potential.": "SELECT DISTINCT `t1`.`player_name`, `t1`.`birthday`, `potential` FROM `Player` AS `t1` JOIN `Player_Attributes` AS `t2` ON `t1`.`player_api_id` = `t2`.`player_api_id` ORDER BY `potential` DESC LIMIT 5"
+        },
+        "soccer_2": {
+            "How many schools have some students playing in goalie and mid positions.": "SELECT COUNT(*) FROM (SELECT `cName` FROM `Tryout` WHERE `pPos` = 'goalie' INTERSECT SELECT `cName` FROM `Tryout` WHERE `pPos` = 'mid') AS derived_table",
+            "How many schools have students playing in goalie and mid-field positions?": "SELECT COUNT(*) FROM (SELECT `cName` FROM `Tryout` WHERE `pPos` = 'goalie' INTERSECT SELECT `cName` FROM `Tryout` WHERE `pPos` = 'mid') AS derived_table",
+            "How many states that have some college students playing in the mid position but not in the goalie position.": "SELECT COUNT(*) FROM (SELECT `t1`.`state` FROM `College` AS `t1` JOIN `Tryout` AS `t2` ON `t1`.`cName` = `t2`.`cName` WHERE `t2`.`pPos` = 'mid' EXCEPT SELECT `t1`.`state` FROM `College` AS `t1` JOIN `Tryout` AS `t2` ON `t1`.`cName` = `t2`.`cName` WHERE `t2`.`pPos` = 'goalie') AS derived_table",
+            "What is the count of states with college students playing in the mid position but not as goalies?": "SELECT COUNT(*) FROM (SELECT `t1`.`state` FROM `College` AS `t1` JOIN `Tryout` AS `t2` ON `t1`.`cName` = `t2`.`cName` WHERE `t2`.`pPos` = 'mid' EXCEPT SELECT `t1`.`state` FROM `College` AS `t1` JOIN `Tryout` AS `t2` ON `t1`.`cName` = `t2`.`cName` WHERE `t2`.`pPos` = 'goalie') as derived_table"
+        },
+        "store_product": {
+            "Find all the distinct district names ordered by city area in descending.": "SELECT DISTINCT `District_name`, `city_area` FROM `district` ORDER BY `city_area` DESC",
+            "What are the different district names in order of descending city area?": "SELECT DISTINCT `District_name`, `city_area` FROM `district` ORDER BY `city_area` DESC"
+        },
+        "tracking_grants_for_research": {
+            "From what date and to what date do the staff work on a project that has the most staff and has staff in a leader role?": "SELECT `date_from`, `date_to` FROM `Project_Staff` WHERE `project_id` = (SELECT `project_id` FROM `Project_Staff` GROUP BY `project_id` ORDER BY COUNT(*) DESC LIMIT 1) GROUP BY `date_from`, `date_to` UNION SELECT `date_from`, `date_to` FROM `Project_Staff` WHERE `role_code` = 'leader'",
+            "List the project details of the projects launched by the organisation": "SELECT `project_details` FROM `Projects` WHERE `organisation_id` = (SELECT `organisation_id` FROM `Projects` GROUP BY `organisation_id` ORDER BY COUNT(*) DESC LIMIT 1) GROUP BY `project_details`",
+            "What are the details for the projects which were launched by the organization with the most projects?": "SELECT `project_details` FROM `Projects` WHERE `organisation_id` = (SELECT `organisation_id` FROM `Projects` GROUP BY `organisation_id` ORDER BY COUNT(*) DESC LIMIT 1) GROUP BY `project_details`"
+        },
+        "tracking_orders": {
+            "List the ids of all distinct orders ordered by placed date.": "SELECT DISTINCT `order_id`, `date_order_placed` FROM `Orders` ORDER BY `date_order_placed`",
+            "What are ids of the all distinct orders, sorted by placement date?": "SELECT DISTINCT `order_id`, `date_order_placed` FROM `Orders` ORDER BY `date_order_placed`",
+            "List the names of the customers who have once bought product \"food\".": "SELECT `t1`.`customer_name` FROM `Customers` AS `t1` JOIN `Orders` AS `t2` JOIN `Order_Items` AS `t3` JOIN `Products` AS `t4` ON `t1`.`customer_id` = `t2`.`customer_id` AND `t2`.`order_id` = `t3`.`order_id` AND `t3`.`product_id` = `t4`.`product_id` WHERE `t4`.`product_name` = 'food' GROUP BY `t1`.`customer_name` HAVING COUNT(*) >= 1"
+        },
+        "tracking_software_problems": {
+            "List all the distinct product names ordered by product id?": "SELECT DISTINCT `product_name`, `product_id` FROM `Product` ORDER BY `product_id`",
+            "What is the list of distinct product names sorted by product id?": "SELECT DISTINCT `product_name`, `product_id` FROM `Product` ORDER BY `product_id`",
+            "List the ids of the problems from the product \"voluptatem\" that are reported after 1995?": "SELECT `t1`.`problem_id` FROM `Problems` AS `t1` JOIN `Product` AS `t2` ON `t1`.`product_id` = `t2`.`product_id` WHERE `t2`.`product_name` = 'voluptatem' AND `t1`.`date_problem_reported` > STR_TO_DATE('1995', '%Y')",
+            "What are the ids of the problems that are from the product \"voluptatem\" and are reported after 1995?": "SELECT `t1`.`problem_id` FROM `Problems` AS `t1` JOIN `Product` AS `t2` ON `t1`.`product_id` = `t2`.`product_id` WHERE `t2`.`product_name` = 'voluptatem' AND `t1`.`date_problem_reported` > STR_TO_DATE('1995', '%Y')"
+        },
+        "wine_1": {
+            "List the names of all distinct wines ordered by price.": "SELECT DISTINCT `Name`, `price` FROM `wine` ORDER BY `price`",
+            "What are the names of wines, sorted by price ascending?": "SELECT DISTINCT `Name`, `price` FROM `wine` ORDER BY `price`",
+            "What is the area of the appelation that produces the highest number of wines before the year of 2010?": "SELECT `t1`.`Area` FROM `appellations` AS `t1` JOIN `wine` AS `t2` ON `t1`.`Appelation` = `t2`.`Appelation` WHERE `t2`.`year` < 2010 GROUP BY `t1`.`Area` ORDER BY COUNT(*) DESC LIMIT 1",
+            "What is the area for the appelation which produced the most wines prior to 2010?": "SELECT `t1`.`Area` FROM `appellations` AS `t1` JOIN `wine` AS `t2` ON `t1`.`Appelation` = `t2`.`Appelation` WHERE `t2`.`year` < 2010 GROUP BY `t1`.`Area` ORDER BY COUNT(*) DESC LIMIT 1"
+        },
+        "world_1": {
+            "How many countries speak both English and Dutch?": "SELECT COUNT(*) FROM (SELECT `t1`.`Name` FROM `country` AS `t1` JOIN `countrylanguage` AS `t2` ON `t1`.`Code` = `t2`.`CountryCode` WHERE `t2`.`Language` = 'English' INTERSECT SELECT `t1`.`Name` FROM `country` AS `t1` JOIN `countrylanguage` AS `t2` ON `t1`.`Code` = `t2`.`CountryCode` WHERE `t2`.`Language` = 'Dutch') AS derived_table",
+            "What is the number of nations that use English and Dutch?": "SELECT COUNT(*) FROM (SELECT `t1`.`Name` FROM `country` AS `t1` JOIN `countrylanguage` AS `t2` ON `t1`.`Code` = `t2`.`CountryCode` WHERE `t2`.`Language` = 'English' INTERSECT SELECT `t1`.`Name` FROM `country` AS `t1` JOIN `countrylanguage` AS `t2` ON `t1`.`Code` = `t2`.`CountryCode` WHERE `t2`.`Language` = 'Dutch') AS derived_table"
+        },
+        "wta_1": {
+            "Find the name and rank of the 3 youngest winners across all matches.": "SELECT DISTINCT `winner_name`, `winner_rank`, `winner_age` FROM `matches` ORDER BY `winner_age` LIMIT 3",
+            "What are the names and ranks of the three youngest winners across all matches?": "SELECT DISTINCT `winner_name`, `winner_rank`, `winner_age` FROM `matches` ORDER BY `winner_age` LIMIT 3"
+        }
+    },
+    "skip": {
+        "document_management": [
+            "Find the list of documents that are both in the most three popular type and have the most three popular structure.",
+            "What are the names of documents that have both one of the three most common types and one of three most common structures?"
+        ],
+        "dorm_1": [
+            "Find the first name of students who are living in the dorm that has most number of amenities.",
+            "What are the first names of all students who live in the dorm with the most amenities?"
+        ],
+        "tracking_grants_for_research": [
+            "List from which date and to which date these staff work: project staff of the project which hires the most staffs"
+        ]
+    }
+}
