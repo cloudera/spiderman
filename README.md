@@ -1,5 +1,58 @@
 # SpiderMan
-A comprehensive human-annotated dataset for SQL AI tasks across diverse domains and complexity levels.
+A comprehensive human-annotated plain-text dataset for SQL AI tasks across diverse domains and complexity levels.
+
+## Why SpiderMan
+SpiderMan is a better version of the [Spider 1.0](https://yale-lily.github.io/spider) dataset.
+
+- You get the databases in plain-text format instead of a set of sqlite files. And that makes it easy for you to load the dataset into any database of your choice.
+- Schema has been standardized - Corrected table ordering, column data-types, primary / foreign key constraints and indexes.
+- Data has been corrected for schema based validations.
+- Queries have been improved for successful execution in MySQL and other DB systems.
+
+## Dataset
+The dataset comprises of 157 databases. Each of them come with their own respective schema, data and queries. We currently don't have queries that span across databases. Train test split happens at the database level.
+
+||Queries|Tables|Databases|
+|-|-|-|-|
+|Train|6726|699|137|
+|Test|1034|80|20|
+|Total|7760|779|157|
+
+## Scripts
+Following scripts makes it easy to use the dataset.
+
+### Load Dataset
+Creates schema of all the databases, and insert their data into a DB system. It accepts one argument - A SQLAlchemy 2.0 compatible URL to the destination database. More details on the URL is available [here](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls).
+```
+python scripts/load_dataset.py 'mysql://<username>:<password>@<host>:3306'
+
+Eg: python ./scripts/load_dataset.py 'mysql://spiderman:spiderman@127.0.0.1:3306'
+```
+
+### Validate Queries
+Once the dataset is loaded, you can run the following script to try executing the queries. It checks successful completion of all the queries, query results are not verified at this point.
+```
+python scripts/validate_queries.py 'mysql://<username>:<password>@<host>:3306'
+
+Eg: python ./scripts/validate_queries.py 'mysql://spiderman:spiderman@127.0.0.1:3306'
+```
+
+### Scan Dataset
+Following scripts goes through the dataset and aggregates various stats.
+```
+python scripts/scan_dataset.py
+```
+
+### Rebuild Dataset
+Recreate dataset from [Spider 1.0](https://yale-lily.github.io/spider) zip. Current files in `./dataset` directory will be overwritten.
+```
+# Download a copy of the original zip from HuggingFace into ./source directory
+python ./scripts/download_source.py
+
+# Rebuild
+python ./scripts/rebuild_dataset.py
+```
+9 databases from the source would be skipped as they lack data - imdb, formula_1, music_2, yelp, academic, restaurants, scholar, sakila_1, geo.
 
 ## Setup
 ### Install OS Dependencies
@@ -20,31 +73,10 @@ conda activate spiderman-env
 pip install -r requirements.txt
 ```
 
-# Setup MySQL
+## Setup MySQL
 ```
 brew install mysql pkg-config
 pip install mysqlclient
-```
-
-# Load schema & data
-```
-python scripts/insert_dataset.py 'mysql://<username>:<password>@<host>:3306'
-```
-
-# Scan Dataset
-```
-python scripts/scan_dataset.py
-```
-
-# Rebuild Dataset
-```
-# Download Spider 1.0 zip into ./source
-python ./scripts/download_source.py
-
-# Rebuild dataset from source, and overwrite current SCHEMA and DATA.
-python ./scripts/rebuild_dataset.py
-
-# QUERIES would not be rebuild from source as they have been heavily modified to work with non sqlite databases.
 ```
 
 # Citation
