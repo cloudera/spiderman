@@ -4,9 +4,11 @@ from alive_progress import alive_bar
 from utils.zip import ZipReader
 from utils.print import print_dict
 from core.extractors import extract_db, extract_queries
-from core.dataset import get_stats
+from core.dataset import get_stats, delete_base
 import core.paths as paths
 
+
+delete_base()
 
 def extract_schema_and_data(sourceZip: ZipReader):
     print("Extracting SCHEMA and DATA of databases.")

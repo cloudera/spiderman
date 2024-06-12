@@ -143,9 +143,10 @@ def extract_queries(queries: list, is_test: bool):
         db_queries[db_name].append([question, sql])
 
     for db_name in db_queries:
-        file_path = dataset.path_to_test_queries_file(db_name) if is_test \
+        data_dir = dataset.path_to_data_dir(db_name)
+        query_file_path = dataset.path_to_test_queries_file(db_name) if is_test \
                     else dataset.path_to_train_queries_file(db_name)
 
-        if path.isfile(file_path): # Only rebuild, dont create skipped databases
+        if path.exists(data_dir): # Create query file only if DB files are available
             data = [["question", "sql"]] + db_queries[db_name]
-            write_csv(file_path, data)
+            write_csv(query_file_path, data)

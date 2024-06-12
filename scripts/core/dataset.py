@@ -1,4 +1,5 @@
 import os
+import shutil
 from os import path
 from typing import Tuple
 
@@ -96,3 +97,8 @@ def get_stats() -> dict:
     }
 
     #TODO: Get top 10 DBs and tables with maximum rows as part of stats
+
+def delete_base():
+    if path.exists(BASE_DIR):
+        print(f"Deleting {BASE_DIR}")
+        shutil.rmtree(BASE_DIR)
