@@ -1,5 +1,7 @@
 from typing import Callable
 
+from urllib.parse import urlparse, urlunparse
+
 from sqlalchemy import create_engine, text
 from sqlalchemy_utils import database_exists, create_database, drop_database
 
@@ -30,7 +32,7 @@ class TargetDB:
     preprocessor: Callable[[str], str]
 
     def __init__(self, url: str, db_name: str, reset: bool = False):
-        self.url = f"{url}/{db_name}"
+        self.url = urlunparse(urlparse(url)._replace(path=db_name))
         self.reset = reset
         self.db_name = db_name
 
