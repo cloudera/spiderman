@@ -7,7 +7,7 @@ from utils.args import get_args
 from utils.filesystem import read_csv
 
 
-args = get_args(description="Execute queries")
+args = get_args(description="Validate queries")
 print("Executing queries...")
 
 db_names = get_db_names()
