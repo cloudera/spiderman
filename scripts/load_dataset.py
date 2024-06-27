@@ -1,18 +1,18 @@
-import os
+import argparse
 from alive_progress import alive_bar;
 
+import core.paths as paths
 from core.target_db import TargetDB
 from core.dataset import get_db_names, get_data, path_to_schema_file
-import core.paths as paths
-
-from utils.args import get_args
 from utils.filesystem import read_str, read_json_dict
+
+
+parser = argparse.ArgumentParser(description=f"SpiderMan - Load schema and data into a target database")
+parser.add_argument("url", help="SQLAlchemy friendly URL to the target database")
+args = parser.parse_args()
 
 # Get list of table names, ordered based on foreign key dependency
 ordered_tables = read_json_dict(paths.ORDERED_TABLES)
-
-
-args = get_args(description="Load SpiderMan into DB system")
 
 db_names = get_db_names()
 

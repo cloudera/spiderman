@@ -1,13 +1,15 @@
+import argparse
 from alive_progress import alive_bar;
 
 from core.target_db import TargetDB
 from core.dataset import get_db_names, path_to_queries_file
-
-from utils.args import get_args
 from utils.filesystem import read_csv
 
 
-args = get_args(description="Validate queries")
+parser = argparse.ArgumentParser(description=f"SpiderMan - Validate successful execution of all queries on the target database")
+parser.add_argument("url", help="SQLAlchemy friendly URL to the target database")
+args = parser.parse_args()
+
 print("Executing queries...")
 
 db_names = get_db_names()
