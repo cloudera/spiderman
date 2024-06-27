@@ -10,11 +10,4 @@ def get_args(description):
                         More details at https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls"
     )
 
-    parser.add_argument(
-        "-s",
-        "--skip-dbs",
-        nargs='+',
-        help="Names of databases to be skipped while performing the operation"
-    )
-
     return parser.parse_args()
