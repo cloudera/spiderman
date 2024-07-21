@@ -120,8 +120,7 @@ CREATE TABLE `baseball_1`.`appearances` (
     `g_dh` NUMERIC,
     `g_ph` NUMERIC,
     `g_pr` NUMERIC,
-    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`),
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`)
+    FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
 DROP TABLE IF EXISTS `baseball_1`.`manager_award`;
@@ -220,7 +219,6 @@ CREATE TABLE `baseball_1`.`batting_postseason` (
     `sh` NUMERIC,
     `sf` NUMERIC,
     `g_idp` NUMERIC,
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`),
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
@@ -296,7 +294,6 @@ CREATE TABLE `baseball_1`.`fielding_postseason` (
     `pb` NUMERIC,
     `sb` NUMERIC,
     `cs` NUMERIC,
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`),
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
@@ -336,8 +333,7 @@ CREATE TABLE `baseball_1`.`home_game` (
     `games` INTEGER,
     `openings` INTEGER,
     `attendance` INTEGER,
-    FOREIGN KEY (`park_id`) REFERENCES `baseball_1`.`park` (`park_id`),
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`)
+    FOREIGN KEY (`park_id`) REFERENCES `baseball_1`.`park` (`park_id`)
 );
 
 DROP TABLE IF EXISTS `baseball_1`.`manager`;
@@ -351,8 +347,7 @@ CREATE TABLE `baseball_1`.`manager` (
     `w` INTEGER,
     `l` INTEGER,
     `rank` NUMERIC,
-    `plyr_mgr` TEXT,
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`)
+    `plyr_mgr` TEXT
 );
 
 DROP TABLE IF EXISTS `baseball_1`.`manager_half`;
@@ -366,8 +361,7 @@ CREATE TABLE `baseball_1`.`manager_half` (
     `g` INTEGER,
     `w` INTEGER,
     `l` INTEGER,
-    `rank` INTEGER,
-    FOREIGN KEY (`team_id`) REFERENCES `baseball_1`.`team` (`team_id`)
+    `rank` INTEGER
 );
 
 DROP TABLE IF EXISTS `baseball_1`.`pitching`;

@@ -161,6 +161,18 @@
         "restaurants.LOCATION.RESTAURANT_ID:column": "ID",
         "imdb.tags.kid:column": "id"
     },
+    "skip_foreign_keys": {
+        "baseball_1.appearances": ["team_id"],
+        "baseball_1.batting_postseason": ["team_id"],
+        "baseball_1.fielding_postseason": ["team_id"],
+        "baseball_1.home_game": ["team_id"],
+        "baseball_1.manager": ["team_id"],
+        "baseball_1.manager_half": ["team_id"],
+
+        "soccer_1.Team_Attributes": ["team_fifa_api_id"],
+
+        "voter_1.VOTES": ["state"]
+    },
     "index": {
         "baseball_1.team": ["team_id"],
 

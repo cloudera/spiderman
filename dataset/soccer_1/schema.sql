@@ -123,6 +123,5 @@ CREATE TABLE `soccer_1`.`Team_Attributes` (
     `defenceTeamWidthClass` TEXT,
     `defenceDefenderLineClass` TEXT,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`team_api_id`) REFERENCES `soccer_1`.`Team` (`team_api_id`),
-    FOREIGN KEY (`team_fifa_api_id`) REFERENCES `soccer_1`.`Team` (`team_fifa_api_id`)
+    FOREIGN KEY (`team_api_id`) REFERENCES `soccer_1`.`Team` (`team_api_id`)
 );
