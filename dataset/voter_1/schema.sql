@@ -26,6 +26,5 @@ CREATE TABLE `voter_1`.`VOTES` (
     `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`vote_id`),
     FOREIGN KEY (`contestant_number`) REFERENCES `voter_1`.`CONTESTANTS` (`contestant_number`),
-    FOREIGN KEY (`state`) REFERENCES `voter_1`.`AREA_CODE_STATE` (`state`),
     INDEX idx_phone_number (`phone_number`)
 );

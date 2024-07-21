@@ -12,6 +12,7 @@ datatype_overrides = column_overrides["datatype"]
 primary_key_overrides = column_overrides["primary_key"]
 unique_overrides = column_overrides["unique"]
 foreign_key_overrides = column_overrides["foreign_key"]
+skip_foreign_keys = column_overrides["skip_foreign_keys"]
 index_overrides = column_overrides["index"]
 
 
@@ -145,6 +146,7 @@ class SourceDB:
 
     def _get_foreign_keys(self, table_name: str) -> List[FKConstraint]:
         foreign_keys = self._execute_pragma('foreign_key_list', table_name)
+        skip_fk_columns = skip_foreign_keys.get(f"{self.name}.{table_name}", [])
 
         fk_composite = []
         # Aggregate composite foreign keys
@@ -153,6 +155,9 @@ class SourceDB:
             from_column = fk[3]
             to_table = fk[2]
             to_column = fk[4]
+
+            if from_column in skip_fk_columns:
+                continue
 
             path = f"{self.name}.{table_name}.{from_column}:table"
             if path in foreign_key_overrides:
