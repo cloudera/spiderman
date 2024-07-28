@@ -1,3 +1,6 @@
+"""Try running queries on the target database, and validate they can be successfully executed"""
+
+import sys
 import argparse
 from alive_progress import alive_bar
 
@@ -15,10 +18,10 @@ print("Executing queries...")
 dataset = DatasetDir()
 db_names = dataset.get_db_names()
 
-with alive_bar(len(db_names)) as bar:
+with alive_bar(len(db_names)) as progress:
     for db_name in db_names:
 
-        bar.text(f">> DB: {db_name}")
+        progress.text(f">> DB: {db_name}")
         with TargetDB(args.url, db_name) as db:
             queries_file_path = dataset.path_to_queries_file(db_name)
             replaced_queries_file_path = queries_file_path[:-3] + "csv"
@@ -26,12 +29,14 @@ with alive_bar(len(db_names)) as bar:
 
             count = len(queries)
             for idx, query in enumerate(queries):
-                bar.text(f">>>>> DB: {db_name} | {idx} | Query: {idx}/{count}")
+                progress.text(f">>>>> DB: {db_name} | {idx} | Query: {idx}/{count}")
                 try:
                     db.execute(query[1])
                 except Exception as e:
                     print(e)
                     print("Details: ", db_name, idx, query[0], query[1])
-                    exit()
+                    sys.exit()
 
-        bar()
+        progress() # pylint: disable=not-callable
+
+print("Validation successful.")

@@ -1,3 +1,5 @@
+"""Scan ./dataset directory"""
+
 from os import path
 
 from core.dataset import DatasetDir
