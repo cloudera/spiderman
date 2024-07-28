@@ -1,9 +1,9 @@
 from os import path
 from typing import Dict
 
-import core.dataset as dataset
-import core.paths as paths
+from core.dataset import DatasetDir
 
+from core import paths
 from core.dialects import mysql
 from core.source_db import SourceDB
 from utils.filesystem import write_csv, write_str, read_json_dict
@@ -27,7 +27,7 @@ skipped_questions = query_overrides["skip"]
 
 
 # Get schema of each table in the given list.
-def extract_schema(table_names: list[str], db: SourceDB) -> None:
+def _extract_schema(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> None:
     schema_ddls = [
         f"-- Dialect: MySQL | Database: {db.name} | Table Count: {len(table_names)}",
         f"CREATE DATABASE IF NOT EXISTS `{db.name}`;"
@@ -45,7 +45,7 @@ def extract_schema(table_names: list[str], db: SourceDB) -> None:
         schema = schema + "\n" # New line at EOF
         write_str(file_path, schema)
 
-def filter_data(table_data: list[list], delete_filters: dict) -> list[list]:
+def _filter_data(table_data: list[list], delete_filters: dict) -> list[list]:
     column_names: list = table_data[0]
     rows: list[list] = table_data[1:]
 
@@ -57,7 +57,7 @@ def filter_data(table_data: list[list], delete_filters: dict) -> list[list]:
 
 # Get data of each table in the given list. Return false if any is missing.
 # Write to a CSV file if all are available and return true.
-def extract_data(table_names: list[str], db: SourceDB) -> bool:
+def _extract_data(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> bool:
     data_dir = dataset.path_to_data_dir(db.name)
 
     table_data_map: Dict[str, list] = {}
@@ -78,7 +78,7 @@ def extract_data(table_names: list[str], db: SourceDB) -> bool:
         # Filter out rows with invalid data
         table_path = f"{db.name}.{table_name}"
         if table_path in delete_filters:
-            table_data = filter_data(table_data, delete_filters[table_path])
+            table_data = _filter_data(table_data, delete_filters[table_path])
 
         # Add missing data
         if table_path in add_data:
@@ -93,15 +93,15 @@ def extract_data(table_names: list[str], db: SourceDB) -> bool:
 
     return False
 
-
 # Extract schema and data of a database if data is available
-def extract_db(db_name: str, data: bytes):
+def extract_db(dataset: DatasetDir, db_name: str, data: bytes):
     with SourceDB(db_name, data) as db:
         table_names: list[str] = ordered_tables[db_name]
 
-        data_is_missing = extract_data(table_names, db)
+        data_is_missing = _extract_data(dataset, table_names, db)
         if not data_is_missing:
-            extract_schema(table_names, db)
+            _extract_schema(dataset, table_names, db)
+
 
 def _dedupe_queries(queries: list) -> list:
     deduped_queries: list = []
@@ -119,7 +119,7 @@ def _dedupe_queries(queries: list) -> list:
 
     return deduped_queries
 
-def extract_queries(queries: list, is_test: bool):
+def extract_queries(dataset: DatasetDir, queries: list, is_test: bool):
     db_queries: dict[str, list[list]] = {}
 
     queries = _dedupe_queries(queries)
