@@ -1,23 +1,20 @@
 """Try running queries on the target database, and validate they can be successfully executed"""
 
 import sys
-import argparse
 from alive_progress import alive_bar
 
 from core.target_db import TargetDB
 from core.dataset import DatasetDir
 from utils.filesystem import read_csv
+from utils.args import get_args
 
 
-parser = argparse.ArgumentParser(description="SpiderMan - Validate successful execution of all queries on the target database")
-parser.add_argument("url", help="SQLAlchemy friendly URL to the target database")
-args = parser.parse_args()
-
-print("Executing queries...")
+args = get_args("Validate successful execution of all queries on the target database")
 
 dataset = DatasetDir()
 db_names = dataset.get_db_names()
 
+print("Executing queries...")
 with alive_bar(len(db_names)) as progress:
     for db_name in db_names:
 
