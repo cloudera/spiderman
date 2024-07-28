@@ -1,25 +1,26 @@
 import argparse
-from alive_progress import alive_bar;
+from alive_progress import alive_bar
 
 from core.target_db import TargetDB
-from core.dataset import get_db_names, path_to_queries_file
+from core.dataset import DatasetDir
 from utils.filesystem import read_csv
 
 
-parser = argparse.ArgumentParser(description=f"SpiderMan - Validate successful execution of all queries on the target database")
+parser = argparse.ArgumentParser(description="SpiderMan - Validate successful execution of all queries on the target database")
 parser.add_argument("url", help="SQLAlchemy friendly URL to the target database")
 args = parser.parse_args()
 
 print("Executing queries...")
 
-db_names = get_db_names()
+dataset = DatasetDir()
+db_names = dataset.get_db_names()
 
 with alive_bar(len(db_names)) as bar:
     for db_name in db_names:
 
         bar.text(f">> DB: {db_name}")
         with TargetDB(args.url, db_name) as db:
-            queries_file_path = path_to_queries_file(db_name)
+            queries_file_path = dataset.path_to_queries_file(db_name)
             replaced_queries_file_path = queries_file_path[:-3] + "csv"
             queries = read_csv(replaced_queries_file_path)[1:]
 

@@ -37,13 +37,13 @@ docker run --name spiderman-mysql -e MYSQL_ROOT_PASSWORD=PeterParker -p 3306:330
 ## Scripts
 ### Load Dataset
 ```
-python ./scripts/load_dataset.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
+python scripts/load_dataset.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
 It creates schemas for all the databases and inserts their data into a DB system. It accepts one argument—a SQLAlchemy 2.0 compatible URL to the target database. More details on the URL are available [here](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls). If the target database is not MySQL, the script will try to transpile the schema and then load.
 
 ### Validate Queries
 ```
-python ./scripts/validate_queries.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
+python scripts/validate_queries.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
 Once the dataset is loaded, you can run this script to execute the queries. It checks the successful completion of all the queries. Query results are not verified at this point.
 
