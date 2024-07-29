@@ -9,6 +9,7 @@ from core.source_db import SourceDB
 from utils.filesystem import write_csv, write_str, read_json_dict
 
 
+DIALECT = "MySQL"
 TABLE_DELIM = "\n\n"
 
 # List of table names, ordered based on foreign key dependency
@@ -27,9 +28,9 @@ skipped_questions = query_overrides["skip"]
 
 
 # Get schema of each table in the given list.
-def _extract_schema(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> None:
+def _build_schema(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> None:
     schema_ddls = [
-        f"-- Dialect: MySQL | Database: {db.name} | Table Count: {len(table_names)}",
+        f"-- Dialect: {DIALECT} | Database: {db.name} | Table Count: {len(table_names)}",
         f"CREATE DATABASE IF NOT EXISTS `{db.name}`;"
     ]
 
@@ -57,7 +58,7 @@ def _filter_data(table_data: list[list], delete_filters: dict) -> list[list]:
 
 # Get data of each table in the given list. Return false if any is missing.
 # Write to a CSV file if all are available and return true.
-def _extract_data(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> bool:
+def _build_data(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> bool:
     data_dir = dataset.path_to_data_dir(db.name)
 
     table_data_map: Dict[str, list] = {}
@@ -93,14 +94,14 @@ def _extract_data(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> 
 
     return False
 
-# Extract schema and data of a database if data is available
-def extract_db(dataset: DatasetDir, db_name: str, data: bytes):
+# Build schema and data of a database if data is available
+def build_db(dataset: DatasetDir, db_name: str, data: bytes):
     with SourceDB(db_name, data) as db:
         table_names: list[str] = ordered_tables[db_name]
 
-        data_is_missing = _extract_data(dataset, table_names, db)
+        data_is_missing = _build_data(dataset, table_names, db)
         if not data_is_missing:
-            _extract_schema(dataset, table_names, db)
+            _build_schema(dataset, table_names, db)
 
 
 def _dedupe_queries(queries: list) -> list:
@@ -119,7 +120,7 @@ def _dedupe_queries(queries: list) -> list:
 
     return deduped_queries
 
-def extract_queries(dataset: DatasetDir, queries: list, is_test: bool):
+def build_queries(dataset: DatasetDir, queries: list, query_file_path: str) -> list[list]:
     db_queries: dict[str, list[list]] = {}
 
     queries = _dedupe_queries(queries)
@@ -140,13 +141,12 @@ def extract_queries(dataset: DatasetDir, queries: list, is_test: bool):
         if db_name not in db_queries:
             db_queries[db_name] = []
 
-        db_queries[db_name].append([question, sql])
+        db_queries[db_name].append([db_name, question, sql])
 
-    for db_name in db_queries:
-        data_dir = dataset.path_to_data_dir(db_name)
-        query_file_path = dataset.path_to_test_queries_file(db_name) if is_test \
-                    else dataset.path_to_train_queries_file(db_name)
+    db_names = dataset.get_db_names()
+    queries = []
+    for db_name in db_names:
+        queries = queries + db_queries.get(db_name, [])
 
-        if path.exists(data_dir): # Create query file only if DB files are available
-            data = [["question", "sql"]] + db_queries[db_name]
-            write_csv(query_file_path, data)
+    data = [["database", "question", "sql"]] + queries
+    write_csv(query_file_path, data)
