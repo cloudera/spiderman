@@ -1,4 +1,4 @@
-"""Try running queries on the target database, and validate they can be successfully executed"""
+"""Try running train & test queries on the target database, and validate they can be successfully executed"""
 
 import sys
 from alive_progress import alive_bar
@@ -11,29 +11,47 @@ from utils.args import get_args
 
 args = get_args("Validate successful execution of all queries on the target database")
 
-dataset = DatasetDir()
-db_names = dataset.get_db_names()
+dataset = DatasetDir(args.dialect)
 
-print("Executing queries...")
-with alive_bar(len(db_names)) as progress:
-    for db_name in db_names:
+def get_db_sql_map(query_file_path: str) -> dict[str, list[str]]:
+    db_sql_map: dict[str, list[str]] = {}
 
-        progress.text(f">> DB: {db_name}")
-        with TargetDB(args.url, db_name) as db:
-            queries_file_path = dataset.path_to_queries_file(db_name)
-            replaced_queries_file_path = queries_file_path[:-3] + "csv"
-            queries = read_csv(replaced_queries_file_path)[1:]
+    queries = read_csv(query_file_path)[1:]
+    for query in queries:
+        db_name = query[0]
+        sql = query[2]
 
-            count = len(queries)
-            for idx, query in enumerate(queries):
-                progress.text(f">>>>> DB: {db_name} | {idx} | Query: {idx}/{count}")
-                try:
-                    db.execute(query[1])
-                except Exception as e:
-                    print(e)
-                    print("Details: ", db_name, idx, query[0], query[1])
-                    sys.exit()
+        if db_name not in db_sql_map:
+            db_sql_map[db_name] = []
 
-        progress() # pylint: disable=not-callable
+        db_sql_map[db_name].append(sql)
+
+    return db_sql_map
+
+def execute_sql(db_sql_map: dict[str, list[str]]):
+    with alive_bar(len(db_sql_map.keys())) as progress:
+        for db_name in db_sql_map:
+
+            progress.text(f">> DB: {db_name}")
+            with TargetDB(args.url, db_name) as db:
+                sqls = db_sql_map[db_name]
+
+                count = len(sqls)
+                for idx, sql in enumerate(sqls):
+                    progress.text(f">>>>> DB: {db_name} | {idx} | Query: {idx}/{count}")
+                    try:
+                        db.execute(sql)
+                    except Exception as e:
+                        print(e)
+                        print("Details: ", db_name, idx, sql)
+                        sys.exit()
+
+            progress() # pylint: disable=not-callable
+
+print("Executing train queries...")
+execute_sql(get_db_sql_map(dataset.path_to_train_queries_file()))
+
+print("Executing test queries...")
+execute_sql(get_db_sql_map(dataset.path_to_test_queries_file()))
 
 print("Validation successful.")

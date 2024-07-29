@@ -1,35 +1,29 @@
-"""Scan ./dataset directory"""
+"""Scan dataset_mysql directory"""
 
-from os import path
+from argparse import ArgumentParser
 
 from core.dataset import DatasetDir
 from utils.print import print_dict
-from utils.filesystem import read_str
+from utils.filesystem import read_str, read_csv
 
+
+def _get_counts(dataset: DatasetDir, query_file_path: str):
+    queries = read_csv(query_file_path)[1:]
+
+    db_names = list(set(row[0] for row in queries))
+
+    tables_count = 0
+    for db_name in db_names:
+        schema = read_str(dataset.path_to_schema_file(db_name))
+        tables_count += schema.count('CREATE TABLE')
+
+    return len(queries), len(db_names), tables_count
 
 def print_stats(dataset: DatasetDir) -> dict:
-    train_queries = 0
-    train_tables = 0
-    train_dbs = 0
-
-    test_queries = 0
-    test_tables = 0
-    test_dbs = 0
+    train_queries, train_dbs, train_tables = _get_counts(dataset, dataset.path_to_train_queries_file())
+    test_queries, test_dbs, test_tables = _get_counts(dataset, dataset.path_to_test_queries_file())
 
     db_names = dataset.get_db_names()
-    for db_name in db_names:
-        query_count = len(dataset.get_queries(db_name))
-        tables_count = read_str(dataset.path_to_schema_file(db_name)).count('CREATE TABLE')
-
-        if path.exists(dataset.path_to_train_queries_file(db_name)):
-            train_queries += query_count
-            train_tables += tables_count
-            train_dbs += 1
-
-        if path.exists(dataset.path_to_test_queries_file(db_name)):
-            test_queries += query_count
-            test_tables += tables_count
-            test_dbs += 1
 
     stats = {
         "Train queries": train_queries,
@@ -42,7 +36,8 @@ def print_stats(dataset: DatasetDir) -> dict:
 
         "Total queries": train_queries + test_queries,
         "Total tables": train_tables + test_tables,
-        "Total DBs": len(db_names),
+        "Total DBs": train_dbs + test_dbs,
+
         "DB names": ", ".join(db_names)
     }
 
@@ -51,4 +46,10 @@ def print_stats(dataset: DatasetDir) -> dict:
     #TODO: Get top 10 DBs and tables with maximum rows as part of stats
 
 if __name__ == "__main__":
-    print_stats(DatasetDir())
+    parser = ArgumentParser(description="SpiderMan - Scan dataset_mysql directory")
+    parser.add_argument("-d", "--dialect", help="Target dialect.", default="mysql")
+    args = parser.parse_args()
+
+    dataset_dir = DatasetDir(args.dialect)
+    print(f"Scaning {dataset_dir.base_path} directory")
+    print_stats(dataset_dir)

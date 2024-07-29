@@ -4,44 +4,46 @@ import json
 from alive_progress import alive_bar
 
 from utils.zip import ZipReader
-from core.extractors import extract_db, extract_queries
+from core.builders import build_db, build_queries
 from core.dataset import DatasetDir
 from core import paths
 from scan_dataset import print_stats
 
-dataset = DatasetDir("source")
 
-def extract_schema_and_data(source_zip: ZipReader):
-    """Extract SCHEMA and DATA of databases"""
+DATASET_SUFFIX = "build"
+dataset = DatasetDir(DATASET_SUFFIX)
+
+def build_schema_and_data(source_zip: ZipReader):
+    """Build SCHEMA and DATA of databases"""
     files = source_zip.list_sqlite_files_in(paths.SOURCE_DB_DIR)
 
-    print(f"Extracting SCHEMA and DATA of {len(files)} databases")
+    print(f"Building SCHEMA and DATA of {len(files)} databases")
     with alive_bar(len(files)) as progress:
         for file in files:
             db_name = file.name
             db_data = source_zip.read_file(file.path)
-            extract_db(dataset, db_name, db_data)
+            build_db(dataset, db_name, db_data)
             progress() # pylint: disable=not-callable
 
-def extract_train_and_test_queries(source_zip: ZipReader):
-    """Extract train and test queries"""
+def build_train_and_test_queries(source_zip: ZipReader):
+    """Build train and test queries"""
+
+    print("Building train queries...")
     train_queries = json.loads(source_zip.read_file(paths.TRAIN_QUERIES_1))
     train_queries += json.loads(source_zip.read_file(paths.TRAIN_QUERIES_2))
+    build_queries(dataset, train_queries, dataset.path_to_train_queries_file())
+
+    print("Building test queries...")
     test_queries = json.loads(source_zip.read_file(paths.TEST_QUERIES))
+    build_queries(dataset, test_queries, dataset.path_to_test_queries_file())
 
-    print("Extracting train queries...")
-    extract_queries(dataset, train_queries, False)
-
-    print("Extracting test queries...")
-    extract_queries(dataset, test_queries, True)
-
-def extract_from_zip():
-    """Extract from source Zip"""
+def build_dataset():
+    """Build from source Zip"""
     with ZipReader(paths.SOURCE_ZIP) as source_zip:
-        extract_schema_and_data(source_zip)
-        extract_train_and_test_queries(source_zip)
+        build_schema_and_data(source_zip)
+        build_train_and_test_queries(source_zip)
 
 dataset.delete()
-extract_from_zip()
+build_dataset()
 print("Dataset rebuild completed successfully.")
 print_stats(dataset)
