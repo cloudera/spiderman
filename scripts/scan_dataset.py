@@ -10,15 +10,15 @@ from utils.filesystem import read_str
 
 
 def _get_counts(dataset: DatasetDir, query_file_path: str):
-    queries = pd.read_csv(query_file_path).values
-    db_names = sorted(set(row[0] for row in queries))
+    queries_df = pd.read_csv(query_file_path)
+    db_names = sorted(set(queries_df['database']))
 
     tables_count = 0
     for db_name in db_names:
         schema = read_str(dataset.path_to_schema_file(db_name))
         tables_count += schema.count('CREATE TABLE')
 
-    return len(queries), tables_count, db_names
+    return len(queries_df.values), tables_count, db_names
 
 def print_stats(dataset: DatasetDir) -> dict:
     """Get dataset stats and print"""
