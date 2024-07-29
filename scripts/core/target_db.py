@@ -19,8 +19,8 @@ def _format(values: list[str], punctuation: str) -> str:
             if not value.startswith(punctuation):
                 value = f'{punctuation}{value}{punctuation}'
         punctuated_values.append(value)
-    str = ', '.join(punctuated_values)
-    return f"({str})"
+    values_str = ', '.join(punctuated_values)
+    return f"({values_str})"
 
 
 # Wrapper around SQLAlchemy for interacting with external databases
