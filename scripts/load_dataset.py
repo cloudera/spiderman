@@ -1,5 +1,6 @@
 """Load schema and data into a target database"""
 
+import pandas as pd
 from alive_progress import alive_bar
 
 from core import paths
@@ -41,10 +42,10 @@ def insert_data():
                 table_names = ordered_tables[db_name]
                 for table_name in table_names:
                     progress.text(f">> DB: {db_name} | Table: {table_name}")
-                    column_names, rows = dataset.get_data(db_name, table_name)
-
-                    progress.text(f">> DB: {db_name} | Table: {table_name} | Rows: {len(rows)}")
-                    db.insert(table_name, column_names, rows)
+                    table_data_file = dataset.path_to_table_data_file(db_name, table_name)
+                    df = pd.read_csv(table_data_file, dtype=str, na_filter=False)
+                    progress.text(f">> DB: {db_name} | Table: {table_name} | Rows: {len(df.values)}")
+                    db.insert(table_name, df.columns, df.values)
             progress() # pylint: disable=not-callable
 
 create_databases()

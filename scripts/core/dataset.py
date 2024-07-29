@@ -1,9 +1,7 @@
 import os
-import shutil
 from os import path
-from typing import Tuple
 
-from utils.filesystem import read_csv
+import shutil
 
 
 class DatasetDir:
@@ -43,11 +41,6 @@ class DatasetDir:
         db_names = self._clean_names(db_names)
         db_names.sort()
         return db_names
-
-    def get_data(self, db_name: str, table_name: str) -> Tuple[list, list[list]]:
-        table_file = self.path_to_table_data_file(db_name, table_name)
-        rows = read_csv(table_file)
-        return rows[0], rows[1:]
 
     def delete(self):
         if path.exists(self.base_path):
