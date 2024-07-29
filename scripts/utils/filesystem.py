@@ -19,16 +19,6 @@ def write_str(file_path: str, data: str):
         str_file.write(data)
 
 
-def read_csv(file_path: str) -> list[list]:
-    create_missing_dir(file_path)
-
-    if not os.path.isfile(file_path):
-        raise Exception(f"File not found - {file_path}")
-
-    with open(file_path, mode='r', newline='', encoding='utf-8') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        return list(csv_reader)
-
 def write_csv(file_path: str, data: list[list], overwrite: bool = False):
     create_missing_dir(file_path)
 
