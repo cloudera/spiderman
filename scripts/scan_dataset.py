@@ -2,15 +2,16 @@
 
 from argparse import ArgumentParser
 
+import pandas as pd
+
 from core.dataset import DatasetDir
 from utils.print import print_bar
-from utils.filesystem import read_str, read_csv
+from utils.filesystem import read_str
 
 
 def _get_counts(dataset: DatasetDir, query_file_path: str):
-    queries = read_csv(query_file_path)[1:]
-
-    db_names = list(set(row[0] for row in queries))
+    queries = pd.read_csv(query_file_path).values
+    db_names = sorted(set(row[0] for row in queries))
 
     tables_count = 0
     for db_name in db_names:
@@ -20,6 +21,8 @@ def _get_counts(dataset: DatasetDir, query_file_path: str):
     return len(queries), tables_count, db_names
 
 def print_stats(dataset: DatasetDir) -> dict:
+    """Get dataset stats and print"""
+
     train_queries, train_tables, train_db_names = _get_counts(dataset,
                                                               dataset.path_to_train_queries_file())
     test_queries, test_tables, test_db_names = _get_counts(dataset,
@@ -40,8 +43,6 @@ def print_stats(dataset: DatasetDir) -> dict:
     print("Total DBs:", len(train_db_names) + len(test_db_names))
 
     print_bar()
-
-    #TODO: Get top 10 DBs and tables with maximum rows as part of stats
 
 if __name__ == "__main__":
     parser = ArgumentParser(description="SpiderMan - Scan dataset_mysql directory")
