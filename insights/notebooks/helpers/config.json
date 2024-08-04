@@ -1,0 +1,36 @@
+{
+  "clauses": [
+    "SELECT", "FROM", "WHERE", "WITH",
+    "GROUP BY", "HAVING", "ORDER BY",
+    "LIMIT", "FETCH FIRST", "TOP", "OFFSET",
+    "DISTINCT", "UNION", "UNION ALL", "EXCEPT", "MINUS", "INTERSECT",
+    "CASE", "IF"
+  ],
+  "joins": [
+    "JOIN", "INNER JOIN", "LEFT JOIN", "LEFT OUTER JOIN", "RIGHT JOIN", "RIGHT OUTER JOIN",
+    "FULL JOIN", "FULL OUTER JOIN", "CROSS JOIN", "NATURAL JOIN"
+  ],
+  "aggregate_functions": [
+    "COUNT", "SUM", "AVG", "MIN", "MAX"
+  ],
+  "scalar_functions": [
+    "UCASE", "UPPER", "LCASE", "LOWER", "MID", "SUBSTRING", "LEN", "LENGTH", "ROUND", "NOW", "FORMAT",
+    "DATE", "TIME", "YEAR", "MONTH", "DAY", "DATEPART", "DATEDIFF", "DATEADD",
+    "CHAR_LENGTH", "CONCAT", "REPLACE", "TRIM", "RTRIM", "LTRIM",
+    "ABS", "CEILING", "FLOOR", "POWER", "SQRT",
+    "CAST", "CONVERT"
+  ],
+  "system_functions": [
+    "SYSTEM_USER", "CURRENT_USER", "SESSION_USER"
+  ],
+  "transaction_control": [
+    "BEGIN TRANSACTION", "COMMIT", "ROLLBACK"
+  ],
+  "constraints": [
+    "PRIMARY KEY", "FOREIGN KEY",
+    "UNIQUE", "NOT NULL", "CHECK", "DEFAULT"
+  ],
+  "database_objects": [
+    "INDEX", "VIEW", "SEQUENCE", "TRIGGER", "PROCEDURE", "FUNCTION", "CURSOR", "STORED PROCEDURE"
+  ]
+}
