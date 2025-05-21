@@ -1,4 +1,4 @@
-"""Recreate dataset from source zip into `./dataset_source` directory. Current directory will be deleted and recreated."""
+"""Recreate dataset from source zip into `./dataset_build` directory. Current directory will be deleted and recreated."""
 
 import json
 from alive_progress import alive_bar
