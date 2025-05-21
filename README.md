@@ -5,12 +5,12 @@ A comprehensive, high-quality, human-annotated plain-text dataset for SQL AI tas
 SpiderMan is an improved version of the [Spider 1.0](https://yale-lily.github.io/spider) dataset.
 
 - The databases are made available in plain-text format instead of a set of SQLite files. This makes it easy for you to load the dataset into any database of your choice.
-- The schema has been standardized. Corrected table ordering, column data types, primary and foreign key constraints.
+- The schema has been standardized, including the correction of table ordering, column data types, and the enforcement of primary and foreign key constraints.
 - Data has been corrected for schema-based validations.
 - Queries have been improved for successful execution.
 
 ## Dataset
-The dataset comprises 157 databases. Each one comes with its respective schema, data, and queries. By default, schema and queries are in MySQL dialect and can be transposed to other dialects using the transpiler script. At present, our queries do not extend across multiple databases. Each query within a single database is assigned exclusively to either the training set or the test set, but not to both.
+The dataset comprises 157 databases. Each one comes with its respective schema, data, and queries. By default, schema and queries are in MySQL dialect and can be translated to other dialects using the transpiler script. At present, our queries do not extend across multiple databases. Each query within a single database is assigned exclusively to either the training set or the test set, but not to both.
 
 ||Queries|Tables|Databases|
 |-|-|-|-|
@@ -39,7 +39,7 @@ docker run --name spiderman-mysql -e MYSQL_ROOT_PASSWORD=PeterParker -p 3306:330
 ```
 python scripts/load_dataset.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
-It creates schemas for all the databases and inserts their data into a DB system. It accepts one argument—a SQLAlchemy 2.0 compatible URL to the target database. More details on the URL are available [here](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls). If the target database is not MySQL, the script will try to transpile the schema and then load.
+It creates schemas for all the databases and populates them with data. It accepts one argument—a SQLAlchemy 2.0 compatible URL to the target database. More details on the URL are available [here](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls). If the target database is not MySQL, the script will try to transpile the schema and then load.
 
 ### Validate Queries
 ```
