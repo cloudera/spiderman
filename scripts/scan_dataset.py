@@ -20,6 +20,7 @@ def _get_counts(dataset: DatasetDir, query_file_path: str):
 
     return len(queries_df.values), tables_count, db_names
 
+
 def print_stats(dataset: DatasetDir) -> dict:
     """Get dataset stats and print"""
 
@@ -43,6 +44,7 @@ def print_stats(dataset: DatasetDir) -> dict:
     print("Total DBs:", len(train_db_names) + len(test_db_names))
 
     print_bar()
+
 
 if __name__ == "__main__":
     parser = ArgumentParser(description="SpiderMan - Scan dataset_mysql directory")
