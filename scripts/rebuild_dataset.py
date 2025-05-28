@@ -10,10 +10,9 @@ from core import paths
 from scan_dataset import print_stats
 
 
-DATASET_SUFFIX = "build"
-dataset = DatasetDir(DATASET_SUFFIX)
+DATASET_DIR_SUFFIX = "mysql_rebuild"
 
-def build_schema_and_data(source_zip: ZipReader):
+def build_schema_and_data(source_zip: ZipReader, dataset: DatasetDir):
     """Build SCHEMA and DATA of databases"""
     files = source_zip.list_sqlite_files_in(paths.SOURCE_DB_DIR)
 
@@ -25,7 +24,8 @@ def build_schema_and_data(source_zip: ZipReader):
             build_db(dataset, db_name, db_data)
             progress() # pylint: disable=not-callable
 
-def build_train_and_test_queries(source_zip: ZipReader):
+
+def build_train_and_test_queries(source_zip: ZipReader, dataset: DatasetDir):
     """Build train and test queries"""
 
     print("Building train queries...")
@@ -37,13 +37,21 @@ def build_train_and_test_queries(source_zip: ZipReader):
     test_queries = json.loads(source_zip.read_file(paths.TEST_QUERIES))
     build_queries(dataset, test_queries, dataset.path_to_test_queries_file())
 
-def build_dataset():
+
+def build_dataset(dataset: DatasetDir):
     """Build from source Zip"""
     with ZipReader(paths.SOURCE_ZIP) as source_zip:
-        build_schema_and_data(source_zip)
-        build_train_and_test_queries(source_zip)
+        build_schema_and_data(source_zip, dataset)
+        build_train_and_test_queries(source_zip, dataset)
 
-dataset.delete()
-build_dataset()
-print("Dataset rebuild completed successfully.")
-print_stats(dataset)
+
+if __name__ == "__main__":
+    dataset = DatasetDir(DATASET_DIR_SUFFIX)
+
+    print(f"Rebuilding dataset into {dataset.base_path} directory...")
+
+    dataset.delete()
+    build_dataset(dataset)
+    print("Dataset rebuild completed successfully.")
+
+    print_stats(dataset)
