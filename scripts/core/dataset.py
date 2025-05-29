@@ -49,10 +49,9 @@ class DatasetDir:
             shutil.rmtree(self.base_path)
 
 
-def iter_db_names(dataset: DatasetDir):
+def iter_db_names(db_names: list[str]):
     """Iterate over database names in the dataset directory."""
 
-    db_names = dataset.get_db_names()
     if not db_names:
         raise ValueError("No databases found in the dataset directory.")
 
