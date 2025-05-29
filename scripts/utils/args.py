@@ -6,9 +6,8 @@ def _extract_dialect(url: str) -> str:
     parsed_url = urlparse(url)
     return parsed_url.scheme.split("+")[0]
 
-def get_args(description: str) -> Namespace:
-    """Get command line arguments"""
-    parser = ArgumentParser(description=f"SpiderMan - {description}")
+def parse_url_dialect(parser: ArgumentParser) -> Namespace:
+    """Get command line arguments url and dialect."""
 
     parser.add_argument("url", help="SQLAlchemy friendly URL to the target database")
     parser.add_argument("-d", "--dialect", help="Target dialect. Calculated from the URL by default.")

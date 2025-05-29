@@ -1,53 +1,50 @@
 """Load schema and data into a target database"""
 
 import pandas as pd
-from alive_progress import alive_bar
+from argparse import ArgumentParser
+
 
 from core import paths
 from core.target_db import TargetDB
-from core.dataset import DatasetDir
+from core.dataset import DatasetDir, iter_db_names
 from utils.filesystem import read_str, read_json_dict
-from utils.args import get_args
+from utils.args import parse_url_dialect
 
 
-args = get_args("Load schema and data into a target database")
-
-# Get list of table names, ordered based on foreign key dependency
-ordered_tables = read_json_dict(paths.ORDERED_TABLES)
-
-dataset = DatasetDir(args.dialect)
-db_names = dataset.get_db_names()
-
-def create_databases():
+def create_databases(dataset: DatasetDir):
     """Creating databases"""
 
     print("Creating databases...")
-    with alive_bar(len(db_names)) as progress:
-        for db_name in db_names:
-            progress.text(f">> DB: {db_name}")
-            with TargetDB(args.url, db_name, reset=True) as db:
-                file_path = dataset.path_to_schema_file(db_name)
-                schema = read_str(file_path)
-                db.execute(schema)
-            progress() # pylint: disable=not-callable
+    for db_name, _ in iter_db_names(dataset):
+        with TargetDB(args.url, db_name, reset=True) as db:
+            file_path = dataset.path_to_schema_file(db_name)
+            schema = read_str(file_path)
+            db.execute(schema)
 
-def insert_data():
+
+def insert_data(dataset: DatasetDir):
     """Inserting data"""
 
-    print("Inserting data...")
-    with alive_bar(len(db_names)) as progress:
-        for db_name in db_names:
-            progress.text(f">> DB: {db_name}")
-            with TargetDB(args.url, db_name) as db:
-                table_names = ordered_tables[db_name]
-                for table_name in table_names:
-                    progress.text(f">> DB: {db_name} | Table: {table_name}")
-                    table_data_file = dataset.path_to_table_data_file(db_name, table_name)
-                    df = pd.read_csv(table_data_file, dtype=str, na_filter=False)
-                    progress.text(f">> DB: {db_name} | Table: {table_name} | Rows: {len(df.values)}")
-                    db.insert(table_name, df.columns, df.values)
-            progress() # pylint: disable=not-callable
+    # Get list of table names, ordered based on foreign key dependency
+    ordered_tables = read_json_dict(paths.ORDERED_TABLES)
 
-create_databases()
-insert_data()
-print("Load successful.")
+    print("Inserting data...")
+    for db_name, bar in iter_db_names(dataset):
+        with TargetDB(args.url, db_name) as db:
+            table_names = ordered_tables[db_name]
+            for table_name in table_names:
+                bar.text(f">> DB: {db_name} | Table: {table_name}")
+                table_data_file = dataset.path_to_table_data_file(db_name, table_name)
+                df = pd.read_csv(table_data_file, dtype=str, na_filter=False)
+                bar.text(f">> DB: {db_name} | Table: {table_name} | Rows: {len(df.values)}")
+                db.insert(table_name, df.columns, df.values)
+
+
+if __name__ == "__main__":
+    args = parse_url_dialect(ArgumentParser("SpiderMan - Load schema and data into a target database"))
+    dataset = DatasetDir(args.dialect)
+
+    create_databases(dataset)
+    insert_data(dataset)
+
+    print("Load successful.")

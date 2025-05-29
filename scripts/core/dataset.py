@@ -1,6 +1,7 @@
 import os
 from os import path
 
+from alive_progress import alive_bar
 import shutil
 
 
@@ -46,3 +47,17 @@ class DatasetDir:
         if path.exists(self.base_path):
             print(f"Deleting {self.base_path}")
             shutil.rmtree(self.base_path)
+
+
+def iter_db_names(dataset: DatasetDir):
+    """Iterate over database names in the dataset directory."""
+
+    db_names = dataset.get_db_names()
+    if not db_names:
+        raise ValueError("No databases found in the dataset directory.")
+
+    with alive_bar(len(db_names)) as bar:
+        for db_name in db_names:
+            bar.text(f">> DB: {db_name}")
+            yield db_name, bar
+            bar()
