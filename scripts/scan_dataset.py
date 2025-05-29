@@ -1,12 +1,11 @@
 """Scan dataset_mysql directory"""
 
-from argparse import ArgumentParser
-
 import pandas as pd
 
 from core.dataset import DatasetDir
 from utils.print import print_bar
 from utils.filesystem import read_str
+from utils.args import parse_dialect
 
 
 def _get_counts(dataset: DatasetDir, query_file_path: str):
@@ -47,9 +46,7 @@ def print_stats(dataset: DatasetDir) -> dict:
 
 
 if __name__ == "__main__":
-    parser = ArgumentParser(description="SpiderMan - Scan dataset_mysql directory")
-    parser.add_argument("-d", "--dialect", help="Target dialect.", default="mysql")
-    args = parser.parse_args()
+    args = parse_dialect("Scan dataset directory of a specific dialect")
 
     dataset_dir = DatasetDir(args.dialect)
     print(f"Scaning {dataset_dir.base_path} directory")

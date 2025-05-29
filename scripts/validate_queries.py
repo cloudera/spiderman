@@ -4,7 +4,6 @@ and validate they can be successfully executed
 """
 
 import sys
-from argparse import ArgumentParser
 
 import pandas as pd
 
@@ -38,7 +37,7 @@ def execute_queries(query_file_path: str):
 
 
 if __name__ == "__main__":
-    args = parse_url_dialect(ArgumentParser("SpiderMan - Validate successful execution of all queries on the target database"))
+    args = parse_url_dialect("Validate successful execution of all queries on the target database")
     dataset = DatasetDir(args.dialect)
 
     print("Executing train queries...")

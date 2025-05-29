@@ -1,8 +1,6 @@
 """Load schema and data into a target database"""
 
 import pandas as pd
-from argparse import ArgumentParser
-
 
 from core import paths
 from core.target_db import TargetDB
@@ -41,7 +39,7 @@ def insert_data(dataset: DatasetDir):
 
 
 if __name__ == "__main__":
-    args = parse_url_dialect(ArgumentParser("SpiderMan - Load schema and data into a target database"))
+    args = parse_url_dialect("Load schema and data into a target database")
     dataset = DatasetDir(args.dialect)
 
     create_databases(dataset)
