@@ -8,7 +8,8 @@ import sys
 import pandas as pd
 
 from core.target_db import TargetDB
-from core.dataset import DatasetDir, iter_db_names
+from core.dataset import DatasetDir
+from utils.iter import bar_iter
 from utils.args import parse_url_dialect
 
 
@@ -18,7 +19,7 @@ def execute_queries(query_file_path: str):
     queries_df = pd.read_csv(query_file_path)
     db_names = sorted(set(queries_df['database']))
 
-    for db_name, bar in iter_db_names(db_names):
+    for db_name, bar in bar_iter(db_names, "DB"):
         db_queries_df = queries_df[queries_df['database'] == db_name]
         query_count = len(db_queries_df)
 
