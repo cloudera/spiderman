@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: solvency_ii | Table Count: 12
+-- Dialect: mysql | Database: solvency_ii | Table Count: 12
 
-CREATE DATABASE IF NOT EXISTS `solvency_ii`;
-
-DROP TABLE IF EXISTS `solvency_ii`.`Addresses`;
 CREATE TABLE `solvency_ii`.`Addresses` (
     `Address_ID` INTEGER NOT NULL,
     `address_details` VARCHAR(255),
@@ -10,14 +7,12 @@ CREATE TABLE `solvency_ii`.`Addresses` (
     UNIQUE (`Address_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Locations`;
 CREATE TABLE `solvency_ii`.`Locations` (
     `Location_ID` INTEGER NOT NULL,
     `Other_Details` VARCHAR(255),
     PRIMARY KEY (`Location_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Products`;
 CREATE TABLE `solvency_ii`.`Products` (
     `Product_ID` INTEGER NOT NULL,
     `Product_Type_Code` CHAR(15),
@@ -27,35 +22,30 @@ CREATE TABLE `solvency_ii`.`Products` (
     UNIQUE (`Product_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Parties`;
 CREATE TABLE `solvency_ii`.`Parties` (
     `Party_ID` INTEGER NOT NULL,
     `Party_Details` VARCHAR(255),
     PRIMARY KEY (`Party_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Assets`;
 CREATE TABLE `solvency_ii`.`Assets` (
     `Asset_ID` INTEGER NOT NULL,
     `Other_Details` VARCHAR(255),
     PRIMARY KEY (`Asset_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Channels`;
 CREATE TABLE `solvency_ii`.`Channels` (
     `Channel_ID` INTEGER NOT NULL,
     `Other_Details` VARCHAR(255),
     PRIMARY KEY (`Channel_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Finances`;
 CREATE TABLE `solvency_ii`.`Finances` (
     `Finance_ID` INTEGER NOT NULL,
     `Other_Details` VARCHAR(255),
     PRIMARY KEY (`Finance_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Events`;
 CREATE TABLE `solvency_ii`.`Events` (
     `Event_ID` INTEGER NOT NULL,
     `Address_ID` INTEGER,
@@ -70,7 +60,6 @@ CREATE TABLE `solvency_ii`.`Events` (
     UNIQUE (`Event_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Products_in_Events`;
 CREATE TABLE `solvency_ii`.`Products_in_Events` (
     `Product_in_Event_ID` INTEGER NOT NULL,
     `Event_ID` INTEGER NOT NULL,
@@ -80,7 +69,6 @@ CREATE TABLE `solvency_ii`.`Products_in_Events` (
     FOREIGN KEY (`Event_ID`) REFERENCES `solvency_ii`.`Events` (`Event_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Parties_in_Events`;
 CREATE TABLE `solvency_ii`.`Parties_in_Events` (
     `Party_ID` INTEGER NOT NULL,
     `Event_ID` INTEGER NOT NULL,
@@ -90,7 +78,6 @@ CREATE TABLE `solvency_ii`.`Parties_in_Events` (
     FOREIGN KEY (`Party_ID`) REFERENCES `solvency_ii`.`Parties` (`Party_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Agreements`;
 CREATE TABLE `solvency_ii`.`Agreements` (
     `Document_ID` INTEGER NOT NULL,
     `Event_ID` INTEGER NOT NULL,
@@ -98,7 +85,6 @@ CREATE TABLE `solvency_ii`.`Agreements` (
     FOREIGN KEY (`Event_ID`) REFERENCES `solvency_ii`.`Events` (`Event_ID`)
 );
 
-DROP TABLE IF EXISTS `solvency_ii`.`Assets_in_Events`;
 CREATE TABLE `solvency_ii`.`Assets_in_Events` (
     `Asset_ID` INTEGER NOT NULL,
     `Event_ID` INTEGER NOT NULL,

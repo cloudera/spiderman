@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: store_1 | Table Count: 11
+-- Dialect: mysql | Database: store_1 | Table Count: 11
 
-CREATE DATABASE IF NOT EXISTS `store_1`;
-
-DROP TABLE IF EXISTS `store_1`.`artists`;
 CREATE TABLE `store_1`.`artists` (
     `id` INTEGER,
     `name` VARCHAR(120),
@@ -10,7 +7,6 @@ CREATE TABLE `store_1`.`artists` (
     INDEX idx_id (`id`)
 );
 
-DROP TABLE IF EXISTS `store_1`.`albums`;
 CREATE TABLE `store_1`.`albums` (
     `id` INTEGER,
     `title` VARCHAR(160) NOT NULL,
@@ -21,7 +17,6 @@ CREATE TABLE `store_1`.`albums` (
     INDEX idx_artist_id (`artist_id`)
 );
 
-DROP TABLE IF EXISTS `store_1`.`employees`;
 CREATE TABLE `store_1`.`employees` (
     `id` INTEGER,
     `last_name` VARCHAR(20) NOT NULL,
@@ -44,7 +39,6 @@ CREATE TABLE `store_1`.`employees` (
     INDEX idx_reports_to (`reports_to`)
 );
 
-DROP TABLE IF EXISTS `store_1`.`customers`;
 CREATE TABLE `store_1`.`customers` (
     `id` INTEGER,
     `first_name` VARCHAR(40) NOT NULL,
@@ -65,7 +59,6 @@ CREATE TABLE `store_1`.`customers` (
     INDEX idx_support_rep_id (`support_rep_id`)
 );
 
-DROP TABLE IF EXISTS `store_1`.`genres`;
 CREATE TABLE `store_1`.`genres` (
     `id` INTEGER,
     `name` VARCHAR(120),
@@ -73,7 +66,6 @@ CREATE TABLE `store_1`.`genres` (
     INDEX idx_id (`id`)
 );
 
-DROP TABLE IF EXISTS `store_1`.`invoices`;
 CREATE TABLE `store_1`.`invoices` (
     `id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -90,7 +82,6 @@ CREATE TABLE `store_1`.`invoices` (
     INDEX idx_customer_id (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `store_1`.`media_types`;
 CREATE TABLE `store_1`.`media_types` (
     `id` INTEGER,
     `name` VARCHAR(120),
@@ -98,7 +89,6 @@ CREATE TABLE `store_1`.`media_types` (
     INDEX idx_id (`id`)
 );
 
-DROP TABLE IF EXISTS `store_1`.`tracks`;
 CREATE TABLE `store_1`.`tracks` (
     `id` INTEGER,
     `name` VARCHAR(200) NOT NULL,
@@ -119,7 +109,6 @@ CREATE TABLE `store_1`.`tracks` (
     INDEX idx_genre_id (`genre_id`)
 );
 
-DROP TABLE IF EXISTS `store_1`.`invoice_lines`;
 CREATE TABLE `store_1`.`invoice_lines` (
     `id` INTEGER,
     `invoice_id` INTEGER NOT NULL,
@@ -134,7 +123,6 @@ CREATE TABLE `store_1`.`invoice_lines` (
     INDEX idx_track_id (`track_id`)
 );
 
-DROP TABLE IF EXISTS `store_1`.`playlists`;
 CREATE TABLE `store_1`.`playlists` (
     `id` INTEGER,
     `name` VARCHAR(120),
@@ -142,7 +130,6 @@ CREATE TABLE `store_1`.`playlists` (
     INDEX idx_id (`id`)
 );
 
-DROP TABLE IF EXISTS `store_1`.`playlist_tracks`;
 CREATE TABLE `store_1`.`playlist_tracks` (
     `playlist_id` INTEGER NOT NULL,
     `track_id` INTEGER NOT NULL,

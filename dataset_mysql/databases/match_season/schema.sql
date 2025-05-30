@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: match_season | Table Count: 4
+-- Dialect: mysql | Database: match_season | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `match_season`;
-
-DROP TABLE IF EXISTS `match_season`.`country`;
 CREATE TABLE `match_season`.`country` (
     `Country_id` INT,
     `Country_name` TEXT,
@@ -11,14 +8,12 @@ CREATE TABLE `match_season`.`country` (
     PRIMARY KEY (`Country_id`)
 );
 
-DROP TABLE IF EXISTS `match_season`.`team`;
 CREATE TABLE `match_season`.`team` (
     `Team_id` INT,
     `Name` TEXT,
     PRIMARY KEY (`Team_id`)
 );
 
-DROP TABLE IF EXISTS `match_season`.`match_season`;
 CREATE TABLE `match_season`.`match_season` (
     `Season` REAL,
     `Player` TEXT,
@@ -33,7 +28,6 @@ CREATE TABLE `match_season`.`match_season` (
     FOREIGN KEY (`Country`) REFERENCES `match_season`.`country` (`Country_id`)
 );
 
-DROP TABLE IF EXISTS `match_season`.`player`;
 CREATE TABLE `match_season`.`player` (
     `Player_ID` INT,
     `Player` TEXT,

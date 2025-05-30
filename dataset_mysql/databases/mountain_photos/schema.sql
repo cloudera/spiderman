@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: mountain_photos | Table Count: 3
+-- Dialect: mysql | Database: mountain_photos | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `mountain_photos`;
-
-DROP TABLE IF EXISTS `mountain_photos`.`mountain`;
 CREATE TABLE `mountain_photos`.`mountain` (
     `id` INT,
     `name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `mountain_photos`.`mountain` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `mountain_photos`.`camera_lens`;
 CREATE TABLE `mountain_photos`.`camera_lens` (
     `id` INT,
     `brand` TEXT,
@@ -23,7 +19,6 @@ CREATE TABLE `mountain_photos`.`camera_lens` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `mountain_photos`.`photos`;
 CREATE TABLE `mountain_photos`.`photos` (
     `id` INT,
     `camera_lens_id` INT,

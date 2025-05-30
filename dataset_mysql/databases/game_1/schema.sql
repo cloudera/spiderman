@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: game_1 | Table Count: 4
+-- Dialect: mysql | Database: game_1 | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `game_1`;
-
-DROP TABLE IF EXISTS `game_1`.`Student`;
 CREATE TABLE `game_1`.`Student` (
     `StuID` INTEGER,
     `LName` VARCHAR(12),
@@ -15,7 +12,6 @@ CREATE TABLE `game_1`.`Student` (
     PRIMARY KEY (`StuID`)
 );
 
-DROP TABLE IF EXISTS `game_1`.`Video_Games`;
 CREATE TABLE `game_1`.`Video_Games` (
     `GameID` INTEGER,
     `GName` VARCHAR(40),
@@ -23,7 +19,6 @@ CREATE TABLE `game_1`.`Video_Games` (
     PRIMARY KEY (`GameID`)
 );
 
-DROP TABLE IF EXISTS `game_1`.`Plays_Games`;
 CREATE TABLE `game_1`.`Plays_Games` (
     `StuID` INTEGER,
     `GameID` INTEGER,
@@ -32,7 +27,6 @@ CREATE TABLE `game_1`.`Plays_Games` (
     FOREIGN KEY (`GameID`) REFERENCES `game_1`.`Video_Games` (`GameID`)
 );
 
-DROP TABLE IF EXISTS `game_1`.`SportsInfo`;
 CREATE TABLE `game_1`.`SportsInfo` (
     `StuID` INTEGER,
     `SportName` VARCHAR(32),

@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: perpetrator | Table Count: 2
+-- Dialect: mysql | Database: perpetrator | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `perpetrator`;
-
-DROP TABLE IF EXISTS `perpetrator`.`people`;
 CREATE TABLE `perpetrator`.`people` (
     `People_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `perpetrator`.`people` (
     PRIMARY KEY (`People_ID`)
 );
 
-DROP TABLE IF EXISTS `perpetrator`.`perpetrator`;
 CREATE TABLE `perpetrator`.`perpetrator` (
     `Perpetrator_ID` INT,
     `People_ID` INT,

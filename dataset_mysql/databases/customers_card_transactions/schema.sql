@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: customers_card_transactions | Table Count: 4
+-- Dialect: mysql | Database: customers_card_transactions | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `customers_card_transactions`;
-
-DROP TABLE IF EXISTS `customers_card_transactions`.`Accounts`;
 CREATE TABLE `customers_card_transactions`.`Accounts` (
     `account_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -11,7 +8,6 @@ CREATE TABLE `customers_card_transactions`.`Accounts` (
     PRIMARY KEY (`account_id`)
 );
 
-DROP TABLE IF EXISTS `customers_card_transactions`.`Customers`;
 CREATE TABLE `customers_card_transactions`.`Customers` (
     `customer_id` INTEGER,
     `customer_first_name` VARCHAR(20),
@@ -23,7 +19,6 @@ CREATE TABLE `customers_card_transactions`.`Customers` (
     PRIMARY KEY (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_card_transactions`.`Customers_Cards`;
 CREATE TABLE `customers_card_transactions`.`Customers_Cards` (
     `card_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -35,7 +30,6 @@ CREATE TABLE `customers_card_transactions`.`Customers_Cards` (
     PRIMARY KEY (`card_id`)
 );
 
-DROP TABLE IF EXISTS `customers_card_transactions`.`Financial_Transactions`;
 CREATE TABLE `customers_card_transactions`.`Financial_Transactions` (
     `transaction_id` INTEGER NOT NULL,
     `previous_transaction_id` INTEGER,

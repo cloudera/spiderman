@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: college_1 | Table Count: 7
+-- Dialect: mysql | Database: college_1 | Table Count: 7
 
-CREATE DATABASE IF NOT EXISTS `college_1`;
-
-DROP TABLE IF EXISTS `college_1`.`EMPLOYEE`;
 CREATE TABLE `college_1`.`EMPLOYEE` (
     `EMP_NUM` INT,
     `EMP_LNAME` VARCHAR(15),
@@ -14,7 +11,6 @@ CREATE TABLE `college_1`.`EMPLOYEE` (
     PRIMARY KEY (`EMP_NUM`)
 );
 
-DROP TABLE IF EXISTS `college_1`.`DEPARTMENT`;
 CREATE TABLE `college_1`.`DEPARTMENT` (
     `DEPT_CODE` VARCHAR(10),
     `DEPT_NAME` VARCHAR(30),
@@ -26,7 +22,6 @@ CREATE TABLE `college_1`.`DEPARTMENT` (
     FOREIGN KEY (`EMP_NUM`) REFERENCES `college_1`.`EMPLOYEE` (`EMP_NUM`)
 );
 
-DROP TABLE IF EXISTS `college_1`.`COURSE`;
 CREATE TABLE `college_1`.`COURSE` (
     `CRS_CODE` VARCHAR(10),
     `DEPT_CODE` VARCHAR(10),
@@ -36,7 +31,6 @@ CREATE TABLE `college_1`.`COURSE` (
     FOREIGN KEY (`DEPT_CODE`) REFERENCES `college_1`.`DEPARTMENT` (`DEPT_CODE`)
 );
 
-DROP TABLE IF EXISTS `college_1`.`CLASS`;
 CREATE TABLE `college_1`.`CLASS` (
     `CLASS_CODE` VARCHAR(5),
     `CRS_CODE` VARCHAR(10),
@@ -49,7 +43,6 @@ CREATE TABLE `college_1`.`CLASS` (
     FOREIGN KEY (`CRS_CODE`) REFERENCES `college_1`.`COURSE` (`CRS_CODE`)
 );
 
-DROP TABLE IF EXISTS `college_1`.`STUDENT`;
 CREATE TABLE `college_1`.`STUDENT` (
     `STU_NUM` INT,
     `STU_LNAME` VARCHAR(15),
@@ -67,7 +60,6 @@ CREATE TABLE `college_1`.`STUDENT` (
     FOREIGN KEY (`DEPT_CODE`) REFERENCES `college_1`.`DEPARTMENT` (`DEPT_CODE`)
 );
 
-DROP TABLE IF EXISTS `college_1`.`ENROLL`;
 CREATE TABLE `college_1`.`ENROLL` (
     `CLASS_CODE` VARCHAR(5),
     `STU_NUM` INT,
@@ -76,7 +68,6 @@ CREATE TABLE `college_1`.`ENROLL` (
     FOREIGN KEY (`CLASS_CODE`) REFERENCES `college_1`.`CLASS` (`CLASS_CODE`)
 );
 
-DROP TABLE IF EXISTS `college_1`.`PROFESSOR`;
 CREATE TABLE `college_1`.`PROFESSOR` (
     `EMP_NUM` INT,
     `DEPT_CODE` VARCHAR(10),

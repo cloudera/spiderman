@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: hr_1 | Table Count: 7
+-- Dialect: mysql | Database: hr_1 | Table Count: 7
 
-CREATE DATABASE IF NOT EXISTS `hr_1`;
-
-DROP TABLE IF EXISTS `hr_1`.`regions`;
 CREATE TABLE `hr_1`.`regions` (
     `REGION_ID` INT NOT NULL,
     `REGION_NAME` VARCHAR(25) DEFAULT NULL,
     PRIMARY KEY (`REGION_ID`)
 );
 
-DROP TABLE IF EXISTS `hr_1`.`countries`;
 CREATE TABLE `hr_1`.`countries` (
     `COUNTRY_ID` VARCHAR(2) NOT NULL,
     `COUNTRY_NAME` VARCHAR(40) DEFAULT NULL,
@@ -18,7 +14,6 @@ CREATE TABLE `hr_1`.`countries` (
     FOREIGN KEY (`REGION_ID`) REFERENCES `hr_1`.`regions` (`REGION_ID`)
 );
 
-DROP TABLE IF EXISTS `hr_1`.`departments`;
 CREATE TABLE `hr_1`.`departments` (
     `DEPARTMENT_ID` DECIMAL(4,0) NOT NULL,
     `DEPARTMENT_NAME` VARCHAR(30) NOT NULL,
@@ -27,7 +22,6 @@ CREATE TABLE `hr_1`.`departments` (
     PRIMARY KEY (`DEPARTMENT_ID`)
 );
 
-DROP TABLE IF EXISTS `hr_1`.`jobs`;
 CREATE TABLE `hr_1`.`jobs` (
     `JOB_ID` VARCHAR(10) NOT NULL,
     `JOB_TITLE` VARCHAR(35) NOT NULL,
@@ -36,7 +30,6 @@ CREATE TABLE `hr_1`.`jobs` (
     PRIMARY KEY (`JOB_ID`)
 );
 
-DROP TABLE IF EXISTS `hr_1`.`employees`;
 CREATE TABLE `hr_1`.`employees` (
     `EMPLOYEE_ID` DECIMAL(6,0) NOT NULL,
     `FIRST_NAME` VARCHAR(20) DEFAULT NULL,
@@ -54,7 +47,6 @@ CREATE TABLE `hr_1`.`employees` (
     FOREIGN KEY (`DEPARTMENT_ID`) REFERENCES `hr_1`.`departments` (`DEPARTMENT_ID`)
 );
 
-DROP TABLE IF EXISTS `hr_1`.`job_history`;
 CREATE TABLE `hr_1`.`job_history` (
     `EMPLOYEE_ID` DECIMAL(6,0) NOT NULL,
     `START_DATE` DATE NOT NULL,
@@ -67,7 +59,6 @@ CREATE TABLE `hr_1`.`job_history` (
     FOREIGN KEY (`EMPLOYEE_ID`) REFERENCES `hr_1`.`employees` (`EMPLOYEE_ID`)
 );
 
-DROP TABLE IF EXISTS `hr_1`.`locations`;
 CREATE TABLE `hr_1`.`locations` (
     `LOCATION_ID` DECIMAL(4,0) NOT NULL,
     `STREET_ADDRESS` VARCHAR(40) DEFAULT NULL,

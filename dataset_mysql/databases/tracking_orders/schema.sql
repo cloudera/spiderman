@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: tracking_orders | Table Count: 7
+-- Dialect: mysql | Database: tracking_orders | Table Count: 7
 
-CREATE DATABASE IF NOT EXISTS `tracking_orders`;
-
-DROP TABLE IF EXISTS `tracking_orders`.`Customers`;
 CREATE TABLE `tracking_orders`.`Customers` (
     `customer_id` INTEGER,
     `customer_name` VARCHAR(80),
@@ -10,7 +7,6 @@ CREATE TABLE `tracking_orders`.`Customers` (
     PRIMARY KEY (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_orders`.`Invoices`;
 CREATE TABLE `tracking_orders`.`Invoices` (
     `invoice_number` INTEGER,
     `invoice_date` DATETIME,
@@ -18,7 +14,6 @@ CREATE TABLE `tracking_orders`.`Invoices` (
     PRIMARY KEY (`invoice_number`)
 );
 
-DROP TABLE IF EXISTS `tracking_orders`.`Orders`;
 CREATE TABLE `tracking_orders`.`Orders` (
     `order_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -29,7 +24,6 @@ CREATE TABLE `tracking_orders`.`Orders` (
     FOREIGN KEY (`customer_id`) REFERENCES `tracking_orders`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_orders`.`Products`;
 CREATE TABLE `tracking_orders`.`Products` (
     `product_id` INTEGER,
     `product_name` VARCHAR(80),
@@ -37,7 +31,6 @@ CREATE TABLE `tracking_orders`.`Products` (
     PRIMARY KEY (`product_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_orders`.`Order_Items`;
 CREATE TABLE `tracking_orders`.`Order_Items` (
     `order_item_id` INTEGER,
     `product_id` INTEGER NOT NULL,
@@ -49,7 +42,6 @@ CREATE TABLE `tracking_orders`.`Order_Items` (
     FOREIGN KEY (`order_id`) REFERENCES `tracking_orders`.`Orders` (`order_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_orders`.`Shipments`;
 CREATE TABLE `tracking_orders`.`Shipments` (
     `shipment_id` INTEGER,
     `order_id` INTEGER NOT NULL,
@@ -62,7 +54,6 @@ CREATE TABLE `tracking_orders`.`Shipments` (
     FOREIGN KEY (`order_id`) REFERENCES `tracking_orders`.`Orders` (`order_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_orders`.`Shipment_Items`;
 CREATE TABLE `tracking_orders`.`Shipment_Items` (
     `shipment_id` INTEGER NOT NULL,
     `order_item_id` INTEGER NOT NULL,

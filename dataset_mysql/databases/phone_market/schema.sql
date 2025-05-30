@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: phone_market | Table Count: 3
+-- Dialect: mysql | Database: phone_market | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `phone_market`;
-
-DROP TABLE IF EXISTS `phone_market`.`phone`;
 CREATE TABLE `phone_market`.`phone` (
     `Name` TEXT,
     `Phone_ID` INT,
@@ -12,7 +9,6 @@ CREATE TABLE `phone_market`.`phone` (
     PRIMARY KEY (`Phone_ID`)
 );
 
-DROP TABLE IF EXISTS `phone_market`.`market`;
 CREATE TABLE `phone_market`.`market` (
     `Market_ID` INT,
     `District` TEXT,
@@ -22,7 +18,6 @@ CREATE TABLE `phone_market`.`market` (
     PRIMARY KEY (`Market_ID`)
 );
 
-DROP TABLE IF EXISTS `phone_market`.`phone_market`;
 CREATE TABLE `phone_market`.`phone_market` (
     `Market_ID` INT,
     `Phone_ID` INT,

@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: document_management | Table Count: 9
+-- Dialect: mysql | Database: document_management | Table Count: 9
 
-CREATE DATABASE IF NOT EXISTS `document_management`;
-
-DROP TABLE IF EXISTS `document_management`.`Roles`;
 CREATE TABLE `document_management`.`Roles` (
     `role_code` VARCHAR(15),
     `role_description` VARCHAR(80),
     PRIMARY KEY (`role_code`)
 );
 
-DROP TABLE IF EXISTS `document_management`.`Users`;
 CREATE TABLE `document_management`.`Users` (
     `user_id` INTEGER,
     `role_code` VARCHAR(15) NOT NULL,
@@ -20,7 +16,6 @@ CREATE TABLE `document_management`.`Users` (
     FOREIGN KEY (`role_code`) REFERENCES `document_management`.`Roles` (`role_code`)
 );
 
-DROP TABLE IF EXISTS `document_management`.`Document_Structures`;
 CREATE TABLE `document_management`.`Document_Structures` (
     `document_structure_code` VARCHAR(15),
     `parent_document_structure_code` VARCHAR(15),
@@ -28,7 +23,6 @@ CREATE TABLE `document_management`.`Document_Structures` (
     PRIMARY KEY (`document_structure_code`)
 );
 
-DROP TABLE IF EXISTS `document_management`.`Functional_Areas`;
 CREATE TABLE `document_management`.`Functional_Areas` (
     `functional_area_code` VARCHAR(15),
     `parent_functional_area_code` VARCHAR(15),
@@ -36,7 +30,6 @@ CREATE TABLE `document_management`.`Functional_Areas` (
     PRIMARY KEY (`functional_area_code`)
 );
 
-DROP TABLE IF EXISTS `document_management`.`Images`;
 CREATE TABLE `document_management`.`Images` (
     `image_id` INTEGER,
     `image_alt_text` VARCHAR(80),
@@ -45,7 +38,6 @@ CREATE TABLE `document_management`.`Images` (
     PRIMARY KEY (`image_id`)
 );
 
-DROP TABLE IF EXISTS `document_management`.`Documents`;
 CREATE TABLE `document_management`.`Documents` (
     `document_code` VARCHAR(15),
     `document_structure_code` VARCHAR(15) NOT NULL,
@@ -56,7 +48,6 @@ CREATE TABLE `document_management`.`Documents` (
     FOREIGN KEY (`document_structure_code`) REFERENCES `document_management`.`Document_Structures` (`document_structure_code`)
 );
 
-DROP TABLE IF EXISTS `document_management`.`Document_Functional_Areas`;
 CREATE TABLE `document_management`.`Document_Functional_Areas` (
     `document_code` VARCHAR(15) NOT NULL,
     `functional_area_code` VARCHAR(15) NOT NULL,
@@ -64,7 +55,6 @@ CREATE TABLE `document_management`.`Document_Functional_Areas` (
     FOREIGN KEY (`document_code`) REFERENCES `document_management`.`Documents` (`document_code`)
 );
 
-DROP TABLE IF EXISTS `document_management`.`Document_Sections`;
 CREATE TABLE `document_management`.`Document_Sections` (
     `section_id` INTEGER,
     `document_code` VARCHAR(15) NOT NULL,
@@ -75,7 +65,6 @@ CREATE TABLE `document_management`.`Document_Sections` (
     FOREIGN KEY (`document_code`) REFERENCES `document_management`.`Documents` (`document_code`)
 );
 
-DROP TABLE IF EXISTS `document_management`.`Document_Sections_Images`;
 CREATE TABLE `document_management`.`Document_Sections_Images` (
     `section_id` INTEGER NOT NULL,
     `image_id` INTEGER NOT NULL,

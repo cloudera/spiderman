@@ -1,22 +1,17 @@
--- Dialect: MySQL | Database: insurance_and_eClaims | Table Count: 7
+-- Dialect: mysql | Database: insurance_and_eClaims | Table Count: 7
 
-CREATE DATABASE IF NOT EXISTS `insurance_and_eClaims`;
-
-DROP TABLE IF EXISTS `insurance_and_eClaims`.`Customers`;
 CREATE TABLE `insurance_and_eClaims`.`Customers` (
     `Customer_ID` INTEGER NOT NULL,
     `Customer_Details` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`Customer_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_and_eClaims`.`Staff`;
 CREATE TABLE `insurance_and_eClaims`.`Staff` (
     `Staff_ID` INTEGER NOT NULL,
     `Staff_Details` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`Staff_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_and_eClaims`.`Policies`;
 CREATE TABLE `insurance_and_eClaims`.`Policies` (
     `Policy_ID` INTEGER NOT NULL,
     `Customer_ID` INTEGER NOT NULL,
@@ -27,7 +22,6 @@ CREATE TABLE `insurance_and_eClaims`.`Policies` (
     FOREIGN KEY (`Customer_ID`) REFERENCES `insurance_and_eClaims`.`Customers` (`Customer_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_and_eClaims`.`Claim_Headers`;
 CREATE TABLE `insurance_and_eClaims`.`Claim_Headers` (
     `Claim_Header_ID` INTEGER NOT NULL,
     `Claim_Status_Code` CHAR(15) NOT NULL,
@@ -41,7 +35,6 @@ CREATE TABLE `insurance_and_eClaims`.`Claim_Headers` (
     FOREIGN KEY (`Policy_ID`) REFERENCES `insurance_and_eClaims`.`Policies` (`Policy_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_and_eClaims`.`Claims_Documents`;
 CREATE TABLE `insurance_and_eClaims`.`Claims_Documents` (
     `Claim_ID` INTEGER NOT NULL,
     `Document_Type_Code` CHAR(15) NOT NULL,
@@ -52,7 +45,6 @@ CREATE TABLE `insurance_and_eClaims`.`Claims_Documents` (
     FOREIGN KEY (`Claim_ID`) REFERENCES `insurance_and_eClaims`.`Claim_Headers` (`Claim_Header_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_and_eClaims`.`Claims_Processing_Stages`;
 CREATE TABLE `insurance_and_eClaims`.`Claims_Processing_Stages` (
     `Claim_Stage_ID` INTEGER NOT NULL,
     `Next_Claim_Stage_ID` INTEGER,
@@ -61,7 +53,6 @@ CREATE TABLE `insurance_and_eClaims`.`Claims_Processing_Stages` (
     PRIMARY KEY (`Claim_Stage_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_and_eClaims`.`Claims_Processing`;
 CREATE TABLE `insurance_and_eClaims`.`Claims_Processing` (
     `Claim_Processing_ID` INTEGER NOT NULL,
     `Claim_ID` INTEGER NOT NULL,

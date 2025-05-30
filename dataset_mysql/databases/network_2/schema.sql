@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: network_2 | Table Count: 2
+-- Dialect: mysql | Database: network_2 | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `network_2`;
-
-DROP TABLE IF EXISTS `network_2`.`Person`;
 CREATE TABLE `network_2`.`Person` (
     `name` VARCHAR(20),
     `age` INTEGER,
@@ -12,7 +9,6 @@ CREATE TABLE `network_2`.`Person` (
     PRIMARY KEY (`name`)
 );
 
-DROP TABLE IF EXISTS `network_2`.`PersonFriend`;
 CREATE TABLE `network_2`.`PersonFriend` (
     `name` VARCHAR(20),
     `friend` VARCHAR(20),

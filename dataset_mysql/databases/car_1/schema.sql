@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: car_1 | Table Count: 6
+-- Dialect: mysql | Database: car_1 | Table Count: 6
 
-CREATE DATABASE IF NOT EXISTS `car_1`;
-
-DROP TABLE IF EXISTS `car_1`.`continents`;
 CREATE TABLE `car_1`.`continents` (
     `ContId` INTEGER,
     `Continent` TEXT,
     PRIMARY KEY (`ContId`)
 );
 
-DROP TABLE IF EXISTS `car_1`.`countries`;
 CREATE TABLE `car_1`.`countries` (
     `CountryId` INTEGER,
     `CountryName` TEXT,
@@ -18,7 +14,6 @@ CREATE TABLE `car_1`.`countries` (
     FOREIGN KEY (`Continent`) REFERENCES `car_1`.`continents` (`ContId`)
 );
 
-DROP TABLE IF EXISTS `car_1`.`car_makers`;
 CREATE TABLE `car_1`.`car_makers` (
     `Id` INTEGER,
     `Maker` TEXT,
@@ -28,7 +23,6 @@ CREATE TABLE `car_1`.`car_makers` (
     FOREIGN KEY (`Country`) REFERENCES `car_1`.`countries` (`CountryId`)
 );
 
-DROP TABLE IF EXISTS `car_1`.`model_list`;
 CREATE TABLE `car_1`.`model_list` (
     `ModelId` INTEGER,
     `Maker` INTEGER,
@@ -38,7 +32,6 @@ CREATE TABLE `car_1`.`model_list` (
     UNIQUE (`Model`)
 );
 
-DROP TABLE IF EXISTS `car_1`.`car_names`;
 CREATE TABLE `car_1`.`car_names` (
     `MakeId` INTEGER,
     `Model` VARCHAR(20),
@@ -47,7 +40,6 @@ CREATE TABLE `car_1`.`car_names` (
     FOREIGN KEY (`Model`) REFERENCES `car_1`.`model_list` (`Model`)
 );
 
-DROP TABLE IF EXISTS `car_1`.`cars_data`;
 CREATE TABLE `car_1`.`cars_data` (
     `Id` INTEGER,
     `MPG` TEXT,

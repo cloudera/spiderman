@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: climbing | Table Count: 2
+-- Dialect: mysql | Database: climbing | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `climbing`;
-
-DROP TABLE IF EXISTS `climbing`.`mountain`;
 CREATE TABLE `climbing`.`mountain` (
     `Mountain_ID` INT,
     `Name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `climbing`.`mountain` (
     PRIMARY KEY (`Mountain_ID`)
 );
 
-DROP TABLE IF EXISTS `climbing`.`climber`;
 CREATE TABLE `climbing`.`climber` (
     `Climber_ID` INT,
     `Name` TEXT,

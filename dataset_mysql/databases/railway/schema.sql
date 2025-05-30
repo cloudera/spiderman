@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: railway | Table Count: 4
+-- Dialect: mysql | Database: railway | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `railway`;
-
-DROP TABLE IF EXISTS `railway`.`railway`;
 CREATE TABLE `railway`.`railway` (
     `Railway_ID` INT,
     `Railway` TEXT,
@@ -14,7 +11,6 @@ CREATE TABLE `railway`.`railway` (
     PRIMARY KEY (`Railway_ID`)
 );
 
-DROP TABLE IF EXISTS `railway`.`train`;
 CREATE TABLE `railway`.`train` (
     `Train_ID` INT,
     `Train_Num` TEXT,
@@ -26,7 +22,6 @@ CREATE TABLE `railway`.`train` (
     FOREIGN KEY (`Railway_ID`) REFERENCES `railway`.`railway` (`Railway_ID`)
 );
 
-DROP TABLE IF EXISTS `railway`.`manager`;
 CREATE TABLE `railway`.`manager` (
     `Manager_ID` INT,
     `Name` TEXT,
@@ -37,7 +32,6 @@ CREATE TABLE `railway`.`manager` (
     PRIMARY KEY (`Manager_ID`)
 );
 
-DROP TABLE IF EXISTS `railway`.`railway_manage`;
 CREATE TABLE `railway`.`railway_manage` (
     `Railway_ID` INT,
     `Manager_ID` INT,

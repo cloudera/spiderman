@@ -1,22 +1,17 @@
--- Dialect: MySQL | Database: insurance_fnol | Table Count: 7
+-- Dialect: mysql | Database: insurance_fnol | Table Count: 7
 
-CREATE DATABASE IF NOT EXISTS `insurance_fnol`;
-
-DROP TABLE IF EXISTS `insurance_fnol`.`Customers`;
 CREATE TABLE `insurance_fnol`.`Customers` (
     `Customer_ID` INTEGER NOT NULL,
     `Customer_name` VARCHAR(40),
     PRIMARY KEY (`Customer_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_fnol`.`Services`;
 CREATE TABLE `insurance_fnol`.`Services` (
     `Service_ID` INTEGER NOT NULL,
     `Service_name` VARCHAR(40),
     PRIMARY KEY (`Service_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_fnol`.`Available_Policies`;
 CREATE TABLE `insurance_fnol`.`Available_Policies` (
     `Policy_ID` INTEGER NOT NULL,
     `policy_type_code` VARCHAR(20),
@@ -25,7 +20,6 @@ CREATE TABLE `insurance_fnol`.`Available_Policies` (
     UNIQUE (`Policy_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_fnol`.`Customers_Policies`;
 CREATE TABLE `insurance_fnol`.`Customers_Policies` (
     `Customer_ID` INTEGER NOT NULL,
     `Policy_ID` INTEGER NOT NULL,
@@ -36,7 +30,6 @@ CREATE TABLE `insurance_fnol`.`Customers_Policies` (
     FOREIGN KEY (`Customer_ID`) REFERENCES `insurance_fnol`.`Customers` (`Customer_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_fnol`.`First_Notification_of_Loss`;
 CREATE TABLE `insurance_fnol`.`First_Notification_of_Loss` (
     `FNOL_ID` INTEGER NOT NULL,
     `Customer_ID` INTEGER NOT NULL,
@@ -48,7 +41,6 @@ CREATE TABLE `insurance_fnol`.`First_Notification_of_Loss` (
     UNIQUE (`FNOL_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_fnol`.`Claims`;
 CREATE TABLE `insurance_fnol`.`Claims` (
     `Claim_ID` INTEGER NOT NULL,
     `FNOL_ID` INTEGER NOT NULL,
@@ -58,7 +50,6 @@ CREATE TABLE `insurance_fnol`.`Claims` (
     UNIQUE (`Claim_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_fnol`.`Settlements`;
 CREATE TABLE `insurance_fnol`.`Settlements` (
     `Settlement_ID` INTEGER NOT NULL,
     `Claim_ID` INTEGER,

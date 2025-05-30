@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: pilot_record | Table Count: 3
+-- Dialect: mysql | Database: pilot_record | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `pilot_record`;
-
-DROP TABLE IF EXISTS `pilot_record`.`aircraft`;
 CREATE TABLE `pilot_record`.`aircraft` (
     `Aircraft_ID` INT,
     `Order_Year` INT,
@@ -14,7 +11,6 @@ CREATE TABLE `pilot_record`.`aircraft` (
     PRIMARY KEY (`Aircraft_ID`)
 );
 
-DROP TABLE IF EXISTS `pilot_record`.`pilot`;
 CREATE TABLE `pilot_record`.`pilot` (
     `Pilot_ID` INT,
     `Pilot_name` TEXT,
@@ -27,7 +23,6 @@ CREATE TABLE `pilot_record`.`pilot` (
     PRIMARY KEY (`Pilot_ID`)
 );
 
-DROP TABLE IF EXISTS `pilot_record`.`pilot_record`;
 CREATE TABLE `pilot_record`.`pilot_record` (
     `Record_ID` INT,
     `Pilot_ID` INT,

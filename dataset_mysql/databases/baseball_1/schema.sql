@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: baseball_1 | Table Count: 26
+-- Dialect: mysql | Database: baseball_1 | Table Count: 26
 
-CREATE DATABASE IF NOT EXISTS `baseball_1`;
-
-DROP TABLE IF EXISTS `baseball_1`.`team`;
 CREATE TABLE `baseball_1`.`team` (
     `year` INTEGER,
     `league_id` TEXT,
@@ -55,7 +52,6 @@ CREATE TABLE `baseball_1`.`team` (
     INDEX idx_team_id (`team_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`player`;
 CREATE TABLE `baseball_1`.`player` (
     `player_id` VARCHAR(50),
     `birth_year` NUMERIC,
@@ -84,7 +80,6 @@ CREATE TABLE `baseball_1`.`player` (
     PRIMARY KEY (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`all_star`;
 CREATE TABLE `baseball_1`.`all_star` (
     `player_id` VARCHAR(50),
     `year` INTEGER,
@@ -97,7 +92,6 @@ CREATE TABLE `baseball_1`.`all_star` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`appearances`;
 CREATE TABLE `baseball_1`.`appearances` (
     `year` INTEGER,
     `team_id` VARCHAR(50),
@@ -123,7 +117,6 @@ CREATE TABLE `baseball_1`.`appearances` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`manager_award`;
 CREATE TABLE `baseball_1`.`manager_award` (
     `player_id` VARCHAR(50),
     `award_id` TEXT,
@@ -134,7 +127,6 @@ CREATE TABLE `baseball_1`.`manager_award` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`player_award`;
 CREATE TABLE `baseball_1`.`player_award` (
     `player_id` VARCHAR(50),
     `award_id` TEXT,
@@ -145,7 +137,6 @@ CREATE TABLE `baseball_1`.`player_award` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`manager_award_vote`;
 CREATE TABLE `baseball_1`.`manager_award_vote` (
     `award_id` TEXT,
     `year` INTEGER,
@@ -156,7 +147,6 @@ CREATE TABLE `baseball_1`.`manager_award_vote` (
     `votes_first` INTEGER
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`player_award_vote`;
 CREATE TABLE `baseball_1`.`player_award_vote` (
     `award_id` TEXT,
     `year` INTEGER,
@@ -168,7 +158,6 @@ CREATE TABLE `baseball_1`.`player_award_vote` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`batting`;
 CREATE TABLE `baseball_1`.`batting` (
     `player_id` VARCHAR(50),
     `year` INTEGER,
@@ -195,7 +184,6 @@ CREATE TABLE `baseball_1`.`batting` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`batting_postseason`;
 CREATE TABLE `baseball_1`.`batting_postseason` (
     `year` INTEGER,
     `round` TEXT,
@@ -222,7 +210,6 @@ CREATE TABLE `baseball_1`.`batting_postseason` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`college`;
 CREATE TABLE `baseball_1`.`college` (
     `college_id` VARCHAR(50),
     `name_full` TEXT,
@@ -232,7 +219,6 @@ CREATE TABLE `baseball_1`.`college` (
     PRIMARY KEY (`college_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`player_college`;
 CREATE TABLE `baseball_1`.`player_college` (
     `player_id` VARCHAR(50),
     `college_id` VARCHAR(50),
@@ -241,7 +227,6 @@ CREATE TABLE `baseball_1`.`player_college` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`fielding`;
 CREATE TABLE `baseball_1`.`fielding` (
     `player_id` VARCHAR(50),
     `year` INTEGER,
@@ -264,7 +249,6 @@ CREATE TABLE `baseball_1`.`fielding` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`fielding_outfield`;
 CREATE TABLE `baseball_1`.`fielding_outfield` (
     `player_id` VARCHAR(50),
     `year` INTEGER,
@@ -275,7 +259,6 @@ CREATE TABLE `baseball_1`.`fielding_outfield` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`fielding_postseason`;
 CREATE TABLE `baseball_1`.`fielding_postseason` (
     `player_id` VARCHAR(50),
     `year` INTEGER,
@@ -297,7 +280,6 @@ CREATE TABLE `baseball_1`.`fielding_postseason` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`hall_of_fame`;
 CREATE TABLE `baseball_1`.`hall_of_fame` (
     `player_id` VARCHAR(50),
     `yearid` INTEGER,
@@ -311,7 +293,6 @@ CREATE TABLE `baseball_1`.`hall_of_fame` (
     FOREIGN KEY (`player_id`) REFERENCES `baseball_1`.`player` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`park`;
 CREATE TABLE `baseball_1`.`park` (
     `park_id` VARCHAR(50),
     `park_name` TEXT,
@@ -322,7 +303,6 @@ CREATE TABLE `baseball_1`.`park` (
     PRIMARY KEY (`park_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`home_game`;
 CREATE TABLE `baseball_1`.`home_game` (
     `year` INTEGER,
     `league_id` TEXT,
@@ -336,7 +316,6 @@ CREATE TABLE `baseball_1`.`home_game` (
     FOREIGN KEY (`park_id`) REFERENCES `baseball_1`.`park` (`park_id`)
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`manager`;
 CREATE TABLE `baseball_1`.`manager` (
     `player_id` VARCHAR(50),
     `year` INTEGER,
@@ -350,7 +329,6 @@ CREATE TABLE `baseball_1`.`manager` (
     `plyr_mgr` TEXT
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`manager_half`;
 CREATE TABLE `baseball_1`.`manager_half` (
     `player_id` VARCHAR(50),
     `year` INTEGER,
@@ -364,7 +342,6 @@ CREATE TABLE `baseball_1`.`manager_half` (
     `rank` INTEGER
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`pitching`;
 CREATE TABLE `baseball_1`.`pitching` (
     `player_id` VARCHAR(50),
     `year` INTEGER,
@@ -398,7 +375,6 @@ CREATE TABLE `baseball_1`.`pitching` (
     `g_idp` NUMERIC
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`pitching_postseason`;
 CREATE TABLE `baseball_1`.`pitching_postseason` (
     `player_id` VARCHAR(50),
     `year` INTEGER,
@@ -432,7 +408,6 @@ CREATE TABLE `baseball_1`.`pitching_postseason` (
     `g_idp` NUMERIC
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`salary`;
 CREATE TABLE `baseball_1`.`salary` (
     `year` INTEGER,
     `team_id` VARCHAR(50),
@@ -441,7 +416,6 @@ CREATE TABLE `baseball_1`.`salary` (
     `salary` INTEGER
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`postseason`;
 CREATE TABLE `baseball_1`.`postseason` (
     `year` INTEGER,
     `round` TEXT,
@@ -454,7 +428,6 @@ CREATE TABLE `baseball_1`.`postseason` (
     `ties` INTEGER
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`team_franchise`;
 CREATE TABLE `baseball_1`.`team_franchise` (
     `franchise_id` TEXT,
     `franchise_name` TEXT,
@@ -462,7 +435,6 @@ CREATE TABLE `baseball_1`.`team_franchise` (
     `na_assoc` TEXT
 );
 
-DROP TABLE IF EXISTS `baseball_1`.`team_half`;
 CREATE TABLE `baseball_1`.`team_half` (
     `year` INTEGER,
     `league_id` TEXT,

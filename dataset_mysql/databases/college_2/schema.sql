@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: college_2 | Table Count: 11
+-- Dialect: mysql | Database: college_2 | Table Count: 11
 
-CREATE DATABASE IF NOT EXISTS `college_2`;
-
-DROP TABLE IF EXISTS `college_2`.`classroom`;
 CREATE TABLE `college_2`.`classroom` (
     `building` VARCHAR(15),
     `room_number` VARCHAR(7),
@@ -10,7 +7,6 @@ CREATE TABLE `college_2`.`classroom` (
     PRIMARY KEY (`building`, `room_number`)
 );
 
-DROP TABLE IF EXISTS `college_2`.`department`;
 CREATE TABLE `college_2`.`department` (
     `dept_name` VARCHAR(20),
     `building` VARCHAR(15),
@@ -18,7 +14,6 @@ CREATE TABLE `college_2`.`department` (
     PRIMARY KEY (`dept_name`)
 );
 
-DROP TABLE IF EXISTS `college_2`.`course`;
 CREATE TABLE `college_2`.`course` (
     `course_id` VARCHAR(8),
     `title` VARCHAR(50),
@@ -28,7 +23,6 @@ CREATE TABLE `college_2`.`course` (
     FOREIGN KEY (`dept_name`) REFERENCES `college_2`.`department` (`dept_name`)
 );
 
-DROP TABLE IF EXISTS `college_2`.`instructor`;
 CREATE TABLE `college_2`.`instructor` (
     `ID` VARCHAR(5),
     `name` VARCHAR(20) NOT NULL,
@@ -38,7 +32,6 @@ CREATE TABLE `college_2`.`instructor` (
     FOREIGN KEY (`dept_name`) REFERENCES `college_2`.`department` (`dept_name`)
 );
 
-DROP TABLE IF EXISTS `college_2`.`section`;
 CREATE TABLE `college_2`.`section` (
     `course_id` VARCHAR(8),
     `sec_id` VARCHAR(8),
@@ -52,7 +45,6 @@ CREATE TABLE `college_2`.`section` (
     FOREIGN KEY (`course_id`) REFERENCES `college_2`.`course` (`course_id`)
 );
 
-DROP TABLE IF EXISTS `college_2`.`teaches`;
 CREATE TABLE `college_2`.`teaches` (
     `ID` VARCHAR(5),
     `course_id` VARCHAR(8),
@@ -64,7 +56,6 @@ CREATE TABLE `college_2`.`teaches` (
     FOREIGN KEY (`course_id`, `sec_id`, `semester`, `year`) REFERENCES `college_2`.`section` (`course_id`, `sec_id`, `semester`, `year`)
 );
 
-DROP TABLE IF EXISTS `college_2`.`student`;
 CREATE TABLE `college_2`.`student` (
     `ID` VARCHAR(5),
     `name` VARCHAR(20) NOT NULL,
@@ -74,7 +65,6 @@ CREATE TABLE `college_2`.`student` (
     FOREIGN KEY (`dept_name`) REFERENCES `college_2`.`department` (`dept_name`)
 );
 
-DROP TABLE IF EXISTS `college_2`.`takes`;
 CREATE TABLE `college_2`.`takes` (
     `ID` VARCHAR(5),
     `course_id` VARCHAR(8),
@@ -87,7 +77,6 @@ CREATE TABLE `college_2`.`takes` (
     FOREIGN KEY (`course_id`, `sec_id`, `semester`, `year`) REFERENCES `college_2`.`section` (`course_id`, `sec_id`, `semester`, `year`)
 );
 
-DROP TABLE IF EXISTS `college_2`.`advisor`;
 CREATE TABLE `college_2`.`advisor` (
     `s_ID` VARCHAR(5),
     `i_ID` VARCHAR(5),
@@ -96,7 +85,6 @@ CREATE TABLE `college_2`.`advisor` (
     FOREIGN KEY (`i_ID`) REFERENCES `college_2`.`instructor` (`ID`)
 );
 
-DROP TABLE IF EXISTS `college_2`.`time_slot`;
 CREATE TABLE `college_2`.`time_slot` (
     `time_slot_id` VARCHAR(4),
     `day` VARCHAR(1),
@@ -107,7 +95,6 @@ CREATE TABLE `college_2`.`time_slot` (
     PRIMARY KEY (`time_slot_id`, `day`, `start_hr`, `start_min`)
 );
 
-DROP TABLE IF EXISTS `college_2`.`prereq`;
 CREATE TABLE `college_2`.`prereq` (
     `course_id` VARCHAR(8),
     `prereq_id` VARCHAR(8),

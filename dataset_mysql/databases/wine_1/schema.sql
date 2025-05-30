@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: wine_1 | Table Count: 3
+-- Dialect: mysql | Database: wine_1 | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `wine_1`;
-
-DROP TABLE IF EXISTS `wine_1`.`grapes`;
 CREATE TABLE `wine_1`.`grapes` (
     `ID` INTEGER,
     `Grape` VARCHAR(50),
@@ -11,7 +8,6 @@ CREATE TABLE `wine_1`.`grapes` (
     UNIQUE (`Grape`)
 );
 
-DROP TABLE IF EXISTS `wine_1`.`appellations`;
 CREATE TABLE `wine_1`.`appellations` (
     `No` INTEGER,
     `Appelation` VARCHAR(50),
@@ -23,7 +19,6 @@ CREATE TABLE `wine_1`.`appellations` (
     UNIQUE (`Appelation`)
 );
 
-DROP TABLE IF EXISTS `wine_1`.`wine`;
 CREATE TABLE `wine_1`.`wine` (
     `No` INTEGER,
     `Grape` VARCHAR(50),

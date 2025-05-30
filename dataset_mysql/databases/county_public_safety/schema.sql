@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: county_public_safety | Table Count: 2
+-- Dialect: mysql | Database: county_public_safety | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `county_public_safety`;
-
-DROP TABLE IF EXISTS `county_public_safety`.`county_public_safety`;
 CREATE TABLE `county_public_safety`.`county_public_safety` (
     `County_ID` INT,
     `Name` TEXT,
@@ -16,7 +13,6 @@ CREATE TABLE `county_public_safety`.`county_public_safety` (
     PRIMARY KEY (`County_ID`)
 );
 
-DROP TABLE IF EXISTS `county_public_safety`.`city`;
 CREATE TABLE `county_public_safety`.`city` (
     `City_ID` INT,
     `County_ID` INT,

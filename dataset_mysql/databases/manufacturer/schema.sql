@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: manufacturer | Table Count: 3
+-- Dialect: mysql | Database: manufacturer | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `manufacturer`;
-
-DROP TABLE IF EXISTS `manufacturer`.`manufacturer`;
 CREATE TABLE `manufacturer`.`manufacturer` (
     `Manufacturer_ID` INT,
     `Open_Year` REAL,
@@ -12,7 +9,6 @@ CREATE TABLE `manufacturer`.`manufacturer` (
     PRIMARY KEY (`Manufacturer_ID`)
 );
 
-DROP TABLE IF EXISTS `manufacturer`.`furniture`;
 CREATE TABLE `manufacturer`.`furniture` (
     `Furniture_ID` INT,
     `Name` TEXT,
@@ -21,7 +17,6 @@ CREATE TABLE `manufacturer`.`furniture` (
     PRIMARY KEY (`Furniture_ID`)
 );
 
-DROP TABLE IF EXISTS `manufacturer`.`furniture_manufacte`;
 CREATE TABLE `manufacturer`.`furniture_manufacte` (
     `Manufacturer_ID` INT,
     `Furniture_ID` INT,

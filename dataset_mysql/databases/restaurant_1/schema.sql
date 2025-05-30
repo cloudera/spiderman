@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: restaurant_1 | Table Count: 5
+-- Dialect: mysql | Database: restaurant_1 | Table Count: 5
 
-CREATE DATABASE IF NOT EXISTS `restaurant_1`;
-
-DROP TABLE IF EXISTS `restaurant_1`.`Student`;
 CREATE TABLE `restaurant_1`.`Student` (
     `StuID` INTEGER,
     `LName` VARCHAR(12),
@@ -15,7 +12,6 @@ CREATE TABLE `restaurant_1`.`Student` (
     PRIMARY KEY (`StuID`)
 );
 
-DROP TABLE IF EXISTS `restaurant_1`.`Restaurant_Type`;
 CREATE TABLE `restaurant_1`.`Restaurant_Type` (
     `ResTypeID` INTEGER,
     `ResTypeName` VARCHAR(40),
@@ -23,7 +19,6 @@ CREATE TABLE `restaurant_1`.`Restaurant_Type` (
     PRIMARY KEY (`ResTypeID`)
 );
 
-DROP TABLE IF EXISTS `restaurant_1`.`Restaurant`;
 CREATE TABLE `restaurant_1`.`Restaurant` (
     `ResID` INTEGER,
     `ResName` VARCHAR(100),
@@ -32,7 +27,6 @@ CREATE TABLE `restaurant_1`.`Restaurant` (
     PRIMARY KEY (`ResID`)
 );
 
-DROP TABLE IF EXISTS `restaurant_1`.`Type_Of_Restaurant`;
 CREATE TABLE `restaurant_1`.`Type_Of_Restaurant` (
     `ResID` INTEGER,
     `ResTypeID` INTEGER,
@@ -40,7 +34,6 @@ CREATE TABLE `restaurant_1`.`Type_Of_Restaurant` (
     FOREIGN KEY (`ResID`) REFERENCES `restaurant_1`.`Restaurant` (`ResID`)
 );
 
-DROP TABLE IF EXISTS `restaurant_1`.`Visits_Restaurant`;
 CREATE TABLE `restaurant_1`.`Visits_Restaurant` (
     `StuID` INTEGER,
     `ResID` INTEGER,

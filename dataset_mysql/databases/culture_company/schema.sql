@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: culture_company | Table Count: 3
+-- Dialect: mysql | Database: culture_company | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `culture_company`;
-
-DROP TABLE IF EXISTS `culture_company`.`book_club`;
 CREATE TABLE `culture_company`.`book_club` (
     `book_club_id` INT,
     `Year` INT,
@@ -14,7 +11,6 @@ CREATE TABLE `culture_company`.`book_club` (
     PRIMARY KEY (`book_club_id`)
 );
 
-DROP TABLE IF EXISTS `culture_company`.`movie`;
 CREATE TABLE `culture_company`.`movie` (
     `movie_id` INT,
     `Title` TEXT,
@@ -25,7 +21,6 @@ CREATE TABLE `culture_company`.`movie` (
     PRIMARY KEY (`movie_id`)
 );
 
-DROP TABLE IF EXISTS `culture_company`.`culture_company`;
 CREATE TABLE `culture_company`.`culture_company` (
     `Company_name` VARCHAR(50),
     `Type` TEXT,

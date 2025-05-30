@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: employee_hire_evaluation | Table Count: 4
+-- Dialect: mysql | Database: employee_hire_evaluation | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `employee_hire_evaluation`;
-
-DROP TABLE IF EXISTS `employee_hire_evaluation`.`employee`;
 CREATE TABLE `employee_hire_evaluation`.`employee` (
     `Employee_ID` INT,
     `Name` TEXT,
@@ -11,7 +8,6 @@ CREATE TABLE `employee_hire_evaluation`.`employee` (
     PRIMARY KEY (`Employee_ID`)
 );
 
-DROP TABLE IF EXISTS `employee_hire_evaluation`.`shop`;
 CREATE TABLE `employee_hire_evaluation`.`shop` (
     `Shop_ID` INT,
     `Name` TEXT,
@@ -22,7 +18,6 @@ CREATE TABLE `employee_hire_evaluation`.`shop` (
     PRIMARY KEY (`Shop_ID`)
 );
 
-DROP TABLE IF EXISTS `employee_hire_evaluation`.`hiring`;
 CREATE TABLE `employee_hire_evaluation`.`hiring` (
     `Shop_ID` INT,
     `Employee_ID` INT,
@@ -33,7 +28,6 @@ CREATE TABLE `employee_hire_evaluation`.`hiring` (
     FOREIGN KEY (`Shop_ID`) REFERENCES `employee_hire_evaluation`.`shop` (`Shop_ID`)
 );
 
-DROP TABLE IF EXISTS `employee_hire_evaluation`.`evaluation`;
 CREATE TABLE `employee_hire_evaluation`.`evaluation` (
     `Employee_ID` INT,
     `Year_awarded` VARCHAR(50),

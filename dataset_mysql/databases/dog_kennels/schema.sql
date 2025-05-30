@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: dog_kennels | Table Count: 8
+-- Dialect: mysql | Database: dog_kennels | Table Count: 8
 
-CREATE DATABASE IF NOT EXISTS `dog_kennels`;
-
-DROP TABLE IF EXISTS `dog_kennels`.`Breeds`;
 CREATE TABLE `dog_kennels`.`Breeds` (
     `breed_code` VARCHAR(10),
     `breed_name` VARCHAR(80),
     PRIMARY KEY (`breed_code`)
 );
 
-DROP TABLE IF EXISTS `dog_kennels`.`Charges`;
 CREATE TABLE `dog_kennels`.`Charges` (
     `charge_id` INTEGER,
     `charge_type` VARCHAR(20),
@@ -17,21 +13,18 @@ CREATE TABLE `dog_kennels`.`Charges` (
     PRIMARY KEY (`charge_id`)
 );
 
-DROP TABLE IF EXISTS `dog_kennels`.`Sizes`;
 CREATE TABLE `dog_kennels`.`Sizes` (
     `size_code` VARCHAR(10),
     `size_description` VARCHAR(80),
     PRIMARY KEY (`size_code`)
 );
 
-DROP TABLE IF EXISTS `dog_kennels`.`Treatment_Types`;
 CREATE TABLE `dog_kennels`.`Treatment_Types` (
     `treatment_type_code` VARCHAR(10),
     `treatment_type_description` VARCHAR(80),
     PRIMARY KEY (`treatment_type_code`)
 );
 
-DROP TABLE IF EXISTS `dog_kennels`.`Owners`;
 CREATE TABLE `dog_kennels`.`Owners` (
     `owner_id` INTEGER,
     `first_name` VARCHAR(50),
@@ -46,7 +39,6 @@ CREATE TABLE `dog_kennels`.`Owners` (
     PRIMARY KEY (`owner_id`)
 );
 
-DROP TABLE IF EXISTS `dog_kennels`.`Dogs`;
 CREATE TABLE `dog_kennels`.`Dogs` (
     `dog_id` INTEGER,
     `owner_id` INTEGER NOT NULL,
@@ -68,7 +60,6 @@ CREATE TABLE `dog_kennels`.`Dogs` (
     FOREIGN KEY (`breed_code`) REFERENCES `dog_kennels`.`Breeds` (`breed_code`)
 );
 
-DROP TABLE IF EXISTS `dog_kennels`.`Professionals`;
 CREATE TABLE `dog_kennels`.`Professionals` (
     `professional_id` INTEGER,
     `role_code` VARCHAR(20) NOT NULL,
@@ -84,7 +75,6 @@ CREATE TABLE `dog_kennels`.`Professionals` (
     PRIMARY KEY (`professional_id`)
 );
 
-DROP TABLE IF EXISTS `dog_kennels`.`Treatments`;
 CREATE TABLE `dog_kennels`.`Treatments` (
     `treatment_id` INTEGER,
     `dog_id` INTEGER NOT NULL,

@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: wedding | Table Count: 3
+-- Dialect: mysql | Database: wedding | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `wedding`;
-
-DROP TABLE IF EXISTS `wedding`.`people`;
 CREATE TABLE `wedding`.`people` (
     `People_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `wedding`.`people` (
     PRIMARY KEY (`People_ID`)
 );
 
-DROP TABLE IF EXISTS `wedding`.`church`;
 CREATE TABLE `wedding`.`church` (
     `Church_ID` INT,
     `Name` TEXT,
@@ -22,7 +18,6 @@ CREATE TABLE `wedding`.`church` (
     PRIMARY KEY (`Church_ID`)
 );
 
-DROP TABLE IF EXISTS `wedding`.`wedding`;
 CREATE TABLE `wedding`.`wedding` (
     `Church_ID` INT,
     `Male_ID` INT,

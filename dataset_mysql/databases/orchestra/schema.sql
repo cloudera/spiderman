@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: orchestra | Table Count: 4
+-- Dialect: mysql | Database: orchestra | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `orchestra`;
-
-DROP TABLE IF EXISTS `orchestra`.`conductor`;
 CREATE TABLE `orchestra`.`conductor` (
     `Conductor_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `orchestra`.`conductor` (
     PRIMARY KEY (`Conductor_ID`)
 );
 
-DROP TABLE IF EXISTS `orchestra`.`orchestra`;
 CREATE TABLE `orchestra`.`orchestra` (
     `Orchestra_ID` INT,
     `Orchestra` TEXT,
@@ -24,7 +20,6 @@ CREATE TABLE `orchestra`.`orchestra` (
     FOREIGN KEY (`Conductor_ID`) REFERENCES `orchestra`.`conductor` (`Conductor_ID`)
 );
 
-DROP TABLE IF EXISTS `orchestra`.`performance`;
 CREATE TABLE `orchestra`.`performance` (
     `Performance_ID` INT,
     `Orchestra_ID` INT,
@@ -37,7 +32,6 @@ CREATE TABLE `orchestra`.`performance` (
     FOREIGN KEY (`Orchestra_ID`) REFERENCES `orchestra`.`orchestra` (`Orchestra_ID`)
 );
 
-DROP TABLE IF EXISTS `orchestra`.`show`;
 CREATE TABLE `orchestra`.`show` (
     `Show_ID` INT,
     `Performance_ID` INT,

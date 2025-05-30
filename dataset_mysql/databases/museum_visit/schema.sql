@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: museum_visit | Table Count: 3
+-- Dialect: mysql | Database: museum_visit | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `museum_visit`;
-
-DROP TABLE IF EXISTS `museum_visit`.`museum`;
 CREATE TABLE `museum_visit`.`museum` (
     `Museum_ID` INT,
     `Name` TEXT,
@@ -11,7 +8,6 @@ CREATE TABLE `museum_visit`.`museum` (
     PRIMARY KEY (`Museum_ID`)
 );
 
-DROP TABLE IF EXISTS `museum_visit`.`visitor`;
 CREATE TABLE `museum_visit`.`visitor` (
     `ID` INT,
     `Name` TEXT,
@@ -20,7 +16,6 @@ CREATE TABLE `museum_visit`.`visitor` (
     PRIMARY KEY (`ID`)
 );
 
-DROP TABLE IF EXISTS `museum_visit`.`visit`;
 CREATE TABLE `museum_visit`.`visit` (
     `Museum_ID` INT,
     `visitor_ID` INT,

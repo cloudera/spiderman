@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: product_catalog | Table Count: 5
+-- Dialect: mysql | Database: product_catalog | Table Count: 5
 
-CREATE DATABASE IF NOT EXISTS `product_catalog`;
-
-DROP TABLE IF EXISTS `product_catalog`.`Attribute_Definitions`;
 CREATE TABLE `product_catalog`.`Attribute_Definitions` (
     `attribute_id` INTEGER,
     `attribute_name` VARCHAR(30),
@@ -10,7 +7,6 @@ CREATE TABLE `product_catalog`.`Attribute_Definitions` (
     PRIMARY KEY (`attribute_id`)
 );
 
-DROP TABLE IF EXISTS `product_catalog`.`Catalogs`;
 CREATE TABLE `product_catalog`.`Catalogs` (
     `catalog_id` INTEGER,
     `catalog_name` VARCHAR(50),
@@ -20,7 +16,6 @@ CREATE TABLE `product_catalog`.`Catalogs` (
     PRIMARY KEY (`catalog_id`)
 );
 
-DROP TABLE IF EXISTS `product_catalog`.`Catalog_Structure`;
 CREATE TABLE `product_catalog`.`Catalog_Structure` (
     `catalog_level_number` INTEGER,
     `catalog_id` INTEGER NOT NULL,
@@ -29,7 +24,6 @@ CREATE TABLE `product_catalog`.`Catalog_Structure` (
     FOREIGN KEY (`catalog_id`) REFERENCES `product_catalog`.`Catalogs` (`catalog_id`)
 );
 
-DROP TABLE IF EXISTS `product_catalog`.`Catalog_Contents`;
 CREATE TABLE `product_catalog`.`Catalog_Contents` (
     `catalog_entry_id` INTEGER,
     `catalog_level_number` INTEGER NOT NULL,
@@ -49,7 +43,6 @@ CREATE TABLE `product_catalog`.`Catalog_Contents` (
     FOREIGN KEY (`catalog_level_number`) REFERENCES `product_catalog`.`Catalog_Structure` (`catalog_level_number`)
 );
 
-DROP TABLE IF EXISTS `product_catalog`.`Catalog_Contents_Additional_Attributes`;
 CREATE TABLE `product_catalog`.`Catalog_Contents_Additional_Attributes` (
     `catalog_entry_id` INTEGER NOT NULL,
     `catalog_level_number` INTEGER NOT NULL,

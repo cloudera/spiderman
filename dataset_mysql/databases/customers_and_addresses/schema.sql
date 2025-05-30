@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: customers_and_addresses | Table Count: 7
+-- Dialect: mysql | Database: customers_and_addresses | Table Count: 7
 
-CREATE DATABASE IF NOT EXISTS `customers_and_addresses`;
-
-DROP TABLE IF EXISTS `customers_and_addresses`.`Addresses`;
 CREATE TABLE `customers_and_addresses`.`Addresses` (
     `address_id` INTEGER,
     `address_content` VARCHAR(80),
@@ -14,14 +11,12 @@ CREATE TABLE `customers_and_addresses`.`Addresses` (
     PRIMARY KEY (`address_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_addresses`.`Products`;
 CREATE TABLE `customers_and_addresses`.`Products` (
     `product_id` INTEGER,
     `product_details` VARCHAR(255),
     PRIMARY KEY (`product_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_addresses`.`Customers`;
 CREATE TABLE `customers_and_addresses`.`Customers` (
     `customer_id` INTEGER,
     `payment_method` VARCHAR(15) NOT NULL,
@@ -31,7 +26,6 @@ CREATE TABLE `customers_and_addresses`.`Customers` (
     PRIMARY KEY (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_addresses`.`Customer_Addresses`;
 CREATE TABLE `customers_and_addresses`.`Customer_Addresses` (
     `customer_id` INTEGER NOT NULL,
     `address_id` INTEGER NOT NULL,
@@ -42,7 +36,6 @@ CREATE TABLE `customers_and_addresses`.`Customer_Addresses` (
     FOREIGN KEY (`address_id`) REFERENCES `customers_and_addresses`.`Addresses` (`address_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_addresses`.`Customer_Contact_Channels`;
 CREATE TABLE `customers_and_addresses`.`Customer_Contact_Channels` (
     `customer_id` INTEGER NOT NULL,
     `channel_code` VARCHAR(15) NOT NULL,
@@ -52,7 +45,6 @@ CREATE TABLE `customers_and_addresses`.`Customer_Contact_Channels` (
     FOREIGN KEY (`customer_id`) REFERENCES `customers_and_addresses`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_addresses`.`Customer_Orders`;
 CREATE TABLE `customers_and_addresses`.`Customer_Orders` (
     `order_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -63,7 +55,6 @@ CREATE TABLE `customers_and_addresses`.`Customer_Orders` (
     FOREIGN KEY (`customer_id`) REFERENCES `customers_and_addresses`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_addresses`.`Order_Items`;
 CREATE TABLE `customers_and_addresses`.`Order_Items` (
     `order_id` INTEGER NOT NULL,
     `product_id` INTEGER NOT NULL,

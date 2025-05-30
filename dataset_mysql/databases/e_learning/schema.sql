@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: e_learning | Table Count: 6
+-- Dialect: mysql | Database: e_learning | Table Count: 6
 
-CREATE DATABASE IF NOT EXISTS `e_learning`;
-
-DROP TABLE IF EXISTS `e_learning`.`Course_Authors_and_Tutors`;
 CREATE TABLE `e_learning`.`Course_Authors_and_Tutors` (
     `author_id` INTEGER,
     `author_tutor_ATB` VARCHAR(3),
@@ -16,7 +13,6 @@ CREATE TABLE `e_learning`.`Course_Authors_and_Tutors` (
     PRIMARY KEY (`author_id`)
 );
 
-DROP TABLE IF EXISTS `e_learning`.`Students`;
 CREATE TABLE `e_learning`.`Students` (
     `student_id` INTEGER,
     `date_of_registration` DATETIME,
@@ -29,14 +25,12 @@ CREATE TABLE `e_learning`.`Students` (
     PRIMARY KEY (`student_id`)
 );
 
-DROP TABLE IF EXISTS `e_learning`.`Subjects`;
 CREATE TABLE `e_learning`.`Subjects` (
     `subject_id` INTEGER,
     `subject_name` VARCHAR(120),
     PRIMARY KEY (`subject_id`)
 );
 
-DROP TABLE IF EXISTS `e_learning`.`Courses`;
 CREATE TABLE `e_learning`.`Courses` (
     `course_id` INTEGER,
     `author_id` INTEGER NOT NULL,
@@ -48,7 +42,6 @@ CREATE TABLE `e_learning`.`Courses` (
     FOREIGN KEY (`author_id`) REFERENCES `e_learning`.`Course_Authors_and_Tutors` (`author_id`)
 );
 
-DROP TABLE IF EXISTS `e_learning`.`Student_Course_Enrolment`;
 CREATE TABLE `e_learning`.`Student_Course_Enrolment` (
     `registration_id` INTEGER,
     `student_id` INTEGER NOT NULL,
@@ -60,7 +53,6 @@ CREATE TABLE `e_learning`.`Student_Course_Enrolment` (
     FOREIGN KEY (`course_id`) REFERENCES `e_learning`.`Courses` (`course_id`)
 );
 
-DROP TABLE IF EXISTS `e_learning`.`Student_Tests_Taken`;
 CREATE TABLE `e_learning`.`Student_Tests_Taken` (
     `registration_id` INTEGER NOT NULL,
     `date_test_taken` DATETIME NOT NULL,

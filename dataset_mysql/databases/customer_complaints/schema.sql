@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: customer_complaints | Table Count: 4
+-- Dialect: mysql | Database: customer_complaints | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `customer_complaints`;
-
-DROP TABLE IF EXISTS `customer_complaints`.`Staff`;
 CREATE TABLE `customer_complaints`.`Staff` (
     `staff_id` INTEGER,
     `gender` VARCHAR(1),
@@ -13,7 +10,6 @@ CREATE TABLE `customer_complaints`.`Staff` (
     PRIMARY KEY (`staff_id`)
 );
 
-DROP TABLE IF EXISTS `customer_complaints`.`Customers`;
 CREATE TABLE `customer_complaints`.`Customers` (
     `customer_id` INTEGER,
     `customer_type_code` VARCHAR(20) NOT NULL,
@@ -26,7 +22,6 @@ CREATE TABLE `customer_complaints`.`Customers` (
     PRIMARY KEY (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customer_complaints`.`Products`;
 CREATE TABLE `customer_complaints`.`Products` (
     `product_id` INTEGER,
     `parent_product_id` INTEGER,
@@ -39,7 +34,6 @@ CREATE TABLE `customer_complaints`.`Products` (
     PRIMARY KEY (`product_id`)
 );
 
-DROP TABLE IF EXISTS `customer_complaints`.`Complaints`;
 CREATE TABLE `customer_complaints`.`Complaints` (
     `complaint_id` INTEGER NOT NULL,
     `product_id` INTEGER NOT NULL,

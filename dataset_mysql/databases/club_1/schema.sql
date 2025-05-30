@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: club_1 | Table Count: 3
+-- Dialect: mysql | Database: club_1 | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `club_1`;
-
-DROP TABLE IF EXISTS `club_1`.`Student`;
 CREATE TABLE `club_1`.`Student` (
     `StuID` INTEGER,
     `LName` VARCHAR(12),
@@ -15,7 +12,6 @@ CREATE TABLE `club_1`.`Student` (
     PRIMARY KEY (`StuID`)
 );
 
-DROP TABLE IF EXISTS `club_1`.`Club`;
 CREATE TABLE `club_1`.`Club` (
     `ClubID` INTEGER,
     `ClubName` VARCHAR(40),
@@ -24,7 +20,6 @@ CREATE TABLE `club_1`.`Club` (
     PRIMARY KEY (`ClubID`)
 );
 
-DROP TABLE IF EXISTS `club_1`.`Member_of_club`;
 CREATE TABLE `club_1`.`Member_of_club` (
     `StuID` INTEGER,
     `ClubID` INTEGER,

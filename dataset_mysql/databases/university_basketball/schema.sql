@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: university_basketball | Table Count: 2
+-- Dialect: mysql | Database: university_basketball | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `university_basketball`;
-
-DROP TABLE IF EXISTS `university_basketball`.`university`;
 CREATE TABLE `university_basketball`.`university` (
     `School_ID` INT,
     `School` TEXT,
@@ -15,7 +12,6 @@ CREATE TABLE `university_basketball`.`university` (
     PRIMARY KEY (`School_ID`)
 );
 
-DROP TABLE IF EXISTS `university_basketball`.`basketball_match`;
 CREATE TABLE `university_basketball`.`basketball_match` (
     `Team_ID` INT,
     `School_ID` INT,

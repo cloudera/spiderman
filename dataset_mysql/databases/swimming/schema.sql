@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: swimming | Table Count: 4
+-- Dialect: mysql | Database: swimming | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `swimming`;
-
-DROP TABLE IF EXISTS `swimming`.`swimmer`;
 CREATE TABLE `swimming`.`swimmer` (
     `ID` INT,
     `name` TEXT,
@@ -18,7 +15,6 @@ CREATE TABLE `swimming`.`swimmer` (
     PRIMARY KEY (`ID`)
 );
 
-DROP TABLE IF EXISTS `swimming`.`stadium`;
 CREATE TABLE `swimming`.`stadium` (
     `ID` INT,
     `name` TEXT,
@@ -29,7 +25,6 @@ CREATE TABLE `swimming`.`stadium` (
     PRIMARY KEY (`ID`)
 );
 
-DROP TABLE IF EXISTS `swimming`.`event`;
 CREATE TABLE `swimming`.`event` (
     `ID` INT,
     `Name` TEXT,
@@ -39,7 +34,6 @@ CREATE TABLE `swimming`.`event` (
     FOREIGN KEY (`Stadium_ID`) REFERENCES `swimming`.`stadium` (`ID`)
 );
 
-DROP TABLE IF EXISTS `swimming`.`record`;
 CREATE TABLE `swimming`.`record` (
     `ID` INT,
     `Result` TEXT,

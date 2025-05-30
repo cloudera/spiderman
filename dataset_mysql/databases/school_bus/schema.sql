@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: school_bus | Table Count: 3
+-- Dialect: mysql | Database: school_bus | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `school_bus`;
-
-DROP TABLE IF EXISTS `school_bus`.`driver`;
 CREATE TABLE `school_bus`.`driver` (
     `Driver_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `school_bus`.`driver` (
     PRIMARY KEY (`Driver_ID`)
 );
 
-DROP TABLE IF EXISTS `school_bus`.`school`;
 CREATE TABLE `school_bus`.`school` (
     `School_ID` INT,
     `Grade` TEXT,
@@ -22,7 +18,6 @@ CREATE TABLE `school_bus`.`school` (
     PRIMARY KEY (`School_ID`)
 );
 
-DROP TABLE IF EXISTS `school_bus`.`school_bus`;
 CREATE TABLE `school_bus`.`school_bus` (
     `School_ID` INT,
     `Driver_ID` INT,

@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: company_1 | Table Count: 6
+-- Dialect: mysql | Database: company_1 | Table Count: 6
 
-CREATE DATABASE IF NOT EXISTS `company_1`;
-
-DROP TABLE IF EXISTS `company_1`.`works_on`;
 CREATE TABLE `company_1`.`works_on` (
     `Essn` INTEGER,
     `Pno` INTEGER,
@@ -10,7 +7,6 @@ CREATE TABLE `company_1`.`works_on` (
     PRIMARY KEY (`Essn`, `Pno`)
 );
 
-DROP TABLE IF EXISTS `company_1`.`employee`;
 CREATE TABLE `company_1`.`employee` (
     `Fname` TEXT,
     `Minit` TEXT,
@@ -25,7 +21,6 @@ CREATE TABLE `company_1`.`employee` (
     PRIMARY KEY (`Ssn`)
 );
 
-DROP TABLE IF EXISTS `company_1`.`department`;
 CREATE TABLE `company_1`.`department` (
     `Dname` TEXT,
     `Dnumber` INTEGER,
@@ -34,7 +29,6 @@ CREATE TABLE `company_1`.`department` (
     PRIMARY KEY (`Dnumber`)
 );
 
-DROP TABLE IF EXISTS `company_1`.`project`;
 CREATE TABLE `company_1`.`project` (
     `Pname` TEXT,
     `Pnumber` INTEGER,
@@ -43,7 +37,6 @@ CREATE TABLE `company_1`.`project` (
     PRIMARY KEY (`Pnumber`)
 );
 
-DROP TABLE IF EXISTS `company_1`.`dependent`;
 CREATE TABLE `company_1`.`dependent` (
     `Essn` INTEGER,
     `Dependent_name` VARCHAR(50),
@@ -53,7 +46,6 @@ CREATE TABLE `company_1`.`dependent` (
     PRIMARY KEY (`Essn`, `Dependent_name`)
 );
 
-DROP TABLE IF EXISTS `company_1`.`dept_locations`;
 CREATE TABLE `company_1`.`dept_locations` (
     `Dnumber` INTEGER,
     `Dlocation` VARCHAR(50),

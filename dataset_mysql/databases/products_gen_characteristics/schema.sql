@@ -1,22 +1,17 @@
--- Dialect: MySQL | Database: products_gen_characteristics | Table Count: 6
+-- Dialect: mysql | Database: products_gen_characteristics | Table Count: 6
 
-CREATE DATABASE IF NOT EXISTS `products_gen_characteristics`;
-
-DROP TABLE IF EXISTS `products_gen_characteristics`.`Ref_Characteristic_Types`;
 CREATE TABLE `products_gen_characteristics`.`Ref_Characteristic_Types` (
     `characteristic_type_code` VARCHAR(15),
     `characteristic_type_description` VARCHAR(80),
     PRIMARY KEY (`characteristic_type_code`)
 );
 
-DROP TABLE IF EXISTS `products_gen_characteristics`.`Ref_Colors`;
 CREATE TABLE `products_gen_characteristics`.`Ref_Colors` (
     `color_code` VARCHAR(15),
     `color_description` VARCHAR(80),
     PRIMARY KEY (`color_code`)
 );
 
-DROP TABLE IF EXISTS `products_gen_characteristics`.`Ref_Product_Categories`;
 CREATE TABLE `products_gen_characteristics`.`Ref_Product_Categories` (
     `product_category_code` VARCHAR(15),
     `product_category_description` VARCHAR(80),
@@ -24,7 +19,6 @@ CREATE TABLE `products_gen_characteristics`.`Ref_Product_Categories` (
     PRIMARY KEY (`product_category_code`)
 );
 
-DROP TABLE IF EXISTS `products_gen_characteristics`.`Characteristics`;
 CREATE TABLE `products_gen_characteristics`.`Characteristics` (
     `characteristic_id` INTEGER,
     `characteristic_type_code` VARCHAR(15) NOT NULL,
@@ -35,7 +29,6 @@ CREATE TABLE `products_gen_characteristics`.`Characteristics` (
     FOREIGN KEY (`characteristic_type_code`) REFERENCES `products_gen_characteristics`.`Ref_Characteristic_Types` (`characteristic_type_code`)
 );
 
-DROP TABLE IF EXISTS `products_gen_characteristics`.`Products`;
 CREATE TABLE `products_gen_characteristics`.`Products` (
     `product_id` INTEGER,
     `color_code` VARCHAR(15) NOT NULL,
@@ -50,7 +43,6 @@ CREATE TABLE `products_gen_characteristics`.`Products` (
     FOREIGN KEY (`product_category_code`) REFERENCES `products_gen_characteristics`.`Ref_Product_Categories` (`product_category_code`)
 );
 
-DROP TABLE IF EXISTS `products_gen_characteristics`.`Product_Characteristics`;
 CREATE TABLE `products_gen_characteristics`.`Product_Characteristics` (
     `product_id` INTEGER NOT NULL,
     `characteristic_id` INTEGER NOT NULL,

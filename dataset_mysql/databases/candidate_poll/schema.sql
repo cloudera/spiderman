@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: candidate_poll | Table Count: 2
+-- Dialect: mysql | Database: candidate_poll | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `candidate_poll`;
-
-DROP TABLE IF EXISTS `candidate_poll`.`people`;
 CREATE TABLE `candidate_poll`.`people` (
     `People_ID` INT,
     `Sex` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `candidate_poll`.`people` (
     PRIMARY KEY (`People_ID`)
 );
 
-DROP TABLE IF EXISTS `candidate_poll`.`candidate`;
 CREATE TABLE `candidate_poll`.`candidate` (
     `Candidate_ID` INT,
     `People_ID` INT,

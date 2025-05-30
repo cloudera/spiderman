@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: activity_1 | Table Count: 5
+-- Dialect: mysql | Database: activity_1 | Table Count: 5
 
-CREATE DATABASE IF NOT EXISTS `activity_1`;
-
-DROP TABLE IF EXISTS `activity_1`.`Activity`;
 CREATE TABLE `activity_1`.`Activity` (
     `actid` INTEGER,
     `activity_name` VARCHAR(25),
     PRIMARY KEY (`actid`)
 );
 
-DROP TABLE IF EXISTS `activity_1`.`Student`;
 CREATE TABLE `activity_1`.`Student` (
     `StuID` INTEGER,
     `LName` VARCHAR(12),
@@ -22,7 +18,6 @@ CREATE TABLE `activity_1`.`Student` (
     PRIMARY KEY (`StuID`)
 );
 
-DROP TABLE IF EXISTS `activity_1`.`Participates_in`;
 CREATE TABLE `activity_1`.`Participates_in` (
     `stuid` INTEGER,
     `actid` INTEGER,
@@ -30,7 +25,6 @@ CREATE TABLE `activity_1`.`Participates_in` (
     FOREIGN KEY (`stuid`) REFERENCES `activity_1`.`Student` (`StuID`)
 );
 
-DROP TABLE IF EXISTS `activity_1`.`Faculty`;
 CREATE TABLE `activity_1`.`Faculty` (
     `FacID` INTEGER,
     `Lname` VARCHAR(15),
@@ -43,7 +37,6 @@ CREATE TABLE `activity_1`.`Faculty` (
     PRIMARY KEY (`FacID`)
 );
 
-DROP TABLE IF EXISTS `activity_1`.`Faculty_Participates_in`;
 CREATE TABLE `activity_1`.`Faculty_Participates_in` (
     `FacID` INTEGER,
     `actid` INTEGER,

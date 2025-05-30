@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: store_product | Table Count: 5
+-- Dialect: mysql | Database: store_product | Table Count: 5
 
-CREATE DATABASE IF NOT EXISTS `store_product`;
-
-DROP TABLE IF EXISTS `store_product`.`product`;
 CREATE TABLE `store_product`.`product` (
     `product_id` INT,
     `product` TEXT,
@@ -14,7 +11,6 @@ CREATE TABLE `store_product`.`product` (
     PRIMARY KEY (`product_id`)
 );
 
-DROP TABLE IF EXISTS `store_product`.`store`;
 CREATE TABLE `store_product`.`store` (
     `Store_ID` INT,
     `Store_Name` TEXT,
@@ -25,7 +21,6 @@ CREATE TABLE `store_product`.`store` (
     PRIMARY KEY (`Store_ID`)
 );
 
-DROP TABLE IF EXISTS `store_product`.`district`;
 CREATE TABLE `store_product`.`district` (
     `District_ID` INT,
     `District_name` TEXT,
@@ -35,7 +30,6 @@ CREATE TABLE `store_product`.`district` (
     PRIMARY KEY (`District_ID`)
 );
 
-DROP TABLE IF EXISTS `store_product`.`store_product`;
 CREATE TABLE `store_product`.`store_product` (
     `Store_ID` INT,
     `Product_ID` INT,
@@ -44,7 +38,6 @@ CREATE TABLE `store_product`.`store_product` (
     FOREIGN KEY (`Store_ID`) REFERENCES `store_product`.`store` (`Store_ID`)
 );
 
-DROP TABLE IF EXISTS `store_product`.`store_district`;
 CREATE TABLE `store_product`.`store_district` (
     `Store_ID` INT,
     `District_ID` INT,

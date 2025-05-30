@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: storm_record | Table Count: 3
+-- Dialect: mysql | Database: storm_record | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `storm_record`;
-
-DROP TABLE IF EXISTS `storm_record`.`storm`;
 CREATE TABLE `storm_record`.`storm` (
     `Storm_ID` INT,
     `Name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `storm_record`.`storm` (
     PRIMARY KEY (`Storm_ID`)
 );
 
-DROP TABLE IF EXISTS `storm_record`.`region`;
 CREATE TABLE `storm_record`.`region` (
     `Region_id` INT,
     `Region_code` TEXT,
@@ -21,7 +17,6 @@ CREATE TABLE `storm_record`.`region` (
     PRIMARY KEY (`Region_id`)
 );
 
-DROP TABLE IF EXISTS `storm_record`.`affected_region`;
 CREATE TABLE `storm_record`.`affected_region` (
     `Region_id` INT,
     `Storm_ID` INT,

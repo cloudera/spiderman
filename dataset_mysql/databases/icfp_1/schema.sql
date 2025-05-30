@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: icfp_1 | Table Count: 4
+-- Dialect: mysql | Database: icfp_1 | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `icfp_1`;
-
-DROP TABLE IF EXISTS `icfp_1`.`Inst`;
 CREATE TABLE `icfp_1`.`Inst` (
     `instID` INTEGER,
     `name` TEXT,
@@ -10,7 +7,6 @@ CREATE TABLE `icfp_1`.`Inst` (
     PRIMARY KEY (`instID`)
 );
 
-DROP TABLE IF EXISTS `icfp_1`.`Authors`;
 CREATE TABLE `icfp_1`.`Authors` (
     `authID` INTEGER,
     `lname` TEXT,
@@ -18,14 +14,12 @@ CREATE TABLE `icfp_1`.`Authors` (
     PRIMARY KEY (`authID`)
 );
 
-DROP TABLE IF EXISTS `icfp_1`.`Papers`;
 CREATE TABLE `icfp_1`.`Papers` (
     `paperID` INTEGER,
     `title` TEXT,
     PRIMARY KEY (`paperID`)
 );
 
-DROP TABLE IF EXISTS `icfp_1`.`Authorship`;
 CREATE TABLE `icfp_1`.`Authorship` (
     `authID` INTEGER,
     `instID` INTEGER,

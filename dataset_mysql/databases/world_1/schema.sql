@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: world_1 | Table Count: 3
+-- Dialect: mysql | Database: world_1 | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `world_1`;
-
-DROP TABLE IF EXISTS `world_1`.`country`;
 CREATE TABLE `world_1`.`country` (
     `Code` CHAR(3) NOT NULL,
     `Name` CHAR(52) NOT NULL DEFAULT '',
@@ -22,7 +19,6 @@ CREATE TABLE `world_1`.`country` (
     PRIMARY KEY (`Code`)
 );
 
-DROP TABLE IF EXISTS `world_1`.`city`;
 CREATE TABLE `world_1`.`city` (
     `ID` INTEGER NOT NULL,
     `Name` CHAR(35) NOT NULL DEFAULT '',
@@ -34,7 +30,6 @@ CREATE TABLE `world_1`.`city` (
     INDEX idx_CountryCode (`CountryCode`)
 );
 
-DROP TABLE IF EXISTS `world_1`.`countrylanguage`;
 CREATE TABLE `world_1`.`countrylanguage` (
     `CountryCode` CHAR(3) NOT NULL,
     `Language` CHAR(30) NOT NULL,

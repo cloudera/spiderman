@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: customer_deliveries | Table Count: 13
+-- Dialect: mysql | Database: customer_deliveries | Table Count: 13
 
-CREATE DATABASE IF NOT EXISTS `customer_deliveries`;
-
-DROP TABLE IF EXISTS `customer_deliveries`.`Products`;
 CREATE TABLE `customer_deliveries`.`Products` (
     `product_id` INTEGER,
     `product_name` VARCHAR(20),
@@ -11,7 +8,6 @@ CREATE TABLE `customer_deliveries`.`Products` (
     PRIMARY KEY (`product_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Addresses`;
 CREATE TABLE `customer_deliveries`.`Addresses` (
     `address_id` INTEGER,
     `address_details` VARCHAR(80),
@@ -22,7 +18,6 @@ CREATE TABLE `customer_deliveries`.`Addresses` (
     PRIMARY KEY (`address_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Customers`;
 CREATE TABLE `customer_deliveries`.`Customers` (
     `customer_id` INTEGER,
     `payment_method` VARCHAR(10) NOT NULL,
@@ -33,7 +28,6 @@ CREATE TABLE `customer_deliveries`.`Customers` (
     PRIMARY KEY (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Regular_Orders`;
 CREATE TABLE `customer_deliveries`.`Regular_Orders` (
     `regular_order_id` INTEGER,
     `distributer_id` INTEGER NOT NULL,
@@ -41,7 +35,6 @@ CREATE TABLE `customer_deliveries`.`Regular_Orders` (
     FOREIGN KEY (`distributer_id`) REFERENCES `customer_deliveries`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Regular_Order_Products`;
 CREATE TABLE `customer_deliveries`.`Regular_Order_Products` (
     `regular_order_id` INTEGER NOT NULL,
     `product_id` INTEGER NOT NULL,
@@ -49,7 +42,6 @@ CREATE TABLE `customer_deliveries`.`Regular_Order_Products` (
     FOREIGN KEY (`product_id`) REFERENCES `customer_deliveries`.`Products` (`product_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Actual_Orders`;
 CREATE TABLE `customer_deliveries`.`Actual_Orders` (
     `actual_order_id` INTEGER,
     `order_status_code` VARCHAR(10) NOT NULL,
@@ -59,7 +51,6 @@ CREATE TABLE `customer_deliveries`.`Actual_Orders` (
     FOREIGN KEY (`regular_order_id`) REFERENCES `customer_deliveries`.`Regular_Orders` (`regular_order_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Actual_Order_Products`;
 CREATE TABLE `customer_deliveries`.`Actual_Order_Products` (
     `actual_order_id` INTEGER NOT NULL,
     `product_id` INTEGER NOT NULL,
@@ -67,7 +58,6 @@ CREATE TABLE `customer_deliveries`.`Actual_Order_Products` (
     FOREIGN KEY (`product_id`) REFERENCES `customer_deliveries`.`Products` (`product_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Customer_Addresses`;
 CREATE TABLE `customer_deliveries`.`Customer_Addresses` (
     `customer_id` INTEGER NOT NULL,
     `address_id` INTEGER NOT NULL,
@@ -78,7 +68,6 @@ CREATE TABLE `customer_deliveries`.`Customer_Addresses` (
     FOREIGN KEY (`customer_id`) REFERENCES `customer_deliveries`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Delivery_Routes`;
 CREATE TABLE `customer_deliveries`.`Delivery_Routes` (
     `route_id` INTEGER,
     `route_name` VARCHAR(50),
@@ -86,7 +75,6 @@ CREATE TABLE `customer_deliveries`.`Delivery_Routes` (
     PRIMARY KEY (`route_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Delivery_Route_Locations`;
 CREATE TABLE `customer_deliveries`.`Delivery_Route_Locations` (
     `location_code` VARCHAR(20),
     `route_id` INTEGER NOT NULL,
@@ -97,7 +85,6 @@ CREATE TABLE `customer_deliveries`.`Delivery_Route_Locations` (
     FOREIGN KEY (`location_address_id`) REFERENCES `customer_deliveries`.`Addresses` (`address_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Trucks`;
 CREATE TABLE `customer_deliveries`.`Trucks` (
     `truck_id` INTEGER,
     `truck_licence_number` VARCHAR(20),
@@ -105,7 +92,6 @@ CREATE TABLE `customer_deliveries`.`Trucks` (
     PRIMARY KEY (`truck_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Employees`;
 CREATE TABLE `customer_deliveries`.`Employees` (
     `employee_id` INTEGER,
     `employee_address_id` INTEGER NOT NULL,
@@ -115,7 +101,6 @@ CREATE TABLE `customer_deliveries`.`Employees` (
     FOREIGN KEY (`employee_address_id`) REFERENCES `customer_deliveries`.`Addresses` (`address_id`)
 );
 
-DROP TABLE IF EXISTS `customer_deliveries`.`Order_Deliveries`;
 CREATE TABLE `customer_deliveries`.`Order_Deliveries` (
     `location_code` VARCHAR(20) NOT NULL,
     `actual_order_id` INTEGER NOT NULL,

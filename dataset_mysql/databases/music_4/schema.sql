@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: music_4 | Table Count: 3
+-- Dialect: mysql | Database: music_4 | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `music_4`;
-
-DROP TABLE IF EXISTS `music_4`.`artist`;
 CREATE TABLE `music_4`.`artist` (
     `Artist_ID` INT,
     `Artist` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `music_4`.`artist` (
     PRIMARY KEY (`Artist_ID`)
 );
 
-DROP TABLE IF EXISTS `music_4`.`volume`;
 CREATE TABLE `music_4`.`volume` (
     `Volume_ID` INT,
     `Volume_Issue` TEXT,
@@ -24,7 +20,6 @@ CREATE TABLE `music_4`.`volume` (
     FOREIGN KEY (`Artist_ID`) REFERENCES `music_4`.`artist` (`Artist_ID`)
 );
 
-DROP TABLE IF EXISTS `music_4`.`music_festival`;
 CREATE TABLE `music_4`.`music_festival` (
     `ID` INT,
     `Music_Festival` TEXT,

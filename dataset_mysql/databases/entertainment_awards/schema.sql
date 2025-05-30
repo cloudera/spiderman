@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: entertainment_awards | Table Count: 3
+-- Dialect: mysql | Database: entertainment_awards | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `entertainment_awards`;
-
-DROP TABLE IF EXISTS `entertainment_awards`.`festival_detail`;
 CREATE TABLE `entertainment_awards`.`festival_detail` (
     `Festival_ID` INT,
     `Festival_Name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `entertainment_awards`.`festival_detail` (
     PRIMARY KEY (`Festival_ID`)
 );
 
-DROP TABLE IF EXISTS `entertainment_awards`.`artwork`;
 CREATE TABLE `entertainment_awards`.`artwork` (
     `Artwork_ID` INT,
     `Type` TEXT,
@@ -21,7 +17,6 @@ CREATE TABLE `entertainment_awards`.`artwork` (
     PRIMARY KEY (`Artwork_ID`)
 );
 
-DROP TABLE IF EXISTS `entertainment_awards`.`nomination`;
 CREATE TABLE `entertainment_awards`.`nomination` (
     `Artwork_ID` INT,
     `Festival_ID` INT,

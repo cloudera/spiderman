@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: theme_gallery | Table Count: 3
+-- Dialect: mysql | Database: theme_gallery | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `theme_gallery`;
-
-DROP TABLE IF EXISTS `theme_gallery`.`artist`;
 CREATE TABLE `theme_gallery`.`artist` (
     `Artist_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `theme_gallery`.`artist` (
     PRIMARY KEY (`Artist_ID`)
 );
 
-DROP TABLE IF EXISTS `theme_gallery`.`exhibition`;
 CREATE TABLE `theme_gallery`.`exhibition` (
     `Exhibition_ID` INT,
     `Year` INT,
@@ -23,7 +19,6 @@ CREATE TABLE `theme_gallery`.`exhibition` (
     FOREIGN KEY (`Artist_ID`) REFERENCES `theme_gallery`.`artist` (`Artist_ID`)
 );
 
-DROP TABLE IF EXISTS `theme_gallery`.`exhibition_record`;
 CREATE TABLE `theme_gallery`.`exhibition_record` (
     `Exhibition_ID` INT,
     `Date` VARCHAR(50),

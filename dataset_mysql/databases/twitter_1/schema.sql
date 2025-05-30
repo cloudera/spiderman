@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: twitter_1 | Table Count: 3
+-- Dialect: mysql | Database: twitter_1 | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `twitter_1`;
-
-DROP TABLE IF EXISTS `twitter_1`.`user_profiles`;
 CREATE TABLE `twitter_1`.`user_profiles` (
     `uid` INT(11) NOT NULL,
     `name` VARCHAR(255) DEFAULT NULL,
@@ -12,7 +9,6 @@ CREATE TABLE `twitter_1`.`user_profiles` (
     PRIMARY KEY (`uid`)
 );
 
-DROP TABLE IF EXISTS `twitter_1`.`follows`;
 CREATE TABLE `twitter_1`.`follows` (
     `f1` INT(11) NOT NULL,
     `f2` INT(11) NOT NULL,
@@ -21,7 +17,6 @@ CREATE TABLE `twitter_1`.`follows` (
     FOREIGN KEY (`f1`) REFERENCES `twitter_1`.`user_profiles` (`uid`)
 );
 
-DROP TABLE IF EXISTS `twitter_1`.`tweets`;
 CREATE TABLE `twitter_1`.`tweets` (
     `id` BIGINT(20) NOT NULL,
     `uid` INT(11) NOT NULL,

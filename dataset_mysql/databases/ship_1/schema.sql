@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: ship_1 | Table Count: 2
+-- Dialect: mysql | Database: ship_1 | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `ship_1`;
-
-DROP TABLE IF EXISTS `ship_1`.`Ship`;
 CREATE TABLE `ship_1`.`Ship` (
     `Ship_ID` INT,
     `Name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `ship_1`.`Ship` (
     PRIMARY KEY (`Ship_ID`)
 );
 
-DROP TABLE IF EXISTS `ship_1`.`captain`;
 CREATE TABLE `ship_1`.`captain` (
     `Captain_ID` INT,
     `Name` TEXT,

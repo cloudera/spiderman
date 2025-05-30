@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: customers_campaigns_ecommerce | Table Count: 8
+-- Dialect: mysql | Database: customers_campaigns_ecommerce | Table Count: 8
 
-CREATE DATABASE IF NOT EXISTS `customers_campaigns_ecommerce`;
-
-DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Premises`;
 CREATE TABLE `customers_campaigns_ecommerce`.`Premises` (
     `premise_id` INTEGER,
     `premises_type` VARCHAR(15) NOT NULL,
@@ -10,7 +7,6 @@ CREATE TABLE `customers_campaigns_ecommerce`.`Premises` (
     PRIMARY KEY (`premise_id`)
 );
 
-DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Products`;
 CREATE TABLE `customers_campaigns_ecommerce`.`Products` (
     `product_id` INTEGER,
     `product_category` VARCHAR(15) NOT NULL,
@@ -18,7 +14,6 @@ CREATE TABLE `customers_campaigns_ecommerce`.`Products` (
     PRIMARY KEY (`product_id`)
 );
 
-DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Customers`;
 CREATE TABLE `customers_campaigns_ecommerce`.`Customers` (
     `customer_id` INTEGER,
     `payment_method` VARCHAR(15) NOT NULL,
@@ -31,7 +26,6 @@ CREATE TABLE `customers_campaigns_ecommerce`.`Customers` (
     PRIMARY KEY (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Mailshot_Campaigns`;
 CREATE TABLE `customers_campaigns_ecommerce`.`Mailshot_Campaigns` (
     `mailshot_id` INTEGER,
     `product_category` VARCHAR(15),
@@ -41,7 +35,6 @@ CREATE TABLE `customers_campaigns_ecommerce`.`Mailshot_Campaigns` (
     PRIMARY KEY (`mailshot_id`)
 );
 
-DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Customer_Addresses`;
 CREATE TABLE `customers_campaigns_ecommerce`.`Customer_Addresses` (
     `customer_id` INTEGER NOT NULL,
     `premise_id` INTEGER NOT NULL,
@@ -52,7 +45,6 @@ CREATE TABLE `customers_campaigns_ecommerce`.`Customer_Addresses` (
     FOREIGN KEY (`premise_id`) REFERENCES `customers_campaigns_ecommerce`.`Premises` (`premise_id`)
 );
 
-DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Customer_Orders`;
 CREATE TABLE `customers_campaigns_ecommerce`.`Customer_Orders` (
     `order_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -65,7 +57,6 @@ CREATE TABLE `customers_campaigns_ecommerce`.`Customer_Orders` (
     FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Mailshot_Customers`;
 CREATE TABLE `customers_campaigns_ecommerce`.`Mailshot_Customers` (
     `mailshot_id` INTEGER NOT NULL,
     `customer_id` INTEGER NOT NULL,
@@ -75,7 +66,6 @@ CREATE TABLE `customers_campaigns_ecommerce`.`Mailshot_Customers` (
     FOREIGN KEY (`customer_id`) REFERENCES `customers_campaigns_ecommerce`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_campaigns_ecommerce`.`Order_Items`;
 CREATE TABLE `customers_campaigns_ecommerce`.`Order_Items` (
     `item_id` INTEGER NOT NULL,
     `order_item_status_code` VARCHAR(15) NOT NULL,

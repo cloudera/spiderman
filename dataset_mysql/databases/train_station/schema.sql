@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: train_station | Table Count: 3
+-- Dialect: mysql | Database: train_station | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `train_station`;
-
-DROP TABLE IF EXISTS `train_station`.`station`;
 CREATE TABLE `train_station`.`station` (
     `Station_ID` INT,
     `Name` TEXT,
@@ -15,7 +12,6 @@ CREATE TABLE `train_station`.`station` (
     PRIMARY KEY (`Station_ID`)
 );
 
-DROP TABLE IF EXISTS `train_station`.`train`;
 CREATE TABLE `train_station`.`train` (
     `Train_ID` INT,
     `Name` TEXT,
@@ -24,7 +20,6 @@ CREATE TABLE `train_station`.`train` (
     PRIMARY KEY (`Train_ID`)
 );
 
-DROP TABLE IF EXISTS `train_station`.`train_station`;
 CREATE TABLE `train_station`.`train_station` (
     `Train_ID` INT,
     `Station_ID` INT,

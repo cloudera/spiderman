@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: student_assessment | Table Count: 9
+-- Dialect: mysql | Database: student_assessment | Table Count: 9
 
-CREATE DATABASE IF NOT EXISTS `student_assessment`;
-
-DROP TABLE IF EXISTS `student_assessment`.`Addresses`;
 CREATE TABLE `student_assessment`.`Addresses` (
     `address_id` INTEGER NOT NULL,
     `line_1` VARCHAR(80),
@@ -14,7 +11,6 @@ CREATE TABLE `student_assessment`.`Addresses` (
     PRIMARY KEY (`address_id`)
 );
 
-DROP TABLE IF EXISTS `student_assessment`.`People`;
 CREATE TABLE `student_assessment`.`People` (
     `person_id` INTEGER NOT NULL,
     `first_name` VARCHAR(255),
@@ -27,7 +23,6 @@ CREATE TABLE `student_assessment`.`People` (
     PRIMARY KEY (`person_id`)
 );
 
-DROP TABLE IF EXISTS `student_assessment`.`Students`;
 CREATE TABLE `student_assessment`.`Students` (
     `student_id` INTEGER NOT NULL,
     `student_details` VARCHAR(255),
@@ -35,7 +30,6 @@ CREATE TABLE `student_assessment`.`Students` (
     FOREIGN KEY (`student_id`) REFERENCES `student_assessment`.`People` (`person_id`)
 );
 
-DROP TABLE IF EXISTS `student_assessment`.`Courses`;
 CREATE TABLE `student_assessment`.`Courses` (
     `course_id` INT NOT NULL,
     `course_name` VARCHAR(120),
@@ -44,7 +38,6 @@ CREATE TABLE `student_assessment`.`Courses` (
     PRIMARY KEY (`course_id`)
 );
 
-DROP TABLE IF EXISTS `student_assessment`.`People_Addresses`;
 CREATE TABLE `student_assessment`.`People_Addresses` (
     `person_address_id` INTEGER NOT NULL,
     `person_id` INTEGER NOT NULL,
@@ -56,7 +49,6 @@ CREATE TABLE `student_assessment`.`People_Addresses` (
     FOREIGN KEY (`person_id`) REFERENCES `student_assessment`.`People` (`person_id`)
 );
 
-DROP TABLE IF EXISTS `student_assessment`.`Student_Course_Registrations`;
 CREATE TABLE `student_assessment`.`Student_Course_Registrations` (
     `student_id` INTEGER NOT NULL,
     `course_id` INTEGER NOT NULL,
@@ -66,7 +58,6 @@ CREATE TABLE `student_assessment`.`Student_Course_Registrations` (
     FOREIGN KEY (`student_id`) REFERENCES `student_assessment`.`Students` (`student_id`)
 );
 
-DROP TABLE IF EXISTS `student_assessment`.`Student_Course_Attendance`;
 CREATE TABLE `student_assessment`.`Student_Course_Attendance` (
     `student_id` INTEGER NOT NULL,
     `course_id` INTEGER NOT NULL,
@@ -75,7 +66,6 @@ CREATE TABLE `student_assessment`.`Student_Course_Attendance` (
     FOREIGN KEY (`student_id`, `course_id`) REFERENCES `student_assessment`.`Student_Course_Registrations` (`student_id`, `course_id`)
 );
 
-DROP TABLE IF EXISTS `student_assessment`.`Candidates`;
 CREATE TABLE `student_assessment`.`Candidates` (
     `candidate_id` INTEGER NOT NULL,
     `candidate_details` VARCHAR(255),
@@ -83,7 +73,6 @@ CREATE TABLE `student_assessment`.`Candidates` (
     FOREIGN KEY (`candidate_id`) REFERENCES `student_assessment`.`People` (`person_id`)
 );
 
-DROP TABLE IF EXISTS `student_assessment`.`Candidate_Assessments`;
 CREATE TABLE `student_assessment`.`Candidate_Assessments` (
     `candidate_id` INTEGER NOT NULL,
     `qualification` CHAR(15) NOT NULL,

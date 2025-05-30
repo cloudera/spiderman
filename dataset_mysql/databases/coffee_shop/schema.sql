@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: coffee_shop | Table Count: 4
+-- Dialect: mysql | Database: coffee_shop | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `coffee_shop`;
-
-DROP TABLE IF EXISTS `coffee_shop`.`shop`;
 CREATE TABLE `coffee_shop`.`shop` (
     `Shop_ID` INT,
     `Address` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `coffee_shop`.`shop` (
     PRIMARY KEY (`Shop_ID`)
 );
 
-DROP TABLE IF EXISTS `coffee_shop`.`member`;
 CREATE TABLE `coffee_shop`.`member` (
     `Member_ID` INT,
     `Name` TEXT,
@@ -24,7 +20,6 @@ CREATE TABLE `coffee_shop`.`member` (
     PRIMARY KEY (`Member_ID`)
 );
 
-DROP TABLE IF EXISTS `coffee_shop`.`happy_hour`;
 CREATE TABLE `coffee_shop`.`happy_hour` (
     `HH_ID` INT,
     `Shop_ID` INT,
@@ -34,7 +29,6 @@ CREATE TABLE `coffee_shop`.`happy_hour` (
     FOREIGN KEY (`Shop_ID`) REFERENCES `coffee_shop`.`shop` (`Shop_ID`)
 );
 
-DROP TABLE IF EXISTS `coffee_shop`.`happy_hour_member`;
 CREATE TABLE `coffee_shop`.`happy_hour_member` (
     `HH_ID` INT,
     `Member_ID` INT,

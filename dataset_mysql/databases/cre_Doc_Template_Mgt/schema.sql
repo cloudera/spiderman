@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: cre_Doc_Template_Mgt | Table Count: 4
+-- Dialect: mysql | Database: cre_Doc_Template_Mgt | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `cre_Doc_Template_Mgt`;
-
-DROP TABLE IF EXISTS `cre_Doc_Template_Mgt`.`Ref_Template_Types`;
 CREATE TABLE `cre_Doc_Template_Mgt`.`Ref_Template_Types` (
     `Template_Type_Code` CHAR(15) NOT NULL,
     `Template_Type_Description` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`Template_Type_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Doc_Template_Mgt`.`Templates`;
 CREATE TABLE `cre_Doc_Template_Mgt`.`Templates` (
     `Template_ID` INTEGER NOT NULL,
     `Version_Number` INTEGER NOT NULL,
@@ -21,7 +17,6 @@ CREATE TABLE `cre_Doc_Template_Mgt`.`Templates` (
     FOREIGN KEY (`Template_Type_Code`) REFERENCES `cre_Doc_Template_Mgt`.`Ref_Template_Types` (`Template_Type_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Doc_Template_Mgt`.`Documents`;
 CREATE TABLE `cre_Doc_Template_Mgt`.`Documents` (
     `Document_ID` INTEGER NOT NULL,
     `Template_ID` INTEGER,
@@ -32,7 +27,6 @@ CREATE TABLE `cre_Doc_Template_Mgt`.`Documents` (
     FOREIGN KEY (`Template_ID`) REFERENCES `cre_Doc_Template_Mgt`.`Templates` (`Template_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Doc_Template_Mgt`.`Paragraphs`;
 CREATE TABLE `cre_Doc_Template_Mgt`.`Paragraphs` (
     `Paragraph_ID` INTEGER NOT NULL,
     `Document_ID` INTEGER NOT NULL,

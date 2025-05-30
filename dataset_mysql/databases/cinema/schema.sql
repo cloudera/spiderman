@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: cinema | Table Count: 3
+-- Dialect: mysql | Database: cinema | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `cinema`;
-
-DROP TABLE IF EXISTS `cinema`.`film`;
 CREATE TABLE `cinema`.`film` (
     `Film_ID` INT,
     `Rank_in_series` INT,
@@ -14,7 +11,6 @@ CREATE TABLE `cinema`.`film` (
     PRIMARY KEY (`Film_ID`)
 );
 
-DROP TABLE IF EXISTS `cinema`.`cinema`;
 CREATE TABLE `cinema`.`cinema` (
     `Cinema_ID` INT,
     `Name` TEXT,
@@ -24,7 +20,6 @@ CREATE TABLE `cinema`.`cinema` (
     PRIMARY KEY (`Cinema_ID`)
 );
 
-DROP TABLE IF EXISTS `cinema`.`schedule`;
 CREATE TABLE `cinema`.`schedule` (
     `Cinema_ID` INT,
     `Film_ID` INT,

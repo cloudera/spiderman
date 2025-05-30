@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: musical | Table Count: 2
+-- Dialect: mysql | Database: musical | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `musical`;
-
-DROP TABLE IF EXISTS `musical`.`musical`;
 CREATE TABLE `musical`.`musical` (
     `Musical_ID` INT,
     `Name` TEXT,
@@ -14,7 +11,6 @@ CREATE TABLE `musical`.`musical` (
     PRIMARY KEY (`Musical_ID`)
 );
 
-DROP TABLE IF EXISTS `musical`.`actor`;
 CREATE TABLE `musical`.`actor` (
     `Actor_ID` INT,
     `Name` TEXT,

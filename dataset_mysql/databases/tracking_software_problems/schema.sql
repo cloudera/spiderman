@@ -1,22 +1,17 @@
--- Dialect: MySQL | Database: tracking_software_problems | Table Count: 6
+-- Dialect: mysql | Database: tracking_software_problems | Table Count: 6
 
-CREATE DATABASE IF NOT EXISTS `tracking_software_problems`;
-
-DROP TABLE IF EXISTS `tracking_software_problems`.`Problem_Category_Codes`;
 CREATE TABLE `tracking_software_problems`.`Problem_Category_Codes` (
     `problem_category_code` VARCHAR(20),
     `problem_category_description` VARCHAR(80),
     PRIMARY KEY (`problem_category_code`)
 );
 
-DROP TABLE IF EXISTS `tracking_software_problems`.`Problem_Status_Codes`;
 CREATE TABLE `tracking_software_problems`.`Problem_Status_Codes` (
     `problem_status_code` VARCHAR(20),
     `problem_status_description` VARCHAR(80),
     PRIMARY KEY (`problem_status_code`)
 );
 
-DROP TABLE IF EXISTS `tracking_software_problems`.`Staff`;
 CREATE TABLE `tracking_software_problems`.`Staff` (
     `staff_id` INTEGER,
     `staff_first_name` VARCHAR(80),
@@ -25,7 +20,6 @@ CREATE TABLE `tracking_software_problems`.`Staff` (
     PRIMARY KEY (`staff_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_software_problems`.`Product`;
 CREATE TABLE `tracking_software_problems`.`Product` (
     `product_id` INTEGER,
     `product_name` VARCHAR(80),
@@ -33,7 +27,6 @@ CREATE TABLE `tracking_software_problems`.`Product` (
     PRIMARY KEY (`product_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_software_problems`.`Problems`;
 CREATE TABLE `tracking_software_problems`.`Problems` (
     `problem_id` INTEGER,
     `product_id` INTEGER NOT NULL,
@@ -49,7 +42,6 @@ CREATE TABLE `tracking_software_problems`.`Problems` (
     FOREIGN KEY (`closure_authorised_by_staff_id`) REFERENCES `tracking_software_problems`.`Staff` (`staff_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_software_problems`.`Problem_Log`;
 CREATE TABLE `tracking_software_problems`.`Problem_Log` (
     `problem_log_id` INTEGER,
     `assigned_to_staff_id` INTEGER NOT NULL,

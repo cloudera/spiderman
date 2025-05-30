@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: film_rank | Table Count: 3
+-- Dialect: mysql | Database: film_rank | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `film_rank`;
-
-DROP TABLE IF EXISTS `film_rank`.`film`;
 CREATE TABLE `film_rank`.`film` (
     `Film_ID` INT,
     `Title` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `film_rank`.`film` (
     PRIMARY KEY (`Film_ID`)
 );
 
-DROP TABLE IF EXISTS `film_rank`.`market`;
 CREATE TABLE `film_rank`.`market` (
     `Market_ID` INT,
     `Country` TEXT,
@@ -20,7 +16,6 @@ CREATE TABLE `film_rank`.`market` (
     PRIMARY KEY (`Market_ID`)
 );
 
-DROP TABLE IF EXISTS `film_rank`.`film_market_estimation`;
 CREATE TABLE `film_rank`.`film_market_estimation` (
     `Estimation_ID` INT,
     `Low_Estimate` REAL,

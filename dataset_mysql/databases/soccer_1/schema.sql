@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: soccer_1 | Table Count: 6
+-- Dialect: mysql | Database: soccer_1 | Table Count: 6
 
-CREATE DATABASE IF NOT EXISTS `soccer_1`;
-
-DROP TABLE IF EXISTS `soccer_1`.`Player`;
 CREATE TABLE `soccer_1`.`Player` (
     `id` INTEGER,
     `player_api_id` INTEGER,
@@ -16,7 +13,6 @@ CREATE TABLE `soccer_1`.`Player` (
     UNIQUE (`player_fifa_api_id`)
 );
 
-DROP TABLE IF EXISTS `soccer_1`.`Player_Attributes`;
 CREATE TABLE `soccer_1`.`Player_Attributes` (
     `id` INTEGER,
     `player_fifa_api_id` INTEGER,
@@ -65,7 +61,6 @@ CREATE TABLE `soccer_1`.`Player_Attributes` (
     FOREIGN KEY (`player_fifa_api_id`) REFERENCES `soccer_1`.`Player` (`player_fifa_api_id`)
 );
 
-DROP TABLE IF EXISTS `soccer_1`.`Country`;
 CREATE TABLE `soccer_1`.`Country` (
     `id` INTEGER,
     `name` VARCHAR(50),
@@ -73,7 +68,6 @@ CREATE TABLE `soccer_1`.`Country` (
     UNIQUE (`name`)
 );
 
-DROP TABLE IF EXISTS `soccer_1`.`League`;
 CREATE TABLE `soccer_1`.`League` (
     `id` INTEGER,
     `country_id` INTEGER,
@@ -83,7 +77,6 @@ CREATE TABLE `soccer_1`.`League` (
     UNIQUE (`name`)
 );
 
-DROP TABLE IF EXISTS `soccer_1`.`Team`;
 CREATE TABLE `soccer_1`.`Team` (
     `id` INTEGER,
     `team_api_id` INTEGER,
@@ -95,7 +88,6 @@ CREATE TABLE `soccer_1`.`Team` (
     INDEX idx_team_fifa_api_id (`team_fifa_api_id`)
 );
 
-DROP TABLE IF EXISTS `soccer_1`.`Team_Attributes`;
 CREATE TABLE `soccer_1`.`Team_Attributes` (
     `id` INTEGER,
     `team_fifa_api_id` INTEGER,

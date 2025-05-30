@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: party_host | Table Count: 3
+-- Dialect: mysql | Database: party_host | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `party_host`;
-
-DROP TABLE IF EXISTS `party_host`.`party`;
 CREATE TABLE `party_host`.`party` (
     `Party_ID` INT,
     `Party_Theme` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `party_host`.`party` (
     PRIMARY KEY (`Party_ID`)
 );
 
-DROP TABLE IF EXISTS `party_host`.`host`;
 CREATE TABLE `party_host`.`host` (
     `Host_ID` INT,
     `Name` TEXT,
@@ -22,7 +18,6 @@ CREATE TABLE `party_host`.`host` (
     PRIMARY KEY (`Host_ID`)
 );
 
-DROP TABLE IF EXISTS `party_host`.`party_host`;
 CREATE TABLE `party_host`.`party_host` (
     `Party_ID` INT,
     `Host_ID` INT,

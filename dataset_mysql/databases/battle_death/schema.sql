@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: battle_death | Table Count: 3
+-- Dialect: mysql | Database: battle_death | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `battle_death`;
-
-DROP TABLE IF EXISTS `battle_death`.`battle`;
 CREATE TABLE `battle_death`.`battle` (
     `id` INT,
     `name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `battle_death`.`battle` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `battle_death`.`ship`;
 CREATE TABLE `battle_death`.`ship` (
     `lost_in_battle` INT,
     `id` INT,
@@ -26,7 +22,6 @@ CREATE TABLE `battle_death`.`ship` (
     FOREIGN KEY (`lost_in_battle`) REFERENCES `battle_death`.`battle` (`id`)
 );
 
-DROP TABLE IF EXISTS `battle_death`.`death`;
 CREATE TABLE `battle_death`.`death` (
     `caused_by_ship_id` INT,
     `id` INT,

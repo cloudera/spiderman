@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: csu_1 | Table Count: 6
+-- Dialect: mysql | Database: csu_1 | Table Count: 6
 
-CREATE DATABASE IF NOT EXISTS `csu_1`;
-
-DROP TABLE IF EXISTS `csu_1`.`Campuses`;
 CREATE TABLE `csu_1`.`Campuses` (
     `Id` INTEGER,
     `Campus` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `csu_1`.`Campuses` (
     PRIMARY KEY (`Id`)
 );
 
-DROP TABLE IF EXISTS `csu_1`.`csu_fees`;
 CREATE TABLE `csu_1`.`csu_fees` (
     `Campus` INTEGER,
     `Year` INTEGER,
@@ -21,7 +17,6 @@ CREATE TABLE `csu_1`.`csu_fees` (
     FOREIGN KEY (`Campus`) REFERENCES `csu_1`.`Campuses` (`Id`)
 );
 
-DROP TABLE IF EXISTS `csu_1`.`degrees`;
 CREATE TABLE `csu_1`.`degrees` (
     `Year` INTEGER,
     `Campus` INTEGER,
@@ -30,7 +25,6 @@ CREATE TABLE `csu_1`.`degrees` (
     FOREIGN KEY (`Campus`) REFERENCES `csu_1`.`Campuses` (`Id`)
 );
 
-DROP TABLE IF EXISTS `csu_1`.`discipline_enrollments`;
 CREATE TABLE `csu_1`.`discipline_enrollments` (
     `Campus` INTEGER,
     `Discipline` INTEGER,
@@ -41,7 +35,6 @@ CREATE TABLE `csu_1`.`discipline_enrollments` (
     FOREIGN KEY (`Campus`) REFERENCES `csu_1`.`Campuses` (`Id`)
 );
 
-DROP TABLE IF EXISTS `csu_1`.`enrollments`;
 CREATE TABLE `csu_1`.`enrollments` (
     `Campus` INTEGER,
     `Year` INTEGER,
@@ -51,7 +44,6 @@ CREATE TABLE `csu_1`.`enrollments` (
     FOREIGN KEY (`Campus`) REFERENCES `csu_1`.`Campuses` (`Id`)
 );
 
-DROP TABLE IF EXISTS `csu_1`.`faculty`;
 CREATE TABLE `csu_1`.`faculty` (
     `Campus` INTEGER,
     `Year` INTEGER,

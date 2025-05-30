@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: e_government | Table Count: 10
+-- Dialect: mysql | Database: e_government | Table Count: 10
 
-CREATE DATABASE IF NOT EXISTS `e_government`;
-
-DROP TABLE IF EXISTS `e_government`.`Addresses`;
 CREATE TABLE `e_government`.`Addresses` (
     `address_id` INTEGER,
     `line_1_number_building` VARCHAR(80),
@@ -13,7 +10,6 @@ CREATE TABLE `e_government`.`Addresses` (
     PRIMARY KEY (`address_id`)
 );
 
-DROP TABLE IF EXISTS `e_government`.`Services`;
 CREATE TABLE `e_government`.`Services` (
     `service_id` INTEGER,
     `service_type_code` VARCHAR(15) NOT NULL,
@@ -22,7 +18,6 @@ CREATE TABLE `e_government`.`Services` (
     PRIMARY KEY (`service_id`)
 );
 
-DROP TABLE IF EXISTS `e_government`.`Forms`;
 CREATE TABLE `e_government`.`Forms` (
     `form_id` INTEGER,
     `form_type_code` VARCHAR(15) NOT NULL,
@@ -34,7 +29,6 @@ CREATE TABLE `e_government`.`Forms` (
     FOREIGN KEY (`service_id`) REFERENCES `e_government`.`Services` (`service_id`)
 );
 
-DROP TABLE IF EXISTS `e_government`.`Individuals`;
 CREATE TABLE `e_government`.`Individuals` (
     `individual_id` INTEGER,
     `individual_first_name` VARCHAR(80),
@@ -46,7 +40,6 @@ CREATE TABLE `e_government`.`Individuals` (
     PRIMARY KEY (`individual_id`)
 );
 
-DROP TABLE IF EXISTS `e_government`.`Organizations`;
 CREATE TABLE `e_government`.`Organizations` (
     `organization_id` INTEGER,
     `date_formed` DATETIME,
@@ -55,7 +48,6 @@ CREATE TABLE `e_government`.`Organizations` (
     PRIMARY KEY (`organization_id`)
 );
 
-DROP TABLE IF EXISTS `e_government`.`Parties`;
 CREATE TABLE `e_government`.`Parties` (
     `party_id` INTEGER,
     `payment_method_code` VARCHAR(15) NOT NULL,
@@ -64,7 +56,6 @@ CREATE TABLE `e_government`.`Parties` (
     PRIMARY KEY (`party_id`)
 );
 
-DROP TABLE IF EXISTS `e_government`.`Organization_Contact_Individuals`;
 CREATE TABLE `e_government`.`Organization_Contact_Individuals` (
     `individual_id` INTEGER NOT NULL,
     `organization_id` INTEGER NOT NULL,
@@ -75,7 +66,6 @@ CREATE TABLE `e_government`.`Organization_Contact_Individuals` (
     FOREIGN KEY (`organization_id`) REFERENCES `e_government`.`Organizations` (`organization_id`)
 );
 
-DROP TABLE IF EXISTS `e_government`.`Party_Addresses`;
 CREATE TABLE `e_government`.`Party_Addresses` (
     `party_id` INTEGER NOT NULL,
     `address_id` INTEGER NOT NULL,
@@ -87,7 +77,6 @@ CREATE TABLE `e_government`.`Party_Addresses` (
     FOREIGN KEY (`address_id`) REFERENCES `e_government`.`Addresses` (`address_id`)
 );
 
-DROP TABLE IF EXISTS `e_government`.`Party_Forms`;
 CREATE TABLE `e_government`.`Party_Forms` (
     `party_id` INTEGER NOT NULL,
     `form_id` INTEGER NOT NULL,
@@ -99,7 +88,6 @@ CREATE TABLE `e_government`.`Party_Forms` (
     FOREIGN KEY (`party_id`) REFERENCES `e_government`.`Parties` (`party_id`)
 );
 
-DROP TABLE IF EXISTS `e_government`.`Party_Services`;
 CREATE TABLE `e_government`.`Party_Services` (
     `booking_id` INTEGER NOT NULL,
     `customer_id` INTEGER NOT NULL,

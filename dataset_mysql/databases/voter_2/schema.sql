@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: voter_2 | Table Count: 2
+-- Dialect: mysql | Database: voter_2 | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `voter_2`;
-
-DROP TABLE IF EXISTS `voter_2`.`Student`;
 CREATE TABLE `voter_2`.`Student` (
     `StuID` INTEGER,
     `LName` VARCHAR(12),
@@ -15,7 +12,6 @@ CREATE TABLE `voter_2`.`Student` (
     PRIMARY KEY (`StuID`)
 );
 
-DROP TABLE IF EXISTS `voter_2`.`Voting_record`;
 CREATE TABLE `voter_2`.`Voting_record` (
     `StuID` INTEGER,
     `Registration_Date` VARCHAR(12),

@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: tracking_share_transactions | Table Count: 7
+-- Dialect: mysql | Database: tracking_share_transactions | Table Count: 7
 
-CREATE DATABASE IF NOT EXISTS `tracking_share_transactions`;
-
-DROP TABLE IF EXISTS `tracking_share_transactions`.`Investors`;
 CREATE TABLE `tracking_share_transactions`.`Investors` (
     `investor_id` INTEGER,
     `Investor_details` VARCHAR(255),
     PRIMARY KEY (`investor_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_share_transactions`.`Lots`;
 CREATE TABLE `tracking_share_transactions`.`Lots` (
     `lot_id` INTEGER,
     `investor_id` INTEGER NOT NULL,
@@ -18,14 +14,12 @@ CREATE TABLE `tracking_share_transactions`.`Lots` (
     FOREIGN KEY (`investor_id`) REFERENCES `tracking_share_transactions`.`Investors` (`investor_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_share_transactions`.`Ref_Transaction_Types`;
 CREATE TABLE `tracking_share_transactions`.`Ref_Transaction_Types` (
     `transaction_type_code` VARCHAR(10),
     `transaction_type_description` VARCHAR(80) NOT NULL,
     PRIMARY KEY (`transaction_type_code`)
 );
 
-DROP TABLE IF EXISTS `tracking_share_transactions`.`Transactions`;
 CREATE TABLE `tracking_share_transactions`.`Transactions` (
     `transaction_id` INTEGER,
     `investor_id` INTEGER NOT NULL,
@@ -39,7 +33,6 @@ CREATE TABLE `tracking_share_transactions`.`Transactions` (
     FOREIGN KEY (`investor_id`) REFERENCES `tracking_share_transactions`.`Investors` (`investor_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_share_transactions`.`Sales`;
 CREATE TABLE `tracking_share_transactions`.`Sales` (
     `sales_transaction_id` INTEGER,
     `sales_details` VARCHAR(255),
@@ -47,14 +40,12 @@ CREATE TABLE `tracking_share_transactions`.`Sales` (
     FOREIGN KEY (`sales_transaction_id`) REFERENCES `tracking_share_transactions`.`Transactions` (`transaction_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_share_transactions`.`Purchases`;
 CREATE TABLE `tracking_share_transactions`.`Purchases` (
     `purchase_transaction_id` INTEGER NOT NULL,
     `purchase_details` VARCHAR(255) NOT NULL,
     FOREIGN KEY (`purchase_transaction_id`) REFERENCES `tracking_share_transactions`.`Transactions` (`transaction_id`)
 );
 
-DROP TABLE IF EXISTS `tracking_share_transactions`.`Transactions_Lots`;
 CREATE TABLE `tracking_share_transactions`.`Transactions_Lots` (
     `transaction_id` INTEGER NOT NULL,
     `lot_id` INTEGER NOT NULL,

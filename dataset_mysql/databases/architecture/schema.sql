@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: architecture | Table Count: 3
+-- Dialect: mysql | Database: architecture | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `architecture`;
-
-DROP TABLE IF EXISTS `architecture`.`architect`;
 CREATE TABLE `architecture`.`architect` (
     `id` INT,
     `name` TEXT,
@@ -11,7 +8,6 @@ CREATE TABLE `architecture`.`architect` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `architecture`.`bridge`;
 CREATE TABLE `architecture`.`bridge` (
     `architect_id` INT,
     `id` INT,
@@ -23,7 +19,6 @@ CREATE TABLE `architecture`.`bridge` (
     FOREIGN KEY (`architect_id`) REFERENCES `architecture`.`architect` (`id`)
 );
 
-DROP TABLE IF EXISTS `architecture`.`mill`;
 CREATE TABLE `architecture`.`mill` (
     `architect_id` INT,
     `id` INT,

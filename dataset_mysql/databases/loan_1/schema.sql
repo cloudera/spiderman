@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: loan_1 | Table Count: 3
+-- Dialect: mysql | Database: loan_1 | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `loan_1`;
-
-DROP TABLE IF EXISTS `loan_1`.`bank`;
 CREATE TABLE `loan_1`.`bank` (
     `branch_ID` INT,
     `bname` VARCHAR(20),
@@ -12,7 +9,6 @@ CREATE TABLE `loan_1`.`bank` (
     PRIMARY KEY (`branch_ID`)
 );
 
-DROP TABLE IF EXISTS `loan_1`.`customer`;
 CREATE TABLE `loan_1`.`customer` (
     `cust_ID` INT,
     `cust_name` VARCHAR(20),
@@ -26,7 +22,6 @@ CREATE TABLE `loan_1`.`customer` (
     FOREIGN KEY (`branch_ID`) REFERENCES `loan_1`.`bank` (`branch_ID`)
 );
 
-DROP TABLE IF EXISTS `loan_1`.`loan`;
 CREATE TABLE `loan_1`.`loan` (
     `loan_ID` INT,
     `loan_type` VARCHAR(15),

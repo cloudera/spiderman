@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: wta_1 | Table Count: 3
+-- Dialect: mysql | Database: wta_1 | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `wta_1`;
-
-DROP TABLE IF EXISTS `wta_1`.`players`;
 CREATE TABLE `wta_1`.`players` (
     `player_id` INT,
     `first_name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `wta_1`.`players` (
     PRIMARY KEY (`player_id`)
 );
 
-DROP TABLE IF EXISTS `wta_1`.`matches`;
 CREATE TABLE `wta_1`.`matches` (
     `best_of` INT,
     `draw_size` INT,
@@ -51,7 +47,6 @@ CREATE TABLE `wta_1`.`matches` (
     FOREIGN KEY (`loser_id`) REFERENCES `wta_1`.`players` (`player_id`)
 );
 
-DROP TABLE IF EXISTS `wta_1`.`rankings`;
 CREATE TABLE `wta_1`.`rankings` (
     `ranking_date` DATE,
     `ranking` INT,

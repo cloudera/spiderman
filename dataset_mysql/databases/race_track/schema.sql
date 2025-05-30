@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: race_track | Table Count: 2
+-- Dialect: mysql | Database: race_track | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `race_track`;
-
-DROP TABLE IF EXISTS `race_track`.`track`;
 CREATE TABLE `race_track`.`track` (
     `Track_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `race_track`.`track` (
     PRIMARY KEY (`Track_ID`)
 );
 
-DROP TABLE IF EXISTS `race_track`.`race`;
 CREATE TABLE `race_track`.`race` (
     `Race_ID` INT,
     `Name` TEXT,

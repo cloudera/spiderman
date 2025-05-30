@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: company_office | Table Count: 3
+-- Dialect: mysql | Database: company_office | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `company_office`;
-
-DROP TABLE IF EXISTS `company_office`.`buildings`;
 CREATE TABLE `company_office`.`buildings` (
     `id` INT,
     `name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `company_office`.`buildings` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `company_office`.`Companies`;
 CREATE TABLE `company_office`.`Companies` (
     `id` INT,
     `name` TEXT,
@@ -26,7 +22,6 @@ CREATE TABLE `company_office`.`Companies` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `company_office`.`Office_locations`;
 CREATE TABLE `company_office`.`Office_locations` (
     `building_id` INT,
     `company_id` INT,

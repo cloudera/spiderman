@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: aircraft | Table Count: 5
+-- Dialect: mysql | Database: aircraft | Table Count: 5
 
-CREATE DATABASE IF NOT EXISTS `aircraft`;
-
-DROP TABLE IF EXISTS `aircraft`.`pilot`;
 CREATE TABLE `aircraft`.`pilot` (
     `Pilot_Id` INT(11) NOT NULL,
     `Name` VARCHAR(50) NOT NULL,
@@ -10,7 +7,6 @@ CREATE TABLE `aircraft`.`pilot` (
     PRIMARY KEY (`Pilot_Id`)
 );
 
-DROP TABLE IF EXISTS `aircraft`.`aircraft`;
 CREATE TABLE `aircraft`.`aircraft` (
     `Aircraft_ID` INT(11) NOT NULL,
     `Aircraft` VARCHAR(50) NOT NULL,
@@ -21,7 +17,6 @@ CREATE TABLE `aircraft`.`aircraft` (
     PRIMARY KEY (`Aircraft_ID`)
 );
 
-DROP TABLE IF EXISTS `aircraft`.`match`;
 CREATE TABLE `aircraft`.`match` (
     `Round` REAL,
     `Location` TEXT,
@@ -35,7 +30,6 @@ CREATE TABLE `aircraft`.`match` (
     FOREIGN KEY (`Winning_Aircraft`) REFERENCES `aircraft`.`aircraft` (`Aircraft_ID`)
 );
 
-DROP TABLE IF EXISTS `aircraft`.`airport`;
 CREATE TABLE `aircraft`.`airport` (
     `Airport_ID` INT,
     `Airport_Name` TEXT,
@@ -49,7 +43,6 @@ CREATE TABLE `aircraft`.`airport` (
     PRIMARY KEY (`Airport_ID`)
 );
 
-DROP TABLE IF EXISTS `aircraft`.`airport_aircraft`;
 CREATE TABLE `aircraft`.`airport_aircraft` (
     `ID` INT,
     `Airport_ID` INT,

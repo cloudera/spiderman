@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: medicine_enzyme_interaction | Table Count: 3
+-- Dialect: mysql | Database: medicine_enzyme_interaction | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `medicine_enzyme_interaction`;
-
-DROP TABLE IF EXISTS `medicine_enzyme_interaction`.`medicine`;
 CREATE TABLE `medicine_enzyme_interaction`.`medicine` (
     `id` INT,
     `name` TEXT,
@@ -11,7 +8,6 @@ CREATE TABLE `medicine_enzyme_interaction`.`medicine` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `medicine_enzyme_interaction`.`enzyme`;
 CREATE TABLE `medicine_enzyme_interaction`.`enzyme` (
     `id` INT,
     `name` TEXT,
@@ -23,7 +19,6 @@ CREATE TABLE `medicine_enzyme_interaction`.`enzyme` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `medicine_enzyme_interaction`.`medicine_enzyme_interaction`;
 CREATE TABLE `medicine_enzyme_interaction`.`medicine_enzyme_interaction` (
     `enzyme_id` INT,
     `medicine_id` INT,

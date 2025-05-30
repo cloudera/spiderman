@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: sports_competition | Table Count: 5
+-- Dialect: mysql | Database: sports_competition | Table Count: 5
 
-CREATE DATABASE IF NOT EXISTS `sports_competition`;
-
-DROP TABLE IF EXISTS `sports_competition`.`club`;
 CREATE TABLE `sports_competition`.`club` (
     `Club_ID` INT,
     `name` TEXT,
@@ -11,7 +8,6 @@ CREATE TABLE `sports_competition`.`club` (
     PRIMARY KEY (`Club_ID`)
 );
 
-DROP TABLE IF EXISTS `sports_competition`.`club_rank`;
 CREATE TABLE `sports_competition`.`club_rank` (
     `Rank` REAL,
     `Club_ID` INT,
@@ -23,7 +19,6 @@ CREATE TABLE `sports_competition`.`club_rank` (
     FOREIGN KEY (`Club_ID`) REFERENCES `sports_competition`.`club` (`Club_ID`)
 );
 
-DROP TABLE IF EXISTS `sports_competition`.`player`;
 CREATE TABLE `sports_competition`.`player` (
     `Player_ID` INT,
     `name` TEXT,
@@ -37,7 +32,6 @@ CREATE TABLE `sports_competition`.`player` (
     FOREIGN KEY (`Club_ID`) REFERENCES `sports_competition`.`club` (`Club_ID`)
 );
 
-DROP TABLE IF EXISTS `sports_competition`.`competition`;
 CREATE TABLE `sports_competition`.`competition` (
     `Competition_ID` INT,
     `Year` REAL,
@@ -46,7 +40,6 @@ CREATE TABLE `sports_competition`.`competition` (
     PRIMARY KEY (`Competition_ID`)
 );
 
-DROP TABLE IF EXISTS `sports_competition`.`competition_result`;
 CREATE TABLE `sports_competition`.`competition_result` (
     `Competition_ID` INT,
     `Club_ID_1` INT,

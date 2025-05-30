@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: journal_committee | Table Count: 3
+-- Dialect: mysql | Database: journal_committee | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `journal_committee`;
-
-DROP TABLE IF EXISTS `journal_committee`.`journal`;
 CREATE TABLE `journal_committee`.`journal` (
     `Journal_ID` INT,
     `Date` TEXT,
@@ -11,7 +8,6 @@ CREATE TABLE `journal_committee`.`journal` (
     PRIMARY KEY (`Journal_ID`)
 );
 
-DROP TABLE IF EXISTS `journal_committee`.`editor`;
 CREATE TABLE `journal_committee`.`editor` (
     `Editor_ID` INT,
     `Name` TEXT,
@@ -19,7 +15,6 @@ CREATE TABLE `journal_committee`.`editor` (
     PRIMARY KEY (`Editor_ID`)
 );
 
-DROP TABLE IF EXISTS `journal_committee`.`journal_committee`;
 CREATE TABLE `journal_committee`.`journal_committee` (
     `Editor_ID` INT,
     `Journal_ID` INT,

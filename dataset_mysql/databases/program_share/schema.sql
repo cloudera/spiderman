@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: program_share | Table Count: 4
+-- Dialect: mysql | Database: program_share | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `program_share`;
-
-DROP TABLE IF EXISTS `program_share`.`program`;
 CREATE TABLE `program_share`.`program` (
     `Program_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `program_share`.`program` (
     PRIMARY KEY (`Program_ID`)
 );
 
-DROP TABLE IF EXISTS `program_share`.`channel`;
 CREATE TABLE `program_share`.`channel` (
     `Channel_ID` INT,
     `Name` TEXT,
@@ -22,7 +18,6 @@ CREATE TABLE `program_share`.`channel` (
     PRIMARY KEY (`Channel_ID`)
 );
 
-DROP TABLE IF EXISTS `program_share`.`broadcast`;
 CREATE TABLE `program_share`.`broadcast` (
     `Channel_ID` INT,
     `Program_ID` INT,
@@ -32,7 +27,6 @@ CREATE TABLE `program_share`.`broadcast` (
     FOREIGN KEY (`Channel_ID`) REFERENCES `program_share`.`channel` (`Channel_ID`)
 );
 
-DROP TABLE IF EXISTS `program_share`.`broadcast_share`;
 CREATE TABLE `program_share`.`broadcast_share` (
     `Channel_ID` INT,
     `Program_ID` INT,

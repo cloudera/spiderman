@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: driving_school | Table Count: 6
+-- Dialect: mysql | Database: driving_school | Table Count: 6
 
-CREATE DATABASE IF NOT EXISTS `driving_school`;
-
-DROP TABLE IF EXISTS `driving_school`.`Addresses`;
 CREATE TABLE `driving_school`.`Addresses` (
     `address_id` INTEGER,
     `line_1_number_building` VARCHAR(80),
@@ -13,7 +10,6 @@ CREATE TABLE `driving_school`.`Addresses` (
     PRIMARY KEY (`address_id`)
 );
 
-DROP TABLE IF EXISTS `driving_school`.`Staff`;
 CREATE TABLE `driving_school`.`Staff` (
     `staff_id` INTEGER,
     `staff_address_id` INTEGER NOT NULL,
@@ -28,14 +24,12 @@ CREATE TABLE `driving_school`.`Staff` (
     FOREIGN KEY (`staff_address_id`) REFERENCES `driving_school`.`Addresses` (`address_id`)
 );
 
-DROP TABLE IF EXISTS `driving_school`.`Vehicles`;
 CREATE TABLE `driving_school`.`Vehicles` (
     `vehicle_id` INTEGER,
     `vehicle_details` VARCHAR(255),
     PRIMARY KEY (`vehicle_id`)
 );
 
-DROP TABLE IF EXISTS `driving_school`.`Customers`;
 CREATE TABLE `driving_school`.`Customers` (
     `customer_id` INTEGER,
     `customer_address_id` INTEGER NOT NULL,
@@ -52,7 +46,6 @@ CREATE TABLE `driving_school`.`Customers` (
     FOREIGN KEY (`customer_address_id`) REFERENCES `driving_school`.`Addresses` (`address_id`)
 );
 
-DROP TABLE IF EXISTS `driving_school`.`Customer_Payments`;
 CREATE TABLE `driving_school`.`Customer_Payments` (
     `customer_id` INTEGER NOT NULL,
     `datetime_payment` DATETIME NOT NULL,
@@ -62,7 +55,6 @@ CREATE TABLE `driving_school`.`Customer_Payments` (
     FOREIGN KEY (`customer_id`) REFERENCES `driving_school`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `driving_school`.`Lessons`;
 CREATE TABLE `driving_school`.`Lessons` (
     `lesson_id` INTEGER,
     `customer_id` INTEGER NOT NULL,

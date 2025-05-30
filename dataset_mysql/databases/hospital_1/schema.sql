@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: hospital_1 | Table Count: 15
+-- Dialect: mysql | Database: hospital_1 | Table Count: 15
 
-CREATE DATABASE IF NOT EXISTS `hospital_1`;
-
-DROP TABLE IF EXISTS `hospital_1`.`Physician`;
 CREATE TABLE `hospital_1`.`Physician` (
     `EmployeeID` INTEGER NOT NULL,
     `Name` VARCHAR(30) NOT NULL,
@@ -11,7 +8,6 @@ CREATE TABLE `hospital_1`.`Physician` (
     PRIMARY KEY (`EmployeeID`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Department`;
 CREATE TABLE `hospital_1`.`Department` (
     `DepartmentID` INTEGER NOT NULL,
     `Name` VARCHAR(30) NOT NULL,
@@ -20,7 +16,6 @@ CREATE TABLE `hospital_1`.`Department` (
     FOREIGN KEY (`Head`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Affiliated_With`;
 CREATE TABLE `hospital_1`.`Affiliated_With` (
     `Physician` INTEGER NOT NULL,
     `Department` INTEGER NOT NULL,
@@ -30,7 +25,6 @@ CREATE TABLE `hospital_1`.`Affiliated_With` (
     FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Procedures`;
 CREATE TABLE `hospital_1`.`Procedures` (
     `Code` INTEGER NOT NULL,
     `Name` VARCHAR(30) NOT NULL,
@@ -38,7 +32,6 @@ CREATE TABLE `hospital_1`.`Procedures` (
     PRIMARY KEY (`Code`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Trained_In`;
 CREATE TABLE `hospital_1`.`Trained_In` (
     `Physician` INTEGER NOT NULL,
     `Treatment` INTEGER NOT NULL,
@@ -49,7 +42,6 @@ CREATE TABLE `hospital_1`.`Trained_In` (
     FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Patient`;
 CREATE TABLE `hospital_1`.`Patient` (
     `SSN` INTEGER NOT NULL,
     `Name` VARCHAR(30) NOT NULL,
@@ -61,7 +53,6 @@ CREATE TABLE `hospital_1`.`Patient` (
     FOREIGN KEY (`PCP`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Nurse`;
 CREATE TABLE `hospital_1`.`Nurse` (
     `EmployeeID` INTEGER NOT NULL,
     `Name` VARCHAR(30) NOT NULL,
@@ -71,7 +62,6 @@ CREATE TABLE `hospital_1`.`Nurse` (
     PRIMARY KEY (`EmployeeID`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Appointment`;
 CREATE TABLE `hospital_1`.`Appointment` (
     `AppointmentID` INTEGER NOT NULL,
     `Patient` INTEGER NOT NULL,
@@ -86,7 +76,6 @@ CREATE TABLE `hospital_1`.`Appointment` (
     FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Medication`;
 CREATE TABLE `hospital_1`.`Medication` (
     `Code` INTEGER NOT NULL,
     `Name` VARCHAR(30) NOT NULL,
@@ -95,7 +84,6 @@ CREATE TABLE `hospital_1`.`Medication` (
     PRIMARY KEY (`Code`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Prescribes`;
 CREATE TABLE `hospital_1`.`Prescribes` (
     `Physician` INTEGER NOT NULL,
     `Patient` INTEGER NOT NULL,
@@ -110,14 +98,12 @@ CREATE TABLE `hospital_1`.`Prescribes` (
     FOREIGN KEY (`Physician`) REFERENCES `hospital_1`.`Physician` (`EmployeeID`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Block`;
 CREATE TABLE `hospital_1`.`Block` (
     `BlockFloor` INTEGER NOT NULL,
     `BlockCode` INTEGER NOT NULL,
     PRIMARY KEY (`BlockFloor`, `BlockCode`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Room`;
 CREATE TABLE `hospital_1`.`Room` (
     `RoomNumber` INTEGER NOT NULL,
     `RoomType` VARCHAR(30) NOT NULL,
@@ -128,7 +114,6 @@ CREATE TABLE `hospital_1`.`Room` (
     FOREIGN KEY (`BlockFloor`, `BlockCode`) REFERENCES `hospital_1`.`Block` (`BlockFloor`, `BlockCode`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`On_Call`;
 CREATE TABLE `hospital_1`.`On_Call` (
     `Nurse` INTEGER NOT NULL,
     `BlockFloor` INTEGER NOT NULL,
@@ -140,7 +125,6 @@ CREATE TABLE `hospital_1`.`On_Call` (
     FOREIGN KEY (`Nurse`) REFERENCES `hospital_1`.`Nurse` (`EmployeeID`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Stay`;
 CREATE TABLE `hospital_1`.`Stay` (
     `StayID` INTEGER NOT NULL,
     `Patient` INTEGER NOT NULL,
@@ -152,7 +136,6 @@ CREATE TABLE `hospital_1`.`Stay` (
     FOREIGN KEY (`Patient`) REFERENCES `hospital_1`.`Patient` (`SSN`)
 );
 
-DROP TABLE IF EXISTS `hospital_1`.`Undergoes`;
 CREATE TABLE `hospital_1`.`Undergoes` (
     `Patient` INTEGER NOT NULL,
     `Procedures` INTEGER NOT NULL,

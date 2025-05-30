@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: roller_coaster | Table Count: 2
+-- Dialect: mysql | Database: roller_coaster | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `roller_coaster`;
-
-DROP TABLE IF EXISTS `roller_coaster`.`country`;
 CREATE TABLE `roller_coaster`.`country` (
     `Country_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `roller_coaster`.`country` (
     PRIMARY KEY (`Country_ID`)
 );
 
-DROP TABLE IF EXISTS `roller_coaster`.`roller_coaster`;
 CREATE TABLE `roller_coaster`.`roller_coaster` (
     `Roller_Coaster_ID` INT,
     `Name` TEXT,

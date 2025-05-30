@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: assets_maintenance | Table Count: 14
+-- Dialect: mysql | Database: assets_maintenance | Table Count: 14
 
-CREATE DATABASE IF NOT EXISTS `assets_maintenance`;
-
-DROP TABLE IF EXISTS `assets_maintenance`.`Third_Party_Companies`;
 CREATE TABLE `assets_maintenance`.`Third_Party_Companies` (
     `company_id` INTEGER,
     `company_type` VARCHAR(30) NOT NULL,
@@ -12,7 +9,6 @@ CREATE TABLE `assets_maintenance`.`Third_Party_Companies` (
     PRIMARY KEY (`company_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Maintenance_Contracts`;
 CREATE TABLE `assets_maintenance`.`Maintenance_Contracts` (
     `maintenance_contract_id` INTEGER,
     `maintenance_contract_company_id` INTEGER NOT NULL,
@@ -23,7 +19,6 @@ CREATE TABLE `assets_maintenance`.`Maintenance_Contracts` (
     FOREIGN KEY (`maintenance_contract_company_id`) REFERENCES `assets_maintenance`.`Third_Party_Companies` (`company_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Parts`;
 CREATE TABLE `assets_maintenance`.`Parts` (
     `part_id` INTEGER,
     `part_name` VARCHAR(255),
@@ -33,7 +28,6 @@ CREATE TABLE `assets_maintenance`.`Parts` (
     PRIMARY KEY (`part_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Skills`;
 CREATE TABLE `assets_maintenance`.`Skills` (
     `skill_id` INTEGER,
     `skill_code` VARCHAR(20),
@@ -41,7 +35,6 @@ CREATE TABLE `assets_maintenance`.`Skills` (
     PRIMARY KEY (`skill_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Staff`;
 CREATE TABLE `assets_maintenance`.`Staff` (
     `staff_id` INTEGER,
     `staff_name` VARCHAR(255),
@@ -50,7 +43,6 @@ CREATE TABLE `assets_maintenance`.`Staff` (
     PRIMARY KEY (`staff_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Assets`;
 CREATE TABLE `assets_maintenance`.`Assets` (
     `asset_id` INTEGER,
     `maintenance_contract_id` INTEGER NOT NULL,
@@ -66,7 +58,6 @@ CREATE TABLE `assets_maintenance`.`Assets` (
     FOREIGN KEY (`maintenance_contract_id`) REFERENCES `assets_maintenance`.`Maintenance_Contracts` (`maintenance_contract_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Asset_Parts`;
 CREATE TABLE `assets_maintenance`.`Asset_Parts` (
     `asset_id` INTEGER NOT NULL,
     `part_id` INTEGER NOT NULL,
@@ -74,7 +65,6 @@ CREATE TABLE `assets_maintenance`.`Asset_Parts` (
     FOREIGN KEY (`part_id`) REFERENCES `assets_maintenance`.`Parts` (`part_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Maintenance_Engineers`;
 CREATE TABLE `assets_maintenance`.`Maintenance_Engineers` (
     `engineer_id` INTEGER,
     `company_id` INTEGER NOT NULL,
@@ -85,7 +75,6 @@ CREATE TABLE `assets_maintenance`.`Maintenance_Engineers` (
     FOREIGN KEY (`company_id`) REFERENCES `assets_maintenance`.`Third_Party_Companies` (`company_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Engineer_Skills`;
 CREATE TABLE `assets_maintenance`.`Engineer_Skills` (
     `engineer_id` INTEGER NOT NULL,
     `skill_id` INTEGER NOT NULL,
@@ -93,7 +82,6 @@ CREATE TABLE `assets_maintenance`.`Engineer_Skills` (
     FOREIGN KEY (`engineer_id`) REFERENCES `assets_maintenance`.`Maintenance_Engineers` (`engineer_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Fault_Log`;
 CREATE TABLE `assets_maintenance`.`Fault_Log` (
     `fault_log_entry_id` INTEGER,
     `asset_id` INTEGER NOT NULL,
@@ -106,7 +94,6 @@ CREATE TABLE `assets_maintenance`.`Fault_Log` (
     FOREIGN KEY (`asset_id`) REFERENCES `assets_maintenance`.`Assets` (`asset_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Engineer_Visits`;
 CREATE TABLE `assets_maintenance`.`Engineer_Visits` (
     `engineer_visit_id` INTEGER,
     `contact_staff_id` INTEGER,
@@ -122,7 +109,6 @@ CREATE TABLE `assets_maintenance`.`Engineer_Visits` (
     FOREIGN KEY (`fault_log_entry_id`) REFERENCES `assets_maintenance`.`Fault_Log` (`fault_log_entry_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Part_Faults`;
 CREATE TABLE `assets_maintenance`.`Part_Faults` (
     `part_fault_id` INTEGER,
     `part_id` INTEGER NOT NULL,
@@ -133,7 +119,6 @@ CREATE TABLE `assets_maintenance`.`Part_Faults` (
     FOREIGN KEY (`part_id`) REFERENCES `assets_maintenance`.`Parts` (`part_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Fault_Log_Parts`;
 CREATE TABLE `assets_maintenance`.`Fault_Log_Parts` (
     `fault_log_entry_id` INTEGER NOT NULL,
     `part_fault_id` INTEGER NOT NULL,
@@ -142,7 +127,6 @@ CREATE TABLE `assets_maintenance`.`Fault_Log_Parts` (
     FOREIGN KEY (`part_fault_id`) REFERENCES `assets_maintenance`.`Part_Faults` (`part_fault_id`)
 );
 
-DROP TABLE IF EXISTS `assets_maintenance`.`Skills_Required_To_Fix`;
 CREATE TABLE `assets_maintenance`.`Skills_Required_To_Fix` (
     `part_fault_id` INTEGER NOT NULL,
     `skill_id` INTEGER NOT NULL,

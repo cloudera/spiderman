@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: customers_and_products_contacts | Table Count: 7
+-- Dialect: mysql | Database: customers_and_products_contacts | Table Count: 7
 
-CREATE DATABASE IF NOT EXISTS `customers_and_products_contacts`;
-
-DROP TABLE IF EXISTS `customers_and_products_contacts`.`Addresses`;
 CREATE TABLE `customers_and_products_contacts`.`Addresses` (
     `address_id` INTEGER,
     `line_1_number_building` VARCHAR(80),
@@ -13,7 +10,6 @@ CREATE TABLE `customers_and_products_contacts`.`Addresses` (
     PRIMARY KEY (`address_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_products_contacts`.`Products`;
 CREATE TABLE `customers_and_products_contacts`.`Products` (
     `product_id` INTEGER,
     `product_type_code` VARCHAR(15),
@@ -22,7 +18,6 @@ CREATE TABLE `customers_and_products_contacts`.`Products` (
     PRIMARY KEY (`product_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_products_contacts`.`Customers`;
 CREATE TABLE `customers_and_products_contacts`.`Customers` (
     `customer_id` INTEGER,
     `payment_method_code` VARCHAR(15),
@@ -34,7 +29,6 @@ CREATE TABLE `customers_and_products_contacts`.`Customers` (
     PRIMARY KEY (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_products_contacts`.`Contacts`;
 CREATE TABLE `customers_and_products_contacts`.`Contacts` (
     `contact_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -45,7 +39,6 @@ CREATE TABLE `customers_and_products_contacts`.`Contacts` (
     PRIMARY KEY (`contact_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_products_contacts`.`Customer_Address_History`;
 CREATE TABLE `customers_and_products_contacts`.`Customer_Address_History` (
     `customer_id` INTEGER NOT NULL,
     `address_id` INTEGER NOT NULL,
@@ -55,7 +48,6 @@ CREATE TABLE `customers_and_products_contacts`.`Customer_Address_History` (
     FOREIGN KEY (`customer_id`) REFERENCES `customers_and_products_contacts`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_products_contacts`.`Customer_Orders`;
 CREATE TABLE `customers_and_products_contacts`.`Customer_Orders` (
     `order_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -65,7 +57,6 @@ CREATE TABLE `customers_and_products_contacts`.`Customer_Orders` (
     FOREIGN KEY (`customer_id`) REFERENCES `customers_and_products_contacts`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_products_contacts`.`Order_Items`;
 CREATE TABLE `customers_and_products_contacts`.`Order_Items` (
     `order_item_id` INTEGER NOT NULL,
     `order_id` INTEGER NOT NULL,

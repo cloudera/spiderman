@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: apartment_rentals | Table Count: 6
+-- Dialect: mysql | Database: apartment_rentals | Table Count: 6
 
-CREATE DATABASE IF NOT EXISTS `apartment_rentals`;
-
-DROP TABLE IF EXISTS `apartment_rentals`.`Apartment_Buildings`;
 CREATE TABLE `apartment_rentals`.`Apartment_Buildings` (
     `building_id` INTEGER NOT NULL,
     `building_short_name` VARCHAR(30),
@@ -15,7 +12,6 @@ CREATE TABLE `apartment_rentals`.`Apartment_Buildings` (
     UNIQUE (`building_id`)
 );
 
-DROP TABLE IF EXISTS `apartment_rentals`.`Apartments`;
 CREATE TABLE `apartment_rentals`.`Apartments` (
     `apt_id` INTEGER NOT NULL,
     `building_id` INTEGER NOT NULL,
@@ -29,7 +25,6 @@ CREATE TABLE `apartment_rentals`.`Apartments` (
     UNIQUE (`apt_id`)
 );
 
-DROP TABLE IF EXISTS `apartment_rentals`.`Apartment_Facilities`;
 CREATE TABLE `apartment_rentals`.`Apartment_Facilities` (
     `apt_id` INTEGER NOT NULL,
     `facility_code` CHAR(15) NOT NULL,
@@ -37,7 +32,6 @@ CREATE TABLE `apartment_rentals`.`Apartment_Facilities` (
     FOREIGN KEY (`apt_id`) REFERENCES `apartment_rentals`.`Apartments` (`apt_id`)
 );
 
-DROP TABLE IF EXISTS `apartment_rentals`.`Guests`;
 CREATE TABLE `apartment_rentals`.`Guests` (
     `guest_id` INTEGER NOT NULL,
     `gender_code` VARCHAR(10),
@@ -48,7 +42,6 @@ CREATE TABLE `apartment_rentals`.`Guests` (
     UNIQUE (`guest_id`)
 );
 
-DROP TABLE IF EXISTS `apartment_rentals`.`Apartment_Bookings`;
 CREATE TABLE `apartment_rentals`.`Apartment_Bookings` (
     `apt_booking_id` INTEGER NOT NULL,
     `apt_id` INTEGER,
@@ -62,7 +55,6 @@ CREATE TABLE `apartment_rentals`.`Apartment_Bookings` (
     UNIQUE (`apt_booking_id`)
 );
 
-DROP TABLE IF EXISTS `apartment_rentals`.`View_Unit_Status`;
 CREATE TABLE `apartment_rentals`.`View_Unit_Status` (
     `apt_id` INTEGER,
     `apt_booking_id` INTEGER,

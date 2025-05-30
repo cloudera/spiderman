@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: game_injury | Table Count: 3
+-- Dialect: mysql | Database: game_injury | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `game_injury`;
-
-DROP TABLE IF EXISTS `game_injury`.`stadium`;
 CREATE TABLE `game_injury`.`stadium` (
     `id` INT,
     `name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `game_injury`.`stadium` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `game_injury`.`game`;
 CREATE TABLE `game_injury`.`game` (
     `stadium_id` INT,
     `id` INT,
@@ -27,7 +23,6 @@ CREATE TABLE `game_injury`.`game` (
     FOREIGN KEY (`stadium_id`) REFERENCES `game_injury`.`stadium` (`id`)
 );
 
-DROP TABLE IF EXISTS `game_injury`.`injury_accident`;
 CREATE TABLE `game_injury`.`injury_accident` (
     `game_id` INT,
     `id` INT,

@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: performance_attendance | Table Count: 3
+-- Dialect: mysql | Database: performance_attendance | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `performance_attendance`;
-
-DROP TABLE IF EXISTS `performance_attendance`.`member`;
 CREATE TABLE `performance_attendance`.`member` (
     `Member_ID` INT,
     `Name` TEXT,
@@ -11,7 +8,6 @@ CREATE TABLE `performance_attendance`.`member` (
     PRIMARY KEY (`Member_ID`)
 );
 
-DROP TABLE IF EXISTS `performance_attendance`.`performance`;
 CREATE TABLE `performance_attendance`.`performance` (
     `Performance_ID` INT,
     `Date` TEXT,
@@ -21,7 +17,6 @@ CREATE TABLE `performance_attendance`.`performance` (
     PRIMARY KEY (`Performance_ID`)
 );
 
-DROP TABLE IF EXISTS `performance_attendance`.`member_attendance`;
 CREATE TABLE `performance_attendance`.`member_attendance` (
     `Member_ID` INT,
     `Performance_ID` INT,

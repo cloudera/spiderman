@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: device | Table Count: 3
+-- Dialect: mysql | Database: device | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `device`;
-
-DROP TABLE IF EXISTS `device`.`device`;
 CREATE TABLE `device`.`device` (
     `Device_ID` INT,
     `Device` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `device`.`device` (
     PRIMARY KEY (`Device_ID`)
 );
 
-DROP TABLE IF EXISTS `device`.`shop`;
 CREATE TABLE `device`.`shop` (
     `Shop_ID` INT,
     `Shop_Name` TEXT,
@@ -23,7 +19,6 @@ CREATE TABLE `device`.`shop` (
     PRIMARY KEY (`Shop_ID`)
 );
 
-DROP TABLE IF EXISTS `device`.`stock`;
 CREATE TABLE `device`.`stock` (
     `Shop_ID` INT,
     `Device_ID` INT,

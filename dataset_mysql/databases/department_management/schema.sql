@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: department_management | Table Count: 3
+-- Dialect: mysql | Database: department_management | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `department_management`;
-
-DROP TABLE IF EXISTS `department_management`.`department`;
 CREATE TABLE `department_management`.`department` (
     `Department_ID` INT,
     `Name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `department_management`.`department` (
     PRIMARY KEY (`Department_ID`)
 );
 
-DROP TABLE IF EXISTS `department_management`.`head`;
 CREATE TABLE `department_management`.`head` (
     `head_ID` INT,
     `name` TEXT,
@@ -22,7 +18,6 @@ CREATE TABLE `department_management`.`head` (
     PRIMARY KEY (`head_ID`)
 );
 
-DROP TABLE IF EXISTS `department_management`.`management`;
 CREATE TABLE `department_management`.`management` (
     `department_ID` INT,
     `head_ID` INT,

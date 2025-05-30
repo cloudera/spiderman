@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: company_employee | Table Count: 3
+-- Dialect: mysql | Database: company_employee | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `company_employee`;
-
-DROP TABLE IF EXISTS `company_employee`.`people`;
 CREATE TABLE `company_employee`.`people` (
     `People_ID` INT,
     `Age` INT,
@@ -12,7 +9,6 @@ CREATE TABLE `company_employee`.`people` (
     PRIMARY KEY (`People_ID`)
 );
 
-DROP TABLE IF EXISTS `company_employee`.`company`;
 CREATE TABLE `company_employee`.`company` (
     `Company_ID` INT,
     `Name` TEXT,
@@ -25,7 +21,6 @@ CREATE TABLE `company_employee`.`company` (
     PRIMARY KEY (`Company_ID`)
 );
 
-DROP TABLE IF EXISTS `company_employee`.`employment`;
 CREATE TABLE `company_employee`.`employment` (
     `Company_ID` INT,
     `People_ID` INT,

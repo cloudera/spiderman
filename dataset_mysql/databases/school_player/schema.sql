@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: school_player | Table Count: 4
+-- Dialect: mysql | Database: school_player | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `school_player`;
-
-DROP TABLE IF EXISTS `school_player`.`school`;
 CREATE TABLE `school_player`.`school` (
     `School_ID` INT,
     `School` TEXT,
@@ -17,7 +14,6 @@ CREATE TABLE `school_player`.`school` (
     PRIMARY KEY (`School_ID`)
 );
 
-DROP TABLE IF EXISTS `school_player`.`school_details`;
 CREATE TABLE `school_player`.`school_details` (
     `School_ID` INT,
     `Nickname` TEXT,
@@ -29,7 +25,6 @@ CREATE TABLE `school_player`.`school_details` (
     FOREIGN KEY (`School_ID`) REFERENCES `school_player`.`school` (`School_ID`)
 );
 
-DROP TABLE IF EXISTS `school_player`.`school_performance`;
 CREATE TABLE `school_player`.`school_performance` (
     `School_Id` INT,
     `School_Year` VARCHAR(50),
@@ -39,7 +34,6 @@ CREATE TABLE `school_player`.`school_performance` (
     FOREIGN KEY (`School_Id`) REFERENCES `school_player`.`school` (`School_ID`)
 );
 
-DROP TABLE IF EXISTS `school_player`.`player`;
 CREATE TABLE `school_player`.`player` (
     `Player_ID` INT,
     `Player` TEXT,

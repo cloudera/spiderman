@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: body_builder | Table Count: 2
+-- Dialect: mysql | Database: body_builder | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `body_builder`;
-
-DROP TABLE IF EXISTS `body_builder`.`people`;
 CREATE TABLE `body_builder`.`people` (
     `People_ID` INT,
     `Name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `body_builder`.`people` (
     PRIMARY KEY (`People_ID`)
 );
 
-DROP TABLE IF EXISTS `body_builder`.`body_builder`;
 CREATE TABLE `body_builder`.`body_builder` (
     `Body_Builder_ID` INT,
     `People_ID` INT,

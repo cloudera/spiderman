@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: farm | Table Count: 4
+-- Dialect: mysql | Database: farm | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `farm`;
-
-DROP TABLE IF EXISTS `farm`.`city`;
 CREATE TABLE `farm`.`city` (
     `City_ID` INT,
     `Official_Name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `farm`.`city` (
     PRIMARY KEY (`City_ID`)
 );
 
-DROP TABLE IF EXISTS `farm`.`farm`;
 CREATE TABLE `farm`.`farm` (
     `Farm_ID` INT,
     `Year` INT,
@@ -28,7 +24,6 @@ CREATE TABLE `farm`.`farm` (
     PRIMARY KEY (`Farm_ID`)
 );
 
-DROP TABLE IF EXISTS `farm`.`farm_competition`;
 CREATE TABLE `farm`.`farm_competition` (
     `Competition_ID` INT,
     `Year` INT,
@@ -39,7 +34,6 @@ CREATE TABLE `farm`.`farm_competition` (
     FOREIGN KEY (`Host_city_ID`) REFERENCES `farm`.`city` (`City_ID`)
 );
 
-DROP TABLE IF EXISTS `farm`.`competition_record`;
 CREATE TABLE `farm`.`competition_record` (
     `Competition_ID` INT,
     `Farm_ID` INT,

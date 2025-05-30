@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: cre_Theme_park | Table Count: 16
+-- Dialect: mysql | Database: cre_Theme_park | Table Count: 16
 
-CREATE DATABASE IF NOT EXISTS `cre_Theme_park`;
-
-DROP TABLE IF EXISTS `cre_Theme_park`.`Ref_Hotel_Star_Ratings`;
 CREATE TABLE `cre_Theme_park`.`Ref_Hotel_Star_Ratings` (
     `star_rating_code` CHAR(15) NOT NULL,
     `star_rating_description` VARCHAR(80),
     PRIMARY KEY (`star_rating_code`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Locations`;
 CREATE TABLE `cre_Theme_park`.`Locations` (
     `Location_ID` INTEGER NOT NULL,
     `Location_Name` VARCHAR(255),
@@ -18,14 +14,12 @@ CREATE TABLE `cre_Theme_park`.`Locations` (
     PRIMARY KEY (`Location_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Ref_Attraction_Types`;
 CREATE TABLE `cre_Theme_park`.`Ref_Attraction_Types` (
     `Attraction_Type_Code` CHAR(15) NOT NULL,
     `Attraction_Type_Description` VARCHAR(255),
     PRIMARY KEY (`Attraction_Type_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Visitors`;
 CREATE TABLE `cre_Theme_park`.`Visitors` (
     `Tourist_ID` INTEGER NOT NULL,
     `Tourist_Details` VARCHAR(255),
@@ -33,14 +27,12 @@ CREATE TABLE `cre_Theme_park`.`Visitors` (
     UNIQUE (`Tourist_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Features`;
 CREATE TABLE `cre_Theme_park`.`Features` (
     `Feature_ID` INTEGER NOT NULL,
     `Feature_Details` VARCHAR(255),
     PRIMARY KEY (`Feature_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Hotels`;
 CREATE TABLE `cre_Theme_park`.`Hotels` (
     `hotel_id` INTEGER NOT NULL,
     `star_rating_code` CHAR(15) NOT NULL,
@@ -51,7 +43,6 @@ CREATE TABLE `cre_Theme_park`.`Hotels` (
     FOREIGN KEY (`star_rating_code`) REFERENCES `cre_Theme_park`.`Ref_Hotel_Star_Ratings` (`star_rating_code`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Tourist_Attractions`;
 CREATE TABLE `cre_Theme_park`.`Tourist_Attractions` (
     `Tourist_Attraction_ID` INTEGER NOT NULL,
     `Attraction_Type_Code` CHAR(15) NOT NULL,
@@ -66,7 +57,6 @@ CREATE TABLE `cre_Theme_park`.`Tourist_Attractions` (
     FOREIGN KEY (`Location_ID`) REFERENCES `cre_Theme_park`.`Locations` (`Location_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Street_Markets`;
 CREATE TABLE `cre_Theme_park`.`Street_Markets` (
     `Market_ID` INTEGER NOT NULL,
     `Market_Details` VARCHAR(255),
@@ -74,7 +64,6 @@ CREATE TABLE `cre_Theme_park`.`Street_Markets` (
     FOREIGN KEY (`Market_ID`) REFERENCES `cre_Theme_park`.`Tourist_Attractions` (`Tourist_Attraction_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Shops`;
 CREATE TABLE `cre_Theme_park`.`Shops` (
     `Shop_ID` INTEGER NOT NULL,
     `Shop_Details` VARCHAR(255),
@@ -82,7 +71,6 @@ CREATE TABLE `cre_Theme_park`.`Shops` (
     FOREIGN KEY (`Shop_ID`) REFERENCES `cre_Theme_park`.`Tourist_Attractions` (`Tourist_Attraction_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Museums`;
 CREATE TABLE `cre_Theme_park`.`Museums` (
     `Museum_ID` INTEGER NOT NULL,
     `Museum_Details` VARCHAR(255),
@@ -90,7 +78,6 @@ CREATE TABLE `cre_Theme_park`.`Museums` (
     FOREIGN KEY (`Museum_ID`) REFERENCES `cre_Theme_park`.`Tourist_Attractions` (`Tourist_Attraction_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Royal_Family`;
 CREATE TABLE `cre_Theme_park`.`Royal_Family` (
     `Royal_Family_ID` INTEGER NOT NULL,
     `Royal_Family_Details` VARCHAR(255),
@@ -98,7 +85,6 @@ CREATE TABLE `cre_Theme_park`.`Royal_Family` (
     FOREIGN KEY (`Royal_Family_ID`) REFERENCES `cre_Theme_park`.`Tourist_Attractions` (`Tourist_Attraction_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Theme_Parks`;
 CREATE TABLE `cre_Theme_park`.`Theme_Parks` (
     `Theme_Park_ID` INTEGER NOT NULL,
     `Theme_Park_Details` VARCHAR(255),
@@ -106,7 +92,6 @@ CREATE TABLE `cre_Theme_park`.`Theme_Parks` (
     FOREIGN KEY (`Theme_Park_ID`) REFERENCES `cre_Theme_park`.`Tourist_Attractions` (`Tourist_Attraction_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Visits`;
 CREATE TABLE `cre_Theme_park`.`Visits` (
     `Visit_ID` INTEGER NOT NULL,
     `Tourist_Attraction_ID` INTEGER NOT NULL,
@@ -118,7 +103,6 @@ CREATE TABLE `cre_Theme_park`.`Visits` (
     FOREIGN KEY (`Tourist_Attraction_ID`) REFERENCES `cre_Theme_park`.`Tourist_Attractions` (`Tourist_Attraction_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Photos`;
 CREATE TABLE `cre_Theme_park`.`Photos` (
     `Photo_ID` INTEGER NOT NULL,
     `Tourist_Attraction_ID` INTEGER NOT NULL,
@@ -130,7 +114,6 @@ CREATE TABLE `cre_Theme_park`.`Photos` (
     FOREIGN KEY (`Tourist_Attraction_ID`) REFERENCES `cre_Theme_park`.`Tourist_Attractions` (`Tourist_Attraction_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Staff`;
 CREATE TABLE `cre_Theme_park`.`Staff` (
     `Staff_ID` INTEGER NOT NULL,
     `Tourist_Attraction_ID` INTEGER NOT NULL,
@@ -140,7 +123,6 @@ CREATE TABLE `cre_Theme_park`.`Staff` (
     FOREIGN KEY (`Tourist_Attraction_ID`) REFERENCES `cre_Theme_park`.`Tourist_Attractions` (`Tourist_Attraction_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Theme_park`.`Tourist_Attraction_Features`;
 CREATE TABLE `cre_Theme_park`.`Tourist_Attraction_Features` (
     `Tourist_Attraction_ID` INTEGER NOT NULL,
     `Feature_ID` INTEGER NOT NULL,

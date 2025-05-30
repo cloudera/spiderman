@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: school_finance | Table Count: 3
+-- Dialect: mysql | Database: school_finance | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `school_finance`;
-
-DROP TABLE IF EXISTS `school_finance`.`School`;
 CREATE TABLE `school_finance`.`School` (
     `School_id` INT,
     `School_name` TEXT,
@@ -15,7 +12,6 @@ CREATE TABLE `school_finance`.`School` (
     PRIMARY KEY (`School_id`)
 );
 
-DROP TABLE IF EXISTS `school_finance`.`budget`;
 CREATE TABLE `school_finance`.`budget` (
     `School_id` INT,
     `Year` INT,
@@ -28,7 +24,6 @@ CREATE TABLE `school_finance`.`budget` (
     FOREIGN KEY (`School_id`) REFERENCES `school_finance`.`School` (`School_id`)
 );
 
-DROP TABLE IF EXISTS `school_finance`.`endowment`;
 CREATE TABLE `school_finance`.`endowment` (
     `endowment_id` INT,
     `School_id` INT,

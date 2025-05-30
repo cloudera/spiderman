@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: election_representative | Table Count: 2
+-- Dialect: mysql | Database: election_representative | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `election_representative`;
-
-DROP TABLE IF EXISTS `election_representative`.`representative`;
 CREATE TABLE `election_representative`.`representative` (
     `Representative_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `election_representative`.`representative` (
     PRIMARY KEY (`Representative_ID`)
 );
 
-DROP TABLE IF EXISTS `election_representative`.`election`;
 CREATE TABLE `election_representative`.`election` (
     `Election_ID` INT,
     `Representative_ID` INT,

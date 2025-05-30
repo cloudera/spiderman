@@ -1,22 +1,17 @@
--- Dialect: MySQL | Database: real_estate_properties | Table Count: 5
+-- Dialect: mysql | Database: real_estate_properties | Table Count: 5
 
-CREATE DATABASE IF NOT EXISTS `real_estate_properties`;
-
-DROP TABLE IF EXISTS `real_estate_properties`.`Ref_Feature_Types`;
 CREATE TABLE `real_estate_properties`.`Ref_Feature_Types` (
     `feature_type_code` VARCHAR(20),
     `feature_type_name` VARCHAR(80),
     PRIMARY KEY (`feature_type_code`)
 );
 
-DROP TABLE IF EXISTS `real_estate_properties`.`Ref_Property_Types`;
 CREATE TABLE `real_estate_properties`.`Ref_Property_Types` (
     `property_type_code` VARCHAR(20),
     `property_type_description` VARCHAR(80),
     PRIMARY KEY (`property_type_code`)
 );
 
-DROP TABLE IF EXISTS `real_estate_properties`.`Other_Available_Features`;
 CREATE TABLE `real_estate_properties`.`Other_Available_Features` (
     `feature_id` INTEGER,
     `feature_type_code` VARCHAR(20) NOT NULL,
@@ -26,7 +21,6 @@ CREATE TABLE `real_estate_properties`.`Other_Available_Features` (
     FOREIGN KEY (`feature_type_code`) REFERENCES `real_estate_properties`.`Ref_Feature_Types` (`feature_type_code`)
 );
 
-DROP TABLE IF EXISTS `real_estate_properties`.`Properties`;
 CREATE TABLE `real_estate_properties`.`Properties` (
     `property_id` INTEGER,
     `property_type_code` VARCHAR(20) NOT NULL,
@@ -58,7 +52,6 @@ CREATE TABLE `real_estate_properties`.`Properties` (
     FOREIGN KEY (`property_type_code`) REFERENCES `real_estate_properties`.`Ref_Property_Types` (`property_type_code`)
 );
 
-DROP TABLE IF EXISTS `real_estate_properties`.`Other_Property_Features`;
 CREATE TABLE `real_estate_properties`.`Other_Property_Features` (
     `property_id` INTEGER NOT NULL,
     `feature_id` INTEGER NOT NULL,

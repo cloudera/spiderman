@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: inn_1 | Table Count: 2
+-- Dialect: mysql | Database: inn_1 | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `inn_1`;
-
-DROP TABLE IF EXISTS `inn_1`.`Rooms`;
 CREATE TABLE `inn_1`.`Rooms` (
     `RoomId` VARCHAR(50),
     `roomName` TEXT,
@@ -14,7 +11,6 @@ CREATE TABLE `inn_1`.`Rooms` (
     PRIMARY KEY (`RoomId`)
 );
 
-DROP TABLE IF EXISTS `inn_1`.`Reservations`;
 CREATE TABLE `inn_1`.`Reservations` (
     `Code` INTEGER,
     `Room` VARCHAR(50),

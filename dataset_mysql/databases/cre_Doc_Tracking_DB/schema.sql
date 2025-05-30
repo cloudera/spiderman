@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: cre_Doc_Tracking_DB | Table Count: 8
+-- Dialect: mysql | Database: cre_Doc_Tracking_DB | Table Count: 8
 
-CREATE DATABASE IF NOT EXISTS `cre_Doc_Tracking_DB`;
-
-DROP TABLE IF EXISTS `cre_Doc_Tracking_DB`.`Ref_Document_Types`;
 CREATE TABLE `cre_Doc_Tracking_DB`.`Ref_Document_Types` (
     `Document_Type_Code` CHAR(15) NOT NULL,
     `Document_Type_Name` VARCHAR(255) NOT NULL,
@@ -10,14 +7,12 @@ CREATE TABLE `cre_Doc_Tracking_DB`.`Ref_Document_Types` (
     PRIMARY KEY (`Document_Type_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Doc_Tracking_DB`.`Ref_Calendar`;
 CREATE TABLE `cre_Doc_Tracking_DB`.`Ref_Calendar` (
     `Calendar_Date` DATETIME NOT NULL,
     `Day_Number` INTEGER,
     PRIMARY KEY (`Calendar_Date`)
 );
 
-DROP TABLE IF EXISTS `cre_Doc_Tracking_DB`.`Ref_Locations`;
 CREATE TABLE `cre_Doc_Tracking_DB`.`Ref_Locations` (
     `Location_Code` CHAR(15) NOT NULL,
     `Location_Name` VARCHAR(255) NOT NULL,
@@ -25,7 +20,6 @@ CREATE TABLE `cre_Doc_Tracking_DB`.`Ref_Locations` (
     PRIMARY KEY (`Location_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Doc_Tracking_DB`.`Roles`;
 CREATE TABLE `cre_Doc_Tracking_DB`.`Roles` (
     `Role_Code` CHAR(15) NOT NULL,
     `Role_Name` VARCHAR(255),
@@ -33,7 +27,6 @@ CREATE TABLE `cre_Doc_Tracking_DB`.`Roles` (
     PRIMARY KEY (`Role_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Doc_Tracking_DB`.`All_Documents`;
 CREATE TABLE `cre_Doc_Tracking_DB`.`All_Documents` (
     `Document_ID` INTEGER NOT NULL,
     `Date_Stored` DATETIME,
@@ -46,7 +39,6 @@ CREATE TABLE `cre_Doc_Tracking_DB`.`All_Documents` (
     FOREIGN KEY (`Document_Type_Code`) REFERENCES `cre_Doc_Tracking_DB`.`Ref_Document_Types` (`Document_Type_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Doc_Tracking_DB`.`Employees`;
 CREATE TABLE `cre_Doc_Tracking_DB`.`Employees` (
     `Employee_ID` INTEGER NOT NULL,
     `Role_Code` CHAR(15) NOT NULL,
@@ -58,7 +50,6 @@ CREATE TABLE `cre_Doc_Tracking_DB`.`Employees` (
     FOREIGN KEY (`Role_Code`) REFERENCES `cre_Doc_Tracking_DB`.`Roles` (`Role_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Doc_Tracking_DB`.`Document_Locations`;
 CREATE TABLE `cre_Doc_Tracking_DB`.`Document_Locations` (
     `Document_ID` INTEGER NOT NULL,
     `Location_Code` CHAR(15) NOT NULL,
@@ -71,7 +62,6 @@ CREATE TABLE `cre_Doc_Tracking_DB`.`Document_Locations` (
     FOREIGN KEY (`Location_Code`) REFERENCES `cre_Doc_Tracking_DB`.`Ref_Locations` (`Location_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Doc_Tracking_DB`.`Documents_to_be_Destroyed`;
 CREATE TABLE `cre_Doc_Tracking_DB`.`Documents_to_be_Destroyed` (
     `Document_ID` INTEGER NOT NULL,
     `Destruction_Authorised_by_Employee_ID` INTEGER,

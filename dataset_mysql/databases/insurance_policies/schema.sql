@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: insurance_policies | Table Count: 5
+-- Dialect: mysql | Database: insurance_policies | Table Count: 5
 
-CREATE DATABASE IF NOT EXISTS `insurance_policies`;
-
-DROP TABLE IF EXISTS `insurance_policies`.`Customers`;
 CREATE TABLE `insurance_policies`.`Customers` (
     `Customer_ID` INTEGER NOT NULL,
     `Customer_Details` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`Customer_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_policies`.`Customer_Policies`;
 CREATE TABLE `insurance_policies`.`Customer_Policies` (
     `Policy_ID` INTEGER NOT NULL,
     `Customer_ID` INTEGER NOT NULL,
@@ -20,7 +16,6 @@ CREATE TABLE `insurance_policies`.`Customer_Policies` (
     FOREIGN KEY (`Customer_ID`) REFERENCES `insurance_policies`.`Customers` (`Customer_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_policies`.`Claims`;
 CREATE TABLE `insurance_policies`.`Claims` (
     `Claim_ID` INTEGER NOT NULL,
     `Policy_ID` INTEGER NOT NULL,
@@ -32,7 +27,6 @@ CREATE TABLE `insurance_policies`.`Claims` (
     FOREIGN KEY (`Policy_ID`) REFERENCES `insurance_policies`.`Customer_Policies` (`Policy_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_policies`.`Settlements`;
 CREATE TABLE `insurance_policies`.`Settlements` (
     `Settlement_ID` INTEGER NOT NULL,
     `Claim_ID` INTEGER NOT NULL,
@@ -45,7 +39,6 @@ CREATE TABLE `insurance_policies`.`Settlements` (
     FOREIGN KEY (`Claim_ID`) REFERENCES `insurance_policies`.`Claims` (`Claim_ID`)
 );
 
-DROP TABLE IF EXISTS `insurance_policies`.`Payments`;
 CREATE TABLE `insurance_policies`.`Payments` (
     `Payment_ID` INTEGER NOT NULL,
     `Settlement_ID` INTEGER NOT NULL,

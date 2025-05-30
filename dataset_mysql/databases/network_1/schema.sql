@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: network_1 | Table Count: 3
+-- Dialect: mysql | Database: network_1 | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `network_1`;
-
-DROP TABLE IF EXISTS `network_1`.`Highschooler`;
 CREATE TABLE `network_1`.`Highschooler` (
     `ID` INT,
     `name` TEXT,
@@ -10,7 +7,6 @@ CREATE TABLE `network_1`.`Highschooler` (
     PRIMARY KEY (`ID`)
 );
 
-DROP TABLE IF EXISTS `network_1`.`Friend`;
 CREATE TABLE `network_1`.`Friend` (
     `student_id` INT,
     `friend_id` INT,
@@ -19,7 +15,6 @@ CREATE TABLE `network_1`.`Friend` (
     FOREIGN KEY (`student_id`) REFERENCES `network_1`.`Highschooler` (`ID`)
 );
 
-DROP TABLE IF EXISTS `network_1`.`Likes`;
 CREATE TABLE `network_1`.`Likes` (
     `student_id` INT,
     `liked_id` INT,

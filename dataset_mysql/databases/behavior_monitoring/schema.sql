@@ -1,29 +1,23 @@
--- Dialect: MySQL | Database: behavior_monitoring | Table Count: 11
+-- Dialect: mysql | Database: behavior_monitoring | Table Count: 11
 
-CREATE DATABASE IF NOT EXISTS `behavior_monitoring`;
-
-DROP TABLE IF EXISTS `behavior_monitoring`.`Ref_Address_Types`;
 CREATE TABLE `behavior_monitoring`.`Ref_Address_Types` (
     `address_type_code` VARCHAR(15),
     `address_type_description` VARCHAR(80),
     PRIMARY KEY (`address_type_code`)
 );
 
-DROP TABLE IF EXISTS `behavior_monitoring`.`Ref_Detention_Type`;
 CREATE TABLE `behavior_monitoring`.`Ref_Detention_Type` (
     `detention_type_code` VARCHAR(10),
     `detention_type_description` VARCHAR(80),
     PRIMARY KEY (`detention_type_code`)
 );
 
-DROP TABLE IF EXISTS `behavior_monitoring`.`Ref_Incident_Type`;
 CREATE TABLE `behavior_monitoring`.`Ref_Incident_Type` (
     `incident_type_code` VARCHAR(10),
     `incident_type_description` VARCHAR(80),
     PRIMARY KEY (`incident_type_code`)
 );
 
-DROP TABLE IF EXISTS `behavior_monitoring`.`Addresses`;
 CREATE TABLE `behavior_monitoring`.`Addresses` (
     `address_id` INTEGER,
     `line_1` VARCHAR(120),
@@ -37,7 +31,6 @@ CREATE TABLE `behavior_monitoring`.`Addresses` (
     PRIMARY KEY (`address_id`)
 );
 
-DROP TABLE IF EXISTS `behavior_monitoring`.`Students`;
 CREATE TABLE `behavior_monitoring`.`Students` (
     `student_id` INTEGER,
     `address_id` INTEGER NOT NULL,
@@ -53,7 +46,6 @@ CREATE TABLE `behavior_monitoring`.`Students` (
     FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`)
 );
 
-DROP TABLE IF EXISTS `behavior_monitoring`.`Teachers`;
 CREATE TABLE `behavior_monitoring`.`Teachers` (
     `teacher_id` INTEGER,
     `address_id` INTEGER NOT NULL,
@@ -68,7 +60,6 @@ CREATE TABLE `behavior_monitoring`.`Teachers` (
     FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`)
 );
 
-DROP TABLE IF EXISTS `behavior_monitoring`.`Assessment_Notes`;
 CREATE TABLE `behavior_monitoring`.`Assessment_Notes` (
     `notes_id` INTEGER NOT NULL,
     `student_id` INTEGER,
@@ -80,7 +71,6 @@ CREATE TABLE `behavior_monitoring`.`Assessment_Notes` (
     FOREIGN KEY (`student_id`) REFERENCES `behavior_monitoring`.`Students` (`student_id`)
 );
 
-DROP TABLE IF EXISTS `behavior_monitoring`.`Behavior_Incident`;
 CREATE TABLE `behavior_monitoring`.`Behavior_Incident` (
     `incident_id` INTEGER,
     `incident_type_code` VARCHAR(10) NOT NULL,
@@ -95,7 +85,6 @@ CREATE TABLE `behavior_monitoring`.`Behavior_Incident` (
     FOREIGN KEY (`incident_type_code`) REFERENCES `behavior_monitoring`.`Ref_Incident_Type` (`incident_type_code`)
 );
 
-DROP TABLE IF EXISTS `behavior_monitoring`.`Detention`;
 CREATE TABLE `behavior_monitoring`.`Detention` (
     `detention_id` INTEGER,
     `detention_type_code` VARCHAR(10) NOT NULL,
@@ -109,7 +98,6 @@ CREATE TABLE `behavior_monitoring`.`Detention` (
     FOREIGN KEY (`detention_type_code`) REFERENCES `behavior_monitoring`.`Ref_Detention_Type` (`detention_type_code`)
 );
 
-DROP TABLE IF EXISTS `behavior_monitoring`.`Student_Addresses`;
 CREATE TABLE `behavior_monitoring`.`Student_Addresses` (
     `student_id` INTEGER NOT NULL,
     `address_id` INTEGER NOT NULL,
@@ -121,7 +109,6 @@ CREATE TABLE `behavior_monitoring`.`Student_Addresses` (
     FOREIGN KEY (`address_id`) REFERENCES `behavior_monitoring`.`Addresses` (`address_id`)
 );
 
-DROP TABLE IF EXISTS `behavior_monitoring`.`Students_in_Detention`;
 CREATE TABLE `behavior_monitoring`.`Students_in_Detention` (
     `student_id` INTEGER NOT NULL,
     `detention_id` INTEGER NOT NULL,

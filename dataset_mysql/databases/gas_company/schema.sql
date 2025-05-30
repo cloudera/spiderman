@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: gas_company | Table Count: 3
+-- Dialect: mysql | Database: gas_company | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `gas_company`;
-
-DROP TABLE IF EXISTS `gas_company`.`company`;
 CREATE TABLE `gas_company`.`company` (
     `Company_ID` INT,
     `Rank` INT,
@@ -16,7 +13,6 @@ CREATE TABLE `gas_company`.`company` (
     PRIMARY KEY (`Company_ID`)
 );
 
-DROP TABLE IF EXISTS `gas_company`.`gas_station`;
 CREATE TABLE `gas_company`.`gas_station` (
     `Station_ID` INT,
     `Open_Year` INT,
@@ -27,7 +23,6 @@ CREATE TABLE `gas_company`.`gas_station` (
     PRIMARY KEY (`Station_ID`)
 );
 
-DROP TABLE IF EXISTS `gas_company`.`station_company`;
 CREATE TABLE `gas_company`.`station_company` (
     `Station_ID` INT,
     `Company_ID` INT,

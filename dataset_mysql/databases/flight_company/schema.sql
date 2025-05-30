@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: flight_company | Table Count: 3
+-- Dialect: mysql | Database: flight_company | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `flight_company`;
-
-DROP TABLE IF EXISTS `flight_company`.`airport`;
 CREATE TABLE `flight_company`.`airport` (
     `id` INT,
     `City` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `flight_company`.`airport` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `flight_company`.`operate_company`;
 CREATE TABLE `flight_company`.`operate_company` (
     `id` INT,
     `name` TEXT,
@@ -24,7 +20,6 @@ CREATE TABLE `flight_company`.`operate_company` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `flight_company`.`flight`;
 CREATE TABLE `flight_company`.`flight` (
     `id` INT,
     `Vehicle_Flight_number` TEXT,

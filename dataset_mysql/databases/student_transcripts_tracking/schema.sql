@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: student_transcripts_tracking | Table Count: 11
+-- Dialect: mysql | Database: student_transcripts_tracking | Table Count: 11
 
-CREATE DATABASE IF NOT EXISTS `student_transcripts_tracking`;
-
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Addresses`;
 CREATE TABLE `student_transcripts_tracking`.`Addresses` (
     `address_id` INTEGER,
     `line_1` VARCHAR(255),
@@ -16,7 +13,6 @@ CREATE TABLE `student_transcripts_tracking`.`Addresses` (
     PRIMARY KEY (`address_id`)
 );
 
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Courses`;
 CREATE TABLE `student_transcripts_tracking`.`Courses` (
     `course_id` INTEGER,
     `course_name` VARCHAR(255),
@@ -25,7 +21,6 @@ CREATE TABLE `student_transcripts_tracking`.`Courses` (
     PRIMARY KEY (`course_id`)
 );
 
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Departments`;
 CREATE TABLE `student_transcripts_tracking`.`Departments` (
     `department_id` INTEGER,
     `department_name` VARCHAR(255),
@@ -34,7 +29,6 @@ CREATE TABLE `student_transcripts_tracking`.`Departments` (
     PRIMARY KEY (`department_id`)
 );
 
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Degree_Programs`;
 CREATE TABLE `student_transcripts_tracking`.`Degree_Programs` (
     `degree_program_id` INTEGER,
     `department_id` INTEGER NOT NULL,
@@ -45,7 +39,6 @@ CREATE TABLE `student_transcripts_tracking`.`Degree_Programs` (
     FOREIGN KEY (`department_id`) REFERENCES `student_transcripts_tracking`.`Departments` (`department_id`)
 );
 
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Sections`;
 CREATE TABLE `student_transcripts_tracking`.`Sections` (
     `section_id` INTEGER,
     `course_id` INTEGER NOT NULL,
@@ -56,7 +49,6 @@ CREATE TABLE `student_transcripts_tracking`.`Sections` (
     FOREIGN KEY (`course_id`) REFERENCES `student_transcripts_tracking`.`Courses` (`course_id`)
 );
 
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Semesters`;
 CREATE TABLE `student_transcripts_tracking`.`Semesters` (
     `semester_id` INTEGER,
     `semester_name` VARCHAR(255),
@@ -65,7 +57,6 @@ CREATE TABLE `student_transcripts_tracking`.`Semesters` (
     PRIMARY KEY (`semester_id`)
 );
 
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Students`;
 CREATE TABLE `student_transcripts_tracking`.`Students` (
     `student_id` INTEGER,
     `current_address_id` INTEGER NOT NULL,
@@ -84,7 +75,6 @@ CREATE TABLE `student_transcripts_tracking`.`Students` (
     FOREIGN KEY (`current_address_id`) REFERENCES `student_transcripts_tracking`.`Addresses` (`address_id`)
 );
 
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Student_Enrolment`;
 CREATE TABLE `student_transcripts_tracking`.`Student_Enrolment` (
     `student_enrolment_id` INTEGER,
     `degree_program_id` INTEGER NOT NULL,
@@ -97,7 +87,6 @@ CREATE TABLE `student_transcripts_tracking`.`Student_Enrolment` (
     FOREIGN KEY (`degree_program_id`) REFERENCES `student_transcripts_tracking`.`Degree_Programs` (`degree_program_id`)
 );
 
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Student_Enrolment_Courses`;
 CREATE TABLE `student_transcripts_tracking`.`Student_Enrolment_Courses` (
     `student_course_id` INTEGER,
     `course_id` INTEGER NOT NULL,
@@ -107,7 +96,6 @@ CREATE TABLE `student_transcripts_tracking`.`Student_Enrolment_Courses` (
     FOREIGN KEY (`course_id`) REFERENCES `student_transcripts_tracking`.`Courses` (`course_id`)
 );
 
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Transcripts`;
 CREATE TABLE `student_transcripts_tracking`.`Transcripts` (
     `transcript_id` INTEGER,
     `transcript_date` DATETIME,
@@ -115,7 +103,6 @@ CREATE TABLE `student_transcripts_tracking`.`Transcripts` (
     PRIMARY KEY (`transcript_id`)
 );
 
-DROP TABLE IF EXISTS `student_transcripts_tracking`.`Transcript_Contents`;
 CREATE TABLE `student_transcripts_tracking`.`Transcript_Contents` (
     `student_course_id` INTEGER NOT NULL,
     `transcript_id` INTEGER NOT NULL,

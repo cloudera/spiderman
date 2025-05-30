@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: debate | Table Count: 3
+-- Dialect: mysql | Database: debate | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `debate`;
-
-DROP TABLE IF EXISTS `debate`.`people`;
 CREATE TABLE `debate`.`people` (
     `People_ID` INT,
     `District` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `debate`.`people` (
     PRIMARY KEY (`People_ID`)
 );
 
-DROP TABLE IF EXISTS `debate`.`debate`;
 CREATE TABLE `debate`.`debate` (
     `Debate_ID` INT,
     `Date` TEXT,
@@ -21,7 +17,6 @@ CREATE TABLE `debate`.`debate` (
     PRIMARY KEY (`Debate_ID`)
 );
 
-DROP TABLE IF EXISTS `debate`.`debate_people`;
 CREATE TABLE `debate`.`debate_people` (
     `Debate_ID` INT,
     `Affirmative` INT,

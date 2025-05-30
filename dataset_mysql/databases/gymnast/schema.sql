@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: gymnast | Table Count: 2
+-- Dialect: mysql | Database: gymnast | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `gymnast`;
-
-DROP TABLE IF EXISTS `gymnast`.`people`;
 CREATE TABLE `gymnast`.`people` (
     `People_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `gymnast`.`people` (
     PRIMARY KEY (`People_ID`)
 );
 
-DROP TABLE IF EXISTS `gymnast`.`gymnast`;
 CREATE TABLE `gymnast`.`gymnast` (
     `Gymnast_ID` INT,
     `Floor_Exercise_Points` REAL,

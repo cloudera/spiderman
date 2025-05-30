@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: bike_1 | Table Count: 4
+-- Dialect: mysql | Database: bike_1 | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `bike_1`;
-
-DROP TABLE IF EXISTS `bike_1`.`station`;
 CREATE TABLE `bike_1`.`station` (
     `id` INTEGER,
     `name` TEXT,
@@ -14,7 +11,6 @@ CREATE TABLE `bike_1`.`station` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `bike_1`.`status`;
 CREATE TABLE `bike_1`.`status` (
     `station_id` INTEGER,
     `bikes_available` INTEGER,
@@ -23,7 +19,6 @@ CREATE TABLE `bike_1`.`status` (
     FOREIGN KEY (`station_id`) REFERENCES `bike_1`.`station` (`id`)
 );
 
-DROP TABLE IF EXISTS `bike_1`.`trip`;
 CREATE TABLE `bike_1`.`trip` (
     `id` INTEGER,
     `duration` INTEGER,
@@ -39,7 +34,6 @@ CREATE TABLE `bike_1`.`trip` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `bike_1`.`weather`;
 CREATE TABLE `bike_1`.`weather` (
     `date` TEXT,
     `max_temperature_f` INTEGER,

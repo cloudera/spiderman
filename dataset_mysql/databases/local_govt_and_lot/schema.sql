@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: local_govt_and_lot | Table Count: 11
+-- Dialect: mysql | Database: local_govt_and_lot | Table Count: 11
 
-CREATE DATABASE IF NOT EXISTS `local_govt_and_lot`;
-
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Customers`;
 CREATE TABLE `local_govt_and_lot`.`Customers` (
     `customer_id` INTEGER NOT NULL,
     `customer_details` VARCHAR(255),
     PRIMARY KEY (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Properties`;
 CREATE TABLE `local_govt_and_lot`.`Properties` (
     `property_id` INTEGER NOT NULL,
     `property_type_code` CHAR(15) NOT NULL,
@@ -18,7 +14,6 @@ CREATE TABLE `local_govt_and_lot`.`Properties` (
     PRIMARY KEY (`property_id`)
 );
 
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Residents`;
 CREATE TABLE `local_govt_and_lot`.`Residents` (
     `resident_id` INTEGER NOT NULL,
     `property_id` INTEGER NOT NULL,
@@ -29,7 +24,6 @@ CREATE TABLE `local_govt_and_lot`.`Residents` (
     FOREIGN KEY (`property_id`) REFERENCES `local_govt_and_lot`.`Properties` (`property_id`)
 );
 
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Organizations`;
 CREATE TABLE `local_govt_and_lot`.`Organizations` (
     `organization_id` INTEGER NOT NULL,
     `parent_organization_id` INTEGER,
@@ -37,7 +31,6 @@ CREATE TABLE `local_govt_and_lot`.`Organizations` (
     PRIMARY KEY (`organization_id`)
 );
 
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Services`;
 CREATE TABLE `local_govt_and_lot`.`Services` (
     `service_id` INTEGER NOT NULL,
     `organization_id` INTEGER NOT NULL,
@@ -47,7 +40,6 @@ CREATE TABLE `local_govt_and_lot`.`Services` (
     FOREIGN KEY (`organization_id`) REFERENCES `local_govt_and_lot`.`Organizations` (`organization_id`)
 );
 
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Residents_Services`;
 CREATE TABLE `local_govt_and_lot`.`Residents_Services` (
     `resident_id` INTEGER NOT NULL,
     `service_id` INTEGER NOT NULL,
@@ -61,7 +53,6 @@ CREATE TABLE `local_govt_and_lot`.`Residents_Services` (
     FOREIGN KEY (`service_id`) REFERENCES `local_govt_and_lot`.`Services` (`service_id`)
 );
 
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Things`;
 CREATE TABLE `local_govt_and_lot`.`Things` (
     `thing_id` INTEGER NOT NULL,
     `organization_id` INTEGER NOT NULL,
@@ -72,7 +63,6 @@ CREATE TABLE `local_govt_and_lot`.`Things` (
     FOREIGN KEY (`organization_id`) REFERENCES `local_govt_and_lot`.`Organizations` (`organization_id`)
 );
 
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Customer_Events`;
 CREATE TABLE `local_govt_and_lot`.`Customer_Events` (
     `Customer_Event_ID` INTEGER NOT NULL,
     `customer_id` INTEGER,
@@ -86,7 +76,6 @@ CREATE TABLE `local_govt_and_lot`.`Customer_Events` (
     FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`)
 );
 
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Customer_Event_Notes`;
 CREATE TABLE `local_govt_and_lot`.`Customer_Event_Notes` (
     `Customer_Event_Note_ID` INTEGER NOT NULL,
     `Customer_Event_ID` INTEGER NOT NULL,
@@ -98,7 +87,6 @@ CREATE TABLE `local_govt_and_lot`.`Customer_Event_Notes` (
     FOREIGN KEY (`Customer_Event_ID`) REFERENCES `local_govt_and_lot`.`Customer_Events` (`Customer_Event_ID`)
 );
 
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Timed_Status_of_Things`;
 CREATE TABLE `local_govt_and_lot`.`Timed_Status_of_Things` (
     `thing_id` INTEGER NOT NULL,
     `Date_and_Date` DATETIME NOT NULL,
@@ -107,7 +95,6 @@ CREATE TABLE `local_govt_and_lot`.`Timed_Status_of_Things` (
     FOREIGN KEY (`thing_id`) REFERENCES `local_govt_and_lot`.`Things` (`thing_id`)
 );
 
-DROP TABLE IF EXISTS `local_govt_and_lot`.`Timed_Locations_of_Things`;
 CREATE TABLE `local_govt_and_lot`.`Timed_Locations_of_Things` (
     `thing_id` INTEGER NOT NULL,
     `Date_and_Time` DATETIME NOT NULL,

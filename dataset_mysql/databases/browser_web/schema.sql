@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: browser_web | Table Count: 3
+-- Dialect: mysql | Database: browser_web | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `browser_web`;
-
-DROP TABLE IF EXISTS `browser_web`.`Web_client_accelerator`;
 CREATE TABLE `browser_web`.`Web_client_accelerator` (
     `id` INT,
     `name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `browser_web`.`Web_client_accelerator` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `browser_web`.`browser`;
 CREATE TABLE `browser_web`.`browser` (
     `id` INT,
     `name` TEXT,
@@ -20,7 +16,6 @@ CREATE TABLE `browser_web`.`browser` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `browser_web`.`accelerator_compatible_browser`;
 CREATE TABLE `browser_web`.`accelerator_compatible_browser` (
     `accelerator_id` INT,
     `browser_id` INT,

@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: protein_institute | Table Count: 3
+-- Dialect: mysql | Database: protein_institute | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `protein_institute`;
-
-DROP TABLE IF EXISTS `protein_institute`.`building`;
 CREATE TABLE `protein_institute`.`building` (
     `building_id` INT,
     `Name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `protein_institute`.`building` (
     PRIMARY KEY (`building_id`)
 );
 
-DROP TABLE IF EXISTS `protein_institute`.`Institution`;
 CREATE TABLE `protein_institute`.`Institution` (
     `Institution_id` INT,
     `Institution` TEXT,
@@ -28,7 +24,6 @@ CREATE TABLE `protein_institute`.`Institution` (
     FOREIGN KEY (`building_id`) REFERENCES `protein_institute`.`building` (`building_id`)
 );
 
-DROP TABLE IF EXISTS `protein_institute`.`protein`;
 CREATE TABLE `protein_institute`.`protein` (
     `common_name` VARCHAR(50),
     `protein_name` TEXT,

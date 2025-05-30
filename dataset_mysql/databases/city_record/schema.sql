@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: city_record | Table Count: 4
+-- Dialect: mysql | Database: city_record | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `city_record`;
-
-DROP TABLE IF EXISTS `city_record`.`city`;
 CREATE TABLE `city_record`.`city` (
     `City_ID` INT,
     `City` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `city_record`.`city` (
     PRIMARY KEY (`City_ID`)
 );
 
-DROP TABLE IF EXISTS `city_record`.`match`;
 CREATE TABLE `city_record`.`match` (
     `Match_ID` INT,
     `Date` TEXT,
@@ -24,7 +20,6 @@ CREATE TABLE `city_record`.`match` (
     PRIMARY KEY (`Match_ID`)
 );
 
-DROP TABLE IF EXISTS `city_record`.`temperature`;
 CREATE TABLE `city_record`.`temperature` (
     `City_ID` INT,
     `Jan` REAL,
@@ -42,7 +37,6 @@ CREATE TABLE `city_record`.`temperature` (
     FOREIGN KEY (`City_ID`) REFERENCES `city_record`.`city` (`City_ID`)
 );
 
-DROP TABLE IF EXISTS `city_record`.`hosting_city`;
 CREATE TABLE `city_record`.`hosting_city` (
     `Year` INT,
     `Match_ID` INT,

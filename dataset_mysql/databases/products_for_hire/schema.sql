@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: products_for_hire | Table Count: 7
+-- Dialect: mysql | Database: products_for_hire | Table Count: 7
 
-CREATE DATABASE IF NOT EXISTS `products_for_hire`;
-
-DROP TABLE IF EXISTS `products_for_hire`.`Discount_Coupons`;
 CREATE TABLE `products_for_hire`.`Discount_Coupons` (
     `coupon_id` INTEGER,
     `date_issued` DATETIME,
@@ -10,7 +7,6 @@ CREATE TABLE `products_for_hire`.`Discount_Coupons` (
     PRIMARY KEY (`coupon_id`)
 );
 
-DROP TABLE IF EXISTS `products_for_hire`.`Customers`;
 CREATE TABLE `products_for_hire`.`Customers` (
     `customer_id` INTEGER,
     `coupon_id` INTEGER NOT NULL,
@@ -24,7 +20,6 @@ CREATE TABLE `products_for_hire`.`Customers` (
     FOREIGN KEY (`coupon_id`) REFERENCES `products_for_hire`.`Discount_Coupons` (`coupon_id`)
 );
 
-DROP TABLE IF EXISTS `products_for_hire`.`Bookings`;
 CREATE TABLE `products_for_hire`.`Bookings` (
     `booking_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -41,7 +36,6 @@ CREATE TABLE `products_for_hire`.`Bookings` (
     FOREIGN KEY (`customer_id`) REFERENCES `products_for_hire`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `products_for_hire`.`Products_for_Hire`;
 CREATE TABLE `products_for_hire`.`Products_for_Hire` (
     `product_id` INTEGER,
     `product_type_code` VARCHAR(15) NOT NULL,
@@ -51,7 +45,6 @@ CREATE TABLE `products_for_hire`.`Products_for_Hire` (
     PRIMARY KEY (`product_id`)
 );
 
-DROP TABLE IF EXISTS `products_for_hire`.`Payments`;
 CREATE TABLE `products_for_hire`.`Payments` (
     `payment_id` INTEGER,
     `booking_id` INTEGER,
@@ -66,7 +59,6 @@ CREATE TABLE `products_for_hire`.`Payments` (
     FOREIGN KEY (`booking_id`) REFERENCES `products_for_hire`.`Bookings` (`booking_id`)
 );
 
-DROP TABLE IF EXISTS `products_for_hire`.`Products_Booked`;
 CREATE TABLE `products_for_hire`.`Products_Booked` (
     `booking_id` INTEGER NOT NULL,
     `product_id` INTEGER NOT NULL,
@@ -79,7 +71,6 @@ CREATE TABLE `products_for_hire`.`Products_Booked` (
     FOREIGN KEY (`booking_id`) REFERENCES `products_for_hire`.`Bookings` (`booking_id`)
 );
 
-DROP TABLE IF EXISTS `products_for_hire`.`View_Product_Availability`;
 CREATE TABLE `products_for_hire`.`View_Product_Availability` (
     `product_id` INTEGER NOT NULL,
     `booking_id` INTEGER NOT NULL,

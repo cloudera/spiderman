@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: manufactory_1 | Table Count: 2
+-- Dialect: mysql | Database: manufactory_1 | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `manufactory_1`;
-
-DROP TABLE IF EXISTS `manufactory_1`.`Manufacturers`;
 CREATE TABLE `manufactory_1`.`Manufacturers` (
     `Code` INTEGER,
     `Name` VARCHAR(255) NOT NULL,
@@ -12,7 +9,6 @@ CREATE TABLE `manufactory_1`.`Manufacturers` (
     PRIMARY KEY (`Code`)
 );
 
-DROP TABLE IF EXISTS `manufactory_1`.`Products`;
 CREATE TABLE `manufactory_1`.`Products` (
     `Code` INTEGER,
     `Name` VARCHAR(255) NOT NULL,

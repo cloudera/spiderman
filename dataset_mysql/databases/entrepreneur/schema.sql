@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: entrepreneur | Table Count: 2
+-- Dialect: mysql | Database: entrepreneur | Table Count: 2
 
-CREATE DATABASE IF NOT EXISTS `entrepreneur`;
-
-DROP TABLE IF EXISTS `entrepreneur`.`people`;
 CREATE TABLE `entrepreneur`.`people` (
     `People_ID` INT,
     `Name` TEXT,
@@ -12,7 +9,6 @@ CREATE TABLE `entrepreneur`.`people` (
     PRIMARY KEY (`People_ID`)
 );
 
-DROP TABLE IF EXISTS `entrepreneur`.`entrepreneur`;
 CREATE TABLE `entrepreneur`.`entrepreneur` (
     `Entrepreneur_ID` INT,
     `People_ID` INT,

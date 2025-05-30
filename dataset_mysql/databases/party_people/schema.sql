@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: party_people | Table Count: 4
+-- Dialect: mysql | Database: party_people | Table Count: 4
 
-CREATE DATABASE IF NOT EXISTS `party_people`;
-
-DROP TABLE IF EXISTS `party_people`.`region`;
 CREATE TABLE `party_people`.`region` (
     `Region_ID` INT,
     `Region_name` TEXT,
@@ -13,7 +10,6 @@ CREATE TABLE `party_people`.`region` (
     PRIMARY KEY (`Region_ID`)
 );
 
-DROP TABLE IF EXISTS `party_people`.`party`;
 CREATE TABLE `party_people`.`party` (
     `Party_ID` INT,
     `Minister` TEXT,
@@ -25,7 +21,6 @@ CREATE TABLE `party_people`.`party` (
     FOREIGN KEY (`Region_ID`) REFERENCES `party_people`.`region` (`Region_ID`)
 );
 
-DROP TABLE IF EXISTS `party_people`.`member`;
 CREATE TABLE `party_people`.`member` (
     `Member_ID` INT,
     `Member_Name` TEXT,
@@ -35,7 +30,6 @@ CREATE TABLE `party_people`.`member` (
     FOREIGN KEY (`Party_ID`) REFERENCES `party_people`.`party` (`Party_ID`)
 );
 
-DROP TABLE IF EXISTS `party_people`.`party_events`;
 CREATE TABLE `party_people`.`party_events` (
     `Event_ID` INT,
     `Event_Name` TEXT,

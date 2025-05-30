@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: decoration_competition | Table Count: 3
+-- Dialect: mysql | Database: decoration_competition | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `decoration_competition`;
-
-DROP TABLE IF EXISTS `decoration_competition`.`college`;
 CREATE TABLE `decoration_competition`.`college` (
     `College_ID` INT,
     `Name` TEXT,
@@ -11,7 +8,6 @@ CREATE TABLE `decoration_competition`.`college` (
     PRIMARY KEY (`College_ID`)
 );
 
-DROP TABLE IF EXISTS `decoration_competition`.`member`;
 CREATE TABLE `decoration_competition`.`member` (
     `Member_ID` INT,
     `Name` TEXT,
@@ -21,7 +17,6 @@ CREATE TABLE `decoration_competition`.`member` (
     FOREIGN KEY (`College_ID`) REFERENCES `decoration_competition`.`college` (`College_ID`)
 );
 
-DROP TABLE IF EXISTS `decoration_competition`.`round`;
 CREATE TABLE `decoration_competition`.`round` (
     `Round_ID` INT,
     `Member_ID` INT,

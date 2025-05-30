@@ -1,15 +1,11 @@
--- Dialect: MySQL | Database: cre_Drama_Workshop_Groups | Table Count: 18
+-- Dialect: mysql | Database: cre_Drama_Workshop_Groups | Table Count: 18
 
-CREATE DATABASE IF NOT EXISTS `cre_Drama_Workshop_Groups`;
-
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Ref_Payment_Methods`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Ref_Payment_Methods` (
     `payment_method_code` CHAR (15) NOT NULL,
     `payment_method_description` VARCHAR(80),
     PRIMARY KEY (`payment_method_code`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Ref_Service_Types`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Ref_Service_Types` (
     `Service_Type_Code` CHAR(15) NOT NULL,
     `Parent_Service_Type_Code` CHAR(15),
@@ -17,7 +13,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Ref_Service_Types` (
     PRIMARY KEY (`Service_Type_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Addresses`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Addresses` (
     `Address_ID` INT NOT NULL,
     `Line_1` VARCHAR(255),
@@ -28,7 +23,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Addresses` (
     PRIMARY KEY (`Address_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Products`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Products` (
     `Product_ID` INT NOT NULL,
     `Product_Name` VARCHAR(255),
@@ -38,7 +32,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Products` (
     PRIMARY KEY (`Product_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Marketing_Regions`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Marketing_Regions` (
     `Marketing_Region_Code` CHAR(15) NOT NULL,
     `Marketing_Region_Name` VARCHAR(255) NOT NULL,
@@ -47,7 +40,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Marketing_Regions` (
     PRIMARY KEY (`Marketing_Region_Code`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Clients`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Clients` (
     `Client_ID` INTEGER NOT NULL,
     `Address_ID` INTEGER NOT NULL,
@@ -60,7 +52,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Clients` (
     UNIQUE (`Client_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Drama_Workshop_Groups`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Drama_Workshop_Groups` (
     `Workshop_Group_ID` INTEGER NOT NULL,
     `Address_ID` INTEGER NOT NULL,
@@ -75,7 +66,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Drama_Workshop_Groups` (
     UNIQUE (`Workshop_Group_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Performers`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Performers` (
     `Performer_ID` INTEGER NOT NULL,
     `Address_ID` INTEGER NOT NULL,
@@ -88,7 +78,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Performers` (
     UNIQUE (`Performer_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Customers`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Customers` (
     `Customer_ID` INT NOT NULL,
     `Address_ID` INTEGER NOT NULL,
@@ -100,7 +89,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Customers` (
     FOREIGN KEY (`Address_ID`) REFERENCES `cre_Drama_Workshop_Groups`.`Addresses` (`Address_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Stores`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Stores` (
     `Store_ID` INT NOT NULL,
     `Address_ID` INTEGER NOT NULL,
@@ -114,7 +102,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Stores` (
     FOREIGN KEY (`Address_ID`) REFERENCES `cre_Drama_Workshop_Groups`.`Addresses` (`Address_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Bookings`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Bookings` (
     `Booking_ID` INTEGER NOT NULL,
     `Customer_ID` INTEGER NOT NULL,
@@ -131,7 +118,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Bookings` (
     UNIQUE (`Booking_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Performers_in_Bookings`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Performers_in_Bookings` (
     `Order_ID` INTEGER NOT NULL,
     `Performer_ID` INTEGER NOT NULL,
@@ -140,7 +126,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Performers_in_Bookings` (
     FOREIGN KEY (`Performer_ID`) REFERENCES `cre_Drama_Workshop_Groups`.`Performers` (`Performer_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Customer_Orders`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Customer_Orders` (
     `Order_ID` INTEGER NOT NULL,
     `Customer_ID` INTEGER NOT NULL,
@@ -155,7 +140,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Customer_Orders` (
     UNIQUE (`Order_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Order_Items`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Order_Items` (
     `Order_Item_ID` INTEGER NOT NULL,
     `Order_ID` INTEGER NOT NULL,
@@ -167,7 +151,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Order_Items` (
     FOREIGN KEY (`Order_ID`) REFERENCES `cre_Drama_Workshop_Groups`.`Customer_Orders` (`Order_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Invoices`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Invoices` (
     `Invoice_ID` INTEGER NOT NULL,
     `Order_ID` INTEGER NOT NULL,
@@ -182,7 +165,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Invoices` (
     FOREIGN KEY (`Order_ID`) REFERENCES `cre_Drama_Workshop_Groups`.`Customer_Orders` (`Order_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Services`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Services` (
     `Service_ID` INTEGER NOT NULL,
     `Service_Type_Code` CHAR(15),
@@ -197,7 +179,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Services` (
     UNIQUE (`Service_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Bookings_Services`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Bookings_Services` (
     `Order_ID` INTEGER NOT NULL,
     `Product_ID` INTEGER NOT NULL,
@@ -206,7 +187,6 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Bookings_Services` (
     FOREIGN KEY (`Order_ID`) REFERENCES `cre_Drama_Workshop_Groups`.`Bookings` (`Booking_ID`)
 );
 
-DROP TABLE IF EXISTS `cre_Drama_Workshop_Groups`.`Invoice_Items`;
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Invoice_Items` (
     `Invoice_Item_ID` INTEGER NOT NULL,
     `Invoice_ID` INTEGER NOT NULL,

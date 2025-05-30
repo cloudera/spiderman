@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: customers_and_invoices | Table Count: 9
+-- Dialect: mysql | Database: customers_and_invoices | Table Count: 9
 
-CREATE DATABASE IF NOT EXISTS `customers_and_invoices`;
-
-DROP TABLE IF EXISTS `customers_and_invoices`.`Customers`;
 CREATE TABLE `customers_and_invoices`.`Customers` (
     `customer_id` INTEGER,
     `customer_first_name` VARCHAR(50),
@@ -19,7 +16,6 @@ CREATE TABLE `customers_and_invoices`.`Customers` (
     PRIMARY KEY (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_invoices`.`Orders`;
 CREATE TABLE `customers_and_invoices`.`Orders` (
     `order_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -29,7 +25,6 @@ CREATE TABLE `customers_and_invoices`.`Orders` (
     FOREIGN KEY (`customer_id`) REFERENCES `customers_and_invoices`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_invoices`.`Invoices`;
 CREATE TABLE `customers_and_invoices`.`Invoices` (
     `invoice_number` INTEGER,
     `order_id` INTEGER NOT NULL,
@@ -38,7 +33,6 @@ CREATE TABLE `customers_and_invoices`.`Invoices` (
     FOREIGN KEY (`order_id`) REFERENCES `customers_and_invoices`.`Orders` (`order_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_invoices`.`Accounts`;
 CREATE TABLE `customers_and_invoices`.`Accounts` (
     `account_id` INTEGER,
     `customer_id` INTEGER NOT NULL,
@@ -49,7 +43,6 @@ CREATE TABLE `customers_and_invoices`.`Accounts` (
     FOREIGN KEY (`customer_id`) REFERENCES `customers_and_invoices`.`Customers` (`customer_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_invoices`.`Product_Categories`;
 CREATE TABLE `customers_and_invoices`.`Product_Categories` (
     `production_type_code` VARCHAR(15),
     `product_type_description` VARCHAR(80),
@@ -57,7 +50,6 @@ CREATE TABLE `customers_and_invoices`.`Product_Categories` (
     PRIMARY KEY (`production_type_code`)
 );
 
-DROP TABLE IF EXISTS `customers_and_invoices`.`Products`;
 CREATE TABLE `customers_and_invoices`.`Products` (
     `product_id` INTEGER,
     `parent_product_id` INTEGER,
@@ -70,7 +62,6 @@ CREATE TABLE `customers_and_invoices`.`Products` (
     FOREIGN KEY (`production_type_code`) REFERENCES `customers_and_invoices`.`Product_Categories` (`production_type_code`)
 );
 
-DROP TABLE IF EXISTS `customers_and_invoices`.`Financial_Transactions`;
 CREATE TABLE `customers_and_invoices`.`Financial_Transactions` (
     `transaction_id` INTEGER NOT NULL,
     `account_id` INTEGER NOT NULL,
@@ -84,7 +75,6 @@ CREATE TABLE `customers_and_invoices`.`Financial_Transactions` (
     FOREIGN KEY (`invoice_number`) REFERENCES `customers_and_invoices`.`Invoices` (`invoice_number`)
 );
 
-DROP TABLE IF EXISTS `customers_and_invoices`.`Order_Items`;
 CREATE TABLE `customers_and_invoices`.`Order_Items` (
     `order_item_id` INTEGER,
     `order_id` INTEGER NOT NULL,
@@ -96,7 +86,6 @@ CREATE TABLE `customers_and_invoices`.`Order_Items` (
     FOREIGN KEY (`product_id`) REFERENCES `customers_and_invoices`.`Products` (`product_id`)
 );
 
-DROP TABLE IF EXISTS `customers_and_invoices`.`Invoice_Line_Items`;
 CREATE TABLE `customers_and_invoices`.`Invoice_Line_Items` (
     `order_item_id` INTEGER NOT NULL,
     `invoice_number` INTEGER NOT NULL,

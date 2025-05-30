@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: tvshow | Table Count: 3
+-- Dialect: mysql | Database: tvshow | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `tvshow`;
-
-DROP TABLE IF EXISTS `tvshow`.`TV_Channel`;
 CREATE TABLE `tvshow`.`TV_Channel` (
     `id` INT,
     `series_name` TEXT,
@@ -16,7 +13,6 @@ CREATE TABLE `tvshow`.`TV_Channel` (
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `tvshow`.`TV_series`;
 CREATE TABLE `tvshow`.`TV_series` (
     `id` REAL,
     `Episode` TEXT,
@@ -31,7 +27,6 @@ CREATE TABLE `tvshow`.`TV_series` (
     FOREIGN KEY (`Channel`) REFERENCES `tvshow`.`TV_Channel` (`id`)
 );
 
-DROP TABLE IF EXISTS `tvshow`.`Cartoon`;
 CREATE TABLE `tvshow`.`Cartoon` (
     `id` REAL,
     `Title` TEXT,

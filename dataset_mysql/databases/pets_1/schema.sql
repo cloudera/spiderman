@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: pets_1 | Table Count: 3
+-- Dialect: mysql | Database: pets_1 | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `pets_1`;
-
-DROP TABLE IF EXISTS `pets_1`.`Student`;
 CREATE TABLE `pets_1`.`Student` (
     `StuID` INTEGER,
     `LName` VARCHAR(12),
@@ -15,7 +12,6 @@ CREATE TABLE `pets_1`.`Student` (
     PRIMARY KEY (`StuID`)
 );
 
-DROP TABLE IF EXISTS `pets_1`.`Pets`;
 CREATE TABLE `pets_1`.`Pets` (
     `PetID` INTEGER,
     `PetType` VARCHAR(20),
@@ -24,7 +20,6 @@ CREATE TABLE `pets_1`.`Pets` (
     PRIMARY KEY (`PetID`)
 );
 
-DROP TABLE IF EXISTS `pets_1`.`Has_Pet`;
 CREATE TABLE `pets_1`.`Has_Pet` (
     `StuID` INTEGER,
     `PetID` INTEGER,

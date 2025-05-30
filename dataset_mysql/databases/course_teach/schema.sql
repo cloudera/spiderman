@@ -1,8 +1,5 @@
--- Dialect: MySQL | Database: course_teach | Table Count: 3
+-- Dialect: mysql | Database: course_teach | Table Count: 3
 
-CREATE DATABASE IF NOT EXISTS `course_teach`;
-
-DROP TABLE IF EXISTS `course_teach`.`course`;
 CREATE TABLE `course_teach`.`course` (
     `Course_ID` INT,
     `Staring_Date` TEXT,
@@ -10,7 +7,6 @@ CREATE TABLE `course_teach`.`course` (
     PRIMARY KEY (`Course_ID`)
 );
 
-DROP TABLE IF EXISTS `course_teach`.`teacher`;
 CREATE TABLE `course_teach`.`teacher` (
     `Teacher_ID` INT,
     `Name` TEXT,
@@ -19,7 +15,6 @@ CREATE TABLE `course_teach`.`teacher` (
     PRIMARY KEY (`Teacher_ID`)
 );
 
-DROP TABLE IF EXISTS `course_teach`.`course_arrange`;
 CREATE TABLE `course_teach`.`course_arrange` (
     `Course_ID` INT,
     `Teacher_ID` INT,
