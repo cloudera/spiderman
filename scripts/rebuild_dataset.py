@@ -5,7 +5,7 @@ import json
 from utils.zip import ZipReader
 from utils.iter import bar_iter
 
-from core.builders import build_db, build_queries
+from core.builder import build_db, build_queries
 from core.dataset import DatasetDir, QuerySplit
 from core import paths
 from scan_dataset import print_stats

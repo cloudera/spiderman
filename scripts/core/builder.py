@@ -1,10 +1,9 @@
-from os import path
 from typing import Dict
 
 from core.dataset import DatasetDir, QuerySplit
 
+import core.mysql_builder as mysql
 from core import paths
-from core.dialects import mysql
 from core.source_db import SourceDB
 from utils.filesystem import read_json_dict
 
