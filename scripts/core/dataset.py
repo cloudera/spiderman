@@ -21,11 +21,15 @@ class DatasetDir:
     dbs_path: str
     data_path: str
 
-    def __init__(self, dialect: str) -> None:
+    def __init__(self, dialect: str, suffix:str = "") -> None:
 
         self.dialect = dialect.lower()
 
-        self.base_path = f"./dataset_{dialect}"
+        if suffix:
+            self.base_path = f"./dataset_{self.dialect}_{suffix.lower()}"
+        else:
+            self.base_path = f"./dataset_{self.dialect}"
+
         self.dbs_path = path.join(self.base_path, "databases")
 
     def _path_to_table_data_file(self, db_name: str, table_name) -> str:
@@ -83,4 +87,6 @@ class DatasetDir:
     def delete(self):
         if path.exists(self.base_path):
             print(f"Deleting dataset {self.base_path}")
-            shutil.rmtree(self.base_path)
+            shutil.rmtree(self.dbs_path)
+            os.remove(self._path_to_queries_file(QuerySplit.TRAIN))
+            os.remove(self._path_to_queries_file(QuerySplit.TEST))

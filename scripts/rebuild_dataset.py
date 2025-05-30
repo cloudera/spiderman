@@ -11,8 +11,6 @@ from core import paths
 from scan_dataset import print_stats
 
 
-DATASET_DIR_SUFFIX = "mysql_rebuild"
-
 def build_schema_and_data(source_zip: ZipReader, dataset: DatasetDir):
     """Build SCHEMA and DATA of databases"""
     files = source_zip.list_sqlite_files_in(paths.SOURCE_DB_DIR)
@@ -38,7 +36,7 @@ def build_train_and_test_queries(source_zip: ZipReader, dataset: DatasetDir):
 
 
 if __name__ == "__main__":
-    dataset = DatasetDir(DATASET_DIR_SUFFIX)
+    dataset = DatasetDir("mysql", "rebuild")
 
     print(f"Rebuilding dataset into {dataset.base_path} directory...")
     dataset.delete()
