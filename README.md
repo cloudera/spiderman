@@ -49,7 +49,7 @@ Once the dataset is loaded, you can run this script to execute the queries. It c
 
 ### Scan Dataset
 ```
-python scripts/scan_dataset.py
+python scripts/scan_dataset.py mysql
 ```
 This scripts go through the dataset and aggregate various details.
 

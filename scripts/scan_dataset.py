@@ -42,7 +42,7 @@ def print_stats(dataset: DatasetDir) -> None:
 
 
 if __name__ == "__main__":
-    args = parse_dialect("Scan dataset directory of a specific dialect", "mysql")
+    args = parse_dialect("Scan dataset directory of a specific dialect")
 
     dataset_dir = DatasetDir(args.dialect)
     print(f"Scanning {dataset_dir.base_path} directory")

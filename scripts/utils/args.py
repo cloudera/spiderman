@@ -22,12 +22,12 @@ def parse_url_dialect(description: str) -> Namespace:
     return args
 
 
-def parse_dialect(description: str, default: str) -> Namespace:
+def parse_dialect(description: str) -> Namespace:
     """Get command line argument dialect."""
 
     parser = ArgumentParser(description=f"SpiderMan - {description}")
 
-    parser.add_argument("dialect", help="Target dialect.", default=default, nargs='?')
+    parser.add_argument("dialect", help="Target dialect.")
 
     args = parser.parse_args()
 

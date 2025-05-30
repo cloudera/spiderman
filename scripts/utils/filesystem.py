@@ -1,6 +1,7 @@
 import csv
 import os
 import json
+import shutil
 
 
 def create_missing_dir(file_path: str):
@@ -30,3 +31,12 @@ def write_csv(file_path: str, data: list[list], overwrite: bool = False):
 def read_json_dict(file_path: str) -> dict:
     with open(file_path, "r") as file:
         return json.loads(file.read())
+
+
+def delete_file(file_path: str):
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+def delete_dir(dir_path: str):
+    if os.path.exists(dir_path):
+        shutil.rmtree(dir_path, ignore_errors=True)

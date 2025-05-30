@@ -3,9 +3,7 @@ from os import path
 from enum import Enum
 import pandas as pd
 
-import shutil
-
-from utils.filesystem import write_str, read_str, write_csv
+from utils.filesystem import write_str, read_str, write_csv, delete_dir, delete_file
 
 
 TABLE_DELIM = "\n\n"
@@ -84,9 +82,8 @@ class DatasetDir:
         data = [["database", "question", "sql"]] + queries
         write_csv(self._path_to_queries_file(split), data)
 
-    def delete(self):
-        if path.exists(self.base_path):
-            print(f"Deleting dataset {self.base_path}")
-            shutil.rmtree(self.dbs_path)
-            os.remove(self._path_to_queries_file(QuerySplit.TRAIN))
-            os.remove(self._path_to_queries_file(QuerySplit.TEST))
+    def clean(self):
+        print(f"Cleaning dataset {self.base_path}")
+        delete_dir(self.dbs_path)
+        delete_file(self._path_to_queries_file(QuerySplit.TRAIN))
+        delete_file(self._path_to_queries_file(QuerySplit.TEST))

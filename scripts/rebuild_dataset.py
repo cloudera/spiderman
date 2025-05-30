@@ -39,7 +39,7 @@ if __name__ == "__main__":
     dataset = DatasetDir("mysql", "rebuild")
 
     print(f"Rebuilding dataset into {dataset.base_path} directory...")
-    dataset.delete()
+    dataset.clean()
     with ZipReader(paths.SOURCE_ZIP) as source_zip:
         build_schema_and_data(source_zip, dataset)
         build_train_and_test_queries(source_zip, dataset)
