@@ -1,12 +1,12 @@
 from os import path
 from typing import Dict
 
-from core.dataset import DatasetDir
+from core.dataset import DatasetDir, QuerySplit
 
 from core import paths
 from core.dialects import mysql
 from core.source_db import SourceDB
-from utils.filesystem import write_csv, write_str, read_json_dict
+from utils.filesystem import read_json_dict
 
 
 DIALECT = "MySQL"
@@ -27,25 +27,6 @@ full_replace = query_overrides["full_replace"]
 skipped_questions = query_overrides["skip"]
 
 
-# Get schema of each table in the given list.
-def _build_schema(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> None:
-    schema_ddls = [
-        f"-- Dialect: {DIALECT} | Database: {db.name} | Table Count: {len(table_names)}",
-        f"CREATE DATABASE IF NOT EXISTS `{db.name}`;"
-    ]
-
-    for table_name in table_names:
-        table = db.get_table(table_name)
-        ddl = mysql.build_table_ddl(table)
-        schema_ddls.append(ddl)
-
-    file_path = dataset.path_to_schema_file(db.name)
-
-    if len(schema_ddls):
-        schema = TABLE_DELIM.join(schema_ddls)
-        schema = schema + "\n" # New line at EOF
-        write_str(file_path, schema)
-
 def _filter_data(table_data: list[list], delete_filters: dict) -> list[list]:
     column_names: list = table_data[0]
     rows: list[list] = table_data[1:]
@@ -59,8 +40,6 @@ def _filter_data(table_data: list[list], delete_filters: dict) -> list[list]:
 # Get data of each table in the given list. Return false if any is missing.
 # Write to a CSV file if all are available and return true.
 def _build_data(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> bool:
-    data_dir = dataset.path_to_data_dir(db.name)
-
     table_data_map: Dict[str, list] = {}
 
     # Get data
@@ -70,7 +49,7 @@ def _build_data(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> bo
         if len(table_data) <= 1:
             # 1st row is always header. Data is missing if <= 1
             print(f"Skipping DB `{db.name}` - Data not available for table `{table_name}`.")
-            return True
+            return False
 
     # Write data
     for table_name in table_names:
@@ -89,19 +68,26 @@ def _build_data(dataset: DatasetDir, table_names: list[str], db: SourceDB) -> bo
         table = db.get_table(table_name)
         table_data = mysql.normalize_data(table_data, table)
 
-        file_path = path.join(data_dir, f'{table_name}.csv')
-        write_csv(file_path, table_data)
+        # Write to CSV file
+        dataset.write_table_data(db.name, table_name, table_data)
 
-    return False
+    return True
 
 # Build schema and data of a database if data is available
 def build_db(dataset: DatasetDir, db_name: str, data: bytes):
     with SourceDB(db_name, data) as db:
         table_names: list[str] = ordered_tables[db_name]
 
-        data_is_missing = _build_data(dataset, table_names, db)
-        if not data_is_missing:
-            _build_schema(dataset, table_names, db)
+        all_data_available = _build_data(dataset, table_names, db)
+        if all_data_available:
+            table_ddls = []
+
+            # Build schema
+            for table_name in table_names:
+                table = db.get_table(table_name)
+                table_ddls.append(mysql.build_table_ddl(table))
+
+            dataset.write_schema(db.name, table_ddls)
 
 
 def _dedupe_queries(queries: list) -> list:
@@ -120,7 +106,7 @@ def _dedupe_queries(queries: list) -> list:
 
     return deduped_queries
 
-def build_queries(dataset: DatasetDir, queries: list, query_file_path: str) -> list[list]:
+def build_queries(dataset: DatasetDir, queries: list, split: QuerySplit) -> None:
     db_queries: dict[str, list[list]] = {}
 
     queries = _dedupe_queries(queries)
@@ -148,5 +134,4 @@ def build_queries(dataset: DatasetDir, queries: list, query_file_path: str) -> l
     for db_name in db_names:
         queries = queries + db_queries.get(db_name, [])
 
-    data = [["database", "question", "sql"]] + queries
-    write_csv(query_file_path, data)
+    dataset.write_queries(split, queries)

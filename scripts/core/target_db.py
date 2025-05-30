@@ -55,15 +55,6 @@ class TargetDB:
                 conn.execute(text(stmt))
             conn.commit()
 
-    def execute(self, sql: str):
-        db_stmts = sql.split(";")
-        statements = []
-        for stmt in db_stmts:
-            stmt = stmt.strip()
-            if stmt: statements.append(stmt)
-
-        self.execute_statements(statements)
-
     def insert(self, table_name: str, column_names: list[str], rows: list, batch_size: int = 500):
         columns_str = _format(column_names, '`')
 

@@ -1,32 +1,28 @@
 """Scan dataset_mysql directory"""
 
-import pandas as pd
-
-from core.dataset import DatasetDir
+from core.dataset import DatasetDir, QuerySplit
 from utils.print import print_bar
-from utils.filesystem import read_str
 from utils.args import parse_dialect
 
 
-def _get_counts(dataset: DatasetDir, query_file_path: str):
-    queries_df = pd.read_csv(query_file_path)
+def _get_counts(dataset: DatasetDir, split: QuerySplit) -> tuple[int, int, list[str]]:
+    """Get counts of queries, tables and databases for a given split"""
+
+    queries_df = dataset.read_queries(split)
     db_names = sorted(set(queries_df['database']))
 
     tables_count = 0
     for db_name in db_names:
-        schema = read_str(dataset.path_to_schema_file(db_name))
-        tables_count += schema.count('CREATE TABLE')
+        tables_count += len(dataset.read_schema(db_name))
 
     return len(queries_df.values), tables_count, db_names
 
 
-def print_stats(dataset: DatasetDir) -> dict:
+def print_stats(dataset: DatasetDir) -> None:
     """Get dataset stats and print"""
 
-    train_queries, train_tables, train_db_names = _get_counts(dataset,
-                                                              dataset.path_to_train_queries_file())
-    test_queries, test_tables, test_db_names = _get_counts(dataset,
-                                                           dataset.path_to_test_queries_file())
+    train_queries, train_tables, train_db_names = _get_counts(dataset, QuerySplit.TRAIN)
+    test_queries, test_tables, test_db_names = _get_counts(dataset, QuerySplit.TEST)
 
     print_bar("Dataset Stats")
 
@@ -49,5 +45,5 @@ if __name__ == "__main__":
     args = parse_dialect("Scan dataset directory of a specific dialect")
 
     dataset_dir = DatasetDir(args.dialect)
-    print(f"Scaning {dataset_dir.base_path} directory")
+    print(f"Scanning {dataset_dir.base_path} directory")
     print_stats(dataset_dir)

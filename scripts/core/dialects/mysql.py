@@ -102,8 +102,7 @@ def build_table_ddl(table: Table) -> str:
     table_defs += _build_index_def(table)
 
     defs_str = ",\n".join(table_defs)
-    return f"""DROP TABLE IF EXISTS `{table.db_name}`.`{table.name}`;
-CREATE TABLE `{table.db_name}`.`{table.name}` (
+    return f"""CREATE TABLE `{table.db_name}`.`{table.name}` (
 {defs_str}
 );"""
 

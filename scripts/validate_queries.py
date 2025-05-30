@@ -8,27 +8,25 @@ import sys
 import pandas as pd
 
 from core.target_db import TargetDB
-from core.dataset import DatasetDir
+from core.dataset import DatasetDir, QuerySplit
 from utils.iter import bar_iter
 from utils.args import parse_url_dialect
 
 
-def execute_queries(query_file_path: str):
+def execute_queries(queries_df: pd.DataFrame):
     """Execute all queries from file at query_file_path"""
 
-    queries_df = pd.read_csv(query_file_path)
     db_names = sorted(set(queries_df['database']))
 
     for db_name, bar in bar_iter(db_names, "DB"):
         db_queries_df = queries_df[queries_df['database'] == db_name]
         query_count = len(db_queries_df)
 
-        bar.text(f">> DB: {db_name}")
         with TargetDB(args.url, db_name) as db:
             for idx, query in db_queries_df.iterrows():
                 try:
                     bar.text(f">>>> DB: {db_name} | Query: {idx}/{query_count}")
-                    db.execute(query["sql"])
+                    db.execute_statements([query["sql"]])
                 except Exception as e:
                     print(e)
                     print("Details: ", db_name, idx, query["question"], query["sql"])
@@ -42,9 +40,9 @@ if __name__ == "__main__":
     dataset = DatasetDir(args.dialect)
 
     print("Executing train queries...")
-    execute_queries(dataset.path_to_train_queries_file())
+    execute_queries(dataset.read_queries(QuerySplit.TRAIN))
 
     print("Executing test queries...")
-    execute_queries(dataset.path_to_test_queries_file())
+    execute_queries(dataset.read_queries(QuerySplit.TEST))
 
     print("Validation successful.")

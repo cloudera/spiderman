@@ -6,7 +6,7 @@ from utils.zip import ZipReader
 from utils.iter import bar_iter
 
 from core.builders import build_db, build_queries
-from core.dataset import DatasetDir
+from core.dataset import DatasetDir, QuerySplit
 from core import paths
 from scan_dataset import print_stats
 
@@ -30,27 +30,21 @@ def build_train_and_test_queries(source_zip: ZipReader, dataset: DatasetDir):
     print("Building train queries...")
     train_queries = json.loads(source_zip.read_file(paths.TRAIN_QUERIES_1))
     train_queries += json.loads(source_zip.read_file(paths.TRAIN_QUERIES_2))
-    build_queries(dataset, train_queries, dataset.path_to_train_queries_file())
+    build_queries(dataset, train_queries, QuerySplit.TRAIN)
 
     print("Building test queries...")
     test_queries = json.loads(source_zip.read_file(paths.TEST_QUERIES))
-    build_queries(dataset, test_queries, dataset.path_to_test_queries_file())
-
-
-def build_dataset(dataset: DatasetDir):
-    """Build from source Zip"""
-    with ZipReader(paths.SOURCE_ZIP) as source_zip:
-        build_schema_and_data(source_zip, dataset)
-        build_train_and_test_queries(source_zip, dataset)
+    build_queries(dataset, test_queries, QuerySplit.TEST)
 
 
 if __name__ == "__main__":
     dataset = DatasetDir(DATASET_DIR_SUFFIX)
 
     print(f"Rebuilding dataset into {dataset.base_path} directory...")
-
     dataset.delete()
-    build_dataset(dataset)
+    with ZipReader(paths.SOURCE_ZIP) as source_zip:
+        build_schema_and_data(source_zip, dataset)
+        build_train_and_test_queries(source_zip, dataset)
     print("Dataset rebuild completed successfully.")
 
     print_stats(dataset)
