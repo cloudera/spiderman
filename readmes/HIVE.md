@@ -14,5 +14,5 @@ python ./scripts/transpile_dataset.py hive
 
 ## Load
 ```
-python ./scripts/load_dataset.py 'hive://admin:admin@ccycloud-2.nightly7x-us-gk.root.comops.site:10000?auth=CUSTOM'
+python ./scripts/load_dataset.py 'hive://<username>:<password>@<address>:10000?auth=CUSTOM'
 ```
