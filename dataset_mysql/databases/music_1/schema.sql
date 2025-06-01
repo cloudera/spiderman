@@ -1,7 +1,7 @@
 -- Dialect: mysql | Database: music_1 | Table Count: 4
 
 CREATE TABLE `music_1`.`genre` (
-    `g_name` VARCHAR(20) NOT NULL,
+    `g_name` VARCHAR(50) NOT NULL,
     `rating` VARCHAR(10),
     `most_popular_in` VARCHAR(50),
     PRIMARY KEY (`g_name`)
@@ -31,7 +31,7 @@ CREATE TABLE `music_1`.`song` (
     `artist_name` VARCHAR(50),
     `country` VARCHAR(20),
     `f_id` NUMERIC(10),
-    `genre_is` VARCHAR(20),
+    `genre_is` VARCHAR(50),
     `rating` NUMERIC(10),
     `languages` VARCHAR(20),
     `releasedate` DATE,

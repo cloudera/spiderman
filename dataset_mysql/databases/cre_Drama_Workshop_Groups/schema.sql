@@ -161,8 +161,7 @@ CREATE TABLE `cre_Drama_Workshop_Groups`.`Invoices` (
     `Order_Item_ID` INTEGER NOT NULL,
     PRIMARY KEY (`Invoice_ID`),
     FOREIGN KEY (`payment_method_code`) REFERENCES `cre_Drama_Workshop_Groups`.`Ref_Payment_Methods` (`payment_method_code`),
-    FOREIGN KEY (`Order_ID`) REFERENCES `cre_Drama_Workshop_Groups`.`Bookings` (`Booking_ID`),
-    FOREIGN KEY (`Order_ID`) REFERENCES `cre_Drama_Workshop_Groups`.`Customer_Orders` (`Order_ID`)
+    FOREIGN KEY (`Order_ID`) REFERENCES `cre_Drama_Workshop_Groups`.`Bookings` (`Booking_ID`)
 );
 
 CREATE TABLE `cre_Drama_Workshop_Groups`.`Services` (

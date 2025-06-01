@@ -89,6 +89,5 @@ CREATE TABLE `solvency_ii`.`Assets_in_Events` (
     `Asset_ID` INTEGER NOT NULL,
     `Event_ID` INTEGER NOT NULL,
     PRIMARY KEY (`Asset_ID`, `Event_ID`),
-    FOREIGN KEY (`Event_ID`) REFERENCES `solvency_ii`.`Events` (`Event_ID`),
     FOREIGN KEY (`Event_ID`) REFERENCES `solvency_ii`.`Events` (`Event_ID`)
 );

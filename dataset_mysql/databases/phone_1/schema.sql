@@ -28,7 +28,7 @@ CREATE TABLE `phone_1`.`phone` (
     `Accreditation_type` TEXT,
     `Accreditation_level` TEXT,
     `Date` TEXT,
-    `chip_model` VARCHAR(20),
+    `chip_model` VARCHAR(50),
     `screen_mode` REAL,
     PRIMARY KEY (`Hardware_Model_name`),
     FOREIGN KEY (`chip_model`) REFERENCES `phone_1`.`chip_model` (`Model_name`),

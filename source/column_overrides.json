@@ -21,7 +21,9 @@
         "bike_1.trip.zip_code": "VARCHAR(20)",
 
         "car_1.car_makers.Country": "INT",
-        "car_1.car_names.Model": "VARCHAR(20)",
+        "car_1.car_names.Model": "VARCHAR(50)",
+
+        "college_1.STUDENT.DEPT_CODE": "VARCHAR(10)",
 
         "city_record.hosting_city.Host_City": "INT",
 
@@ -90,6 +92,9 @@
 
         "museum_visit.visit.visitor_ID": "INT",
 
+        "music_1.genre.g_name": "VARCHAR(50)",
+        "music_1.song.genre_is": "VARCHAR(50)",
+
         "orchestra.show.If_first_show": "VARCHAR(15)",
 
         "party_host.party_host.Is_Main_in_Charge": "CHAR(1)",
@@ -99,7 +104,7 @@
         "performance_attendance.member.Member_ID": "INT",
         "performance_attendance.performance.Performance_ID": "INT",
 
-        "phone_1.phone.chip_model": "VARCHAR(20)",
+        "phone_1.phone.chip_model": "VARCHAR(50)",
         "phone_1.phone.screen_mode": "REAL",
 
         "phone_market.phone_market.Phone_ID": "INT",

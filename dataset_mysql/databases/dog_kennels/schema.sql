@@ -55,7 +55,6 @@ CREATE TABLE `dog_kennels`.`Dogs` (
     `date_departed` DATETIME,
     PRIMARY KEY (`dog_id`),
     FOREIGN KEY (`owner_id`) REFERENCES `dog_kennels`.`Owners` (`owner_id`),
-    FOREIGN KEY (`owner_id`) REFERENCES `dog_kennels`.`Owners` (`owner_id`),
     FOREIGN KEY (`size_code`) REFERENCES `dog_kennels`.`Sizes` (`size_code`),
     FOREIGN KEY (`breed_code`) REFERENCES `dog_kennels`.`Breeds` (`breed_code`)
 );

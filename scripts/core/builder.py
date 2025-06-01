@@ -8,9 +8,6 @@ from core.source_db import SourceDB
 from utils.filesystem import read_json_dict
 
 
-DIALECT = "MySQL"
-TABLE_DELIM = "\n\n"
-
 # List of table names, ordered based on foreign key dependency
 ordered_tables = read_json_dict(paths.ORDERED_TABLES)
 

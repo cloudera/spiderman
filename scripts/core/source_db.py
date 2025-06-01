@@ -148,6 +148,8 @@ class SourceDB:
         foreign_keys = self._execute_pragma('foreign_key_list', table_name)
         skip_fk_columns = skip_foreign_keys.get(f"{self.name}.{table_name}", [])
 
+        fk_names = set()
+
         fk_composite = []
         # Aggregate composite foreign keys
         for fk in foreign_keys:
@@ -159,11 +161,16 @@ class SourceDB:
             if from_column in skip_fk_columns:
                 continue
 
-            path = f"{self.name}.{table_name}.{from_column}:table"
+            names = f"{self.name}.{table_name}.{from_column}"
+            if names in fk_names:
+                continue
+            fk_names.add(names)
+
+            path = f"{names}:table"
             if path in foreign_key_overrides:
                 to_table = foreign_key_overrides[path]
 
-            path = f"{self.name}.{table_name}.{from_column}:column"
+            path = f"{names}:column"
             if path in foreign_key_overrides:
                 to_column = foreign_key_overrides[path]
 

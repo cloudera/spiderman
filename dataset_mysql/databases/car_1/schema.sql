@@ -34,7 +34,7 @@ CREATE TABLE `car_1`.`model_list` (
 
 CREATE TABLE `car_1`.`car_names` (
     `MakeId` INTEGER,
-    `Model` VARCHAR(20),
+    `Model` VARCHAR(50),
     `Make` TEXT,
     PRIMARY KEY (`MakeId`),
     FOREIGN KEY (`Model`) REFERENCES `car_1`.`model_list` (`Model`)
