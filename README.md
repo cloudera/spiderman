@@ -23,7 +23,7 @@ The following commands are for macOS.
 
 ### Create Environment
 ```
-conda create --name spiderman-env python=3.12.2
+conda create --name spiderman-env python=3.10
 conda activate spiderman-env
 pip install -r requirements.txt
 ```
