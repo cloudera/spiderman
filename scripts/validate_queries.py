@@ -19,7 +19,7 @@ def execute_queries(queries_df: pd.DataFrame):
     db_names = sorted(set(queries_df['database']))
 
     for db_name, bar in bar_iter(db_names, "DB"):
-        db_queries_df = queries_df[queries_df['database'] == db_name]
+        db_queries_df = queries_df[queries_df['database'] == db_name].reset_index(drop=True)
         query_count = len(db_queries_df)
 
         with TargetDB(args.url, db_name) as db:
