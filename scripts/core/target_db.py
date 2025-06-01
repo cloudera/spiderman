@@ -1,4 +1,4 @@
-from typing import Callable
+from typing import Callable, Optional
 
 from urllib.parse import urlparse, urlunparse
 
@@ -27,7 +27,6 @@ def _format(values: list[str], punctuation: str) -> str:
 class TargetDB:
     url: str
     db_name: str
-    dialect: str
     reset: bool
     preprocessor: Callable[[str], str]
 
@@ -40,7 +39,7 @@ class TargetDB:
         if not database_exists(self.url):
             create_database(self.url)
         elif self.reset:
-            drop_database(self.url)
+            self.drop()
             create_database(self.url)
 
         self.engine = create_engine(self.url)
@@ -49,13 +48,24 @@ class TargetDB:
     def __exit__(self, exc_type, exc_value, traceback):
         return
 
-    def execute_statements(self, statements: list[str]):
+    def drop(self):
+        if self.url.startswith('hive'):
+            engine = create_engine(self.url)
+            with engine.connect() as conn:
+                conn.execute(text(f"DROP DATABASE IF EXISTS {self.db_name} CASCADE"))
+        else:
+            drop_database(self.url)
+
+    def execute_statements(self, statements: list[str], progress_callback: Optional[Callable[[float], None]] = None):
         with self.engine.connect() as conn:
-            for stmt in statements:
+            for idx, stmt in enumerate(statements):
+                if progress_callback:
+                    progress_callback(idx/len(statements))
                 conn.execute(text(stmt))
             conn.commit()
 
-    def insert(self, table_name: str, column_names: list[str], rows: list, batch_size: int = 500):
+    def insert(self, table_name: str, column_names: list[str],
+               rows: list, batch_size: int = 500, progress_callback: Optional[Callable[[float], None]] = None):
         columns_str = _format(column_names, '`')
 
         insert_statements = []
@@ -64,4 +74,4 @@ class TargetDB:
             insert_statements.append(f"INSERT INTO `{table_name}` {columns_str} VALUES {', '.join(row_strs)}")
             # Going with the above dumb approach as PyHive have issues with multi insert https://github.com/dropbox/PyHive/issues/250
 
-        self.execute_statements(insert_statements)
+        self.execute_statements(insert_statements, progress_callback)

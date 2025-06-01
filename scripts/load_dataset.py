@@ -31,8 +31,9 @@ def insert_data(dataset: DatasetDir):
             for table_name in table_names:
                 bar.text(f">> DB: {db_name} | Table: {table_name}")
                 df = dataset.read_table_data(db_name, table_name)
-                bar.text(f">> DB: {db_name} | Table: {table_name} | Rows: {len(df.values)}")
-                db.insert(table_name, list(df.columns), list(df.values))
+                total_rows = len(df.values)
+                progress_callback = lambda prg: bar.text(f">> DB: {db_name} | Table: {table_name} | Rows: {total_rows} | Progress : {prg:.2%}")
+                db.insert(table_name, list(df.columns), list(df.values), progress_callback=progress_callback)
 
 
 if __name__ == "__main__":

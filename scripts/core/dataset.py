@@ -17,7 +17,6 @@ class DatasetDir:
 
     base_path: str
     dbs_path: str
-    data_path: str
 
     def __init__(self, dialect: str, suffix:str = "") -> None:
 
@@ -30,7 +29,10 @@ class DatasetDir:
 
         self.dbs_path = path.join(self.base_path, "databases")
 
-    def _path_to_table_data_file(self, db_name: str, table_name) -> str:
+    def path_to_data_dir(self, db_name: str) -> str:
+        return path.join(self.dbs_path, db_name, 'data')
+
+    def _path_to_table_data_file(self, db_name: str, table_name: str) -> str:
         return path.join(self.dbs_path, db_name, 'data', f"{table_name}.csv")
 
     def _path_to_schema_file(self, db_name: str) -> str:
@@ -78,7 +80,7 @@ class DatasetDir:
         file_path = self._path_to_table_data_file(db_name, table_name)
         write_csv(file_path, data)
 
-    def write_queries(self, split: QuerySplit, queries: list):
+    def write_queries(self, split: QuerySplit, queries: list[list]) -> None:
         data = [["database", "question", "sql"]] + queries
         write_csv(self._path_to_queries_file(split), data)
 
