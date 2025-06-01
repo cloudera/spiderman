@@ -3,6 +3,7 @@
 ## Install dependencies
 Spiderman needs Python 3.10, and the following extra pip dependencies for Hive.
 ```
+yum install -y gcc-c++ cyrus-sasl-devel #Linux only
 pip install sasl thrift_sasl pyhive
 ```
 
@@ -14,5 +15,5 @@ python ./scripts/transpile_dataset.py hive
 
 ## Load
 ```
-python ./scripts/load_dataset.py 'hive://<username>:<password>@<address>:10000?auth=CUSTOM'
+python ./scripts/load_dataset.py 'hive://admin:admin@localhost:10000?auth=CUSTOM'
 ```
