@@ -23,38 +23,34 @@ def _format(values: list[str], punctuation: str) -> str:
     return f"({values_str})"
 
 
-# Wrapper around SQLAlchemy for interacting with external databases
 class TargetDB:
+    """Wrapper around SQLAlchemy for interacting with external databases"""
+
     url: str
     db_name: str
-    reset: bool
     preprocessor: Callable[[str], str]
 
-    def __init__(self, url: str, db_name: str, reset: bool = False):
+    def __init__(self, url: str, db_name: str):
         self.url = urlunparse(urlparse(url)._replace(path=db_name))
-        self.reset = reset
         self.db_name = db_name
 
     def __enter__(self):
+        self.engine = create_engine(self.url)
         if not database_exists(self.url):
             create_database(self.url)
-        elif self.reset:
-            self.drop()
-            create_database(self.url)
 
-        self.engine = create_engine(self.url)
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
         return
 
+    def reset(self):
+        """Reset the database by dropping and recreating it."""
+        self.drop()
+        create_database(self.url)
+
     def drop(self):
-        if self.url.startswith('hive'):
-            engine = create_engine(self.url)
-            with engine.connect() as conn:
-                conn.execute(text(f"DROP DATABASE IF EXISTS {self.db_name} CASCADE"))
-        else:
-            drop_database(self.url)
+        drop_database(self.url)
 
     def execute_statements(self, statements: list[str], progress_callback: Optional[Callable[[float], None]] = None):
         with self.engine.connect() as conn:
@@ -64,7 +60,7 @@ class TargetDB:
                 conn.execute(text(stmt))
             conn.commit()
 
-    def insert(self, table_name: str, column_names: list[str],
+    def insert(self, db_name: str, table_name: str, column_names: list[str],
                rows: list, batch_size: int = 500, progress_callback: Optional[Callable[[float], None]] = None):
         columns_str = _format(column_names, '`')
 

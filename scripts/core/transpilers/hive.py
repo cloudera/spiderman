@@ -16,11 +16,15 @@ class HiveTranspiler(Transpiler):
     def transpile(self, sql: str) -> str:
 
         if "CREATE TABLE" in sql:
-            sql = create_table_modifier(sql, pre_modifier)
+            sql = table_def_modifier(sql, pre_modifier)
             sql = super().transpile(sql)
             sql = sql.replace("\n   ", "\n    ")
-            sql = create_table_modifier(sql, post_modifier)
+            sql = table_def_modifier(sql, post_modifier)
+
+            sql = sql + "\nROW FORMAT DELIMITED\nFIELDS TERMINATED BY ','\nSTORED AS TEXTFILE"
+            sql = sql + "\nTBLPROPERTIES ('skip.header.line.count'='1')"
         else:
+            sql = sql.replace("= ''", "IS NULL")
             sql = super().transpile(sql)
 
         return sql
@@ -51,7 +55,7 @@ def post_modifier(line: str) -> str:
     return line
 
 
-def create_table_modifier(sql: str, modifier: Callable) -> str:
+def table_def_modifier(sql: str, modifier: Callable) -> str:
     sql_lines = sql.splitlines()
 
     col_def = "\n".join(sql_lines[1:-1])

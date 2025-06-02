@@ -4,8 +4,7 @@ import shutil
 from core.dataset import DatasetDir, QuerySplit
 from utils.args import parse_dialect
 from utils.iter import bar_iter
-from core.transpilers.factory import create_transpiler
-from core.transpilers import Transpiler
+from core.factories import create_transpiler
 
 def transpile_dbs(source_dataset: DatasetDir, target_dataset: DatasetDir):
   print("Transpiling databases...")
