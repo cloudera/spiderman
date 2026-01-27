@@ -21,12 +21,18 @@ The dataset comprises 157 databases. Each one comes with its respective schema, 
 ## Setup
 The following commands are for macOS.
 
-### Create Environment
+### Prerequisites
+Install `uv` if you haven't already:
 ```
-conda create --name spiderman-env python=3.10
-conda activate spiderman-env
-pip install -r requirements.txt
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
+
+### Install Dependencies
+```
+uv sync --python 3.10
+```
+
+That's it! `uv sync` automatically creates a virtual environment (`.venv`) if it doesn't exist, installs all dependencies from `pyproject.toml`, and manages everything for you.
 
 ### Start MySQL in Docker
 MySQL was chosen as the default dialect because it is one of the most widely used, can be set up quickly, and comes with various validation mechanisms.
@@ -35,21 +41,23 @@ docker run --name spiderman-mysql -e MYSQL_ROOT_PASSWORD=PeterParker -p 3306:330
 ```
 
 ## Scripts
+All scripts can be run using `uv run` which automatically manages the virtual environment:
+
 ### Load Dataset
 ```
-python scripts/load_dataset.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
+uv run scripts/load_dataset.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
 It creates schemas for all the databases and populates them with data. It accepts one argument—a SQLAlchemy 2.0 compatible URL to the target database. More details on the URL are available [here](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls).
 
 ### Validate Queries
 ```
-python scripts/validate_queries.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
+uv run scripts/validate_queries.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
 Once the dataset is loaded, you can run this script to execute the queries. It checks the successful completion of all the queries. Query results are not verified at this point.
 
 ### Scan Dataset
 ```
-python scripts/scan_dataset.py mysql
+uv run scripts/scan_dataset.py mysql
 ```
 This scripts go through the dataset and aggregate various details.
 
