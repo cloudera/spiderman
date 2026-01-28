@@ -4,11 +4,11 @@ Recreate dataset from [Spider 1.0](https://yale-lily.github.io/spider) zip into 
 ### Download Source Zip
 Download a copy of the original zip from HuggingFace into `./source/spider_v1.zip` directory
 ```
-python scripts/download_source.py
+uv run scripts/download_source.py
 ```
 ### Rebuild Dataset
 ```
-python scripts/rebuild_dataset.py
+uv run scripts/rebuild_dataset.py
 ```
 Rebuild will create/recreate `./dataset_mysql_rebuild` directory.
 

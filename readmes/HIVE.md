@@ -1,14 +1,20 @@
 # Spiderman with Apache Hive
 
 ## Install dependencies
-Spiderman needs Python 3.10, and the following extra pip dependencies for Hive.
+Spiderman needs Python 3.10, and the following extra dependencies for Hive.
 ```
 yum install -y gcc-c++ cyrus-sasl-devel #Linux only
-pip install sasl thrift_sasl pyhive
+uv pip install sasl thrift_sasl pyhive
+```
+
+## Transpile
+Following command can be used to create a copy of the dataset in hive dialect. Once complete the Hive dataset would be available in `./dataset_hive`.
+```
+uv run ./scripts/transpile_dataset.py hive
 ```
 
 ## Start Hive
-You can start Hive in docker using the following commands in spiderman repo root. Dataset would be mounted for use at the time of load.
+After transpiling you can start Hive in docker using the following commands in spiderman repo root. Dataset would be mounted for use at the time of load.
 ```
 docker run -d \
   -p 10000:10000 -p 10002:10002 \
@@ -19,13 +25,14 @@ docker run -d \
   apache/hive:4.0.0-beta-1
 ```
 
-## Transpile
-Following command can be used to create a copy of the dataset in hive dialect. Once complete the Hive dataset would be available in `./dataset_hive`.
-```
-python ./scripts/transpile_dataset.py hive
-```
-
 ## Load
 ```
-python ./scripts/load_dataset.py 'hive://admin:admin@localhost:10000?auth=CUSTOM'
+uv run ./scripts/load_dataset.py 'hive://admin:admin@localhost:10000?auth=CUSTOM'
 ```
+The script automatically detects the dialect from the url, and need not be passed separately. But if needed -d/--dialect argument is available.
+
+## Validate
+```
+uv run scripts/validate_queries.py 'hive://admin:admin@localhost:10000?auth=CUSTOM'
+```
+The script automatically detects the dialect from the url, and need not be passed separately. But if needed -d/--dialect argument is available.

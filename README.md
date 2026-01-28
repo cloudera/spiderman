@@ -43,11 +43,13 @@ docker run --name spiderman-mysql -e MYSQL_ROOT_PASSWORD=PeterParker -p 3306:330
 ## Scripts
 All scripts can be run using `uv run` which automatically manages the virtual environment:
 
+All the URL follows the SQLAlchemy database URL format - `dialect+driver://username:password@host:port/database_name`. More details on the URL are available [here](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls).
+
 ### Load Dataset
 ```
 uv run scripts/load_dataset.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
-It creates schemas for all the databases and populates them with data. It accepts one argument—a SQLAlchemy 2.0 compatible URL to the target database. More details on the URL are available [here](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls).
+It creates schemas for all the databases and populates them with data. It accepts one argument—a SQLAlchemy 2.0 compatible URL to the target database.
 
 ### Validate Queries
 ```
