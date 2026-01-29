@@ -47,3 +47,15 @@ The script automatically detects the dialect from the url, and need not be passe
 uv run scripts/validate_queries.py 'hive://admin:admin@localhost:10000?auth=CUSTOM'
 ```
 The script automatically detects the dialect from the url, and need not be passed separately. But if needed -d/--dialect argument is available.
+
+You might see the following failures. Its being actively worked on.
+
+#### Failures in train queries
+```json
+{'bike_1': 2, 'college_2': 5, 'company_1': 3, 'company_employee': 1, 'company_office': 24, 'county_public_safety': 10, 'csu_1': 2, 'customer_complaints': 2, 'customers_and_addresses': 2, 'dorm_1': 3, 'driving_school': 15, 'e_government': 30, 'e_learning': 35, 'hr_1': 14, 'inn_1': 11, 'insurance_and_eClaims': 21, 'insurance_fnol': 24, 'insurance_policies': 32, 'manufacturer': 1, 'movie_1': 2, 'phone_1': 1, 'pilot_record': 4, 'product_catalog': 18, 'products_for_hire': 8, 'products_gen_characteristics': 20, 'program_share': 31, 'small_bank_1': 2, 'store_product': 2, 'tracking_orders': 4, 'tracking_software_problems': 16, 'train_station': 14, 'twitter_1': 15}
+```
+
+#### Failures in test queries
+```json
+{'pets_1': 2, 'tvshow': 6, 'world_1': 51, 'wta_1': 13}
+```
