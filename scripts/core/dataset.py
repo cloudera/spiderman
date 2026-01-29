@@ -27,6 +27,9 @@ class DatasetDir:
         else:
             self.base_path = f"./dataset_{self.dialect}"
 
+        if not path.exists(self.base_path):
+            raise FileNotFoundError(f"Dataset directory {self.base_path} not found")
+
         self.dbs_path = path.join(self.base_path, "databases")
 
     def path_to_data_dir(self, db_name: str) -> str:
