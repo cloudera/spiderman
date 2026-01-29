@@ -21,9 +21,20 @@ docker run -d \
   -v spiderman_hive4_warehouse:/opt/hive/data/warehouse \
   -v $PWD/dataset_hive:/mnt/dataset \
   --env SERVICE_NAME=hiveserver2 \
+  --env HIVE_METASTORE_WAREHOUSE_DIR=/opt/hive/data/warehouse \
+  --env HADOOP_HEAPSIZE=4096 \
+  --env HIVE_HEAPSIZE=4096 \
+  --memory=8g \
+  --memory-swap=8g \
+  --cpus=4 \
+  --shm-size=2g \
+  --ulimit nofile=65536:65536 \
+  --ulimit nproc=32768:32768 \
   --name hive4 \
   apache/hive:4.0.0-beta-1
 ```
+
+Wait few seconds for Hive to start. You can run the scripts once started.
 
 ## Load
 ```shell
