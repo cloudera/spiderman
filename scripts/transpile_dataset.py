@@ -1,8 +1,9 @@
 """"""
+from argparse import ArgumentParser
 import shutil
 
 from core.dataset import DatasetDir, QuerySplit
-from utils.args import parse_dialect
+from utils.args import dialect_parser
 from utils.iter import bar_iter
 from core.factories import create_transpiler
 
@@ -39,7 +40,11 @@ def transpile_queries(source_dataset: DatasetDir, target_dataset: DatasetDir):
 
 
 if __name__ == "__main__":
-  args = parse_dialect("Transpile MySQL schemas to another dialect")
+  parser = ArgumentParser(
+      description="SpiderMan - Transpile MySQL schemas to another dialect",
+      parents=[dialect_parser]
+  )
+  args = parser.parse_args()
 
   source_dataset = DatasetDir('mysql')
   target_dataset = DatasetDir(args.dialect)

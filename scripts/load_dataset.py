@@ -1,12 +1,13 @@
 """Load schema and data into a target database"""
 
+from argparse import ArgumentParser
 from core import paths
 from core.dataset import DatasetDir
 from core.factories import create_target_db
 
 from utils.iter import bar_iter
 from utils.filesystem import read_json_dict
-from utils.args import parse_url_dialect
+from utils.args import url_dialect_parser
 
 def create_databases(dataset: DatasetDir):
     """Creating databases"""
@@ -39,7 +40,12 @@ def insert_data(dataset: DatasetDir):
 
 
 if __name__ == "__main__":
-    args = parse_url_dialect("Load dataset into a target database")
+    parser = ArgumentParser(
+        description="SpiderMan - Load dataset into a target database",
+        parents=[url_dialect_parser]
+    )
+    args = parser.parse_args()
+
     dataset = DatasetDir(args.dialect)
 
     print(f"Loading dataset from {dataset.base_path} directory.")

@@ -3,11 +3,12 @@ Try running train & test queries on the target database,
 and validate they can be successfully executed
 """
 
+from argparse import ArgumentParser
 import pandas as pd
 
 from core.dataset import DatasetDir, QuerySplit
 from utils.iter import bar_iter
-from utils.args import parse_url_dialect
+from utils.args import url_dialect_parser
 from core.factories import create_target_db
 
 
@@ -39,7 +40,12 @@ def execute_queries(queries_df: pd.DataFrame):
 
 
 if __name__ == "__main__":
-    args = parse_url_dialect("Validate successful execution of all queries on the target database")
+    parser = ArgumentParser(
+        description="SpiderMan - Validate successful execution of all queries on the target database",
+        parents=[url_dialect_parser]
+    )
+    args = parser.parse_args()
+
     dataset = DatasetDir(args.dialect)
 
     print("Executing train queries...")

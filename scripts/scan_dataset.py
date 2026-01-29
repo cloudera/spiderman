@@ -1,8 +1,9 @@
 """Scan dataset_mysql directory"""
 
+from argparse import ArgumentParser
 from core.dataset import DatasetDir, QuerySplit
 from utils.print import print_bar
-from utils.args import parse_dialect
+from utils.args import dialect_parser
 
 
 def _get_counts(dataset: DatasetDir, split: QuerySplit) -> tuple[int, int, list[str]]:
@@ -42,8 +43,13 @@ def print_stats(dataset: DatasetDir) -> None:
 
 
 if __name__ == "__main__":
-    args = parse_dialect("Scan dataset directory of a specific dialect")
+    parser = ArgumentParser(
+        description="SpiderMan - Scan dataset directory of a specific dialect",
+        parents=[dialect_parser]
+    )
+    args = parser.parse_args()
 
     dataset_dir = DatasetDir(args.dialect)
+
     print(f"Scanning {dataset_dir.base_path} directory")
     print_stats(dataset_dir)
