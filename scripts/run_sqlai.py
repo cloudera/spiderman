@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 from pandas import Series
 import requests
 from core.dataset import DatasetDir, QuerySplit
-from utils.args import dialect_parser
+from utils.args import dialect_parser, test_split_parser
 
 
 class SQLAIRunner:
@@ -67,19 +67,13 @@ class SQLAIRunner:
 if __name__ == "__main__":
     parser = ArgumentParser(
         description="SpiderMan - Run SQL AI tasks with queries from the dataset of a specific dialect and split",
-        parents=[dialect_parser]
+        parents=[dialect_parser, test_split_parser]
     )
     parser.add_argument("base_url", help="Base URL at which SQL AI service is running.")
     parser.add_argument("model_details", help=(
         "Short description of the model used. Include model name, version, parameters size, "
         "and any other relevant details. Useful at the time of report generation."
     ))
-    parser.add_argument(
-        "-s", "--split",
-        help="Query split to use. Defaults to test.",
-        default=QuerySplit.TEST.value,
-        choices=[split.value for split in QuerySplit]
-    )
     parser.add_argument(
         "-l", "--limit",
         help="Limit the number of queries to run. Defaults to all queries.",

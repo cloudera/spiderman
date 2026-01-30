@@ -2,6 +2,8 @@ from urllib.parse import urlparse
 from argparse import Action, ArgumentParser, Namespace
 from typing import Optional
 
+from scripts.core.dataset import QuerySplit
+
 
 """
 Get command line arguments url and dialect.
@@ -48,4 +50,21 @@ dialect_parser = ArgumentParser(add_help=False)
 dialect_parser.add_argument(
     "dialect",
     help="Target dialect."
+)
+
+"""
+Get command line argument split.
+
+Example:
+```shell
+uv run scripts/script_name.py mysql -s test
+```
+The split is one of the following: train, test. Defaults to test.
+"""
+test_split_parser = ArgumentParser(add_help=False)
+test_split_parser.add_argument(
+    "-s", "--split",
+    help="Query split to use. Defaults to test.",
+    default=QuerySplit.TEST.value,
+    choices=[split.value for split in QuerySplit]
 )
