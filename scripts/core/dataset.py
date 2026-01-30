@@ -92,6 +92,11 @@ class DatasetDir:
         data = [["database", "question", "sql"]] + queries
         write_csv(self._path_to_queries_file(split), data)
 
+    def read_sql_results(self, split: QuerySplit) -> dict:
+        file_path = self._path_to_sql_results_file(split)
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+
     def write_sql_results(self, split: QuerySplit, source_queries: pd.DataFrame, metadata: dict, data: list[str]) -> None:
         file_path = self._path_to_sql_results_file(split)
 

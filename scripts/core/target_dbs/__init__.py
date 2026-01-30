@@ -52,13 +52,39 @@ class TargetDB:
     def drop(self):
         drop_database(self.url)
 
-    def execute_statements(self, statements: list[str], progress_callback: Optional[Callable[[float], None]] = None):
+    def execute_statements(self, statements: list[str], progress_callback: Optional[Callable[[float], None]] = None) -> list:
+        """
+        Execute SQL statements and return results.
+
+        Args:
+            statements: List of SQL statements to execute
+            progress_callback: Optional callback function for progress tracking
+
+        Returns:
+            List where each element is either:
+            - [columns] + rows for SELECT statements
+            - None for non-SELECT statements (INSERT, CREATE, etc.)
+        """
+        results = []
+
         with self.engine.connect() as conn:
             for idx, stmt in enumerate(statements):
                 if progress_callback:
                     progress_callback(idx/len(statements))
-                conn.execute(text(stmt))
+
+                result = conn.execute(text(stmt))
+
+                # Check if this is a SELECT query (has rows to fetch)
+                if result.returns_rows:
+                    columns = list(result.keys())
+                    rows = [list(row) for row in result.fetchall()]
+                    results.append([columns] + rows)
+                else:
+                    results.append(None)
+
             conn.commit()
+
+        return results
 
     def insert(self, db_name: str, table_name: str, column_names: list[str],
                rows: list, batch_size: int = 500, progress_callback: Optional[Callable[[float], None]] = None):
