@@ -22,7 +22,7 @@ add_data = data_overrides["add"]
 # Detail of transformations to be made on the query
 query_overrides = read_json_dict(paths.QUERY_OVERRIDES)
 full_replace = query_overrides["full_replace"]
-skipped_questions = query_overrides["skip"]
+skipped_ids = query_overrides["skip"]
 
 
 def _filter_data(table_data: list[list], delete_filters: dict) -> list[list]:
@@ -115,19 +115,20 @@ def build_queries(dataset: DatasetDir, queries: list, split: QuerySplit) -> None
         question = query["question"]
         sql = query["query"]
 
+        # Generate query id based on database and question
+        hash_input = f"{db_name},{question}"
+        id = hashlib.md5(hash_input.encode()).hexdigest()[:8]
+
         # Use query_overrides
-        if question in skipped_questions.get(db_name, []):
+        if id in skipped_ids.get(db_name, []):
             continue
 
-        sql = full_replace.get(db_name, {}).get(question, sql)
+        sql = full_replace.get(db_name, {}).get(id, sql)
 
         # Normalize SQL
         valid_table_names: list[str] = ordered_tables[db_name]
         sql = mysql.normalize_sql(sql, valid_table_names)
 
-        # Generate a unique ID for the query
-        hash_input = f"{db_name},{question}"
-        id = hashlib.md5(hash_input.encode()).hexdigest()[:8]
         if id in unique_ids:
             raise ValueError(f"Duplicate query ID: {id} in database {db_name}")
         unique_ids.add(id)
