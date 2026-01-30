@@ -99,6 +99,9 @@
             "Find the first name of students who are living in the dorm that has most number of amenities.",
             "What are the first names of all students who live in the dorm with the most amenities?"
         ],
+        "hr_1": [
+            "display the department name and number of employees in each of the department."
+        ],
         "tracking_grants_for_research": [
             "List from which date and to which date these staff work: project staff of the project which hires the most staffs"
         ]

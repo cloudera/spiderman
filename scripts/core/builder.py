@@ -126,10 +126,10 @@ def build_queries(dataset: DatasetDir, queries: list, split: QuerySplit) -> None
         sql = mysql.normalize_sql(sql, valid_table_names)
 
         # Generate a unique ID for the query
-        hash_input = f"{db_name},{question},{sql}"
+        hash_input = f"{db_name},{question}"
         id = hashlib.md5(hash_input.encode()).hexdigest()[:8]
         if id in unique_ids:
-            raise ValueError(f"Duplicate query ID: {id}")
+            raise ValueError(f"Duplicate query ID: {id} in database {db_name}")
         unique_ids.add(id)
 
         db_queries[db_name].append([id, db_name, question, sql])
