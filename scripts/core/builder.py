@@ -1,3 +1,5 @@
+import hashlib
+from collections import defaultdict
 from typing import Dict
 
 from core.dataset import DatasetDir, QuerySplit
@@ -103,28 +105,36 @@ def _dedupe_queries(queries: list) -> list:
     return deduped_queries
 
 def build_queries(dataset: DatasetDir, queries: list, split: QuerySplit) -> None:
-    db_queries: dict[str, list[list]] = {}
+    db_queries: dict[str, list[list]] = defaultdict(list)
 
     queries = _dedupe_queries(queries)
+    unique_ids = set[str]()
 
     for query in queries:
         db_name = query["db_id"]
         question = query["question"]
         sql = query["query"]
 
+        # Use query_overrides
         if question in skipped_questions.get(db_name, []):
             continue
 
         sql = full_replace.get(db_name, {}).get(question, sql)
 
+        # Normalize SQL
         valid_table_names: list[str] = ordered_tables[db_name]
         sql = mysql.normalize_sql(sql, valid_table_names)
 
-        if db_name not in db_queries:
-            db_queries[db_name] = []
+        # Generate a unique ID for the query
+        hash_input = f"{db_name},{question},{sql}"
+        id = hashlib.md5(hash_input.encode()).hexdigest()[:8]
+        if id in unique_ids:
+            raise ValueError(f"Duplicate query ID: {id}")
+        unique_ids.add(id)
 
-        db_queries[db_name].append([db_name, question, sql])
+        db_queries[db_name].append([id, db_name, question, sql])
 
+    # Merge queries by database into a single list
     db_names = dataset.get_db_names()
     queries = []
     for db_name in db_names:

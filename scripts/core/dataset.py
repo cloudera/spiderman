@@ -29,9 +29,6 @@ class DatasetDir:
         else:
             self.base_path = f"./dataset_{self.dialect}"
 
-        if not path.exists(self.base_path):
-            raise FileNotFoundError(f"Dataset directory {self.base_path} not found")
-
         self.dbs_path = path.join(self.base_path, "databases")
 
     def path_to_data_dir(self, db_name: str) -> str:
@@ -89,7 +86,7 @@ class DatasetDir:
         write_csv(file_path, data)
 
     def write_queries(self, split: QuerySplit, queries: list[list]) -> None:
-        data = [["database", "question", "sql"]] + queries
+        data = [["id", "database", "question", "sql"]] + queries
         write_csv(self._path_to_queries_file(split), data)
 
     def read_sql_results(self, split: QuerySplit) -> dict:
