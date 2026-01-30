@@ -11,6 +11,7 @@ def bar_iter(items: list[I], label: str = ""):
 
     with alive_bar(len(items)) as bar:
         for item in items:
-            bar.text(f">> {label}: {item}")
+            if label:
+                bar.text(f">> {label}: {item}")
             yield item, bar
             bar()

@@ -1,6 +1,5 @@
 from argparse import ArgumentParser
 from datetime import datetime
-import json
 import os
 from typing import NamedTuple
 from urllib.parse import urljoin
@@ -8,6 +7,7 @@ from urllib.parse import urljoin
 from pandas import Series
 import requests
 from core.dataset import DatasetDir, QuerySplit
+from scripts.utils.iter import bar_iter
 from utils.args import dialect_parser, test_split_parser
 
 
@@ -47,11 +47,10 @@ class SQLAIRunner:
             queries_df = queries_df.head(limit)
 
         sql_data: list[str] = []
-        for row in queries_df.itertuples(index=False):
+        queries = list(queries_df.itertuples(index=False))
+        for row, _bar in bar_iter(queries):
             sql = self.run_query(row)
             sql_data.append(sql)
-            print(".", end="", flush=True)
-        print("Done")
 
         configs = self.post_request("/api/v1/get_config", {})
 
