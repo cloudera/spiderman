@@ -63,6 +63,12 @@ uv run scripts/scan_dataset.py mysql
 ```
 This scripts go through the dataset and aggregate various details.
 
+### Run SQL AI Tasks
+```shell
+uv run scripts/run_sqlai.py mysql http://127.0.0.1:8000 "<Model details>"
+```
+This script runs the SQL AI tasks with the queries from the dataset of a specific dialect and split. Try running it with -h for the full list of arguments.
+
 # Citation
 
 If you find this to be useful, please consider citing:

@@ -1,6 +1,7 @@
-# Spiderman
+# Spiderman Dataset
 dataset_*
 !dataset_mysql/
+dataset_*/*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
