@@ -123,15 +123,16 @@ def build_queries(dataset: DatasetDir, queries: list, split: QuerySplit) -> None
         if id in skipped_ids:
             continue
 
+        if id in unique_ids:
+            print(f"Duplicate query ID: {id} in database {db_name}")
+            continue
+        unique_ids.add(id)
+
         sql = full_replace.get(db_name, {}).get(id, sql)
 
         # Normalize SQL
         valid_table_names: list[str] = ordered_tables[db_name]
         sql = mysql.normalize_sql(sql, valid_table_names)
-
-        if id in unique_ids:
-            raise ValueError(f"Duplicate query ID: {id} in database {db_name}")
-        unique_ids.add(id)
 
         db_queries[db_name].append([id, db_name, question, sql])
 
