@@ -1,6 +1,6 @@
 """
 Try running train & test queries on the target database,
-and validate they can be successfully executed
+and ensure they can be successfully executed
 """
 
 from argparse import ArgumentParser
@@ -41,7 +41,7 @@ def execute_queries(queries_df: pd.DataFrame):
 
 if __name__ == "__main__":
     parser = ArgumentParser(
-        description="SpiderMan - Validate successful execution of all queries on the target database",
+        description="SpiderMan - Execute all queries on the target database",
         parents=[url_dialect_parser]
     )
     args = parser.parse_args()
@@ -54,4 +54,4 @@ if __name__ == "__main__":
     print("Executing test queries...")
     execute_queries(dataset.read_queries(QuerySplit.TEST))
 
-    print("Validation successful.")
+    print("Execution successful.")

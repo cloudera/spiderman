@@ -51,9 +51,9 @@ uv run scripts/load_dataset.py 'mysql+mysqlconnector://root:PeterParker@localhos
 ```
 It creates schemas for all the databases and populates them with data. It accepts one argument—a SQLAlchemy 2.0 compatible URL to the target database.
 
-### Validate Queries
+### Execute Queries
 ```shell
-uv run scripts/validate_queries.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
+uv run scripts/execute_queries.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
 Once the dataset is loaded, you can run this script to execute the queries. It checks the successful completion of all the queries. Query results are not verified at this point.
 

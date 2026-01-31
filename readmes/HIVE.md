@@ -36,15 +36,15 @@ docker run -d \
 
 Wait few seconds for Hive to start. You can run the scripts once started.
 
-## Load
+## Load Dataset
 ```shell
 uv run ./scripts/load_dataset.py 'hive://admin:admin@localhost:10000?auth=CUSTOM'
 ```
 The script automatically detects the dialect from the url, and need not be passed separately. But if needed -d/--dialect argument is available.
 
-## Validate
+## Execute Queries
 ```shell
-uv run scripts/validate_queries.py 'hive://admin:admin@localhost:10000?auth=CUSTOM'
+uv run scripts/execute_queries.py 'hive://admin:admin@localhost:10000?auth=CUSTOM'
 ```
 The script automatically detects the dialect from the url, and need not be passed separately. But if needed -d/--dialect argument is available.
 
