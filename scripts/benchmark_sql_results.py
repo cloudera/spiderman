@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 from collections import defaultdict
 from datetime import datetime
 from typing import Optional, Any
+import csv
 import re
 import sqlglot
 import pandas as pd
@@ -277,23 +278,29 @@ class SQLResultBenchmark:
         """
         Run comprehensive benchmark and generate markdown report.
         """
-        source_queries = self.dataset.read_queries(self.split)
         sql_results = self.dataset.read_sql_results(self.split)
-
         total_queries = sql_results['total_queries']
         runs = sql_results['runs']
 
+        source_queries = self.dataset.read_queries(self.split)
+        source_queries = source_queries.head(total_queries) # Limit to queries used for the run
+
+        # Validate source queries haven't changed
+        source_sha = self.dataset.df_to_sha(source_queries)
+        if source_sha != sql_results.get('source_sha'):
+            raise ValueError(
+                "Source queries have changed since SQL results were generated. "
+                "Please regenerate SQL results or restore the original queries."
+            )
+
         print(f"Benchmarking {len(runs)} runs against {total_queries} queries...")
 
-        # Batch gold queries by database
+        # Batch gold queries by database and separate results
         print("Executing gold standard queries...")
         gold_queries_by_db = defaultdict(list)
 
-        for idx in range(total_queries):
-            row = source_queries.iloc[idx]
-            db_name = row['database']
-            gold_sql = row['sql']
-            gold_queries_by_db[db_name].append((idx, gold_sql))
+        for idx, row in source_queries.iterrows():
+            gold_queries_by_db[row['database']].append((idx, row['sql']))
 
         # Execute all gold queries in batches
         gold_execution_results = self._execute_queries_batch(gold_queries_by_db)
@@ -302,10 +309,9 @@ class SQLResultBenchmark:
         gold_results = {}
         gold_errors = {}
 
-        for idx in range(total_queries):
+        for idx, row in source_queries.iterrows():
             result_df, error_cat, error_msg = gold_execution_results[idx]
             if result_df is not None:
-                row = source_queries.iloc[idx]
                 gold_results[idx] = (result_df, self._has_order_by(row['sql']))
             else:
                 gold_errors[idx] = (error_cat, error_msg)
@@ -314,6 +320,7 @@ class SQLResultBenchmark:
 
         # Benchmark each run
         run_metrics = []
+        all_mismatches = []  # Collect all mismatches for CSV output
 
         for run_idx, run in enumerate(runs):
             print(f"\nBenchmarking run {run_idx + 1}/{len(runs)}: {run['metadata']['service_name']} - {run['metadata']['model_details']}")
@@ -335,9 +342,9 @@ class SQLResultBenchmark:
             # Batch predicted queries by database
             pred_queries_by_db = defaultdict(list)
 
-            for idx in range(total_queries):
+            # Build batch query list while tracking not_generated errors
+            for idx, row in source_queries.iterrows():
                 if idx >= len(run['data']):
-                    # Query not generated
                     metrics['errors']['not_generated'] += 1
                     continue
 
@@ -346,22 +353,19 @@ class SQLResultBenchmark:
                     continue
 
                 pred_sql = run['data'][idx]
-                row = source_queries.iloc[idx]
-                db_name = row['database']
-                pred_queries_by_db[db_name].append((idx, pred_sql))
+                pred_queries_by_db[row['database']].append((idx, pred_sql))
 
             # Execute all predicted queries in batches
             pred_execution_results = self._execute_queries_batch(pred_queries_by_db)
 
             # Process results
-            for idx in range(total_queries):
+            for idx, row in source_queries.iterrows():
+                # Skip if query not generated or gold failed
                 if idx >= len(run['data']) or idx in gold_errors:
                     continue
 
                 pred_sql = run['data'][idx]
-                row = source_queries.iloc[idx]
                 gold_df, has_order = gold_results[idx]
-
                 pred_df, error_cat, error_msg = pred_execution_results[idx]
 
                 if pred_df is not None:
@@ -381,10 +385,32 @@ class SQLResultBenchmark:
                         metrics['exact_match'] += 1
                     if comparison['normalized_match']:
                         metrics['normalized_match'] += 1
+
+                    # Track mismatches for CSV
+                    if not comparison['data_match']:
+                        mismatch_reason = []
+                        if len(gold_df.columns) != len(pred_df.columns):
+                            mismatch_reason.append(f"Column count mismatch: gold={len(gold_df.columns)}, pred={len(pred_df.columns)}")
+                        elif list(gold_df.columns) != list(pred_df.columns):
+                            mismatch_reason.append("Column names differ")
+                        if len(gold_df) != len(pred_df):
+                            mismatch_reason.append(f"Row count mismatch: gold={len(gold_df)}, pred={len(pred_df)}")
+                        if not mismatch_reason:
+                            mismatch_reason.append("Data values differ")
+
+                        all_mismatches.append({
+                            'query_id': row['id'],
+                            'database': row['database'],
+                            'question': row['question'],
+                            'gold_query': row['sql'],
+                            'generated_query': pred_sql.replace('\n', ' '),
+                            'failure_reason': '; '.join(mismatch_reason)
+                        })
                 else:
-                    # Query failed
+                    # Query failed - track error metrics
                     metrics['errors'][error_cat] += 1
 
+                    # Store error examples (limited to 3 per category)
                     if len(metrics['error_examples'][error_cat]) < 3:
                         metrics['error_examples'][error_cat].append({
                             'question': row['question'],
@@ -393,29 +419,37 @@ class SQLResultBenchmark:
                             'error': error_msg[:200]  # Truncate long errors
                         })
 
-                    # Track parse vs runtime
-                    if error_cat == 'syntax_error':
-                        pass  # Parse failed
-                    else:
+                    # Track parse vs runtime (syntax errors = parse failures, others = runtime failures)
+                    if error_cat != 'syntax_error':
                         metrics['parse_success'] += 1  # Parsed but runtime failed
+
+                    # Track errors for CSV
+                    all_mismatches.append({
+                        'query_id': row['id'],
+                        'database': row['database'],
+                        'question': row['question'],
+                        'gold_query': row['sql'],
+                        'generated_query': pred_sql.replace('\n', ' '),
+                        'failure_reason': f"{error_cat}: {error_msg[:200]}"
+                    })
 
             run_metrics.append(metrics)
 
-        # Generate markdown report
-        self._generate_report(run_metrics, total_queries)
+        # Generate markdown report and mismatches CSV
+        self._generate_report(run_metrics, total_queries, all_mismatches)
 
-    def _generate_report(self, run_metrics: list[dict], total_queries: int):
+    def _generate_report(self, run_metrics: list[dict], total_queries: int, all_mismatches: list[dict]):
         """
-        Generate a comprehensive markdown report.
+        Generate a comprehensive markdown report and mismatches CSV.
 
         Args:
             run_metrics: List of metrics for each run
             total_queries: Total number of queries benchmarked
+            all_mismatches: List of all mismatch details
 
-        Generates a markdown report in the dataset directory.
+        Generates a markdown report and CSV file in the dataset directory.
         """
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        report_path = f"{self.dataset.base_path}/benchmark_report_{timestamp}.md"
 
         lines = []
         lines.append("# SQL Generation Benchmark Report\n")
@@ -494,10 +528,26 @@ class SQLResultBenchmark:
             lines.append("\n---\n\n")
 
         # Write report
+        report_path = f"{self.dataset.base_path}/benchmark_report_{timestamp}.md"
         with open(report_path, 'w', encoding='utf-8') as f:
             f.writelines(lines)
 
         print(f"\nBenchmark report saved to: {report_path}")
+
+        # Write mismatches CSV
+        if all_mismatches:
+            csv_path = f"{self.dataset.base_path}/benchmark_mismatches_{timestamp}.csv"
+
+            with open(csv_path, 'w', encoding='utf-8', newline='') as f:
+                fieldnames = ['query_id', 'database', 'question',
+                             'gold_query', 'generated_query', 'failure_reason']
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(all_mismatches)
+
+            print(f"Mismatches CSV saved to: {csv_path}")
+        else:
+            print("No mismatches found - all queries matched perfectly!")
 
 
 if __name__ == "__main__":
