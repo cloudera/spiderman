@@ -3,6 +3,7 @@ import json
 import os
 from os import path
 from enum import Enum
+from typing import Any
 import pandas as pd
 
 from utils.filesystem import write_str, read_str, write_csv, delete_dir, delete_file
@@ -144,7 +145,14 @@ class DatasetDir:
         # Write back to file
         with open(file_path, 'w', encoding='utf-8') as f:
             json.dump(sql_results, f, indent=4, ensure_ascii=False)
-            print(f"Wrote SQL results to {file_path}")
+
+        print(f"Wrote SQL results to {file_path}")
+
+    def write_json(self, file_path: str, data: Any) -> str:
+        file_path = path.join(self.base_path, file_path)
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+        return file_path
 
     def clean(self):
         print(f"Cleaning dataset {self.base_path}")

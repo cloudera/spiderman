@@ -20,6 +20,7 @@ dependencies = [
     "idna==3.6",
     "mysql-connector-python==9.0.0",
     "numpy==2.0.1",
+    "openai==2.2.0",
     "packaging==24.0",
     "pandas==2.2.2",
     "pydantic==2.6.4",
@@ -33,7 +34,7 @@ dependencies = [
     "sqlalchemy-utils==0.41.2",
     "sqlglot==23.3.0",
     "tqdm==4.66.2",
-    "typing-extensions==4.10.0",
+    "typing-extensions==4.12.2",
     "tzdata==2024.1",
     "urllib3==2.2.1",
 ]
