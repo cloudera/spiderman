@@ -94,11 +94,14 @@ class DatasetDir:
         with open(file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
 
+    def df_to_sha(self, df: pd.DataFrame) -> str:
+        return hashlib.sha256(df.to_csv(index=False).encode()).hexdigest()
+
     def write_sql_results(self, split: QuerySplit, source_queries: pd.DataFrame, metadata: dict, data: list[str]) -> None:
         file_path = self._path_to_sql_results_file(split)
 
         # Hash the source queries to detect changes across runs
-        source_sha = hashlib.sha256(source_queries.to_csv(index=False).encode()).hexdigest()
+        source_sha = self.df_to_sha(source_queries)
 
         # Increment the data version when the structure of the data changes
         data_version = 1

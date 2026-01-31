@@ -38,6 +38,9 @@ class SQLAIRunner:
         }
 
         response = self.post_request("/api/v1/ai/assistant", payload)
+        if 'error' in response:
+            raise ValueError(response.get('error', 'Post request on /api/v1/ai/assistant returned unknown error'))
+
         return response['response']['sql']
 
     def run(self, dataset_dir: DatasetDir, split: QuerySplit, limit: int = None) -> None:
