@@ -79,7 +79,7 @@ This script benchmarks the SQL results for a specific dialect and split. Try run
 ```shell
 uv run scripts/validate_queries.py mysql
 ```
-This script validates the queries using an LLM and writes the results to a JSON file in the respective dataset directory. Environment variable `AZURE_OPENAI_ENDPOINT` and `AZURE_OPENAI_API_KEY` must be set, and `gpt-5.2-chat` model must be available.
+This script validates the queries using an LLM and writes the results to a JSON file in the respective dataset directory. Environment variable `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, and `AZURE_OPENAI_MODEL` must be set.
 
 # Citation
 

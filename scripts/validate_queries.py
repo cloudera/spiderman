@@ -65,7 +65,7 @@ If the SQL query is INVALID, respond with a JSON object in this format:
 }}"""
 
         response = self.client.chat.completions.create(
-            model="gpt-5.2-chat",
+            model=os.environ.get("AZURE_OPENAI_MODEL"),
             messages=[
                 {"role": "system", "content": "You are a SQL validation expert. Be precise and thorough. Respond only with valid JSON."},
                 {"role": "user", "content": prompt}

@@ -4,6 +4,8 @@ dataset_*
 dataset_*/*.json
 dataset_*/*.md
 
+notes.md
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
