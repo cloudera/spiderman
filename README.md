@@ -81,6 +81,15 @@ uv run scripts/validate_queries.py mysql
 ```
 This script validates the queries using an LLM and writes the results to a JSON file in the respective dataset directory. Environment variable `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, and `AZURE_OPENAI_MODEL` must be set.
 
+## Testing
+
+The project includes comprehensive tests for the benchmarking functionality. All tests are written using pytest.
+
+### Run All Tests
+```shell
+uv run pytest tests/ -v
+```
+
 # Citation
 
 If you find this to be useful, please consider citing:
