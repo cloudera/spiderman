@@ -14,9 +14,9 @@ The dataset comprises 157 databases. Each one comes with its respective schema, 
 
 ||Queries|Tables|Databases|
 |-|-|-|-|
-|Train|6726|699|137|
-|Test|1034|80|20|
-|Total|7760|779|157|
+|Train|4663|699|137|
+|Test|682|80|20|
+|Total|5345|779|157|
 
 ## Setup
 The following commands are for macOS.
