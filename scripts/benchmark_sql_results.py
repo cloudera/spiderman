@@ -1,8 +1,10 @@
 from argparse import ArgumentParser
 from collections import defaultdict
 from datetime import datetime
-from typing import Optional, Any
+from typing import Any, Optional
 import csv
+import itertools
+import json
 import re
 import sqlglot
 import pandas as pd
@@ -118,6 +120,46 @@ class SQLResultBenchmark:
         """
         return frozenset(tuple(self._normalize_value(v) for v in row) for row in df.values)
 
+    def _find_best_column_permutation(self, gold_df: pd.DataFrame, pred_df: pd.DataFrame) -> Optional[list]:
+        """
+        Find the best permutation of predicted columns that matches gold columns.
+        Uses itertools.permutations for small column counts, heuristic for larger.
+
+        Args:
+            gold_df: Gold standard DataFrame
+            pred_df: Predicted DataFrame
+
+        Returns:
+            List of column indices representing the best permutation, or None if no match
+        """
+        import itertools
+
+        if len(pred_df.columns) > 6:
+            # Too many permutations, use heuristic: assume same order
+            return list(range(len(pred_df.columns)))
+
+        # Try all permutations and find the best match
+        gold_set = self._result_to_frozenset(gold_df)
+        best_match_size = 0
+        best_perm = None
+
+        for perm in itertools.permutations(range(len(pred_df.columns))):
+            # Reorder pred_df columns according to this permutation
+            reordered = pred_df.iloc[:, list(perm)]
+            pred_set = self._result_to_frozenset(reordered)
+
+            # Count matches
+            match_size = len(gold_set & pred_set)
+            if match_size > best_match_size:
+                best_match_size = match_size
+                best_perm = list(perm)
+
+                # Early exit if perfect match
+                if match_size == len(gold_set) and len(gold_set) == len(pred_set):
+                    break
+
+        return best_perm
+
     def _compare_results(self, gold_df: pd.DataFrame, pred_df: pd.DataFrame, has_order: bool) -> dict:
         """
         Compare two query results and compute metrics.
@@ -166,46 +208,64 @@ class SQLResultBenchmark:
             pred_renamed.columns = generic_columns
 
         if has_order and same_column_count:
-            # With ORDER BY: compare row by row with tolerance
+            # With ORDER BY: compare row by row, but find best column permutation first
             if len(gold_df) != len(pred_df):
                 metrics['exec_f1'] = 0.0
             else:
-                # Data match (ignoring column names)
-                data_matches = sum(
-                    all(self._compare_values(gold_renamed.iloc[i, j], pred_renamed.iloc[i, j])
-                        for j in range(len(gold_renamed.columns)))
-                    for i in range(len(gold_renamed))
-                )
-                metrics['data_match'] = (data_matches == len(gold_renamed))
-                metrics['exec_f1'] = data_matches / len(gold_renamed) if len(gold_renamed) > 0 else 1.0
+                # Find best column permutation
+                best_perm = self._find_best_column_permutation(gold_df, pred_df)
+
+                if best_perm:
+                    # Reorder predicted columns to match gold
+                    pred_reordered = pred_df.iloc[:, best_perm].copy()
+
+                    # Data match (ignoring column names but respecting row order)
+                    data_matches = sum(
+                        all(self._compare_values(gold_df.iloc[i, j], pred_reordered.iloc[i, j])
+                            for j in range(len(gold_df.columns)))
+                        for i in range(len(gold_df))
+                    )
+                    metrics['data_match'] = (data_matches == len(gold_df))
+                    metrics['exec_f1'] = data_matches / len(gold_df) if len(gold_df) > 0 else 1.0
+
+                    # Exec match only if columns also match
+                    if columns_match:
+                        metrics['exec_match'] = metrics['data_match']
+                else:
+                    metrics['exec_f1'] = 0.0
+        elif same_column_count:
+            # Without ORDER BY: treat as sets, trying column permutations
+            # Find best column order permutation for pred to match gold
+            best_perm = self._find_best_column_permutation(gold_df, pred_df)
+
+            if best_perm:
+                # Reorder predicted columns to match gold
+                pred_reordered = pred_df.iloc[:, best_perm].copy()
+                pred_reordered.columns = gold_df.columns
+
+                # Now compare as sets
+                gold_set = self._result_to_frozenset(gold_df)
+                pred_set = self._result_to_frozenset(pred_reordered)
+
+                metrics['data_match'] = (gold_set == pred_set)
+
+                # Calculate F1
+                if len(gold_set) == 0 and len(pred_set) == 0:
+                    metrics['exec_f1'] = 1.0
+                elif len(gold_set) == 0 or len(pred_set) == 0:
+                    metrics['exec_f1'] = 0.0
+                else:
+                    intersection = len(gold_set & pred_set)
+                    precision = intersection / len(pred_set)
+                    recall = intersection / len(gold_set)
+                    if precision + recall > 0:
+                        metrics['exec_f1'] = 2 * precision * recall / (precision + recall)
+                    else:
+                        metrics['exec_f1'] = 0.0
 
                 # Exec match only if columns also match
                 if columns_match:
                     metrics['exec_match'] = metrics['data_match']
-        elif same_column_count:
-            # Without ORDER BY: treat as sets
-            gold_set = self._result_to_frozenset(gold_renamed)
-            pred_set = self._result_to_frozenset(pred_renamed)
-
-            metrics['data_match'] = (gold_set == pred_set)
-
-            # Calculate F1
-            if len(gold_set) == 0 and len(pred_set) == 0:
-                metrics['exec_f1'] = 1.0
-            elif len(gold_set) == 0 or len(pred_set) == 0:
-                metrics['exec_f1'] = 0.0
-            else:
-                intersection = len(gold_set & pred_set)
-                precision = intersection / len(pred_set)
-                recall = intersection / len(gold_set)
-                if precision + recall > 0:
-                    metrics['exec_f1'] = 2 * precision * recall / (precision + recall)
-                else:
-                    metrics['exec_f1'] = 0.0
-
-            # Exec match only if columns also match
-            if columns_match:
-                metrics['exec_match'] = metrics['data_match']
 
         return metrics
 
@@ -320,7 +380,7 @@ class SQLResultBenchmark:
 
         # Benchmark each run
         run_metrics = []
-        all_mismatches = []  # Collect all mismatches for CSV output
+        all_mismatches = []  # Collect all mismatches for JSON output
 
         for run_idx, run in enumerate(runs):
             print(f"\nBenchmarking run {run_idx + 1}/{len(runs)}: {run['metadata']['service_name']} - {run['metadata']['model_details']}")
@@ -386,7 +446,7 @@ class SQLResultBenchmark:
                     if comparison['normalized_match']:
                         metrics['normalized_match'] += 1
 
-                    # Track mismatches for CSV
+                    # Track mismatches for JSON
                     if not comparison['data_match']:
                         mismatch_reason = []
                         if len(gold_df.columns) != len(pred_df.columns):
@@ -423,7 +483,7 @@ class SQLResultBenchmark:
                     if error_cat != 'syntax_error':
                         metrics['parse_success'] += 1  # Parsed but runtime failed
 
-                    # Track errors for CSV
+                    # Track errors for JSON
                     all_mismatches.append({
                         'query_id': row['id'],
                         'database': row['database'],
@@ -435,19 +495,19 @@ class SQLResultBenchmark:
 
             run_metrics.append(metrics)
 
-        # Generate markdown report and mismatches CSV
+        # Generate markdown report and mismatches JSON
         self._generate_report(run_metrics, total_queries, all_mismatches)
 
     def _generate_report(self, run_metrics: list[dict], total_queries: int, all_mismatches: list[dict]):
         """
-        Generate a comprehensive markdown report and mismatches CSV.
+        Generate a comprehensive markdown report and mismatches JSON.
 
         Args:
             run_metrics: List of metrics for each run
             total_queries: Total number of queries benchmarked
             all_mismatches: List of all mismatch details
 
-        Generates a markdown report and CSV file in the dataset directory.
+        Generates a markdown report and JSON file in the dataset directory.
         """
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
@@ -459,15 +519,29 @@ class SQLResultBenchmark:
         lines.append(f"**Total Queries**: {total_queries}\n")
         lines.append("\n---\n\n")
 
+        # Metrics explanation section
+        lines.append("## Metrics Explanation\n\n")
+        lines.append("### Execution Metrics\n\n")
+        lines.append("- **DataMatch**: Percentage of queries where data values are identical, ignoring column names (most meaningful for semantic correctness)\n")
+        lines.append("- **ExecMatch**: Percentage of queries where results are identical including both data values AND column names (most strict)\n")
+        lines.append("- **ExecF1**: F1 score of result set accuracy. For ordered queries: row-by-row comparison. For unordered: set-based comparison. Range: 0.0-1.0\n")
+        lines.append("- **Exact Match**: Percentage where result DataFrames are byte-for-byte identical (very strict, includes formatting)\n")
+        lines.append("- **Normalized Match**: Percentage where results match after normalization (lowercase + trimmed whitespace)\n\n")
+        lines.append("### Success Rate Metrics\n\n")
+        lines.append("- **Parse Success**: Percentage of generated SQL with valid syntax (no syntax errors)\n")
+        lines.append("- **Runtime Success**: Percentage of generated SQL that executes without errors (no table/column not found, type errors, etc.)\n\n")
+        lines.append("**Key Insight**: DataMatch is often the most meaningful metric as it focuses on semantic correctness while allowing different column naming conventions.\n\n")
+        lines.append("---\n\n")
+
         # Overall summary table
         lines.append("## Overall Summary\n\n")
-        lines.append("| Run | Service | Model | ExecMatch | DataMatch | ExecF1 | Exact Match | Normalized Match | Parse Success | Runtime Success |\n")
+        lines.append("| Run | Service | Model | DataMatch | ExecMatch | ExecF1 | Exact Match | Normalized Match | Parse Success | Runtime Success |\n")
         lines.append("|-----|---------|-------|-----------|-----------|--------|-------------|------------------|---------------|----------------|\n")
 
         for idx, metrics in enumerate(run_metrics):
             meta = metrics['metadata']
-            exec_match_pct = (metrics['exec_match'] / total_queries * 100)
             data_match_pct = (metrics['data_match'] / total_queries * 100)
+            exec_match_pct = (metrics['exec_match'] / total_queries * 100)
             exec_f1_avg = (metrics['exec_f1_sum'] / total_queries)
             exact_match_pct = (metrics['exact_match'] / total_queries * 100)
             norm_match_pct = (metrics['normalized_match'] / total_queries * 100)
@@ -475,7 +549,7 @@ class SQLResultBenchmark:
             runtime_pct = (metrics['runtime_success'] / total_queries * 100)
 
             lines.append(f"| {idx + 1} | {meta['service_name']} | {meta['model_details']} | "
-                        f"{exec_match_pct:.1f}% | {data_match_pct:.1f}% | {exec_f1_avg:.3f} | {exact_match_pct:.1f}% | "
+                        f"{data_match_pct:.1f}% | {exec_match_pct:.1f}% | {exec_f1_avg:.3f} | {exact_match_pct:.1f}% | "
                         f"{norm_match_pct:.1f}% | {parse_pct:.1f}% | {runtime_pct:.1f}% |\n")
 
         lines.append("\n")
@@ -486,10 +560,10 @@ class SQLResultBenchmark:
 
             # Core metrics
             lines.append("### Core Execution Metrics\n\n")
-            lines.append(f"- **Execution Accuracy (ExecMatch)**: {metrics['exec_match']}/{total_queries} ({metrics['exec_match']/total_queries*100:.2f}%)\n")
-            lines.append(f"  - *Exact match including column names*\n")
             lines.append(f"- **Data Match (Ignoring Column Names)**: {metrics['data_match']}/{total_queries} ({metrics['data_match']/total_queries*100:.2f}%)\n")
             lines.append(f"  - *Same data values, ignoring column name differences*\n")
+            lines.append(f"- **Execution Accuracy (ExecMatch)**: {metrics['exec_match']}/{total_queries} ({metrics['exec_match']/total_queries*100:.2f}%)\n")
+            lines.append(f"  - *Exact match including column names*\n")
             lines.append(f"- **Average ExecF1**: {metrics['exec_f1_sum']/total_queries:.4f}\n")
             lines.append(f"- **Exact Text Match**: {metrics['exact_match']}/{total_queries} ({metrics['exact_match']/total_queries*100:.2f}%)\n")
             lines.append(f"- **Normalized Match**: {metrics['normalized_match']}/{total_queries} ({metrics['normalized_match']/total_queries*100:.2f}%)\n")
@@ -534,18 +608,11 @@ class SQLResultBenchmark:
 
         print(f"\nBenchmark report saved to: {report_path}")
 
-        # Write mismatches CSV
+        # Write mismatches JSON
         if all_mismatches:
-            csv_path = f"{self.dataset.base_path}/benchmark_mismatches_{timestamp}.csv"
-
-            with open(csv_path, 'w', encoding='utf-8', newline='') as f:
-                fieldnames = ['query_id', 'database', 'question',
-                             'gold_query', 'generated_query', 'failure_reason']
-                writer = csv.DictWriter(f, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(all_mismatches)
-
-            print(f"Mismatches CSV saved to: {csv_path}")
+            json_path = f"benchmark_mismatches_{timestamp}.json"
+            self.dataset.write_json(json_path, all_mismatches)
+            print(f"Mismatches JSON saved to: {json_path}")
         else:
             print("No mismatches found - all queries matched perfectly!")
 
