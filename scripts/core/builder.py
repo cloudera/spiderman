@@ -22,7 +22,7 @@ add_data = data_overrides["add"]
 # Detail of transformations to be made on the query
 query_overrides = read_json_dict(paths.QUERY_OVERRIDES)
 full_replace = query_overrides["full_replace"]
-skipped_ids = query_overrides["skip"]
+skipped_ids = set[str](query_overrides["skip"])
 
 
 def _filter_data(table_data: list[list], delete_filters: dict) -> list[list]:
@@ -120,7 +120,7 @@ def build_queries(dataset: DatasetDir, queries: list, split: QuerySplit) -> None
         id = hashlib.md5(hash_input.encode()).hexdigest()[:8]
 
         # Use query_overrides
-        if id in skipped_ids.get(db_name, []):
+        if id in skipped_ids:
             continue
 
         sql = full_replace.get(db_name, {}).get(id, sql)

@@ -90,20 +90,12 @@
             "2cc3a755": "SELECT DISTINCT `winner_name`, `winner_rank`, `winner_age` FROM `matches` ORDER BY `winner_age` LIMIT 3"
         }
     },
-    "skip": {
-        "document_management": [
-            "3f4f6e78",
-            "dec5deea"
-        ],
-        "dorm_1": [
-            "d4d07713",
-            "b964800d"
-        ],
-        "hr_1": [
-            "e3a2d5c1"
-        ],
-        "tracking_grants_for_research": [
-            "5a2dd4ae"
-        ]
-    }
+    "skip": [
+        "3f4f6e78",
+        "dec5deea",
+        "d4d07713",
+        "b964800d",
+        "e3a2d5c1",
+        "5a2dd4ae"
+    ]
 }
