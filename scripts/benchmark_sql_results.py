@@ -596,8 +596,8 @@ class SQLResultBenchmark:
                         for ex_idx, example in enumerate(examples, 1):
                             lines.append(f"**Example {ex_idx}:**\n\n")
                             lines.append(f"- **Question**: {example['question']}\n")
-                            lines.append(f"- **Gold SQL**: `{example['gold_sql']}`\n")
-                            lines.append(f"- **Generated SQL**: `{example['pred_sql']}`\n")
+                            lines.append(f"- **Gold SQL**: ```{example['gold_sql']}```\n")
+                            lines.append(f"- **Generated SQL**: ```{example['pred_sql']}```\n")
                             lines.append(f"- **Error**: {example['error']}\n\n")
 
         # Write report
