@@ -2,7 +2,6 @@
 dataset_*
 !dataset_mysql/
 dataset_*/*.json
-dataset_*/*.md
 
 notes.md
 

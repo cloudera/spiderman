@@ -459,6 +459,7 @@ class SQLResultBenchmark:
                             mismatch_reason.append("Data values differ")
 
                         all_mismatches.append({
+                            'run_idx': run_idx,
                             'query_id': row['id'],
                             'database': row['database'],
                             'question': row['question'],
@@ -485,6 +486,7 @@ class SQLResultBenchmark:
 
                     # Track errors for JSON
                     all_mismatches.append({
+                        'run_idx': run_idx,
                         'query_id': row['id'],
                         'database': row['database'],
                         'question': row['question'],
@@ -509,13 +511,12 @@ class SQLResultBenchmark:
 
         Generates a markdown report and JSON file in the dataset directory.
         """
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
         lines = []
         lines.append("# SQL Generation Benchmark Report\n")
-        lines.append(f"**Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-        lines.append(f"**Dataset**: {self.dataset.dialect}\n")
-        lines.append(f"**Split**: {self.split.value}\n")
+        lines.append(f"**Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\\\n")
+        lines.append(f"**Dataset**: {self.dataset.dialect}\\\n")
+        lines.append(f"**Split**: {self.split.value}\\\n")
         lines.append(f"**Total Queries**: {total_queries}\n")
         lines.append("\n---\n\n")
 
@@ -599,19 +600,15 @@ class SQLResultBenchmark:
                             lines.append(f"- **Generated SQL**: `{example['pred_sql']}`\n")
                             lines.append(f"- **Error**: {example['error']}\n\n")
 
-            lines.append("\n---\n\n")
-
         # Write report
-        report_path = f"{self.dataset.base_path}/benchmark_report_{timestamp}.md"
+        report_path = f"{self.dataset.base_path}/benchmark_report.md"
         with open(report_path, 'w', encoding='utf-8') as f:
             f.writelines(lines)
-
         print(f"\nBenchmark report saved to: {report_path}")
 
         # Write mismatches JSON
         if all_mismatches:
-            json_path = f"benchmark_mismatches_{timestamp}.json"
-            self.dataset.write_json(json_path, all_mismatches)
+            json_path = self.dataset.write_json("benchmark_mismatches.json", all_mismatches)
             print(f"Mismatches JSON saved to: {json_path}")
         else:
             print("No mismatches found - all queries matched perfectly!")
