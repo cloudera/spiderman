@@ -38,8 +38,9 @@ class SQLAIRunner:
         }
 
         response = self.post_request("/api/v1/ai/assistant", payload)
-        if 'error' in response:
-            raise ValueError(response.get('error', 'Post request on /api/v1/ai/assistant returned unknown error'))
+        if 'response' not in response:
+            print("Error: ", response)
+            return ""
 
         return response['response']['sql']
 
