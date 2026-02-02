@@ -1,5 +1,5 @@
 # SQL Generation Benchmark Report
-**Generated**: 2026-02-01 00:09:13\
+**Generated**: 2026-02-01 22:18:36\
 **Dataset**: mysql\
 **Split**: test\
 **Total Queries**: 682
@@ -30,7 +30,8 @@
 | Run | Service | Model | DataMatch | ExecMatch | ExecF1 | Exact Match | Normalized Match | Parse Success | Runtime Success |
 |-----|---------|-------|-----------|-----------|--------|-------------|------------------|---------------|----------------|
 | 1 | azure | GPT 5.2 Chat | 93.1% | 36.1% | 0.942 | 36.4% | 36.4% | 100.0% | 100.0% |
-| 2 | openai-compatible | defog/llama-3-sqlcoder-8b @ dtype bfloat16 - vLLM | 49.3% | 24.8% | 0.497 | 24.3% | 24.3% | 70.5% | 66.1% |
+| 2 | bedrock | anthropic.claude-3-sonnet-20240229-v1:0 | 79.2% | 37.0% | 0.808 | 36.4% | 36.4% | 100.0% | 99.1% |
+| 3 | vllm | defog/llama-3-sqlcoder-8b | 49.3% | 24.8% | 0.497 | 24.3% | 24.3% | 70.5% | 66.1% |
 
 ## Run 1: azure - GPT 5.2 Chat
 
@@ -50,7 +51,83 @@
 - **Parse/Compile Success**: 682/682 (100.00%)
 - **Runtime Success**: 682/682 (100.00%)
 
-## Run 2: openai-compatible - defog/llama-3-sqlcoder-8b @ dtype bfloat16 - vLLM
+## Run 2: bedrock - anthropic.claude-3-sonnet-20240229-v1:0
+
+### Core Execution Metrics
+
+- **Data Match (Ignoring Column Names)**: 540/682 (79.18%)
+  - *Same data values, ignoring column name differences*
+- **Execution Accuracy (ExecMatch)**: 252/682 (36.95%)
+  - *Exact match including column names*
+- **Average ExecF1**: 0.8082
+- **Exact Text Match**: 248/682 (36.36%)
+- **Normalized Match**: 248/682 (36.36%)
+- **Scalar Tolerance**: 1e-05
+
+### Execution Success Rates
+
+- **Parse/Compile Success**: 682/682 (100.00%)
+- **Runtime Success**: 676/682 (99.12%)
+
+### Error Categories
+
+| Error Type | Count | Percentage |
+|------------|-------|------------|
+| Runtime Error | 6 | 0.88% |
+
+### Error Examples
+
+#### Runtime Error
+
+**Example 1:**
+
+- **Question**: What are the death and injury situations caused by the ship with tonnage 't'?
+- **Gold SQL**: ```SELECT `t1`.`killed`, `t1`.`injured` FROM `death` AS `t1` JOIN `ship` AS `t2` ON `t1`.`caused_by_ship_id` = `t2`.`id` WHERE `t2`.`tonnage` = 't'```
+- **Generated SQL**: ```SELECT caused_by_ship_id, killed, injured
+         FROM battle_death.death
+         WHERE caused_by_ship_id = (
+           SELECT id
+           FROM battle_death.ship
+           WHERE tonnage = 't'
+         );```
+- **Error**: (mysql.connector.errors.DataError) 1242 (21000): Subquery returns more than 1 row
+[SQL: SELECT caused_by_ship_id, killed, injured
+         FROM battle_death.death
+         WHERE caused_by_ship_id = (
+
+
+**Example 2:**
+
+- **Question**: What is the maker of the carr produced in the earliest year and what year was it?
+- **Gold SQL**: ```SELECT `t2`.`Make`, `t1`.`Year` FROM `cars_data` AS `t1` JOIN `car_names` AS `t2` ON `t1`.`Id` = `t2`.`MakeId` WHERE `t1`.`Year` = (SELECT MIN(`YEAR`) FROM `cars_data`)```
+- **Generated SQL**: ```SELECT cm.Maker, MIN(cd.Year) AS EarliestYear
+FROM car_1.car_makers cm
+JOIN car_1.model_list ml ON cm.Id = ml.Maker
+JOIN car_1.cars_data cd ON ml.Model = cd.Model
+GROUP BY cm.Maker
+ORDER BY EarliestYear ASC
+LIMIT 1;```
+- **Error**: (mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'cd.Model' in 'on clause'
+[SQL: SELECT cm.Maker, MIN(cd.Year) AS EarliestYear
+FROM car_1.car_makers cm
+JOIN car_1.model_list ml O
+
+**Example 3:**
+
+- **Question**: Which model has the most version(make) of cars?
+- **Gold SQL**: ```SELECT `Model` FROM `car_names` GROUP BY `Model` ORDER BY COUNT(*) DESC LIMIT 1```
+- **Generated SQL**: ```SELECT Model, COUNT(DISTINCT Make) AS NumVersions
+          FROM car_1.model_list
+          INNER JOIN car_1.car_names ON car_1.model_list.Model = car_1.car_names.Model
+          GROUP BY Model
+          ORDER BY NumVersions DESC
+          LIMIT 1;```
+- **Error**: (mysql.connector.errors.IntegrityError) 1052 (23000): Column 'Model' in field list is ambiguous
+[SQL: SELECT Model, COUNT(DISTINCT Make) AS NumVersions
+          FROM car_1.model_list
+          INNER 
+
+## Run 3: vllm - defog/llama-3-sqlcoder-8b
 
 ### Core Execution Metrics
 
@@ -122,7 +199,8 @@
 
 - **Question**: Find the make and production time of the cars that were produced in the earliest year?
 - **Gold SQL**: ```SELECT `t2`.`Make`, `t1`.`Year` FROM `cars_data` AS `t1` JOIN `car_names` AS `t2` ON `t1`.`Id` = `t2`.`MakeId` WHERE `t1`.`Year` = (SELECT MIN(`YEAR`) FROM `cars_data`)```
-- **Generated SQL**: ```SELECT c.Model, c.Year FROM car_1.cars_data c ORDER BY c.Year ASC LIMIT 1; SELECT m.Make FROM car_1.model_list m JOIN car_1.cars_data c ON m.ModelId = c.Id WHERE c.Model = (SELECT Model FROM car_1.cars_data c ORDER BY c.Year ASC LIMIT 1);```
+- **Generated SQL**: ```SELECT c.Model, c.Year FROM car_1.cars_data c ORDER BY c.Year ASC LIMIT 1;```
 - **Error**: (mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'c.Model' in 'field list'
-[SQL: SELECT c.Model, c.Year FROM car_1.cars_data c ORDER BY c.Year ASC LIMIT 1; SELECT m.Make FROM car
+[SQL: SELECT c.Model, c.Year FROM car_1.cars_data c ORDER BY c.Year ASC LIMIT 1;]
+(Background on this e
 
