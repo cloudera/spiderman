@@ -1,5 +1,5 @@
 # SQL Generation Benchmark Report
-**Generated**: 2026-02-01 22:18:36\
+**Generated**: 2026-02-01 23:04:08\
 **Dataset**: mysql\
 **Split**: test\
 **Total Queries**: 682
@@ -31,7 +31,7 @@
 |-----|---------|-------|-----------|-----------|--------|-------------|------------------|---------------|----------------|
 | 1 | azure | GPT 5.2 Chat | 93.1% | 36.1% | 0.942 | 36.4% | 36.4% | 100.0% | 100.0% |
 | 2 | bedrock | anthropic.claude-3-sonnet-20240229-v1:0 | 79.2% | 37.0% | 0.808 | 36.4% | 36.4% | 100.0% | 99.1% |
-| 3 | vllm | defog/llama-3-sqlcoder-8b | 49.3% | 24.8% | 0.497 | 24.3% | 24.3% | 70.5% | 66.1% |
+| 3 | vllm | defog/llama-3-sqlcoder-8b @ dtype bfloat16 | 49.3% | 24.8% | 0.497 | 24.3% | 24.3% | 70.5% | 66.1% |
 
 ## Run 1: azure - GPT 5.2 Chat
 
@@ -127,7 +127,7 @@ JOIN car_1.model_list ml O
           FROM car_1.model_list
           INNER 
 
-## Run 3: vllm - defog/llama-3-sqlcoder-8b
+## Run 3: vllm - defog/llama-3-sqlcoder-8b @ dtype bfloat16
 
 ### Core Execution Metrics
 

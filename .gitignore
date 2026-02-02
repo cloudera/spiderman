@@ -2,6 +2,7 @@
 dataset_*
 !dataset_mysql/
 dataset_*/*.json
+!test_sql_results.json
 
 notes.md
 
