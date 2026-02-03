@@ -1,5 +1,5 @@
 # SQL Generation Benchmark Report
-**Generated**: 2026-02-01 23:04:08\
+**Generated**: 2026-02-02 18:33:44\
 **Dataset**: mysql\
 **Split**: test\
 **Total Queries**: 682
@@ -32,6 +32,7 @@
 | 1 | azure | GPT 5.2 Chat | 93.1% | 36.1% | 0.942 | 36.4% | 36.4% | 100.0% | 100.0% |
 | 2 | bedrock | anthropic.claude-3-sonnet-20240229-v1:0 | 79.2% | 37.0% | 0.808 | 36.4% | 36.4% | 100.0% | 99.1% |
 | 3 | vllm | defog/llama-3-sqlcoder-8b @ dtype bfloat16 | 49.3% | 24.8% | 0.497 | 24.3% | 24.3% | 70.5% | 66.1% |
+| 4 | caii | openai/gpt-oss-20b | 84.8% | 30.9% | 0.859 | 30.5% | 30.5% | 99.7% | 99.4% |
 
 ## Run 1: azure - GPT 5.2 Chat
 
@@ -203,4 +204,72 @@ JOIN car_1.model_list ml O
 - **Error**: (mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'c.Model' in 'field list'
 [SQL: SELECT c.Model, c.Year FROM car_1.cars_data c ORDER BY c.Year ASC LIMIT 1;]
 (Background on this e
+
+## Run 4: caii - openai/gpt-oss-20b
+
+### Core Execution Metrics
+
+- **Data Match (Ignoring Column Names)**: 578/682 (84.75%)
+  - *Same data values, ignoring column name differences*
+- **Execution Accuracy (ExecMatch)**: 211/682 (30.94%)
+  - *Exact match including column names*
+- **Average ExecF1**: 0.8588
+- **Exact Text Match**: 208/682 (30.50%)
+- **Normalized Match**: 208/682 (30.50%)
+- **Scalar Tolerance**: 1e-05
+
+### Execution Success Rates
+
+- **Parse/Compile Success**: 680/682 (99.71%)
+- **Runtime Success**: 678/682 (99.41%)
+
+### Error Categories
+
+| Error Type | Count | Percentage |
+|------------|-------|------------|
+| Syntax Error | 2 | 0.29% |
+| Runtime Error | 2 | 0.29% |
+
+### Error Examples
+
+#### Syntax Error
+
+**Example 1:**
+
+- **Question**: Show the stadium name and capacity with most number of concerts in year 2014 or after.
+- **Gold SQL**: ```SELECT `t2`.`name`, `t2`.`capacity` FROM `concert` AS `t1` JOIN `stadium` AS `t2` ON `t1`.`stadium_id` = `t2`.`stadium_id` WHERE `t1`.`year` >= 2014 GROUP BY `t2`.`name`, `t2`.`capacity` ORDER BY COUNT(*) DESC LIMIT 1```
+- **Generated SQL**: ```SELECT s.Name AS stadium_name, s.Capacity, COUNT(c.concert_ID) AS num_concerts
+FROM concert_singer.concert c
+JOIN concert_singer.stadium s ON c.Stadium_ID = s.Stadium_ID
+WHERE CAST(c.Year AS INTEGER) >= 2014
+GROUP BY s.Stadium_ID, s.Name, s.Capacity
+ORDER BY num_concerts DESC
+LIMIT 1;```
+- **Error**: (mysql.connector.errors.ProgrammingError) 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INTEGER) 
+
+**Example 2:**
+
+- **Question**: Which year has most number of concerts?
+- **Gold SQL**: ```SELECT `YEAR` FROM `concert` GROUP BY `YEAR` ORDER BY COUNT(*) DESC LIMIT 1```
+- **Generated SQL**: ```SELECT Year, COUNT(*) AS concert_count \nFROM concert_singer.concert \nGROUP BY Year \nORDER BY concert_count DESC \nLIMIT 1;```
+- **Error**: (mysql.connector.errors.ProgrammingError) 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '\nFROM co
+
+#### Runtime Error
+
+**Example 1:**
+
+- **Question**: Find the first names of owners living in Virginia and the names of dogs they own.
+- **Gold SQL**: ```SELECT `t1`.`first_name`, `t2`.`name` FROM `Owners` AS `t1` JOIN `Dogs` AS `t2` ON `t1`.`owner_id` = `t2`.`owner_id` WHERE `t1`.`state` = 'Virginia'```
+- **Generated SQL**: ```SELECT o.first_name, d.name FROM dog_kennels.owners o JOIN dog_kennels.dogs d ON o.owner_id = d.owner_id WHERE o.state = 'Virginia';```
+- **Error**: (mysql.connector.errors.ProgrammingError) 1146 (42S02): Table 'dog_kennels.owners' doesn't exist
+[SQL: SELECT o.first_name, d.name FROM dog_kennels.owners o JOIN dog_kennels.dogs d ON o.owner_id = d.o
+
+**Example 2:**
+
+- **Question**: Return the record companies of orchestras, sorted descending by the years in which they were founded.
+- **Gold SQL**: ```SELECT `Record_Company` FROM `orchestra` ORDER BY `Year_of_Founded` DESC```
+- **Generated SQL**: ```SELECT DISTINCT Record_Company
+FROM orchestra.orchestra
+ORDER BY Year_of_Founded DESC;```
+- **Error**: (mysql.connector.errors.DatabaseError) 3065 (HY000): Expression #1 of ORDER BY clause is not in SELECT list, references column 'orchestra.orchestra.Year_of_Founded' which is not in SELECT list; this i
 
