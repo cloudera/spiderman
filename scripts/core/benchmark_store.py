@@ -80,7 +80,7 @@ class BenchmarkStore:
         with open(self.results_file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
 
-    def generate_sql_benchmark_report(self, run_metrics: list[dict], total_queries: int, all_mismatches: list[dict]):
+    def write_report(self, run_metrics: list[dict], total_queries: int):
         """
         Generate a comprehensive markdown report and mismatches JSON.
 
@@ -184,10 +184,11 @@ class BenchmarkStore:
             f.writelines(lines)
         print(f"\nBenchmark report saved to: {self.report_file_path}")
 
+    def write_mismatches(self, mismatches: list[dict]):
         # Write mismatches JSON
-        if all_mismatches:
+        if mismatches:
             with open(self.mismatches_file_path, 'w', encoding='utf-8') as f:
-                json.dump(all_mismatches, f, indent=4, ensure_ascii=False)
-            print(f"Mismatches JSON saved to: {self.mismatches_file_path}")
+                json.dump(mismatches, f, indent=4, ensure_ascii=False)
+            print(f"Wrote mismatches to {self.mismatches_file_path}")
         else:
             print("No mismatches found - all queries matched perfectly!")

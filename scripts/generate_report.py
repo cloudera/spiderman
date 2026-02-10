@@ -12,7 +12,7 @@ from scripts.core.factories import create_target_db
 from scripts.utils.sha import df_to_sha
 
 
-class SQLResultBenchmark:
+class ResultAnalyzer:
     """
     Benchmark SQL generation results by comparing generated SQL queries
     with gold standard queries.
@@ -334,7 +334,7 @@ class SQLResultBenchmark:
 
         return results
 
-    def benchmark(self) -> None:
+    def analyze(self) -> None:
         """
         Run comprehensive benchmark and generate markdown report.
         """
@@ -497,8 +497,8 @@ class SQLResultBenchmark:
 
             run_metrics.append(metrics)
 
-        # Generate markdown report and mismatches JSON
-        self.benchmark_store.generate_sql_benchmark_report(run_metrics, total_queries, all_mismatches)
+        self.benchmark_store.write_report(run_metrics, total_queries)
+        self.benchmark_store.write_mismatches(all_mismatches)
 
 
 if __name__ == "__main__":
@@ -522,7 +522,7 @@ if __name__ == "__main__":
     print(f"Database URL: {args.url}")
     print(f"Scalar tolerance: {args.tolerance}")
 
-    benchmarker = SQLResultBenchmark(dataset_dir, benchmark_store, split, args.url, args.tolerance)
-    benchmarker.benchmark()
+    analyzer = ResultAnalyzer(dataset_dir, benchmark_store, split, args.url, args.tolerance)
+    analyzer.analyze()
 
-    print(f"\nBenchmark completed successfully.")
+    print(f"\nReport generated successfully.")

@@ -70,12 +70,12 @@ uv run scripts/run_sqlai.py mysql http://127.0.0.1:8000 "<Model details>"
 
 This script generates SQL queries using a SQL AI service and saves the results to a JSON file for `test` queries of a specific `dialect`. Run with `-h` to see all available options.
 
-#### Benchmark SQL Results
+#### Generate Report
 ```shell
-uv run scripts/benchmark_sql_results.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
+uv run scripts/generate_report.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
 
-This script benchmarks the SQL results for `test` queries of a specific `dialect`. It compares the results with the gold queries and generates a markdown report. Try running it with -h for the full list of arguments.
+This script analyzes the SQL results for `test` queries of a specific `dialect` and generates a markdown report. Try running it with -h for the full list of arguments.
 
 ### Dataset Scripts
 
