@@ -1,5 +1,5 @@
 # SQL Generation Benchmark Report
-**Generated**: 2026-02-05 18:56:32\
+**Generated**: 2026-02-09 16:25:37\
 **Dataset**: mysql\
 **Split**: test\
 **Total Queries**: 682
@@ -47,8 +47,6 @@
 - **Average ExecF1**: 0.9416
 - **Exact Text Match**: 248/682 (36.36%)
 - **Normalized Match**: 248/682 (36.36%)
-- **Scalar Tolerance**: 1e-05
-
 ### Execution Success Rates
 
 - **Parse/Compile Success**: 682/682 (100.00%)
@@ -65,8 +63,6 @@
 - **Average ExecF1**: 0.8082
 - **Exact Text Match**: 248/682 (36.36%)
 - **Normalized Match**: 248/682 (36.36%)
-- **Scalar Tolerance**: 1e-05
-
 ### Execution Success Rates
 
 - **Parse/Compile Success**: 682/682 (100.00%)
@@ -141,8 +137,6 @@ JOIN car_1.model_list ml O
 - **Average ExecF1**: 0.4970
 - **Exact Text Match**: 166/682 (24.34%)
 - **Normalized Match**: 166/682 (24.34%)
-- **Scalar Tolerance**: 1e-05
-
 ### Execution Success Rates
 
 - **Parse/Compile Success**: 481/682 (70.53%)
@@ -218,8 +212,6 @@ JOIN car_1.model_list ml O
 - **Average ExecF1**: 0.8588
 - **Exact Text Match**: 208/682 (30.50%)
 - **Normalized Match**: 208/682 (30.50%)
-- **Scalar Tolerance**: 1e-05
-
 ### Execution Success Rates
 
 - **Parse/Compile Success**: 680/682 (99.71%)
@@ -286,8 +278,6 @@ ORDER BY Year_of_Founded DESC;```
 - **Average ExecF1**: 0.9034
 - **Exact Text Match**: 276/682 (40.47%)
 - **Normalized Match**: 276/682 (40.47%)
-- **Scalar Tolerance**: 1e-05
-
 ### Execution Success Rates
 
 - **Parse/Compile Success**: 681/682 (99.85%)
@@ -357,8 +347,6 @@ LIMIT 1;```
 - **Average ExecF1**: 0.7552
 - **Exact Text Match**: 177/682 (25.95%)
 - **Normalized Match**: 177/682 (25.95%)
-- **Scalar Tolerance**: 1e-05
-
 ### Execution Success Rates
 
 - **Parse/Compile Success**: 678/682 (99.41%)

@@ -1,17 +1,15 @@
 from argparse import ArgumentParser
 from collections import defaultdict
-from datetime import datetime
 from typing import Any, Optional
-import csv
-import itertools
-import json
 import re
 import sqlglot
 import pandas as pd
 
 from scripts.core.dataset import DatasetDir, QuerySplit
+from scripts.core.results_and_reports import ResultsAndReports
 from scripts.utils.args import url_dialect_parser, test_split_parser
 from scripts.core.factories import create_target_db
+from scripts.utils.sha import df_to_sha
 
 
 class SQLResultBenchmark:
@@ -21,11 +19,12 @@ class SQLResultBenchmark:
     """
 
     dataset: DatasetDir
+    rr_dir: ResultsAndReports
     split: QuerySplit
     db_url: str
     scalar_tolerance: float
 
-    def __init__(self, dataset: DatasetDir, split: QuerySplit, db_url: str, scalar_tolerance: float = 1e-5):
+    def __init__(self, dataset: DatasetDir, rr_dir: ResultsAndReports, split: QuerySplit, db_url: str, scalar_tolerance: float = 1e-5):
         """
         Initialize the SQL Result Benchmark.
 
@@ -36,6 +35,7 @@ class SQLResultBenchmark:
             scalar_tolerance: Tolerance for floating-point comparisons (default: 1e-5)
         """
         self.dataset = dataset
+        self.rr_dir = rr_dir
         self.split = split
         self.db_url = db_url
         self.scalar_tolerance = scalar_tolerance
@@ -338,7 +338,7 @@ class SQLResultBenchmark:
         """
         Run comprehensive benchmark and generate markdown report.
         """
-        sql_results = self.dataset.read_sql_results(self.split)
+        sql_results = self.rr_dir.read_sql_results()
         total_queries = sql_results['total_queries']
         runs = sql_results['runs']
 
@@ -346,7 +346,7 @@ class SQLResultBenchmark:
         source_queries = source_queries.head(total_queries) # Limit to queries used for the run
 
         # Validate source queries haven't changed
-        source_sha = self.dataset.df_to_sha(source_queries)
+        source_sha = df_to_sha(source_queries)
         if source_sha != sql_results.get('source_sha'):
             raise ValueError(
                 "Source queries have changed since SQL results were generated. "
@@ -383,7 +383,7 @@ class SQLResultBenchmark:
         all_mismatches = []  # Collect all mismatches for JSON output
 
         for run_idx, run in enumerate(runs):
-            print(f"\nBenchmarking run {run_idx + 1}/{len(runs)}: {run['metadata']['service_name']} - {run['metadata']['model_details']}")
+            print(f"\nBenchmarking run {run_idx + 1}/{len(runs)}: {run['metadata']['app_name']} ({run['metadata']['service_name']}) - {run['metadata']['model_details']}")
 
             metrics = {
                 'metadata': run['metadata'],
@@ -498,120 +498,7 @@ class SQLResultBenchmark:
             run_metrics.append(metrics)
 
         # Generate markdown report and mismatches JSON
-        self._generate_report(run_metrics, total_queries, all_mismatches)
-
-    def _generate_report(self, run_metrics: list[dict], total_queries: int, all_mismatches: list[dict]):
-        """
-        Generate a comprehensive markdown report and mismatches JSON.
-
-        Args:
-            run_metrics: List of metrics for each run
-            total_queries: Total number of queries benchmarked
-            all_mismatches: List of all mismatch details
-
-        Generates a markdown report and JSON file in the dataset directory.
-        """
-
-        lines = []
-        lines.append("# SQL Generation Benchmark Report\n")
-        lines.append(f"**Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\\\n")
-        lines.append(f"**Dataset**: {self.dataset.dialect}\\\n")
-        lines.append(f"**Split**: {self.split.value}\\\n")
-        lines.append(f"**Total Queries**: {total_queries}\n")
-        lines.append("\n---\n\n")
-
-        # Metrics explanation section
-        lines.append("## Metrics Explanation\n\n")
-        lines.append("### Execution Metrics\n\n")
-        lines.append("- **DataMatch**: Percentage of queries where data values are identical, ignoring column names (most meaningful for semantic correctness)\n")
-        lines.append("- **ExecMatch**: Percentage of queries where results are identical including both data values AND column names (most strict)\n")
-        lines.append("- **ExecF1**: F1 score of result set accuracy. For ordered queries: row-by-row comparison. For unordered: set-based comparison. Range: 0.0-1.0\n")
-        lines.append("- **Exact Match**: Percentage where result DataFrames are byte-for-byte identical (very strict, includes formatting)\n")
-        lines.append("- **Normalized Match**: Percentage where results match after normalization (lowercase + trimmed whitespace)\n\n")
-        lines.append("### Success Rate Metrics\n\n")
-        lines.append("- **Parse Success**: Percentage of generated SQL with valid syntax (no syntax errors)\n")
-        lines.append("- **Runtime Success**: Percentage of generated SQL that executes without errors (no table/column not found, type errors, etc.)\n\n")
-        lines.append("**Key Insight**: DataMatch is often the most meaningful metric as it focuses on semantic correctness while allowing different column naming conventions.\n\n")
-        lines.append("---\n\n")
-
-        # Overall summary table
-        lines.append("## Overall Summary\n\n")
-        lines.append("| Run | Service | Model | DataMatch | ExecMatch | ExecF1 | Exact Match | Normalized Match | Parse Success | Runtime Success |\n")
-        lines.append("|-----|---------|-------|-----------|-----------|--------|-------------|------------------|---------------|----------------|\n")
-
-        for idx, metrics in enumerate(run_metrics):
-            meta = metrics['metadata']
-            data_match_pct = (metrics['data_match'] / total_queries * 100)
-            exec_match_pct = (metrics['exec_match'] / total_queries * 100)
-            exec_f1_avg = (metrics['exec_f1_sum'] / total_queries)
-            exact_match_pct = (metrics['exact_match'] / total_queries * 100)
-            norm_match_pct = (metrics['normalized_match'] / total_queries * 100)
-            parse_pct = (metrics['parse_success'] / total_queries * 100)
-            runtime_pct = (metrics['runtime_success'] / total_queries * 100)
-
-            lines.append(f"| {idx + 1} | {meta['service_name']} | {meta['model_details']} | "
-                        f"{data_match_pct:.1f}% | {exec_match_pct:.1f}% | {exec_f1_avg:.3f} | {exact_match_pct:.1f}% | "
-                        f"{norm_match_pct:.1f}% | {parse_pct:.1f}% | {runtime_pct:.1f}% |\n")
-
-        lines.append("\n")
-
-        # Detailed metrics for each run
-        for idx, metrics in enumerate(run_metrics):
-            lines.append(f"## Run {idx + 1}: {metrics['metadata']['service_name']} - {metrics['metadata']['model_details']}\n\n")
-
-            # Core metrics
-            lines.append("### Core Execution Metrics\n\n")
-            lines.append(f"- **Data Match (Ignoring Column Names)**: {metrics['data_match']}/{total_queries} ({metrics['data_match']/total_queries*100:.2f}%)\n")
-            lines.append(f"  - *Same data values, ignoring column name differences*\n")
-            lines.append(f"- **Execution Accuracy (ExecMatch)**: {metrics['exec_match']}/{total_queries} ({metrics['exec_match']/total_queries*100:.2f}%)\n")
-            lines.append(f"  - *Exact match including column names*\n")
-            lines.append(f"- **Average ExecF1**: {metrics['exec_f1_sum']/total_queries:.4f}\n")
-            lines.append(f"- **Exact Text Match**: {metrics['exact_match']}/{total_queries} ({metrics['exact_match']/total_queries*100:.2f}%)\n")
-            lines.append(f"- **Normalized Match**: {metrics['normalized_match']}/{total_queries} ({metrics['normalized_match']/total_queries*100:.2f}%)\n")
-            lines.append(f"- **Scalar Tolerance**: {self.scalar_tolerance}\n\n")
-
-            # Success rates
-            lines.append("### Execution Success Rates\n\n")
-            lines.append(f"- **Parse/Compile Success**: {metrics['parse_success']}/{total_queries} ({metrics['parse_success']/total_queries*100:.2f}%)\n")
-            lines.append(f"- **Runtime Success**: {metrics['runtime_success']}/{total_queries} ({metrics['runtime_success']/total_queries*100:.2f}%)\n\n")
-
-            # Error breakdown
-            if metrics['errors']:
-                lines.append("### Error Categories\n\n")
-                lines.append("| Error Type | Count | Percentage |\n")
-                lines.append("|------------|-------|------------|\n")
-
-                sorted_errors = sorted(metrics['errors'].items(), key=lambda x: x[1], reverse=True)
-                for error_type, count in sorted_errors:
-                    pct = count / total_queries * 100
-                    lines.append(f"| {error_type.replace('_', ' ').title()} | {count} | {pct:.2f}% |\n")
-
-                lines.append("\n")
-
-                # Error examples
-                lines.append("### Error Examples\n\n")
-                for error_type, examples in metrics['error_examples'].items():
-                    if examples:
-                        lines.append(f"#### {error_type.replace('_', ' ').title()}\n\n")
-                        for ex_idx, example in enumerate(examples, 1):
-                            lines.append(f"**Example {ex_idx}:**\n\n")
-                            lines.append(f"- **Question**: {example['question']}\n")
-                            lines.append(f"- **Gold SQL**: ```{example['gold_sql']}```\n")
-                            lines.append(f"- **Generated SQL**: ```{example['pred_sql']}```\n")
-                            lines.append(f"- **Error**: {example['error']}\n\n")
-
-        # Write report
-        report_path = f"{self.dataset.base_path}/benchmark_report.md"
-        with open(report_path, 'w', encoding='utf-8') as f:
-            f.writelines(lines)
-        print(f"\nBenchmark report saved to: {report_path}")
-
-        # Write mismatches JSON
-        if all_mismatches:
-            json_path = self.dataset.write_json("benchmark_mismatches.json", all_mismatches)
-            print(f"Mismatches JSON saved to: {json_path}")
-        else:
-            print("No mismatches found - all queries matched perfectly!")
+        self.rr_dir.generate_sql_benchmark_report(run_metrics, total_queries, all_mismatches)
 
 
 if __name__ == "__main__":
@@ -627,14 +514,15 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    dataset = DatasetDir(args.dialect)
     split = QuerySplit(args.split)
+    dataset_dir = DatasetDir(args.dialect)
+    rr_dir = ResultsAndReports(args.dialect, split)
 
-    print(f"Benchmarking {split.value} SQL results for {dataset.dialect} dialect")
+    print(f"Benchmarking {split.value} SQL results for {dataset_dir.dialect} dialect")
     print(f"Database URL: {args.url}")
     print(f"Scalar tolerance: {args.tolerance}")
 
-    benchmarker = SQLResultBenchmark(dataset, split, args.url, args.tolerance)
+    benchmarker = SQLResultBenchmark(dataset_dir, rr_dir, split, args.url, args.tolerance)
     benchmarker.benchmark()
 
     print(f"\nBenchmark completed successfully.")

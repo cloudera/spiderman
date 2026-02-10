@@ -7,6 +7,7 @@
     "runs": [
         {
             "metadata": {
+                "app_name": "sqlai",
                 "service_name": "azure",
                 "model_details": "GPT 5.2 Chat",
                 "timestamp": "2026-01-31T12:52:38.846922"
@@ -698,6 +699,7 @@
         },
         {
             "metadata": {
+                "app_name": "sqlai",
                 "service_name": "bedrock",
                 "model_details": "anthropic.claude-3-sonnet-20240229-v1:0",
                 "timestamp": "2026-02-01T16:35:41.531406"
@@ -1389,6 +1391,7 @@
         },
         {
             "metadata": {
+                "app_name": "sqlai",
                 "service_name": "vllm",
                 "model_details": "defog/llama-3-sqlcoder-8b @ dtype bfloat16",
                 "timestamp": "2026-02-01T18:00:14.457519"
@@ -2080,6 +2083,7 @@
         },
         {
             "metadata": {
+                "app_name": "sqlai",
                 "service_name": "caii",
                 "model_details": "openai/gpt-oss-20b",
                 "timestamp": "2026-02-02T18:32:23.090641"
@@ -2771,6 +2775,7 @@
         },
         {
             "metadata": {
+                "app_name": "sqlai",
                 "service_name": "caii",
                 "model_details": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
                 "timestamp": "2026-02-03T13:33:59.248750"
@@ -3462,6 +3467,7 @@
         },
         {
             "metadata": {
+                "app_name": "sqlai",
                 "service_name": "caii",
                 "model_details": "nvidia/llama-3.3-nemotron-super-49b-v1.5",
                 "timestamp": "2026-02-05T18:54:47.541603"

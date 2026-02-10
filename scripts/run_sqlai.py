@@ -4,9 +4,9 @@ import os
 from typing import NamedTuple
 from urllib.parse import urljoin
 
-from pandas import Series
 import requests
 from core.dataset import DatasetDir, QuerySplit
+from scripts.core.results_and_reports import ResultsAndReports
 from scripts.utils.iter import bar_iter
 from utils.args import dialect_parser, test_split_parser
 
@@ -44,7 +44,7 @@ class SQLAIRunner:
 
         return response['response']['sql']
 
-    def run(self, dataset_dir: DatasetDir, split: QuerySplit, limit: int = None) -> None:
+    def run(self, dataset_dir: DatasetDir, rr_dir: ResultsAndReports, split: QuerySplit, limit: int = None) -> None:
         queries_df = dataset_dir.read_queries(split)
 
         if limit:
@@ -60,11 +60,12 @@ class SQLAIRunner:
 
         # Dialect and split are already in file level sql_results metadata
         metadata = {
+            'app_name': 'sqlai',
             'service_name': configs['hue_config']['ai_service_name'],
             'model_details': self.model_details,
             'timestamp': datetime.now().isoformat(),
         }
-        dataset_dir.write_sql_results(split, queries_df, metadata, sql_data)
+        rr_dir.write_sql_results(queries_df, metadata, sql_data)
 
 
 if __name__ == "__main__":
@@ -85,10 +86,11 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    dataset_dir = DatasetDir(args.dialect)
     split = QuerySplit(args.split)
+    dataset_dir = DatasetDir(args.dialect)
+    rr_dir = ResultsAndReports(args.dialect, split)
 
     print(f"Running SQL AI tasks with {split.value} queries from {dataset_dir.base_path} directory")
     runner = SQLAIRunner(args.dialect, args.base_url, args.model_details)
-    runner.run(dataset_dir, split, args.limit)
+    runner.run(dataset_dir, rr_dir, split, args.limit)
     print("SQL AI run completed successfully.")

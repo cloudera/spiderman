@@ -44,9 +44,6 @@ class DatasetDir:
     def _path_to_queries_file(self, split: QuerySplit) -> str:
         return path.join(self.base_path, f'{split.value}_queries.csv')
 
-    def _path_to_sql_results_file(self, split: QuerySplit) -> str:
-        return path.join(self.base_path, f'{split.value}_sql_results.json')
-
     def get_db_names(self) -> list[str]:
         db_names = os.listdir(self.dbs_path)
 
@@ -89,64 +86,6 @@ class DatasetDir:
     def write_queries(self, split: QuerySplit, queries: list[list]) -> None:
         data = [["id", "database", "question", "sql"]] + queries
         write_csv(self._path_to_queries_file(split), data)
-
-    def read_sql_results(self, split: QuerySplit) -> dict:
-        file_path = self._path_to_sql_results_file(split)
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-
-    def df_to_sha(self, df: pd.DataFrame) -> str:
-        return hashlib.sha256(df.to_csv(index=False).encode()).hexdigest()
-
-    def write_sql_results(self, split: QuerySplit, source_queries: pd.DataFrame, metadata: dict, data: list[str]) -> None:
-        file_path = self._path_to_sql_results_file(split)
-
-        # Hash the source queries to detect changes across runs
-        source_sha = self.df_to_sha(source_queries)
-
-        # Increment the data version when the structure of the data changes
-        data_version = 1
-
-        # Read existing data if file exists
-        if os.path.exists(file_path):
-            with open(file_path, 'r', encoding='utf-8') as f:
-                # Let json.JSONDecodeError raise
-                sql_results: dict = json.load(f)
-
-                # Validate source hasn't changed
-                if source_sha != sql_results.get('source_sha'):
-                    raise ValueError(
-                        "Source queries have changed across runs. "
-                        f"Please delete the file {file_path} and re-run."
-                    )
-
-                # Validate data version hasn't changed
-                if data_version != sql_results.get('data_version'):
-                    raise ValueError(
-                        "Data version has changed across runs. "
-                        f"Please delete the file {file_path} and re-run."
-                    )
-        else:
-            sql_results = {
-                'source_sha': source_sha,
-                'data_version': data_version,
-                'dialect': self.dialect,
-                'split': split.value,
-                'total_queries': len(source_queries),
-                'runs': []
-            }
-
-        # Append new result
-        sql_results['runs'].append({
-            'metadata': metadata,
-            'data': data
-        })
-
-        # Write back to file
-        with open(file_path, 'w', encoding='utf-8') as f:
-            json.dump(sql_results, f, indent=4, ensure_ascii=False)
-
-        print(f"Wrote SQL results to {file_path}")
 
     def write_json(self, file_path: str, data: Any) -> str:
         file_path = path.join(self.base_path, file_path)
