@@ -383,7 +383,7 @@ class SQLResultBenchmark:
         all_mismatches = []  # Collect all mismatches for JSON output
 
         for run_idx, run in enumerate(runs):
-            print(f"\nBenchmarking run {run_idx + 1}/{len(runs)}: {run['metadata']['app_name']} ({run['metadata']['service_name']}) - {run['metadata']['model_details']}")
+            print(f"\nBenchmarking run {run_idx + 1}/{len(runs)}: {run['metadata']['app_name']} ({run['metadata']['service_name']} - {run['metadata']['model_details']})")
 
             metrics = {
                 'metadata': run['metadata'],

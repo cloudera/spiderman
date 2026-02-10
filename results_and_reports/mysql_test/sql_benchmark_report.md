@@ -1,5 +1,5 @@
 # SQL Generation Benchmark Report
-**Generated**: 2026-02-09 16:25:37\
+**Generated**: 2026-02-09 16:36:25\
 **Dataset**: mysql\
 **Split**: test\
 **Total Queries**: 682
@@ -27,16 +27,16 @@
 
 ## Overall Summary
 
-| Run | Service | Model | DataMatch | ExecMatch | ExecF1 | Exact Match | Normalized Match | Parse Success | Runtime Success |
-|-----|---------|-------|-----------|-----------|--------|-------------|------------------|---------------|----------------|
-| 1 | azure | GPT 5.2 Chat | 93.1% | 36.1% | 0.942 | 36.4% | 36.4% | 100.0% | 100.0% |
-| 2 | bedrock | anthropic.claude-3-sonnet-20240229-v1:0 | 79.2% | 37.0% | 0.808 | 36.4% | 36.4% | 100.0% | 99.1% |
-| 3 | vllm | defog/llama-3-sqlcoder-8b @ dtype bfloat16 | 49.3% | 24.8% | 0.497 | 24.3% | 24.3% | 70.5% | 66.1% |
-| 4 | caii | openai/gpt-oss-20b | 84.8% | 30.9% | 0.859 | 30.5% | 30.5% | 99.7% | 99.4% |
-| 5 | caii | Qwen/Qwen3-Coder-30B-A3B-Instruct | 88.4% | 40.8% | 0.903 | 40.5% | 40.5% | 99.9% | 99.4% |
-| 6 | caii | nvidia/llama-3.3-nemotron-super-49b-v1.5 | 74.0% | 27.1% | 0.755 | 26.0% | 26.0% | 99.4% | 96.3% |
+| Run | App Name | Service | Model | DataMatch | ExecMatch | ExecF1 | Exact Match | Normalized Match | Parse Success | Runtime Success |
+|-----|----------|---------|-------|-----------|-----------|--------|-------------|------------------|---------------|----------------|
+| 1 | sqlai | azure | GPT 5.2 Chat | 93.1% | 36.1% | 0.942 | 36.4% | 36.4% | 100.0% | 100.0% |
+| 2 | sqlai | bedrock | anthropic.claude-3-sonnet-20240229-v1:0 | 79.2% | 37.0% | 0.808 | 36.4% | 36.4% | 100.0% | 99.1% |
+| 3 | sqlai | vllm | defog/llama-3-sqlcoder-8b @ dtype bfloat16 | 49.3% | 24.8% | 0.497 | 24.3% | 24.3% | 70.5% | 66.1% |
+| 4 | sqlai | caii | openai/gpt-oss-20b | 84.8% | 30.9% | 0.859 | 30.5% | 30.5% | 99.7% | 99.4% |
+| 5 | sqlai | caii | Qwen/Qwen3-Coder-30B-A3B-Instruct | 88.4% | 40.8% | 0.903 | 40.5% | 40.5% | 99.9% | 99.4% |
+| 6 | sqlai | caii | nvidia/llama-3.3-nemotron-super-49b-v1.5 | 74.0% | 27.1% | 0.755 | 26.0% | 26.0% | 99.4% | 96.3% |
 
-## Run 1: azure - GPT 5.2 Chat
+## Run 1: sqlai (azure - GPT 5.2 Chat)
 
 ### Core Execution Metrics
 
@@ -52,7 +52,7 @@
 - **Parse/Compile Success**: 682/682 (100.00%)
 - **Runtime Success**: 682/682 (100.00%)
 
-## Run 2: bedrock - anthropic.claude-3-sonnet-20240229-v1:0
+## Run 2: sqlai (bedrock - anthropic.claude-3-sonnet-20240229-v1:0)
 
 ### Core Execution Metrics
 
@@ -126,7 +126,7 @@ JOIN car_1.model_list ml O
           FROM car_1.model_list
           INNER 
 
-## Run 3: vllm - defog/llama-3-sqlcoder-8b @ dtype bfloat16
+## Run 3: sqlai (vllm - defog/llama-3-sqlcoder-8b @ dtype bfloat16)
 
 ### Core Execution Metrics
 
@@ -201,7 +201,7 @@ JOIN car_1.model_list ml O
 [SQL: SELECT c.Model, c.Year FROM car_1.cars_data c ORDER BY c.Year ASC LIMIT 1;]
 (Background on this e
 
-## Run 4: caii - openai/gpt-oss-20b
+## Run 4: sqlai (caii - openai/gpt-oss-20b)
 
 ### Core Execution Metrics
 
@@ -267,7 +267,7 @@ FROM orchestra.orchestra
 ORDER BY Year_of_Founded DESC;```
 - **Error**: (mysql.connector.errors.DatabaseError) 3065 (HY000): Expression #1 of ORDER BY clause is not in SELECT list, references column 'orchestra.orchestra.Year_of_Founded' which is not in SELECT list; this i
 
-## Run 5: caii - Qwen/Qwen3-Coder-30B-A3B-Instruct
+## Run 5: sqlai (caii - Qwen/Qwen3-Coder-30B-A3B-Instruct)
 
 ### Core Execution Metrics
 
@@ -336,7 +336,7 @@ LIMIT 1;```
 - **Generated SQL**: ```SELECT COUNT(*) FROM museum_visit.museum WHERE CAST(Open_Year AS INTEGER) > 2013 OR CAST(Open_Year AS INTEGER) < 2008```
 - **Error**: (mysql.connector.errors.ProgrammingError) 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INTEGER) 
 
-## Run 6: caii - nvidia/llama-3.3-nemotron-super-49b-v1.5
+## Run 6: sqlai (caii - nvidia/llama-3.3-nemotron-super-49b-v1.5)
 
 ### Core Execution Metrics
 

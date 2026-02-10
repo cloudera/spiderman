@@ -140,7 +140,7 @@ class ResultsAndReports:
 
         # Detailed metrics for each run
         for idx, metrics in enumerate(run_metrics):
-            lines.append(f"## Run {idx + 1}: {metrics['metadata']['app_name']} ({metrics['metadata']['service_name']}) - {metrics['metadata']['model_details']}\n\n")
+            lines.append(f"## Run {idx + 1}: {metrics['metadata']['app_name']} ({metrics['metadata']['service_name']} - {metrics['metadata']['model_details']})\n\n")
 
             # Core metrics
             lines.append("### Core Execution Metrics\n\n")
