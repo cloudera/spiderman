@@ -5,8 +5,13 @@ import os
 from os import path
 from datetime import datetime
 import json
+import matplotlib.pyplot as plt
+import matplotlib
 
 from scripts.utils.sha import df_to_sha
+
+# Use non-interactive backend for matplotlib
+matplotlib.use('Agg')
 
 
 class BenchmarkStore:
@@ -26,6 +31,96 @@ class BenchmarkStore:
         self.results_file_path = path.join(base_path, f'{self.split.value}_results.json')
         self.report_file_path = path.join(base_path, f'{self.split.value}_report.md')
         self.mismatches_file_path = path.join(base_path, f'{self.split.value}_mismatches.json')
+
+    def _generate_difficulty_graph(self, run_metrics: list[dict]) -> str:
+        """
+        Generate a line graph showing accuracy by difficulty.
+
+        Args:
+            run_metrics: List of metrics for each run
+
+        Returns:
+            Markdown string with the graph
+        """
+        lines = []
+        lines.append("### Accuracy by SQL Difficulty\n\n")
+        lines.append("This graph shows how DataMatch accuracy varies across SQL difficulty levels (1=Very Easy, 5=Very Hard) for each model.\n\n")
+
+        # Build data for graph
+        difficulty_levels = list(range(1, 6))
+        model_data = []
+
+        for idx, metrics in enumerate(run_metrics):
+            model_name = f"{metrics['metadata']['service_name']}/{metrics['metadata']['model_details']}"
+            # Truncate long model names
+            if len(model_name) > 50:
+                model_name = model_name[:47] + "..."
+
+            accuracies = []
+            for diff in difficulty_levels:
+                total = metrics['by_difficulty'][diff]['total']
+                matches = metrics['by_difficulty'][diff]['data_match']
+                accuracy = (matches / total * 100) if total > 0 else 0
+                accuracies.append(accuracy)
+
+            model_data.append({
+                'name': model_name,
+                'run_num': idx + 1,
+                'accuracies': accuracies
+            })
+
+        # Generate matplotlib plot
+        base_path = f"./benchmark_{self.dialect}"
+        plot_path = path.join(base_path, f'{self.split.value}_difficulty_plot.png')
+        
+        plt.figure(figsize=(10, 6))
+        
+        # Plot lines for each model
+        colors = plt.cm.tab10(range(len(model_data)))  # type: ignore[attr-defined]
+        for i, model in enumerate(model_data):
+            plt.plot(difficulty_levels, model['accuracies'], 
+                    marker='o', linewidth=2, markersize=8,
+                    label=f"Run {model['run_num']}: {model['name']}",
+                    color=colors[i])
+            
+            # Add "Run {id}" label at the end of each line
+            last_x = difficulty_levels[-1]
+            last_y = model['accuracies'][-1]
+            plt.text(last_x + 0.1, last_y, f"Run {model['run_num']}", 
+                    fontsize=9, va='center', color=colors[i], fontweight='bold')
+        
+        plt.xlabel('SQL Difficulty Level', fontsize=12, fontweight='bold')
+        plt.ylabel('DataMatch Accuracy (%)', fontsize=12, fontweight='bold')
+        plt.title('Model Performance Across SQL Difficulty Levels', fontsize=14, fontweight='bold')
+        plt.xticks(difficulty_levels, 
+                   ['1\n(Very Easy)', '2\n(Easy)', '3\n(Medium)', '4\n(Hard)', '5\n(Very Hard)'])
+        plt.yticks(range(0, 101, 10))
+        plt.ylim(0, 105)
+        plt.xlim(0.8, 5.6)  # Extend x-axis to accommodate labels
+        plt.grid(True, alpha=0.3, linestyle='--')
+        plt.tight_layout()
+        
+        # Save the plot
+        plt.savefig(plot_path, dpi=150, bbox_inches='tight')
+        plt.close()
+        
+        # Add plot to markdown
+        lines.append(f"![Accuracy by SQL Difficulty]({path.basename(plot_path)})\n\n")
+
+        # Create transposed table (runs in rows, difficulty levels in columns)
+        difficulty_labels = ["1 (Very Easy)", "2 (Easy)", "3 (Medium)", "4 (Hard)", "5 (Very Hard)"]
+        lines.append("| Model | " + " | ".join(difficulty_labels) + " |\n")
+        lines.append("|-------|" + "|".join(["-----------" for _ in difficulty_labels]) + "|\n")
+
+        for model in model_data:
+            line = f"| Run {model['run_num']} |"
+            for accuracy in model['accuracies']:
+                line += f" {accuracy:.1f}% |"
+            lines.append(line + "\n")
+
+        lines.append("\n")
+
+        return ''.join(lines)
 
     def write_results(self, source_queries: pd.DataFrame, metadata: dict, data: list[str]) -> None:
 
@@ -133,6 +228,10 @@ class BenchmarkStore:
                         f"{data_match_pct:.1f}% | {exec_match_pct:.1f}% | {exec_f1_avg:.3f} | {exact_match_pct:.1f}% | "
                         f"{norm_match_pct:.1f}% | {parse_pct:.1f}% | {runtime_pct:.1f}% |\n")
 
+        lines.append("\n")
+
+        # Generate accuracy by difficulty graph
+        lines.append(self._generate_difficulty_graph(run_metrics))
         lines.append("\n")
 
         # Detailed metrics for each run

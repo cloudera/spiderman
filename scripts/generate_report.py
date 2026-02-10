@@ -11,6 +11,7 @@ from scripts.core.benchmark_store import BenchmarkStore
 from scripts.utils.args import url_dialect_parser, test_split_parser
 from scripts.core.factories import create_target_db
 from scripts.utils.sha import df_to_sha
+from scripts.core.sql_difficulty import calculate_sql_difficulty
 
 
 class ResultAnalyzer:
@@ -357,6 +358,15 @@ class ResultAnalyzer:
 
         print(f"Benchmarking {len(runs)} runs against {total_queries} queries...")
 
+        # Calculate SQL difficulty for all gold queries
+        print("Calculating SQL difficulty for gold queries...")
+        query_difficulties = {}
+        for idx, row in source_queries.iterrows():
+            idx = cast(int, idx)
+            difficulty_info = calculate_sql_difficulty(str(row['sql']), dialect='mysql')
+            query_difficulties[idx] = difficulty_info['difficulty']
+        print(f"SQL difficulty calculated for {len(query_difficulties)} queries")
+
         # Batch gold queries by database and separate results
         print("Executing gold standard queries...")
         gold_queries_by_db = defaultdict(list)
@@ -400,7 +410,12 @@ class ResultAnalyzer:
                 'parse_success': 0,
                 'runtime_success': 0,
                 'errors': defaultdict(int),
-                'error_examples': defaultdict(list)
+                'error_examples': defaultdict(list),
+                # Track metrics by difficulty level (1-5)
+                'by_difficulty': {
+                    i: {'data_match': 0, 'total': 0}
+                    for i in range(1, 6)
+                }
             }
 
             # Batch predicted queries by database
@@ -434,6 +449,10 @@ class ResultAnalyzer:
                 gold_df, has_order = gold_results[idx]
                 pred_df, error_cat, error_msg = pred_execution_results[idx]
 
+                # Get difficulty level for this query
+                difficulty = query_difficulties.get(idx, 1)
+                metrics['by_difficulty'][difficulty]['total'] += 1
+
                 if pred_df is not None:
                     metrics['parse_success'] += 1
                     metrics['runtime_success'] += 1
@@ -445,6 +464,8 @@ class ResultAnalyzer:
                         metrics['exec_match'] += 1
                     if comparison['data_match']:
                         metrics['data_match'] += 1
+                        # Track data match by difficulty
+                        metrics['by_difficulty'][difficulty]['data_match'] += 1
                     metrics['exec_f1_sum'] += comparison['exec_f1']
 
                     if comparison['exact_match']:

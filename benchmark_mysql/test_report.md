@@ -1,5 +1,5 @@
 # SQL Generation Benchmark Report
-**Generated**: 2026-02-09 16:36:25\
+**Generated**: 2026-02-10 02:48:28\
 **Dataset**: mysql\
 **Split**: test\
 **Total Queries**: 682
@@ -35,6 +35,22 @@
 | 4 | sqlai | caii | openai/gpt-oss-20b | 84.8% | 30.9% | 0.859 | 30.5% | 30.5% | 99.7% | 99.4% |
 | 5 | sqlai | caii | Qwen/Qwen3-Coder-30B-A3B-Instruct | 88.4% | 40.8% | 0.903 | 40.5% | 40.5% | 99.9% | 99.4% |
 | 6 | sqlai | caii | nvidia/llama-3.3-nemotron-super-49b-v1.5 | 74.0% | 27.1% | 0.755 | 26.0% | 26.0% | 99.4% | 96.3% |
+
+### Accuracy by SQL Difficulty
+
+This graph shows how DataMatch accuracy varies across SQL difficulty levels (1=Very Easy, 5=Very Hard) for each model.
+
+![Accuracy by SQL Difficulty](test_difficulty_plot.png)
+
+| Model | 1 (Very Easy) | 2 (Easy) | 3 (Medium) | 4 (Hard) | 5 (Very Hard) |
+|-------|-----------|-----------|-----------|-----------|-----------|
+| Run 1 | 93.1% | 99.2% | 96.9% | 90.3% | 81.7% |
+| Run 2 | 83.9% | 96.2% | 87.6% | 68.6% | 41.7% |
+| Run 3 | 47.7% | 94.7% | 55.7% | 27.4% | 8.3% |
+| Run 4 | 87.2% | 95.5% | 86.6% | 77.7% | 70.0% |
+| Run 5 | 91.3% | 97.7% | 89.7% | 85.1% | 65.0% |
+| Run 6 | 82.1% | 90.2% | 79.4% | 58.3% | 46.7% |
+
 
 ## Run 1: sqlai (azure - GPT 5.2 Chat)
 
