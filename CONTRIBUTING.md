@@ -36,35 +36,16 @@ uv run pytest tests
 uv run pyright
 ```
 
-5. Run linting:
-
-```bash
-uv run ruff check .
-```
-
-Fix and format
-
-```bash
-uv run ruff check . --fix
-uv run ruff format .
-```
-
-6. Update README if you modified scripts:
-7. (Optional) Run pre-commit hooks on all files:
+5. Update README if you modified scripts:
+6. (Optional) Run pre-commit hooks on all files:
 
 ```bash
 uv run pre-commit run --all-files
 ```
 
-8. Submit a pull request to the same branch you branched from
+7. Submit a pull request to the same branch you branched from
 
-### Code Style
+## License
 
-- We use `ruff` for linting and formatting
-- Follow PEP 8 style guidelines
-- Add type hints to all functions
-- Include docstrings for public APIs
-
-# License
 - Dataset license : [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
 - Scripts license : [Apache 2.0](https://apache.org/licenses/LICENSE-2.0.txt)

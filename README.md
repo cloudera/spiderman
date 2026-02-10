@@ -1,18 +1,20 @@
 # SpiderMan
+
 A comprehensive, high-quality, human-annotated plain-text dataset for SQL AI tasks across diverse domains and complexity levels.
 
 ## Table of Contents
+
 - [Why SpiderMan](#why-spiderman)
 - [Dataset](#dataset)
 - [Setup](#setup)
 - [Scripts](#scripts)
   - [Run Benchmark](#run-benchmark)
   - [Dataset Scripts](#dataset-scripts)
-- [Testing](#testing)
 - [Citation](#citation)
 - [License](#license)
 
 ## Why SpiderMan
+
 SpiderMan is an improved version of the [Spider 1.0](https://yale-lily.github.io/spider) dataset.
 
 - The databases are made available in plain-text format instead of a set of SQLite files. This makes it easy for you to load the dataset into any database of your choice.
@@ -21,6 +23,7 @@ SpiderMan is an improved version of the [Spider 1.0](https://yale-lily.github.io
 - Queries have been improved for successful execution.
 
 ## Dataset
+
 The dataset comprises 157 databases. Each one comes with its respective schema, data, and queries. By default, schema and queries are in MySQL dialect and can be translated to other dialects using the transpiler script. At present, our queries do not extend across multiple databases. Each query within a single database is assigned exclusively to either the training set or the test set, but not to both.
 
 ||Queries|Tables|Databases|
@@ -31,13 +34,7 @@ The dataset comprises 157 databases. Each one comes with its respective schema, 
 
 ## Setup
 
-### Prerequisites
-
-The project needs `uv` to be installed to manage dependencies, and with uv run the following command to install all dependencies. Setting Python version to 3.10 as we use it for development.
-
-```shell
-uv sync --python 3.10
-```
+The project needs `uv` to be installed to manage dependencies.
 
 ### Setup Database
 
@@ -48,22 +45,25 @@ docker run --name spiderman-mysql -e MYSQL_ROOT_PASSWORD=PeterParker -p 3306:330
 ```
 
 ### Load Dataset
+
 ```shell
 uv run scripts/load_dataset.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
+
 It creates schemas for all the databases and populates them with data.
 
 ## Scripts
 
 All scripts can be run using `uv run` which automatically manages the virtual environment:
 
-> **Note:** All the URL follows the SQLAlchemy database URL format - `dialect+driver://username:password@host:port/database_name`. More details on the URL are available [here](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls).
+> **Note:** All the URL follows the SQLAlchemy database URL format - `dialect+driver://username:password@host:port/database_name`. More details on the URL are available [in this doc](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls).
 
 ### Run Benchmark
 
 Pre-computed results and benchmarks are included in the repository. However, you can use the following scripts to generate your own results.
 
 #### Run SQL AI Tasks
+
 ```shell
 uv run scripts/run_sqlai.py mysql http://127.0.0.1:8000 "<Model details>"
 ```
@@ -71,6 +71,7 @@ uv run scripts/run_sqlai.py mysql http://127.0.0.1:8000 "<Model details>"
 This script generates SQL queries using a SQL AI service and saves the results to a JSON file for `test` queries of a specific `dialect`. Run with `-h` to see all available options.
 
 #### Generate Report
+
 ```shell
 uv run scripts/generate_report.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
@@ -80,12 +81,15 @@ This script analyzes the SQL results for `test` queries of a specific `dialect` 
 ### Dataset Scripts
 
 #### Scan Dataset
+
 ```shell
 uv run scripts/scan_dataset.py mysql
 ```
+
 This script goes through the dataset and aggregates various details such as the number of queries, tables, and databases.
 
 #### Execute Queries
+
 ```shell
 uv run scripts/execute_queries.py 'mysql+mysqlconnector://root:PeterParker@localhost:3306'
 ```
@@ -93,15 +97,18 @@ uv run scripts/execute_queries.py 'mysql+mysqlconnector://root:PeterParker@local
 It executes the queries and checks for the successful completion. Query results are not verified at this point.
 
 #### Validate Queries
+
 ```shell
 uv run scripts/validate_queries.py mysql
 ```
+
 This script validates the queries using an LLM and writes the results to a JSON file in the respective dataset directory. Environment variable `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, and `AZURE_OPENAI_MODEL` must be set.
 
-# Citation
+## Citation
 
 If you find this to be useful, please consider citing:
-```
+
+```bibtex
 @inproceedings{SpiderMan,
  title  = {SpiderMan: A Comprehensive Human-Annotated Dataset for SQL AI Tasks Across Diverse Domains and Complexity Levels},
  author = {Sreenath Somarajapuram and Athira},
@@ -118,6 +125,7 @@ If you find this to be useful, please consider citing:
 }
 ```
 
-# License
+## License
+
 - Dataset license : [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
 - Scripts license : [Apache 2.0](https://apache.org/licenses/LICENSE-2.0.txt)
