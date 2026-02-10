@@ -338,7 +338,7 @@ class ResultAnalyzer:
         """
         Run comprehensive benchmark and generate markdown report.
         """
-        sql_results = self.benchmark_store.read_sql_results()
+        sql_results = self.benchmark_store.read_results()
         total_queries = sql_results['total_queries']
         runs = sql_results['runs']
 

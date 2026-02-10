@@ -27,7 +27,7 @@ class BenchmarkStore:
         self.report_file_path = path.join(base_path, f'{self.split.value}_report.md')
         self.mismatches_file_path = path.join(base_path, f'{self.split.value}_mismatches.json')
 
-    def write_sql_results(self, source_queries: pd.DataFrame, metadata: dict, data: list[str]) -> None:
+    def write_results(self, source_queries: pd.DataFrame, metadata: dict, data: list[str]) -> None:
 
         # Hash the source queries to detect changes across runs
         source_sha = df_to_sha(source_queries)
@@ -76,7 +76,7 @@ class BenchmarkStore:
 
         print(f"Wrote SQL results to {self.results_file_path}")
 
-    def read_sql_results(self) -> dict:
+    def read_results(self) -> dict:
         with open(self.results_file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
 

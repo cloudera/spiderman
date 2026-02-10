@@ -65,7 +65,7 @@ class SQLAIRunner:
             'model_details': self.model_details,
             'timestamp': datetime.now().isoformat(),
         }
-        benchmark_store.write_sql_results(queries_df, metadata, sql_data)
+        benchmark_store.write_results(queries_df, metadata, sql_data)
 
 
 if __name__ == "__main__":
