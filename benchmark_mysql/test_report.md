@@ -1,5 +1,5 @@
 # SQL Generation Benchmark Report
-**Generated**: 2026-02-10 02:48:28\
+**Generated**: 2026-02-10 13:36:32\
 **Dataset**: mysql\
 **Split**: test\
 **Total Queries**: 682
@@ -29,12 +29,12 @@
 
 | Run | App Name | Service | Model | DataMatch | ExecMatch | ExecF1 | Exact Match | Normalized Match | Parse Success | Runtime Success |
 |-----|----------|---------|-------|-----------|-----------|--------|-------------|------------------|---------------|----------------|
-| 1 | sqlai | azure | GPT 5.2 Chat | 93.1% | 36.1% | 0.942 | 36.4% | 36.4% | 100.0% | 100.0% |
-| 2 | sqlai | bedrock | anthropic.claude-3-sonnet-20240229-v1:0 | 79.2% | 37.0% | 0.808 | 36.4% | 36.4% | 100.0% | 99.1% |
+| 1 | sqlai | azure | GPT 5.2 Chat | 94.0% | 36.7% | 0.950 | 36.4% | 36.4% | 100.0% | 100.0% |
+| 2 | sqlai | bedrock | anthropic.claude-3-sonnet-20240229-v1:0 | 79.9% | 37.4% | 0.816 | 36.4% | 36.4% | 100.0% | 99.1% |
 | 3 | sqlai | vllm | defog/llama-3-sqlcoder-8b @ dtype bfloat16 | 49.3% | 24.8% | 0.497 | 24.3% | 24.3% | 70.5% | 66.1% |
-| 4 | sqlai | caii | openai/gpt-oss-20b | 84.8% | 30.9% | 0.859 | 30.5% | 30.5% | 99.7% | 99.4% |
-| 5 | sqlai | caii | Qwen/Qwen3-Coder-30B-A3B-Instruct | 88.4% | 40.8% | 0.903 | 40.5% | 40.5% | 99.9% | 99.4% |
-| 6 | sqlai | caii | nvidia/llama-3.3-nemotron-super-49b-v1.5 | 74.0% | 27.1% | 0.755 | 26.0% | 26.0% | 99.4% | 96.3% |
+| 4 | sqlai | caii | openai/gpt-oss-20b | 85.6% | 31.5% | 0.868 | 30.5% | 30.5% | 99.7% | 99.4% |
+| 5 | sqlai | caii | Qwen/Qwen3-Coder-30B-A3B-Instruct | 89.3% | 41.3% | 0.912 | 40.5% | 40.5% | 99.9% | 99.4% |
+| 6 | sqlai | caii | nvidia/llama-3.3-nemotron-super-49b-v1.5 | 74.8% | 27.6% | 0.763 | 26.0% | 26.0% | 99.4% | 96.3% |
 
 ### Accuracy by SQL Difficulty
 
@@ -44,23 +44,23 @@ This graph shows how DataMatch accuracy varies across SQL difficulty levels (1=V
 
 | Model | 1 (Very Easy) | 2 (Easy) | 3 (Medium) | 4 (Hard) | 5 (Very Hard) |
 |-------|-----------|-----------|-----------|-----------|-----------|
-| Run 1 | 93.1% | 99.2% | 96.9% | 90.3% | 81.7% |
-| Run 2 | 83.9% | 96.2% | 87.6% | 68.6% | 41.7% |
+| Run 1 | 95.0% | 99.2% | 96.9% | 90.3% | 85.0% |
+| Run 2 | 85.3% | 96.2% | 87.6% | 68.6% | 45.0% |
 | Run 3 | 47.7% | 94.7% | 55.7% | 27.4% | 8.3% |
-| Run 4 | 87.2% | 95.5% | 86.6% | 77.7% | 70.0% |
-| Run 5 | 91.3% | 97.7% | 89.7% | 85.1% | 65.0% |
-| Run 6 | 82.1% | 90.2% | 79.4% | 58.3% | 46.7% |
+| Run 4 | 89.0% | 95.5% | 86.6% | 77.7% | 73.3% |
+| Run 5 | 93.1% | 97.7% | 89.7% | 85.1% | 68.3% |
+| Run 6 | 83.5% | 90.2% | 79.4% | 58.3% | 50.0% |
 
 
 ## Run 1: sqlai (azure - GPT 5.2 Chat)
 
 ### Core Execution Metrics
 
-- **Data Match (Ignoring Column Names)**: 635/682 (93.11%)
+- **Data Match (Ignoring Column Names)**: 641/682 (93.99%)
   - *Same data values, ignoring column name differences*
-- **Execution Accuracy (ExecMatch)**: 246/682 (36.07%)
+- **Execution Accuracy (ExecMatch)**: 250/682 (36.66%)
   - *Exact match including column names*
-- **Average ExecF1**: 0.9416
+- **Average ExecF1**: 0.9504
 - **Exact Text Match**: 248/682 (36.36%)
 - **Normalized Match**: 248/682 (36.36%)
 ### Execution Success Rates
@@ -72,11 +72,11 @@ This graph shows how DataMatch accuracy varies across SQL difficulty levels (1=V
 
 ### Core Execution Metrics
 
-- **Data Match (Ignoring Column Names)**: 540/682 (79.18%)
+- **Data Match (Ignoring Column Names)**: 545/682 (79.91%)
   - *Same data values, ignoring column name differences*
-- **Execution Accuracy (ExecMatch)**: 252/682 (36.95%)
+- **Execution Accuracy (ExecMatch)**: 255/682 (37.39%)
   - *Exact match including column names*
-- **Average ExecF1**: 0.8082
+- **Average ExecF1**: 0.8155
 - **Exact Text Match**: 248/682 (36.36%)
 - **Normalized Match**: 248/682 (36.36%)
 ### Execution Success Rates
@@ -221,11 +221,11 @@ JOIN car_1.model_list ml O
 
 ### Core Execution Metrics
 
-- **Data Match (Ignoring Column Names)**: 578/682 (84.75%)
+- **Data Match (Ignoring Column Names)**: 584/682 (85.63%)
   - *Same data values, ignoring column name differences*
-- **Execution Accuracy (ExecMatch)**: 211/682 (30.94%)
+- **Execution Accuracy (ExecMatch)**: 215/682 (31.52%)
   - *Exact match including column names*
-- **Average ExecF1**: 0.8588
+- **Average ExecF1**: 0.8676
 - **Exact Text Match**: 208/682 (30.50%)
 - **Normalized Match**: 208/682 (30.50%)
 ### Execution Success Rates
@@ -287,11 +287,11 @@ ORDER BY Year_of_Founded DESC;```
 
 ### Core Execution Metrics
 
-- **Data Match (Ignoring Column Names)**: 603/682 (88.42%)
+- **Data Match (Ignoring Column Names)**: 609/682 (89.30%)
   - *Same data values, ignoring column name differences*
-- **Execution Accuracy (ExecMatch)**: 278/682 (40.76%)
+- **Execution Accuracy (ExecMatch)**: 282/682 (41.35%)
   - *Exact match including column names*
-- **Average ExecF1**: 0.9034
+- **Average ExecF1**: 0.9122
 - **Exact Text Match**: 276/682 (40.47%)
 - **Normalized Match**: 276/682 (40.47%)
 ### Execution Success Rates
@@ -356,11 +356,11 @@ LIMIT 1;```
 
 ### Core Execution Metrics
 
-- **Data Match (Ignoring Column Names)**: 505/682 (74.05%)
+- **Data Match (Ignoring Column Names)**: 510/682 (74.78%)
   - *Same data values, ignoring column name differences*
-- **Execution Accuracy (ExecMatch)**: 185/682 (27.13%)
+- **Execution Accuracy (ExecMatch)**: 188/682 (27.57%)
   - *Exact match including column names*
-- **Average ExecF1**: 0.7552
+- **Average ExecF1**: 0.7625
 - **Exact Text Match**: 177/682 (25.95%)
 - **Normalized Match**: 177/682 (25.95%)
 ### Execution Success Rates

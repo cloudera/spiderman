@@ -152,11 +152,12 @@ class ResultAnalyzer:
 
             # Count matches
             match_size = len(gold_set & pred_set)
-            if match_size > best_match_size:
+            # Use lexicographically smaller permutation as tiebreaker for determinism
+            if match_size > best_match_size or (match_size == best_match_size and (best_perm is None or perm < tuple(best_perm))):
                 best_match_size = match_size
                 best_perm = list(perm)
 
-                # Early exit if perfect match
+                # Early exit if perfect match and first valid permutation
                 if match_size == len(gold_set) and len(gold_set) == len(pred_set):
                     break
 
@@ -304,7 +305,11 @@ class ResultAnalyzer:
         """
         results = {}
 
-        for db_name, queries in queries_by_db.items():
+        # Sort database names for deterministic execution order
+        for db_name in sorted(queries_by_db.keys()):
+            queries = queries_by_db[db_name]
+            # Sort queries by index for deterministic order
+            queries = sorted(queries, key=lambda x: x[0])
             query_sqls = [sql for _, sql in queries]
 
             try:
