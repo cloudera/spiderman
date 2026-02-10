@@ -9,26 +9,23 @@ import json
 from scripts.utils.sha import df_to_sha
 
 
-class ResultsAndReports:
+class BenchmarkStore:
     dialect: str
     split: QuerySplit
 
     results_file_path: str
-    benchmark_file_path: str
+    report_file_path: str
     mismatches_file_path: str
 
     def __init__(self, dialect: str, split: QuerySplit):
         self.dialect = dialect
         self.split = split
 
-        base_path = path.join(
-            "./results_and_reports",
-            f"{self.dialect}_{self.split.value}"
-        )
+        base_path = f"./benchmark_{self.dialect}"
 
-        self.results_file_path = path.join(base_path, 'sql_results.json')
-        self.report_file_path = path.join(base_path, 'sql_benchmark_report.md')
-        self.mismatches_file_path = path.join(base_path, 'sql_benchmark_mismatches.json')
+        self.results_file_path = path.join(base_path, f'{self.split.value}_results.json')
+        self.report_file_path = path.join(base_path, f'{self.split.value}_report.md')
+        self.mismatches_file_path = path.join(base_path, f'{self.split.value}_mismatches.json')
 
     def write_sql_results(self, source_queries: pd.DataFrame, metadata: dict, data: list[str]) -> None:
 

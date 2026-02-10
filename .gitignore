@@ -1,6 +1,11 @@
-# Spiderman Dataset
-dataset_*
-!dataset_mysql/
+# Spiderman - Dataset
+/dataset_*/
+!/dataset_mysql/
+
+# Spiderman - Benchmark
+/benchmark_*/
+!/benchmark_mysql/
+
 notes.md
 
 # Byte-compiled / optimized / DLL files

@@ -6,7 +6,7 @@ import sqlglot
 import pandas as pd
 
 from scripts.core.dataset import DatasetDir, QuerySplit
-from scripts.core.results_and_reports import ResultsAndReports
+from scripts.core.benchmark_store import BenchmarkStore
 from scripts.utils.args import url_dialect_parser, test_split_parser
 from scripts.core.factories import create_target_db
 from scripts.utils.sha import df_to_sha
@@ -19,12 +19,12 @@ class SQLResultBenchmark:
     """
 
     dataset: DatasetDir
-    rr_dir: ResultsAndReports
+    benchmark_store: BenchmarkStore
     split: QuerySplit
     db_url: str
     scalar_tolerance: float
 
-    def __init__(self, dataset: DatasetDir, rr_dir: ResultsAndReports, split: QuerySplit, db_url: str, scalar_tolerance: float = 1e-5):
+    def __init__(self, dataset: DatasetDir, benchmark_store: BenchmarkStore, split: QuerySplit, db_url: str, scalar_tolerance: float = 1e-5):
         """
         Initialize the SQL Result Benchmark.
 
@@ -35,7 +35,7 @@ class SQLResultBenchmark:
             scalar_tolerance: Tolerance for floating-point comparisons (default: 1e-5)
         """
         self.dataset = dataset
-        self.rr_dir = rr_dir
+        self.benchmark_store = benchmark_store
         self.split = split
         self.db_url = db_url
         self.scalar_tolerance = scalar_tolerance
@@ -338,7 +338,7 @@ class SQLResultBenchmark:
         """
         Run comprehensive benchmark and generate markdown report.
         """
-        sql_results = self.rr_dir.read_sql_results()
+        sql_results = self.benchmark_store.read_sql_results()
         total_queries = sql_results['total_queries']
         runs = sql_results['runs']
 
@@ -498,7 +498,7 @@ class SQLResultBenchmark:
             run_metrics.append(metrics)
 
         # Generate markdown report and mismatches JSON
-        self.rr_dir.generate_sql_benchmark_report(run_metrics, total_queries, all_mismatches)
+        self.benchmark_store.generate_sql_benchmark_report(run_metrics, total_queries, all_mismatches)
 
 
 if __name__ == "__main__":
@@ -516,13 +516,13 @@ if __name__ == "__main__":
 
     split = QuerySplit(args.split)
     dataset_dir = DatasetDir(args.dialect)
-    rr_dir = ResultsAndReports(args.dialect, split)
+    benchmark_store = BenchmarkStore(args.dialect, split)
 
     print(f"Benchmarking {split.value} SQL results for {dataset_dir.dialect} dialect")
     print(f"Database URL: {args.url}")
     print(f"Scalar tolerance: {args.tolerance}")
 
-    benchmarker = SQLResultBenchmark(dataset_dir, rr_dir, split, args.url, args.tolerance)
+    benchmarker = SQLResultBenchmark(dataset_dir, benchmark_store, split, args.url, args.tolerance)
     benchmarker.benchmark()
 
     print(f"\nBenchmark completed successfully.")
