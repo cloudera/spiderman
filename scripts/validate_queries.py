@@ -14,7 +14,7 @@ class LLMValidator:
         self.dataset = dataset
         self.db_schema_cache: dict[str, str] = {}
         self.client = AzureOpenAI(
-            azure_endpoint= os.environ.get("AZURE_OPENAI_ENDPOINT"),
+            azure_endpoint= os.environ.get("AZURE_OPENAI_ENDPOINT", ""),
             api_version="2024-12-01-preview",
             api_key=os.environ.get("AZURE_OPENAI_API_KEY")
         )
@@ -65,7 +65,7 @@ If the SQL query is INVALID, respond with a JSON object in this format:
 }}"""
 
         response = self.client.chat.completions.create(
-            model=os.environ.get("AZURE_OPENAI_MODEL"),
+            model=os.environ.get("AZURE_OPENAI_MODEL", ""),
             messages=[
                 {"role": "system", "content": "You are a SQL validation expert. Be precise and thorough. Respond only with valid JSON."},
                 {"role": "user", "content": prompt}
@@ -73,7 +73,8 @@ If the SQL query is INVALID, respond with a JSON object in this format:
             response_format={"type": "json_object"}
         )
 
-        return json.loads(response.choices[0].message.content.strip())
+        content = response.choices[0].message.content
+        return json.loads(content.strip() if content else "")
 
     def validate_queries(self, split: QuerySplit):
         queries_df = self.dataset.read_queries(split)
@@ -83,12 +84,12 @@ If the SQL query is INVALID, respond with a JSON object in this format:
 
         validation_results: list[dict[str, str]] = []
 
-        queries = list(queries_df.itertuples(index=False))
+        queries = list(queries_df.to_dict('records'))
         for row, _bar in bar_iter(queries):
-            query_id = row.id
-            db_name = row.database
-            question = row.question
-            sql = row.sql
+            query_id = row['id']
+            db_name = row['database']
+            question = row['question']
+            sql = row['sql']
 
             total_count += 1
             validation_result = self.validate_query(db_name, question, sql)

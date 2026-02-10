@@ -1,8 +1,9 @@
 from argparse import ArgumentParser
 from collections import defaultdict
-from typing import Any, Optional
+from typing import Any, Optional, cast
 import re
 import sqlglot
+from sqlglot import expressions as exp
 import pandas as pd
 
 from scripts.core.dataset import DatasetDir, QuerySplit
@@ -52,7 +53,7 @@ class ResultAnalyzer:
         """
         try:
             parsed = sqlglot.parse_one(sql, read='mysql')
-            return parsed.find(sqlglot.exp.Order) is not None
+            return parsed.find(exp.Order) is not None
         except Exception:
             # Fallback to regex if parsing fails
             return bool(re.search(r'\bORDER\s+BY\b', sql, re.IGNORECASE))
@@ -344,6 +345,7 @@ class ResultAnalyzer:
 
         source_queries = self.dataset.read_queries(self.split)
         source_queries = source_queries.head(total_queries) # Limit to queries used for the run
+        source_queries = source_queries.reset_index(drop=True)  # Ensure integer indices for proper indexing
 
         # Validate source queries haven't changed
         source_sha = df_to_sha(source_queries)
@@ -360,6 +362,7 @@ class ResultAnalyzer:
         gold_queries_by_db = defaultdict(list)
 
         for idx, row in source_queries.iterrows():
+            idx = cast(int, idx)
             gold_queries_by_db[row['database']].append((idx, row['sql']))
 
         # Execute all gold queries in batches
@@ -370,9 +373,10 @@ class ResultAnalyzer:
         gold_errors = {}
 
         for idx, row in source_queries.iterrows():
+            idx = cast(int, idx)
             result_df, error_cat, error_msg = gold_execution_results[idx]
             if result_df is not None:
-                gold_results[idx] = (result_df, self._has_order_by(row['sql']))
+                gold_results[idx] = (result_df, self._has_order_by(str(row['sql'])))
             else:
                 gold_errors[idx] = (error_cat, error_msg)
 
@@ -404,6 +408,7 @@ class ResultAnalyzer:
 
             # Build batch query list while tracking not_generated errors
             for idx, row in source_queries.iterrows():
+                idx = cast(int, idx)
                 if idx >= len(run['data']):
                     metrics['errors']['not_generated'] += 1
                     continue
@@ -420,6 +425,7 @@ class ResultAnalyzer:
 
             # Process results
             for idx, row in source_queries.iterrows():
+                idx = cast(int, idx)
                 # Skip if query not generated or gold failed
                 if idx >= len(run['data']) or idx in gold_errors:
                     continue

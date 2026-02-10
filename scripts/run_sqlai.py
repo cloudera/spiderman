@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 from datetime import datetime
 import os
-from typing import NamedTuple
+from typing import Any
 from urllib.parse import urljoin
 
 import requests
@@ -29,12 +29,12 @@ class SQLAIRunner:
         response = requests.post(urljoin(self.base_url, path), json=payload, headers=headers)
         return response.json()
 
-    def run_query(self, query: NamedTuple) -> str:
+    def run_query(self, query: dict[str, Any]) -> str:
         payload = {
             "task": "generate",
             "dialect": self.dialect,
-            "object_selectors": [query.database],
-            "input": query.question
+            "object_selectors": [query['database']],
+            "input": query['question']
         }
 
         response = self.post_request("/api/v1/ai/assistant", payload)
@@ -44,14 +44,14 @@ class SQLAIRunner:
 
         return response['response']['sql']
 
-    def run(self, dataset_dir: DatasetDir, benchmark_store: BenchmarkStore, split: QuerySplit, limit: int = None) -> None:
+    def run(self, dataset_dir: DatasetDir, benchmark_store: BenchmarkStore, split: QuerySplit, limit: int | None = None) -> None:
         queries_df = dataset_dir.read_queries(split)
 
         if limit:
             queries_df = queries_df.head(limit)
 
         sql_data: list[str] = []
-        queries = list(queries_df.itertuples(index=False))
+        queries = list(queries_df.to_dict('records'))
         for row, _bar in bar_iter(queries):
             sql = self.run_query(row)
             sql_data.append(sql)

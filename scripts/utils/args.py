@@ -1,6 +1,6 @@
 from urllib.parse import urlparse
 from argparse import Action, ArgumentParser, Namespace
-from typing import Optional
+from typing import Any, Optional, Sequence
 
 from scripts.core.dataset import QuerySplit
 
@@ -18,7 +18,9 @@ But if needed -d/--dialect argument is available.
 url_dialect_parser = ArgumentParser(add_help=False)
 
 class ExtractDialectAction(Action):
-    def __call__(self, parser: ArgumentParser, namespace: Namespace, values: str, option_string: Optional[str] = None):
+    def __call__(self, parser: ArgumentParser, namespace: Namespace, values: str | Sequence[Any] | None, option_string: Optional[str] = None):
+        if not isinstance(values, str):
+            raise ValueError("Expected a string value for URL")
         setattr(namespace, self.dest, values)
         if not getattr(namespace, 'dialect', None):
             parsed_url = urlparse(values)

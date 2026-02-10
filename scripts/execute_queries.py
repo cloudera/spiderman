@@ -27,7 +27,7 @@ def execute_queries(queries_df: pd.DataFrame):
             for idx, query in db_queries_df.iterrows():
                 try:
                     bar.text(f">>>> DB: {db_name} | Query: {idx}/{query_count}")
-                    db.execute_statements([query["sql"]])
+                    db.execute_statements([str(query["sql"])])
                 except Exception as e:
                     failure_counter[db_name] = failure_counter.get(db_name, 0) + 1
                     # print(e)
