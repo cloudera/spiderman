@@ -1,5 +1,5 @@
 # SQL Generation Benchmark Report
-**Generated**: 2026-02-10 13:36:32\
+**Generated**: 2026-02-10 16:39:34\
 **Dataset**: mysql\
 **Split**: test\
 **Total Queries**: 682
@@ -35,6 +35,7 @@
 | 4 | sqlai | caii | openai/gpt-oss-20b | 85.6% | 31.5% | 0.868 | 30.5% | 30.5% | 99.7% | 99.4% |
 | 5 | sqlai | caii | Qwen/Qwen3-Coder-30B-A3B-Instruct | 89.3% | 41.3% | 0.912 | 40.5% | 40.5% | 99.9% | 99.4% |
 | 6 | sqlai | caii | nvidia/llama-3.3-nemotron-super-49b-v1.5 | 74.8% | 27.6% | 0.763 | 26.0% | 26.0% | 99.4% | 96.3% |
+| 7 | sqlai | openai-compatible | nvidia/nemotron-3-nano-30b-a3b | 91.1% | 36.5% | 0.925 | 35.9% | 35.9% | 99.3% | 98.7% |
 
 ### Accuracy by SQL Difficulty
 
@@ -50,6 +51,7 @@ This graph shows how DataMatch accuracy varies across SQL difficulty levels (1=V
 | Run 4 | 89.0% | 95.5% | 86.6% | 77.7% | 73.3% |
 | Run 5 | 93.1% | 97.7% | 89.7% | 85.1% | 68.3% |
 | Run 6 | 83.5% | 90.2% | 79.4% | 58.3% | 50.0% |
+| Run 7 | 95.0% | 96.2% | 91.8% | 89.7% | 68.3% |
 
 
 ## Run 1: sqlai (azure - GPT 5.2 Chat)
@@ -447,4 +449,89 @@ LIMIT 1;```
 [SQL: SELECT m.Model, COUNT(DISTINCT c.Make) AS version_count
 FROM car_1.model_list m
 JOIN car_1.car_n
+
+## Run 7: sqlai (openai-compatible - nvidia/nemotron-3-nano-30b-a3b)
+
+### Core Execution Metrics
+
+- **Data Match (Ignoring Column Names)**: 621/682 (91.06%)
+  - *Same data values, ignoring column name differences*
+- **Execution Accuracy (ExecMatch)**: 249/682 (36.51%)
+  - *Exact match including column names*
+- **Average ExecF1**: 0.9247
+- **Exact Text Match**: 245/682 (35.92%)
+- **Normalized Match**: 245/682 (35.92%)
+### Execution Success Rates
+
+- **Parse/Compile Success**: 677/682 (99.27%)
+- **Runtime Success**: 673/682 (98.68%)
+
+### Error Categories
+
+| Error Type | Count | Percentage |
+|------------|-------|------------|
+| Syntax Error | 5 | 0.73% |
+| Runtime Error | 4 | 0.59% |
+
+### Error Examples
+
+#### Syntax Error
+
+**Example 1:**
+
+- **Question**: Find the make and production time of the cars that were produced in the earliest year?
+- **Gold SQL**: ```SELECT `t2`.`Make`, `t1`.`Year` FROM `cars_data` AS `t1` JOIN `car_names` AS `t2` ON `t1`.`Id` = `t2`.`MakeId` WHERE `t1`.`Year` = (SELECT MIN(`YEAR`) FROM `cars_data`)```
+- **Generated SQL**: ```SELECT cm.Maker AS make,\n       cd.Year AS production_time\nFROM car_1.cars_data cd\nJOIN car_1.model_list ml ON cd.Id = ml.ModelId\nJOIN car_1.car_makers cm ON ml.Maker = cm.Id\nWHERE cd.Year = (SELECT MIN(Year) FROM car_1.cars_data);```
+- **Error**: (mysql.connector.errors.ProgrammingError) 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '\n       
+
+**Example 2:**
+
+- **Question**: What is the average miles per gallon of all the cards with 4 cylinders?
+- **Gold SQL**: ```SELECT AVG(`mpg`) FROM `cars_data` WHERE `Cylinders` = 4```
+- **Generated SQL**: ```SELECT AVG(CAST(MPG AS NUMERIC)) AS avg_mpg FROM car_1.cars_data WHERE Cylinders = 4;```
+- **Error**: (mysql.connector.errors.ProgrammingError) 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NUMERIC))
+
+**Example 3:**
+
+- **Question**: Return the different document ids along with the number of paragraphs corresponding to each, ordered by id.
+- **Gold SQL**: ```SELECT `document_id`, COUNT(*) FROM `Paragraphs` GROUP BY `document_id` ORDER BY `document_id````
+- **Generated SQL**: ```SELECT Document_ID,\n       COUNT(*) AS Paragraph_Count\nFROM cre_Doc_Template_Mgt.Paragraphs\nGROUP BY Document_ID\nORDER BY Document_ID;```
+- **Error**: (mysql.connector.errors.ProgrammingError) 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '\n       
+
+#### Runtime Error
+
+**Example 1:**
+
+- **Question**: Which owner has paid the largest amount of money in total for their dogs? Show the owner id and zip code.
+- **Gold SQL**: ```SELECT `t1`.`owner_id`, `t1`.`zip_code` FROM `Owners` AS `t1` JOIN `Dogs` AS `t2` ON `t1`.`owner_id` = `t2`.`owner_id` JOIN `Treatments` AS `t3` ON `t2`.`dog_id` = `t3`.`dog_id` GROUP BY `t1`.`owner_id`, `t1`.`zip_code` ORDER BY SUM(`t3`.`cost_of_treatment`) DESC LIMIT 1```
+- **Generated SQL**: ```SELECT o.owner_id, o.zip_code
+FROM dog_kennels.Owners o
+JOIN dog_kennels.Charges c ON o.owner_id = c.owner_id
+GROUP BY o.owner_id, o.zip_code
+ORDER BY SUM(c.charge_amount) DESC
+LIMIT 1;```
+- **Error**: (mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'c.owner_id' in 'on clause'
+[SQL: SELECT o.owner_id, o.zip_code
+FROM dog_kennels.Owners o
+JOIN dog_kennels.Charges c ON o.owner_i
+
+**Example 2:**
+
+- **Question**: Give the names of poker players who have earnings above 300000.
+- **Gold SQL**: ```SELECT `t1`.`Name` FROM `people` AS `t1` JOIN `poker_player` AS `t2` ON `t1`.`People_ID` = `t2`.`People_ID` WHERE `t2`.`Earnings` > 300000```
+- **Generated SQL**: ```SELECT p.Name FROM poker_player.poker_player p JOIN poker_player.people ppl ON p.People_ID = ppl.People_ID WHERE p.Earnings > 300000;```
+- **Error**: (mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'p.Name' in 'field list'
+[SQL: SELECT p.Name FROM poker_player.poker_player p JOIN poker_player.people ppl ON p.People_ID = ppl.P
+
+**Example 3:**
+
+- **Question**: What are all the course names of the courses which ever have students enrolled in?
+- **Gold SQL**: ```SELECT DISTINCT `t1`.`course_name` FROM `Courses` AS `t1` JOIN `Student_Enrolment_Courses` AS `t2` ON `t1`.`course_id` = `t2`.`course_id````
+- **Generated SQL**: ```SELECT DISTINCT c.course_name
+FROM Courses c
+JOIN Student_Enrollment_Courses sec ON c.course_id = sec.course_id;```
+- **Error**: (mysql.connector.errors.ProgrammingError) 1146 (42S02): Table 'student_transcripts_tracking.Student_Enrollment_Courses' doesn't exist
+[SQL: SELECT DISTINCT c.course_name
+FROM Courses c
+JOIN Student_En
 
