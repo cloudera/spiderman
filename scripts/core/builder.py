@@ -1,12 +1,12 @@
-import hashlib
 from collections import defaultdict
 from typing import Dict
 
 from core.dataset import DatasetDir, QuerySplit
-
+import pandas as pd
 import core.mysql_builder as mysql
 from core import paths
 from core.source_db import SourceDB
+from scripts.utils.sha import str_to_sha
 from utils.filesystem import read_json_dict
 
 
@@ -116,8 +116,7 @@ def build_queries(dataset: DatasetDir, queries: list, split: QuerySplit) -> None
         sql = query["query"]
 
         # Generate query id based on database and question
-        hash_input = f"{db_name},{question}"
-        id = hashlib.md5(hash_input.encode()).hexdigest()[:8]
+        id = str_to_sha(f"{db_name},{question}")
 
         # Use query_overrides
         if id in skipped_ids:
@@ -142,4 +141,5 @@ def build_queries(dataset: DatasetDir, queries: list, split: QuerySplit) -> None
     for db_name in db_names:
         queries = queries + db_queries.get(db_name, [])
 
-    dataset.write_queries(split, queries)
+    df = pd.DataFrame(queries, columns=["id", "database", "question", "sql"])  # type: ignore
+    dataset.write_queries(split, df)

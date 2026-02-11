@@ -36,7 +36,7 @@ def transpile_queries(source_dataset: DatasetDir, target_dataset: DatasetDir):
       queries_df = source_dataset.read_queries(split)
 
       queries_df['sql'] = queries_df['sql'].apply(transpiler.transpile)
-      target_dataset.write_queries(split, queries_df.values.tolist())
+      target_dataset.write_queries(split, queries_df)
 
 
 if __name__ == "__main__":

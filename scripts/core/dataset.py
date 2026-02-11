@@ -83,8 +83,8 @@ class DatasetDir:
         file_path = self._path_to_table_data_file(db_name, table_name)
         write_csv(file_path, data)
 
-    def write_queries(self, split: QuerySplit, queries: list[list]) -> None:
-        data = [["id", "database", "question", "sql"]] + queries
+    def write_queries(self, split: QuerySplit, df: pd.DataFrame) -> None:
+        data = [df.columns.tolist()] + df.values.tolist()
         write_csv(self._path_to_queries_file(split), data)
 
     def write_json(self, file_path: str, data: Any) -> str:
