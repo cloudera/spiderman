@@ -136,7 +136,7 @@ def build_queries(dataset: DatasetDir, queries: list, split: QuerySplit) -> None
 
         db_queries[db_name].append([id, db_name, question, sql])
 
-    # Merge queries by database into a single list
+    # Merge queries of all valid databases in the dataset into a single list
     db_names = dataset.get_db_names()
     queries = []
     for db_name in db_names:
