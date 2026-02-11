@@ -42,7 +42,7 @@ class SQLAIRunner:
             print("Error: ", response)
             return ""
 
-        return response['response']['sql']
+        return response['response'].get('sql', '')
 
     def run(self, dataset_dir: DatasetDir, benchmark_store: BenchmarkStore, split: QuerySplit, limit: int | None = None) -> None:
         queries_df = dataset_dir.read_queries(split)
