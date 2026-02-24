@@ -50,6 +50,8 @@ class SQLAIRunner:
         if limit:
             queries_df = queries_df.head(limit)
 
+        benchmark_store.validate_results(queries_df)
+
         sql_data: list[str] = []
         queries = list(queries_df.to_dict('records'))
         for row, _bar in bar_iter(queries):

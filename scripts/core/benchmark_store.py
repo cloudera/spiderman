@@ -1,10 +1,12 @@
+from typing import TypeAlias, cast
+
 from scripts.core.dataset import QuerySplit
 import pandas as pd
 import json
 import os
 from os import path
 from datetime import datetime
-import json
+from typing import cast
 import matplotlib.pyplot as plt
 import matplotlib
 
@@ -12,6 +14,11 @@ from scripts.utils.sha import df_to_sha
 
 # Use non-interactive backend for matplotlib
 matplotlib.use('Agg')
+
+
+# Increment the data version when the structure of results data changes
+DATA_VERSION = 1
+ResultsData: TypeAlias = list[str]
 
 
 class BenchmarkStore:
@@ -72,38 +79,38 @@ class BenchmarkStore:
         # Generate matplotlib plot
         base_path = f"./benchmark_{self.dialect}"
         plot_path = path.join(base_path, f'{self.split.value}_difficulty_plot.png')
-        
+
         plt.figure(figsize=(10, 6))
-        
+
         # Plot lines for each model
         colors = plt.cm.tab10(range(len(model_data)))  # type: ignore[attr-defined]
         for i, model in enumerate(model_data):
-            plt.plot(difficulty_levels, model['accuracies'], 
+            plt.plot(difficulty_levels, model['accuracies'],
                     marker='o', linewidth=2, markersize=8,
                     label=f"Run {model['run_num']}: {model['name']}",
                     color=colors[i])
-            
+
             # Add "Run {id}" label at the end of each line
             last_x = difficulty_levels[-1]
             last_y = model['accuracies'][-1]
-            plt.text(last_x + 0.1, last_y, f"Run {model['run_num']}", 
+            plt.text(last_x + 0.1, last_y, f"Run {model['run_num']}",
                     fontsize=9, va='center', color=colors[i], fontweight='bold')
-        
+
         plt.xlabel('SQL Difficulty Level', fontsize=12, fontweight='bold')
         plt.ylabel('DataMatch Accuracy (%)', fontsize=12, fontweight='bold')
         plt.title('Model Performance Across SQL Difficulty Levels', fontsize=14, fontweight='bold')
-        plt.xticks(difficulty_levels, 
+        plt.xticks(difficulty_levels,
                    ['1\n(Very Easy)', '2\n(Easy)', '3\n(Medium)', '4\n(Hard)', '5\n(Very Hard)'])
         plt.yticks(range(0, 101, 10))
         plt.ylim(0, 105)
         plt.xlim(0.8, 5.6)  # Extend x-axis to accommodate labels
         plt.grid(True, alpha=0.3, linestyle='--')
         plt.tight_layout()
-        
+
         # Save the plot
         plt.savefig(plot_path, dpi=150, bbox_inches='tight')
         plt.close()
-        
+
         # Add plot to markdown
         lines.append(f"![Accuracy by SQL Difficulty]({path.basename(plot_path)})\n\n")
 
@@ -122,19 +129,16 @@ class BenchmarkStore:
 
         return ''.join(lines)
 
-    def write_results(self, source_queries: pd.DataFrame, metadata: dict, data: list[str]) -> None:
-
+    def validate_results(self, source_queries: pd.DataFrame) -> tuple[str, dict | None]:
         # Hash the source queries to detect changes across runs
         source_sha = df_to_sha(source_queries)
-
-        # Increment the data version when the structure of the data changes
-        data_version = 1
+        sql_results: dict | None = None
 
         # Read existing data if file exists
         if os.path.exists(self.results_file_path):
             with open(self.results_file_path, 'r', encoding='utf-8') as f:
                 # Let json.JSONDecodeError raise
-                sql_results: dict = json.load(f)
+                sql_results = cast(dict, json.load(f))
 
                 # Validate source hasn't changed
                 if source_sha != sql_results.get('source_sha'):
@@ -144,18 +148,26 @@ class BenchmarkStore:
                     )
 
                 # Validate data version hasn't changed
-                if data_version != sql_results.get('data_version'):
+                if DATA_VERSION != sql_results.get('data_version'):
                     raise ValueError(
                         "Data version has changed across runs. "
                         f"Please delete the file {self.results_file_path} and re-run."
                     )
-        else:
+
+        return source_sha, sql_results
+
+    def write_results(self, source_queries: pd.DataFrame, metadata: dict, data: ResultsData) -> None:
+
+        # Hash the source queries to detect changes across runs
+        source_sha, sql_results = self.validate_results(source_queries)
+
+        if not sql_results:
             sql_results = {
                 'source_sha': source_sha,
-                'data_version': data_version,
+                'data_version': DATA_VERSION,
                 'dialect': self.dialect,
                 'split': self.split.value,
-                'total_queries': len(source_queries),
+                'total_queries': len(data),
                 'runs': []
             }
 
@@ -173,7 +185,7 @@ class BenchmarkStore:
 
     def read_results(self) -> dict:
         with open(self.results_file_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
+            return cast(dict, json.load(f))
 
     def write_report(self, run_metrics: list[dict], total_queries: int):
         """
